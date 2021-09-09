@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:paddingTop="20dp">
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Cara 1"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:fontFamily="@font/muli_b"-->
+                    <!--android:paddingBottom="10dp"/>-->
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_persediaaninventori1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Persediaan / Inventori"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_persediaaninventori1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_piutangdagang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Piutang Dagang"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_piutangdagang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_utangdagang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Utang Dagang"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_utangdagang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_wineraca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="WI Neraca"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_wineraca"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dohpersediaaninventori1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="DOH Persediaan / Inventori"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dohpersediaaninventori1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:suffix=" Hari"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dohpiutangdagang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="DOH Piutang Dagang"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dohpiutangdagang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:suffix=" Hari"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dohutangdagang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="DOH Utang Dagang"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dohutangdagang1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:suffix=" Hari"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dohmodalkerja"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kebutuhan Modal Kerja DOH"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dohmodalkerja"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:suffix=" Hari"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_winormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="WI Normal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_winormal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_grossprofitmargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Gross Profit Margin"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_grossprofitmargin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:suffix=" %"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Cara 2"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:fontFamily="@font/muli_b"/>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Diisi sesuai usaha yang akan dibiayai"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:fontFamily="@font/muli_r"-->
+                    <!--android:textStyle="italic"-->
+                    <!--android:paddingBottom="15dp"/>-->
+
+
+                <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                    <!--android:id="@+id/tf_persediaaninventori2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                    <!--app:isResponsiveIconColor="true"-->
+                    <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                    <!--app:secondaryColor="@color/colorPrimary"-->
+                    <!--app:primaryColor="@color/colorPrimary"-->
+                    <!--app:labelText="Perputaran Persediaan Barang"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--app:useDenseSpacing="true">-->
+
+                    <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                        <!--android:id="@+id/et_persediaaninventori2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:digits="0123456789"-->
+                        <!--android:maxLength="15"-->
+                        <!--app:suffix=" Hari"/>-->
+                <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+
+
+                <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                    <!--android:id="@+id/tf_piutangdagang2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                    <!--app:isResponsiveIconColor="true"-->
+                    <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                    <!--app:secondaryColor="@color/colorPrimary"-->
+                    <!--app:primaryColor="@color/colorPrimary"-->
+                    <!--app:labelText="Perputaran Piutang Dagang"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--app:useDenseSpacing="true">-->
+
+                    <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                        <!--android:id="@+id/et_piutangdagang2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:digits="0123456789"-->
+                        <!--android:maxLength="15"-->
+                        <!--app:suffix=" Hari"/>-->
+                <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+
+                <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                    <!--android:id="@+id/tf_utangdagang2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                    <!--app:isResponsiveIconColor="true"-->
+                    <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                    <!--app:secondaryColor="@color/colorPrimary"-->
+                    <!--app:primaryColor="@color/colorPrimary"-->
+                    <!--app:labelText="Perputaran Utang Dagang"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--app:useDenseSpacing="true">-->
+
+                    <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                        <!--android:id="@+id/et_utangdagang2"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:digits="0123456789"-->
+                        <!--android:maxLength="15"-->
+                        <!--app:suffix=" Hari"/>-->
+                <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+
+                <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                    <!--android:id="@+id/tf_dohmodalkerja"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                    <!--app:isResponsiveIconColor="true"-->
+                    <!--app:panelBackgroundColor="@color/colorGreenSoft"-->
+                    <!--app:secondaryColor="@color/colorPrimary"-->
+                    <!--app:primaryColor="@color/colorPrimary"-->
+                    <!--app:labelText="Kebutuhan Modal Kerja DOH"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--app:useDenseSpacing="true">-->
+
+                    <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                        <!--android:id="@+id/et_dohmodalkerja"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:digits="0123456789"-->
+                        <!--android:maxLength="15"-->
+                        <!--app:suffix=" Hari"/>-->
+                <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+
+                <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                    <!--android:id="@+id/tf_winormal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                    <!--app:isResponsiveIconColor="true"-->
+                    <!--app:panelBackgroundColor="@color/colorGreenSoft"-->
+                    <!--app:secondaryColor="@color/colorPrimary"-->
+                    <!--app:primaryColor="@color/colorPrimary"-->
+                    <!--app:labelText="WI Normal"-->
+                    <!--android:paddingLeft="20dp"-->
+                    <!--android:paddingRight="20dp"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--app:useDenseSpacing="true">-->
+
+                    <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                        <!--android:id="@+id/et_winormal"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:inputType="numberDecimal"-->
+                        <!--android:digits="0123456789"-->
+                        <!--android:maxLength="15"-->
+                        <!--app:prefix="Rp. "/>-->
+                <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+                <include layout="@layout/loading"/>
+            </LinearLayout>
+        </FrameLayout>
+</ScrollView>

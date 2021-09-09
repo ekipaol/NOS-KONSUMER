@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Identifikasi Tanah Berdasarkan Surat Tanah"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_jenis_surat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_postcode"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Jenis Surat Tanah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_jenis_surat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    android:maxLength="25" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_no_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_postcode"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="No Sertifikat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_no_sertifikat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="28"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_atas_nama_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_postcode"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Atas Nama Sertifikat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_atas_nama_sertifikat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="50"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tanggal_terbit_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_date"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Tanggal Penerbitan Sertifikat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tanggal_terbit_sertifikat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luas_tanah_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_district"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Luas Tanah Berdasarkan Sertifikat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luas_tanah_sertifikat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:suffix="Meter"
+                    android:inputType="numberDecimal"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <RelativeLayout
+                android:id="@+id/rl_sertifikat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dokumen Nomor Bukti Sertifikat"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/colorAccent"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginBottom="12dp"
+                        >
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/img_bpn"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="fitCenter"
+
+                            app:riv_border_width="1dip"
+                            app:riv_border_color="#f1efef"
+                            app:riv_corner_radius="8dip"
+                            android:src="@drawable/ic_pdf_hd_greyscaled"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_upload_bpn"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/photo_rounded_blue"
+                            android:padding="8dp"
+                            android:src="@drawable/ic_add_white_24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto PBB"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="12dp"
+                                android:textColor="@color/colorAccent"/>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                               >
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/img_pbb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@mipmap/ico_img_for_upload"
+                                    app:riv_border_width="1dip"
+                                    app:riv_border_color="#f1efef"
+                                    app:riv_corner_radius="8dip"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/btn_upload_pbb"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/photo_rounded_blue"
+                                    android:padding="8dp"
+                                    android:src="@mipmap/ico_upload"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto IMB"
+                                android:layout_marginBottom="10dp"
+                                android:textSize="12dp"
+                                android:textColor="@color/colorAccent"/>
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp">
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/img_imb"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@mipmap/ico_img_for_upload"
+                                    app:riv_border_width="1dip"
+                                    app:riv_border_color="#f1efef"
+                                    app:riv_corner_radius="8dip"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <ImageView
+                                    android:id="@+id/btn_upload_imb"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/photo_rounded_blue"
+                                    android:padding="8dp"
+                                    android:src="@mipmap/ico_upload"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp">
+
+            </View>
+        </LinearLayout>
+        <include layout="@layout/loading"/>
+    </FrameLayout>
+</ScrollView>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="2dp"
+                android:background="@drawable/shapeplaceholder"
+                android:backgroundTint="#cccccc"/>
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="2dp"
+                android:background="@drawable/shapeplaceholder"
+                android:backgroundTint="#cccccc"
+                android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Tolak Hotprospek"
+            android:textColor="#444"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp"
+            android:fontFamily="@font/muli_b"/>
+
+        <LinearLayout
+            android:id="@+id/ll_opsireject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alasan ditolak"
+                android:paddingBottom="8dp"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <Spinner
+                    android:id="@+id/sp_opsireject"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/forminput_cardwhite"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:spinnerMode="dialog"/>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toRightOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keterangan"
+            android:paddingBottom="8dp"
+            android:paddingTop="20dp"/>
+        <EditText
+            android:id="@+id/et_catatanreject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:inputType="textMultiLine"
+            android:maxLength="150"
+            android:hint="Keterangan"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="@drawable/forminput_cardwhite"/>
+
+        <Button
+            android:id="@+id/btn_sendnow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_primary"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Tolak Sekarang"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/progressbar_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/overlayWhite"
+        android:visibility="gone"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:theme="@style/CircularProgress"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

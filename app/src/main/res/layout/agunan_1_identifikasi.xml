@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/cl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+    <include layout="@layout/loading"/>
+
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Identifikasi Tanah di Lapangan"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_lokasi_tanah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="false"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Lokasi Tanah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_lokasi_tanah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_kav_blok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="No Kav/Blok/Rumah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_kavblok"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="30"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_no_rumah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nomor Rumah/Alamat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_no_rumah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="30"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_batas_utara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Batas Utara Tanah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_batas_utara"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="20"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_batas_selatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Batas Selatan Tanah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_batas_selatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="20"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_batas_barat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Batas Barat Tanah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_batas_barat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="20"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_batas_timur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Batas Timur Tanah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_batas_timur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="20"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <me.grantland.widget.AutofitTextView
+                android:id="@+id/tv_warning_kode_wilayah"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/red_btn_bg_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kode Wilayah Belum Lengkap, Harap Pilih Kelurahan Terlebih Dahulu"
+                android:maxLines="1"
+                />
+
+            <LinearLayout
+
+                android:id="@+id/ll_kode_wilayah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+                <include layout="@layout/loading"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:layout_weight="7"
+                    android:id="@+id/tf_kode_wilayah"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kode Wilayah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kode_wilayah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <Button
+                    android:id="@+id/btn_kode_wilayah"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:text="Pilih Kelurahan"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="@drawable/shapeborderprimary"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:elevation="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_kode_wilayah_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:layout_weight="7"
+                    android:id="@+id/tf_kelurahan_wilayah"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kelurahan Wilayah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kelurahan_wilayah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                       />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <Button
+                    android:id="@+id/btn_buat_spasi_doang"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:text="Pilih Kelurahan"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="@drawable/shapeborderprimary"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    android:layout_weight="3"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:elevation="5dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btn_set_loc"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Set Lokasi"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="@drawable/shapeborderprimary"
+                    android:layout_gravity="center"
+                    android:elevation="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_set_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="Lokasi Belum Diset"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:layout_weight="5"
+                    android:id="@+id/tf_rt_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="RT"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rt_agunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="5"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:layout_weight="5"
+                    android:id="@+id/tf_rw_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="RW"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rw_agunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="5"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:layout_weight="7"
+                    android:id="@+id/tf_kodepos_agunan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kode Pos"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kodepos_agunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="10"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <Button
+                    android:id="@+id/btn_dom"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:text="Cari"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="@drawable/shapeborderprimary"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:layout_weight="3"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:elevation="5dp"/>
+            </LinearLayout>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_kelurahan_agunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Kelurahan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_kelurahan_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="25" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_kecamatan_agunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Kecamatan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_kecamatan_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="50"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_kota_agunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Kota"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_kota_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="25" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_propinsi_agunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Propinsi"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_propinsi_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="50"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_bentuk_bidang_tanah"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:iconSignifier="@drawable/ic_city"-->
+                <!--app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"-->
+                <!--app:enabled="false"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:labelText="Bentuk Bidang Tanah"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_bentuk_bidang_tanah"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pilih"-->
+                    <!--android:maxLength="25" />-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+
+
+          <View
+              android:layout_width="wrap_content"
+              android:layout_height="12dp">
+
+          </View>
+
+            <!---->
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_permukaan_tanah"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:iconSignifier="@drawable/ic_city"-->
+                <!--app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"-->
+                <!--app:enabled="false"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:labelText="Permukaan Tanah"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_permukaan_tanah"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pilih"-->
+                    <!--android:maxLength="50"/>-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <include layout="@layout/loading"/>
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>
+    <include layout="@layout/bottom_sheet_agunan_1_bentuk_tanah"></include>
+</androidx.coordinatorlayout.widget.CoordinatorLayout >

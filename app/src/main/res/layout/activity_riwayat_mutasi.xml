@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/layoutcoordinator"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <include layout="@layout/toolbar_nosearch" />
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bordertextbox_info"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_info_outline_secondary_24dp"
+                android:tint="@color/colorBlackHeader"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="Data Riwayat Mutasi yang Ditampilkan Merupakan Data Untuk 3 Hari Terakhir"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_r"/>
+
+        </LinearLayout>
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_info"
+            android:layout_marginTop="6dp"
+            android:clickable="false">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_list_riwayat_mutasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/animWhale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ico_empty_document"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/tvWhale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/animWhale"
+                android:visibility="invisible"
+                android:layout_centerInParent="true"
+                android:text="Belum ada data"
+                android:textColor="@android:color/darker_gray"
+                />
+        </RelativeLayout>
+
+        <!--<com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--android:id="@+id/fb_advanced_search"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginBottom="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:src="@drawable/ic_search_black_24dp"-->
+        <!--/>-->
+
+    </RelativeLayout>
+
+
+
+    <include layout="@layout/loading" />
+    <include layout="@layout/item_daftar_disposisi_shimmer"/>
+    <include layout="@layout/monitoring_search_bottom_sheet"/>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

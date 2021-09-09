@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_hotprospek_front"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorPupleHeart">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPupleHeart"
+            android:padding="6dp"
+            android:text="{Status}"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/tv_status"
+            android:background="#DCDCDC" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/divider"
+            android:padding="8dp"
+            android:background="@color/colorWhite">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="ID Agunan"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_idagunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Harga Pasar}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Jenis Deposito"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_jenisdeposito"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Jenis Deposito}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Nama Pemilik"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_namapemilik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Nama Pemilik}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Nomor Bilyet"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_nomorbilyet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Nomor Bilyet}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Bank Penerbit"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_bankpenerbit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Harga Pasar}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Nilai Nominal"
+                    android:textSize="12dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_nilainominal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Nilai Nominal}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.7"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

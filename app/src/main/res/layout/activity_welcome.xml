@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.stepstone.stepper.StepperLayout
+        android:id="@+id/stepperlayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ms_stepperType="dots"
+        android:background="@color/colorWhite"
+        app:ms_backButtonColor="@color/colorPrimary"
+        app:ms_nextButtonColor="@color/colorPrimary"
+        app:ms_completeButtonColor="@color/colorWhite"
+        app:ms_activeStepColor="@color/colorPrimary"
+        app:ms_inactiveStepColor="#cccccc"
+        app:ms_tabStepDividerWidth="120dp"
+        app:ms_tabNavigationEnabled="false"
+        app:ms_bottomNavigationBackground="@color/colorWhite"
+        app:ms_completeButtonText="Aktivasi"
+        app:ms_completeButtonBackground="@drawable/button_stepper_white"/>
+    <include layout="@layout/loading"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

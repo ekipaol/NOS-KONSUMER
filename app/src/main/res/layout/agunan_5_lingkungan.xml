@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Lingkungan"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_lebar_jalan_depan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_district"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Lebar Jalan Depan Properti"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_lebar_jalan_depan"
+                    android:inputType="numberDecimal"
+                    app:suffix="Meter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_peruntukan_lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_district"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+              
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Peruntukan Lokasi"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_peruntukan_lokasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_perkembangan_lingkungan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:iconSignifier="@drawable/ic_district"-->
+                <!--app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"-->
+                <!--app:enabled="false"-->
+                <!--app:isResponsiveIconColor="true"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:labelText="Perkembangan Lingkungan"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_perkembangan_lingkungan"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pilih"-->
+                    <!--/>-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_kepadatan"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:iconSignifier="@drawable/ic_district"-->
+                <!--app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"-->
+                <!--app:enabled="false"-->
+                <!--app:isResponsiveIconColor="true"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:labelText="Kepadatan"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_kepadatan"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pilih Kepadatan"-->
+                    <!--/>-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_akses_capai"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--app:iconSignifier="@drawable/ic_district"-->
+                <!--app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"-->
+                <!--app:enabled="false"-->
+                <!--app:isResponsiveIconColor="true"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:labelText="Akses Mencapai Objek"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_akses_capai"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Pilih"-->
+                    <!--/>-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_akses_jalan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_district"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+              
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Akses Jalan Objek"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_akses_jalan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_fasilitas_sosial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_district"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+              
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Fasilitas Sosial"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_fasilitas_sosial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp">
+
+            </View>
+
+            <include layout="@layout/loading"/>
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

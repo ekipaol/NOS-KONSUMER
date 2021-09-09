@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/toolbar_height_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:paddingTop="16dp">
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_program"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_product"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Program"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_program"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_plafond"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_plafond"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Plafond"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_plafond"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    app:prefix="Rp. "/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tenor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_tenor"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Jangka Waktu"
+                android:visibility="gone"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tenor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    android:maxLength="3"
+                    app:suffix=" Bulan"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tujuanpenggunaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Tujuan Penggunaan KMG"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tujuanpenggunaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_foto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_foto"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/ll_btn_reject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btn_reject"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/button_reject"
+                        android:text="Tolak Hotprospek"
+                        android:textAllCaps="false"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btn_send"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/button_primary"
+                        android:text="@string/title_savehotprospek"
+                        android:textAllCaps="false"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loading"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

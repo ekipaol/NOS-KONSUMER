@@ -1,0 +1,438 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.corelayout.CoreLayoutActivity"
+    android:background="@color/colorBackgroundGrey1">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:background="@color/colorBackgroundTransparent"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                app:contentScrim="@color/colorWhite"
+                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleMarginEnd="64dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    android:src="@drawable/bg_topblue"
+                    android:contentDescription="{header image}"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    android:alpha=".80"/>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                    <TextView
+                        android:id="@+id/tv_toolbartitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="#555"
+                        android:textSize="18sp"
+                        android:elevation="4dp"
+                        android:fontFamily="@font/muli_b"
+                        android:layout_marginRight="16dp"/>
+                </androidx.appcompat.widget.Toolbar>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_profilpicture"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:src="@drawable/banner_placeholder"
+                        android:scaleType="centerCrop"
+                        app:riv_corner_radius="100dip"
+                        app:riv_border_width="3dp"
+                        app:riv_border_color="@color/colorWhite"/>
+                    <TextView
+                        android:id="@+id/tv_nama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="28dp"
+                        android:text="{Full Name}"
+                        android:textColor="#fff"
+                        android:fontFamily="@font/muli_b"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/iv_profilpicture"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:text="{Username}"
+                        android:fontFamily="@font/muli_r"
+                        android:textColor="#fff"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toEndOf="@+id/iv_profilpicture"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_nama" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:behavior_overlapTop="90dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="3dp"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:paddingRight="6dp"
+                        android:paddingLeft="6dp"
+                        android:orientation="vertical"
+                        android:background="@color/overlayWhite95">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/progress_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:elevation="20dp">
+
+                        <ProgressBar
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"/>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/ll_pesan_dashboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:visibility="gone"
+
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_below="@+id/cardView"
+                    android:orientation="vertical"
+                    android:background="@drawable/shapeborderprimary"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Pesan Dari Server :"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/muli_b"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_pesan_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="6dp"
+                        android:text="Text Placeholder"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/muli_l"
+                        android:textStyle="bold"
+                        />
+
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_pipeline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cardView"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_pipeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_pipeline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pipeline"
+                            android:textSize="18dp"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/colorBlackHeader"
+                            android:fontFamily="@font/muli_b"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <ImageView
+                            android:id="@+id/iv_morepipeline"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="right"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/sm_placeholder_pipeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        app:shimmer_duration="800">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/placeholder_pipeline"></include>
+
+                        </LinearLayout>
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_emptydata_pipeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="15dp"
+                        android:visibility="gone"
+                        android:layout_below="@+id/cl_pipeline">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ico_nodata"
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_empty_pipeline"
+                            android:textSize="11sp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="6dp"
+                            android:gravity="center"
+                            android:textColor="@color/fontFormHint"
+                            android:textStyle="italic"/>
+                    </LinearLayout>
+
+                    <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                        android:id="@+id/rv_pipeline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:msrv_gravity="start"
+                        app:msrv_speed_ms_per_inch="120"
+                        app:msrv_interval="1"
+                        android:layout_below="@+id/cl_pipeline"
+                        android:scrollbars="vertical"
+                        android:layout_marginTop="6dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_hotprospek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_pipeline"
+                    android:animateLayoutChanges="true"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_hotprospek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="2dp">
+
+                        <TextView
+                            android:id="@+id/tv_hotprospek"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hotprospek"
+                            android:textSize="18dp"
+                            android:paddingLeft="10dp"
+                            android:textColor="@color/colorBlackHeader"
+                            android:fontFamily="@font/muli_b"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                        <ImageView
+                            android:id="@+id/iv_morehotprospek"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="right"
+                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/sm_placeholder_hotprospek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        app:shimmer_duration="800">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/placeholder_hotprospek"></include>
+
+                        </LinearLayout>
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_emptydata_hotprospek"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingTop="15dp"
+                        android:visibility="gone"
+                        android:layout_below="@+id/cl_hotprospek">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ico_nodata"
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title_empty_hotprospek"
+                            android:textSize="11sp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="6dp"
+                            android:gravity="center"
+                            android:textColor="@color/fontFormHint"
+                            android:textStyle="italic"/>
+                    </LinearLayout>
+
+                    <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                        android:id="@+id/rv_hotprospek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        app:msrv_gravity="start"
+                        app:msrv_speed_ms_per_inch="120"
+                        app:msrv_interval="1"
+                        android:layout_below="@+id/cl_hotprospek"
+                        android:scrollbars="vertical"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="20dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

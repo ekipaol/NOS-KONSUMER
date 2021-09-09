@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorWhite"
+
+    >
+
+
+    <include layout="@layout/toolbar_nosearch"/>
+
+    <ScrollView
+        android:id="@+id/nested_scv"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_datafinansial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_input_finansial_1"
+                android:background="@color/colorWhite">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Input Data Finansial"
+                    android:padding="10dp"
+                    android:textSize="18dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tujuan_penggunaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tujuan Penggunaan *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tujuan_penggunaan"
+                        android:inputType="textMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nilai_permohonan_pembiayaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nilai Permohonan Pembiayaan *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nilai_permohonan_pembiayaan"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_gaji_pokok"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Gaji Pokok *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_gaji_pokok"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tunjangan_tetap_lainnya"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tunjangan Tetap Lainnya *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tunjangan_tetap_lainnya"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kewajiban_lain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kewajiban/Pengeluaran Lain *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kewajiban_lain"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_angsuran_pinjaman_eksisting_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Angsuran Pinjaman Eksisting *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_angsuran_pinjaman_eksisting_1"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_penghasilan_bersih"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Penghasilan Bersih *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_penghasilan_bersih"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jangka_waktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jangka Waktu *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jangka_waktu"
+                        android:inputType="numberDecimal"
+                        android:maxLength="3"
+                        app:suffix="Bulan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jangka_waktu_takeover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jangka Waktu Takeover *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jangka_waktu_takeover"
+                        android:inputType="numberDecimal"
+                        android:maxLength="3"
+                        app:suffix="Bulan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_margin_pertahun_konsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Margin Konsumtif *"
+                    android:visibility="gone"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_margin_pertahun_konsumtif"
+                        android:inputType="numberDecimal"
+                        app:suffix="%"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_margin_pertahun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Margin Pertahun *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_margin_pertahun"
+                        android:inputType="numberDecimal"
+                        app:suffix="%"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_asuransi_penjaminan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Asuransi Penjaminan *"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_asuransi_penjaminan"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_fee_pihak_ketiga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Fee Pihak Ketiga *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_fee_pihak_ketiga"
+                        android:inputType="number"
+                        app:suffix="%"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_harga_beli"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Harga Beli *"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_harga_beli"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jumlah_plafon_pembiayaan_konsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Plafond Konsumtif *"
+                    android:visibility="gone"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jumlah_plafon_pembiayaan_konsumtif"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jumlah_plafon_pembiayaan_diusulkan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jumlah Plafond Diusulkan *"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jumlah_plafon_pembiayaan_diusulkan"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jumlah_plafon_pembiayaan_ijk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jumlah Plafond dan IJK *"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jumlah_plafon_pembiayaan_ijk"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_ftv_ratio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="FTV Ratio *"
+                    android:visibility="gone"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_ftv_ratio"
+                        android:inputType="numberDecimal"
+                        android:maxLength="3"
+                        app:suffix="%"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_uang_muka"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Uang Muka *"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_uang_muka"
+                        app:prefix="Rp."
+                        android:text="0"
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nominal_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nominal Fee *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nominal_fee"
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp. "
+                        android:text="0"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    android:gravity="center">
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_premi_asuransi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_segmen"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Premi Asuransi *"
+                        android:paddingLeft="20dp"
+                         android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="8">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_premi_asuransi"
+                            android:inputType="numberDecimal"
+                            app:prefix="Rp. "
+                            android:text="0"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <Button
+                        android:id="@+id/btn_hitung_ijk"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:text="Hitung IJK"
+                        android:layout_marginRight="16dp"
+                        android:layout_weight="4"/>
+
+                </LinearLayout>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_rate_ijk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Rate IJK 1 *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                   >
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rate_ijk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_rate_ijk2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Rate IJK 2 *"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    >
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rate_ijk2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jangka_waktu_qardh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jangka Waktu Qardh*"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jangka_waktu_qardh"
+                        android:inputType="numberDecimal"
+                        app:suffix="Hari"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_angsuran_konsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Angsuran Konsumtif *"
+                    android:visibility="gone"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_angsuran_konsumtif"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_angsuran_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Angsuran *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_angsuran"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_rpc_konsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    android:visibility="gone"
+                    app:labelText="RPC Konsumtif*"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rpc_konsummtif"
+                        android:inputType="numberDecimal"
+                        app:suffix="%"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_rpc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="RPC *"
+                    android:paddingLeft="20dp"
+                     android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rpc"
+                        android:inputType="numberDecimal"
+
+                        app:suffix="%"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="THIS IS FOR SPACINGGGG"
+                android:padding="10dp"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_input_finansial_2"
+                android:background="@color/colorWhite">
+
+
+
+
+
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="THIS IS FOR SPACINGGGG"-->
+                <!--android:padding="10dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:visibility="invisible"/>-->
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_primary"
+                    android:text="VALIDASI"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/loading"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

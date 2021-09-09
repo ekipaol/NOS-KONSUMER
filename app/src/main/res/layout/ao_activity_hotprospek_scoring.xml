@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Financial"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/muli_b"
+            android:paddingBottom="10dp"/>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_rpcratio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="RPC Ratio"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:useDenseSpacing="true"
+            android:layout_weight="1">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_rpcratio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_ratioagunan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Ratio Agunan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:useDenseSpacing="true"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_ratioagunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_currentratio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Current Ratio"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:useDenseSpacing="true"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_currentratio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_profitability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Profitability"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:useDenseSpacing="true"
+            android:layout_weight="1"
+            android:visibility="gone">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_profitability"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Financial"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/muli_b"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"/>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_reputasiusaha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Reputasi/Integritas Usaha"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_reputasiusaha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_riwayathubunganbank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Riwayat Hubungan Bank"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_riwayathubunganbank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manajemen"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/muli_b"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"/>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_lamausaha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Pengalaman/Lama Usaha"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_lamausaha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_prospekusaha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Prospek Usaha"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_prospekusaha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lingkungan Bisnis"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/muli_b"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"/>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_ketergantunganthdsupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Ketergantungan thd Supplier"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_ketergantunganthdsupplier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_ketergantunganthdpelanggan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Ketergantungan thd Pelanggan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_ketergantunganthdpelanggan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_wilayahpemasaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Wilayah Pemasaran"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_wilayahpemasaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jenisproduk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jenis Produk"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jenisproduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Analisa Fasilitas"
+            android:textSize="16sp"
+            android:paddingLeft="10dp"
+            android:fontFamily="@font/muli_b"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"/>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jangkawaktu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jangka Waktu"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jangkawaktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jenispembiayaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jenis Pembiayaan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jenispembiayaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+        <LinearLayout
+            android:id="@+id/ll_contenthasil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapebordergrey"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil Scoring"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <LinearLayout
+                android:id="@+id/ll_hasil"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                android:background="@drawable/shapeplaceholder"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_titlehasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Title}"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_kethasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Hasil}"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="12dp">
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/button_primary"
+                android:text="Scoring"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+    <include layout="@layout/loading"></include>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

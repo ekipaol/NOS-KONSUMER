@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_menu"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp">
+
+    <TextView
+        android:id="@+id/tv_opsi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:text="Optional"
+        android:textSize="9sp"
+        android:fontFamily="@font/muli_b"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/shapeborderprimary"
+        android:elevation="10dp"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_complete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:elevation="10dp"
+        android:src="@drawable/ic_checklist"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_agunan"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_iconmenu"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_dashboard"/>
+            <TextView
+                android:id="@+id/tv_titlemenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cv_agunan"
+                android:text="{Label Menu}"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/muli_r"
+                android:padding="4dp"
+                android:gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

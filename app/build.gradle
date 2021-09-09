@@ -1,0 +1,139 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+apply plugin: 'com.google.gms.google-services'
+apply from: "utils.gradle"
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.application.bris.ikurma_nos_konsumer"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 19
+        versionName "1.5.1"
+        multiDexEnabled true
+        buildConfigField("Boolean", "IS_PRODUCTION", "true")
+        buildConfigField ("Boolean","IS_BD", "true")
+        buildConfigField ("Boolean","SHOW_LOG", "true")
+        buildConfigField ("String","SECRET_KEY", toJavaCodeString(SECRET_KEY))
+        buildConfigField ("String","DEVELOPER_KEY",toJavaCodeString(DEVELOPER_KEY))
+        buildConfigField ("String","MAGIC_CRYPT_KEY",toJavaCodeString(MAGIC_CRYPT_KEY))
+        buildConfigField ("String","SERVER_CRYPT", toJavaCodeString(SERVER_CRYPT))
+        buildConfigField ("String","UID_VERIFIER", toJavaCodeString(UID_VERIFIER))
+        buildConfigField "String[]", "GEOCODING_KEY",
+                "{" +
+                        toJavaCodeString(GEOCODING_KEY_1)+"," +
+                        toJavaCodeString(GEOCODING_KEY_2)+"," +
+                        toJavaCodeString(GEOCODING_KEY_3)+"," +
+                        toJavaCodeString(GEOCODING_KEY_4)+"," +
+                        toJavaCodeString(GEOCODING_KEY_5) +
+
+
+                        "}"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            shrinkResources true
+            minifyEnabled true
+            useProguard true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            shrinkResources true
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+ext {
+    supportLibraryVersion = "1.0.0"
+    playServicesMapsVersion = "16.1.0"
+    playServicesLocationVersion = "16.0.0"
+    fragment_version="1.1.0"
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.fragment:fragment:$fragment_version"
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'com.github.takusemba:multisnaprecyclerview:1.3.4'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.github.HITGIF:TextFieldBoxes:1.4.4'
+    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+    implementation 'com.github.vipulasri:timelineview:1.1.0'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+
+    //dialog box
+    implementation 'com.github.f0ris.sweetalert:library:1.5.1'
+
+    //pdf upload
+    implementation 'com.karumi:dexter:5.0.0'
+
+    //autofittextview
+    implementation 'me.grantland:autofittextview:0.2.1'
+
+    //spinner
+    implementation 'com.github.ganfra:material-spinner:2.0.0'
+
+    implementation('com.squareup.retrofit2:retrofit:2.6.0'){
+        exclude module: 'okhttp'
+    }
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+    implementation (name:'material-stepper-custom-4.3.1', ext:'aar')
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //flip view
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.1.2'
+
+    //root detection
+    implementation 'com.scottyab:rootbeer-lib:0.1.0'
+
+
+
+    implementation "com.google.android.gms:play-services-maps:$playServicesMapsVersion"
+    implementation "com.google.android.gms:play-services-places:$playServicesLocationVersion"
+    implementation "com.google.android.gms:play-services-location:$playServicesLocationVersion"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

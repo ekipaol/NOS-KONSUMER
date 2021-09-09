@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Hasil Penilaian"
+                android:textSize="16sp" />
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tanggal_pemeriksaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_date"
+                app:isResponsiveIconColor="true"
+                app:labelText="Tanggal Pemeriksaan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tanggal_pemeriksaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Data Pembanding 1"
+                android:textSize="16sp" />
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_data_pembanding_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_postcode"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Data Pembanding 1"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_data_pembanding_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Data Pembanding 2"
+                android:textSize="16sp" />
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_data_pembanding_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_postcode"
+                app:isResponsiveIconColor="true"
+                app:labelText="Data Pembanding 2"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_data_pembanding_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:fontFamily="@font/muli_b"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:text="Data Pembanding 3"-->
+                <!--android:textSize="16sp" />-->
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_data_pembanding_3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--app:iconSignifier="@drawable/ic_postcode"-->
+                <!--app:isResponsiveIconColor="true"-->
+                <!--app:labelText="Data Pembanding 3"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_data_pembanding_3"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:inputType="textMultiLine" />-->
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <!--<View-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="20dp"></View>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Luas dan Harga Tanah"
+                android:textSize="16sp" />
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luas_tanah_hasil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_district"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Luas Tanah"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luas_tanah_hasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:suffix="Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_harga_tanah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:labelText="Harga Tanah"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_harga_tanah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp."
+                    app:suffix="/Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Luas dan Harga Bangunan"
+                android:textSize="16sp" />
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luas_bangunan_imb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_district"
+                app:labelText="Luas Bangunan berIMB"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luas_bangunan_imb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    app:suffix="Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luas_bangunan_tidak_imb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_district"
+                app:labelText="Luas Bangunan Tidak berIMB"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luas_bangunan_tidak_imb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    app:suffix="Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_harga_bangunan_imb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:labelText="Harga Bangunan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_harga_bangunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp."
+                    app:suffix="/Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="12dp"-->
+                <!--android:fontFamily="@font/muli_b"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingBottom="10dp"-->
+                <!--android:text="Bangunan Tidak berIMB"-->
+                <!--android:textSize="16sp" />-->
+
+
+
+            <!--<studio.carbonylgroup.textfieldboxes.TextFieldBoxes-->
+                <!--android:id="@+id/tf_harga_bangunan_tidak_imb"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:paddingLeft="20dp"-->
+                <!--android:paddingRight="20dp"-->
+                <!--app:iconSignifier="@drawable/ic_rupiah"-->
+                <!--app:labelText="Harga Bangunan Tidak berIMB"-->
+                <!--app:panelBackgroundColor="@color/colorBgEdittext"-->
+                <!--app:primaryColor="@color/colorPrimary"-->
+                <!--app:secondaryColor="@color/colorPrimary"-->
+                <!--app:useDenseSpacing="true">-->
+
+                <!--<studio.carbonylgroup.textfieldboxes.ExtendedEditText-->
+                    <!--android:id="@+id/et_harga_bangunan_tidak_imb"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:inputType="number"-->
+                    <!--app:prefix="Rp."-->
+                    <!--app:suffix="/Meter2" />-->
+
+            <!--</studio.carbonylgroup.textfieldboxes.TextFieldBoxes>-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="Nilai"
+                android:textSize="16sp" />
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nilai_likuidasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:labelText="Nilai Likuidasi"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nilai_likudasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp." />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luas_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_district"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Luas Total Bangunan"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luas_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    app:suffix="Meter2" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_npw_tanah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="NPW Tanah"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_npw_tanah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp." />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_npw_bangunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="NPW Bangunan"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_npw_bangunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp." />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_npw_tanah_dan_bangunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="NPW Tanah dan Bangunan"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_npw_tanah_dan_bangunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp." />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_npw_bangunan_diasuransikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorGreenSoft"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="NPW Bangunan Diasuransikan"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_npw_bangunan_diasuransikan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    app:prefix="Rp." />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="12dp">
+
+            </View>
+
+            <include layout="@layout/loading" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

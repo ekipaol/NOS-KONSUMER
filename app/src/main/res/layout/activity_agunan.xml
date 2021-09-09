@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/toolbar_regular" />
+
+    <include layout="@layout/ao_content_agunan" />
+
+    <include layout="@layout/loading" />
+
+    <include layout="@layout/item_daftar_disposisi_shimmer" />
+
+    <LinearLayout
+        android:id="@+id/ll_emptydata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_info"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="64dp"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ico_empty_document" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="40dp"
+            android:paddingTop="12dp"
+            android:paddingRight="40dp"
+            android:paddingBottom="6dp"
+            android:text="Belum ada agunan terikat"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:visibility="visible"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_search_white_24dp"
+        app:borderWidth="0dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

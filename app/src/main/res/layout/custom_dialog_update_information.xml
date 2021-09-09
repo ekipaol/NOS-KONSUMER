@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingBottom="12dp"
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:textColor="@color/colorBlackHeader"
+        android:text="{Header}"
+        android:padding="12dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:paddingTop="10dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:background="@color/colorBackgroundGrey3"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="10dp"
+        android:elevation="5dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/colorBgEdittext">
+            <TextView
+                android:id="@+id/tv_message"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textIsSelectable="true"
+                android:textAlignment="textStart"
+                android:layout_margin="6dp"
+                android:gravity="start"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/muli_b"
+                android:text="{Message}"
+                android:textSize="15sp" />
+
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_primary"
+            android:gravity="center"
+            android:text="Okedeh"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="13dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

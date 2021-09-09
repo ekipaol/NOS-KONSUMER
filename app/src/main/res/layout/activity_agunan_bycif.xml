@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tanahbangunan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanah dan Bangunan"
+            android:textSize="18dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorBlackHeader"/>
+
+        <LinearLayout
+            android:id="@+id/ll_tanah_bangunan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/sm_placeholder_tanah_bangunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                app:shimmer_duration="800">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/placeholder_pipeline"></include>
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_emptydata_tanah_bangunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="15dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ico_nodata" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="6dp"
+                    android:text="Belum ada agunan"
+                    android:textColor="@color/fontFormHint"
+                    android:textSize="11sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/rv_tanah_bangunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="6dp"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:msrv_gravity="start"
+                app:msrv_speed_ms_per_inch="120"
+                app:msrv_interval="1" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_tanahkosong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanah Kosong"
+            android:textSize="18dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
+            android:textColor="@color/colorBlackHeader"/>
+
+        <LinearLayout
+            android:id="@+id/ll_tanah_kosong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/sm_placeholder_tanah_kosong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                app:shimmer_duration="800">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/placeholder_pipeline"></include>
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_emptydata_tanah_kosong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="15dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ico_nodata" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="6dp"
+                    android:text="Belum ada agunan"
+                    android:textColor="@color/fontFormHint"
+                    android:textSize="11sp"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                android:id="@+id/rv_tanah_kosong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cl_tanah_kosong"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="6dp"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:msrv_gravity="start"
+                app:msrv_speed_ms_per_inch="120"
+                app:msrv_interval="1" />
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_above="@id/floatAdd"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-60dp">
+
+            <Button
+                android:id="@+id/btn_kembalikan_appraisal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:layout_marginRight="4dp"
+
+                android:text="Kembalikan ke Appraisal"
+                android:textStyle="bold"
+                android:textColor="@color/red_btn_bg_color"
+
+                android:textAllCaps="true"
+                android:background="@drawable/shapeborderred"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_req_appraisal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:layout_marginLeft="4dp"
+
+
+                android:text="Simpan dan Request Appraisal"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+
+                android:textAllCaps="true"
+                android:background="@drawable/shapeborderprimary"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"/>
+
+
+
+        </LinearLayout>
+
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_add_white_24dp"
+            app:borderWidth="0dp" />
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_new_agunan"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="-60dp"-->
+            <!--android:text="Tambah"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:background="@drawable/shapeborderprimary"-->
+            <!--android:layout_gravity="center_horizontal" />-->
+    </RelativeLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

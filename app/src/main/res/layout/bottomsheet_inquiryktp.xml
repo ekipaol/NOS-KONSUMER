@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackgroundGrey1"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Cek Nasabah"
+            android:textColor="#444"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/fontFormHint"
+            android:layout_gravity="right"
+            android:layout_weight="3"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="30dp"/>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_nasabahid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+            <EditText
+                android:id="@+id/et_nasabahid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:hint="Nomor KTP"
+                android:textSize="16sp"
+                android:padding="15dp"
+                android:inputType="number"
+                android:maxLength="16"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_inquiry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_primary"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="Cek"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:textColor="#fff" />
+
+</LinearLayout>

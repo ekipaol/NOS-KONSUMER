@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SET PENGIKATAN"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:padding="10dp"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapeborder"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Pengikatan"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginBottom="8dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Plafond Pengajuan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_id_plafond_pengajuan_set_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Belum ada data}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Agunan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_jenis_agunan_set_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Jenis agunan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Id Agunan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_id_agunan_set_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{id agunan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dash_line"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layerType="software"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nilai Market"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_nilai_market"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nilai Market}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nominal Pengikatan pada Aplikasi Lain"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_nominal_pengikatan_aplikasi_lain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="nominal pengikatan"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nominal yang Akan Diikat"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_nominal_akan_diikat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="nominal akan diikat"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Plafon Dapat Dicover"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_plafon_cover_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="plafon dicover"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapeborder"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Input Pengikatan Agunan"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="No Bukti Pengikatan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/et_no_bukti_pengikatan"
+                        android:layout_width="match_parent"
+                        android:textSize="14sp"
+                        android:layout_height="wrap_content"
+                        android:hint="No bukti pengikatan"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Pengikatan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/sp_jenis_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        >
+                    </Spinner>
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Klasifikasi Agunan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <Spinner
+                        android:id="@+id/sp_klasifikasi_agunan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:spinnerMode="dialog"
+                        android:entries="@array/klasifikasi_agunan"
+                        android:textSize="11sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        >
+                    </Spinner>
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:paddingLeft="8dp">-->
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="Rekomendasi Penilai"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:paddingTop="4dp"-->
+                        <!--android:paddingBottom="4dp"-->
+                        <!--android:layout_weight="1"/>-->
+
+                    <!--<Spinner-->
+                        <!--android:id="@+id/sp_rekomendasi_penilai"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:spinnerMode="dialog"-->
+                        <!--android:entries="@array/rekomendasi_penilai"-->
+                        <!--android:textSize="11sp"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:paddingTop="4dp"-->
+                        <!--android:paddingBottom="4dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--&gt;-->
+                    <!--</Spinner>-->
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="space"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:padding="10dp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_marginTop="12dp"
+                android:visibility="invisible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapeborderprimary"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="14">
+
+                    <Button
+                        android:id="@+id/btn_kembali_set_pengikatan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:textSize="10sp"
+                        android:text="Kembali"
+                        android:backgroundTint="@color/A400red"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+                    <Button
+                        android:visibility="invisible"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:text=""
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+                    <Button
+                        android:id="@+id/btn_ikat_set_pengikatan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:textSize="10sp"
+                        android:text="Atur Pengikatan"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        />
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+    <include layout="@layout/loading"></include>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

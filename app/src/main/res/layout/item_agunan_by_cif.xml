@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_hotprospek_front"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:elevation="5dp">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/sm_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+
+                android:orientation="vertical"
+                app:shimmer_auto_start="true"
+                app:shimmer_base_alpha="0.6"
+
+
+
+                android:elevation="5dp"
+
+                app:shimmer_duration="800">
+
+                <ImageView
+                    android:id="@+id/iv_question"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+
+                    android:visibility="gone"
+                    android:src="@drawable/ic_question"
+
+                    android:elevation="5dp"
+                    />
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:padding="6dp"
+            android:text="{Status}"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/tv_status"
+            android:background="#DCDCDC" />
+
+        <LinearLayout
+            android:id="@+id/ll_infohotprospek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="ID Agunan"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="No. Sertifikat Tanah"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Jenis Surat Tanah"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Lokasi"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Nilai Pasar"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_id_agunan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{ID Agunan}"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_no_stf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{No Sertifikat}"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_jenis_surat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Jenis Surat}"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_lokasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Lokasi}"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/tv_harga_pasar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Harga Pasar}"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_info_pipeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

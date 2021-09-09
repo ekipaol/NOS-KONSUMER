@@ -1,0 +1,1755 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.corelayout.CoreLayoutActivity"
+    android:background="@color/colorBackgroundCore"
+    android:orientation="vertical">
+
+    <include layout="@layout/loading"/>
+    <include layout="@layout/view_pager_makeshift_ranking_dadakan"/>
+
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:contentScrim="@color/colorWhite"
+        app:expandedTitleMarginStart="48dp"
+        app:expandedTitleMarginEnd="64dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:fitsSystemWindows="true"
+            android:src="@drawable/bg_topblue"
+            android:contentDescription="{header image}"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_collapseMode="parallax"
+            android:alpha=".80"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height_default"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            <TextView
+                android:id="@+id/tv_toolbartitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="#555"
+                android:textSize="18sp"
+                android:fontFamily="@font/muli_b"
+                android:elevation="4dp"
+                android:layout_marginRight="16dp"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+
+    <ScrollView
+        android:id="@+id/sv_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_data_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible"
+                >
+
+                <LinearLayout
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        app:cardCornerRadius="10dp"
+
+
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Top 3 AO Selindo"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/jose_r"
+                            android:textAlignment="center"
+                            android:layout_gravity="center_vertical"
+                            android:padding="6dp"
+
+                            />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border_gold"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_1st_place_pic"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_firstplace_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:layout_below="@id/iv_1st_place_pic"
+                                    android:layout_centerInParent="true"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_1st_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_firstplace_amount"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_1st_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_1st_place"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border_silver"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="2."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_2nd_place_pic"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_secondplace_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:layout_below="@id/iv_2nd_place_pic"
+                                    android:layout_centerInParent="true"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_2nd_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_secondplace_amount"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_2nd_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_2nd_place"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp"
+                                    android:textSize="10sp"/>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/border_bronze"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="3."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_3rd_place_pic"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_thirdplace_amount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/iv_3rd_place_pic"
+                                    android:layout_centerInParent="true"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_3rd_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_thirdplace_amount"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_3rd_place"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_3rd_place"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp"
+                                    android:textSize="10sp"/>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        app:cardCornerRadius="10dp"
+                        android:layout_marginTop="12dp"
+
+
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Bottom 3 AO Selindo"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/jose_r"
+                            android:textAlignment="center"
+                            android:layout_gravity="center_vertical"
+                            android:padding="6dp"
+
+                            />
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_1st_place_pic_aom"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_firstplace_amount_aom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/iv_1st_place_pic_aom"
+                                    android:layout_centerInParent="true"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_1st_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_firstplace_amount_aom"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_1st_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_1st_place_aom"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="2."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_2nd_place_pic_aom"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_secondplace_amount_aom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/iv_2nd_place_pic_aom"
+                                    android:layout_centerInParent="true"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_2nd_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_secondplace_amount_aom"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_2nd_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_2nd_place_aom"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp"
+                                    android:textSize="10sp"/>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_weight="1">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="3."
+                                    android:fontFamily="@font/roboto_m"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="5dp"/>
+
+
+                                <com.makeramen.roundedimageview.RoundedImageView
+                                    android:id="@+id/iv_3rd_place_pic_aom"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:src="@drawable/banner_placeholder"
+                                    android:scaleType="centerCrop"
+                                    app:riv_corner_radius="100dip"
+                                    app:riv_border_width="3dp"
+                                    app:riv_border_color="@color/colorWhite"/>
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/tv_thirdplace_amount_aom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/iv_3rd_place_pic_aom"
+                                    android:layout_centerInParent="true"
+                                    android:paddingRight="7dp"
+                                    android:paddingLeft="7dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textColor="@color/main_blue_stroke_color"
+                                    android:textAlignment="center"
+                                    />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_3rd_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:layout_below="@id/tv_thirdplace_amount_aom"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/audiowide"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp" />
+
+                                <me.grantland.widget.AutofitTextView
+                                    android:id="@+id/et_nama_kc_3rd_place_aom"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginRight="4dp"
+                                    android:autoSizeMinTextSize="10sp"
+                                    android:fontFamily="@font/muli_b"
+                                    android:maxWidth="100dp"
+                                    android:maxLines="1"
+                                    android:singleLine="true"
+                                    android:text="-"
+                                    android:layout_below="@id/et_nama_3rd_place_aom"
+                                    android:textAlignment="center"
+                                    android:textStyle="bold"
+                                    app:minTextSize="10sp"
+                                    android:textSize="10sp"/>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_banner_top10_ao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:animateLayoutChanges="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:animateLayoutChanges="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:weightSum="12"
+                            android:animateLayoutChanges="true"
+
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_weight="9"
+                                android:textSize="18sp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/jose_r"
+                                android:text="Top 10 AO"/>
+
+
+                            <ImageView
+                                android:id="@+id/id_show_more_top10_ranking_ao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="visible"
+
+                                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+
+                            <ImageView
+                                android:id="@+id/iv_show_less_top10_ranking_ao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_keyboard_arrow_up_black_24dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/ll_content_top10_ao"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:orientation="vertical">
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_top10_ao"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp">
+
+                                </androidx.recyclerview.widget.RecyclerView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_banner_top10_aom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:animateLayoutChanges="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:animateLayoutChanges="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:weightSum="12"
+                            android:animateLayoutChanges="true"
+
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_weight="9"
+                                android:textSize="18sp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/jose_r"
+                                android:text="Top 10 AOM"/>
+
+
+                            <ImageView
+                                android:id="@+id/id_show_more_top10_ranking_aom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="visible"
+
+                                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+
+                            <ImageView
+                                android:id="@+id/iv_show_less_top10_ranking_aom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_keyboard_arrow_up_black_24dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/ll_content_top10_aom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:orientation="vertical">
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_top10_aom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp">
+
+                                </androidx.recyclerview.widget.RecyclerView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_banner_bottom10_ao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:animateLayoutChanges="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:animateLayoutChanges="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:weightSum="12"
+                            android:animateLayoutChanges="true"
+
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_weight="9"
+                                android:textSize="18sp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/jose_r"
+                                android:text="Bottom 10 AO"/>
+
+
+                            <ImageView
+                                android:id="@+id/id_show_more_bottom10_ranking_ao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="visible"
+
+                                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+
+                            <ImageView
+                                android:id="@+id/iv_show_less_bottom10_ranking_ao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_keyboard_arrow_up_black_24dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/ll_content_bottom10_ao"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:orientation="vertical">
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_bottom10_ao"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp">
+
+                                </androidx.recyclerview.widget.RecyclerView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_banner_bottom10_aom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="10dp"
+                    android:animateLayoutChanges="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:animateLayoutChanges="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:weightSum="12"
+                            android:animateLayoutChanges="true"
+
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
+                                android:layout_weight="9"
+                                android:textSize="18sp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/jose_r"
+                                android:text="Bottom 10 AOM"/>
+
+
+                            <ImageView
+                                android:id="@+id/id_show_more_bottom10_ranking_aom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="visible"
+
+                                android:src="@drawable/ic_keyboard_arrow_down_black_24dp"/>
+
+                            <ImageView
+                                android:id="@+id/iv_show_less_bottom10_ranking_aom"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:visibility="gone"
+                                android:src="@drawable/ic_keyboard_arrow_up_black_24dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/ll_content_bottom10_aom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:visibility="gone"
+                                android:orientation="vertical">
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/rv_bottom10_aom"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginTop="10dp">
+
+                                </androidx.recyclerview.widget.RecyclerView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_data_total"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bordertextbox_info"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_info_outline_secondary_24dp"
+                        android:tint="@color/colorBlackHeader"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:text="Data yang Ditampilkan Merupakan Data Total dan Rata-Rata Per : "
+                        android:textAlignment="center"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:fontFamily="@font/muli_b"/>
+
+                </LinearLayout>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/v_easyflip_pencairan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:flipOnTouch="false"
+                    app:flipEnabled="true"
+                    app:flipDuration="400"
+                    app:flipFrom="left"
+                    app:flipType="horizontal"
+                    app:autoFlipBack="false"
+                    >
+
+                    <!-- Back Layout Goes Here -->
+                    <LinearLayout
+                        android:id="@+id/ll_data_pencairan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            app:cardCornerRadius="20dp"
+                            android:layout_marginTop="15dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_rata_pencairan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:text="Rata-Rata Pencairan AO/AOM Selindo"
+                                    android:layout_below="@id/tv_rata_pencairan" />
+
+                                <TextView
+                                    android:id="@+id/tv_rata_pencairan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <!-- Front Layout Goes Here -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="20dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_total_pencairan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_below="@id/tv_total_pencairan"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="Jumlah/Total Pencairan Selindo" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_pencairan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+
+
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/v_easyflip_os"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:flipOnTouch="false"
+                    app:flipEnabled="true"
+                    app:flipDuration="400"
+                    app:flipFrom="left"
+                    app:flipType="horizontal"
+                    app:autoFlipBack="false"
+                    >
+
+                    <!-- Back Layout Goes Here -->
+                    <LinearLayout
+                        android:id="@+id/ll_data_os"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            app:cardCornerRadius="20dp"
+                            android:layout_marginTop="15dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button2"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_rata_os"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:text="Rata-Rata Outstanding AO/AOM Selindo"
+                                    android:layout_below="@id/tv_rata_os" />
+
+                                <TextView
+                                    android:id="@+id/tv_rata_os"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <!-- Front Layout Goes Here -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="20dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button2"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_total_os"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_below="@id/tv_total_os"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="Jumlah/Total Outstanding Selindo" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_os"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+
+
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/v_easyflip_npf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:flipOnTouch="false"
+                    app:flipEnabled="true"
+                    app:flipDuration="400"
+                    app:flipFrom="left"
+                    app:flipType="horizontal"
+                    app:autoFlipBack="false"
+                    >
+
+                    <!-- Back Layout Goes Here -->
+                    <LinearLayout
+                        android:id="@+id/ll_data_npf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            app:cardCornerRadius="20dp"
+                            android:layout_marginTop="15dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button3"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_rata_npf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:text="Rata-Rata NPF AO/AOM Selindo"
+                                    android:layout_below="@id/tv_rata_npf" />
+
+                                <TextView
+                                    android:id="@+id/tv_rata_npf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <!-- Front Layout Goes Here -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="20dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button3"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_total_npf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_below="@id/tv_total_npf"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="Jumlah/Total NPF Selindo" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_npf"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+
+
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+                <com.wajahatkarim3.easyflipview.EasyFlipView
+                    android:id="@+id/v_easyflip_kol2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:flipOnTouch="false"
+                    app:flipEnabled="true"
+                    app:flipDuration="400"
+                    app:flipFrom="left"
+                    app:flipType="horizontal"
+                    app:autoFlipBack="false"
+                    android:layout_marginBottom="20dp"
+                    >
+
+                    <!-- Back Layout Goes Here -->
+                    <LinearLayout
+                        android:id="@+id/ll_data_kol2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            app:cardCornerRadius="20dp"
+                            android:layout_marginTop="15dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button4"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_rata_kol2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:text="Rata-Rata Kol 2 AO/AOM Selindo"
+                                    android:layout_below="@id/tv_rata_kol2" />
+
+                                <TextView
+                                    android:id="@+id/tv_rata_kol2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:visibility="visible"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+                    <!-- Front Layout Goes Here -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            app:cardCornerRadius="20dp"
+
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:paddingRight="6dp"
+                                android:paddingTop="4dp"
+                                android:background="@drawable/gradient_button4"
+                                >
+
+                                <TextView
+                                    android:id="@+id/tv_ket_total_kol2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="monospace"
+                                    android:textStyle="bold"
+                                    android:textSize="13sp"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_below="@id/tv_total_kol2"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginBottom="20dp"
+                                    android:text="Jumlah/Total Kol 2 Selindo" />
+
+                                <TextView
+                                    android:id="@+id/tv_total_kol2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="-"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/colorWhite"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:textSize="50sp"
+
+                                    />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                    android:rotation="270"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_marginRight="20dp"
+                                    />
+
+
+
+
+                            </RelativeLayout>
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
+
+                </com.wajahatkarim3.easyflipview.EasyFlipView>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">NOS Konsumer</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Ranking</string>
+    <string name="title_user">User</string>
+
+
+    <string name="dialog_perms_msg">Apakah anda mengizinkan i-Kurma mengakses?</string>
+    <string name="dialog_need_permission">Untuk menggunakan i-Kurma harus mengaktifkan beberapa permission yang dibutuhkan. Apakah anda ingin ke menu Pengaturan?</string>
+
+    <string name="turn_on_flashlight">Turn on Flashlight</string>
+    <string name="notif_qr">Login ke Appel dan Scan Kode QR mu</string>
+    <string name="notif_update">Hore i-Kurma Konsumer ada versi terbaru nih, ayo update sekarang</string>
+
+
+    <!--String Menu AOM-->
+    <string name="menu_pipeline">Pipeline</string>
+    <string name="menu_hotprospek">Hotprospek</string>
+    <string name="menu_approved">Approved</string>
+    <string name="menu_rejected">Rejected</string>
+    <string name="menu_appraisal">Appraisal</string>
+
+    <!--String Sub Menu Hotprospek-->
+    <string name="submenu_hotprospek_prescreening">Prescreening</string>
+    <string name="submenu_hotprospek_datalengkap">Data Lengkap</string>
+    <string name="submenu_hotprospek_lkn">LKN</string>
+    <string name="submenu_hotprospek_agunan">Agunan</string>
+    <string name="submenu_hotprospek_scoring">Scoring</string>
+    <string name="submenu_hotprospek_sektorekonomi">Sektor Ekonomi</string>
+    <string name="submenu_hotprospek_rpc">RPC</string>
+    <string name="submenu_hotprospek_kelengkapandokumen">Kelengkapan Dokumen</string>
+    <string name="submenu_hotprospek_history">History</string>
+    <string name="title_successtorejectappraisal">Data Appraisal berhasil dikembalikan ke Pemrakarsa</string>
+    <string name="title_successselesaiappraisal">Data Appraisal berhasil disimpan dan dikembalikan ke Pemrakarsa</string>
+    <string name="title_nodataappraisal">Belum ada aplikasi yang perlu appraisal kamu nih..</string>
+    <string name="title_confirm_rejectappraisal">Apakah anda yakin akan mengembalikan agunan ke Pemrakarsa?</string>
+    <string name="title_confirm_selesaiappraisal">Simpan hasil appraisal dan kembalikan ke pemrakarsa?</string>
+    <string name="title_confirm_validasi_appraisal">Anda belum melakukan appraisal untuk agunan aplikasi ini. Agunan tidak akan bisa diikat oleh AO pemrakarsa jika data agunan belum lengkap, tetap selesaikan appraisal dan kembalikan ke AO pemrakarsa?</string>
+
+
+    <string name="title_pleaseselect">Silahkan pilih</string>
+    <string name="title_nodata">Belum ada data pembiayaan nih, yuk tambah pembiayaan</string>
+    <string name="title_nodataapproved">Belum ada pembiayaan approved nih, yuk segera proses hotprospeknya..</string>
+    <string name="title_nodatarejected">Yey pembiayaanmu belum ada yang rejected, jangan sampai masuk sini yaa..</string>
+    <string name="txt_connection_failure">Gagal terhubung ke server</string>
+    <string name="title_validate_field">tidak boleh kosong</string>
+    <string name="title_invalid_field">tidak valid</string>
+    <string name="title_nodata_address">Gak ada nih pencariannya, coba ganti jenis pencarian atau keywordnya yah..</string>
+    <string name="title_nohistory_tindaklanjut">Belum ada history tindak lanjut</string>
+
+    <string name="title_empty_pipeline">Belum ada data Pipeline nih, ayo tambah..</string>
+
+    <string name="title_empty_hotprospek">Belum ada data Hotprospek nih, ayo tambah..</string>
+
+    <string name="title_savepipeline">Simpan Pipeline</string>
+    <string name="title_savepipelinehotprospek">Simpan Pipeline + Hotprospek</string>
+    <string name="title_gotopemutus">Kirim ke Pemutus</string>
+    <string name="title_gotohotprospek">Hotprospek</string>
+    <string name="title_rejectpipeline">Nope</string>
+
+    <string name="title_savehotprospek">Simpan Hotprospek</string>
+
+    <string name="title_successtohotprospek">Data Pipeline sukses dikirim ke Hotprospek</string>
+    <string name="title_successtorejectpipeline">Data Pipeline sukses ditolak</string>
+
+    <string name="title_confirm_rejectpipeline">Apakah anda yakin akan menolak Pipeline ini?</string>
+
+    <string name="title_confirm_sendtopemutus">Apakah anda yakin akan mengajukan aplikasi ke Pemutus?</string>
+
+    <string name="title_confirm_backpress">Data belum tersimpan, Anda yakin akan kembali?</string>
+
+    <string name="title_confirm_backpress_saved">Anda yakin ingin keluar dari halaman ? (Data yang diinput akan tersimpan secara lokal di perangkat)</string>
+
+    <string name="title_domequalid">Data alamat domisili sama dengan KTP?</string>
+    <string name="title_usahaequalid">Data alamat usaha sama dengan KTP?</string>
+    <string name="title_ishotprospek">Lanjutkan ke Hot Prospek</string>
+
+    <string name="title_processprescreening">Prescreening</string>
+
+    <string name="title_nohasface">Wah wajah Nasabahnya kurang jelas nih, ambil foto ulang yah.. </string>
+    <string name="title_pleasewaitslik">Mohon tunggu sampai proses pengecekan SLIK selesai</string>
+    <string name="title_instructionmaps">Tekan dan geser Marker pada maps untuk menggeser posisi atau cari alamat langsung pada searchbox. Ada 2 tombol di sebelah kanan atas </string>
+
+    <string name="default_notification_channel_id">kurma2</string>
+</resources>

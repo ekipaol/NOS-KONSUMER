@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            app:cardCornerRadius="10dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp">
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/banner_placeholder"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blacktransparent_image">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_alignParentBottom="true"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_nama"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    android:textSize="18dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:text="{Nama}"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:id="@+id/tv_tenor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:text="{Tenor}"
+                                    android:layout_weight="1"
+                                    android:layout_marginLeft="8dp"
+                                    android:gravity="right"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_produk"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:text="{Produk}"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="8dp"/>
+
+                                <TextView
+                                    android:id="@+id/tv_plafond"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:text="{Plafond}"
+                                    android:layout_weight="1"
+                                    android:layout_marginLeft="8dp"
+                                    android:gravity="right"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="{Status}"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorError"
+                    android:background="@color/colorErrorSoft"
+                    android:gravity="center"/>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#DCDCDC"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ID Aplikasi"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_idaplikasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{ID Aplikasi}"
+                        android:textSize="13sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CIF Syiar"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_cifsyiar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{CIF Syiar}"
+                        android:textSize="13sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingBottom="16dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tujuan Penggunaan"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_tujuanpenggunaan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Tujuan Penggunaan}"
+                        android:textSize="13sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_submenu_rejected"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:overScrollMode="never"/>
+    </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/toolbar_nosearch"/>
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/placeholder_detail_hotprospek"></include>
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <include layout="@layout/loading" />
+</RelativeLayout>

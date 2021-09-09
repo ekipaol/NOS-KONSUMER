@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_marginTop="@dimen/toolbar_height_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_welcome"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:src="@drawable/ico_otp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/muli_l"
+                android:text="Masukkan Brisi Activation Code (BAC) yang telah dikirim email"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="30dp"
+                android:paddingLeft="30dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:padding="10dp"
+                android:text="{Email}"
+                android:gravity="center"/>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:layout_margin="24dp"
+                android:padding="4dp"
+                android:background="@drawable/shapeemail"
+                android:gravity="center"
+                android:layout_gravity="center"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginLeft="24dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="Ganti Email?"
+                    android:fontFamily="@font/muli_b"
+                    android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="Ganti Email?"
+                        android:fontFamily="@font/muli_b"
+                        android:layout_weight="1"
+                        android:gravity="right"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ganti Email?"
+                        android:fontFamily="@font/muli_b"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:paddingRight="4dp"
+                        android:gravity="right"/>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_dialog" />
+
+</RelativeLayout>

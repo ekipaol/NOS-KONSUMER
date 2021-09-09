@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/loading"/>
+
+    <ScrollView
+        android:id="@+id/sv_rpc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Detil Nasabah"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:padding="10dp"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapebordergrey"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Pembiayaan Nasabah"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Nasabah"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_nama_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nama Nasabah}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Produk Pembiayaan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_produk_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Produk}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jangka Waktu Pembiayaan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_jangka_waktu_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Jangka Waktu}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Pencairan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_tanggal_pencairan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Tanggal Pencairan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Monitoring"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Plafond Awal"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_plafond_awal_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Plafond Awal}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DPK"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_dpk_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{dpk_pegawai}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Kolektabilitas"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_kol_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Kol}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tunggakan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_tunggakan_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Tunggakan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_tanggal_past_due"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Past Due"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_tanggal_past_due"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{tanggal past due}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_day_past_due"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Day Past Due"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_day_past_due"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{day past due}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_sisa_durasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sisa Durasi Pembiayaan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_sisa_durasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Sisa durasi}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Nasabah"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat Nasabah"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_alamat_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Alamat}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor Telepon Nasabah"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_nomor_telepon_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nomor}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dash_line"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layerType="software"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Jatuh Tempo"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_tanggal_jatuh_tempo_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Tanggal jatuh tempo}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Outstanding"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_outstanding_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Outstanding}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Angsuran Bulan Ini"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_angsuran_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Angsuran}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapebordergrey"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Rekening Nasabah"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor Rekening"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_nomor_rekening"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nomor Rekening}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dash_line"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layerType="software"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_saldo_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Saldo Nasabah}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Saldo Diblokir"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_saldo_diblokir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Outstanding}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_lihat_riwayat_mutasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:paddingRight="15dp"
+                    android:paddingLeft="15dp"
+                    android:text="Lihat Riwayat Mutasi"
+                    style="@style/Widget.AppCompat.Button.Colored"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+
+    <!--<com.facebook.shimmer.ShimmerFrameLayout-->
+        <!--android:id="@+id/sm_placeholder"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="@dimen/toolbar_height_default"-->
+        <!--android:orientation="vertical"-->
+        <!--app:shimmer_duration="800">-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ll_placeholder"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<include layout="@layout/placeholder_rpc"></include>-->
+
+        <!--</LinearLayout>-->
+
+    <!--</com.facebook.shimmer.ShimmerFrameLayout>-->
+</RelativeLayout>

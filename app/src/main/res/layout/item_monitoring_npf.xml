@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    android:paddingBottom="4dp"
+    app:cardElevation="3dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_nama_nasabah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="{Nama Nasabah}"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorBlackHeader"
+            android:background="@drawable/bordertextbox_primary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pencairan"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_pencairan_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Rp. 1.000.000.000}"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+            android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Outstanding"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_b"
+                android:textSize="14sp"/>/>
+
+            <TextView
+                android:id="@+id/tv_outstanding_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Rp. 694.000.000}"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NPF"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_b"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_dpk_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Rp. 694.000.000}"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kol"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_b"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_kol_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{3}"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="1"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="6dp"
+            android:paddingTop="5dp"
+            >
+            <Button
+                android:id="@+id/bt_detil_monitoring_pencairan_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_gravity="right"
+                android:text="Detail"/>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cv_agunan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="@color/colorBackgroundGrey1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:elevation="15dp"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/fr_image">
+                    <ImageView
+                        android:id="@+id/iv_foto"
+                        android:src="@drawable/banner_placeholder"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/blacktransparent_image"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_id_agunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{ID Agunan}"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="70dp"
+                    android:textColor="@color/colorWhite"/>
+                <TextView
+                    android:id="@+id/tv_jenis"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="{Jenis Agunan}"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textAlignment="center"
+                    android:padding="5dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/round_tanahbangunan"/>
+            </RelativeLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fr_image"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:text="Nama Debitur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text="ID Aplikasi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text="Plafond Induk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text="Nilai Cover Plafon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text="Nilai Pengikatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:text=":"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_info_pipeline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="6dp">
+
+                    <TextView
+                        android:id="@+id/tv_nama"
+                        android:text="{Nama Debitur}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:id="@+id/tv_id_aplikasi"
+                        android:text="{ID Aplikasi}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:id="@+id/tv_plafond_induk"
+                        android:text="{Plafond Induk}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:id="@+id/tv_cover_plafon"
+                        android:text="{Cover Plafond}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+
+                    <TextView
+                        android:id="@+id/tv_nilai_ikat"
+                        android:text="{Nilai Pengikatan}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:textSize="12sp"
+                        android:textColor="#595959"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>

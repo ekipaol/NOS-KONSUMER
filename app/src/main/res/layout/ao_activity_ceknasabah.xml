@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite">
+
+    <include layout="@layout/toolbar_nosearch" />
+    <include layout="@layout/loading" />
+
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="64dp"
+        android:visibility="visible">
+        <RelativeLayout
+            android:id="@+id/rl_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_profilpicture"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:riv_corner_radius="50dip"
+                app:riv_border_width="2dp"
+                app:riv_border_color="@color/colorBackgroundGrey1"
+                android:scaleType="fitXY"
+                android:src="@drawable/banner_placeholder"
+                android:layout_centerHorizontal="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/iv_profilpicture"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginTop="4dp">
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="4dp"
+                    android:layout_gravity="center"
+                    android:textColor="#444"
+                    android:textSize="16dp"
+                    android:text="{Nama Lengkap}"
+                    android:layout_alignParentTop="true"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_identity_card"
+                android:tint="@color/colorPrimary"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CIF Syiar"
+                android:layout_weight="1.5"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_cifappel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Nomor KTP}"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlackHeader"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_identity_card"
+                android:tint="@color/colorPrimary"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nomor KTP"
+                android:layout_weight="1.5"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_nomorktp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Nomor KTP}"
+                android:layout_weight="1"
+                android:textColor="@color/colorBlackHeader"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#ddd"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daftar Pembiayaan"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_listpembiayaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_emptydata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_info"
+        android:gravity="center"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ico_empty_document"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_nodata"
+            android:textSize="16sp"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="40dp"
+            android:paddingLeft="40dp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/btn_inputpipeline"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/button_primary"
+            android:text="Tambah Pembiayaan"
+            android:textAllCaps="false"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

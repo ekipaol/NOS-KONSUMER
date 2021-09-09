@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_address">
+        <item>Provinsi</item>
+        <item>Kota/Kabupaten</item>
+        <item>Kecamatan</item>
+        <item>Kelurahan</item>
+        <item>Kodepos</item>
+    </string-array>
+    <string-array name="klasifikasi_agunan">
+        <item>Pokok</item>
+        <item>Tambah</item>
+    </string-array>
+
+    <string-array name="rekomendasi_penilai">
+        <item>Tidak Direkomendasikan</item>
+        <item>Tidak Marketable</item>
+        <item>Cukup Marketable</item>
+        <item>Marketable</item>
+    </string-array>
+
+    <string-array name="remaks">
+        <item>Sesuai hasil SLIK</item>
+        <item>Lunas</item>
+        <item>Top Up</item>
+        <item>Takeover</item>
+        <item>Pembiayaan Rek. Koran</item>
+    </string-array>
+
+    <string-array name="type_pencarian_pasar">
+        <item>Provinsi</item>
+        <item>Kota/Kabupaten</item>
+        <item>Nama Pasar</item>
+    </string-array>
+
+    <string-array name="remaks_pasangan">
+        <item>Sesuai hasil SLIK</item>
+        <item>Lunas</item>
+        <item>Pembiayaan Rek. Koran</item>
+    </string-array>
+
+    <string-array name="opsi_reject">
+        <item>Data Lengkap</item>
+        <item>Prescreening</item>
+        <item>Sektor Ekonomi</item>
+        <item>LKN</item>
+        <item>RPC</item>
+        <item>Agunan</item>
+        <item>Kelengkapan Dokumen</item>
+        <item>Scoring</item>
+        <item>Lainnya</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_pipeline"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="5dp"
+        android:elevation="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="@color/colorWhite">
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:id="@+id/fr_image">
+                    <ImageView
+                        android:id="@+id/iv_foto"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/blacktransparent_image">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:id="@+id/tv_produk"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:text="{Product}"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorWhite"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/roundprimary"/>
+
+                            <TextView
+                                android:id="@+id/tv_nama"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Nama Nasabah}"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:padding="5dp"
+                                android:layout_alignParentBottom="true"
+                                android:textColor="@color/colorWhite"/>
+                        </RelativeLayout>
+                    </FrameLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_info_pipeline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/fr_image"
+                android:padding="6dp">
+                <TextView
+                    android:id="@+id/tv_plafond"
+                    android:layout_below="@+id/fr_image"
+                    android:text="{Plafond}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    android:textColor="#595959"/>
+
+                <TextView
+                    android:id="@+id/tv_tenor"
+                    android:text="{Tenor}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:textSize="12sp"
+                    android:textColor="#595959"/>
+
+                <TextView
+                    android:id="@+id/tv_waktu"
+                    android:text="{Waktu Pengajuan}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_proses"
+                android:layout_below="@+id/fr_image"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="Proses"
+                android:textColor="#595959"
+                android:textAllCaps="false"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/shapeborder"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>

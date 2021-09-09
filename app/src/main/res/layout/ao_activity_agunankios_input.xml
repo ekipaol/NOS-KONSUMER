@@ -1,0 +1,1053 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:layout_marginTop="@dimen/toolbar_height_default">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorWhite"
+            android:paddingTop="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informasi Agunan"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tanggalpemeriksaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Tanggal Pemeriksaan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tanggalpemeriksaan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_jenisagunan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Jenis Agunan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_jenisagunan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_dokumenbuktihakkios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Dokumen Bukti Hak Kios"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_dokumenbuktihakkios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nomordokumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nomor Dokumen"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nomordokumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_namapemeganghak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama Pemegang Hak"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_namapemeganghak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_hubunganpemeganghakdengannasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Hub. Pemegang Hak dg Nasabah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_hubunganpemeganghakdengannasabah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_masaberlakuijinkios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Masa Berlaku Ijin Kios"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_masaberlakuijinkios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_luaskios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Luas Kios"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_luaskios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    app:suffix=" M2"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat Agunan"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_namapasar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama Pasar"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_namapasar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="150"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_blok"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Los / Blok"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_blok"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="8"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomorkios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomor"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomorkios"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="8"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btn_set_loc"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="Set Lokasi"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="false"
+                    android:background="@drawable/shapeborderprimary"
+                    android:layout_gravity="center"
+                    android:elevation="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_set_loc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:text="Lokasi Belum Diset"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_wilayahkota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Wilayah dan Kota"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_wilayahkota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="150"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_lokasijaminan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Lokasi Agunan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_lokasijaminan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_tahundibangunrenovasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Tahun Pasar diBangun/Renovasi"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_tahundibangunrenovasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="8"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_retribusi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Retribusi Per Bulan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_retribusi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    android:maxLength="15"
+                    app:prefix="Rp. "/>
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_listrik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Listrik"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_listrik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="8"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dayalistrik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Daya"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dayalistrik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="8"
+                        app:suffix=" W"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_telepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Telpon"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_telepon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="8"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomortelepon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="No Telepon"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomortelepon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="14"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pemberi Informasi"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_namapemberiinformasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_namapemberiinformasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="100"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_alamatpemberiinformasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Alamat"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_alamatpemberiinformasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="150"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nohppemberiinformasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nomor HP"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nohppemberiinformasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"
+                    android:maxLength="14"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nilai Agunan"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nilaimarket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nilai Market"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nilaimarket"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="15"
+                    app:prefix="Rp. "
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nilailikuidasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_salary"
+                app:isResponsiveIconColor="true"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nilai Likuidasi"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nilailikuidasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="15"
+                    app:prefix="Rp. "
+                    android:inputType="numberDecimal"
+                    android:digits="0123456789"/>
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Foto Agunan dan Batas"
+                android:textSize="16sp"
+                android:paddingTop="25dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_fotobpn"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_fotobpn"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foto BPN"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_fotobpn"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_fotokios"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_fotokios"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Foto Kios"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_fotokios"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_batasutara"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_batasutara"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Batas Utara"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_batasutara"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_batasselatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_batasselatan"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Batas Selatan"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_batasselatan"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_batastimur"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_batastimur"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Batas Timur"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_batastimur"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_batasbarat"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:riv_border_width="1dip"
+                        app:riv_border_color="#e6e6e6"
+                        app:riv_corner_radius="8dip"
+                        android:scaleType="centerCrop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/banner_placeholder"
+                        android:layout_centerInParent="true"/>
+
+                    <ImageView
+                        android:id="@+id/btn_batasbarat"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/ic_photo_camera_primary_24dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:background="@drawable/button_reject"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Batas Barat"
+                        android:fontFamily="@font/muli_b"
+                        android:gravity="center"
+                        android:layout_below="@+id/iv_batasbarat"
+                        android:paddingTop="16dp"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_pendapatkondisijaminan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="3"
+                android:inputType="textMultiLine"
+                android:maxLength="150"
+                android:hint="Pendapat pemeriksa mengenai kondisi agunan"
+                android:textSize="14sp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="25dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/bordertextbox_primary"/>
+
+
+            <LinearLayout
+                android:id="@+id/ll_btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_primary"
+                    android:text="Simpan Agunan Kios"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loading"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

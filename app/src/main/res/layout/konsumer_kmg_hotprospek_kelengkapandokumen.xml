@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_parent_kelengkapan_dokumen_konsumer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/sv_parent_kelengkapan_dokumen_konsumer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="DOKUMEN PRIBADI"
+            android:fontFamily="@font/muli_b"
+            android:textColor="@color/colorBlackHeader"
+            android:layout_weight="0.5"
+            android:paddingTop="10dp"
+            android:paddingBottom="16dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/cb_ktpnasabahpasangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:button="@drawable/button_checkbox"
+                    android:layout_weight="1.5"
+                    android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="KTP Nasabah dan/atau Pasangan"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_ktpnasabahpasangan"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_ktpnasabahpasangan"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_npwp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="NPWP"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_npwp"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_npwp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>]
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_kartukeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Kartu Keluarga"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_kartukeluarga"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_kartukeluarga"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_suratnikah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Surat Nikah/Akta Cerai/Surat Ket. Status Perkawinan Lainnya"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_suratnikah"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_suratnikah"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_pasphoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Pas Photo"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_pasphoto"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_pasphoto"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="DOKUMEN KHUSUS"
+            android:fontFamily="@font/muli_b"
+            android:textColor="@color/colorBlackHeader"
+            android:layout_weight="0.5"
+            android:paddingTop="30dp"
+            android:paddingBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_formuliraplikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:clickable="false"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Formulir Aplikasi Pembiayaan"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_formuliraplikasi"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_formuliraplikasi"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_skpegawaitetap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="SK Pegawai Tetap"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_skpegawaitetap"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_skpegawaitetap"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_nomorsk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapegrey"
+            android:hint="Nomor SK"
+            android:visibility="gone"
+            android:textSize="12sp"
+            android:inputType="text"
+            android:textColor="#000"
+            android:maxLength="30"
+            android:padding="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_skjabatanterakhir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="SK Jabatan Terakhir"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_skjabatanterakhir"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_skjabatanterakhir"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_suratrekomendasiperusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Surat Rekomendasi Perusahaan"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_suratrekomendasiperusahaan"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_suratrekomendasiperusahaan"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_skpg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="SKPG"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_skpg"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_skpg"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_suratkuasadebetrekening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Surat Kuasa Debet Rekening"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_suratkuasadebetrekening"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/banner_placeholder"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_suratkuasadebetrekening"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_photo_camera_primary_24dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_slipgaji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="S.Ket Penghasilan/Slip Gaji 3 bulan terakhir"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_slipgaji"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_slipgaji"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_rekkoran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Rek. Koran Payroll 3 bulan terakhir"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_rekkoran"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_rekkoran"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/cb_kwitansi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:button="@drawable/button_checkbox"
+                android:layout_weight="1.5"
+                android:layout_marginLeft="10dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_kwitansi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:text="Kwitansi Pembelian Barang / Surat Pernyataan Penggunaan Dana"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/fontFormHint"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:layout_gravity="center">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_kwitansi"
+                    android:layout_width="70dp"
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_pdf_gr"
+                    app:riv_border_width="1dip"
+                    app:riv_border_color="#f1efef"
+                    app:riv_corner_radius="8dip"
+                    android:layout_centerInParent="true"/>
+
+                <ImageView
+                    android:id="@+id/btn_kwitansi"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_document"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:padding="4dp"
+                    android:background="@drawable/button_reject"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_iskur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/placholderBg"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/placholderBg"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="DOKUMEN AGUNAN"
+            android:fontFamily="@font/muli_b"
+            android:textColor="@color/colorBlackHeader"
+            android:layout_weight="0.5"
+            android:paddingTop="30dp"
+            android:visibility="gone"
+            android:paddingBottom="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_listagunan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:padding="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/ll_emptydata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ico_nodata"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aplikasi ini ga butuh agunan nih"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:paddingTop="12dp"
+                android:paddingBottom="6dp"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="10dp">
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/button_primary"
+                android:text="Simpan"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+    <include layout="@layout/loading"></include>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/placeholder_kelengkapandokumen"></include>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loading"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bordertextbox_info"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_info_outline_secondary_24dp"
+            android:tint="@color/colorBlackHeader"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"/>
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            android:text="Silahkan masukkan kritik dan saran anda untuk meningkatkan kualitas aplikasi i-Kurma Konsumer yang terkait dengan fitur aplikasi yang dapat ditingkatkan."
+            android:textSize="12sp"
+            android:textColor="@color/colorBlackHeader"
+            android:fontFamily="@font/muli_r"/>
+
+    </LinearLayout>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/tf_nama_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isResponsiveIconColor="false"
+        app:panelBackgroundColor="@color/colorDisableEdit"
+        app:secondaryColor="@color/colorPrimary"
+        app:primaryColor="@color/colorPrimary"
+        android:layout_marginTop="10dp"
+        app:labelText="Nama"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:useDenseSpacing="true"
+    >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/et_nama_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="50"/>
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/tf_jabatan_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isResponsiveIconColor="false"
+        app:panelBackgroundColor="@color/colorDisableEdit"
+        app:secondaryColor="@color/colorPrimary"
+        app:primaryColor="@color/colorPrimary"
+        app:labelText="Jabatan"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:useDenseSpacing="true"
+        >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/et_jabatan_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="50"/>
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/tf_kantor_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:isResponsiveIconColor="false"
+        app:panelBackgroundColor="@color/colorDisableEdit"
+        app:secondaryColor="@color/colorPrimary"
+        app:primaryColor="@color/colorPrimary"
+        app:labelText="Kantor"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:useDenseSpacing="true"
+       >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/et_kantor_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="50"/>
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+        android:id="@+id/tf_catatan_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isResponsiveIconColor="false"
+        app:panelBackgroundColor="@color/colorBgEdittext"
+        android:layout_marginTop="10dp"
+        app:secondaryColor="@color/colorPrimary"
+        app:primaryColor="@color/colorPrimary"
+        app:labelText="Kritik dan Saran"
+        app:maxCharacters="500"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:useDenseSpacing="true"
+       >
+
+        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+            android:id="@+id/et_catatan_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:gravity="top"
+            android:hint="Isi kritik dan saran anda disini"
+            android:maxLength="500"/>
+
+    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Kirim Feedback"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
+</LinearLayout>

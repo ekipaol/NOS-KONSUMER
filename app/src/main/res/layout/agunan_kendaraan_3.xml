@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="vertical"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Detail Kendaraan"
+                    android:textSize="16sp" />
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tipe_kendaraan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Tipe Kendaraan/Model"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tipe_kendaraan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="20" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_merk_kendaraan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Merk Kendaraan"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_merk_kendaraan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="20" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kendaraan_jepang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:enabled="false"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kendaraan Jepang"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kendaraan_jepang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih"
+                        android:maxLength="30" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_daya_angkut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Daya Angkut (kg)"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_daya_angkut"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:maxLength="20" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kapasitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kapasitas Tempat Duduk"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kapasitas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="20" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_check_samsat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:enabled="false"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Check Samsat"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_check_samsat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:maxLength="20" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dengan_siapa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_kendaraan"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Dengan Siapa"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dengan_siapa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_no_telp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_phone"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nomor Telepon"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_no_telp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="14" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_hasil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:enabled="false"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Hasil"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_hasil"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:maxLength="30" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nilai_market"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nilai Market"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nilai_market"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        app:prefix="Rp."/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nilai_likuidasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nilai Likuidasi"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nilai_likuidasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        app:prefix="Rp."/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="12dp">
+
+                </View>
+
+                <include layout="@layout/loading" />
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:background="@color/colorWhite">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Provinsi Pasar"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_provinsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Provinsi Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Kota / Kabupaten Pasar"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_kota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Kota / Kabupaten Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Rate"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Rate Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="NKR"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_nkr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{NKR Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Nama Pasar"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Nama Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Alamat Pasar"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_alamat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{Alamat Pasar}"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_pilih"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="15dp"
+            android:text="Pilih"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/button_primary"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

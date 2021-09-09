@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@drawable/shapeplaceholder"
+                    android:backgroundTint="#cccccc"/>
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:background="@drawable/shapeplaceholder"
+                    android:backgroundTint="#cccccc"
+                    android:layout_marginTop="3dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Maintain ID Lokasi"
+                android:textColor="#444"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:paddingTop="16dp"
+                android:paddingBottom="12dp"
+                android:fontFamily="@font/muli_b"/>
+
+            <LinearLayout
+                android:id="@+id/content_rincianpembiayaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shapebordergreen"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorGreenSoft"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Nasabah"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_nama_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorGreenSoft"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginTop="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="KTP"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_ktp_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="KTP"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorGreenSoft"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginTop="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Pengembang"
+                            android:textSize="14sp"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_nama_pengembang_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Pengembang"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorGreenSoft"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginTop="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Perumahan"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_nama_perumahan_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Perumahan"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/colorGreenSoft"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_marginTop="6dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ID Lokasi Lama"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:id="@+id/tv_id_rumah_lama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="BJB0610012020T007SRIWIJAYAREGENCY2G05"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorBlackHeader"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nama_flpp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_name"
+                app:isResponsiveIconColor="false"
+                app:panelBackgroundColor="@color/colorDisableEdit"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama Nasabah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true"
+                android:layout_weight="1">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nama_flpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_ktp_flpp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_identity_card"
+                app:isResponsiveIconColor="false"
+                app:panelBackgroundColor="@color/colorDisableEdit"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="KTP Nasabah"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true"
+                android:layout_weight="1">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_ktp_flpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nama_pengembang_flpp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="false"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama Pengembang"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true"
+                android:layout_weight="1">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nama_pengembang_flpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nama_perumahan_flpp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_home"
+                app:isResponsiveIconColor="false"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="Nama Perumahan"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true"
+                android:layout_weight="1">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nama_perumahan_flpp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_npwp_pengembang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:iconSignifier="@drawable/ic_cardidentity"
+                app:isResponsiveIconColor="false"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:secondaryColor="@color/colorPrimary"
+                app:primaryColor="@color/colorPrimary"
+                app:labelText="NPWP Pengembang"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:useDenseSpacing="true"
+                android:layout_weight="1">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_npwp_pengembang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID RUMAH"
+                android:fontFamily="@font/muli_b"
+                android:layout_marginTop="10dp"
+                />
+
+            <EditText
+                android:id="@+id/et_id_lokasi_baru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minLines="1"
+                android:inputType="textMultiLine"
+                android:maxLength="150"
+                android:hint="Masukkan ID Rumah Baru Disini"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"
+                android:padding="12dp"
+                android:background="@drawable/forminput_cardwhite"/>
+
+            <Button
+                android:id="@+id/btn_update_id_lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_primary"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Update Perumahan Sikasep"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/progressbar_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/overlayWhite"
+        android:visibility="gone"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:theme="@style/CircularProgress"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

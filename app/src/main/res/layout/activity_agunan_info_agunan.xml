@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INFO AGUNAN"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:padding="10dp"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapeborder"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Agunan"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Status Appraisal"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_status_appraisal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{STATUS APPRAISAL}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="CIF APPEL"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_id_cif_appel_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{CIF APPEL}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Id Agunan"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_id_agunan_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Id Agunan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="FID Jenis Agunan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_fid_jenis_agunan_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{FID Jenis Agunan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pengikatan Eksisting"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_pengikatan_eksisting_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Pengikatan Eksisting}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jenis Pengikatan"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_jenis_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Jenis Pengikatan}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Persen FTV"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_persen_ftv_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Persen FTV}"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dash_line"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="5dp"
+                    android:layerType="software"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cover Plafond"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_cover_plafon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Cover Plafond}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/colorGrey50"
+                    android:layout_marginTop="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nilai Pengikatan"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginRight="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_nilai_pengikatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nilai Pengikatan}"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:orientation="horizontal"
+                android:background="@drawable/bordertextbox_info"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_info_outline_secondary_24dp"
+                    android:tint="@color/colorBlackHeader"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"/>
+
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="4dp"
+                    android:text="-"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlackHeader"
+                    android:fontFamily="@font/muli_r"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapeborderprimary"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12">
+
+                    <Button
+                        android:id="@+id/btn_hapus_info_agunan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Hapus"
+                        android:backgroundTint="@color/A400red"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+
+                    <Button
+                        android:id="@+id/btn_edit_info_bangunan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Edit"
+                        android:visibility="gone"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+
+
+
+
+                    <Button
+                        android:id="@+id/btn_hapus_lokal_info_bangunan"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="4"
+                        android:visibility="gone"
+                        android:backgroundTint="@color/A400red"
+                        android:text="Hapus"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+                    <Button
+                        android:id="@+id/btn_lihat_info_agunan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Lihat"
+                        style="@style/Widget.AppCompat.Button.Colored"/>
+
+                    <Button
+                        android:id="@+id/btn_ikat_info_bangunan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="Ikat"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+    <include layout="@layout/loading"></include>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

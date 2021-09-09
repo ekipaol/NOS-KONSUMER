@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_maps"
+    android:visibility="visible">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".map_agunan.MapsActivity" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:queryBackground="@color/colorBackgroundTransparent"
+        android:background="@drawable/forminput_cardwhite"
+        android:layout_below="@+id/divider_search"
+        android:visibility="visible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_recenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/searchView"
+        android:layout_alignRight="@+id/searchView"
+        android:layout_below="@+id/searchView"
+        android:layout_gravity="top|right"
+        android:scaleType="center"
+        android:clickable="true"
+        android:src="@drawable/ico_maps_target"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="4dp"
+        map:fabSize="mini"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_changetype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/fab_recenter"
+        android:layout_alignStart="@+id/fab_recenter"
+        android:layout_below="@+id/fab_recenter"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:scaleType="center"
+        android:src="@drawable/ico_googlemaps"
+        app:backgroundTint="@color/colorGreenSuccess"
+        app:elevation="4dp"
+        map:fabSize="mini" />
+
+    <TextView
+        android:id="@+id/tv_keterangan_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bt_konfirmasi_map"
+        android:layout_centerHorizontal="true"
+        android:background="@color/overlay"
+        android:fontFamily="@font/muli_b"
+        android:padding="8dp"
+        android:text="@string/title_instructionmaps"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="10sp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/bt_konfirmasi_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Klik Disini Jika Lokasi Sudah Benar"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentBottom="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:visibility="visible"/>
+
+    <include layout="@layout/loading"></include>
+
+</RelativeLayout>

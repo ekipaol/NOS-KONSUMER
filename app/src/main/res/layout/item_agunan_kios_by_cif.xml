@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_hotprospek_front"
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="6dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/colorBlue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlue"
+            android:padding="6dp"
+            android:text="{Status}"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/tv_status"
+            android:background="#DCDCDC" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/divider"
+            android:background="@color/colorWhite"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="ID Agunan"
+                    android:textSize="12dp"
+                    android:layout_weight="0.855"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_idagunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{ID Agunan}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.9"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Jenis Agunan"
+                    android:textSize="12dp"
+                    android:layout_weight="0.85"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_jenisagunan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Jenis Agunan}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.9"/>
+            </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="Nama Pemegang Hak"
+                android:textSize="12dp"
+                android:layout_weight="0.85"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text=":"
+                android:textSize="12dp"
+                android:layout_weight="1.6"/>
+
+            <TextView
+                android:id="@+id/tv_namapemeganghak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:text="{Nama Pemegang Hak}"
+                android:textSize="12dp"
+                android:layout_weight="0.9"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Dokumen Kios"
+                    android:textSize="12dp"
+                    android:layout_weight="0.85"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_jenisdokumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Jenis Dokumen}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.9"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Alamat Jaminan"
+                    android:textSize="12dp"
+                    android:layout_weight="0.85"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_alamatjaminan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Alamat Jaminan}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.9"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="Nilai Pasar"
+                    android:textSize="12dp"
+                    android:layout_weight="0.85"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text=":"
+                    android:textSize="12dp"
+                    android:layout_weight="1.6"/>
+
+                <TextView
+                    android:id="@+id/tv_nilaipasar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:text="{Nilai Pasar}"
+                    android:textSize="12dp"
+                    android:layout_weight="0.9"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_info_pipeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

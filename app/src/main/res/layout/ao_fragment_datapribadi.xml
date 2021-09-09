@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/sv_content"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+            <LinearLayout
+                android:id="@+id/ll_datapribadi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Identitas"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_identity_card"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="NIK"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="1">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nik"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="16"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <Button
+                        android:id="@+id/btn_inquirynik"
+                        android:layout_width="110dp"
+                        android:layout_height="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textAllCaps="false"
+                        android:background="@drawable/ic_refresh"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:elevation="5dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_expirednik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_date"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Expired NIK"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_expirednik"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="25"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_npwp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_identity_card"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="NPWP"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_npwp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="20"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pribadi"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_namaalias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Alias"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_namaalias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tempatlahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_birthplace"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tempat Lahir"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tempatlahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tanggallahir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_birthdate"
+
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tanggal Lahir"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tanggallahir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jeniskelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_gender"
+
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jenis Kelamin"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jeniskelamin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomorhp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_phone"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomor Handhpone"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomorhp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="13"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_email"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Email - Opsional"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_agama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_religion"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Agama"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_agama"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_ketagama"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_religion"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Keterangan Agama"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:visibility="gone">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_ketagama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_referensi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_family"
+                    app:isResponsiveIconColor="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Referensi"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_referensi"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+
+                        />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_namaibukandung"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Ibu Kandung"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_namaibukandung"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jenis_kmg"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_salary"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jenis Pekerjaan Pribadi"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jenis_kmg"
+                        android:layout_width="match_parent"
+                        android:text="Pilih"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tipependapatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_salary"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tipe Pendapatan"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tipependapatan"
+                        android:layout_width="match_parent"
+                        android:text="Pendapatan Tetap"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pasangan"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_statusnikah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_married"
+
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Status Nikah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_statusnikah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:id="@+id/ll_pasangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nikpasangan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_identity_card"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="NIK Pasangan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nikpasangan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="16"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <Button
+                        android:id="@+id/btn_cek_nik_pasangan"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapeborderprimary"
+                        android:elevation="5dp"
+                        android:gravity="center"
+                        android:text="Cek NIK Pasangan"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary" />
+
+
+                    <include layout="@layout/loading"/>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_namapasangan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_married"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Nama Pasangan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_namapasangan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="50"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_tanggallahirpasangan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_birthdate"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Tanggal Lahir Pasangan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_tanggallahirpasangan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"/>
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Keluarga yang bisa dihubungi"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_namakeluarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Keluarga"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_namakeluarga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomorhpkeluarga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_phone"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomor Telpon Keluarga"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomorhpkeluarga"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="13"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jumlahtanggungan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_family"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jumlah Tanggungan"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jumlahtanggungan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="2"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pendidikan"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="10dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_pendidikanterakhir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_education"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Pendidikan Terakhir"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_pendidikanterakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_gelar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_education"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Gelar - Opsional"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_gelar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="25"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <include layout="@layout/loading"/>
+            </LinearLayout>
+        </FrameLayout>
+</ScrollView>

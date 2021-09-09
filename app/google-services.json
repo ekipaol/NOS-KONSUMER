@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "1027333736964",
+    "firebase_url": "https://i-kurma.firebaseio.com",
+    "project_id": "i-kurma",
+    "storage_bucket": "i-kurma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027333736964:android:6e2c5c549918349da54351",
+        "android_client_info": {
+          "package_name": "com.application.bris.brisi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRTrOiNnUdFktFIZVikAC_2IBLhvrBrEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027333736964:android:a56fad2e15e4e12ea54351",
+        "android_client_info": {
+          "package_name": "com.application.bris.ikurma_nos_konsumer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRTrOiNnUdFktFIZVikAC_2IBLhvrBrEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027333736964:android:4af4eaf3859b561da54351",
+        "android_client_info": {
+          "package_name": "com.application.bris.brisi_pemutus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRTrOiNnUdFktFIZVikAC_2IBLhvrBrEw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027333736964-na3k4rctrpjt4pg4cfneoc9v896hnabs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

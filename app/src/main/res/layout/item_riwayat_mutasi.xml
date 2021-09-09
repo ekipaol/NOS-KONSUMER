@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_remaks"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="12dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/colorWhite">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_status_debet_kredit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="{Status}"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="@color/colorBlackHeader"
+            android:background="@color/colorBackgroundGrey1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nilai"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_nilai_debet_kredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Nilai}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_keterangan_mutasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{keterangan}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Posting"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_tanggal_posting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Tanggal}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Referensi"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_referensi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Referensi}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

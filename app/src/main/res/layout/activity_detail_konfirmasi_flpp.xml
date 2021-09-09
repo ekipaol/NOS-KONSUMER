@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorWhite"
+
+    >
+
+
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loading"/>
+
+    <ScrollView
+        android:id="@+id/nested_scv"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:scrollbars="none"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_followup_flpp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_input_finansial_1"
+                android:background="@color/colorWhite">
+
+
+                <Switch
+                    android:id="@+id/sw_tembak_sikasep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tembak ke SIKASEP?     "
+                    android:textAlignment="textEnd"
+                    android:layout_gravity="end"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Konfirmasi Calon Nasabah"
+                    android:padding="10dp"
+                    android:textSize="18dp"/>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama_nasabah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Nasabah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_nasabah"
+                        android:inputType="textMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_ktp_nasabah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="KTP Nasabah"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_ktp_nasabah"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_npwp_nasabah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="NPWP Nasabah"
+
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_npwp_nasabah"
+                        android:inputType="text"
+                        android:hint="Hanya angka, tanpa tanda titik dan strip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama_pengembang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Pengembang"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_pengembang"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama_perumahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nama Perumahan"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_perumahan"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <TextView
+                    android:id="@+id/tv_verifikasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Verifikasi Foto"
+                    android:visibility="visible"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textSize="18dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/rl_foto_ktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/img_ktp"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/ico_img_for_upload"
+                            app:riv_border_width="1dip"
+                            app:riv_border_color="#f1efef"
+                            app:riv_corner_radius="8dip"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto KTP"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_foto_selfie"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="15dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/img_selfie"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_foto_qr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="15dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/img_qr"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Foto Selfie"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Gambar QR"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_verifikasi_foto_ktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Verifikasi Foto KTP"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_verifikasi_foto_ktp"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_verifikasi_foto_selfie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Verifikasi Foto Selfie"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_verifikasi_foto_selfie"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kolektabilitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Kolektabilitas"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kolektabilitas"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_verifikasi_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Verifikasi Status"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_verifikasi_status"
+                        android:inputType="text"
+                        android:text="Pilih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_alasan_batal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    android:visibility="gone"
+                    app:labelText="Alasan Batal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_alasan_batal"
+                        android:inputType="text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_catatan_ao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isResponsiveIconColor="false"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    android:layout_marginTop="10dp"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Catatan AO"
+                    app:maxCharacters="500"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:useDenseSpacing="true"
+                    >
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_catatan_ao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="100dp"
+                        android:gravity="top"
+                        android:hint="Isi kritik dan saran anda disini"
+                        android:maxLength="500"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="THIS IS FOR SPACINGGGG"
+                android:padding="10dp"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:visibility="invisible"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_input_finansial_2"
+                android:background="@color/colorWhite">
+
+
+
+
+
+
+                <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="THIS IS FOR SPACINGGGG"-->
+                <!--android:padding="10dp"-->
+                <!--android:textSize="18dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:visibility="invisible"/>-->
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite">
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/button_primary"
+                    android:text="Simpan"
+                    android:textAllCaps="false"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/loading"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

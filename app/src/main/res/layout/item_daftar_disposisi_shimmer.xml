@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_shimmer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:shimmer_auto_start="true"
+    android:visibility="gone"
+    android:layout_marginTop="@dimen/toolbar_height_default"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+       >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_disposisi"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            android:layout_weight="5"
+
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C2C0C0">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        app:cardCornerRadius="10dp"
+                        android:background="#494848"
+                        android:layout_marginBottom="6dp"
+                        android:layout_above="@id/tv_produk">
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tv_pemrakarsa"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        app:cardCornerRadius="10dp"
+                        android:background="@color/colorWhite"
+                        android:textAlignment="center"
+                        android:padding="5dp"
+                        android:layout_gravity="right"
+                        android:layout_alignParentRight="true"
+                        android:elevation="15dp"
+                        />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tv_produk"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                       app:cardCornerRadius="10dp"
+                        android:layout_alignParentBottom="true"
+                        />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tv_plafon"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        android:background="#494848"
+                        app:cardCornerRadius="10dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                       />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/tv_tenor"
+                        android:layout_width="100dp"
+                        android:layout_height="25dp"
+                        app:cardCornerRadius="10dp"
+                       android:layout_marginBottom="6dp"
+                        android:layout_above="@id/tv_plafon"
+                        android:layout_alignParentRight="true"
+
+                        android:layout_alignParentBottom="false"
+                      />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_disposisi2"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                android:layout_weight="5"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C2C0C0">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="#494848"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_produk2">
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_pemrakarsa2"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="@color/colorWhite"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:elevation="15dp"
+                            />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_produk2"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_plafon2"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            android:background="#494848"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_tenor2"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_plafon2"
+                            android:layout_alignParentRight="true"
+
+                            android:layout_alignParentBottom="false"
+                            />
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_disposisi3"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                android:layout_weight="5"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C2C0C0">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="#494848"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_produk3">
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_pemrakarsa3"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="@color/colorWhite"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:elevation="15dp"
+                            />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_produk3"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_plafon3"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            android:background="#494848"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_tenor3"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_plafon3"
+                            android:layout_alignParentRight="true"
+
+                            android:layout_alignParentBottom="false"
+                            />
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_disposisi4"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                android:layout_weight="5"
+
+                >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C2C0C0">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="#494848"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_produk4">
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_pemrakarsa4"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:background="@color/colorWhite"
+                            android:textAlignment="center"
+                            android:padding="5dp"
+                            android:layout_gravity="right"
+                            android:layout_alignParentRight="true"
+                            android:elevation="15dp"
+                            />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_produk4"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_plafon4"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            android:background="#494848"
+                            app:cardCornerRadius="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            />
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/tv_tenor4"
+                            android:layout_width="100dp"
+                            android:layout_height="25dp"
+                            app:cardCornerRadius="10dp"
+                            android:layout_marginBottom="6dp"
+                            android:layout_above="@id/tv_plafon4"
+                            android:layout_alignParentRight="true"
+
+                            android:layout_alignParentBottom="false"
+                            />
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+

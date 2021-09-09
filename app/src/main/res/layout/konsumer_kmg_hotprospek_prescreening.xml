@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/sv_prescreening"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:background="@color/colorWhite">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_weight="1.4"
+                android:layout_marginRight="8dp"
+                android:text="DHN"
+                android:textStyle="bold"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <ImageView
+                android:id="@+id/iv_completedhn"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_checklistgrey"
+                android:layout_weight="1.5"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_dhn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="0.8"
+                android:text="{Ket Prescreening}"
+                android:layout_marginRight="0.7dp"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_btndhn"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/colorPrimary"
+                android:layout_weight="1.5"/>
+
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_weight="1.4"
+                android:layout_marginRight="8dp"
+                android:text="E-KTP"
+                android:textStyle="bold"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <ImageView
+                android:id="@+id/iv_completedukcapil"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_checklistgrey"
+                android:layout_weight="1.5"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_dukcapil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="0.8"
+                android:text="{Ket Prescreening}"
+                android:layout_marginRight="0.7dp"
+                android:visibility="invisible"/>
+
+
+            <ImageView
+                android:id="@+id/iv_btndukcapil"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/colorPrimary"
+                android:layout_weight="1.5"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_weight="1.4"
+                android:layout_marginRight="8dp"
+                android:text="SLIK"
+                android:textStyle="bold"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <ImageView
+                android:id="@+id/iv_completeslik"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_checklistgrey"
+                android:layout_weight="1.5"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_slik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="0.8"
+                android:text="{Ket Prescreening}"
+                android:layout_marginRight="0.7dp"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_btnslik"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/colorPrimary"
+                android:layout_weight="1.5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_remaks"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Remarks Hasil SLIK"
+                android:textAllCaps="false"
+                android:background="@drawable/button_reject"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="6dp"
+                android:visibility="gone"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btn_download"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Download Hasil SLIK"
+                android:textAllCaps="false"
+                android:background="@drawable/button_reject"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="6dp"
+                android:visibility="gone"
+                android:layout_weight="1"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/placholderBg"/>
+        <LinearLayout
+            android:id="@+id/ll_sikp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_weight="1.4"
+                android:layout_marginRight="8dp"
+                android:text="SIKP"
+                android:textStyle="bold"
+                android:fontFamily="@font/muli_b"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <ImageView
+                android:id="@+id/iv_completesikp"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_checklistgrey"
+                android:layout_weight="1.5"
+                android:layout_marginRight="12dp"/>
+
+            <TextView
+                android:id="@+id/tv_sikp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_b"
+                android:layout_weight="0.8"
+                android:text="{Ket Prescreening}"
+                android:layout_marginRight="0.7dp"
+                android:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/iv_btnsikp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/colorPrimary"
+                android:layout_weight="1.5"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bordertextbox_info"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_info_outline_secondary_24dp"
+                android:tint="@color/colorBlackHeader"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="{Informasi}"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/muli_r"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_hasilprescreening"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapebordergrey"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil Prescreening"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/colorBlackHeader"/>
+
+            <TextView
+                android:id="@+id/tv_hasilprescreening"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:text="Hasil Prescreening"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/shapeplaceholder"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="10dp">
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/button_primary"
+                android:text="@string/title_processprescreening"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loadingwithtext"/>
+</RelativeLayout>

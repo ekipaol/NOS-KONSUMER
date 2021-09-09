@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        android:id="@+id/sv_rekomendasipembiayaan"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:paddingTop="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nilai dan Jangka Waktu Pembiayaan"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/softBlue">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Produk"
+                                android:layout_weight="1"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tv_produk"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Produk}"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Tujuan Pembiayaan"
+                                android:layout_weight="1"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tv_tujuanpembiayaan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Tujuan Pembiayaan}"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Plafond Induk"
+                                android:layout_weight="1"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tv_plafondinduk"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Plafond Induk}"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Tenor"
+                                android:layout_weight="1"
+                                android:textSize="12sp"/>
+
+                            <TextView
+                                android:id="@+id/tv_tenor"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Tenor}"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nilaimodalkerja"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_rupiah"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Modal Kerja"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="0.5">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nilaimodalkerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="15"
+                            app:prefix="Rp. "/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_waktumodalkerja"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Bulan"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="1">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_waktumodalkerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="3"/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nilaiinvestasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Investasi"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="0.5">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nilaiinvestasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_waktuinvestasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Bulan"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_waktuinvestasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="3"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nilaikonsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Konsumtif"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="0.5">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nilaikonsumtif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_waktukonsumtif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Bulan"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true"
+                    android:layout_weight="1">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_waktukonsumtif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="3"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nilaitakeover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_rupiah"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Takeover"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="0.5">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nilaitakeover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="15"
+                            app:prefix="Rp. "/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_waktutakeover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Bulan"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="1">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_waktutakeover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="3"/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nilaiqardh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_rupiah"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Qard"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="0.5"
+                        android:visibility="invisible">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nilaiqardh"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="15"
+                            app:prefix="Rp. "/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_waktuqardh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Hari"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true"
+                        android:layout_weight="1">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_waktuqardh"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:digits="0123456789"
+                            android:maxLength="10"/>
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_totalrekomendasikomite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Total Rekomendasi Komite"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_totalrekomendasikomite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_angsuranpinjamansaatini"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Angsuran Pinjaman Saat ini"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_angsuranpinjamansaatini"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_totaleksposur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorGreenSoft"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Total Eksposur"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_totaleksposur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789"
+                        android:maxLength="15"
+                        app:prefix="Rp. "/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Margin / Ujroh"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:digits="0123456789."
+                        android:maxLength="15"
+                        app:suffix=" %"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jenisangsuran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Jenis Angsuran"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jenisangsuran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_intervaljenisangsuran"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Interval Jenis Angsuran"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_intervaljenisangsuran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_btn_cekrekomendasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                    <Button
+                        android:id="@+id/btn_cekrekomendasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16dp"
+                        android:fontFamily="@font/muli_b"
+                        android:textColor="@color/colorPrimary"
+                        android:background="@drawable/bordertextbox_primary"
+                        android:text="Cek Rekomendasi"
+                        android:textAllCaps="false"/>
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll_hasilrekomendasipembiayaan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HASIL REKOMENDASI PEMBIAYAAN"
+                        android:gravity="center"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/muli_b"
+                        android:padding="10dp"
+                        android:textColor="@color/colorBlackHeader"
+                        android:layout_marginTop="12dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shapebordergreen"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/colorGreenSoft"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginTop="6dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Hasil Rekomendasi"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginRight="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:id="@+id/tv_hasilrekomendasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Value}"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_gravity="center"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/colorGreenSoft"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginTop="6dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Rekomendasi Angsuran"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginRight="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:id="@+id/tv_rekomendasiangsuran"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Value}"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_gravity="center"/>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/colorGreenSoft"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginTop="6dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Disposable Income"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginRight="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:id="@+id/tv_disposableincome"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Value}"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_gravity="center"/>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:background="@color/colorGreenSoft"
+                            android:paddingTop="4dp"
+                            android:paddingBottom="4dp"
+                            android:layout_marginTop="6dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="IDIR"
+                                android:textSize="14sp"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginRight="10dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:id="@+id/tv_idir"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="{Value}"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorBlackHeader"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_gravity="center"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/loading"/>
+        </FrameLayout>
+</ScrollView>

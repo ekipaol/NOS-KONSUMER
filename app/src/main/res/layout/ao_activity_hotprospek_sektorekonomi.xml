@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/ll_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/colorWhite">
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_tujuanpenggunaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_product"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Tujuan Penggunaan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            app:useDenseSpacing="true"
+            android:layout_weight="1">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_tujuanpenggunaan"
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:layout_height="wrap_content"/>
+
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_bidangusaha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_typejob"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Bidang Usaha"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_bidangusaha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_sifatpembiayaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Sifat Pembiayaan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_sifatpembiayaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jenispenggunaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorDisableEdit"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jenis Penggunaan"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jenispenggunaan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jenispenggunaanlbu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorDisableEdit"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jenis Penggunaan LBU"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jenispenggunaanlbu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_jenispembiayaanlbu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorDisableEdit"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Jenis Pembiayaan LBU"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_jenispembiayaanlbu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_sifatpembiayaanlbu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Sifat Pembiayaan LBU"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_sifatpembiayaanlbu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_kategoripembiayaanlbu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Kategori Pembiayaan LBU"
+            android:visibility="gone"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_kategoripembiayaanlbu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_sektorekonomi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Sektor Ekonomi"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_sektorekonomi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:id="@+id/tf_hubungannasabahdgnbank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconSignifier="@drawable/ic_salary"
+            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+            app:isResponsiveIconColor="true"
+            app:panelBackgroundColor="@color/colorBgEdittext"
+            app:secondaryColor="@color/colorPrimary"
+            app:primaryColor="@color/colorPrimary"
+            app:labelText="Hub. Nasabah dgn Bank"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginTop="10dp"
+            app:useDenseSpacing="true">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_hubungannasabahdgnbank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        <LinearLayout
+            android:id="@+id/ll_btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorWhite"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="12dp">
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/button_primary"
+                android:text="Simpan"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    <include layout="@layout/toolbar_nosearch"></include>
+    <include layout="@layout/loading"></include>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sm_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/toolbar_height_default"
+        android:orientation="vertical"
+        app:shimmer_duration="800"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+            <include layout="@layout/placeholder_list"></include>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+</RelativeLayout>

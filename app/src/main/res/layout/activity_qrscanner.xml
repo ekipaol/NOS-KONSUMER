@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.journeyapps.barcodescanner.DecoratedBarcodeView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_regular"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/qr_scanner_layout"
+        app:zxing_scanner_layout="@layout/custom_layout_scanner"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ll_flash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:layout_marginTop="126dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/switch_flashlight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:onClick="switchFlashlight2"
+                android:text="@string/turn_on_flashlight"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/notif_qr"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_r"
+                android:textColor="@color/colorWhite"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@drawable/bordertextbox_white"
+                android:id="@+id/tv_notif_qr"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_flash2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom = "true"
+            android:layout_below="@+id/ll_flash"
+            android:layout_marginBottom="70dp">
+            <ImageView
+                android:id="@+id/iv_flash"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="bottom"
+                android:tooltipText="@string/turn_on_flashlight"
+                android:onClick="switchFlashlight"
+                android:src="@drawable/ic_flashon" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <include layout="@layout/toolbar_nosearch"/>
+    <include layout="@layout/loading" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

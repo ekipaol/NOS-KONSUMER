@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include layout="@layout/toolbar_nosearch" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackgroundCore"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="7dp"
+
+                    app:cardCornerRadius="10dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <ImageView
+                            android:id="@+id/bt_followup"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            />
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_notifikasi_followup_flpp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginTop="4dp"
+                                    android:elevation="5dp"
+                                    android:visibility="gone"
+                                    android:textColor="#fff"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/ml"
+                                    android:textStyle="bold"
+                                    android:padding="4dp"
+
+                                    android:background="@drawable/roundbadge"/>
+
+
+
+                                <ImageView
+                                    android:id="@+id/icUser"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:src="@drawable/ic_followup_flpp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/icUser"
+                                    android:text="Follow Up FLPP"
+                                    android:layout_marginLeft="10dp"
+                                    android:textStyle="bold"
+                                    android:textSize="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:textColor="@color/colorBlackHeader"/>
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                            </RelativeLayout>
+
+                        </FrameLayout>
+
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="7dp"
+                    app:cardCornerRadius="10dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <ImageView
+                            android:id="@+id/bt_konfirmasi_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            />
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_notifikasi_monitoring_npf"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:elevation="5dp"
+                                    android:visibility="gone"
+                                    android:textColor="#fff"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/ml"
+                                    android:textStyle="bold"
+                                    android:padding="4dp"
+                                    android:background="@drawable/roundbadge"/>
+                                <ImageView
+                                    android:id="@+id/icStatus"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:src="@drawable/ic_konfirmasi_flpp"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Konfirmasi FLPP"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_toRightOf="@id/icStatus"
+                                    android:textColor="@color/colorBlackHeader"/>
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                            </RelativeLayout>
+
+                        </FrameLayout>
+
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="7dp"
+                    android:visibility="gone"
+                    app:cardCornerRadius="10dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <ImageView
+                            android:id="@+id/bt_maintain_id_lokasi"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            />
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_maintain_id_lokasi"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:elevation="5dp"
+                                    android:visibility="gone"
+                                    android:textColor="#fff"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/ml"
+                                    android:textStyle="bold"
+                                    android:padding="4dp"
+                                    android:background="@drawable/roundbadge"/>
+                                <ImageView
+                                    android:id="@+id/icMaintainIdRumah"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:src="@drawable/ic_maintenance_id_rumah"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Maintain ID Lokasi"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_toRightOf="@id/icMaintainIdRumah"
+                                    android:textColor="@color/colorBlackHeader"/>
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                            </RelativeLayout>
+
+                        </FrameLayout>
+
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_margin="7dp"
+                    app:cardCornerRadius="10dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <ImageView
+                            android:id="@+id/bt_input_ulang_flpp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            />
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_telah_konfirmasi"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:elevation="5dp"
+                                    android:visibility="gone"
+                                    android:textColor="#fff"
+                                    android:textSize="10sp"
+                                    android:fontFamily="@font/ml"
+                                    android:textStyle="bold"
+                                    android:padding="4dp"
+                                    android:background="@drawable/roundbadge"/>
+                                <ImageView
+                                    android:id="@+id/icTelahKonfirmasi"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_marginLeft="3dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentLeft="true"
+                                    android:src="@drawable/ic_checklist"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Input Ulang FLPP"
+                                    android:textStyle="bold"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_toRightOf="@id/icTelahKonfirmasi"
+                                    android:textColor="@color/colorBlackHeader"/>
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
+                                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                            </RelativeLayout>
+
+                        </FrameLayout>
+
+                    </FrameLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

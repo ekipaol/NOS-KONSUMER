@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:id="@+id/ll_dataalamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp"
+                android:text="KTP"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_alamatktp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_alamatktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Alamat"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_alamatktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:maxLength="50"
+                        android:minLines="2" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_rtktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="RT"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_rtktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="0123456789"
+                            android:inputType="numberDecimal"
+                            android:maxLength="3" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_rwktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="RW"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_rwktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="0123456789"
+                            android:inputType="numberDecimal"
+                            android:maxLength="3" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_ktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shapeborderprimary"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:text="Input Alamat"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary" />
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_provinsiktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="20dp"
+                    app:iconSignifier="@drawable/ic_province"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Provinsi"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_provinsiktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kotaktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_city"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kota / Kabupaten"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kotaktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kecamatanktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kecamatan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kecamatanktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kelurahanktp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kelurahan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kelurahanktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_kodeposktp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_postcode"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Kodepos"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_kodeposktp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_b"
+                android:paddingLeft="10dp"
+                android:paddingTop="25dp"
+                android:paddingBottom="10dp"
+                android:text="Domisili"
+                android:textSize="16sp" />
+
+            <Switch
+                android:id="@+id/sw_domisiliktpsama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingTop="10dp"
+                android:paddingRight="18dp"
+                android:paddingBottom="8dp"
+                android:switchMinWidth="56dp"
+                android:text="@string/title_domequalid"
+                android:textColor="@color/colorTextGrey"
+                android:textSize="12sp" />
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_statusdom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:labelText="Status Tempat Domisili"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_statusdom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_lamadom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_date"
+                app:isResponsiveIconColor="true"
+                app:labelText="Lama Domisili"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_lamadom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:inputType="numberDecimal"
+                    android:maxLength="10"
+                    app:suffix=" Tahun" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_validitas_tempat_tinggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:iconSignifier="@drawable/ic_address"
+                app:isResponsiveIconColor="true"
+                app:labelText="Validitas Tempat Tinggal"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_validitas_tempat_tinggal"
+                    android:text="Pilih"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <LinearLayout
+                android:id="@+id/ll_alamatdom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_alamatdom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Alamat"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_alamatdom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:maxLength="50"
+                        android:minLines="2" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_rtdom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="RT"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_rtdom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="0123456789"
+                            android:inputType="numberDecimal"
+                            android:maxLength="3" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_rwdom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="RW"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_rwdom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:digits="0123456789"
+                            android:inputType="numberDecimal"
+                            android:maxLength="3" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_dom"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shapeborderprimary"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:text="Input Alamat"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary" />
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_provinsidom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="20dp"
+                    app:iconSignifier="@drawable/ic_province"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Provinsi"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_provinsidom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kotadom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_city"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kota / Kabupaten"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kotadom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kecamatandom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kecamatan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kecamatandom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_kelurahandom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Kelurahan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_kelurahandom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:maxLength="50" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_kodeposdom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_postcode"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Kodepos"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_kodeposdom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_fotorumah1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Foto Rumah"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <ProgressBar
+                            android:id="@+id/progress_rumah1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/overlayWhite"
+                            android:elevation="100dp"
+                            android:progressDrawable="@drawable/custom_progressbar"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/img_fotorumah1"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/banner_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:riv_border_color="#f1efef"
+                            app:riv_border_width="1dip"
+                            app:riv_corner_radius="8dip" />
+
+                        <ImageView
+                            android:id="@+id/btn_upload_fotorumah1"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/photo_rounded_blue"
+                            android:padding="8dp"
+                            android:src="@mipmap/ico_upload"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_fotorumah2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="Foto Rumah"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <ProgressBar
+                            android:id="@+id/progress_rumah2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/overlayWhite"
+                            android:elevation="10dp"
+                            android:gravity="center"
+                            android:progressDrawable="@drawable/custom_progressbar"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/img_fotorumah2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/banner_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:riv_border_color="#f1efef"
+                            app:riv_border_width="1dip"
+                            app:riv_corner_radius="8dip" />
+
+                        <ImageView
+                            android:id="@+id/btn_upload_fotorumah2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/photo_rounded_blue"
+                            android:padding="8dp"
+                            android:src="@mipmap/ico_upload"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <include layout="@layout/loading" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>
