@@ -45,6 +45,7 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_tanggalkunjungan"
+                        android:text=" "
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
