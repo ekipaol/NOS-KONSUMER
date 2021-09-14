@@ -77,11 +77,20 @@ public class KeyValue {
     private static HashMap<String, String> mapTypeRekomendasiPenilai = new HashMap<>();
 
 
+
+    //PRAPEN NOS
+    private static HashMap<String, String> mapTypeMenggunakanLngp = new HashMap<>();
+
+
     static {
         init();
     }
 
     public static void init() {
+
+        //PRAPEN NOS
+        mapTypeMenggunakanLngp.put("ya", "ya");
+        mapTypeMenggunakanLngp.put("tidak", "tidak");
 
         //konsumer kmg
 
@@ -452,6 +461,23 @@ public class KeyValue {
         mapRemaksSlik.put("Top Up", "2");
         mapRemaksSlik.put("Takeover", "3");
         mapRemaksSlik.put("Pembiayaan Rek. Koran", "4");
+
+
+
+    }
+
+    //prapen nos
+    public static String getKeyMenggunakanLngp(String param){
+        return mapTypeMenggunakanLngp.get(param);
+    }
+
+    public static String getDescMenggunakanLngp(String value){
+        for (String o : mapTypeMenggunakanLngp.keySet()){
+            if(mapTypeMenggunakanLngp.get(o).equalsIgnoreCase(value)){
+                return o;
+            }
+        }
+        return null;
     }
 
     //konsumer kmg

@@ -17,6 +17,20 @@ public class GlobalData {
     public static String MENU_ROOT = "rootMenu";
 
 
+    //PRAPEN NOS
+    public static void yaTidak(Context context, List<keyvalue> data){
+        data.add(new keyvalue("Ya", "Ya"));
+        data.add(new keyvalue("Tidak", "Tidak"));
+
+    }
+    public static void sumberAplikasi(Context context, List<keyvalue> data){
+        data.add(new keyvalue("Pegawai Bank/ Reguler", "Pegawai Bank/ Reguler"));
+        data.add(new keyvalue("Mitra Fronting", "Mitra Fronting"));
+
+    }
+
+
+
 
     //KONSUMER
 
@@ -488,9 +502,10 @@ public class GlobalData {
     }
 
     public static void statusMenikah(Context context, List<keyvalue> data){
-        data.add(new keyvalue("Belum Menikah", "1"));
-        data.add(new keyvalue("Menikah", "2"));
-        data.add(new keyvalue("Duda / Janda", "3"));
+        data.add(new keyvalue("Belum Kawin", "Belum Kawin"));
+        data.add(new keyvalue("Kawin", "Kawin"));
+        data.add(new keyvalue("Cerai Mati", "Cerai Mati"));
+        data.add(new keyvalue("Cerai Hidup", "Cerai Hidup"));
     }
 
     public static void tipePendapatan(Context context, List<keyvalue> data){

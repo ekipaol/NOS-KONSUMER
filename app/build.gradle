@@ -12,7 +12,7 @@ android {
         versionCode 19
         versionName "1.5.1"
         multiDexEnabled true
-        buildConfigField("Boolean", "IS_PRODUCTION", "true")
+        buildConfigField("Boolean", "IS_PRODUCTION", "false")
         buildConfigField ("Boolean","IS_BD", "true")
         buildConfigField ("Boolean","SHOW_LOG", "true")
         buildConfigField ("String","SECRET_KEY", toJavaCodeString(SECRET_KEY))
@@ -43,9 +43,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
-            shrinkResources true
-            minifyEnabled true
-            useProguard true
+            shrinkResources false
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

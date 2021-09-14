@@ -330,7 +330,7 @@
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_agama"
-                    android:text="Pilih"
+                    android:text=" "
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>

@@ -219,6 +219,7 @@ public class DataNasabahKonsumerActivity extends AppCompatActivity implements
     private static String val_kepemilikan_tempat_tinggal = "";
     private static String val_tanggal_lahir = "";
 
+
     //for npwp formatting
     int dot1=0;
     int dot2=0;

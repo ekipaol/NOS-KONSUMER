@@ -27,10 +27,13 @@ import android.widget.TextView;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.config.globaldata.GlobalData;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListenerByEditText;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class DialogKeyValue extends DialogFragment{
     private ImageView btn_close;
@@ -39,13 +42,33 @@ public class DialogKeyValue extends DialogFragment{
     private RecyclerView rv_produk;
     private List<keyvalue> dataKeyvalue;
     private static KeyValueListener keyValueListener;
+    private static KeyValueListenerByEditText keyValueListenerByEditText;
     public static final String TAG = "example_dialog";
 
     private static String title;
+    private static String jenisPicklist="";
     private static String type = "";
-
+    private static int viewId=0;
     public static DialogKeyValue display(FragmentManager fragmentManager, String titleId, KeyValueListener keyValueListenerId) {
         title = titleId;
+        keyValueListener = keyValueListenerId;
+        DialogKeyValue dialogAddress = new DialogKeyValue();
+        dialogAddress.show(fragmentManager, TAG);
+        return dialogAddress;
+    }
+
+    public static DialogKeyValue displayByViewId(FragmentManager fragmentManager,String titleId, int idView, KeyValueListener keyValueListenerId) {
+        title=titleId;
+        viewId = idView;
+        keyValueListener = keyValueListenerId;
+        DialogKeyValue dialogAddress = new DialogKeyValue();
+        dialogAddress.show(fragmentManager, TAG);
+        return dialogAddress;
+    }
+
+    public static DialogKeyValue displayYaTidak(FragmentManager fragmentManager,String titleId, KeyValueListener keyValueListenerId) {
+        title = titleId;
+        jenisPicklist="ya tidak";
         keyValueListener = keyValueListenerId;
         DialogKeyValue dialogAddress = new DialogKeyValue();
         dialogAddress.show(fragmentManager, TAG);
@@ -118,397 +141,415 @@ public class DialogKeyValue extends DialogFragment{
 
     public void initializeProduct(){
 
-
-        //KONSUMER ISIAN DATA FINANSIAL KPR
-        if(title.equalsIgnoreCase("jenis tiering")) {
-            dataKeyvalue = getDataJenisTiering();
-
+        //prapen nos
+        if(jenisPicklist.equalsIgnoreCase("ya tidak")) {
+            dataKeyvalue = getYaTidak();
         }
-
-        //KONSUMER ISIAN DATA CIF KPR
-        else if(title.equalsIgnoreCase("referal dari")){
-            dataKeyvalue = getDataReferalDari();
+        else if(viewId==R.id.tf_sumber_aplikasi) {
+            dataKeyvalue = getSumberAplikasi();
         }
-        else if(title.equalsIgnoreCase("paket")){
-            dataKeyvalue = getDataPaket();
-        }
-        else if(title.equalsIgnoreCase("rekomendasi penilai")){
-            dataKeyvalue = getRekomendasiAppraisal();
-        }
-        else if(title.equalsIgnoreCase("program")){
-            dataKeyvalue = getDataProgram();
-        }
-        else if(title.equalsIgnoreCase("pihak ketiga")){
-            dataKeyvalue = getDataPihakKetiga();
-        }
-        else if(title.equalsIgnoreCase("Proyek Perumahan")){
-
-            //ini diganti dengan http request ambil dari service datanya lalu masukkan ke datakeyvalue
-//            dataKeyvalue = getDataPaket();
-        }
-        else if(title.equalsIgnoreCase("tujuan penggunaan")){
-            dataKeyvalue = getTujuanPenggunaanKpr();
-        }
-        else if(title.equalsIgnoreCase("jenis pekerjaan")){
-            dataKeyvalue = getJenisPekerjaan();
-        }
-        else if(title.equalsIgnoreCase("status kepegawaian")){
-            dataKeyvalue = getStatusKepegawaian();
-        }
-
-        //KONSUMER DATA NASABAH
-        else if (title.equalsIgnoreCase("tingkat pendidikan")){
-            dataKeyvalue = getDataPendidikanTerakhir();
-        }
-        else if (title.equalsIgnoreCase("No Telp/Fixed Line")){
-            dataKeyvalue = getNoTelpFixedLine();
-        }
-        else if (title.equalsIgnoreCase("Kepemilikan Tempat Tinggal")){
-            dataKeyvalue = getKepemilikanTempatTinggal();
-        }
-
-        //KONSUMER FORM PRESCORING
-
-        //ini sangat rawan error, ganti ke id viewnya next time
-        else if (title.equalsIgnoreCase("jenis prescoring")){
-            dataKeyvalue = getJenisPrescoring();
-        }
-        else if (title.equalsIgnoreCase("Status Pegawai")){
-            dataKeyvalue = getStatusPegawai();
-        }
-        else if (title.equalsIgnoreCase("kepemilikan kartu kredit")){
-            dataKeyvalue = getKepemilikanKartuKredit();
-        }
-        else if (title.equalsIgnoreCase("id/name tag pegawai")){
-            dataKeyvalue = getIdNamePegawai();
-        }
-        else if (title.equalsIgnoreCase("slip gaji")){
-            dataKeyvalue = getSlipGaji();
-        }
-        else if (title.equalsIgnoreCase("rekening gaji")){
-            dataKeyvalue = getRekeningGaji();
-        }
-        else if (title.equalsIgnoreCase("Kebenaran informasi tempat bekerja")){
-            dataKeyvalue = getKebenaranInformasiTempatBekerja();
-        }
-        else if (title.equalsIgnoreCase("operasional kantor")){
-            dataKeyvalue = getOperasionalKantor();
-        }
-        else if (title.equalsIgnoreCase("prospek usaha selama minimal 5 tahun")){
-            dataKeyvalue = getProspekUsahaKonsumer();
-        }
-        else if (title.equalsIgnoreCase("lama beroperasi kantor/perusahaan")){
-            dataKeyvalue = getLamaBeroperasiKantor();
-        }
-        else if (title.equalsIgnoreCase("akses lokasi kantor")){
-        dataKeyvalue = getAksesLokasiKantor();
-    }
-        else if (title.equalsIgnoreCase("jenis kantor")){
-            dataKeyvalue = getJenisKantor();
-        }
-        else if (title.equalsIgnoreCase("papan nama kantor/perusahaan")){
-            dataKeyvalue = getPapanNamaKantor();
-        }
-        else if (title.equalsIgnoreCase("jumlah karyawan")){
-            dataKeyvalue = getJumlahKaryawan();
-        }
-        else if (title.equalsIgnoreCase("kepemilikan badan usaha")){
-            dataKeyvalue = getKepemilikanBadanUsaha();
-        }
-        else if (title.equalsIgnoreCase("keterangan domisili yayasan")){
-            dataKeyvalue = getKeteranganDomisiliYayasan();
-        }
-        else if (title.equalsIgnoreCase("lama berdiri dan beroperasi yayasan")){
-            dataKeyvalue = getLamaBerdiriYayasan();
-        }
-        else if (title.equalsIgnoreCase("total penyertaan yayasan pada seluruh badan usaha")){
-            dataKeyvalue = getTotalPenyertaanYayasan();
-        }
-        else if (title.equalsIgnoreCase("validitas tempat tinggal")){
-            dataKeyvalue = getValiditasTempatTinggal();
-        }
-        else if (title.equalsIgnoreCase("jumlah penyertaan yayasan pada masing-masing badan usaha")){
-            dataKeyvalue = getJumlahPenyertaanYayasan();
-        }
-        else if (title.equalsIgnoreCase("Kesesuaian pendirian badan usaha dengan maksud dan tujuan yayasan")){
-            dataKeyvalue = getKesesuaianPendirianBadanUsaha();
-        }
-        else if (title.equalsIgnoreCase("kesesuaian badan usaha dengan ketentuan bris")){
-            dataKeyvalue = getKesesuaianDenganBris();
-        }
-        else if (title.equalsIgnoreCase("struktur manajemen badan usaha yayasan")){
-            dataKeyvalue = getStrukturManajemen();
-        }
-        else if (title.equalsIgnoreCase("lama berdiri dan beroperasi badan usaha yayasan")){
-            dataKeyvalue = getLamaBerdiriBadanUsaha();
-        }
-
-
-        //KONSUMER KMG
-
-        else if (title.equalsIgnoreCase("tujuan penggunaan kmg")){
-            dataKeyvalue = getTujuanPenggunaanKmg();
-        }
-        else if (title.equalsIgnoreCase("embp")){
-            dataKeyvalue = getEmbp();
-        }
-
-        //konsumer kmg bidang pekerjaan ,sama dengan bidang usaha mikro
-        else if(title.equalsIgnoreCase("bidang pekerjaan")){
-            dataKeyvalue = getDataBidangUsaha();
-        }
-
-        else if(title.equalsIgnoreCase("posisi jabatan")){
-            dataKeyvalue = getPosisiJabatan();
-        }
-
-        else if(title.equalsIgnoreCase("pembayaran gaji melalui")){
-            dataKeyvalue = getPembayaranGajiMelalui();
-        }
-
-        else if(title.equalsIgnoreCase("referensi")){
-            dataKeyvalue = getReferensi();
-        }
-
-
-
-        //MIKRO
-        else if(title.equalsIgnoreCase("bidang usaha")){
-            dataKeyvalue = getDataBidangUsaha();
-        }
-        else if(title.equalsIgnoreCase("pekerjaan")){
-            dataKeyvalue = getDataBidangPekerjaan();
-        }
-        else if (title.equalsIgnoreCase("tujuan penggunaan")){
-            dataKeyvalue = getDataTujuanPenggunaan();
-        }
-        else if (title.equalsIgnoreCase("jenis kelamin")){
-            dataKeyvalue = getDataJenisKelamin();
-        }
-
-        else if (title.equalsIgnoreCase("agama")){
-            dataKeyvalue = getDataAgama();
-        }
-
         else if (title.equalsIgnoreCase("status nikah")){
             dataKeyvalue = getDataStatusNikah();
         }
 
-        else if (title.equalsIgnoreCase("tipe pendapatan")){
-            dataKeyvalue = getDataTipePendapatan();
+        else if (title.equalsIgnoreCase("status nikah saat ini")){
+            dataKeyvalue = getDataStatusNikah();
         }
-
-        else if (title.equalsIgnoreCase("pendidikan terakhir")){
-            dataKeyvalue = getDataPendidikanTerakhir();
-        }
-
-        else if (title.equalsIgnoreCase("status tempat domisili")){
-            dataKeyvalue = getDataStatusTempatDomisili();
-        }
-
-        else if (title.equalsIgnoreCase("status permohonan")){
-            dataKeyvalue = getDataStatusPemohon();
-        }
-
-        else if (title.equalsIgnoreCase("hubungan")){
-            dataKeyvalue = getDataHubungan();
-        }
-        else if (title.equalsIgnoreCase("lokasi usaha")){
-            dataKeyvalue = getDataLokasiUsaha();
-        }
-        else if (title.equalsIgnoreCase("status tempat usaha")){
-            dataKeyvalue = getDataStatusTempatUsaha();
-        }
-        else if (title.equalsIgnoreCase("jenis tempat usaha")){
-            dataKeyvalue = getDataJenisTempatUsaha();
-        }
-        else if (title.equalsIgnoreCase("aspek pemasaran")){
-            dataKeyvalue = getDataAspekPemasaran();
-        }
-        else if (title.equalsIgnoreCase("jenis usaha")){
-            dataKeyvalue = getDataJenisUsaha();
+        else if (title.equalsIgnoreCase("agama")){
+            dataKeyvalue = getDataAgama();
         }
 
 
-        else if (title.equalsIgnoreCase("reputasi/integritas usaha")){
-            dataKeyvalue = getDataReputasiUsaha();
-        }
-        else if (title.equalsIgnoreCase("riwayat hubungan bank")){
-            dataKeyvalue = getDataRiwayatHubunganBank();
-        }
-        else if (title.equalsIgnoreCase("prospek usaha")){
-            dataKeyvalue = getDataProspekUsaha();
-        }
-        else if (title.equalsIgnoreCase("ketergantungan thd supplier")){
-            dataKeyvalue = getDataKetergantunganthdSupplier();
-        }
-        else if (title.equalsIgnoreCase("ketergantungan thd pelanggan")){
-            dataKeyvalue = getDataKetergantunganthdPelanggan();
-        }
-        else if (title.equalsIgnoreCase("wilayah pemasaran")){
-            dataKeyvalue = getDataWilayahPemasaran();
-        }
-
-        else if (title.equalsIgnoreCase("jenis produk")){
-            dataKeyvalue = getDataJenisProduk();
-        }
-        else if (title.equalsIgnoreCase("jenis pembiayaan")){
-            dataKeyvalue = getDataJenisPembiayaan();
-        }
-
-
-        //tambahan eki
-        else if (title.equalsIgnoreCase("bentuk bidang tanah")){
-            dataKeyvalue = getBidangTanah();
-        }
-        else if (title.equalsIgnoreCase("permukaan tanah")){
-            dataKeyvalue = getPermukaanTanah();
-        }
-        else if (title.equalsIgnoreCase("jenis surat tanah")){
-            dataKeyvalue = getJenisSurat();
-        }
-        else if (title.equalsIgnoreCase("hub dengan pemegang hak")){
-            dataKeyvalue = getHubNasabah();
-        }
-        else if (title.equalsIgnoreCase("Jenis Bangunan")){
-            dataKeyvalue = getJenisBangunan();
-        }
-        else if (title.equalsIgnoreCase("Lokasi Bangunan")){
-            dataKeyvalue = getLokasiBangun();
-        }
-        else if (title.equalsIgnoreCase("Jenis Agunan XBRL")){
-            dataKeyvalue = getJenisAgunanXBRL();
-        }
-        else if (title.equalsIgnoreCase("hub penghuni dengan pemegang hak")){
-            dataKeyvalue = getHubPenghuniDenganPemegangHak();
-        }
-        else if (title.equalsIgnoreCase("Kondisi Bangunan")){
-            dataKeyvalue = getKondisiBangunan();
-        }
-        else if (title.equalsIgnoreCase("Spesifikasi Jenis Bangunan")){
-            dataKeyvalue = getJenisBangunanSpek();
-        }
-        else if (title.equalsIgnoreCase("Pondasi")){
-            dataKeyvalue = getPondasi();
-        }
-        else if (title.equalsIgnoreCase("Dinding")){
-            dataKeyvalue = getDinding();
-        }
-        else if (title.equalsIgnoreCase("Atap")){
-            dataKeyvalue = getAtap();
-        }
-        else if (title.equalsIgnoreCase("Peruntukan Lokasi")){
-            dataKeyvalue = getPeruntukan();
-        }
-        else if (title.equalsIgnoreCase("Perkembangan Lingkungan")){
-            dataKeyvalue = getPerkembangan();
-        }
-        else if (title.equalsIgnoreCase("Kepadatan")){
-            dataKeyvalue = getKepadatan();
-        }
-        else if (title.equalsIgnoreCase("Akses Mencapai Objek")){
-            dataKeyvalue = getAksesCapai();
-        }
-        else if (title.equalsIgnoreCase("Akses Jalan Objek")){
-            dataKeyvalue = getAksesJalan();
-        }
-
-        else if (title.equalsIgnoreCase("Fasilitas Sosial")){
-            dataKeyvalue = getFasilitasSosial();
-        }
-
-        else if (title.equalsIgnoreCase("Jenis Agunan")){
-            dataKeyvalue = getJenisAgunan();
-        }
-        else if (title.equalsIgnoreCase("Hub. Pemegang Hak dg Nasabah") || title.equalsIgnoreCase("Hubungan Dengan Nasabah")){
-            dataKeyvalue = getHubunganPemegangHak();
-        }
-        else if (title.equalsIgnoreCase("Lokasi Agunan")){
-            dataKeyvalue = getLokasiAgunan();
-        }
-        else if (title.equalsIgnoreCase("Listrik") || title.equalsIgnoreCase("Telpon")){
-            dataKeyvalue = getAdaTidak();
-        }
-
-        else if (title.equalsIgnoreCase("Hub Pemegang Hak dg Nasabah")){
-            dataKeyvalue = getHubPenghuniDenganPemegangHak();
-        }
-        else if (title.equalsIgnoreCase("status penggarap")){
-            dataKeyvalue = getStatusPenggarap();
-        }
-        else if (title.equalsIgnoreCase("jenis dokumen")){
-            dataKeyvalue = getJenisDokumen();
-        }
-        else if (title.equalsIgnoreCase("check bpn")){
-            dataKeyvalue = getCheckBpn();
-        }
-        else if (title.equalsIgnoreCase("Hasil")){
-            dataKeyvalue = getHasilBpn();
-        }
-        else if (title.equalsIgnoreCase("Hub Penggarap dg Pemegang Hak")){
-            dataKeyvalue = getHubPenggarap();
-        }
-
-        else if (title.equalsIgnoreCase("Current Ratio")){
-            dataKeyvalue = getCurrentRatio();
-        }
-        else if (title.equalsIgnoreCase("Profitability")){
-            dataKeyvalue = getProfitability();
-        }
-        else if (title.equalsIgnoreCase("Jenis Deposito")){
-            dataKeyvalue = getJenisDeposito();
-        }
-        else if (title.equalsIgnoreCase("Automatic Roll Over (ARO)")){
-            dataKeyvalue = getAro();
-        }
-        else if (title.equalsIgnoreCase("Dokumen Bukti Hak Kios")){
-            dataKeyvalue = getDokumenBuktiHakKios();
-        }
-
-
-        //Agunan Kendaraaan
-        else if (title.equalsIgnoreCase("Jenis Kendaraan")){
-            dataKeyvalue = getJenisKendaraan();
-        }
-        else if (title.equalsIgnoreCase("Kategori Kendaraan")){
-            dataKeyvalue = getKategoriKendaraan();
-        }
-        else if (title.equalsIgnoreCase("Penggunaan Jaminan")){
-            dataKeyvalue = getPenggunaanJaminan();
-        }
-        else if (title.equalsIgnoreCase("Daerah Operasional Jaminan")){
-            dataKeyvalue = getDaerahOperasional();
-        }
-        else if (title.equalsIgnoreCase("Kondisi Jaminan")){
-            dataKeyvalue = getKondisiJaminan();
-        }
-        else if (title.equalsIgnoreCase("Hubungan Pemilik Dengan Nasabah")){
-            dataKeyvalue = getHubunganPemilikDenganNasabah();
-        }
-        else if (title.equalsIgnoreCase("Bukti Gesek Mesin")){
-            dataKeyvalue = getBuktiGesekMesin();
-        }
-        else if (title.equalsIgnoreCase("Bukti Gesek Rangka")){
-            dataKeyvalue = getBuktiGesekRangka();
-        }
-        else if (title.equalsIgnoreCase("Kendaraan Jepang")){
-            dataKeyvalue = getKendaraanJepang();
-        }
-        else if (title.equalsIgnoreCase("Plat Kuning")){
-            dataKeyvalue = getPlatKuning();
-        }
-        else if (title.equalsIgnoreCase("Check Samsat")){
-            dataKeyvalue = getCheckSamsat();
-        }
-        else if (title.equalsIgnoreCase("Hasil")){
-            dataKeyvalue = getHasil();
-        }
-        //End Agunan Kendaraan
-
-        //Purna
-        else if (title.equalsIgnoreCase("Instansi/Koperasi")){
-            dataKeyvalue = getInstansiNonEmBP();
-        }
+        //KONSUMER ISIAN DATA FINANSIAL KPR
+//        if(title.equalsIgnoreCase("jenis tiering")) {
+//            dataKeyvalue = getDataJenisTiering();
+//
+//        }
+//
+//        //KONSUMER ISIAN DATA CIF KPR
+//        else if(title.equalsIgnoreCase("referal dari")){
+//            dataKeyvalue = getDataReferalDari();
+//        }
+//        else if(title.equalsIgnoreCase("paket")){
+//            dataKeyvalue = getDataPaket();
+//        }
+//        else if(title.equalsIgnoreCase("rekomendasi penilai")){
+//            dataKeyvalue = getRekomendasiAppraisal();
+//        }
+//        else if(title.equalsIgnoreCase("program")){
+//            dataKeyvalue = getDataProgram();
+//        }
+//        else if(title.equalsIgnoreCase("pihak ketiga")){
+//            dataKeyvalue = getDataPihakKetiga();
+//        }
+//        else if(title.equalsIgnoreCase("Proyek Perumahan")){
+//
+//            //ini diganti dengan http request ambil dari service datanya lalu masukkan ke datakeyvalue
+////            dataKeyvalue = getDataPaket();
+//        }
+//        else if(title.equalsIgnoreCase("tujuan penggunaan")){
+//            dataKeyvalue = getTujuanPenggunaanKpr();
+//        }
+//        else if(title.equalsIgnoreCase("jenis pekerjaan")){
+//            dataKeyvalue = getJenisPekerjaan();
+//        }
+//        else if(title.equalsIgnoreCase("status kepegawaian")){
+//            dataKeyvalue = getStatusKepegawaian();
+//        }
+//
+//        //KONSUMER DATA NASABAH
+//        else if (title.equalsIgnoreCase("tingkat pendidikan")){
+//            dataKeyvalue = getDataPendidikanTerakhir();
+//        }
+//        else if (title.equalsIgnoreCase("No Telp/Fixed Line")){
+//            dataKeyvalue = getNoTelpFixedLine();
+//        }
+//        else if (title.equalsIgnoreCase("Kepemilikan Tempat Tinggal")){
+//            dataKeyvalue = getKepemilikanTempatTinggal();
+//        }
+//
+//        //KONSUMER FORM PRESCORING
+//
+//        //ini sangat rawan error, ganti ke id viewnya next time
+//        else if (title.equalsIgnoreCase("jenis prescoring")){
+//            dataKeyvalue = getJenisPrescoring();
+//        }
+//        else if (title.equalsIgnoreCase("Status Pegawai")){
+//            dataKeyvalue = getStatusPegawai();
+//        }
+//        else if (title.equalsIgnoreCase("kepemilikan kartu kredit")){
+//            dataKeyvalue = getKepemilikanKartuKredit();
+//        }
+//        else if (title.equalsIgnoreCase("id/name tag pegawai")){
+//            dataKeyvalue = getIdNamePegawai();
+//        }
+//        else if (title.equalsIgnoreCase("slip gaji")){
+//            dataKeyvalue = getSlipGaji();
+//        }
+//        else if (title.equalsIgnoreCase("rekening gaji")){
+//            dataKeyvalue = getRekeningGaji();
+//        }
+//        else if (title.equalsIgnoreCase("Kebenaran informasi tempat bekerja")){
+//            dataKeyvalue = getKebenaranInformasiTempatBekerja();
+//        }
+//        else if (title.equalsIgnoreCase("operasional kantor")){
+//            dataKeyvalue = getOperasionalKantor();
+//        }
+//        else if (title.equalsIgnoreCase("prospek usaha selama minimal 5 tahun")){
+//            dataKeyvalue = getProspekUsahaKonsumer();
+//        }
+//        else if (title.equalsIgnoreCase("lama beroperasi kantor/perusahaan")){
+//            dataKeyvalue = getLamaBeroperasiKantor();
+//        }
+//        else if (title.equalsIgnoreCase("akses lokasi kantor")){
+//        dataKeyvalue = getAksesLokasiKantor();
+//    }
+//        else if (title.equalsIgnoreCase("jenis kantor")){
+//            dataKeyvalue = getJenisKantor();
+//        }
+//        else if (title.equalsIgnoreCase("papan nama kantor/perusahaan")){
+//            dataKeyvalue = getPapanNamaKantor();
+//        }
+//        else if (title.equalsIgnoreCase("jumlah karyawan")){
+//            dataKeyvalue = getJumlahKaryawan();
+//        }
+//        else if (title.equalsIgnoreCase("kepemilikan badan usaha")){
+//            dataKeyvalue = getKepemilikanBadanUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("keterangan domisili yayasan")){
+//            dataKeyvalue = getKeteranganDomisiliYayasan();
+//        }
+//        else if (title.equalsIgnoreCase("lama berdiri dan beroperasi yayasan")){
+//            dataKeyvalue = getLamaBerdiriYayasan();
+//        }
+//        else if (title.equalsIgnoreCase("total penyertaan yayasan pada seluruh badan usaha")){
+//            dataKeyvalue = getTotalPenyertaanYayasan();
+//        }
+//        else if (title.equalsIgnoreCase("validitas tempat tinggal")){
+//            dataKeyvalue = getValiditasTempatTinggal();
+//        }
+//        else if (title.equalsIgnoreCase("jumlah penyertaan yayasan pada masing-masing badan usaha")){
+//            dataKeyvalue = getJumlahPenyertaanYayasan();
+//        }
+//        else if (title.equalsIgnoreCase("Kesesuaian pendirian badan usaha dengan maksud dan tujuan yayasan")){
+//            dataKeyvalue = getKesesuaianPendirianBadanUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("kesesuaian badan usaha dengan ketentuan bris")){
+//            dataKeyvalue = getKesesuaianDenganBris();
+//        }
+//        else if (title.equalsIgnoreCase("struktur manajemen badan usaha yayasan")){
+//            dataKeyvalue = getStrukturManajemen();
+//        }
+//        else if (title.equalsIgnoreCase("lama berdiri dan beroperasi badan usaha yayasan")){
+//            dataKeyvalue = getLamaBerdiriBadanUsaha();
+//        }
+//
+//
+//        //KONSUMER KMG
+//
+//        else if (title.equalsIgnoreCase("tujuan penggunaan kmg")){
+//            dataKeyvalue = getTujuanPenggunaanKmg();
+//        }
+//        else if (title.equalsIgnoreCase("embp")){
+//            dataKeyvalue = getEmbp();
+//        }
+//
+//        //konsumer kmg bidang pekerjaan ,sama dengan bidang usaha mikro
+//        else if(title.equalsIgnoreCase("bidang pekerjaan")){
+//            dataKeyvalue = getDataBidangUsaha();
+//        }
+//
+//        else if(title.equalsIgnoreCase("posisi jabatan")){
+//            dataKeyvalue = getPosisiJabatan();
+//        }
+//
+//        else if(title.equalsIgnoreCase("pembayaran gaji melalui")){
+//            dataKeyvalue = getPembayaranGajiMelalui();
+//        }
+//
+//        else if(title.equalsIgnoreCase("referensi")){
+//            dataKeyvalue = getReferensi();
+//        }
+//
+//
+//
+//        //MIKRO
+//        else if(title.equalsIgnoreCase("bidang usaha")){
+//            dataKeyvalue = getDataBidangUsaha();
+//        }
+//        else if(title.equalsIgnoreCase("pekerjaan")){
+//            dataKeyvalue = getDataBidangPekerjaan();
+//        }
+//        else if (title.equalsIgnoreCase("tujuan penggunaan")){
+//            dataKeyvalue = getDataTujuanPenggunaan();
+//        }
+//        else if (title.equalsIgnoreCase("jenis kelamin")){
+//            dataKeyvalue = getDataJenisKelamin();
+//        }
+//
+//
+//
+//
+//
+//        else if (title.equalsIgnoreCase("status nikah ktp")){
+//            dataKeyvalue = getDataStatusNikah();
+//        }
+//
+//        else if (title.equalsIgnoreCase("tipe pendapatan")){
+//            dataKeyvalue = getDataTipePendapatan();
+//        }
+//
+//        else if (title.equalsIgnoreCase("pendidikan terakhir")){
+//            dataKeyvalue = getDataPendidikanTerakhir();
+//        }
+//
+//        else if (title.equalsIgnoreCase("status tempat domisili")){
+//            dataKeyvalue = getDataStatusTempatDomisili();
+//        }
+//
+//        else if (title.equalsIgnoreCase("status permohonan")){
+//            dataKeyvalue = getDataStatusPemohon();
+//        }
+//
+//        else if (title.equalsIgnoreCase("hubungan")){
+//            dataKeyvalue = getDataHubungan();
+//        }
+//        else if (title.equalsIgnoreCase("lokasi usaha")){
+//            dataKeyvalue = getDataLokasiUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("status tempat usaha")){
+//            dataKeyvalue = getDataStatusTempatUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("jenis tempat usaha")){
+//            dataKeyvalue = getDataJenisTempatUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("aspek pemasaran")){
+//            dataKeyvalue = getDataAspekPemasaran();
+//        }
+//        else if (title.equalsIgnoreCase("jenis usaha")){
+//            dataKeyvalue = getDataJenisUsaha();
+//        }
+//
+//
+//        else if (title.equalsIgnoreCase("reputasi/integritas usaha")){
+//            dataKeyvalue = getDataReputasiUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("riwayat hubungan bank")){
+//            dataKeyvalue = getDataRiwayatHubunganBank();
+//        }
+//        else if (title.equalsIgnoreCase("prospek usaha")){
+//            dataKeyvalue = getDataProspekUsaha();
+//        }
+//        else if (title.equalsIgnoreCase("ketergantungan thd supplier")){
+//            dataKeyvalue = getDataKetergantunganthdSupplier();
+//        }
+//        else if (title.equalsIgnoreCase("ketergantungan thd pelanggan")){
+//            dataKeyvalue = getDataKetergantunganthdPelanggan();
+//        }
+//        else if (title.equalsIgnoreCase("wilayah pemasaran")){
+//            dataKeyvalue = getDataWilayahPemasaran();
+//        }
+//
+//        else if (title.equalsIgnoreCase("jenis produk")){
+//            dataKeyvalue = getDataJenisProduk();
+//        }
+//        else if (title.equalsIgnoreCase("jenis pembiayaan")){
+//            dataKeyvalue = getDataJenisPembiayaan();
+//        }
+//
+//
+//        //tambahan eki
+//        else if (title.equalsIgnoreCase("bentuk bidang tanah")){
+//            dataKeyvalue = getBidangTanah();
+//        }
+//        else if (title.equalsIgnoreCase("permukaan tanah")){
+//            dataKeyvalue = getPermukaanTanah();
+//        }
+//        else if (title.equalsIgnoreCase("jenis surat tanah")){
+//            dataKeyvalue = getJenisSurat();
+//        }
+//        else if (title.equalsIgnoreCase("hub dengan pemegang hak")){
+//            dataKeyvalue = getHubNasabah();
+//        }
+//        else if (title.equalsIgnoreCase("Jenis Bangunan")){
+//            dataKeyvalue = getJenisBangunan();
+//        }
+//        else if (title.equalsIgnoreCase("Lokasi Bangunan")){
+//            dataKeyvalue = getLokasiBangun();
+//        }
+//        else if (title.equalsIgnoreCase("Jenis Agunan XBRL")){
+//            dataKeyvalue = getJenisAgunanXBRL();
+//        }
+//        else if (title.equalsIgnoreCase("hub penghuni dengan pemegang hak")){
+//            dataKeyvalue = getHubPenghuniDenganPemegangHak();
+//        }
+//        else if (title.equalsIgnoreCase("Kondisi Bangunan")){
+//            dataKeyvalue = getKondisiBangunan();
+//        }
+//        else if (title.equalsIgnoreCase("Spesifikasi Jenis Bangunan")){
+//            dataKeyvalue = getJenisBangunanSpek();
+//        }
+//        else if (title.equalsIgnoreCase("Pondasi")){
+//            dataKeyvalue = getPondasi();
+//        }
+//        else if (title.equalsIgnoreCase("Dinding")){
+//            dataKeyvalue = getDinding();
+//        }
+//        else if (title.equalsIgnoreCase("Atap")){
+//            dataKeyvalue = getAtap();
+//        }
+//        else if (title.equalsIgnoreCase("Peruntukan Lokasi")){
+//            dataKeyvalue = getPeruntukan();
+//        }
+//        else if (title.equalsIgnoreCase("Perkembangan Lingkungan")){
+//            dataKeyvalue = getPerkembangan();
+//        }
+//        else if (title.equalsIgnoreCase("Kepadatan")){
+//            dataKeyvalue = getKepadatan();
+//        }
+//        else if (title.equalsIgnoreCase("Akses Mencapai Objek")){
+//            dataKeyvalue = getAksesCapai();
+//        }
+//        else if (title.equalsIgnoreCase("Akses Jalan Objek")){
+//            dataKeyvalue = getAksesJalan();
+//        }
+//
+//        else if (title.equalsIgnoreCase("Fasilitas Sosial")){
+//            dataKeyvalue = getFasilitasSosial();
+//        }
+//
+//        else if (title.equalsIgnoreCase("Jenis Agunan")){
+//            dataKeyvalue = getJenisAgunan();
+//        }
+//        else if (title.equalsIgnoreCase("Hub. Pemegang Hak dg Nasabah") || title.equalsIgnoreCase("Hubungan Dengan Nasabah")){
+//            dataKeyvalue = getHubunganPemegangHak();
+//        }
+//        else if (title.equalsIgnoreCase("Lokasi Agunan")){
+//            dataKeyvalue = getLokasiAgunan();
+//        }
+//        else if (title.equalsIgnoreCase("Listrik") || title.equalsIgnoreCase("Telpon")){
+//            dataKeyvalue = getAdaTidak();
+//        }
+//
+//        else if (title.equalsIgnoreCase("Hub Pemegang Hak dg Nasabah")){
+//            dataKeyvalue = getHubPenghuniDenganPemegangHak();
+//        }
+//        else if (title.equalsIgnoreCase("status penggarap")){
+//            dataKeyvalue = getStatusPenggarap();
+//        }
+//        else if (title.equalsIgnoreCase("jenis dokumen")){
+//            dataKeyvalue = getJenisDokumen();
+//        }
+//        else if (title.equalsIgnoreCase("check bpn")){
+//            dataKeyvalue = getCheckBpn();
+//        }
+//        else if (title.equalsIgnoreCase("Hasil")){
+//            dataKeyvalue = getHasilBpn();
+//        }
+//        else if (title.equalsIgnoreCase("Hub Penggarap dg Pemegang Hak")){
+//            dataKeyvalue = getHubPenggarap();
+//        }
+//
+//        else if (title.equalsIgnoreCase("Current Ratio")){
+//            dataKeyvalue = getCurrentRatio();
+//        }
+//        else if (title.equalsIgnoreCase("Profitability")){
+//            dataKeyvalue = getProfitability();
+//        }
+//        else if (title.equalsIgnoreCase("Jenis Deposito")){
+//            dataKeyvalue = getJenisDeposito();
+//        }
+//        else if (title.equalsIgnoreCase("Automatic Roll Over (ARO)")){
+//            dataKeyvalue = getAro();
+//        }
+//        else if (title.equalsIgnoreCase("Dokumen Bukti Hak Kios")){
+//            dataKeyvalue = getDokumenBuktiHakKios();
+//        }
+//
+//
+//        //Agunan Kendaraaan
+//        else if (title.equalsIgnoreCase("Jenis Kendaraan")){
+//            dataKeyvalue = getJenisKendaraan();
+//        }
+//        else if (title.equalsIgnoreCase("Kategori Kendaraan")){
+//            dataKeyvalue = getKategoriKendaraan();
+//        }
+//        else if (title.equalsIgnoreCase("Penggunaan Jaminan")){
+//            dataKeyvalue = getPenggunaanJaminan();
+//        }
+//        else if (title.equalsIgnoreCase("Daerah Operasional Jaminan")){
+//            dataKeyvalue = getDaerahOperasional();
+//        }
+//        else if (title.equalsIgnoreCase("Kondisi Jaminan")){
+//            dataKeyvalue = getKondisiJaminan();
+//        }
+//        else if (title.equalsIgnoreCase("Hubungan Pemilik Dengan Nasabah")){
+//            dataKeyvalue = getHubunganPemilikDenganNasabah();
+//        }
+//        else if (title.equalsIgnoreCase("Bukti Gesek Mesin")){
+//            dataKeyvalue = getBuktiGesekMesin();
+//        }
+//        else if (title.equalsIgnoreCase("Bukti Gesek Rangka")){
+//            dataKeyvalue = getBuktiGesekRangka();
+//        }
+//        else if (title.equalsIgnoreCase("Kendaraan Jepang")){
+//            dataKeyvalue = getKendaraanJepang();
+//        }
+//        else if (title.equalsIgnoreCase("Plat Kuning")){
+//            dataKeyvalue = getPlatKuning();
+//        }
+//        else if (title.equalsIgnoreCase("Check Samsat")){
+//            dataKeyvalue = getCheckSamsat();
+//        }
+//        else if (title.equalsIgnoreCase("Hasil")){
+//            dataKeyvalue = getHasil();
+//        }
+//        //End Agunan Kendaraan
+//
+//        //Purna
+//        else if (title.equalsIgnoreCase("Instansi/Koperasi")){
+//            dataKeyvalue = getInstansiNonEmBP();
+//        }
 
 
         produkAdapater = new DialogKeyValue.ProdukAdapater(getContext(), dataKeyvalue, title, keyValueListener);
@@ -516,6 +557,18 @@ public class DialogKeyValue extends DialogFragment{
         rv_produk.setItemAnimator(new DefaultItemAnimator());
         rv_produk.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
         rv_produk.setAdapter(produkAdapater);
+    }
+
+    //PRAPEN NOS
+    private List<keyvalue> getYaTidak(){
+        List<keyvalue> data = new ArrayList<>();
+        GlobalData.yaTidak(getContext(), data);
+        return data;
+    }
+    private List<keyvalue> getSumberAplikasi(){
+        List<keyvalue> data = new ArrayList<>();
+        GlobalData.sumberAplikasi(getContext(), data);
+        return data;
     }
 
 
