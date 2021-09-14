@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorWhite"
+                android:paddingTop="20dp">
+                <!--Title Data Jaminan-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Jaminan dan Dokumen"
+                    android:textSize="16sp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+                <!--NO SK Pensiunan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomor_sk_pensiun"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomer SK Pensiun"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomor_sk_pensiun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--NO SK Pengangkatan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomor_sk_pengangkatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomer SK Pengangkatan"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomor_sk_pengangkatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--NO SK Terakhir-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomor_sk_pangkat_terakhir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_name"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Nomer SK Terakhir"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomor_sk_pangkat_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50"/>
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Tanggal Terbit SK-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tanggal_terbit_sk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:iconSignifier="@drawable/ic_date"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:isResponsiveIconColor="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:primaryColor="@color/colorPrimary"
+                    app:labelText="Tanggal Terbit SK"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tanggal_terbit_sk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=" "
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Title File Dokumen -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Jaminan"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+                <!--Title File KTP Nasabah & Pasangan-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="0dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nasabah"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/muli_b"/>
+                </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pasangan"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <!--Foto Document Nasabah & Pasangan-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_ktp_nasabah"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_ktp_nasabah"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_ktp_nasabah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_ktp_pasangan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_ktp_pasangan"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_ktp_pasangan"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <!--Title File NPWP Nasabah-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NPWP Nasabah"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <!--Foto Document NPWP Nasabah-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_npwp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_npwp"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="center"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_npwp"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <!--Title File Dokumen Pembiayaan-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data Pembiayaan"
+                    android:textSize="16sp"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+                <!--Title File Form Applikasi & Asset-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Form Applikasi"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aset Akad"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <!--Foto Document Form Aplikasi & Asset-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_form_applikasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_form_applikasi"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_form_applikasi"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_asset_akad"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_asset_akad"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_asset_akad"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <!--Title File SK Pensiun & SK Pengangkatan-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SK Pensiun"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SK Pengangkatan"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <!--Foto Document SK Pensiun & SK Pengangkatan-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/rl_sk_pensiun"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_sk_pensiun"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_sk_pensiun"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_sk_pengangkatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_sk_pengangkatan"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_sk_pengangkatan"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+                <!--Title File SK Terakhir & Surat Rekomendasi Instansi-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="SK Terakhir"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Surat Rekomendasi Instansi"
+                            android:textSize="16sp"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+                <!--Foto Document SK Terakhir & Surat Rekomendasi Instansi-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/rl_sk_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_sk_terakhir"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_sk_terakhir"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_surat_instansi"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_surat_instansi"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_surat_instansi"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+                <!--Title File ID Card Nasabah-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="0dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ID Card Nasabah"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/muli_b"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <!--Foto Document NPWP Nasabah-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_idcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_idcard"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="center"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_idcard"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/loading"/>
+        </FrameLayout>
+</ScrollView>
