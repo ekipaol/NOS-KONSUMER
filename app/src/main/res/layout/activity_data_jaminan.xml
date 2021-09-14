@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorWhite"
+
+    >
+    <include layout="@layout/toolbar_nosearch"/>
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
+        android:layout_marginTop="50dp"
         android:fitsSystemWindows="true">
 
         <FrameLayout
@@ -102,7 +114,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:iconSignifier="@drawable/ic_date"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:isResponsiveIconColor="true"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:secondaryColor="@color/colorPrimary"
@@ -118,6 +129,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=" "
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -125,7 +140,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Data Jaminan"
+                    android:text="Data Pribadi dan Pasangan"
                     android:textSize="16sp"
                     android:layout_marginTop="20dp"
                     android:paddingLeft="10dp"
@@ -770,7 +785,27 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginBottom="10dp">
+                    <Button
+                        android:id="@+id/btn_send"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@drawable/button_primary"
+                        android:text="Simpan"
+                        android:textAllCaps="false"/>
+                </LinearLayout>
             </LinearLayout>
-            <include layout="@layout/loading"/>
+
         </FrameLayout>
 </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
