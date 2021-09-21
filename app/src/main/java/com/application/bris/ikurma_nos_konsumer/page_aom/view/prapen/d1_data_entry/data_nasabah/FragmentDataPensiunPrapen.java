@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

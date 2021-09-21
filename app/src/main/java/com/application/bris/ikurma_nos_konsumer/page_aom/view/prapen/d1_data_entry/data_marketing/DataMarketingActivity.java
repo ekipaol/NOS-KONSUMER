@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_marketing;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,13 +10,11 @@ import android.view.Window;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataNasabahPrapenBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoMarketingActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 public class DataMarketingActivity extends AppCompatActivity implements KeyValueListener, View.OnClickListener {
@@ -91,7 +89,7 @@ public class DataMarketingActivity extends AppCompatActivity implements KeyValue
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            //MENGGUNAKAN LNGP
+            //SUMBER APLIKASI
             case R.id.et_sumber_aplikasi:
             case R.id.tf_sumber_aplikasi:
                 openDialog(binding.tfSumberAplikasi.getLabelText(),binding.tfSumberAplikasi.getId());

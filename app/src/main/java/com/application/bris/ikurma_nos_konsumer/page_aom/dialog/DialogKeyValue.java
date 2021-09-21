@@ -78,6 +78,7 @@ public class DialogKeyValue extends DialogFragment{
     public static DialogKeyValue displayWithType(FragmentManager fragmentManager, String titleId, KeyValueListener keyValueListenerId, String typeId) {
         title = titleId;
         type = typeId;
+        jenisPicklist="";
         keyValueListener = keyValueListenerId;
         DialogKeyValue dialogAddress = new DialogKeyValue();
         dialogAddress.show(fragmentManager, TAG);

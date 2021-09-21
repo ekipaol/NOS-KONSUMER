@@ -12,6 +12,60 @@
     <string name="notif_qr">Login ke Appel dan Scan Kode QR mu</string>
     <string name="notif_update">Hore i-Kurma Konsumer ada versi terbaru nih, ayo update sekarang</string>
 
+    <!--    PRAPEN NOS -->
+    <!--    D1-->
+    <string name="submenu_detil_aplikasi_d1_data_pembiayaan">Data Pembiayaan</string>
+    <string name="submenu_detil_aplikasi_d1_data_nasabah">Data Nasabah</string>
+    <string name="submenu_detil_aplikasi_d1_data_marketing">Data Marketing</string>
+
+    <!--    D3-->
+    <string name="submenu_detil_aplikasi_d3_canvassing">Hasil Canvassing</string>
+    <string name="submenu_detil_aplikasi_d3_kalkulator">Kalkulator</string>
+    <string name="submenu_detil_aplikasi_d3_jaminan">Jaminan dan Dokumen</string>
+    <string name="submenu_detil_aplikasi_d3_data_pendapatan">Data Pendapatan</string>
+    <string name="submenu_detil_aplikasi_d3_data_hutang">Data Hutang</string>
+    <string name="submenu_detil_aplikasi_d3_ideb">IDEB</string>
+    <string name="submenu_detil_aplikasi_d3_memo">Memo</string>
+
+    <!--    D4-->
+    <string name="submenu_detil_aplikasi_d4_canvassing">Hasil Canvassing</string>
+    <string name="submenu_detil_aplikasi_d4_kalkulator_verin">Kalkulator Verin</string>
+    <string name="submenu_detil_aplikasi_d4_hasil_rac">Hasil RAC</string>
+    <string name="submenu_detil_aplikasi_d4_hasil_fitur">Hasil Fitur</string>
+    <string name="submenu_detil_aplikasi_d4_data_tempat_kerja">Data Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d4_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d4_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d4_kualitas_pembiayaan">Kualitas Pembiayaan</string>
+    <string name="submenu_detil_aplikasi_d4_jangka_waktu">Data Jangka Waktu</string>
+    <string name="submenu_detil_aplikasi_d4_verifikasi">Verifikasi</string>
+    <string name="submenu_detil_aplikasi_d4_memo">Memo</string>
+
+    <!--D5-->
+    <string name="submenu_detil_aplikasi_d5_canvassing">Hasil Canvassing</string>
+    <string name="submenu_detil_aplikasi_d5_kalkulator_verin">Kalkulator Verin</string>
+    <string name="submenu_detil_aplikasi_d5_hasil_rac">Hasil RAC</string>
+    <string name="submenu_detil_aplikasi_d5_hasil_fitur">Hasil Fitur</string>
+    <string name="submenu_detil_aplikasi_d5_data_tempat_kerja">Data Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d5_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d5_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d5_kualitas_pembiayaan">Kualitas Pembiayaan</string>
+    <string name="submenu_detil_aplikasi_d5_jangka_waktu">Data Jangka Waktu</string>
+    <string name="submenu_detil_aplikasi_d5_verifikasi">Verifikasi</string>
+    <string name="submenu_detil_aplikasi_d5_memo">Memo</string>
+
+    <!--D6-->
+    <string name="submenu_detil_aplikasi_d6_canvassing">Hasil Canvassing</string>
+    <string name="submenu_detil_aplikasi_d6_hasil_rac">Hasil RAC</string>
+    <string name="submenu_detil_aplikasi_d6_hasil_fitur">Hasil Fitur</string>
+    <string name="submenu_detil_aplikasi_d6_data_tempat_kerja">Data Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d6_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d6_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d6_kualitas_pembiayaan">Kualitas Pembiayaan</string>
+    <string name="submenu_detil_aplikasi_d6_jangka_waktu">Data Jangka Waktu</string>
+    <string name="submenu_detil_aplikasi_d6_kalkulator_pemutus">Kalkulator Pemutus</string>
+    <string name="submenu_detil_aplikasi_d6_verifikasi">Verifikasi</string>
+    <string name="submenu_detil_aplikasi_d6_memo">Memo</string>
+
 
     <!--String Menu AOM-->
     <string name="menu_pipeline">Pipeline</string>
@@ -39,7 +93,7 @@
 
 
     <string name="title_pleaseselect">Silahkan pilih</string>
-    <string name="title_nodata">Belum ada data pembiayaan nih, yuk tambah pembiayaan</string>
+    <string name="title_nodata">Belum ada data</string>
     <string name="title_nodataapproved">Belum ada pembiayaan approved nih, yuk segera proses hotprospeknya..</string>
     <string name="title_nodatarejected">Yey pembiayaanmu belum ada yang rejected, jangan sampai masuk sini yaa..</string>
     <string name="txt_connection_failure">Gagal terhubung ke server</string>

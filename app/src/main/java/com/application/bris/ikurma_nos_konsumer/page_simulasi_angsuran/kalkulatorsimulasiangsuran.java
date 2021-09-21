@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_kalkulator_simulasi_angsuran;
+package com.application.bris.ikurma_nos_konsumer.page_simulasi_angsuran;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -36,12 +36,12 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
         onClickEndIcon();
         disableEditText();
 
-        binding.etPlafondYangDibutuhkan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.tfPlafondYangDibutuhkan));
+        binding.etPlafondYangDibutuhkan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPlafondYangDibutuhkan));
         binding.etBiayaAsuransi.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaAsuransi));
-        binding.etBiayaasuransikhusus.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTreatmentBiayaAsuransiKhusus));
+        binding.etBiayaasuransikhusus.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaasuransikhusus));
         binding.etBiayaAdministrasi.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaAdministrasi));
         binding.etBiayapenaltiKhususTakeover.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayapenaltiKhususTakeover));
-        binding.etBiayamaterai.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.tfBiayamaterai));
+        binding.etBiayamaterai.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayamaterai));
     }
     private void onClickEndIcon() {
         binding.tfTreatmentBiayaAsuransi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {

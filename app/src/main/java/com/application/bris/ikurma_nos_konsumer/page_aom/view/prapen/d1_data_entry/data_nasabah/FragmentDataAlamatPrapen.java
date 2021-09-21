@@ -1,61 +1,29 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah;
 
-import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.application.bris.ikurma_nos_konsumer.R;
-import com.application.bris.ikurma_nos_konsumer.api.model.Error;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseDataDukcapil;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryNikPasangan;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataAlamatBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataPribadiBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataDukcapilPasangan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.DataLengkapActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
-import com.application.bris.ikurma_nos_konsumer.util.Constants;
-import com.application.bris.ikurma_nos_konsumer.util.KeyValue;
-import com.application.bris.ikurma_nos_konsumer.util.Validator;
-import com.google.gson.Gson;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.realm.Realm;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener {
     AppPreferences appPreferences;

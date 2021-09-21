@@ -341,7 +341,7 @@ public class HotprospekDetailActivity extends AppCompatActivity implements MenuC
 
     private List<ListViewSubmenuHotprospek> getListMenu() {
         List<ListViewSubmenuHotprospek> menu = new ArrayList<>();
-        Menu.SubmenuHotprospek(this, menu);
+        Menu.SubmenuD1(this, menu);
         return menu;
     }
 

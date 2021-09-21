@@ -1,23 +1,16 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_hutang;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.bris.ikurma_nos_konsumer.databinding.ItemSubmenuHotprospekBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoItemDataHutangBinding;
-import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
-import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 import java.util.List;

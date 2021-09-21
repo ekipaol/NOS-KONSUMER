@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_hutang;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -11,27 +11,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
-import com.application.bris.ikurma_nos_konsumer.config.menu.Menu;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDataHutangBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDetilAplikasiBinding;
-import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
-import com.application.bris.ikurma_nos_konsumer.page_aom.adapter.hotprospek.HotprospekAdapater;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
-import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.SubmenuDetilAplikasiAdapter;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_marketing.DataMarketingActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah.DataNasabahPrapenActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +65,7 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
     }
 
     public void initialize(){
+        binding.rvListDataHutang.setVisibility(View.VISIBLE);
         binding.rvListDataHutang.setHasFixedSize(true);
         dataHutangAdapter = new DataHutangAdapter(DataHutangActivity.this, data);
         binding.rvListDataHutang.setLayoutManager(new LinearLayoutManager(DataHutangActivity.this));
@@ -142,6 +131,7 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
     public void onRefresh() {
         binding.refresh.setRefreshing(false);
         binding.rvListDataHutang.setVisibility(View.GONE);
+        setData();
         initialize();
     }
 

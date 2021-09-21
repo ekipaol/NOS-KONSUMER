@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,13 +23,12 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.OnNavigationBarListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_marketing.DataMarketingActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-import butterknife.ButterKnife;
 import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -357,4 +356,5 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
     public void confirm(boolean val) {
 
     }
+
 }

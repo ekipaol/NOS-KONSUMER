@@ -38,9 +38,8 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.OnNavigationBarListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_marketing.DataMarketingActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah.DataNasabahPrapenActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.data_nasabah.DataNasabahStepAdapter;
+
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
