@@ -785,6 +785,7 @@
                     </RelativeLayout>
 
                 </LinearLayout>
+                <!--Button Simpan-->
                 <LinearLayout
                     android:id="@+id/ll_btn_send"
                     android:layout_width="match_parent"

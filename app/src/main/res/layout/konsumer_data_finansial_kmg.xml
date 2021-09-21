@@ -348,14 +348,6 @@
                     android:layout_marginTop="10dp"
                     app:useDenseSpacing="true">
 
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_uang_muka"
-                        app:prefix="Rp."
-                        android:text="0"
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -499,6 +491,14 @@
                         android:text="0"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_uang_muka"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        app:prefix="Rp." />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
