@@ -109,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:isResponsiveIconColor="true"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
@@ -223,6 +224,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -348,6 +350,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -461,6 +464,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -586,6 +590,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -699,6 +704,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -780,17 +786,33 @@
 
             </LinearLayout>
 
-            <!--Title Gaji dan Tunjangan Tercermin di rekening -->
-            <TextView
+
+            <!--Hasil Verifikasi Gaji dan Tunjangan Tercermin di rekening?-->
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_verfikasi_gaji_tunjangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gaji dan Tunjangan Tercermin di rekening?"
-                android:textSize="16sp"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
-                android:textAlignment="center"
-                android:fontFamily="@font/muli_b"
-                android:paddingBottom="10dp"/>
+                android:paddingLeft="20dp"
+
+                android:paddingRight="20dp"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:iconSignifier="@drawable/ic_atm"
+                app:isResponsiveIconColor="true"
+                app:labelText="Gaji dan Tunjangan Tercermin di rekening?"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true"
+                tools:ignore="DuplicateIds">
+
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                android:id="@+id/et_verfikasi_gaji_tunjangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih"
+                tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Nomer Rekening GAJI-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_norek_gaji"
@@ -898,6 +920,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -925,6 +948,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -1089,6 +1113,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
@@ -1116,6 +1141,7 @@
                 android:layout_height="wrap_content"
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"

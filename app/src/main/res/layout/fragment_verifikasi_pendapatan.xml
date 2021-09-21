@@ -102,6 +102,7 @@
                     android:layout_height="wrap_content"
                     app:iconSignifier="@drawable/ic_date"
                     app:isResponsiveIconColor="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
@@ -115,7 +116,7 @@
                         android:id="@+id/et_tanggal_gaji"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        
+                        android:text=" "
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
@@ -136,7 +137,7 @@
                     android:paddingBottom="10dp"/>
                 <!--Hasil Verifikasi Gaji dan Tunjangan Tercermin di rekening?-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_norek_gaji"
+                    android:id="@+id/tf_verifikasi_gaji_tercermin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -145,6 +146,7 @@
                     android:inputType = "numberPassword"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:labelText="Hasil Verifikasi Gaji dan Tunjangan Tercermin di rekening?"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
@@ -152,8 +154,8 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_norek_gaji"
-                        
+                        android:id="@+id/et_verifikasi_gaji_tercermin"
+                        android:text=" "
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50" />
@@ -169,6 +171,7 @@
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_atm"
                     app:isResponsiveIconColor="true"
+
                     app:labelText="Nomor Rekening yang tercermin"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
@@ -176,8 +179,8 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_norek_tunjangan"
-                        
+                        android:id="@+id/et_norek_tercermin"
+                        android:text=" "
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50" />

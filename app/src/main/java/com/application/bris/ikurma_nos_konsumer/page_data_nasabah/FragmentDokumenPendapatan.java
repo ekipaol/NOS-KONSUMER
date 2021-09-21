@@ -30,11 +30,23 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentDokumenPendapatanBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        hideItem();
         return view;
     }
     @Override
     public void onClick(View v) {
 
+    }
+
+    private void hideItem(){
+        binding.btnRekeningKoran1.setVisibility(View.GONE);
+        binding.btnRekeningKoran2.setVisibility(View.GONE);
+        binding.btnSlipgajiP1.setVisibility(View.GONE);
+        binding.btnSlipgajiP2.setVisibility(View.GONE);
+        binding.btnSlipgajiP3.setVisibility(View.GONE);
+        binding.btnSliptunjanganP1.setVisibility(View.GONE);
+        binding.btnSliptunjanganP2.setVisibility(View.GONE);
+        binding.btnSliptunjanganP3.setVisibility(View.GONE);
     }
 
     @Override
