@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.application.bris.ikurma_nos_konsumer">
+
+    <application
+        android:name=".baseapp.BaseApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:allowBackup">
+        <activity android:name=".page_data_nasabah.Activity_DSR_DBR_Nasabah">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".page_simulasi_angsuran.kalkulatorsimulasiangsuran">
+
+        </activity>
+        <activity android:name=".page_data_nasabah.ActivityVerifikasiPendapatan">
+        </activity>
+        <activity android:name=".page_data_nasabah.ActivityDokumenPendapatan">
+        </activity>
+        <activity android:name=".page_data_nasabah.dataJaminanActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.memo.MemoActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.EditIdebActivity" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity" />
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.TambahDataHutangActivity" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity" />
+        <activity android:name=".page_aom.view.prapen.DetilAplikasiActivity">
+
+        </activity>
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity" />
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity" />
+        <activity android:name=".page_aom.view.flpp.InputUlangFlppActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.kpr.KonsumerKprFlppKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.flpp.DetailKonfirmasiFlppActivity" />
+        <activity android:name=".page_aom.view.flpp.DetailFollowUpFlppActivity" />
+        <activity android:name=".page_aom.view.flpp.KonfirmasiFlppActivity" />
+        <activity android:name=".page_aom.view.flpp.FollowUpFlppActivity" />
+        <activity android:name=".view.corelayout.menu.MenuFlppActivity" />
+        <activity android:name=".page_aom.view.hotprospek.HotprospekEditKprActivity" />
+        <activity android:name=".page_monitoring.monitoring_pencairan.ActivityRiwayatMutasi" />
+        <activity android:name=".page_monitoring.monitoring_npf.MonitoringNpfActivity" />
+        <activity android:name=".page_monitoring.monitoring_pencairan.DetailMonitoringNasabahActivity" />
+        <activity android:name=".page_monitoring.monitoring_pencairan.MonitoringPencairanActivity" />
+        <activity android:name=".page_monitoring.MenuMonitoringActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.kpr.KonsumerKprWiraswastaKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.appraisal.AppraisalActivity" />
+        <activity android:name=".page_aom.view.appraisal.AppraisalDetailActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.kpr_only.InfoAgunanAoSilangActivity" />
+        <activity android:name=".page_aom.view.pipeline.kpr.KonsumerKPRPipelineEditActivity" />
+        <activity android:name=".page_aom.view.pipeline.kpr.KonsumerKPRPipelineDetailActivity" />
+        <activity android:name=".page_aom.view.hotprospek.sektorekonomi.kpr.SektorEkonomiKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.kpr.KonsumerKprKaryawanPnsKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.hotprospek.scoring_konsumer.ScoringKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.data_finansial.DataFinansialKprActivity" />
+        <activity android:name=".page_aom.view.pipeline.kpr.KonsumerKprPipelineInputActivity" />
+        <activity android:name=".page_aom.view.pipeline.kpr.KonsumerKprPipelineActivity" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.kpr.RemaksSlikEditKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.kpr.RemaksSlikKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.PrescreeningKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.HotprospekDetailKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.HotprospekKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.datalengkap.kpr.DataLengkapKprActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.KonsumerPraPurnaKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.KonsumerPurnaKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.hotprospek.datalengkap.purna.DataLengkapActivityPurna" />
+        <activity android:name=".page_aom.view.feedback.FeedbackActivity" />
+        <activity android:name=".page_aom.view.hotprospek.data_finansial.DataFinansialPurnaActivity" />
+        <activity android:name=".view.corelayout.menu.MenuPutusanKonsumerActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.KonsumerKmgKelengkapanDokumenActivity" />
+        <activity android:name=".page_aom.view.hotprospek.scoring_konsumer.ScoringKonsumerActivity" />
+        <activity android:name=".page_aom.view.pipeline.KonsumerKMGPipelineInputActivity" />
+        <activity android:name=".page_aom.view.pipeline.KonsumerKMGPipelineEditActivity" />
+        <activity android:name=".page_aom.view.pipeline.KonsumerKMGPipelineDetailActivity" />
+        <activity android:name=".page_aom.view.pipeline.KonsumerKMGPipelineActivity" />
+        <activity android:name=".page_aom.view.hotprospek.data_finansial.DataFinansialKmgActivity" />
+        <activity android:name=".page_isian_cif_all.IsianCifKmgActivity" />
+        <activity
+            android:name=".page_data_finansial.DataFinansialKprActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".page_prescoring.PreScoringKonsumerActivity" />
+        <activity android:name=".page_data_nasabah.DataNasabahKonsumerActivity" />
+        <activity
+            android:name=".page_isian_cif_all.IsianCifKprActivity"
+            android:windowSoftInputMode="adjustPan" /> <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.version" -->
+        <!-- android:value="@integer/google_play_services_version" /> -->
+        <activity android:name=".view.corelayout.splashscreen.SplashScreen">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".view.corelayout.login.LoginActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".page_aom.view.pipeline.CeknasabahActivity" />
+        <activity android:name=".view.corelayout.CoreLayoutActivity" />
+        <activity android:name=".page_aom.view.hotprospek.HotprospekActivity" />
+        <activity android:name=".page_aom.view.hotprospek.HotprospekDetailActivity" />
+        <activity
+            android:name=".page_aom.view.hotprospek.HotprospekEditActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".page_aom.view.hotprospek.datalengkap.DataLengkapActivity" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.PrescreeningActivity" />
+        <activity android:name=".page_aom.view.hotprospek.history.HistoryActivity" />
+        <activity android:name=".page_aom.view.hotprospek.sektorekonomi.SektorEkonomiActivity" />
+        <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.KelengkapanDokumenActivity" /> <!-- <activity android:name=".view.corelayout.login.LoginActivity"/> -->
+        <activity android:name=".page_aom.view.hotprospek.agunan.InfoAgunanActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.SetPengikatanActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanKiosInputActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanByCifActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanTerikatActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanTanahBangunanInputActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.MapsActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.ActivityAgunanTanahKosong" />
+        <activity android:name=".page_aom.view.approved.ApprovedActivity" />
+        <activity android:name=".page_aom.view.approved.ApprovedDetailActivity" />
+        <activity android:name=".page_aom.view.rejected.RejectedActivity" />
+        <activity android:name=".page_aom.view.rejected.RejectDetailActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanDepositoInputActivity" />
+        <activity android:name=".page_aom.view.hotprospek.agunan.AgunanKendaraanInputActivity" />
+        <activity android:name=".view.corelayout.activation.WelcomeActivity" />
+        <activity android:name=".view.corelayout.activation.ScanActivity" />
+        <activity android:name=".view.corelayout.login.LoginActivity2" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikActivity" />
+        <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikEditActivity" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_kurma_notif_large" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.application.bris.ikurma_nos_konsumer.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <service android:name=".service.NotificationService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+</manifest>
