@@ -28,8 +28,11 @@ import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.FragmentVerifikasiPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
@@ -38,23 +41,41 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-public class FragmentVerifikasiPendapatan extends Fragment  implements Step, View.OnClickListener, CameraListener {
+public class FragmentVerifikasiPendapatan extends Fragment  implements Step, GenericListenerOnSelect, View.OnClickListener, CameraListener {
     private FragmentVerifikasiPendapatanBinding binding;
     private DatePickerDialog dpSK;
     private Calendar calLahir;
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+    List<MGenericModel> dataDropdownPendapatan = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentVerifikasiPendapatanBinding.inflate(getLayoutInflater(),container,false);
         View view = binding.getRoot();
+        setParameterDropdown();
         onclickSelectDialog();
-        binding.etNominalGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalGaji));
-        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
-        binding.etTotalPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanPensiun));
-        binding.etVerifikasiGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiGaji));
+        numberTextEditor();
+        chageListener();
+        endIconClick();
+        disabledText();
+        return view;
+    }
+
+    private void endIconClick(){
+        binding.tfTanggalGaji.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
+        binding.tfVerifikasiGajiTercermin.getEndIconImageButton().setOnClickListener(v-> DialogGenericDataFromService.display(getFragmentManager(),binding.tfNorekTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this));
+    }
+    
+    private void disabledText(){
+        binding.etTanggalGaji.setFocusable(false);
+        binding.etVerifikasiGajiTercermin.setFocusable(false);
+    }
+
+    private void chageListener(){
         binding.etVerifikasiGaji.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,7 +97,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Vie
 
 
         });
-        binding.etVerifikasiTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiTunjangan));
+
         binding.etVerifikasiTunjangan.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -98,8 +119,14 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Vie
 
 
         });
+    }
 
-        return view;
+    private void numberTextEditor(){
+        binding.etNominalGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalGaji));
+        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
+        binding.etTotalPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanPensiun));
+        binding.etVerifikasiGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiGaji));
+        binding.etVerifikasiTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiTunjangan));
     }
 
 
@@ -112,6 +139,8 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Vie
         binding.rlDokumen2.setOnClickListener(this);
         binding.etTanggalGaji.setOnClickListener(this);
         binding.tfTanggalGaji.setOnClickListener(this);
+        binding.tfVerifikasiGajiTercermin.setOnClickListener(this);
+        binding.etVerifikasiGajiTercermin.setOnClickListener(this);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -130,9 +159,35 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Vie
             case R.id.tf_tanggal_gaji:
                 dpSKCalendar(v);
                 break;
-
+            case R.id.tf_verifikasi_gaji_tercermin:
+            case R.id.et_verifikasi_gaji_tercermin:
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfVerifikasiGajiTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
+                break;
         }
     }
+
+    private void setParameterDropdown(){
+        //dropdown kalkulator
+        dataDropdownPendapatan.add(new MGenericModel("1","Tercermin"));
+        dataDropdownPendapatan.add(new MGenericModel("2","Tercermin tapi nominal lebih rendah"));
+        dataDropdownPendapatan.add(new MGenericModel("3","Tercermin tapi Nominal lebih Tinggi"));
+        dataDropdownPendapatan.add(new MGenericModel("4","Tidak tercermin direkening"));
+
+    }
+
+
+    public void onSelect(String title, MGenericModel data) {
+        if(title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+            binding.etVerifikasiGajiTercermin.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+            binding.etVerifikasiGajiTercermin.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+            binding.etVerifikasiGajiTercermin.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+            binding.etVerifikasiGajiTercermin.setText(data.getDESC());
+        }
+    }
+
     private void dpSKCalendar(View v){
         calLahir = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
@@ -147,6 +202,10 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Vie
                     case R.id.et_tanggal_gaji :
                     case R.id.tf_tanggal_gaji :
                         binding.etTanggalGaji.setText(calLahirString);
+                        break;
+                    case R.id.et_norek_tercermin:
+                    case R.id.tf_norek_tercermin:
+                        DialogGenericDataFromService.display(getFragmentManager(),binding.tfNorekTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
                         break;
 
                 }

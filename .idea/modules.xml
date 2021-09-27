@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" filepath="$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" group="NOS-KONSUMER" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NOS-KONSUMER-PRAPEN.iml" filepath="$PROJECT_DIR$/.idea/modules/NOS-KONSUMER-PRAPEN.iml" group="NOS-KONSUMER-PRAPEN" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER-PRAPEN-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER-PRAPEN-app.iml" group="NOS-KONSUMER-PRAPEN/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="NOS-KONSUMER/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" filepath="$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER.app.iml" />
     </modules>
   </component>
 </project>

@@ -23,28 +23,44 @@ import androidx.core.content.FileProvider;
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPendapatanBinding ;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-public class ActivityDokumenPendapatan extends AppCompatActivity implements View.OnClickListener, CameraListener {
+public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect , View.OnClickListener, CameraListener {
 
     private ActivityPendapatanBinding binding;
     private DatePickerDialog dpSK;
     private Calendar calLahir;
     public static SimpleDateFormat dateClient = new SimpleDateFormat("MM-yyyy", Locale.US);
     public static SimpleDateFormat dateClient2 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+    List<MGenericModel> dataDropdownPendapatan = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPendapatanBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        numberText();
+        endIconClick();
+        onclickSelectDialog();
+        setContentView(view);
+        backgroundStatusBar();
+        setParameterDropdown();
+        disableEditText();
+        AppUtil.toolbarRegular(this, "Data Dokumen Pendapatan");
+    }
+    private void numberText(){
         binding.etGajiBersihP1.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiBersihP1));
         binding.etGajiBersihP2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiBersihP2));
         binding.etGajiBersihP3.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiBersihP3));
@@ -55,11 +71,34 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements View
         binding.etTotalDebit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalDebit2));
         binding.etTotalKredit1.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit1));
         binding.etTotalKredit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit2));
-        onclickSelectDialog();
-        setContentView(view);
-        backgroundStatusBar();
-        AppUtil.toolbarRegular(this, "Data Dokumen Pendapatan");
     }
+
+    private void disableEditText() {
+        binding.etVerfikasiGajiTunjangan.setFocusable(false);
+        binding.tfVerfikasiGajiTunjangan.setFocusable(false);
+        binding.etPeriodeAkhirWaktu1.setFocusable(false);
+        binding.etPeriodeAkhirWaktu2.setFocusable(false);
+        binding.etPeriodeAwalWaktu1.setFocusable(false);
+        binding.etPeriodeAwalWaktu2.setFocusable(false);
+        binding.etPeriodeGajiP1.setFocusable(false);
+        binding.etPeriodeGajiP2.setFocusable(false);
+        binding.etPeriodeGajiP3.setFocusable(false);
+        binding.etTglTunjanganP1.setFocusable(false);
+        binding.etTglTunjanganP2.setFocusable(false);
+        binding.etTglTunjanganP3.setFocusable(false);
+        binding.tfPeriodeAkhirWaktu1.setFocusable(false);
+        binding.tfPeriodeAkhirWaktu2.setFocusable(false);
+        binding.tfPeriodeAwalWaktu1.setFocusable(false);
+        binding.tfPeriodeAwalWaktu2.setFocusable(false);
+        binding.tfPeriodeGajiP1.setFocusable(false);
+        binding.tfPeriodeGajiP2.setFocusable(false);
+        binding.tfPeriodeGajiP3.setFocusable(false);
+        binding.tfTglTunjanganP1.setFocusable(false);
+        binding.tfTglTunjanganP2.setFocusable(false);
+        binding.tfTglTunjanganP3.setFocusable(false);
+    }
+
+
     private void backgroundStatusBar() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -67,7 +106,45 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements View
         }
     }
 
+    private void setParameterDropdown(){
+        //dropdown kalkulator
+        dataDropdownPendapatan.add(new MGenericModel("1","Tercermin"));
+        dataDropdownPendapatan.add(new MGenericModel("2","Tercermin tapi nominal lebih rendah"));
+        dataDropdownPendapatan.add(new MGenericModel("3","Tercermin tapi Nominal lebih Tinggi"));
+        dataDropdownPendapatan.add(new MGenericModel("4","Tidak tercermin direkening"));
+
+    }
+
+
+    public void onSelect(String title, MGenericModel data) {
+        if(title.equalsIgnoreCase(binding.tfVerfikasiGajiTunjangan.getLabelText())) {
+            binding.etVerfikasiGajiTunjangan.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerfikasiGajiTunjangan.getLabelText())) {
+            binding.etVerfikasiGajiTunjangan.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerfikasiGajiTunjangan.getLabelText())) {
+            binding.etVerfikasiGajiTunjangan.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfVerfikasiGajiTunjangan.getLabelText())) {
+            binding.etVerfikasiGajiTunjangan.setText(data.getDESC());
+        }
+    }
+
+    private void endIconClick(){
+        binding.tfVerfikasiGajiTunjangan.getEndIconImageButton().setOnClickListener(v -> DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfVerfikasiGajiTunjangan.getLabelText(),dataDropdownPendapatan, ActivityDokumenPendapatan.this));
+        binding.tfPeriodeAkhirWaktu1.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
+        binding.tfPeriodeAkhirWaktu2.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
+        binding.tfPeriodeAwalWaktu1.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
+        binding.tfPeriodeAwalWaktu2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfPeriodeGajiP1.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfPeriodeGajiP2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfPeriodeGajiP3.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfTglTunjanganP1.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfTglTunjanganP2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfTglTunjanganP3.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+    }
+
     private void onclickSelectDialog(){
+        binding.tfVerfikasiGajiTunjangan.setOnClickListener(this);
+        binding.etVerfikasiGajiTunjangan.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
         binding.etPeriodeAkhirWaktu1.setOnClickListener(this);
         binding.etPeriodeAkhirWaktu2.setOnClickListener(this);
@@ -170,62 +247,63 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements View
             case R.id.et_tgl_tunjangan_p2 :
             case R.id.et_tgl_tunjangan_p3 :
                 dpSKCalendar(v);
+                break;
+            case R.id.et_verfikasi_gaji_tunjangan:
+            case R.id.tf_verfikasi_gaji_tunjangan:
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfVerfikasiGajiTunjangan.getLabelText(),dataDropdownPendapatan, ActivityDokumenPendapatan.this);
+                break;
         }
     }
 
     private void dpSKCalendar(View v){
         calLahir = Calendar.getInstance();
-        DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                calLahir.set(Calendar.YEAR, year);
-                calLahir.set(Calendar.MONTH, month);
-                calLahir.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String calLahirString = dateClient.format(calLahir.getTime());
-                String calLahirString2 = dateClient2.format(calLahir.getTime());
-                switch (v.getId()){
-                    case R.id.et_periode_akhir_waktu1 :
-                    case R.id.tf_periode_akhir_waktu1 :
-                        binding.etPeriodeAkhirWaktu1.setText(calLahirString2);
-                        break;
-                    case R.id.et_periode_akhir_waktu2 :
-                    case R.id.tf_periode_akhir_waktu2 :
-                        binding.etPeriodeAkhirWaktu2.setText(calLahirString2);
-                        break;
-                    case R.id.et_periode_awal_waktu1 :
-                    case R.id.tf_periode_awal_waktu1 :
-                        binding.etPeriodeAwalWaktu1.setText(calLahirString2);
-                        break;
-                    case R.id.et_periode_awal_waktu2 :
-                    case R.id.tf_periode_awal_waktu2 :
-                        binding.etPeriodeAwalWaktu2.setText(calLahirString2);
-                        break;
-                    case R.id.et_periode_gaji_p1 :
-                    case R.id.tf_periode_gaji_p1 :
-                        binding.etPeriodeGajiP1.setText(calLahirString);
-                        break;
-                    case R.id.et_periode_gaji_p2 :
-                    case R.id.tf_periode_gaji_p2 :
-                        binding.etPeriodeGajiP2.setText(calLahirString);
-                        break;
-                    case R.id.et_periode_gaji_p3 :
-                    case R.id.tf_periode_gaji_p3 :
-                        binding.etPeriodeGajiP3.setText(calLahirString);
-                        break;
-                    case R.id.et_tgl_tunjangan_p1 :
-                    case R.id.tf_tgl_tunjangan_p1 :
-                        binding.etTglTunjanganP1.setText(calLahirString);
-                        break;
-                    case R.id.et_tgl_tunjangan_p2 :
-                    case R.id.tf_tgl_tunjangan_p2 :
-                        binding.etTglTunjanganP2.setText(calLahirString);
-                        break;
-                    case R.id.et_tgl_tunjangan_p3 :
-                    case R.id.tf_tgl_tunjangan_p3 :
-                        binding.etTglTunjanganP3.setText(calLahirString);
-                        break;
-                }
+        @SuppressLint("NonConstantResourceId") DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = (view, year, month, dayOfMonth) -> {
+            calLahir.set(Calendar.YEAR, year);
+            calLahir.set(Calendar.MONTH, month);
+            calLahir.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            String calLahirString = dateClient.format(calLahir.getTime());
+            String calLahirString2 = dateClient2.format(calLahir.getTime());
+            switch (v.getId()){
+                case R.id.et_periode_akhir_waktu1 :
+                case R.id.tf_periode_akhir_waktu1 :
+                    binding.etPeriodeAkhirWaktu1.setText(calLahirString2);
+                    break;
+                case R.id.et_periode_akhir_waktu2 :
+                case R.id.tf_periode_akhir_waktu2 :
+                    binding.etPeriodeAkhirWaktu2.setText(calLahirString2);
+                    break;
+                case R.id.et_periode_awal_waktu1 :
+                case R.id.tf_periode_awal_waktu1 :
+                    binding.etPeriodeAwalWaktu1.setText(calLahirString2);
+                    break;
+                case R.id.et_periode_awal_waktu2 :
+                case R.id.tf_periode_awal_waktu2 :
+                    binding.etPeriodeAwalWaktu2.setText(calLahirString2);
+                    break;
+                case R.id.et_periode_gaji_p1 :
+                case R.id.tf_periode_gaji_p1 :
+                    binding.etPeriodeGajiP1.setText(calLahirString);
+                    break;
+                case R.id.et_periode_gaji_p2 :
+                case R.id.tf_periode_gaji_p2 :
+                    binding.etPeriodeGajiP2.setText(calLahirString);
+                    break;
+                case R.id.et_periode_gaji_p3 :
+                case R.id.tf_periode_gaji_p3 :
+                    binding.etPeriodeGajiP3.setText(calLahirString);
+                    break;
+                case R.id.et_tgl_tunjangan_p1 :
+                case R.id.tf_tgl_tunjangan_p1 :
+                    binding.etTglTunjanganP1.setText(calLahirString);
+                    break;
+                case R.id.et_tgl_tunjangan_p2 :
+                case R.id.tf_tgl_tunjangan_p2 :
+                    binding.etTglTunjanganP2.setText(calLahirString);
+                    break;
+                case R.id.et_tgl_tunjangan_p3 :
+                case R.id.tf_tgl_tunjangan_p3 :
+                    binding.etTglTunjanganP3.setText(calLahirString);
+                    break;
             }
         };
 
