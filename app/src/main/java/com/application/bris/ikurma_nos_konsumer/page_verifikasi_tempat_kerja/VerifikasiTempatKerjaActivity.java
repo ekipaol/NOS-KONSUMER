@@ -119,6 +119,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btn_cek_lngp:
             case R.id.btn_send:
                 break;
 
@@ -131,6 +132,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
             case R.id.tf_kesimpulan_pensesuaian_verifikasi:
                 DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfKesimpulanPensesuaianVerifikasi.getLabelText(), dataDropdownTempatKerja, VerifikasiTempatKerjaActivity.this);
                 break;
+
             case R.id.rl_upload_dokumen:
             case R.id.iv_upload_dokumen:
             case R.id.btn_upload_dokumen:
@@ -145,8 +147,8 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         dataDropdownTempatKerja.add(new MGenericModel("Telah Sesuai", "Telah Sesuai"));
         dataDropdownTempatKerja.add(new MGenericModel("Tidak Sesuai Kebutuhan", "Tidak Sesuai Kebutuhan"));
 
-     //   dataDropdownLGNP.add(new MGenericModel("Ya", "Ya"));
-   //     dataDropdownLGNP.add(new MGenericModel("Tidak", "Tidak"));
+        dataDropdownLGNP.add(new MGenericModel("Ya", "Ya"));
+        dataDropdownLGNP.add(new MGenericModel("Tidak", "Tidak"));
     }
 
     private void onClickEndIcon() {
@@ -169,14 +171,17 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     public void onSelect(String title, MGenericModel data) {
         if(title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
             binding.etMenggunakanLngp.setText(data.getDESC());
-        }else if (title.equalsIgnoreCase(binding.tfKesimpulanPensesuaianVerifikasi.getLabelText())) {
-            binding.etKesimpulanPensesuaianVerifikasi.setText(data.getDESC());
+//        }else if (title.equalsIgnoreCase(binding.btnCekLngp.getLabelText())) {
+//            binding.btnCekLngp.setText(data.getDESC());
+//       }else if (title.equalsIgnoreCase(binding.btnSend.getLabelText())) {
+//          binding.btnSend.setText(data.getDESC());
         }
     }
 
     private void disableEditText() {
         binding.etMenggunakanLngp.setFocusable(false);
         binding.etKesimpulanPensesuaianVerifikasi.setFocusable(false);
+        binding.etTotalPendapatan.setFocusable(false);
     }
 
     private void allOnclick() {
@@ -236,7 +241,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         }
     }
 
-    private void directOpenCamera(int cameraCode) {
+    public void directOpenCamera(int cameraCode) {
         Uri outputFileUri = getCaptureImageOutputUri();
         Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
