@@ -35,6 +35,7 @@
     <string name="submenu_detil_aplikasi_d4_data_tempat_kerja">Data Tempat Kerja</string>
     <string name="submenu_detil_aplikasi_d4_pendapatan_verin">Pendapatan Verin</string>
     <string name="submenu_detil_aplikasi_d4_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d4_ideb_verin">IDEB Verin</string>
     <string name="submenu_detil_aplikasi_d4_kualitas_pembiayaan">Kualitas Pembiayaan</string>
     <string name="submenu_detil_aplikasi_d4_jangka_waktu">Data Jangka Waktu</string>
     <string name="submenu_detil_aplikasi_d4_verifikasi">Verifikasi</string>

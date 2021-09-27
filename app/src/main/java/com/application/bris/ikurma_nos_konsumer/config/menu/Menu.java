@@ -64,6 +64,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_data_tempat_kerja)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_pendapatan_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_ideb_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d4_verifikasi)));

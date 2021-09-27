@@ -47,10 +47,10 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
 
     @Override
     public void onBindViewHolder(@NonNull SubmenuDetilAplikasiAdapter.MenuViewHolder holder, final int position) {
-        binding.ivIconmenu.setImageResource(listMenu.get(position).getIcon());
-        binding.tvTitlemenu.setText(listMenu.get(position).getTitle());
+        holder.iv_iconmenu.setImageResource(listMenu.get(position).getIcon());
+        holder.tv_titlemenu.setText(listMenu.get(position).getTitle());
 
-        binding.rlMenu.setOnClickListener(new View.OnClickListener() {
+        holder.rl_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMenuClickListener.onMenuClick(listMenu.get(position).getTitle());
@@ -65,16 +65,16 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-//        private RelativeLayout rl_menu;
-//        private ImageView iv_iconmenu, iv_complete;
-//        private TextView tv_titlemenu;
+        private RelativeLayout rl_menu;
+        private ImageView iv_iconmenu;
+        private TextView tv_titlemenu;
 //        private TextView tv_opsi;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-//            rl_menu = binding.rlMenu;
-//            iv_iconmenu = binding.ivIconmenu;
-//            tv_titlemenu = binding.tvTitlemenu;
+            rl_menu = binding.rlMenu;
+            iv_iconmenu = binding.ivIconmenu;
+            tv_titlemenu = binding.tvTitlemenu;
 //            iv_complete = binding.ivComplete;
 //            tv_opsi = binding.tvOpsi;
         }

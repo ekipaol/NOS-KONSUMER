@@ -31,7 +31,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelectRecycler;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,19 +42,34 @@ public class DialogGenericDataFromService extends DialogFragment  {
     private ImageView btn_close;
     private TextView tv_title;
     private GenericAdapter genericAdapter;
+
     private RecyclerView rv_generic;
     private static List<MGenericModel> data;
-    private static GenericListenerOnSelect listener;
-    public static final String TAG = "example_dialog";
     public List<MGenericModel> dataKeyvalue;
+    private static GenericListenerOnSelect listener;
+    private static GenericListenerOnSelectRecycler listenerRecycler;
+    public static final String TAG = "example_dialog";
+
     private SearchView searchView;
 
+    private static int posisiTerakhir;
     private static String title;
 
     public static DialogGenericDataFromService display(FragmentManager fragmentManager, String titleId, List<MGenericModel> mdata, GenericListenerOnSelect mlistener) {
         title = titleId;
         data =  mdata;
         listener = mlistener;
+        DialogGenericDataFromService dialogAddress = new DialogGenericDataFromService();
+        dialogAddress.show(fragmentManager, TAG);
+        return dialogAddress;
+    }
+
+    public static DialogGenericDataFromService displayByPosition(FragmentManager fragmentManager, String titleId, List<MGenericModel> mdata, GenericListenerOnSelectRecycler mlistener,int posisi) {
+        title = titleId;
+        data =  mdata;
+        listenerRecycler = mlistener;
+        listener=null;
+        posisiTerakhir =posisi;
         DialogGenericDataFromService dialogAddress = new DialogGenericDataFromService();
         dialogAddress.show(fragmentManager, TAG);
         return dialogAddress;
@@ -117,7 +134,13 @@ public class DialogGenericDataFromService extends DialogFragment  {
 
     public void initializeProduct(){
         dataKeyvalue =  data;
-        genericAdapter = new GenericAdapter(getContext(), dataKeyvalue, title, listener);
+        if(listener!=null){
+            genericAdapter = new GenericAdapter(getContext(), dataKeyvalue, title, listener);
+        }
+        else{
+            genericAdapter = new GenericAdapter(getContext(), dataKeyvalue, title, listenerRecycler, posisiTerakhir);
+        }
+
         rv_generic.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_generic.setItemAnimator(new DefaultItemAnimator());
         rv_generic.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
@@ -161,6 +184,8 @@ public class DialogGenericDataFromService extends DialogFragment  {
         private List<MGenericModel> datafiltered;
         private String title;
         private GenericListenerOnSelect listener;
+        private GenericListenerOnSelectRecycler listenerRecycler;
+        private int position=0;
 
         public GenericAdapter(Context context, List<MGenericModel> data, String title, GenericListenerOnSelect listener) {
             this.context = context;
@@ -168,6 +193,16 @@ public class DialogGenericDataFromService extends DialogFragment  {
             this.datafiltered =  data;
             this.title = title;
             this.listener = listener;
+        }
+
+        public GenericAdapter(Context context, List<MGenericModel> data, String title, GenericListenerOnSelectRecycler listener,int posisi) {
+            this.context = context;
+            this.data =  data;
+            this.datafiltered =  data;
+            this.title = title;
+            this.listenerRecycler = listener;
+            this.listener=null;
+            this.position=posisi;
         }
 
         @NonNull
@@ -194,8 +229,17 @@ public class DialogGenericDataFromService extends DialogFragment  {
             holder.rl_generic.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onSelect(title, datas);
-                    dismiss();
+                    if(listener!=null){
+                        AppUtil.logSecure("cekAdapter","dia masuk ke listener non recycler");
+                        listener.onSelect(title, datas);
+                        dismiss();
+                    }
+                    else{
+                        AppUtil.logSecure("cekAdapter","dia masuk ke listener recycler posisi "+posisiTerakhir);
+                        listenerRecycler.onSelect(title,datas,posisiTerakhir);
+                        dismiss();
+                    }
+
                 }
             });
         }

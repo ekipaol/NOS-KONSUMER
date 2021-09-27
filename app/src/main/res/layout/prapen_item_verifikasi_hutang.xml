@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_data_hutang"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="12dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/colorWhite">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_nama_pemberi_hutang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="{Nama Pemberi Hutang}"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="@color/colorBlackHeader"
+            android:background="@color/colorBackgroundGrey1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nominal Pinjaman"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_nominal_pinjaman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{nominal}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sisa Jangka Waktu"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_sisa_jangka_waktu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Sisa jangka waktu}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Angsuran Bulanan"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_angsuran_bulanan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Angsuran_bulanan}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Treatment Pembiayaan Eksisting"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_treatment_pembiayaan_eksisting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Treatment}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dash_line"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layerType="software"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_verifikasi_fasilitas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:labelText="Hasil Verifikasi Fasilitas"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:alwaysShowHint="true"
+                app:primaryColor="@color/text_color"
+                app:secondaryColor="@color/text_color"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_hasil_verifikasi_fasilitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih"
+                    android:inputType="textMultiLine" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

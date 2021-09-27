@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_data_hutang"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="12dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/colorWhite">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_nama_fitur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="{RAC : Contoh nama poin RAC}"
+            android:textStyle="bold"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="@color/colorBlackHeader"
+            android:background="@color/colorBackgroundGrey1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil Cek Engine"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_hasil_cek_engine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Sesuai/Tidak Sesuai}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dash_line"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layerType="software"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_hasil_cek_verifikator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:labelText="Hasil Cek Verifikator"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:alwaysShowHint="true"
+                app:primaryColor="@color/text_color"
+                app:secondaryColor="@color/text_color"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_hasil_cek_verifikator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih"
+                    android:inputType="text" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_catatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                app:isResponsiveIconColor="true"
+                app:labelText="Catatan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/text_color"
+                app:secondaryColor="@color/text_color"
+                app:alwaysShowHint="true"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_catatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Catatan bersifat opsional"
+                    android:minLines="3"
+                    android:inputType="textMultiLine" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_upload_dokumen_tambahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dokumen Tambahan"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <Button
+                android:id="@+id/bt_upload_dokumen_tambahan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:text="Upload"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_dokumen_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            android:visibility="visible">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dokumen"
+                android:textSize="12sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:textStyle="bold"/>
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_dokumen"
+                android:layout_width="170dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                app:riv_border_width="1dip"
+                app:riv_border_color="#f1efef"
+                app:riv_corner_radius="8dip"
+                android:layout_gravity="center"
+                android:src="@mipmap/ico_img_for_upload"
+                android:layout_centerInParent="true"
+                android:elevation="10dp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

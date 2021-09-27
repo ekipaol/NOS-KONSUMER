@@ -19,7 +19,6 @@ import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotpro
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
@@ -27,6 +26,10 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo.MemoActivity;
 import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.ActivityDokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.ActivityVerifikasiPendapatan;
@@ -190,6 +193,26 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //D4
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_pendapatan_verin))){
             Intent it = new Intent(this, ActivityVerifikasiPendapatan.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_hasil_rac))){
+            Intent it = new Intent(this, VerifikasiRacActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_hasil_fitur))){
+            Intent it = new Intent(this, VerifikasiFiturActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_hutang_verin))){
+            Intent it = new Intent(this, VerifikasiHutangActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_ideb_verin))){
+            Intent it = new Intent(this, VerifikasiIdebActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }

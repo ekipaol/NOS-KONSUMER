@@ -7,4 +7,5 @@ public interface GenericListenerOnSelect {
         void onSelect(String title, MGenericModel data);
 
 
+
 }
