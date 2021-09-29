@@ -65,4 +65,11 @@
         <item name="android:background">@drawable/spinner_background_with_arrow</item>
     </style>
 
+    <style name="Bordered.Button.Custom" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/shapeborderprimary</item>
+    </style>
+
 </resources>

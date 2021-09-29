@@ -17,6 +17,7 @@
     <string name="submenu_detil_aplikasi_d1_data_pembiayaan">Data Pembiayaan</string>
     <string name="submenu_detil_aplikasi_d1_data_nasabah">Data Nasabah</string>
     <string name="submenu_detil_aplikasi_d1_data_marketing">Data Marketing</string>
+    <string name="submenu_detil_aplikasi_d1_data_dedupe">Data DEDUPE</string>
 
     <!--    D3-->
     <string name="submenu_detil_aplikasi_d3_canvassing">Hasil Canvassing</string>
@@ -49,6 +50,7 @@
     <string name="submenu_detil_aplikasi_d5_data_tempat_kerja">Data Tempat Kerja</string>
     <string name="submenu_detil_aplikasi_d5_pendapatan_verin">Pendapatan Verin</string>
     <string name="submenu_detil_aplikasi_d5_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d5_ideb_verin">IDEB Verin</string>
     <string name="submenu_detil_aplikasi_d5_kualitas_pembiayaan">Kualitas Pembiayaan</string>
     <string name="submenu_detil_aplikasi_d5_jangka_waktu">Data Jangka Waktu</string>
     <string name="submenu_detil_aplikasi_d5_verifikasi">Verifikasi</string>
@@ -61,11 +63,16 @@
     <string name="submenu_detil_aplikasi_d6_data_tempat_kerja">Data Tempat Kerja</string>
     <string name="submenu_detil_aplikasi_d6_pendapatan_verin">Pendapatan Verin</string>
     <string name="submenu_detil_aplikasi_d6_hutang_verin">Hutang Verin</string>
+    <string name="submenu_detil_aplikasi_d6_ideb_verin">IDEB Verin</string>
     <string name="submenu_detil_aplikasi_d6_kualitas_pembiayaan">Kualitas Pembiayaan</string>
     <string name="submenu_detil_aplikasi_d6_jangka_waktu">Data Jangka Waktu</string>
     <string name="submenu_detil_aplikasi_d6_kalkulator_pemutus">Kalkulator Pemutus</string>
     <string name="submenu_detil_aplikasi_d6_verifikasi">Verifikasi</string>
     <string name="submenu_detil_aplikasi_d6_memo">Memo</string>
+
+    <!--G1-->
+    <string name="submenu_detil_aplikasi_g1_asesoir">Data Asesoir</string>
+    <string name="submenu_detil_aplikasi_g1_akad">Data Akad</string>
 
 
     <!--String Menu AOM-->

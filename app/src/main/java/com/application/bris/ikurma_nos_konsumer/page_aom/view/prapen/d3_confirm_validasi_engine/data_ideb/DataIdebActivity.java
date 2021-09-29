@@ -80,7 +80,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
 
 
     public void customToolbar(){
-        binding.toolbarNosearch.tvPageTitle.setText("Data Hutang");
+        binding.toolbarNosearch.tvPageTitle.setText("Data IDEB");
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,9 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.canvasing.HasilCanvasingActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
@@ -30,11 +32,14 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifika
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.AsesoirActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo.MemoActivity;
 import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.ActivityDokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.ActivityVerifikasiPendapatan;
+import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.Activity_DSR_DBR_Nasabah;
 import com.application.bris.ikurma_nos_konsumer.page_data_nasabah.dataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_simulasi_angsuran.kalkulatorsimulasiangsuran;
+import com.application.bris.ikurma_nos_konsumer.page_verifikasi_tempat_kerja.VerifikasiTempatKerjaActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +69,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         appPreferences = new AppPreferences(this);
 
         //pantekan status untuk testing
-        status="Menunggu Putusan Pemutus";
+        status="Asesoir dan Akad";
         customToolbar();
         backgroundStatusBar();
         isiDataDropdown();
@@ -138,6 +143,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if(namaMenu.equalsIgnoreCase("menunggu putusan pemutus")){
             Menu.SubmenuD6(this, menu);
         }
+        else if(namaMenu.equalsIgnoreCase("asesoir dan akad")){
+            Menu.SubmenuG1(this, menu);
+        }
         // TODO: 14/09/21 harus ada if status d1, maka tampil menu d1, dst
      
         return menu;
@@ -149,6 +157,11 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //FLOW D1
         if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_nasabah))){
             Intent it = new Intent(this, DataNasabahPrapenActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_dedupe))){
+            Intent it = new Intent(this, DataDedupeActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
@@ -189,6 +202,11 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_canvassing))){
+            Intent it = new Intent(this, HasilCanvasingActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
 
         //D4
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_pendapatan_verin))){
@@ -216,7 +234,23 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_data_tempat_kerja))){
+            Intent it = new Intent(this, VerifikasiTempatKerjaActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_kualitas_pembiayaan))){
+            Intent it = new Intent(this, Activity_DSR_DBR_Nasabah.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
 
+        //G1
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_asesoir))){
+            Intent it = new Intent(this, AsesoirActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
         //MEMO
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_memo))){
             Intent it = new Intent(this, MemoActivity.class);
@@ -255,6 +289,14 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             dataDropdownFlow.add(new MGenericModel("2","Verifikasi + Otor"));
             dataDropdownFlow.add(new MGenericModel("3","Confirm Verifikasi"));
             dataDropdownFlow.add(new MGenericModel("4","Menunggu Putusan Pemutus"));
+        }
+        //g1
+        else if(status.equalsIgnoreCase("Asesoir dan Akad")){
+            dataDropdownFlow.add(new MGenericModel("1","Confirm Validasi Engine"));
+            dataDropdownFlow.add(new MGenericModel("2","Verifikasi + Otor"));
+            dataDropdownFlow.add(new MGenericModel("3","Confirm Verifikasi"));
+            dataDropdownFlow.add(new MGenericModel("4","Menunggu Putusan Pemutus"));
+            dataDropdownFlow.add(new MGenericModel("4","Asesoir dan Akad"));
         }
 
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,14 +44,14 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
     @Override
     public void onBindViewHolder(@NonNull DataIdebAdapter.MenuViewHolder holder, final int position) {
-        binding.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
-        binding.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebet()));
-        binding.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
-        binding.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
-        binding.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+        holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
+        holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebet()));
+        holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
+        holder.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
+        holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
 
 
-        binding.btnUbah.setOnClickListener(new View.OnClickListener() {
+        holder.btnUbah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "clicking", Toast.LENGTH_SHORT).show();
@@ -71,12 +72,18 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        Button btnhapus;
+        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting;
+        Button btnUbah;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            btnhapus=binding.btnUbah;
+            btnUbah=binding.btnUbah;
 
+            tvNamaLembagaKeuangan=binding.tvNamaLembagaKeuangan;
+            tvBakiDebet=binding.tvBakiDebet;
+            tvKualitasPembiayaan=binding.tvKualitasPembiayaan;
+            tvPerkiraanAngsuranBulanan=binding.tvPerkiraanAngsuranBulanan;
+            tvTreatmentPembiayaanEksisting=binding.tvTreatmentPembiayaanEksisting;
         }
 
     }

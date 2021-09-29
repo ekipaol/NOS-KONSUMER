@@ -13,21 +13,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
+            android:layout_marginTop="@dimen/toolbar_height_default"
             android:orientation="vertical"
             android:paddingTop="20dp">
 
 
             <LinearLayout
-                android:id="@+id/ll_data_pembiayaan"
+                android:id="@+id/ll_data_marketing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/toolbar_height_default"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Input Asesoir "
+                    android:textSize="16sp" />
+
 
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_jenis_tipe_produk"
+                    android:id="@+id/tf_pejabat_penandatangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -35,17 +45,17 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Jenis/Tipe Produk"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:labelText="Pejabat Penandatangan"
                     app:alwaysShowHint="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_jenis_tipe_produk"
+                        android:id="@+id/et_pejabat_penandatangan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pilih"
@@ -53,25 +63,69 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_segmen"
+                    android:id="@+id/tf_nama_pejabat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Segmen"
-                    app:alwaysShowHint="true"
+                    app:labelText="Nama Pejabat Penandatangan"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_segmen"
+                        android:id="@+id/et_nama_pejabat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomor_skpp_pejabat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nomor SKPP Pejabat"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_ao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tanggal_surat_keputusan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_date"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Tanggal Surat Keputusan"
+                    app:alwaysShowHint="true"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tanggal_surat_keputusan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pilih"
@@ -79,51 +133,47 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_jenis_pembiayaan"
+                    android:id="@+id/tf_nomor_kua"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Jenis Pembiayaan"
-                    app:alwaysShowHint="true"
+                    app:labelText="Nomor KUA"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_jenis_pembiayaan"
+                        android:id="@+id/et_nomor_kua"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                       android:hint="Pilih"
                         android:inputType="text" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_program"
+                    android:id="@+id/tf_tanggal_surat_kuasa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_date"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Program"
+                    app:labelText="Tanggal Surat Kuasa"
                     app:alwaysShowHint="true"
                     app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_program"
+                        android:id="@+id/et_tanggal_surat_kuasa"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Pilih"
@@ -131,148 +181,125 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_tujuan_pembiayaan"
+                    android:id="@+id/tf_kota_penandatanganan_dokumen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Tujuan Pembiayaan"
-                    app:alwaysShowHint="true"
+                    app:labelText="Kode Penandatanganan Dokumen"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_tujuan_pembiayaan"
+                        android:id="@+id/et_kota_penandatanganan_dokumen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Pilih"
                         android:inputType="text" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Data Rekening "
+                    android:textSize="16sp" />
+
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_memiliki_aset"
+                    android:id="@+id/tf_nomor_rekening_bsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Memiliki Aset"
-                    app:alwaysShowHint="true"
+                    app:labelText="Nomor Rekening BSI"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_memiliki_aset"
+                        android:id="@+id/et_nomor_rekening_bsi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Pilih"
-                        android:inputType="text" />
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_price_ditawarkan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Price yang Ditawarkan"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_price_ditawarkan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:suffix="%"
-                        android:maxLength="3"
                         android:inputType="number" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <Button
+                    android:id="@+id/btn_cek_nomor_rekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shapeborderprimary"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:text="Cek Nomor Rekening"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary" />
+
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_akad_pembiayaan"
+                    android:id="@+id/tf_atas_nama_rekening"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Akad Pembiayaan"
+                    app:labelText="Atas Nama Rekening"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_akad_pembiayaan"
+                        android:id="@+id/et_atas_nama_rekening"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" "
                         android:inputType="text" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <LinearLayout
-                    android:id="@+id/ll_syarat_umum_akad"
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nomor_cif"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/bordertextbox_info"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_address"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nomor CIF"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_info_outline_secondary_24dp"
-                        android:tint="@color/colorBlackHeader"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginRight="6dp"/>
-
-                    <TextView
-                        android:id="@+id/tv_info"
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nomor_cif"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="{Syarat Akad}"
-                        android:textSize="12sp"
-                        android:textColor="@color/colorBlackHeader"
-                        android:fontFamily="@font/muli_r"/>
-
-                </LinearLayout>
-
-
+                        android:inputType="text" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <Button
-                    android:id="@+id/btn_simpan_data_pembiayaan"
+                    android:id="@+id/btn_simpan_data_asesoir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
@@ -282,6 +309,18 @@
                     />
 
 
+                <Button
+                    android:id="@+id/btn_useless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:visibility="invisible"
+                    android:text="not used"
+                    android:padding="8dp"
+                    style="@style/Bordered.Button.Custom"
+                    />
 
             </LinearLayout>
 

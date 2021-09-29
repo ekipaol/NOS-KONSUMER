@@ -40,6 +40,7 @@ public class Menu {
     //prapen nos
     public static void SubmenuD1(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d1_data_dedupe)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d1_data_nasabah)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d1_data_marketing)));
 
@@ -72,31 +73,36 @@ public class Menu {
     }
 
     public static void SubmenuD5(Context context, List<ListViewSubmenuHotprospek> menu){
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil Canvassing"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Kalkulator Verin"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil RAC"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil Fitur"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Data Tempat Kerja"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Pendapatan Verin"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hutang Verin"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Kualitas Pembiayaan"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Data Jangka Waktu"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Verifikasi"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Memo"));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_canvassing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_kalkulator_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_hasil_rac)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_hasil_fitur)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_data_tempat_kerja)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_pendapatan_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_ideb_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_kualitas_pembiayaan)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_jangka_waktu)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d5_verifikasi)));
     }
 
     public static void SubmenuD6(Context context, List<ListViewSubmenuHotprospek> menu){
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil Canvassing"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil RAC"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hasil Fitur"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Data Tempat Kerja"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Pendapatan Verin"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Hutang Verin"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Kualitas Pembiayaan"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Data Jangka Waktu"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Kalkulator Pemutus"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Verifikasi"));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,"Memo"));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_canvassing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_hasil_rac)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_hasil_fitur)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_data_tempat_kerja)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_pendapatan_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_ideb_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_kualitas_pembiayaan)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_jangka_waktu)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_kalkulator_pemutus)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_d6_verifikasi)));
+    }
+
+    public static void SubmenuG1(Context context, List<ListViewSubmenuHotprospek> menu){
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_g1_asesoir)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.banner_placeholder,context.getString(R.string.submenu_detil_aplikasi_g1_akad)));
     }
 
     public static void SubmenuHotprospek(Context context, List<ListViewSubmenuHotprospek> menu){

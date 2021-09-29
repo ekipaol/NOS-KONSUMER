@@ -2,6 +2,7 @@ package com.application.bris.ikurma_nos_konsumer.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -39,6 +40,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,6 +63,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -211,15 +214,30 @@ public class AppUtil {
         return kursIDN.format(amountDouble);
     }
 
-//    public static String parseRupiahLongNoSymbol(Long amount){
-//        Double amountDouble = new Double(amount);
-//        DecimalFormat kursIDN = (DecimalFormat) DecimalFormat.getCurrencyInstance();
-//        DecimalFormatSymbols formatRP = new DecimalFormatSymbols();
-//        formatRP.setCurrencySymbol("");
-//        formatRP.setMonetaryDecimalSeparator(',');
-//        formatRP.setGroupingSeparator('.');
-//        kursIDN.setDecimalFormatSymbols(formatRP);
-//        return kursIDN.format(amountDouble);
+    public static void genericCalendarDialog(Context context,EditText editText){
+        SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        Calendar calendar;
+        DatePickerDialog datePickerDialog;
+        calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String calLahirString = dateClient.format(calendar.getTime());
+                editText.setText(calLahirString);
+            }
+        };
+
+        datePickerDialog = new DatePickerDialog(context, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+        datePickerDialog.show();
+    }
+
+
 //    }
 
     public static String parseValas(String amount){

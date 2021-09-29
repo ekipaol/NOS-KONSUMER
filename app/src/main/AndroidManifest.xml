@@ -14,7 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:allowBackup">
-        <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.AsesoirActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity" />
+        <activity android:name=".page_data_nasabah.Activity_DSR_DBR_Nasabah" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.canvasing.HasilCanvasingActivity" />
+        <activity android:name=".page_verifikasi_tempat_kerja.VerifikasiTempatKerjaActivity" />
+        <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity" />
@@ -168,14 +173,14 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
 
 </manifest>

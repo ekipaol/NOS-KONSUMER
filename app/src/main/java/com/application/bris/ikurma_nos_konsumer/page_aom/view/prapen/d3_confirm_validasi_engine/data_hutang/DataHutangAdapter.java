@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,11 +40,11 @@ public class DataHutangAdapter extends RecyclerView.Adapter<DataHutangAdapter.Me
     @Override
     public void onBindViewHolder(@NonNull DataHutangAdapter.MenuViewHolder holder, final int position) {
         AppUtil.logSecure("bangke",data.get(position).getNamaPemberiHutang());
-        binding.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiHutang());
-        binding.tvNominalPinjaman.setText(AppUtil.parseRupiah(data.get(position).getNominalPinjaman()));
-        binding.tvSisaJangkaWaktu.setText(data.get(position).getSisaJangkaWaktu()+" Bulan");
-        binding.tvAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranBulanan()));
-        binding.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+        holder.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiHutang());
+        holder.tvNominalPinjaman.setText(AppUtil.parseRupiah(data.get(position).getNominalPinjaman()));
+        holder.tvSisaJangkaWaktu.setText(data.get(position).getSisaJangkaWaktu()+" Bulan");
+        holder.tvAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranBulanan()));
+        holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
 
         holder.btnhapus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,11 +93,18 @@ public class DataHutangAdapter extends RecyclerView.Adapter<DataHutangAdapter.Me
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
+        TextView tvNamaPemberiHutang,tvNominalPinjaman,tvSisaJangkaWaktu,tvAngsuranBulanan,tvTreatmentPembiayaanEksisting;
         Button btnhapus;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
             btnhapus=binding.btnHapus;
+            tvNamaPemberiHutang=binding.tvNamaPemberiHutang;
+            tvNominalPinjaman=binding.tvNominalPinjaman;
+            tvSisaJangkaWaktu=binding.tvSisaJangkaWaktu;
+            tvAngsuranBulanan=binding.tvAngsuranBulanan;
+            tvTreatmentPembiayaanEksisting=binding.tvTreatmentPembiayaanEksisting;
+
 
         }
 
