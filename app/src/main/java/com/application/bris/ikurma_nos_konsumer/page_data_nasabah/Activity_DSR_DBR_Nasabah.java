@@ -24,8 +24,17 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity {
         setContentView(view);
         numberText();
         onchangeText();
+        disableText();
 
 
+    }
+
+    private void disableText(){
+        binding.etSisapenghasilan.setFocusable(false);
+        binding.etSisaDsrDbr.setFocusable(false);
+        binding.etMaxAngsuran.setFocusable(false);
+        binding.etDsrDbr.setFocusable(false);
+        binding.etKetentuan.setFocusable(false);
     }
 
     private void onchangeText(){

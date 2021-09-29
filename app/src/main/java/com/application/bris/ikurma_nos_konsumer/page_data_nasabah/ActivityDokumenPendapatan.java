@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
-import android.widget.DatePicker;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -37,6 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
+
 public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect , View.OnClickListener, CameraListener {
 
     private ActivityPendapatanBinding binding;
@@ -58,8 +61,137 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         backgroundStatusBar();
         setParameterDropdown();
         disableEditText();
+
         AppUtil.toolbarRegular(this, "Data Dokumen Pendapatan");
     }
+
+
+    private boolean validateData(){
+        if(binding.etGajiBersihP1.getText().toString().trim().isEmpty() || binding.etGajiBersihP1.getText().toString().trim().equalsIgnoreCase("0")){
+            binding.tfGajiBersihP1.setError(binding.tfGajiBersihP1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfGajiBersihP1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etPeriodeGajiP1.getText().toString().trim().isEmpty() || binding.etPeriodeGajiP1.getText().toString().trim().equalsIgnoreCase(" ")){
+            binding.tfPeriodeGajiP1.setError(binding.tfPeriodeGajiP1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            binding.etGajiBersihP1.requestFocus();
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeGajiP1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etTunjanganP1.getText().toString().trim().isEmpty() || binding.etTunjanganP1.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfTunjanganP1.setError(binding.tfTunjanganP1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etGajiBersihP2.getText().toString().trim().isEmpty() || binding.etGajiBersihP2.getText().toString().trim().equalsIgnoreCase("0")){
+            binding.tfGajiBersihP2.setError(binding.tfGajiBersihP2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfGajiBersihP2.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etPeriodeGajiP2.getText().toString().trim().isEmpty() || binding.etPeriodeGajiP2.getText().toString().trim().equalsIgnoreCase(" ")){
+            binding.tfPeriodeGajiP2.setError(binding.tfPeriodeGajiP2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            binding.etGajiBersihP2.requestFocus();
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeGajiP2.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etTunjanganP2.getText().toString().trim().isEmpty() || binding.etTunjanganP2.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfTunjanganP2.setError(binding.tfTunjanganP2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP2.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        } else if(binding.etGajiBersihP3.getText().toString().trim().isEmpty() || binding.etGajiBersihP3.getText().toString().trim().equalsIgnoreCase("0")){
+            binding.tfGajiBersihP3.setError(binding.tfGajiBersihP3.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfGajiBersihP3.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etPeriodeGajiP3.getText().toString().trim().isEmpty() || binding.etPeriodeGajiP3.getText().toString().trim().equalsIgnoreCase(" ")){
+            binding.tfPeriodeGajiP3.setError(binding.tfPeriodeGajiP3.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            binding.etGajiBersihP3.requestFocus();
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeGajiP3.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etTunjanganP3.getText().toString().trim().isEmpty() || binding.etTunjanganP3.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfTunjanganP3.setError(binding.tfTunjanganP3.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP3.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etVerfikasiGajiTunjangan.getText().toString().trim().isEmpty() || binding.etVerfikasiGajiTunjangan.getText().toString().trim().equalsIgnoreCase("Pilih")){
+            binding.tfVerfikasiGajiTunjangan.setError(binding.tfVerfikasiGajiTunjangan.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfVerfikasiGajiTunjangan.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etNorekGaji.getText().toString().trim().isEmpty() || binding.etNorekGaji.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfNorekGaji.setError(binding.tfNorekGaji.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekGaji.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etNorekTunjangan.getText().toString().trim().isEmpty() || binding.etNorekTunjangan.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfNorekTunjangan.setError(binding.tfNorekTunjangan.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekTunjangan.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }  else if(binding.etNamaBank.getText().toString().trim().isEmpty() || binding.etNamaBank.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfNamaBank.setError(binding.tfNamaBank.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNamaBank.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etNorek.getText().toString().trim().isEmpty() || binding.etNorek.getText().toString().trim().equalsIgnoreCase("")){
+            binding.tfNorek.setError(binding.tfNorek.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorek.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etPeriodeAwalWaktu1.getText().toString().trim().isEmpty() || binding.etPeriodeAwalWaktu1.getText().toString().trim().equalsIgnoreCase(" ")){
+            binding.tfPeriodeAwalWaktu1.setError(binding.tfPeriodeAwalWaktu1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            binding.tfNorek.requestFocus();
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAwalWaktu1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etPeriodeAkhirWaktu1.getText().toString().trim().isEmpty() || binding.etPeriodeAkhirWaktu1.getText().toString().trim().equalsIgnoreCase(" ")){
+            binding.tfPeriodeAkhirWaktu1.setError(binding.tfPeriodeAkhirWaktu1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            binding.tfNorek.requestFocus();
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAkhirWaktu1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        }else if(binding.etTotalDebit1.getText().toString().trim().isEmpty() || binding.etTotalDebit1.getText().toString().trim().equalsIgnoreCase("0")){
+            binding.tfTotalDebit1.setError(binding.tfTotalDebit1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalDebit1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+        } else if(binding.etTotalKredit1.getText().toString().trim().isEmpty() || binding.etTotalKredit1.getText().toString().trim().equalsIgnoreCase("0")){
+            binding.tfTotalKredit1.setError(binding.tfTotalKredit1.getLabelText()+" "+getString(R.string.title_validate_field),true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalKredit1.getLabelText()+" "+getString(R.string.title_validate_field));
+            return false;
+
+//        }else if(binding.etNorekBsi.getText().toString().trim().isEmpty() || binding.etNorekBsi.getText().toString().trim().equalsIgnoreCase("")){
+//            binding.tfNorekBsi.setError(binding.tfNorekBsi.getLabelText()+" "+getString(R.string.title_validate_field),true);
+//            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekBsi.getLabelText()+" "+getString(R.string.title_validate_field));
+//            return false;
+//
+//        }else if(binding.etPeriodeAwalWaktu2.getText().toString().trim().isEmpty() || binding.etPeriodeAwalWaktu2.getText().toString().trim().equalsIgnoreCase(" ")){
+//            binding.tfPeriodeAwalWaktu2.setError(binding.tfPeriodeAwalWaktu2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+//            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAwalWaktu2.getLabelText()+" "+getString(R.string.title_validate_field));
+//            return false;
+//
+//        }else if(binding.etPeriodeAkhirWaktu2.getText().toString().trim().isEmpty() || binding.etPeriodeAkhirWaktu2.getText().toString().trim().equalsIgnoreCase(" ")){
+//            binding.tfPeriodeAkhirWaktu2.setError(binding.tfPeriodeAkhirWaktu2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+//            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAkhirWaktu2.getLabelText()+" "+getString(R.string.title_validate_field));
+//            return false;
+//
+//        }else if(binding.etTotalDebit2.getText().toString().trim().isEmpty() || binding.etTotalDebit2.getText().toString().trim().equalsIgnoreCase("0")){
+//            binding.tfTotalDebit2.setError(binding.tfTotalDebit2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+//            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalDebit2.getLabelText()+" "+getString(R.string.title_validate_field));
+//            return false;
+//
+//        } else if(binding.etTotalKredit2.getText().toString().trim().isEmpty() || binding.etTotalKredit2.getText().toString().trim().equalsIgnoreCase("0")){
+//            binding.tfTotalKredit2.setError(binding.tfTotalKredit2.getLabelText()+" "+getString(R.string.title_validate_field),true);
+//            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalKredit2.getLabelText()+" "+getString(R.string.title_validate_field));
+//            return false;
+        } else{
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
+            return false;
+        }
+    }
+
     private void numberText(){
         binding.etGajiBersihP1.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiBersihP1));
         binding.etGajiBersihP2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiBersihP2));
@@ -96,6 +228,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         binding.tfTglTunjanganP1.setFocusable(false);
         binding.tfTglTunjanganP2.setFocusable(false);
         binding.tfTglTunjanganP3.setFocusable(false);
+        binding.tfNorekBsi.setFocusable(false);
     }
 
 
@@ -107,7 +240,6 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     }
 
     private void setParameterDropdown(){
-        //dropdown kalkulator
         dataDropdownPendapatan.add(new MGenericModel("1","Tercermin"));
         dataDropdownPendapatan.add(new MGenericModel("2","Tercermin tapi nominal lebih rendah"));
         dataDropdownPendapatan.add(new MGenericModel("3","Tercermin tapi Nominal lebih Tinggi"));
@@ -130,16 +262,16 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
 
     private void endIconClick(){
         binding.tfVerfikasiGajiTunjangan.getEndIconImageButton().setOnClickListener(v -> DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfVerfikasiGajiTunjangan.getLabelText(),dataDropdownPendapatan, ActivityDokumenPendapatan.this));
-        binding.tfPeriodeAkhirWaktu1.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
-        binding.tfPeriodeAkhirWaktu2.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
-        binding.tfPeriodeAwalWaktu1.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
-        binding.tfPeriodeAwalWaktu2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfPeriodeGajiP1.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfPeriodeGajiP2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfPeriodeGajiP3.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfTglTunjanganP1.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfTglTunjanganP2.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
-        binding.tfTglTunjanganP3.getEndIconImageButton().setOnClickListener(this:: dpSKCalendar);
+        binding.tfPeriodeAkhirWaktu1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAkhirWaktu1,dateClient2));
+        binding.tfPeriodeAkhirWaktu2.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAkhirWaktu2,dateClient2));
+        binding.tfPeriodeAwalWaktu1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAwalWaktu1,dateClient2));
+        binding.tfPeriodeAwalWaktu2.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAwalWaktu2,dateClient2));
+        binding.tfPeriodeGajiP1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeGajiP1,dateClient));
+        binding.tfPeriodeGajiP2.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeGajiP2,dateClient));
+        binding.tfPeriodeGajiP3.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeGajiP3,dateClient));
+        binding.tfTglTunjanganP1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etTglTunjanganP1,dateClient));
+        binding.tfTglTunjanganP2.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etTglTunjanganP2,dateClient));
+        binding.tfTglTunjanganP3.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etTglTunjanganP3,dateClient));
     }
 
     private void onclickSelectDialog(){
@@ -199,6 +331,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_send:
+                validateData();
                 break;
             case R.id.btn_rekening_koran1 :
             case R.id.btn_rekening_koran2 :
@@ -227,26 +360,44 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(),this,"");
                 break;
             case R.id.tf_periode_akhir_waktu1 :
-            case R.id.tf_periode_akhir_waktu2 :
-            case R.id.tf_periode_awal_waktu1 :
-            case R.id.tf_periode_awal_waktu2 :
-            case R.id.tf_periode_gaji_p1 :
-            case R.id.tf_periode_gaji_p2 :
-            case R.id.tf_periode_gaji_p3 :
-            case R.id.tf_tgl_tunjangan_p1 :
-            case R.id.tf_tgl_tunjangan_p2 :
-            case R.id.tf_tgl_tunjangan_p3 :
             case R.id.et_periode_akhir_waktu1 :
+                dpSKCalendar(v,binding.etPeriodeAkhirWaktu1,dateClient2);
+                break;
+            case R.id.tf_periode_akhir_waktu2 :
             case R.id.et_periode_akhir_waktu2 :
+                dpSKCalendar(v,binding.etPeriodeAkhirWaktu2,dateClient2);
+                break;
+            case R.id.tf_periode_awal_waktu1 :
             case R.id.et_periode_awal_waktu1 :
+                dpSKCalendar(v,binding.etPeriodeAwalWaktu1,dateClient2);
+                break;
+            case R.id.tf_periode_awal_waktu2 :
             case R.id.et_periode_awal_waktu2 :
+                dpSKCalendar(v,binding.etPeriodeAwalWaktu2,dateClient2);
+                break;
+            case R.id.tf_periode_gaji_p1 :
             case R.id.et_periode_gaji_p1 :
+                dpSKCalendar(v,binding.etPeriodeGajiP1,dateClient);
+                break;
+            case R.id.tf_periode_gaji_p2 :
             case R.id.et_periode_gaji_p2 :
+                dpSKCalendar(v,binding.etPeriodeGajiP2,dateClient);
+                break;
+            case R.id.tf_periode_gaji_p3 :
             case R.id.et_periode_gaji_p3 :
+                dpSKCalendar(v,binding.etPeriodeGajiP3,dateClient);
+                break;
+            case R.id.tf_tgl_tunjangan_p1 :
             case R.id.et_tgl_tunjangan_p1 :
+                dpSKCalendar(v,binding.etTglTunjanganP1,dateClient);
+                break;
+            case R.id.tf_tgl_tunjangan_p2 :
             case R.id.et_tgl_tunjangan_p2 :
+                dpSKCalendar(v,binding.etTglTunjanganP2,dateClient);
+                break;
+            case R.id.tf_tgl_tunjangan_p3 :
             case R.id.et_tgl_tunjangan_p3 :
-                dpSKCalendar(v);
+                dpSKCalendar(v,binding.etTglTunjanganP3,dateClient);
                 break;
             case R.id.et_verfikasi_gaji_tunjangan:
             case R.id.tf_verfikasi_gaji_tunjangan:
@@ -255,56 +406,14 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         }
     }
 
-    private void dpSKCalendar(View v){
+    private void dpSKCalendar(View v, EditText et,SimpleDateFormat dateT){
         calLahir = Calendar.getInstance();
         @SuppressLint("NonConstantResourceId") DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = (view, year, month, dayOfMonth) -> {
             calLahir.set(Calendar.YEAR, year);
             calLahir.set(Calendar.MONTH, month);
             calLahir.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String calLahirString = dateClient.format(calLahir.getTime());
-            String calLahirString2 = dateClient2.format(calLahir.getTime());
-            switch (v.getId()){
-                case R.id.et_periode_akhir_waktu1 :
-                case R.id.tf_periode_akhir_waktu1 :
-                    binding.etPeriodeAkhirWaktu1.setText(calLahirString2);
-                    break;
-                case R.id.et_periode_akhir_waktu2 :
-                case R.id.tf_periode_akhir_waktu2 :
-                    binding.etPeriodeAkhirWaktu2.setText(calLahirString2);
-                    break;
-                case R.id.et_periode_awal_waktu1 :
-                case R.id.tf_periode_awal_waktu1 :
-                    binding.etPeriodeAwalWaktu1.setText(calLahirString2);
-                    break;
-                case R.id.et_periode_awal_waktu2 :
-                case R.id.tf_periode_awal_waktu2 :
-                    binding.etPeriodeAwalWaktu2.setText(calLahirString2);
-                    break;
-                case R.id.et_periode_gaji_p1 :
-                case R.id.tf_periode_gaji_p1 :
-                    binding.etPeriodeGajiP1.setText(calLahirString);
-                    break;
-                case R.id.et_periode_gaji_p2 :
-                case R.id.tf_periode_gaji_p2 :
-                    binding.etPeriodeGajiP2.setText(calLahirString);
-                    break;
-                case R.id.et_periode_gaji_p3 :
-                case R.id.tf_periode_gaji_p3 :
-                    binding.etPeriodeGajiP3.setText(calLahirString);
-                    break;
-                case R.id.et_tgl_tunjangan_p1 :
-                case R.id.tf_tgl_tunjangan_p1 :
-                    binding.etTglTunjanganP1.setText(calLahirString);
-                    break;
-                case R.id.et_tgl_tunjangan_p2 :
-                case R.id.tf_tgl_tunjangan_p2 :
-                    binding.etTglTunjanganP2.setText(calLahirString);
-                    break;
-                case R.id.et_tgl_tunjangan_p3 :
-                case R.id.tf_tgl_tunjangan_p3 :
-                    binding.etTglTunjanganP3.setText(calLahirString);
-                    break;
-            }
+            String calLahirString = dateT.format(calLahir.getTime());
+            et.setText(calLahirString);
         };
 
         dpSK = new DatePickerDialog(ActivityDokumenPendapatan.this, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calLahir.get(Calendar.YEAR),

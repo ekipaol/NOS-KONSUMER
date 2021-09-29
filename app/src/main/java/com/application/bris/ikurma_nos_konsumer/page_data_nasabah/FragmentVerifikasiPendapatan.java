@@ -60,14 +60,8 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         onclickSelectDialog();
         numberTextEditor();
         chageListener();
-        endIconClick();
         disabledText();
         return view;
-    }
-
-    private void endIconClick(){
-        binding.tfTanggalGaji.getEndIconImageButton().setOnClickListener(this::dpSKCalendar);
-        binding.tfVerifikasiGajiTercermin.getEndIconImageButton().setOnClickListener(v-> DialogGenericDataFromService.display(getFragmentManager(),binding.tfNorekTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this));
     }
     
     private void disabledText(){
@@ -139,8 +133,20 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         binding.rlDokumen2.setOnClickListener(this);
         binding.etTanggalGaji.setOnClickListener(this);
         binding.tfTanggalGaji.setOnClickListener(this);
+        binding.tfTanggalGaji.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dpSKCalendar(v);
+            }
+        });
         binding.tfVerifikasiGajiTercermin.setOnClickListener(this);
         binding.etVerifikasiGajiTercermin.setOnClickListener(this);
+        binding.tfVerifikasiGajiTercermin.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfVerifikasiGajiTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
+            }
+        });
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -198,17 +204,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
                 calLahir.set(Calendar.MONTH, month);
                 calLahir.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String calLahirString = dateClient.format(calLahir.getTime());
-                switch (v.getId()){
-                    case R.id.et_tanggal_gaji :
-                    case R.id.tf_tanggal_gaji :
-                        binding.etTanggalGaji.setText(calLahirString);
-                        break;
-                    case R.id.et_norek_tercermin:
-                    case R.id.tf_norek_tercermin:
-                        DialogGenericDataFromService.display(getFragmentManager(),binding.tfNorekTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
-                        break;
-
-                }
+                binding.etTanggalGaji.setText(calLahirString);
             }
         };
 

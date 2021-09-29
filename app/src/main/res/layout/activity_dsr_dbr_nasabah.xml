@@ -168,7 +168,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:enabled="false"
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
@@ -196,7 +195,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:enabled="false"
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
@@ -224,7 +222,6 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:enabled="false"
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
@@ -244,6 +241,33 @@
                         android:maxLength="50" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--DSR/DBR Final Sesuai Ketentuan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_ketentuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="DSR/DBR Final Sesuai Ketentuan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_ketentuan"
+                        android:text="0"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
                 <!--Button Simpan-->
                 <LinearLayout
                     android:id="@+id/ll_btn_send"

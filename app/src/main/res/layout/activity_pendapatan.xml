@@ -832,7 +832,7 @@
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_norek_gaji"
-                    android:text="0"
+                    android:text=""
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -857,7 +857,7 @@
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_norek_tunjangan"
-                    android:text="0"
+                    android:text=""
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -906,7 +906,7 @@
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_norek"
-                    android:text="0"
+                    android:text=""
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1092,14 +1092,14 @@
                 app:iconSignifier="@drawable/ic_atm"
                 app:isResponsiveIconColor="true"
                 app:labelText="Nomer Rekening"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true">
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_norek_bsi"
-                    android:text="0"
+                    android:text=""
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

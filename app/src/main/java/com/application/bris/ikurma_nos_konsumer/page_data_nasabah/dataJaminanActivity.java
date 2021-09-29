@@ -54,6 +54,12 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
     }
         private void onclickSelectDialog(){
         binding.etTanggalTerbitSk.setOnClickListener(this);
+            binding.tfTanggalTerbitSk.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dpSKCalendar();
+                }
+            });
         binding.tfTanggalTerbitSk.setOnClickListener(this);
         binding.ivKtpNasabah.setOnClickListener(this);
          binding.ivAssetAkad.setOnClickListener(this);
@@ -106,9 +112,40 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_surat_instansi:
                 BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(),this,"");
                 break;
+            case R.id.ll_btn_send:
+            case R.id.btn_send:
+                validasi();
+                break;
         }
     }
 
+    private  boolean validasi(){
+        if (binding.etNomorSkPengangkatan.getText().toString().trim().isEmpty() || binding.etNomorSkPengangkatan.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfNomorSkPengangkatan.setError(binding.tfNomorSkPengangkatan.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPengangkatan.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        }else if (binding.etNomorSkPangkatTerakhir.getText().toString().trim().isEmpty() || binding.etNomorSkPangkatTerakhir.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfNomorSkPangkatTerakhir.setError(binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        }else if (binding.etNomorSkPensiun.getText().toString().trim().isEmpty() || binding.etNomorSkPensiun.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfNomorSkPensiun.setError(binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        }else if (binding.etTanggalTerbitSk.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfTanggalTerbitSk.setError(binding.tfTanggalTerbitSk.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else{
+            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
+            return false;
+
+        }
+    }
 
 
     private void dpSKCalendar(){

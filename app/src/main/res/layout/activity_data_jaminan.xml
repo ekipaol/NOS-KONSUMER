@@ -119,6 +119,7 @@
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
                     app:labelText="Tanggal Terbit SK"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:layout_marginTop="10dp"
@@ -280,12 +281,13 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="0dp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/muli_b"
                             android:text="NPWP Nasabah"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
+                            android:textSize="16sp" />
                     </RelativeLayout>
                 </LinearLayout>
                 <!--Foto Document NPWP Nasabah-->
