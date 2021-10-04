@@ -249,7 +249,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="DSR/DBR Final Sesuai Ketentuan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
@@ -259,8 +259,7 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_ketentuan"
-                        android:text="0"
-                        app:prefix="Rp."
+                        android:text=" "
                         android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

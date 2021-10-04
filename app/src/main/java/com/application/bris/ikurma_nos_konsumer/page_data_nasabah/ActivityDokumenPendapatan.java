@@ -48,6 +48,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     public static SimpleDateFormat dateClient = new SimpleDateFormat("MM-yyyy", Locale.US);
     public static SimpleDateFormat dateClient2 = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
     List<MGenericModel> dataDropdownPendapatan = new ArrayList<>();
+    List<MGenericModel> dataDropdownPendapatan2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
 
         AppUtil.toolbarRegular(this, "Data Dokumen Pendapatan");
     }
+
 
 
     private boolean validateData(){
@@ -229,6 +231,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         binding.tfTglTunjanganP2.setFocusable(false);
         binding.tfTglTunjanganP3.setFocusable(false);
         binding.tfNorekBsi.setFocusable(false);
+        binding.etAkseptasiPendaptan.setFocusable(false);
     }
 
 
@@ -244,6 +247,8 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         dataDropdownPendapatan.add(new MGenericModel("2","Tercermin tapi nominal lebih rendah"));
         dataDropdownPendapatan.add(new MGenericModel("3","Tercermin tapi Nominal lebih Tinggi"));
         dataDropdownPendapatan.add(new MGenericModel("4","Tidak tercermin direkening"));
+        dataDropdownPendapatan2.add(new MGenericModel("1","Pendapatan Saat Aktif dan Manfaat Pensiun"));
+        dataDropdownPendapatan2.add(new MGenericModel("2","Hanya Manfaat Pensiun"));
 
     }
 
@@ -258,10 +263,52 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         }else if (title.equalsIgnoreCase(binding.tfVerfikasiGajiTunjangan.getLabelText())) {
             binding.etVerfikasiGajiTunjangan.setText(data.getDESC());
         }
+        if(data.getDESC().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+            binding.tfGajiBersihP2.setVisibility(View.VISIBLE);
+            binding.rlSlipgajiP2.setVisibility(View.VISIBLE);
+            binding.tfPeriodeGajiP2.setVisibility(View.VISIBLE);
+            binding.tfTunjanganP2.setVisibility(View.VISIBLE);
+            binding.tfTglTunjanganP2.setVisibility(View.VISIBLE);
+            binding.rlSliptunjanganP2.setVisibility(View.VISIBLE);
+            binding.tp2.setVisibility(View.VISIBLE);
+            binding.tpg2.setVisibility(View.VISIBLE);
+            binding.tpt2.setVisibility(View.VISIBLE);
+            binding.tfGajiBersihP3.setVisibility(View.VISIBLE);
+            binding.rlSlipgajiP3.setVisibility(View.VISIBLE);
+            binding.tfPeriodeGajiP3.setVisibility(View.VISIBLE);
+            binding.tfTunjanganP3.setVisibility(View.VISIBLE);
+            binding.tfTglTunjanganP3.setVisibility(View.VISIBLE);
+            binding.rlSliptunjanganP3.setVisibility(View.VISIBLE);
+            binding.tp3.setVisibility(View.VISIBLE);
+            binding.tpg3.setVisibility(View.VISIBLE);
+            binding.tpt3.setVisibility(View.VISIBLE);
+            binding.etAkseptasiPendaptan.setText(data.getDESC());
+        }else if (data.getDESC().equalsIgnoreCase("Hanya Manfaat Pensiun")) {
+            binding.tfGajiBersihP2.setVisibility(View.GONE);
+            binding.rlSlipgajiP2.setVisibility(View.GONE);
+            binding.tfPeriodeGajiP2.setVisibility(View.GONE);
+            binding.tfTunjanganP2.setVisibility(View.GONE);
+            binding.tfTglTunjanganP2.setVisibility(View.GONE);
+            binding.rlSliptunjanganP2.setVisibility(View.GONE);
+            binding.tp2.setVisibility(View.GONE);
+            binding.tpg2.setVisibility(View.GONE);
+            binding.tpt2.setVisibility(View.GONE);
+            binding.tfGajiBersihP3.setVisibility(View.GONE);
+            binding.rlSlipgajiP3.setVisibility(View.GONE);
+            binding.tfPeriodeGajiP3.setVisibility(View.GONE);
+            binding.tfTunjanganP3.setVisibility(View.GONE);
+            binding.tfTglTunjanganP3.setVisibility(View.GONE);
+            binding.rlSliptunjanganP3.setVisibility(View.GONE);
+            binding.tp3.setVisibility(View.GONE);
+            binding.tpg3.setVisibility(View.GONE);
+            binding.tpt3.setVisibility(View.GONE);
+            binding.etAkseptasiPendaptan.setText(data.getDESC());
+        }
     }
 
     private void endIconClick(){
         binding.tfVerfikasiGajiTunjangan.getEndIconImageButton().setOnClickListener(v -> DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfVerfikasiGajiTunjangan.getLabelText(),dataDropdownPendapatan, ActivityDokumenPendapatan.this));
+        binding.tfAkseptasiPendaptan.getEndIconImageButton().setOnClickListener(v -> DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfAkseptasiPendaptan.getLabelText(),dataDropdownPendapatan2, ActivityDokumenPendapatan.this));
         binding.tfPeriodeAkhirWaktu1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAkhirWaktu1,dateClient2));
         binding.tfPeriodeAkhirWaktu2.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAkhirWaktu2,dateClient2));
         binding.tfPeriodeAwalWaktu1.getEndIconImageButton().setOnClickListener(v->dpSKCalendar(v, binding.etPeriodeAwalWaktu1,dateClient2));
@@ -275,6 +322,8 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     }
 
     private void onclickSelectDialog(){
+        binding.etAkseptasiPendaptan.setOnClickListener(this);
+        binding.tfAkseptasiPendaptan.setOnClickListener(this);
         binding.tfVerfikasiGajiTunjangan.setOnClickListener(this);
         binding.etVerfikasiGajiTunjangan.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
@@ -402,6 +451,10 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             case R.id.et_verfikasi_gaji_tunjangan:
             case R.id.tf_verfikasi_gaji_tunjangan:
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfVerfikasiGajiTunjangan.getLabelText(),dataDropdownPendapatan, ActivityDokumenPendapatan.this);
+                break;
+            case R.id.et_akseptasi_pendaptan:
+            case R.id.tf_akseptasi_pendaptan:
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfAkseptasiPendaptan.getLabelText(),dataDropdownPendapatan2, ActivityDokumenPendapatan.this);
                 break;
         }
     }

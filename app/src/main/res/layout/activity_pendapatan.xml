@@ -55,6 +55,33 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+            <!--Akseptasi Pendapatan-->
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_akseptasi_pendaptan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                android:inputType = "numberPassword"
+                app:iconSignifier="@drawable/ic_segmen"
+                app:isResponsiveIconColor="true"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:labelText="Akseptasi Pendapatan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_akseptasi_pendaptan"
+                    android:text=" "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="50" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!--Title Data Jaminan-->
             <TextView
                 android:layout_width="match_parent"
@@ -308,6 +335,7 @@
 
             <!--Title Data Periode 2-->
             <TextView
+                android:id="@+id/tp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Periode 2"
@@ -374,6 +402,7 @@
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Title File Dokumen Slip Gaji Periode 2-->
             <TextView
+                android:id="@+id/tpg2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Upload Slip Gaji"
@@ -488,6 +517,7 @@
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Title File Dokumen Tunjangan periode 2-->
             <TextView
+                android:id="@+id/tpt2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Upload Slip Tunjangan"
@@ -548,6 +578,7 @@
 
             <!--Title Data Periode 3-->
             <TextView
+                android:id="@+id/tp3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Periode 3"
@@ -614,6 +645,7 @@
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Title File Dokumen Pembiayaan-->
             <TextView
+                android:id="@+id/tpg3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Upload Slip Gaji"
@@ -728,6 +760,7 @@
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Title File Dokumen Tunjangan periode 3-->
             <TextView
+                android:id="@+id/tpt3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Upload Slip Tunjangan"
