@@ -843,7 +843,7 @@
                         android:textSize="16dp"
                         android:textColor="@color/colorWhite"
                         android:background="@drawable/button_primary"
-                        android:text="Lanjutkan"
+                        android:text="Selanjutnya"
                         android:textAllCaps="false"/>
                 </LinearLayout>
 

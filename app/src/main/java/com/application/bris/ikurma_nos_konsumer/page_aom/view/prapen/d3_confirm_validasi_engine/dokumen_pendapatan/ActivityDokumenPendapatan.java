@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -36,9 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
-import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect , View.OnClickListener, CameraListener {
 

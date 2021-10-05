@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1.persiapan_akad;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad;
 
 import android.os.Bundle;
 import android.view.View;

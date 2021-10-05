@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_pendapatan;
 
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;

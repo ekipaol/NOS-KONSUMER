@@ -1,6 +1,5 @@
-package com.application.bris.ikurma_nos_konsumer.page_data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_pendapatan;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.OnNavigationBarListener;
 
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;

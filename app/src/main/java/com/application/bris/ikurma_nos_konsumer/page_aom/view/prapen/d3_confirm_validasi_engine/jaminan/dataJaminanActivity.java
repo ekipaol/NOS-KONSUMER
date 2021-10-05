@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan;
 
 import android.Manifest;
 import android.app.DatePickerDialog;

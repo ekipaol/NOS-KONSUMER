@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_data_nasabah;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_pendapatan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -31,7 +31,6 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
-import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.stepstone.stepper.Step;
@@ -39,7 +38,6 @@ import com.stepstone.stepper.VerificationError;
 
 import java.io.File;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
