@@ -1,32 +1,23 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.data_asesoir;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoAsesoirActivityBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoMarketingActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
-import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class AsesoirActivity extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener {
 

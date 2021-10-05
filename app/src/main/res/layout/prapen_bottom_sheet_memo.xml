@@ -75,7 +75,7 @@
                             app:isResponsiveIconColor="false"
                             app:enabled="true"
                             app:maxCharacters="500"
-                            app:labelText="Catatan Pemutus"
+                            app:labelText="Catatan"
 
                             >
                             <studio.carbonylgroup.textfieldboxes.ExtendedEditText

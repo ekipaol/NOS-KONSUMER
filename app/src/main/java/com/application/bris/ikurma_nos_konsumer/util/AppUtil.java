@@ -226,8 +226,31 @@ public class AppUtil {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String calLahirString = dateClient.format(calendar.getTime());
-                editText.setText(calLahirString);
+                String calString = dateClient.format(calendar.getTime());
+                editText.setText(calString);
+            }
+        };
+
+        datePickerDialog = new DatePickerDialog(context, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+        datePickerDialog.show();
+    }
+
+    public static void customCalendarDialog(Context context,EditText editText,String dateFormat){
+        SimpleDateFormat dateClient = new SimpleDateFormat(dateFormat, Locale.US);
+        Calendar calendar;
+        DatePickerDialog datePickerDialog;
+        calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String calString = dateClient.format(calendar.getTime());
+                editText.setText(calString);
             }
         };
 

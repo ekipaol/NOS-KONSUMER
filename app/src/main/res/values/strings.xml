@@ -18,6 +18,7 @@
     <string name="submenu_detil_aplikasi_d1_data_nasabah">Data Nasabah</string>
     <string name="submenu_detil_aplikasi_d1_data_marketing">Data Marketing</string>
     <string name="submenu_detil_aplikasi_d1_data_dedupe">Data DEDUPE</string>
+    <string name="submenu_detil_aplikasi_d1_memo">Memo</string>
 
     <!--    D3-->
     <string name="submenu_detil_aplikasi_d3_canvassing">Hasil Canvassing</string>
@@ -73,6 +74,22 @@
     <!--G1-->
     <string name="submenu_detil_aplikasi_g1_asesoir">Data Asesoir</string>
     <string name="submenu_detil_aplikasi_g1_akad">Data Akad</string>
+    <string name="submenu_detil_aplikasi_g1_dokumen_persiapan_akad">Dokumen Persiapan Akad</string>
+    <string name="submenu_detil_aplikasi_g1_memo">Memo</string>
+
+    <!--G3-->
+    <string name="submenu_detil_aplikasi_g3_upload_dokumen">Upload Dokumen</string>
+    <string name="submenu_detil_aplikasi_g3_akad">Memo</string>
+
+    <!--NAMA FLOW-->
+    <string name="d1_data_entry">Data Entry - Marketing</string>
+    <string name="d3_confirm_validasi_engine">Confirm Validasi Engine - Marketing</string>
+    <string name="d4_verifikasi_otor">Verifikasi + Otor - Risk</string>
+    <string name="d5_confirm_verifikasi">Confirm Verifikasi - Marketing</string>
+    <string name="d6_menunggu_putusan">Menunggu Putusan Pemutus - Pemutus</string>
+    <string name="g1_asesoir_dan_akad">Asesoir dan Akad - Marketing</string>
+
+
 
 
     <!--String Menu AOM-->
