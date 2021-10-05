@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" filepath="$PROJECT_DIR$/.idea/modules/NOS-KONSUMER.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NOS-KONSUMER-PRAPEN.iml" filepath="$PROJECT_DIR$/.idea/modules/NOS-KONSUMER-PRAPEN.iml" group="NOS-KONSUMER-PRAPEN" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/NOS-KONSUMER.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="NOS-KONSUMER-PRAPEN/app" />
     </modules>
   </component>
 </project>
