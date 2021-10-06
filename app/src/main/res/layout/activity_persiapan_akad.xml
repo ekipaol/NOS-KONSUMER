@@ -60,19 +60,20 @@
                         <RelativeLayout
                             android:id="@+id/d_sk"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="60dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
-                             <TextView
+
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir-->
                         <ImageView
@@ -96,7 +97,7 @@
                         <RelativeLayout
                             android:id="@+id/d_mutasi"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -132,7 +133,7 @@
                         <RelativeLayout
                             android:id="@+id/d_kuasa"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -168,7 +169,7 @@
                         <RelativeLayout
                             android:id="@+id/d_pernyataan"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -204,19 +205,20 @@
                         <RelativeLayout
                             android:id="@+id/d_sup"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="60dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="SUP Pembiayaan Retail / Pensiun / Pra Pensiun"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="SUP Pembiayaan Retail / Pensiun / Pra Pensiun"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download SUP Pembiayaan Retail / Pensiun / Pra Pensiun-->
                         <ImageView
@@ -262,19 +264,20 @@
                         <RelativeLayout
                             android:id="@+id/d_po"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Purchase Order"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Purchase Order"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Purchase Order-->
                         <ImageView
@@ -298,19 +301,20 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_wakalah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Akad Wakalah"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Akad Wakalah"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Akad Wakalah-->
                         <ImageView
@@ -334,7 +338,7 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_murabahah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -370,7 +374,7 @@
                         <RelativeLayout
                             android:id="@+id/d_jadwal_angsuran"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -406,7 +410,7 @@
                         <RelativeLayout
                             android:id="@+id/d_terima_barang"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -465,7 +469,7 @@
                         <RelativeLayout
                             android:id="@+id/d_po_Ijarah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -501,7 +505,7 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_wakalah_Ijarah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -537,7 +541,7 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_ijarah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -573,7 +577,7 @@
                         <RelativeLayout
                             android:id="@+id/d_angsuran_ujrah"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -631,7 +635,7 @@
                         <RelativeLayout
                             android:id="@+id/d_asset_mmq"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -667,7 +671,7 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_mmq"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -703,26 +707,27 @@
                         <RelativeLayout
                             android:id="@+id/d_jadwal_pengambilalihan"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Lampiran jadwal pengambil alihan hishah BANK atas obyek akad oleh nasabah serta biaya sewa/ujrah atas obyek akad"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
                         <ImageView
                             android:id="@+id/btn_jadwal_pengambilalihan"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:layout_marginTop="20dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
@@ -762,7 +767,7 @@
                         <RelativeLayout
                             android:id="@+id/d_akad_rahn"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
@@ -798,7 +803,7 @@
                         <RelativeLayout
                             android:id="@+id/d_jadwal_angsuran_rahn"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">

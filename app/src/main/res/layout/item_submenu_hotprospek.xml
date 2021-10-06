@@ -54,11 +54,11 @@
             android:gravity="center">
             <ImageView
                 android:id="@+id/iv_iconmenu"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:paddingTop="8dp"
-                android:paddingRight="8dp"
-                android:paddingLeft="8dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingLeft="0dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_dashboard"/>
             <TextView
