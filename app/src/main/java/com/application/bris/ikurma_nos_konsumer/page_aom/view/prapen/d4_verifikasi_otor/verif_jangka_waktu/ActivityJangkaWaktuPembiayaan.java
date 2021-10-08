@@ -1,6 +1,5 @@
-package com.application.bris.ikurma_nos_konsumer.page_verifikasi_tempat_kerja;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_jangka_waktu;
 
-import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,17 +25,13 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("MM-yyyy", Locale.US);
 
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jangka_waktu);
         binding = ActivityJangkaWaktuBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        BigDecimal sisabulan = umur.remainder(new BigDecimal(12));
-        BigDecimal totumur = umur.divide(new BigDecimal(12),0, RoundingMode.HALF_EVEN);
-        binding.etUmurNasabahTaspen.setText(totumur.toString()+" Tahun "+sisabulan.toString() + " Bulan");
-
+        setContentView(view);
+        BigDecimal();
         disableEditText();
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Jangka Waktu Pembiayaan");
@@ -58,8 +53,25 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
     }
 
 
+   private void BigDecimal(){
+       BigDecimal sisabulan = umur.remainder(new BigDecimal(12));
+       BigDecimal totumur = umur.divide(new BigDecimal(12),0, RoundingMode.HALF_EVEN);
+       final String text = totumur.toString() + " Tahun " + sisabulan.toString() + " Bulan";
+       binding.etUmurNasabahTaspen.setText(text);
+       binding.etUmurNasabahDukcapil.setText(text);
+       binding.etJangkaWaktuPembiayaanMaksimalDifiturProduk.setText(text);
+       binding.etUmurMaksimalNasabahRac.setText(text);
+       binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(text);
+    }
+
+
+
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_close:
+                break;
+        }
 
     }
 

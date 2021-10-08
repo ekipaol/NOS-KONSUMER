@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_simulasi_angsuran;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran;
 
 import android.os.Build;
 import android.os.Bundle;

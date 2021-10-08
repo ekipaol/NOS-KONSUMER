@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_verifikasi_tempat_kerja;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_tempat_kerja;
 
 import android.Manifest;
 import android.content.Intent;
@@ -38,7 +38,7 @@ import cn.pedant.SweetAlert.BuildConfig;
 
 public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, GenericListenerOnSelect, KeyValueListener {
     private ActivityVerifikasiTempatKerjaBinding binding;
-    List<MGenericModel> dataDropdownTempatKerja= new ArrayList<>(),  dataDropdownLGNP= new ArrayList<>();
+    List<MGenericModel> dataDropdownTempatKerja = new ArrayList<>(), dataDropdownLGNP = new ArrayList<>();
 
 
     @Override
@@ -53,24 +53,24 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
         binding.etPerkiraanGaji.addTextChangedListener(new TextWatcher() {
             @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
             @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString( binding.etPerkiraanGaji.getText().toString()));
-                BigDecimal vertunjangan= new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
-                BigDecimal totalRpc=(vergaji.add(vertunjangan));
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
+                BigDecimal vertunjangan = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+                BigDecimal totalRpc = (vergaji.add(vertunjangan));
                 binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
 
             }
 
             @Override
-                public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable editable) {
 
             }
-         });
+        });
 
 
         setParameterDropdown();
@@ -167,17 +167,6 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     }
 
-    @Override
-    public void onSelect(String title, MGenericModel data) {
-        if(title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
-            binding.etMenggunakanLngp.setText(data.getDESC());
-//        }else if (title.equalsIgnoreCase(binding.btnCekLngp.getLabelText())) {
-//            binding.btnCekLngp.setText(data.getDESC());
-//       }else if (title.equalsIgnoreCase(binding.btnSend.getLabelText())) {
-//          binding.btnSend.setText(data.getDESC());
-        }
-    }
-
     private void disableEditText() {
         binding.etMenggunakanLngp.setFocusable(false);
         binding.etKesimpulanPensesuaianVerifikasi.setFocusable(false);
@@ -192,7 +181,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etKesimpulanPensesuaianVerifikasi.setOnClickListener(this);
     }
 
-       @Override
+    @Override
     public void onSelectMenuCamera(String idMenu) {
         switch (idMenu) {
             case "Take Photo":
@@ -207,12 +196,14 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         }
 
     }
+
     private final int TAKE_PICTURE_KANTOR1 = 11;
     private final int PICK_PICTURE_KANTOR1 = 22;
 
     private void openCamera(int cameraCode) {
         checkCameraPermission(cameraCode);
     }
+
     public void openGalery(int cameraCode) {
         Intent it = new Intent(Intent.ACTION_GET_CONTENT);
         it.setType("image/*");
@@ -227,6 +218,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static int CAMERA_CODE_FORE_PERMISSION = 0;
+
     public void checkCameraPermission(int cameraCode) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -248,6 +240,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
         startActivityForResult(captureIntent, cameraCode);
     }
+
     private Uri getCaptureImageOutputUri() {
         Uri outputFileUri = null;
         File getImage = this.getExternalCacheDir();
@@ -262,16 +255,41 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         return outputFileUri;
     }
 
-        private void backgroundStatusBar(){
-            Window window = getWindow();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
-            }
+    private void backgroundStatusBar() {
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
+        }
 
     }
 
     @Override
     public void onKeyValueSelect(String title, keyvalue data) {
 
+    }
+
+    @Override
+    public void onSelect(String title, MGenericModel data) {
+        if (data.getDESC().equalsIgnoreCase("Ya")) {
+            binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
+            binding.tfRateLngp.setVisibility(View.VISIBLE);
+            binding.tfInputLngp.setVisibility(View.VISIBLE);
+            binding.btnCekLngp.setVisibility(View.VISIBLE);
+
+        } else if (data.getDESC().equalsIgnoreCase("Tidak")) {
+            {
+                binding.tfNamaInstansiLngp.setVisibility(View.GONE);
+                binding.tfRateLngp.setVisibility(View.GONE);
+                binding.tfInputLngp.setVisibility(View.GONE);
+                binding.btnCekLngp.setVisibility(View.GONE);
+            }
+            if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
+                binding.etMenggunakanLngp.setText(data.getDESC());
+//        }else if (title.equalsIgnoreCase(binding.btnCekLngp.getLabelText())) {
+//            binding.btnCekLngp.setText(data.getDESC());
+//       }else if (title.equalsIgnoreCase(binding.btnSend.getLabelText())) {
+//          binding.btnSend.setText(data.getDESC());
+            }
+        }
     }
 }

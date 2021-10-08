@@ -71,6 +71,7 @@
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
                         android:text=" "
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -80,7 +81,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
                     android:orientation="vertical"
-                    android:paddingTop="20dp"></LinearLayout>
+                    android:paddingTop="20dp">
+
+                </LinearLayout>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_umur_nasabah_dukcapil"
@@ -105,6 +108,7 @@
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
                         android:text=" "
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -139,6 +143,7 @@
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
                         android:text=" "
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -174,6 +179,7 @@
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
                         android:text=" "
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -210,6 +216,7 @@
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
                         android:text=" "
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
