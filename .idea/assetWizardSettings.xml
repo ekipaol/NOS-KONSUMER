@@ -79,8 +79,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../logo ikurma aja (1).png" />
-                                                <entry key="scalingPercent" value="49" />
+                                                <entry key="imagePath" value="$USER_HOME$/Downloads/temp logo nos prapen.png" />
+                                                <entry key="scalingPercent" value="113" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -113,7 +113,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="fafffb" />
+                                      <entry key="backgroundColor" value="fdf9ff" />
                                     </map>
                                   </option>
                                 </PersistentState>
