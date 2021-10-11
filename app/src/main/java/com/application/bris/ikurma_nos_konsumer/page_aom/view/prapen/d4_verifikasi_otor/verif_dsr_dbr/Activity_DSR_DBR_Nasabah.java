@@ -31,9 +31,6 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         disableText();
         customToolbar();
         allOnClicks();
-
-
-
     }
 
     private void allOnClicks(){
@@ -105,6 +102,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_send:
+            case R.id.ll_btn_send:
                 finish();
                 break;
         }

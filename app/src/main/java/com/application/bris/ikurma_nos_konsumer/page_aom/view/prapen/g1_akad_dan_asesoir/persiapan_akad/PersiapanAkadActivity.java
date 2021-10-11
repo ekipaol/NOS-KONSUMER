@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPersiapanAkadBinding ;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.R;
 
 public class PersiapanAkadActivity extends AppCompatActivity implements View.OnClickListener {
     ActivityPersiapanAkadBinding binding;
@@ -22,11 +23,17 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
     }
 
     private  void onclickSelectDialog(){
-
+        binding.btnSend.setOnClickListener(this);
+        binding.llBtnSend.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.btn_send:
+            case R.id.ll_btn_send:
+                finish();
+                break;
+        }
     }
 }

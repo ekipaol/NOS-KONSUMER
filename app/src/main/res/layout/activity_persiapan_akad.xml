@@ -844,12 +844,11 @@
                     <Button
                         android:id="@+id/btn_send"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="16dp"
-                        android:textColor="@color/colorWhite"
-                        android:background="@drawable/button_primary"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
                         android:text="Selanjutnya"
-                        android:textAllCaps="false"/>
+                        android:padding="8dp"
+                        style="@style/Bordered.Button.Custom"/>
                 </LinearLayout>
 
             </LinearLayout>
