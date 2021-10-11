@@ -33,41 +33,10 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         binding = ActivityUploadDokumenBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        binding.tfNamaDokumen.setVisibility(View.GONE);
-        binding.tfKeteranganDokumen.setVisibility(View.GONE);
-        binding.btnFotoUploadDokumen.setVisibility(View.GONE);
-        binding.ivFotoUploadDokumen.setVisibility(View.GONE);
-        binding.rlFotoUploadDokumen.setVisibility(View.GONE);
-        binding.btnHapusDokumen.setVisibility(View.GONE);
         onclickSelectDialog();
-        onClicks();
-        OnBack();
         AppUtil.toolbarRegular(this, "Upload Dokumen");
     }
 
-    private void OnBack() {
-                binding.tfNamaDokumen.setVisibility(View.GONE);
-                binding.tfKeteranganDokumen.setVisibility(View.GONE);
-                binding.btnFotoUploadDokumen.setVisibility(View.GONE);
-                binding.ivFotoUploadDokumen.setVisibility(View.GONE);
-                binding.rlFotoUploadDokumen.setVisibility(View.GONE);
-                binding.btnHapusDokumen.setVisibility(View.GONE);
-    }
-
-
-
-    private void onClicks() {
-        binding.btnTambahDokumen.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                binding.tfNamaDokumen.setVisibility(View.VISIBLE);
-                binding.tfKeteranganDokumen.setVisibility(View.VISIBLE);
-                binding.btnTambahDokumen.setVisibility(View.VISIBLE);
-                binding.ivFotoUploadDokumen.setVisibility(View.VISIBLE);
-                binding.rlFotoUploadDokumen.setVisibility(View.VISIBLE);
-                binding.btnHapusDokumen.setVisibility(View.VISIBLE);
-            }
-        });
-    }
     private void onclickSelectDialog() {
         binding.ivFotoSkPengangkatan.setOnClickListener(this);
         binding.ivFotoSkTerakhir.setOnClickListener(this);
@@ -127,12 +96,32 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         binding.btnFotoProsesPenandatanganAkad.setOnClickListener(this);
         binding.btnFotoScreenCaptureBuktiOtentikasiNasabah.setOnClickListener(this);
 
-        binding.tfNamaDokumen.setOnClickListener(this);
-        binding.tfKeteranganDokumen.setOnClickListener(this);
-        binding.ivFotoUploadDokumen.setOnClickListener(this);
-        binding.btnTambahDokumen.setOnClickListener(this);
-        binding.btnHapusDokumen.setOnClickListener(this);
+        binding.tfNamaDokumen1.setOnClickListener(this);
+        binding.tfKeteranganDokumen1.setOnClickListener(this);
+        binding.ivFotoUploadDokumen1.setOnClickListener(this);
+        binding.btnFotoUploadDokumen1.setOnClickListener(this);
 
+        binding.tfNamaDokumen2.setOnClickListener(this);
+        binding.tfKeteranganDokumen2.setOnClickListener(this);
+        binding.ivFotoUploadDokumen2.setOnClickListener(this);
+        binding.btnFotoUploadDokumen1.setOnClickListener(this);
+
+        binding.tfNamaDokumen3.setOnClickListener(this);
+        binding.tfKeteranganDokumen3.setOnClickListener(this);
+        binding.ivFotoUploadDokumen3.setOnClickListener(this);
+        binding.btnFotoUploadDokumen3.setOnClickListener(this);
+
+
+        binding.tfNamaDokumen4.setOnClickListener(this);
+        binding.tfKeteranganDokumen4.setOnClickListener(this);
+        binding.ivFotoUploadDokumen4.setOnClickListener(this);
+        binding.btnFotoUploadDokumen4.setOnClickListener(this);
+
+
+        binding.tfNamaDokumen5.setOnClickListener(this);
+        binding.tfKeteranganDokumen5.setOnClickListener(this);
+        binding.ivFotoUploadDokumen5.setOnClickListener(this);
+        binding.btnFotoUploadDokumen5.setOnClickListener(this);
     }
 
     public void onSelectMenuCamera(String idMenu) {
@@ -211,14 +200,6 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_tambah_dokumen:
-                binding.tfNamaDokumen.setVisibility(View.VISIBLE);
-                binding.tfKeteranganDokumen.setVisibility(View.VISIBLE);
-                binding.btnTambahDokumen.setVisibility(View.VISIBLE);
-                binding.ivFotoUploadDokumen.setVisibility(View.VISIBLE);
-                binding.rlFotoUploadDokumen.setVisibility(View.VISIBLE);
-                binding.btnHapusDokumen.setVisibility(View.VISIBLE);
-                break;
             case R.id.iv_foto_sk_pensiun:
             case R.id.iv_foto_sk_pengangkatan:
             case R.id.iv_foto_sk_terakhir:
@@ -247,6 +228,11 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             case R.id.iv_form_mutasi_kantor_bayar2:
             case R.id.iv_foto_proses_penandatangan_akad:
             case R.id.iv_foto_screen_capture_bukti_otentikasi_nasabah:
+            case R.id.iv_foto_upload_dokumen1:
+            case R.id.iv_foto_upload_dokumen2:
+            case R.id.iv_foto_upload_dokumen3:
+            case R.id.iv_foto_upload_dokumen4:
+            case R.id.iv_foto_upload_dokumen5:
 
             case R.id.btn_foto_sk_pensiun:
             case R.id.btn_foto_sk_pengangkatan:
@@ -276,6 +262,11 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             case R.id.btn_form_mutasi_kantor_bayar2:
             case R.id.btn_foto_proses_penandatangan_akad:
             case R.id.btn_foto_screen_capture_bukti_otentikasi_nasabah:
+            case R.id.btn_foto_upload_dokumen1:
+            case R.id.btn_foto_upload_dokumen2:
+            case R.id.btn_foto_upload_dokumen3:
+            case R.id.btn_foto_upload_dokumen4:
+            case R.id.btn_foto_upload_dokumen5:
                 BSUploadFile.displayWithTitle(ActivityUploadDokumen.this.getSupportFragmentManager(), this, "");
                 break;
         }
