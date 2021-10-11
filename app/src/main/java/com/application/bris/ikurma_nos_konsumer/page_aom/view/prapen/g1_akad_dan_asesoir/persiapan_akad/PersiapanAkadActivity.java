@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPersiapanAkadBinding ;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
@@ -27,6 +28,10 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.btn_send:
+                finish();
+                break;
+        }
     }
 }

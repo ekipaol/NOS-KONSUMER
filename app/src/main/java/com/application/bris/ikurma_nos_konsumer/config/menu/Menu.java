@@ -38,6 +38,15 @@ public class Menu {
 
     /************************** Sub Menu Hotprospek ********************/
     //prapen nos
+
+    public static void SubmenuD05(Context context, List<ListViewSubmenuHotprospek> menu){
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d1_data_dedupe)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d1_data_nasabah)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_marketing,context.getString(R.string.submenu_detil_aplikasi_d1_data_marketing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d1_memo)));
+    }
+
     public static void SubmenuD1(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d1_data_dedupe)));
@@ -85,7 +94,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d5_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d5_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d5_verifikasi)));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d5_memo)));
+//        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d5_memo)));
     }
 
     public static void SubmenuD6(Context context, List<ListViewSubmenuHotprospek> menu){

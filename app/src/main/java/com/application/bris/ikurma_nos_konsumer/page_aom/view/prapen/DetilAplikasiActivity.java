@@ -79,6 +79,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         customToolbar();
         backgroundStatusBar();
         isiDataDropdown();
+        defaultView();
 
         //initialize status
         initializeMenu(status);
@@ -138,37 +139,72 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //bla bla bla isi dari field lain
     }
 
+    private void setDataEmpty(){
+        //initialize status pertama
+        binding.btnUbahFlow.setText("Flow : "+status);
+
+        binding.tvIdaplikasi.setText("-");
+        binding.tvTujuanpenggunaan.setText("-");
+        binding.tvAkad.setText("-");
+
+    }
+
 
     private List<ListViewSubmenuHotprospek> getListMenu(String namaMenu) {
         List<ListViewSubmenuHotprospek> menu = new ArrayList<>();
-        
-        if(namaMenu.equalsIgnoreCase(getString(R.string.d1_data_entry))){
+
+        if(namaMenu.equalsIgnoreCase(getString(R.string.d05_inisialisasi))){
+            Menu.SubmenuD05(this, menu);
+            demoVisibility(false);
+        }
+        else if(namaMenu.equalsIgnoreCase(getString(R.string.d1_data_entry))){
             Menu.SubmenuD1(this, menu);
+            demoVisibility(true);
         }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d3_confirm_validasi_engine))){
             Menu.SubmenuD3(this, menu);
+            demoVisibility(true);
         }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
             Menu.SubmenuD4(this, menu);
+            demoVisibility(true);
         }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d5_confirm_verifikasi))){
             Menu.SubmenuD5(this, menu);
+            demoVisibility(true);
         }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d6_menunggu_putusan))){
             Menu.SubmenuD6(this, menu);
+            demoVisibility(true);
         }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.g1_asesoir_dan_akad))){
             Menu.SubmenuG1(this, menu);
+            demoVisibility(true);
         }
         // TODO: 14/09/21 harus ada if status d1, maka tampil menu d1, dst
      
         return menu;
     }
 
+    private void demoVisibility(boolean cardviewVisibility){
+        if(cardviewVisibility){
+            binding.cvDataDetilAplikasi.setVisibility(View.VISIBLE);
+            binding.llInfo.setVisibility(View.GONE);
+            setData();
+        }
+        else{
+            binding.cvDataDetilAplikasi.setVisibility(View.GONE);
+            binding.llInfo.setVisibility(View.VISIBLE);
+            setDataEmpty();
+        }
+
+    }
+
     @Override
     public void onMenuClick(String menu) {
 
         binding.loading.setVisibility(View.VISIBLE);
+
         //FLOW D1
         if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_nasabah))){
             Intent it = new Intent(this, DataNasabahPrapenActivity.class);
@@ -203,12 +239,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_jaminan))){
-            Intent it = new Intent(this, ActivityDokumenPendapatan.class);
+            Intent it = new Intent(this, dataJaminanActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_pendapatan))){
-            Intent it = new Intent(this, dataJaminanActivity.class);
+            Intent it = new Intent(this, ActivityDokumenPendapatan.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
@@ -309,17 +345,18 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     private void isiDataDropdown(){
 
-        //status data entry pasti masuk list karena dia paling awal
-        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d1_data_entry)));
-        // TODO: 14/09/21 tambah if status d1 maka hanya muncul data entry, if d3, maka muncul data entry dan confirm validasi engine, dst
+        //status inisialisasi pasti masuk list karena dia paling awal
+        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d05_inisialisasi)));
+        dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
 
-        //d3
-        if (status.equalsIgnoreCase(getString(R.string.d3_confirm_validasi_engine))){
-            dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
-        }
+
+//        //d3
+//         if (status.equalsIgnoreCase(getString(R.string.d3_confirm_validasi_engine))){
+//            dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
+//        }
 
         //d4
-        else if(status.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
+         if(status.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
         }
@@ -350,6 +387,10 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     }
 
+    private void defaultView(){
+        binding.cvDataDetilAplikasi.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -370,6 +411,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     public void onSelect(String title, MGenericModel data) {
         if(title.equalsIgnoreCase("flow")){
             binding.btnUbahFlow.setText("Flow : "+data.getDESC());
+            status=data.getDESC();
             initializeMenu(data.getDESC());
         }
     }

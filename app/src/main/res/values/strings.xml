@@ -82,6 +82,7 @@
     <string name="submenu_detil_aplikasi_g3_akad">Memo</string>
 
     <!--NAMA FLOW-->
+    <string name="d05_inisialisasi">Inisialisasi - Marketing</string>
     <string name="d1_data_entry">Data Entry - Marketing</string>
     <string name="d3_confirm_validasi_engine">Confirm Validasi Engine - Marketing</string>
     <string name="d4_verifikasi_otor">Verifikasi + Otor - Risk</string>
