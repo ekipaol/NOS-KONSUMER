@@ -149,7 +149,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                 break;
             case R.id.et_bulan_angsuran_pertama:
             case R.id.tf_bulan_angsuran_pertama:
-                AppUtil.customCalendarDialog(DataAkadActivity.this,binding.etBulanAngsuranPertama,"mm-yyyy");
+                AppUtil.customCalendarDialog(DataAkadActivity.this,binding.etBulanAngsuranPertama,"MM-yyyy");
                 break;
             case R.id.tf_tanggal_akta_nikah:
             case R.id.et_tanggal_akta_nikah:
@@ -198,7 +198,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.tfBulanAngsuranPertama.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppUtil.customCalendarDialog(DataAkadActivity.this,binding.etBulanAngsuranPertama,"mm-yyyy");
+                AppUtil.customCalendarDialog(DataAkadActivity.this,binding.etBulanAngsuranPertama,"MM-yyyy");
             }
         });
 
@@ -261,7 +261,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     }
 
     private void disableEditTexts(){
+        binding.etAkadPembiayaan.setFocusable(false);
+        binding.etCatatanPemutus1.setFocusable(false);
+        binding.etCatatanPemutus2.setFocusable(false);
         binding.etRencanaPenandatangananAkad.setFocusable(false);
+        binding.etBulanAngsuranPertama.setFocusable(false);
         binding.etTanggalPenilaian.setFocusable(false);
         binding.etTanggalAktaNikah.setFocusable(false);
         binding.etKepemilikanAset.setFocusable(false);

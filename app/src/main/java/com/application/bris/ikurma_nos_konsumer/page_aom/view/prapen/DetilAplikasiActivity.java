@@ -86,7 +86,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.btnUbahFlow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(),"Lihat Flow",dataDropdownFlow,DetilAplikasiActivity.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(),"Flow",dataDropdownFlow,DetilAplikasiActivity.this);
             }
         });
     }
@@ -166,7 +166,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     @Override
     public void onMenuClick(String menu) {
 
-        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        binding.loading.setVisibility(View.VISIBLE);
         //FLOW D1
         if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_nasabah))){
             Intent it = new Intent(this, DataNasabahPrapenActivity.class);
@@ -332,6 +332,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        binding.loading.setVisibility(View.GONE);
+    }
+
+    @Override
     public void success(boolean val) {
         if(val)
             finish();
@@ -343,7 +349,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     @Override
     public void onSelect(String title, MGenericModel data) {
-        if(title.equalsIgnoreCase("lihat flow")){
+        if(title.equalsIgnoreCase("flow")){
             binding.btnUbahFlow.setText("Flow : "+data.getDESC());
             initializeMenu(data.getDESC());
         }
