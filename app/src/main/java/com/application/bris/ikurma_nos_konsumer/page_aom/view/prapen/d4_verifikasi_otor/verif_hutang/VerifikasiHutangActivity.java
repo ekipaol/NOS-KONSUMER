@@ -167,6 +167,7 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
 //                Intent intent=new Intent(VerifikasiHutangActivity.this, TambahVerifikasiHutangActivity.class);
 //                startActivity(intent);
                 Toast.makeText(VerifikasiHutangActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

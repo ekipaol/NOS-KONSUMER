@@ -151,6 +151,7 @@ public class VerifikasiFiturActivity extends AppCompatActivity implements Generi
 //                Intent intent=new Intent(VerifikasiFiturActivity.this, TambahVerifikasiFiturActivity.class);
 //                startActivity(intent);
                 Toast.makeText(VerifikasiFiturActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

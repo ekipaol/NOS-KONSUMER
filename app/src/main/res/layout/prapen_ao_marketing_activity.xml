@@ -220,7 +220,7 @@
 
 
                 <Button
-                    android:id="@+id/btn_simpan_data_pembiayaan"
+                    android:id="@+id/btn_simpan_data_marketing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"

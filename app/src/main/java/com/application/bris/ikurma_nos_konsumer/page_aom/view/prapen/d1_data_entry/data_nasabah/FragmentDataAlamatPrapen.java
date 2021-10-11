@@ -9,12 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataAlamatBinding;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogAddress;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.AddressListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
+import com.application.bris.ikurma_nos_konsumer.page_aom.model.address;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.stepstone.stepper.Step;
@@ -25,7 +29,7 @@ import java.util.Locale;
 
 import io.realm.Realm;
 
-public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener {
+public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener, AddressListener {
     AppPreferences appPreferences;
 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
@@ -53,6 +57,7 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
         appPreferences=new AppPreferences(getContext());
 
         onSelectDialog();
+        allOncClick();
 //        if (approved.equalsIgnoreCase("no")) {
 //        }
 
@@ -152,6 +157,10 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
 //            }
 //        });
 //    }
+
+    private void allOncClick(){
+        binding.btnCariAlamat.setOnClickListener(this);
+    }
     private void onSelectDialog(){
 
 
@@ -229,6 +238,10 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
     public void onClick(View v) {
         switch (v.getId()){
 
+            case R.id.btn_cari_alamat:
+                DialogAddress.display(getFragmentManager(), this);
+                break;
+
 
             //TANGGAL LAHIR PASANGAN
 //            case R.id.et_tanggallahirpasangan:
@@ -259,4 +272,12 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
     }
 
 
+    @Override
+    public void onAddressSelect(address data) {
+        binding.etKodeposktp.setText(data.getKodepos());
+        binding.etProvinsi.setText(data.getProvinsi());
+        binding.etKota.setText(data.getKota());
+        binding.etKecamatan.setText(data.getKecamatan());
+        binding.etKelurahanktp.setText(data.getKelurahan());
+    }
 }

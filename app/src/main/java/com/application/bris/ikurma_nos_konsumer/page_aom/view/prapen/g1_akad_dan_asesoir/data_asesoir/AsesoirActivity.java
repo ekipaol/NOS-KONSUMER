@@ -97,6 +97,7 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
                 break;
             case R.id.btn_simpan_data_asesoir:
                 Toast.makeText(this, "clicking simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
                 break;
 

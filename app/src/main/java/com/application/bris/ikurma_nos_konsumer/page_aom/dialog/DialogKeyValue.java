@@ -149,6 +149,9 @@ public class DialogKeyValue extends DialogFragment{
         else if(viewId==R.id.tf_sumber_aplikasi) {
             dataKeyvalue = getSumberAplikasi();
         }
+        else if (title.equalsIgnoreCase("status nikah KTP")){
+            dataKeyvalue = getDataStatusNikah();
+        }
         else if (title.equalsIgnoreCase("status nikah")){
             dataKeyvalue = getDataStatusNikah();
         }
@@ -158,6 +161,9 @@ public class DialogKeyValue extends DialogFragment{
         }
         else if (title.equalsIgnoreCase("agama")){
             dataKeyvalue = getDataAgama();
+        }
+        else if (title.equalsIgnoreCase("jenis kelamin")){
+            dataKeyvalue = getDataJenisKelamin();
         }
 
 

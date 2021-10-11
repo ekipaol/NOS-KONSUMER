@@ -322,8 +322,9 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
 
     @Override
     public void onCompleted(View completeButton) {
-        Intent intent=new Intent(DataNasabahPrapenActivity.this,DataMarketingActivity.class);
-        startActivity(intent);
+//        Intent intent=new Intent(DataNasabahPrapenActivity.this,DataMarketingActivity.class);
+//        startActivity(intent);
+        finish();
     }
 
     @Override

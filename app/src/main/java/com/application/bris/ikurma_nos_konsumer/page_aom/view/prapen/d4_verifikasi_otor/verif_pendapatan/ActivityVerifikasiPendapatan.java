@@ -34,7 +34,7 @@ public class ActivityVerifikasiPendapatan extends AppCompatActivity implements S
         View view = binding.getRoot();
         setContentView(view);
         backgroundStatusBar();
-        AppUtil.toolbarRegular(this, "Data Entry");
+        AppUtil.toolbarRegular(this, "Verifikasi Pendapatan");
         startingStepPosition = savedInstanceState != null ? savedInstanceState.getInt(CURRENT_STEP_POSITION_KEY) : 0;
 //        loadDataLengkap();
 

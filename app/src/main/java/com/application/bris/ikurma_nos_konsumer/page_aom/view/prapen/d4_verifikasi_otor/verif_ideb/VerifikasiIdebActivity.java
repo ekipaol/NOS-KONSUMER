@@ -164,6 +164,7 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
 //                Intent intent=new Intent(VerifikasiIdebActivity.this, TambahVerifikasiIdebActivity.class);
 //                startActivity(intent);
                 Toast.makeText(VerifikasiIdebActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

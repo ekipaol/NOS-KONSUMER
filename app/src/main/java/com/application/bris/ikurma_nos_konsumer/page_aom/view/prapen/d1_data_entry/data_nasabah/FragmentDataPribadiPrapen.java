@@ -478,7 +478,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             //TERBIT KTP
             case R.id.et_tanggal_terbit_ktp:
             case R.id.tf_tanggal_terbit_ktp:
-                openKeyValueDialog(binding.tfTanggalTerbitKtp.getLabelText().toString().trim());
+                dpTerbitKtp();
                 break;
 
 

@@ -39,6 +39,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         disableEditText();
         NumberText();
         backgroundStatusBar();
+        allOnClicks();
         AppUtil.toolbarRegular(this, "Kesimpulan Verifikasi");
 
     }
@@ -64,8 +65,13 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_close:
+                finish();
                 break;
         }
+    }
+
+    private void allOnClicks(){
+        binding.btnClose.setOnClickListener(this);
     }
 
     private void backgroundStatusBar() {

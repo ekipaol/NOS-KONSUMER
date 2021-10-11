@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
@@ -38,6 +39,9 @@ public class DataPembiayaanActivity extends AppCompatActivity implements  View.O
 
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Data Pembiayaan");
+
+        //biar keyboard gak nongol di awal activity kalau ada edittext
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         allOnClicks();
         disableEditTexts();

@@ -7,13 +7,17 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDsrDbrNasabahBinding ;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Activity_DSR_DBR_Nasabah extends AppCompatActivity {
+public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.OnClickListener {
     private ActivityDsrDbrNasabahBinding binding;
 
     @Override
@@ -25,8 +29,15 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity {
         numberText();
         onchangeText();
         disableText();
+        customToolbar();
+        allOnClicks();
 
 
+
+    }
+
+    private void allOnClicks(){
+        binding.btnSend.setOnClickListener(this);
     }
 
     private void disableText(){
@@ -72,5 +83,30 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity {
         binding.etMaxAngsuran.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaxAngsuran));
         binding.etDsrDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etDsrDbr));
         binding.etSisaDsrDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaDsrDbr));
+    }
+
+    public void customToolbar(){
+        binding.toolbarNosearch.tvPageTitle.setText("Kualitas Pembiayaan");
+
+        binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomDialog.DialogBackpress(Activity_DSR_DBR_Nasabah.this);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        CustomDialog.DialogBackpress(Activity_DSR_DBR_Nasabah.this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_send:
+                finish();
+                break;
+        }
     }
 }

@@ -35,6 +35,8 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifika
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_jangka_waktu.ActivityJangkaWaktuPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_kesimpulan.KesimpulanVerifikasi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_pendapatan.ActivityVerifikasiPendapatan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_tempat_kerja.VerifikasiTempatKerjaActivity;
@@ -257,8 +259,25 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_jangka_waktu))){
+            Intent it = new Intent(this, ActivityJangkaWaktuPembiayaan.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_verifikasi))){
+            Intent it = new Intent(this, KesimpulanVerifikasi.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_kualitas_pembiayaan))){
             Intent it = new Intent(this, Activity_DSR_DBR_Nasabah.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+
+        //D6
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d6_kalkulator_pemutus))){
+            Intent it = new Intent(this, kalkulatorsimulasiangsuran.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }

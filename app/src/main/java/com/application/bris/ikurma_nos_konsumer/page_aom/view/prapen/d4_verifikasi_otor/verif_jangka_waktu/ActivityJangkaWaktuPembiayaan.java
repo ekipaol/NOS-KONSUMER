@@ -34,8 +34,13 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
         BigDecimal();
         disableEditText();
         backgroundStatusBar();
+        allOnClicks();
         AppUtil.toolbarRegular(this, "Jangka Waktu Pembiayaan");
 
+    }
+
+    private void allOnClicks(){
+        binding.btnClose.setOnClickListener(this);
     }
 
 
@@ -70,6 +75,7 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_close:
+                finish();
                 break;
         }
 

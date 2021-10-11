@@ -19,10 +19,12 @@ import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDataHutangBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoDataIdebActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangAdapter;
 
 import java.util.ArrayList;
@@ -85,7 +87,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                CustomDialog.DialogBackpress(DataIdebActivity.this);
             }
         });
     }
@@ -154,8 +156,14 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
 //                Intent intent=new Intent(DataIdebActivity.this, TambahDataIdebActivity.class);
 //                startActivity(intent);
                 Toast.makeText(DataIdebActivity.this, "Clicking simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        CustomDialog.DialogBackpress(DataIdebActivity.this);
     }
 }

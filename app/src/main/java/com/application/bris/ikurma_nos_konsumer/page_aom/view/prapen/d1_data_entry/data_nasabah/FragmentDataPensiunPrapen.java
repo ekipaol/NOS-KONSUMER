@@ -18,6 +18,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListen
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
@@ -249,6 +250,18 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     public void onKeyValueSelect(String title, keyvalue data) {
         if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())){
             binding.etMenggunakanLngp.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                binding.tfInputLngp.setVisibility(View.VISIBLE);
+                binding.btnCekLngp.setVisibility(View.VISIBLE);
+                binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
+                binding.tfRateLngp.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.tfInputLngp.setVisibility(View.GONE);
+                binding.btnCekLngp.setVisibility(View.GONE);
+                binding.tfNamaInstansiLngp.setVisibility(View.GONE);
+                binding.tfRateLngp.setVisibility(View.GONE);
+            }
 
 //            val_Jenkel=KeyValue.getKeyJenisKelamin(et_jeniskelamin.getText().toString());
         }
@@ -428,6 +441,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
     private void defaulViewSettings(){
         binding.tvHasilCekPayroll.setVisibility(View.GONE);
+        binding.etNominalKiriman.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalKiriman));
+
+        binding.tfInputLngp.setVisibility(View.GONE);
+        binding.btnCekLngp.setVisibility(View.GONE);
+        binding.tfNamaInstansiLngp.setVisibility(View.GONE);
+        binding.tfRateLngp.setVisibility(View.GONE);
     }
 
 

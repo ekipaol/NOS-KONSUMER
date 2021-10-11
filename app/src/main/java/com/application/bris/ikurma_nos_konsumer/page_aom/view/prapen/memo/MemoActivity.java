@@ -190,7 +190,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                 binding.bottomSheet.extendedCatatan.setFocusable(true);
 
                 binding.bottomSheet.extendedCatatan.requestFocus();
-                binding.bottomSheet.extendedCatatan.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+//                binding.bottomSheet.extendedCatatan.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });

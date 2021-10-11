@@ -148,6 +148,7 @@ public class VerifikasiRacActivity extends AppCompatActivity implements GenericL
 //                Intent intent=new Intent(VerifikasiRacActivity.this, TambahVerifikasiRacActivity.class);
 //                startActivity(intent);
                 Toast.makeText(VerifikasiRacActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+                finish();
 
             }
         });

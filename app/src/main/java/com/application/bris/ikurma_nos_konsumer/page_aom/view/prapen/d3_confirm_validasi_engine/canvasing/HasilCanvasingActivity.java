@@ -63,8 +63,9 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
 
     @Override
     public void onCompleted(View completeButton) {
-        Intent intent=new Intent(this, DataMarketingActivity.class);
-        startActivity(intent);
+//        Intent intent=new Intent(this, DataMarketingActivity.class);
+//        startActivity(intent);
+        finish();
     }
 
     @Override
