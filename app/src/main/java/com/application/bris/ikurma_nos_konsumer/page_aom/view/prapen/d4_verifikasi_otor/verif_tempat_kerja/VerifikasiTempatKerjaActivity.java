@@ -26,6 +26,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.kalkulatorsimulasiangsuran;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
@@ -44,9 +45,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verifikasi_tempat_kerja);
         binding = ActivityVerifikasiTempatKerjaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        setContentView(view);
         onclickSelectDialog();
         binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
         binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
@@ -270,6 +271,11 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     @Override
     public void onSelect(String title, MGenericModel data) {
+        if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
+            binding.etMenggunakanLngp.setText(data.getDESC());
+        } else if(title.equalsIgnoreCase(binding.tfKesimpulanPensesuaianVerifikasi.getLabelText())) {
+            binding.etKesimpulanPensesuaianVerifikasi.setText(data.getDESC());
+        }
         if (data.getDESC().equalsIgnoreCase("Ya")) {
             binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
             binding.tfRateLngp.setVisibility(View.VISIBLE);
@@ -283,13 +289,10 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                 binding.tfInputLngp.setVisibility(View.GONE);
                 binding.btnCekLngp.setVisibility(View.GONE);
             }
-            if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
-                binding.etMenggunakanLngp.setText(data.getDESC());
 //        }else if (title.equalsIgnoreCase(binding.btnCekLngp.getLabelText())) {
 //            binding.btnCekLngp.setText(data.getDESC());
 //       }else if (title.equalsIgnoreCase(binding.btnSend.getLabelText())) {
 //          binding.btnSend.setText(data.getDESC());
-            }
         }
     }
 }
