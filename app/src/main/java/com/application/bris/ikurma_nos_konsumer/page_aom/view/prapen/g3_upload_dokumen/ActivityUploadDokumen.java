@@ -1,10 +1,5 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g3_upload_dokumen;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -14,6 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityUploadDokumenBinding;
@@ -32,96 +33,136 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         super.onCreate(savedInstanceState);
         binding = ActivityUploadDokumenBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        binding.cvUploadDokumen2.setVisibility(View.GONE);
+        binding.cvUploadDokumen3.setVisibility(View.GONE);
+        binding.cvUploadDokumen4.setVisibility(View.GONE);
+        binding.cvUploadDokumen5.setVisibility(View.GONE);
+        binding.tvUploadDokumen2.setVisibility(View.GONE);
+        binding.tvUploadDokumen3.setVisibility(View.GONE);
+        binding.tvUploadDokumen4.setVisibility(View.GONE);
+        binding.tvUploadDokumen5.setVisibility(View.GONE);
+        binding.tfNamaDokumen2.setVisibility(View.GONE);
+        binding.tfNamaDokumen3.setVisibility(View.GONE);
+        binding.tfNamaDokumen4.setVisibility(View.GONE);
+        binding.tfNamaDokumen5.setVisibility(View.GONE);
+        binding.tfKeteranganDokumen2.setVisibility(View.GONE);
+        binding.tfKeteranganDokumen3.setVisibility(View.GONE);
+        binding.tfKeteranganDokumen4.setVisibility(View.GONE);
+        binding.tfKeteranganDokumen5.setVisibility(View.GONE);
+        binding.tfUploadDokumen2.setVisibility(View.GONE);
+        binding.tfUploadDokumen3.setVisibility(View.GONE);
+        binding.tfUploadDokumen4.setVisibility(View.GONE);
+        binding.tfUploadDokumen5.setVisibility(View.GONE);
+        binding.etNamaDokumen2.setVisibility(View.GONE);
+        binding.etNamaDokumen3.setVisibility(View.GONE);
+        binding.etNamaDokumen4.setVisibility(View.GONE);
+        binding.etNamaDokumen5.setVisibility(View.GONE);
+        binding.etKeteranganDokumen2.setVisibility(View.GONE);
+        binding.etKeteranganDokumen3.setVisibility(View.GONE);
+        binding.etKeteranganDokumen4.setVisibility(View.GONE);
+        binding.etKeteranganDokumen5.setVisibility(View.GONE);
+        binding.ivUploadDokumen2.setVisibility(View.GONE);
+        binding.ivUploadDokumen3.setVisibility(View.GONE);
+        binding.ivUploadDokumen4.setVisibility(View.GONE);
+        binding.ivUploadDokumen5.setVisibility(View.GONE);
+        binding.btnUploadDokumen2.setVisibility(View.GONE);
+        binding.btnUploadDokumen3.setVisibility(View.GONE);
+        binding.btnUploadDokumen4.setVisibility(View.GONE);
+        binding.btnUploadDokumen5.setVisibility(View.GONE);
         setContentView(view);
         onclickSelectDialog();
         AppUtil.toolbarRegular(this, "Upload Dokumen");
     }
 
     private void onclickSelectDialog() {
-        binding.ivFotoSkPengangkatan.setOnClickListener(this);
-        binding.ivFotoSkTerakhir.setOnClickListener(this);
-        binding.ivFotoSkPensiun.setOnClickListener(this);
-        binding.ivFotoCovernoteSuransi.setOnClickListener(this);
-        binding.ivTandaTerimaDokumen.setOnClickListener(this);
-        binding.ivFormMutasiKantorBayar.setOnClickListener(this);
-        binding.ivSuratKuasaDanPernyataanFlagging.setOnClickListener(this);
-        binding.ivSuratPernyataanDanKuasaPembiayaan.setOnClickListener(this);
-        binding.ivSupPembiayaanRetailPensiunPrapen.setOnClickListener(this);
-        binding.ivPurchaseOrder.setOnClickListener(this);
-        binding.ivAkadWakalah.setOnClickListener(this);
-        binding.ivAkadMuharabahah.setOnClickListener(this);
-        binding.ivJadwalAngsuranMurabahah.setOnClickListener(this);
-        binding.ivSuratTandaTerimaBarang.setOnClickListener(this);
-        binding.ivPurchaseOrder2.setOnClickListener(this);
-        binding.ivAkadWakalah2.setOnClickListener(this);
-        binding.ivAkadIjarah.setOnClickListener(this);
-        binding.ivJadwalAngsuranUjrah.setOnClickListener(this);
-        binding.ivLaporanPenilaianAsetMmq.setOnClickListener(this);
-        binding.ivAkadMmq.setOnClickListener(this);
-        binding.ivLampiranJadwalPengambilalihan.setOnClickListener(this);
-        binding.ivSuratPernyataanDanKuasaAsetMmqSendiri.setOnClickListener(this);
-        binding.ivSuratPernyataanDanKuasaAsetMmqPihakKetiga.setOnClickListener(this);
-        binding.ivAkadMmq.setOnClickListener(this);
-        binding.ivJadwalAngsuranRahn.setOnClickListener(this);
-        binding.ivFormMutasiKantorBayar2.setOnClickListener(this);
-        binding.ivFotoProsesPenandatanganAkad.setOnClickListener(this);
-        binding.ivFotoScreenCaptureBuktiOtentikasiNasabah.setOnClickListener(this);
+        binding.dFotoSkPengangkatan.setOnClickListener(this);
+        binding.dFotoSkTerakhir.setOnClickListener(this);
+        binding.dFotoSkPensiun.setOnClickListener(this);
+        binding.dFotoCovernoteAsuransi.setOnClickListener(this);
+        binding.dSk.setOnClickListener(this);
+        binding.dMutasi.setOnClickListener(this);
+        binding.dKuasa.setOnClickListener(this);
+        binding.dPernyataan.setOnClickListener(this);
+        binding.dSup.setOnClickListener(this);
+        binding.dPo.setOnClickListener(this);
+        binding.dAkadWakalah.setOnClickListener(this);
+        binding.dAkadMurabahah.setOnClickListener(this);
+        binding.dJadwalAngsuran.setOnClickListener(this);
+        binding.dTerimaBarang.setOnClickListener(this);
+        binding.dPoIjarah.setOnClickListener(this);
+        binding.dAkadWakalahIjarah.setOnClickListener(this);
+        binding.dAkadIjarah.setOnClickListener(this);
+        binding.dAngsuranUjrah.setOnClickListener(this);
+        binding.dAssetMmq.setOnClickListener(this);
+        binding.dAkadMmq.setOnClickListener(this);
+        binding.dJadwalPengambilalihan.setOnClickListener(this);
+        binding.dSuratPernyataanDanKuasaAsetMmqSendiri.setOnClickListener(this);
+        binding.dSuratPernyataanDanKuasaAsetMmqPihakKetiga.setOnClickListener(this);
+        binding.dAkadMmq.setOnClickListener(this);
+        binding.dAkadRahn.setOnClickListener(this);
+        binding.dJadwalAngsuranRahn.setOnClickListener(this);
+        binding.dFormMutasiKantorBayar.setOnClickListener(this);
+        binding.dFotoProsesPenandatangananAkad.setOnClickListener(this);
+        binding.dFotoScreenBuktiOtentikasiNasabahSaatAkad.setOnClickListener(this);
+        binding.ivUploadDokumen1.setOnClickListener(this);
+        binding.ivUploadDokumen2.setOnClickListener(this);
 
         binding.btnFotoSkPengangkatan.setOnClickListener(this);
         binding.btnFotoSkTerakhir.setOnClickListener(this);
         binding.btnFotoSkPensiun.setOnClickListener(this);
-        binding.btnFotoCovernoteSuransi.setOnClickListener(this);
-        binding.btnTandaTerimaDokumen.setOnClickListener(this);
+        binding.btnFotoCovernoteAsuransi.setOnClickListener(this);
+        binding.btnSk.setOnClickListener(this);
+        binding.btnMutasi.setOnClickListener(this);
         binding.btnFormMutasiKantorBayar.setOnClickListener(this);
-        binding.btnSuratKuasaDanPernyataanFlagging.setOnClickListener(this);
-        binding.btnSuratPernyataanDanKuasaPembiayaan.setOnClickListener(this);
-        binding.btnSupPembiayaanRetailPensiunPrapen.setOnClickListener(this);
-        binding.btnPurchaseOrder.setOnClickListener(this);
+        binding.btnKuasa.setOnClickListener(this);
+        binding.btnPernyataan.setOnClickListener(this);
+        binding.btnSup.setOnClickListener(this);
+        binding.btnPo.setOnClickListener(this);
         binding.btnAkadWakalah.setOnClickListener(this);
-        binding.btnAkadMuharabahah.setOnClickListener(this);
-        binding.btnJadwalAngsuranMurabahah.setOnClickListener(this);
-        binding.btnSuratTandaTerimaBarang.setOnClickListener(this);
-        binding.btnPurchaseOrder2.setOnClickListener(this);
-        binding.btnAkadWakalah2.setOnClickListener(this);
+        binding.btnAkadMurabahah.setOnClickListener(this);
+        binding.btnJadwalAngsuran.setOnClickListener(this);
+        binding.btnTerimaBarang.setOnClickListener(this);
+        binding.btnPoIjarah.setOnClickListener(this);
+        binding.btnAkadWakalahIjarah.setOnClickListener(this);
+        binding.btnAkadWakalah.setOnClickListener(this);
         binding.btnAkadIjarah.setOnClickListener(this);
-        binding.btnJadwalAngsuranUjrah.setOnClickListener(this);
-        binding.btnLaporanPenilaianAsetMmq.setOnClickListener(this);
+        binding.btnAngsuranUjrah.setOnClickListener(this);
+        binding.btnAkadRahn.setOnClickListener(this);
+        binding.btnAssetMmq.setOnClickListener(this);
         binding.btnAkadMmq.setOnClickListener(this);
-        binding.btnLampiranJadwalPengambilalihan.setOnClickListener(this);
+        binding.btnJadwalPengambilalihan.setOnClickListener(this);
         binding.btnSuratPernyataanDanKuasaAsetMmqSendiri.setOnClickListener(this);
         binding.btnSuratPernyataanDanKuasaAsetMmqPihakKetiga.setOnClickListener(this);
         binding.btnAkadMmq.setOnClickListener(this);
         binding.btnJadwalAngsuranRahn.setOnClickListener(this);
-        binding.btnFormMutasiKantorBayar2.setOnClickListener(this);
-        binding.btnFotoProsesPenandatanganAkad.setOnClickListener(this);
-        binding.btnFotoScreenCaptureBuktiOtentikasiNasabah.setOnClickListener(this);
+        binding.btnFormMutasiKantorBayar.setOnClickListener(this);
+        binding.btnFotoProsesPenandatangananAkad.setOnClickListener(this);
+        binding.btnFotoScreenCaptureBuktiOtentikasiNasabahSaatAkad.setOnClickListener(this);
+        binding.etNamaDokumen1.setOnClickListener(this);
+        binding.etNamaDokumen2.setOnClickListener(this);
+        binding.etKeteranganDokumen1.setOnClickListener(this);
+        binding.etKeteranganDokumen2.setOnClickListener(this);
+        binding.btnUploadDokumen1.setOnClickListener(this);
+        binding.btnUploadDokumen2.setOnClickListener(this);
+        binding.btnUploadDokumen3.setOnClickListener(this);
+        binding.btnUploadDokumen4.setOnClickListener(this);
+        binding.btnUploadDokumen5.setOnClickListener(this);
 
-        binding.tfNamaDokumen1.setOnClickListener(this);
-        binding.tfKeteranganDokumen1.setOnClickListener(this);
-        binding.ivFotoUploadDokumen1.setOnClickListener(this);
-        binding.btnFotoUploadDokumen1.setOnClickListener(this);
+        binding.etNamaDokumen1.setOnClickListener(this);
+        binding.etNamaDokumen2.setOnClickListener(this);
+        binding.etNamaDokumen3.setOnClickListener(this);
+        binding.etNamaDokumen4.setOnClickListener(this);
+        binding.etNamaDokumen5.setOnClickListener(this);
+        binding.etKeteranganDokumen1.setOnClickListener(this);
+        binding.etKeteranganDokumen2.setOnClickListener(this);
+        binding.etKeteranganDokumen3.setOnClickListener(this);
+        binding.etKeteranganDokumen4.setOnClickListener(this);
+        binding.etKeteranganDokumen5.setOnClickListener(this);
 
-        binding.tfNamaDokumen2.setOnClickListener(this);
-        binding.tfKeteranganDokumen2.setOnClickListener(this);
-        binding.ivFotoUploadDokumen2.setOnClickListener(this);
-        binding.btnFotoUploadDokumen1.setOnClickListener(this);
-
-        binding.tfNamaDokumen3.setOnClickListener(this);
-        binding.tfKeteranganDokumen3.setOnClickListener(this);
-        binding.ivFotoUploadDokumen3.setOnClickListener(this);
-        binding.btnFotoUploadDokumen3.setOnClickListener(this);
-
-
-        binding.tfNamaDokumen4.setOnClickListener(this);
-        binding.tfKeteranganDokumen4.setOnClickListener(this);
-        binding.ivFotoUploadDokumen4.setOnClickListener(this);
-        binding.btnFotoUploadDokumen4.setOnClickListener(this);
-
-
-        binding.tfNamaDokumen5.setOnClickListener(this);
-        binding.tfKeteranganDokumen5.setOnClickListener(this);
-        binding.ivFotoUploadDokumen5.setOnClickListener(this);
-        binding.btnFotoUploadDokumen5.setOnClickListener(this);
+        binding.llTambahanDokumen.setOnClickListener(this);
+        binding.btnTambahanDokumen.setOnClickListener(this);
+        binding.btnSend.setOnClickListener(this);
+        binding.llBtnSend.setOnClickListener(this);
     }
 
     public void onSelectMenuCamera(String idMenu) {
@@ -138,6 +179,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         }
 
     }
+
 
     private final int TAKE_PICTURE_KANTOR1 = 11;
     private final int PICK_PICTURE_KANTOR1 = 22;
@@ -200,78 +242,125 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_foto_sk_pensiun:
-            case R.id.iv_foto_sk_pengangkatan:
-            case R.id.iv_foto_sk_terakhir:
-            case R.id.iv_foto_covernote_suransi:
-            case R.id.iv_tanda_terima_dokumen:
-            case R.id.iv_form_mutasi_kantor_bayar:
-            case R.id.iv_surat_kuasa_dan_pernyataan_flagging:
-            case R.id.iv_surat_pernyataan_dan_kuasa_pembiayaan:
-            case R.id.iv_sup_pembiayaan_retail_pensiun_prapen:
-            case R.id.iv_purchase_order:
-            case R.id.iv_akad_wakalah:
-            case R.id.iv_akad_muharabahah:
-            case R.id.iv_jadwal_angsuran_murabahah:
-            case R.id.iv_surat_tanda_terima_barang:
-            case R.id.iv_purchase_order2:
-            case R.id.iv_akad_wakalah2:
-            case R.id.iv_akad_ijarah:
-            case R.id.iv_jadwal_angsuran_ujrah:
-            case R.id.iv_laporan_penilaian_aset_mmq:
-            case R.id.iv_akad_mmq:
-            case R.id.iv_lampiran_jadwal_pengambilalihan:
-            case R.id.iv_surat_pernyataan_dan_kuasa_aset_mmq_sendiri:
-            case R.id.iv_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga:
-            case R.id.iv_akad_rahn:
-            case R.id.iv_jadwal_angsuran_rahn:
-            case R.id.iv_form_mutasi_kantor_bayar2:
-            case R.id.iv_foto_proses_penandatangan_akad:
-            case R.id.iv_foto_screen_capture_bukti_otentikasi_nasabah:
-            case R.id.iv_foto_upload_dokumen1:
-            case R.id.iv_foto_upload_dokumen2:
-            case R.id.iv_foto_upload_dokumen3:
-            case R.id.iv_foto_upload_dokumen4:
-            case R.id.iv_foto_upload_dokumen5:
+            case R.id.d_foto_sk_pensiun:
+            case R.id.d_foto_sk_pengangkatan:
+            case R.id.d_foto_sk_terakhir:
+            case R.id.d_foto_covernote_asuransi:
+            case R.id.d_sk:
+            case R.id.d_form_mutasi_kantor_bayar:
+            case R.id.d_kuasa:
+            case R.id.d_pernyataan:
+            case R.id.d_sup:
+            case R.id.d_po:
+            case R.id.d_akad_wakalah:
+            case R.id.d_akad_murabahah:
+            case R.id.d_jadwal_angsuran:
+            case R.id.d_terima_barang:
+            case R.id.d_po_Ijarah:
+            case R.id.d_akad_wakalah_Ijarah:
+            case R.id.d_akad_ijarah:
+            case R.id.d_angsuran_ujrah:
+            case R.id.d_asset_mmq:
+            case R.id.d_akad_mmq:
+            case R.id.d_jadwal_pengambilalihan:
+            case R.id.d_surat_pernyataan_dan_kuasa_aset_mmq_sendiri:
+            case R.id.d_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga:
+            case R.id.d_akad_rahn:
+            case R.id.d_jadwal_angsuran_rahn:
+            case R.id.d_mutasi:
+            case R.id.d_foto_proses_penandatanganan_akad:
+            case R.id.d_foto_screen_bukti_otentikasi_nasabah_saat_akad:
+            case R.id.iv_upload_dokumen1:
+            case R.id.iv_upload_dokumen2:
+            case R.id.iv_upload_dokumen3:
+            case R.id.iv_upload_dokumen4:
+            case R.id.iv_upload_dokumen5:
 
             case R.id.btn_foto_sk_pensiun:
             case R.id.btn_foto_sk_pengangkatan:
             case R.id.btn_foto_sk_terakhir:
-            case R.id.btn_foto_covernote_suransi:
-            case R.id.btn_tanda_terima_dokumen:
+            case R.id.btn_foto_covernote_asuransi:
+            case R.id.btn_sk:
             case R.id.btn_form_mutasi_kantor_bayar:
-            case R.id.btn_surat_kuasa_dan_pernyataan_flagging:
-            case R.id.btn_surat_pernyataan_dan_kuasa_pembiayaan:
-            case R.id.btn_sup_pembiayaan_retail_pensiun_prapen:
-            case R.id.btn_purchase_order:
+            case R.id.btn_kuasa:
+            case R.id.btn_pernyataan:
+            case R.id.btn_sup:
+            case R.id.btn_po:
             case R.id.btn_akad_wakalah:
-            case R.id.btn_akad_muharabahah:
-            case R.id.btn_jadwal_angsuran_murabahah:
-            case R.id.btn_surat_tanda_terima_barang:
-            case R.id.btn_purchase_order2:
-            case R.id.btn_akad_wakalah2:
+            case R.id.btn_akad_murabahah:
+            case R.id.btn_jadwal_angsuran:
+            case R.id.btn_terima_barang:
+            case R.id.btn_po_Ijarah:
+            case R.id.btn_akad_wakalah_Ijarah:
             case R.id.btn_akad_ijarah:
-            case R.id.btn_jadwal_angsuran_ujrah:
-            case R.id.btn_laporan_penilaian_aset_mmq:
+            case R.id.btn_angsuran_ujrah:
+            case R.id.btn_asset_mmq:
             case R.id.btn_akad_mmq:
-            case R.id.btn_lampiran_jadwal_pengambilalihan:
+            case R.id.btn_jadwal_pengambilalihan:
             case R.id.btn_surat_pernyataan_dan_kuasa_aset_mmq_sendiri:
             case R.id.btn_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga:
             case R.id.btn_akad_rahn:
             case R.id.btn_jadwal_angsuran_rahn:
-            case R.id.btn_form_mutasi_kantor_bayar2:
-            case R.id.btn_foto_proses_penandatangan_akad:
-            case R.id.btn_foto_screen_capture_bukti_otentikasi_nasabah:
-            case R.id.btn_foto_upload_dokumen1:
-            case R.id.btn_foto_upload_dokumen2:
-            case R.id.btn_foto_upload_dokumen3:
-            case R.id.btn_foto_upload_dokumen4:
-            case R.id.btn_foto_upload_dokumen5:
+            case R.id.btn_mutasi:
+            case R.id.btn_foto_proses_penandatanganan_akad:
+            case R.id.btn_foto_screen_capture_bukti_otentikasi_nasabah_saat_akad:
+            case R.id.btn_upload_dokumen1:
+            case R.id.btn_upload_dokumen2:
+            case R.id.btn_upload_dokumen3:
+            case R.id.btn_upload_dokumen4:
+            case R.id.btn_upload_dokumen5:
                 BSUploadFile.displayWithTitle(ActivityUploadDokumen.this.getSupportFragmentManager(), this, "");
+                break;
+            case R.id.ll_tambahan_dokumen:
+            case R.id.btn_tambahan_dokumen:
+                Toast.makeText(getApplicationContext(), "Tambahan Dokumen Lainya",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.btn_cek_lngp:
+            case R.id.ll_btn_send:
+            case R.id.btn_send:
                 break;
         }
 
-
+        binding.btnTambahanDokumen.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                binding.cvUploadDokumen2.setVisibility(View.VISIBLE);
+                binding.cvUploadDokumen3.setVisibility(View.VISIBLE);
+                binding.cvUploadDokumen4.setVisibility(View.VISIBLE);
+                binding.cvUploadDokumen5.setVisibility(View.VISIBLE);
+                binding.tvUploadDokumen2.setVisibility(View.VISIBLE);
+                binding.tvUploadDokumen3.setVisibility(View.VISIBLE);
+                binding.tvUploadDokumen4.setVisibility(View.VISIBLE);
+                binding.tvUploadDokumen5.setVisibility(View.VISIBLE);
+                binding.tfNamaDokumen2.setVisibility(View.VISIBLE);
+                binding.tfNamaDokumen3.setVisibility(View.VISIBLE);
+                binding.tfNamaDokumen4.setVisibility(View.VISIBLE);
+                binding.tfNamaDokumen5.setVisibility(View.VISIBLE);
+                binding.tfKeteranganDokumen2.setVisibility(View.VISIBLE);
+                binding.tfKeteranganDokumen3.setVisibility(View.VISIBLE);
+                binding.tfKeteranganDokumen4.setVisibility(View.VISIBLE);
+                binding.tfKeteranganDokumen5.setVisibility(View.VISIBLE);
+                binding.tfUploadDokumen2.setVisibility(View.VISIBLE);
+                binding.tfUploadDokumen3.setVisibility(View.VISIBLE);
+                binding.tfUploadDokumen4.setVisibility(View.VISIBLE);
+                binding.tfUploadDokumen5.setVisibility(View.VISIBLE);
+                binding.etNamaDokumen2.setVisibility(View.VISIBLE);
+                binding.etNamaDokumen3.setVisibility(View.VISIBLE);
+                binding.etNamaDokumen4.setVisibility(View.VISIBLE);
+                binding.etNamaDokumen5.setVisibility(View.VISIBLE);
+                binding.etKeteranganDokumen2.setVisibility(View.VISIBLE);
+                binding.etKeteranganDokumen3.setVisibility(View.VISIBLE);
+                binding.etKeteranganDokumen4.setVisibility(View.VISIBLE);
+                binding.etKeteranganDokumen5.setVisibility(View.VISIBLE);
+                binding.ivUploadDokumen2.setVisibility(View.VISIBLE);
+                binding.ivUploadDokumen3.setVisibility(View.VISIBLE);
+                binding.ivUploadDokumen4.setVisibility(View.VISIBLE);
+                binding.ivUploadDokumen5.setVisibility(View.VISIBLE);
+                binding.btnUploadDokumen2.setVisibility(View.VISIBLE);
+                binding.btnUploadDokumen3.setVisibility(View.VISIBLE);
+                binding.btnUploadDokumen4.setVisibility(View.VISIBLE);
+                binding.btnUploadDokumen5.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 }

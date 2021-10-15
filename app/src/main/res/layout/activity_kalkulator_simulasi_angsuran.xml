@@ -212,8 +212,8 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Biaya Asuransi Khusus*"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:labelText="Biaya Asuransi Khusus"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
@@ -239,7 +239,7 @@
                     app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_district"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Treatment Biaya ASuransi Khusus"
+                    app:labelText="Treatment Biaya Asuransi Khusus"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -308,8 +308,7 @@
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                !--Treatment Biaya Administrasi-->
-
+                <!--Biaya Penalti-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_biayapenalti_khusus_takeover"
                     android:layout_width="match_parent"
@@ -325,7 +324,7 @@
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
-
+                    <!--Biaya Penalti (Khusus Take Over)-->
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_biayapenalti_khusus_takeover"
                         android:layout_width="match_parent"
@@ -335,7 +334,7 @@
                         app:prefix="Rp. " />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                <!--Biaya Penalti (Khusus Take Over)-->
+                <!--Treatment Biaya Penalti-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_treatment_biaya_penalti"
                     android:layout_width="match_parent"
@@ -353,7 +352,7 @@
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
-                    <!--Treatment Biaya Penalti-->
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_treatment_biaya_penalti"
                         android:layout_width="match_parent"
@@ -362,7 +361,7 @@
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
+                <!--Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_biayamaterai"
                     android:layout_width="match_parent"
@@ -378,7 +377,6 @@
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
-                    <!--Biaya Materai-->
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_biayamaterai"
                         android:layout_width="match_parent"
@@ -388,7 +386,7 @@
                         app:prefix="Rp. " />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
+                <!--Treatment Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_treatment_biaya_materai"
                     android:layout_width="match_parent"
@@ -413,6 +411,57 @@
                         android:layout_height="wrap_content"
                         android:text="Pilih"
                         tools:ignore="DuplicateIds" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Biaya Flagging-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_biaya_flagging"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Biaya Flagging"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true"
+                    tools:ignore="DuplicateIds">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_biaya_flagging"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        app:prefix="Rp. " />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Biaya Mitra Fronting-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_biaya_mitra_fronting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Biaya Mitra Fronting"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true"
+                    tools:ignore="DuplicateIds">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_biaya__mitra_fronting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:text="0"
+                        app:prefix="Rp. " />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 

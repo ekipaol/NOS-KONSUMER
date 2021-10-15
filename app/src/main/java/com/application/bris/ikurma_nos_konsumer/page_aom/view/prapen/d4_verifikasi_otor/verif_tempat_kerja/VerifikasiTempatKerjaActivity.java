@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -49,31 +50,6 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         View view = binding.getRoot();
         setContentView(view);
         onclickSelectDialog();
-        binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
-        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
-        binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
-        binding.etPerkiraanGaji.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
-                BigDecimal vertunjangan = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
-                BigDecimal totalRpc = (vergaji.add(vertunjangan));
-                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
         setParameterDropdown();
         allOnclick();
         onClickEndIcon();
@@ -83,6 +59,31 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         disableEditText();
         AppUtil.toolbarRegular(this, "Verifikasi Tempat Kerja");
     }
+
+//    private void chageListener() {
+//        binding.etPerkiraanTunjangan.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString( binding.etPerkiraanGaji.getText().toString()));
+//                BigDecimal vertunjangan= new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+//                BigDecimal totalRpc=(vergaji.add(vertunjangan));
+//                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//
+//
+//        });
+//
+//    }
 
 
     private void onclickSelectDialog() {
@@ -112,9 +113,20 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
         binding.etCatatanhasilverifikasi.setOnClickListener(this);
 
+        binding.btnSuratRekomendasiInstansi.setOnClickListener(this);
+        binding.ivSuratRekomendasiInstansi.setOnClickListener(this);
+        binding.rlSuratRekomendasiInstansi.setOnClickListener(this);
+
+        binding.btnResumeDokumenPembiayaan.setOnClickListener(this);
+        binding.ivResumeDokumenPembiayaan.setOnClickListener(this);
+        binding.rlSuratRekomendasiInstansi.setOnClickListener(this);
+
         binding.rlUploadDokumen.setOnClickListener(this);
         binding.btnUploadDokumen.setOnClickListener(this);
         binding.ivUploadDokumen.setOnClickListener(this);
+
+        binding.btnCekLngp.setOnClickListener(this);
+        binding.btnSend.setOnClickListener(this);
 
     }
 
@@ -135,9 +147,18 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                 break;
 
             case R.id.rl_upload_dokumen:
+            case R.id.rl_surat_rekomendasi_instansi:
             case R.id.iv_upload_dokumen:
+            case R.id.iv_surat_rekomendasi_instansi:
             case R.id.btn_upload_dokumen:
+            case R.id.btn_surat_rekomendasi_instansi:
                 BSUploadFile.displayWithTitle(VerifikasiTempatKerjaActivity.this.getSupportFragmentManager(), this, "");
+                break;
+
+            case R.id.rl_resume_dokumen_pembiayaan:
+            case R.id.iv_resume_dokumen_pembiayaan:
+            case R.id.btn_resume_dokumen_pembiayaan:
+                Toast.makeText(getApplicationContext(), "Menampilkan Dokumen Pribadi dan Pasangan",Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -171,13 +192,13 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     private void disableEditText() {
         binding.etMenggunakanLngp.setFocusable(false);
         binding.etKesimpulanPensesuaianVerifikasi.setFocusable(false);
-        binding.etTotalPendapatan.setFocusable(false);
+        binding.etNamaInstansiLngp.setFocusable(false);
+        binding.etRateLngp.setFocusable(false);
     }
 
     private void allOnclick() {
         binding.tfMenggunakanLngp.setOnClickListener(this);
         binding.etMenggunakanLngp.setOnClickListener(this);
-
         binding.tfKesimpulanPensesuaianVerifikasi.setOnClickListener(this);
         binding.etKesimpulanPensesuaianVerifikasi.setOnClickListener(this);
     }

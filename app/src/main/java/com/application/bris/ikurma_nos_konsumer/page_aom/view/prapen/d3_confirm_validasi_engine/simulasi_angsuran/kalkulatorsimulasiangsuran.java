@@ -26,16 +26,16 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityKalkulatorSimulasiAngsuranBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
+        View view = binding.getRoot();
+        setContentView(view);
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Kalkulator");
-
         setParameterDropdown();
         allOnClick();
         onClickEndIcon();
         disableEditText();
-
+        binding.tfBiayaFlagging.setVisibility(View.GONE);
+        binding.tfBiayaMitraFronting.setVisibility((View.GONE));
         binding.etPlafondYangDibutuhkan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPlafondYangDibutuhkan));
         binding.etBiayaAsuransi.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaAsuransi));
         binding.etBiayaasuransikhusus.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaasuransikhusus));
@@ -96,6 +96,8 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             binding.etTreatmentBiayaAdministrasi.setText(data.getDESC());
         }else if (title.equalsIgnoreCase(binding.tfTreatmentBiayaPenalti.getLabelText())) {
             binding.etTreatmentBiayaPenalti.setText(data.getDESC());
+        }else if (title.equalsIgnoreCase(binding.tfTreatmentBiayaMaterai.getLabelText())) {
+            binding.etTreatmentBiayaMaterai.setText(data.getDESC());
         }
     }
 
@@ -133,17 +135,19 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTreatmentBiayaMaterai.getLabelText(),dataDropdownKalkulator,kalkulatorsimulasiangsuran.this);
                 break;
         }
-
-
-
     }
 
     private void disableEditText(){
+        binding.etPilihanAsuransiPenjaminan.setFocusable(false);
         binding.etTreatmentBiayaAsuransi.setFocusable(false);
         binding.etTreatmentBiayaAsuransiKhusus.setFocusable(false);
         binding.etTreatmentBiayaAdministrasi.setFocusable(false);
         binding.etTreatmentBiayaPenalti.setFocusable(false);
         binding.etTreatmentBiayaMaterai.setFocusable(false);
+        binding.etBiayaAsuransi.setFocusable(false);
+        binding.etBiayaAdministrasi.setFocusable(false);
+        binding.etBiayaFlagging.setFocusable(false);
+        binding.etBiayaMitraFronting.setFocusable(false);
     }
 
     private void allOnClick(){
