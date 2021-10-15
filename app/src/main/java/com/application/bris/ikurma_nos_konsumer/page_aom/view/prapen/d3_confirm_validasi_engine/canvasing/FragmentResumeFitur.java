@@ -30,6 +30,7 @@ public class FragmentResumeFitur extends Fragment implements Step, KeyValueListe
     private void enabledText(){
         binding.etAsuransi.setFocusable(false);
         binding.etResumeFitur.setFocusable(false);
+        binding.etJangkaWaktu.setFocusable(false);
         binding.etLimitPembiayaan.setFocusable(false);
         binding.etLoanType.setFocusable(false);
     }

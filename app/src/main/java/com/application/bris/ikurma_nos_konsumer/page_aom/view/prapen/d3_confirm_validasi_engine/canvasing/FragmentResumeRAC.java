@@ -35,7 +35,7 @@ public class FragmentResumeRAC extends Fragment implements Step, KeyValueListene
 
     private void disabledText(){
         binding.etResumeRac.setFocusable(false);
-        binding.etHasilDbr.setFocusable(false);
+//        binding.etHasilDbr.setFocusable(false);
         binding.etHistoryIdeb.setFocusable(false);
         binding.etRacStatus.setFocusable(false);
         binding.etMasaPeserta.setFocusable(false);
@@ -56,6 +56,12 @@ public class FragmentResumeRAC extends Fragment implements Step, KeyValueListene
         binding.etUmurNasabah.setFocusable(false);
         binding.etUmurPembiayaEksisting.setFocusable(false);
         binding.etSuratRekomendasi.setFocusable(false);
+        binding.etDhn.setFocusable(false);
+        binding.etWo.setFocusable(false);
+        binding.etPpatk.setFocusable(false);
+        binding.etDttot.setFocusable(false);
+        binding.etTanggalPengecekan.setFocusable(false);
+
     }
 
     @Override

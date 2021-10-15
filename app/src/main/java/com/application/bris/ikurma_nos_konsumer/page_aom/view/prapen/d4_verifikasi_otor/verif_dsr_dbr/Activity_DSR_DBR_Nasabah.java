@@ -12,6 +12,7 @@ import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDsrDbrNasabahBinding ;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.math.BigDecimal;
@@ -38,6 +39,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     }
 
     private void disableText(){
+        binding.etAngsuranPinjamanEksisting.setFocusable(false);
         binding.etSisapenghasilan.setFocusable(false);
         binding.etSisaDsrDbr.setFocusable(false);
         binding.etMaxAngsuran.setFocusable(false);
@@ -83,7 +85,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     }
 
     public void customToolbar(){
-        binding.toolbarNosearch.tvPageTitle.setText("Kualitas Pembiayaan");
+        binding.toolbarNosearch.tvPageTitle.setText("Perhitungan DBR DSR");
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +105,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         switch (view.getId()) {
             case R.id.btn_send:
             case R.id.ll_btn_send:
+                AppUtil.disableEditTexts(binding.getRoot());
                 finish();
                 break;
         }

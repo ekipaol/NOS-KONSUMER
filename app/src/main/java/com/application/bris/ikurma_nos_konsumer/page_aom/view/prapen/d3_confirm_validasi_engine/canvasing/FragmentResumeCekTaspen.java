@@ -34,7 +34,7 @@ public class FragmentResumeCekTaspen extends Fragment implements Step, KeyValueL
         binding.etFlagging.setFocusable(false);
         binding.etHariTua.setFocusable(false);
         binding.etKantorBayar.setFocusable(false);
-        binding.etResumeTaspen.setFocusable(false);
+//        binding.etResumeTaspen.setFocusable(false);
         binding.etKpe.setFocusable(false);
         binding.etManfaatPensiun.setFocusable(false);
         binding.etNama.setFocusable(false);
@@ -48,6 +48,7 @@ public class FragmentResumeCekTaspen extends Fragment implements Step, KeyValueL
 
     private void numberText(){
         binding.etHariTua.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHariTua));
+        binding.etManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHariTua));
     }
 
     @Override

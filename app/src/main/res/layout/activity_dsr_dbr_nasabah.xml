@@ -39,7 +39,7 @@
                         app:iconSignifier="@drawable/ic_rupiah"
                         app:isResponsiveIconColor="true"
                         app:labelText="Total Angsuran Tidak Dilunasi"
-                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
                         app:useDenseSpacing="true">

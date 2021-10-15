@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp">
         <LinearLayout
+            android:id="@+id/ll_dokumen_pendapatan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -93,11 +94,13 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/muli_b"
                 android:paddingBottom="10dp"/>
+
             <!--Title Data Periode 1-->
             <TextView
+                android:id="@+id/tp1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Periode 1"
+                android:text="Slip gaji terakhir "
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
@@ -252,7 +255,7 @@
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
                 app:labelText="Periode Tunjangan"
@@ -338,7 +341,7 @@
                 android:id="@+id/tp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Periode 2"
+                android:text="Slip gaji + nama bulan sebelumnya"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
@@ -379,7 +382,7 @@
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
                 app:labelText="Periode Gaji"
@@ -494,7 +497,7 @@
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
                 app:labelText="Periode Tunjangan"
@@ -581,7 +584,7 @@
                 android:id="@+id/tp3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Periode 3"
+                android:text="Slip gaji + nama 2 bulan sebelumnya"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
@@ -622,7 +625,7 @@
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
                 app:labelText="Periode Gaji"
@@ -737,7 +740,7 @@
                 app:iconSignifier="@drawable/ic_date"
                 app:isResponsiveIconColor="true"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:panelBackgroundColor="@color/colorDisableEdit"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
                 app:labelText="Periode Tunjangan"
@@ -819,7 +822,6 @@
 
             </LinearLayout>
 
-
             <!--Hasil Verifikasi Gaji dan Tunjangan Tercermin di rekening?-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_verfikasi_gaji_tunjangan"
@@ -846,6 +848,47 @@
                 android:text="Pilih"
                 tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!--apakah rekening tunjangan dan rekening gaji sama?-->
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_verfikasi_rekening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+
+                android:paddingRight="20dp"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:iconSignifier="@drawable/ic_atm"
+                app:isResponsiveIconColor="true"
+                app:labelText="apakah rekening tunjangan dan rekening gaji sama?"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true"
+                tools:ignore="DuplicateIds">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_verfikasi_rekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!--GAJI-->
+            <TextView
+                android:id="@+id/norek_gaji"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GAJI"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/muli_b"
+                android:paddingBottom="10dp"/>
+
             <!--Nomer Rekening GAJI-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_norek_gaji"
@@ -872,34 +915,10 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            <!-- Nomer Rekening Tunjangan-->
-            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                android:id="@+id/tf_norek_tunjangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_marginTop="10dp"
-                app:iconSignifier="@drawable/ic_atm"
-                app:isResponsiveIconColor="true"
-                app:labelText="Nomer Rekening Tunjangan"
-                app:panelBackgroundColor="@color/colorBgEdittext"
-                app:primaryColor="@color/colorPrimary"
-                app:secondaryColor="@color/colorPrimary"
-                app:useDenseSpacing="true">
 
-                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                    android:id="@+id/et_norek_tunjangan"
-                    android:text=""
-                    android:inputType="numberDecimal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="50" />
-
-            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            <!-- Nama Bank -->
+            <!-- Nama Bank GAJI -->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                android:id="@+id/tf_nama_bank"
+                android:id="@+id/tf_nama_bank_gaji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -914,38 +933,14 @@
                 app:useDenseSpacing="true">
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                    android:id="@+id/et_nama_bank"
+                    android:id="@+id/et_nama_bank_gaji"
                     android:text=" "
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            <!-- Nomer Rekening Bank -->
-            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                android:id="@+id/tf_norek"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_marginTop="10dp"
-                app:iconSignifier="@drawable/ic_atm"
-                app:isResponsiveIconColor="true"
-                app:labelText="Nomer Rekening"
-                app:panelBackgroundColor="@color/colorBgEdittext"
-                app:primaryColor="@color/colorPrimary"
-                app:secondaryColor="@color/colorPrimary"
-                app:useDenseSpacing="true">
 
-                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                    android:id="@+id/et_norek"
-                    android:text=""
-                    android:inputType="numberDecimal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="50" />
-
-            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
             <!--Tanggal Awal Periode waktu awal akhir 1 -->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_periode_awal_waktu1"
@@ -1003,6 +998,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!-- Total Kredit 1-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_total_kredit1"
@@ -1029,6 +1025,7 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!-- Total Debit 1 -->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_total_debit1"
@@ -1055,68 +1052,23 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            <!--Title Rekening Koran 1-->
+
+            <!--Tunjangan-->
             <TextView
+                android:id="@+id/norek_tunjangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Upload Rekening Koran"
+                android:text="Tunjangan"
                 android:textSize="16sp"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
                 android:textAlignment="center"
                 android:fontFamily="@font/muli_b"
                 android:paddingBottom="10dp"/>
-            <!--Foto Document Rekening Koran 1-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:id="@+id/rl_rekening_koran1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:padding="10dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp">
-
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:id="@+id/iv_rekening_koran1"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:scaleType="center"
-                            android:src="@mipmap/ico_img_for_upload"
-                            app:riv_border_width="1dip"
-                            app:riv_border_color="#f1efef"
-                            app:riv_corner_radius="8dip"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/btn_rekening_koran1"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintRight_toRightOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </RelativeLayout>
-
-            </LinearLayout>
-            <!-- Nomer Rekening Bank BSI -->
+            <!-- Nomer Rekening Tunjangan-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                android:id="@+id/tf_norek_bsi"
+                android:id="@+id/tf_norek_tunjangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
@@ -1124,14 +1076,14 @@
                 android:layout_marginTop="10dp"
                 app:iconSignifier="@drawable/ic_atm"
                 app:isResponsiveIconColor="true"
-                app:labelText="Nomer Rekening"
-                app:panelBackgroundColor="@color/colorDisableEdit"
+                app:labelText="Nomer Rekening Tunjangan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true">
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                    android:id="@+id/et_norek_bsi"
+                    android:id="@+id/et_norek_tunjangan"
                     android:text=""
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
@@ -1139,6 +1091,32 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <!-- Nama Bank TUNJANGAN -->
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_nama_bank_tunjangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="10dp"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:labelText="Nama Bank"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_nama_bank_tunjangan"
+                    android:text=" "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="50" />
+
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!--Tanggal Awal Periode waktu awal akhir 2 -->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_periode_awal_waktu2"
@@ -1196,6 +1174,7 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!-- Total Kredit 2-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_total_kredit2"
@@ -1222,6 +1201,7 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
             <!-- Total Debit 2 -->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_total_debit2"
@@ -1248,7 +1228,8 @@
                     android:maxLength="50" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-            <!--Title Rekening Koran 1-->
+
+            <!--Title Rekening Koran 2-->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -1259,6 +1240,7 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/muli_b"
                 android:paddingBottom="10dp"/>
+
             <!--Foto Document Rekening Koran 1-->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1266,7 +1248,7 @@
                 android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:id="@+id/rl_rekening_koran2"
+                    android:id="@+id/rl_rekening_koran1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
@@ -1278,7 +1260,7 @@
                         android:layout_height="200dp">
 
                         <com.makeramen.roundedimageview.RoundedImageView
-                            android:id="@+id/iv_rekening_koran2"
+                            android:id="@+id/iv_rekening_koran1"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:scaleType="center"
@@ -1292,7 +1274,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <ImageView
-                            android:id="@+id/btn_rekening_koran2"
+                            android:id="@+id/btn_rekening_koran1"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:layout_marginRight="10dp"
@@ -1307,6 +1289,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
             <!--Button Simpan-->
             <LinearLayout
                 android:id="@+id/ll_btn_send"

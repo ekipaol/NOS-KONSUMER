@@ -27,6 +27,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 //import java.util.Calendar;
 import android.icu.util.Calendar;
+import android.widget.EditText;
+
 import java.util.Locale;
 
 public class dataJaminanActivity extends AppCompatActivity implements View.OnClickListener, CameraListener {
@@ -42,8 +44,21 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
         View view = binding.getRoot();
         onclickSelectDialog();
         setContentView(view);
+        disableText();
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Data Jaminan");
+    }
+
+    private void disableText(){
+        binding.etLembagaTerbitSk.setFocusable(false);
+        binding.etTanggalTerbitSk1.setFocusable(false);
+        binding.etTanggalTerbitSk2.setFocusable(false);
+        binding.etTanggalTerbitSk3.setFocusable(false);
+        binding.tfLembagaTerbitSk1.setFocusable(false);
+        binding.tfTanggalTerbitSk1.setFocusable(false);
+        binding.tfTanggalTerbitSk2.setFocusable(false);
+        binding.tfTanggalTerbitSk3.setFocusable(false);
+
     }
 
     private void backgroundStatusBar() {
@@ -53,19 +68,20 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
         }
     }
         private void onclickSelectDialog(){
-        binding.etTanggalTerbitSk.setOnClickListener(this);
-            binding.tfTanggalTerbitSk.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dpSKCalendar();
-                }
-            });
-        binding.tfTanggalTerbitSk.setOnClickListener(this);
+        binding.etTanggalTerbitSk1.setOnClickListener(this);
+        binding.tfTanggalTerbitSk1.setOnClickListener(this);
+        binding.tfTanggalTerbitSk1.getEndIconImageButton().setOnClickListener(v-> dpSKCalendar(binding.etTanggalTerbitSk1));
+        binding.etTanggalTerbitSk2.setOnClickListener(this);
+        binding.tfTanggalTerbitSk2.setOnClickListener(this);
+        binding.tfTanggalTerbitSk2.getEndIconImageButton().setOnClickListener(v-> dpSKCalendar(binding.etTanggalTerbitSk2));
+        binding.etTanggalTerbitSk3.setOnClickListener(this);
+        binding.tfTanggalTerbitSk3.setOnClickListener(this);
+        binding.tfTanggalTerbitSk3.getEndIconImageButton().setOnClickListener(v-> dpSKCalendar(binding.etTanggalTerbitSk3));
         binding.ivKtpNasabah.setOnClickListener(this);
-         binding.ivAssetAkad.setOnClickListener(this);
-         binding.ivFormApplikasi.setOnClickListener(this);
-         binding.ivIdcard.setOnClickListener(this);
-         binding.ivNpwp.setOnClickListener(this);
+        binding.ivAssetAkad.setOnClickListener(this);
+        binding.ivFormApplikasi.setOnClickListener(this);
+        binding.ivIdcard.setOnClickListener(this);
+        binding.ivNpwp.setOnClickListener(this);
         binding.ivKtpPasangan.setOnClickListener(this);
         binding.ivSkPengangkatan.setOnClickListener(this);
         binding.ivSkPensiun.setOnClickListener(this);
@@ -86,9 +102,17 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
 
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.et_tanggal_terbit_sk:
-            case R.id.tf_tanggal_terbit_sk:
-                dpSKCalendar();
+            case R.id.et_tanggal_terbit_sk1:
+            case R.id.tf_tanggal_terbit_sk1:
+                dpSKCalendar(binding.etTanggalTerbitSk1);
+                break;
+            case R.id.et_tanggal_terbit_sk2:
+            case R.id.tf_tanggal_terbit_sk2:
+                dpSKCalendar(binding.etTanggalTerbitSk2);
+                break;
+            case R.id.et_tanggal_terbit_sk3:
+            case R.id.tf_tanggal_terbit_sk3:
+                dpSKCalendar(binding.etTanggalTerbitSk3);
                 break;
             case R.id.iv_ktp_nasabah:
             case  R.id.iv_asset_akad:
@@ -150,7 +174,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void dpSKCalendar(){
+    private void dpSKCalendar(EditText edit){
         calLahir = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -159,7 +183,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                 calLahir.set(Calendar.MONTH, month);
                 calLahir.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String calLahirString = dateClient.format(calLahir.getTime());
-                binding.etTanggalTerbitSk.setText(calLahirString);
+                edit.setText(calLahirString);
             }
         };
 

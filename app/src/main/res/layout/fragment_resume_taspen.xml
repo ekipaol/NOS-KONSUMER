@@ -21,31 +21,6 @@
                 android:background="@color/colorWhite"
                 android:paddingTop="10dp">
 
-                <!-- Resume Fitur-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_resume_taspen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_segmen"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Resume Cek Taspen"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_resume_taspen"
-                        android:text=" "
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
                 <!-- Notas-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_notas"
@@ -239,7 +214,8 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_manfaat_pensiun"
-                        android:text=" "
+                        android:text="0"
+                        app:prefix="Rp. "
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50" />

@@ -72,6 +72,32 @@
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <!-- Jangka Waktu Pembiayaan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_jangka_waktu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Jangka Waktu Pembiayaan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_jangka_waktu"
+                        android:text=" "
+                        app:prefix=""
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
                 <!-- Loan type-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_loan_type"
