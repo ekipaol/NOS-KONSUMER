@@ -170,6 +170,47 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
 //            return false;
 //
 //        }
+        AppUtil.disableEditTexts(binding.getRoot());
+        binding.ivKtpNasabah.setOnClickListener(null);
+        binding.ivAssetAkad.setOnClickListener(null);
+        binding.ivFormApplikasi.setOnClickListener(null);
+        binding.ivIdcard.setOnClickListener(null);
+        binding.ivNpwp.setOnClickListener(null);
+        binding.ivKtpPasangan.setOnClickListener(null);
+        binding.ivSkPengangkatan.setOnClickListener(null);
+        binding.ivSkPensiun.setOnClickListener(null);
+        binding.ivSkTerakhir.setOnClickListener(null);
+        binding.ivSuratInstansi.setOnClickListener(null);
+        binding.btnKtpNasabah.setOnClickListener(null);
+        binding.btnAssetAkad.setOnClickListener(null);
+        binding.btnFormApplikasi.setOnClickListener(null);
+        binding.btnIdcard.setOnClickListener(null);
+        binding.btnNpwp.setOnClickListener(null);
+        binding.btnKtpPasangan.setOnClickListener(null);
+        binding.btnSkPengangkatan.setOnClickListener(null);
+        binding.btnSkPensiun.setOnClickListener(null);
+        binding.btnSkTerakhir.setOnClickListener(null);
+        binding.btnSuratInstansi.setOnClickListener(null);
+        binding.rlKtpNasabah.setOnClickListener(null);
+        binding.rlAssetAkad.setOnClickListener(null);
+        binding.rlFormApplikasi.setOnClickListener(null);
+        binding.rlIdcard.setOnClickListener(null);
+        binding.rlNpwp.setOnClickListener(null);
+        binding.rlKtpPasangan.setOnClickListener(null);
+        binding.rlSkPengangkatan.setOnClickListener(null);
+        binding.rlSkPensiun.setOnClickListener(null);
+        binding.rlSkTerakhir.setOnClickListener(null);
+        binding.rlSuratInstansi.setOnClickListener(null);
+        binding.btnKtpNasabah.setVisibility(View.GONE);
+        binding.btnAssetAkad.setVisibility(View.GONE);
+        binding.btnFormApplikasi.setVisibility(View.GONE);
+        binding.btnIdcard.setVisibility(View.GONE);
+        binding.btnNpwp.setVisibility(View.GONE);
+        binding.btnKtpPasangan.setVisibility(View.GONE);
+        binding.btnSkPengangkatan.setVisibility(View.GONE);
+        binding.btnSkPensiun.setVisibility(View.GONE);
+        binding.btnSkTerakhir.setVisibility(View.GONE);
+        binding.btnSuratInstansi.setVisibility(View.GONE);
         return false;
     }
 

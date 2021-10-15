@@ -87,34 +87,40 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP1.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etGajiBersihP2.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etGajiBersihP2.getText().toString().trim().equalsIgnoreCase("0")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etGajiBersihP2.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etGajiBersihP2.getText().toString().trim().equalsIgnoreCase("0")) {
             binding.tfGajiBersihP2.setError(binding.tfGajiBersihP2.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfGajiBersihP2.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etPeriodeGajiP2.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etPeriodeGajiP2.getText().toString().trim().equalsIgnoreCase(" ")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etPeriodeGajiP2.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etPeriodeGajiP2.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfPeriodeGajiP2.setError(binding.tfPeriodeGajiP2.getLabelText() + " " + getString(R.string.title_validate_field), true);
             binding.etGajiBersihP2.requestFocus();
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeGajiP2.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etTunjanganP2.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etTunjanganP2.getText().toString().trim().equalsIgnoreCase("")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etTunjanganP2.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etTunjanganP2.getText().toString().trim().equalsIgnoreCase("")) {
             binding.tfTunjanganP2.setError(binding.tfTunjanganP2.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP2.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etGajiBersihP3.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etGajiBersihP3.getText().toString().trim().equalsIgnoreCase("0")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etGajiBersihP3.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etGajiBersihP3.getText().toString().trim().equalsIgnoreCase("0")) {
             binding.tfGajiBersihP3.setError(binding.tfGajiBersihP3.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfGajiBersihP3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etPeriodeGajiP3.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etPeriodeGajiP3.getText().toString().trim().equalsIgnoreCase(" ")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etPeriodeGajiP3.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etPeriodeGajiP3.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfPeriodeGajiP3.setError(binding.tfPeriodeGajiP3.getLabelText() + " " + getString(R.string.title_validate_field), true);
             binding.etGajiBersihP3.requestFocus();
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeGajiP3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etTunjanganP3.getText().toString().trim().isEmpty() || binding.etAkseptasiPendaptan.getText().equals("Hanya Manfaat Pensiun") && binding.etTunjanganP3.getText().toString().trim().equalsIgnoreCase("")) {
+        } else if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etTunjanganP3.getText().toString().trim().isEmpty()
+                || binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun") && binding.etTunjanganP3.getText().toString().trim().equalsIgnoreCase("")) {
             binding.tfTunjanganP3.setError(binding.tfTunjanganP3.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTunjanganP3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
@@ -124,17 +130,32 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfVerfikasiGajiTunjangan.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Pilih")) {
+            binding.tfVerfikasiRekening.setError(binding.tfVerfikasiRekening.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfVerfikasiRekening.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
         } else if (binding.etNorekGaji.getText().toString().trim().isEmpty() || binding.etNorekGaji.getText().toString().trim().equalsIgnoreCase("")) {
             binding.tfNorekGaji.setError(binding.tfNorekGaji.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekGaji.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etVerfikasiRekening.getText().equals("Tidak") && binding.etNorekTunjangan.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().equals("Tidak") && binding.etNorekTunjangan.getText().toString().trim().equalsIgnoreCase("")) {
-            binding.tfNorekTunjangan.setError(binding.tfNorekTunjangan.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekTunjangan.getLabelText() + " " + getString(R.string.title_validate_field));
+        } else if (binding.etNamaBankGaji.getText().toString().trim().isEmpty() || binding.etNamaBankGaji.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfNamaBankGaji.setError(binding.tfNamaBankGaji.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNamaBankGaji.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
-        } else if (binding.etTotalDebit1.getText().toString().trim().isEmpty() || binding.etTotalDebit1.getText().toString().trim().equalsIgnoreCase("0")) {
+        } else if (binding.etPeriodeAwalWaktu1.getText().toString().trim().isEmpty() || binding.etPeriodeAwalWaktu1.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfPeriodeAwalWaktu1.setError(binding.tfPeriodeAwalWaktu1.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAwalWaktu1.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etPeriodeAkhirWaktu1.getText().toString().trim().isEmpty() || binding.etPeriodeAkhirWaktu1.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfPeriodeAkhirWaktu1.setError(binding.tfPeriodeAkhirWaktu1.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAkhirWaktu1.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etTotalDebit1.getText().toString().trim().isEmpty() || binding.etTotalDebit1.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTotalDebit1.setError(binding.tfTotalDebit1.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalDebit1.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
@@ -143,8 +164,68 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             binding.tfTotalKredit1.setError(binding.tfTotalKredit1.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalKredit1.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etNorekTunjangan.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etNorekTunjangan.getText().toString().trim().equalsIgnoreCase("")) {
+            binding.tfNorekTunjangan.setError(binding.tfNorekTunjangan.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNorekTunjangan.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etNamaBankTunjangan.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etNamaBankTunjangan.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfNamaBankTunjangan.setError(binding.tfNamaBankTunjangan.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfNamaBankTunjangan.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etPeriodeAwalWaktu2.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etPeriodeAwalWaktu2.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfPeriodeAwalWaktu2.setError(binding.tfPeriodeAwalWaktu2.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAwalWaktu2.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etPeriodeAkhirWaktu2.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etPeriodeAkhirWaktu2.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfPeriodeAkhirWaktu2.setError(binding.tfPeriodeAkhirWaktu2.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfPeriodeAkhirWaktu2.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etTotalDebit2.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etTotalDebit2.getText().toString().trim().equalsIgnoreCase(" ")) {
+            binding.tfTotalDebit2.setError(binding.tfTotalDebit2.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalDebit2.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
+        } else if (binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etTotalKredit2.getText().toString().trim().isEmpty() || binding.etVerfikasiRekening.getText().toString().trim().equalsIgnoreCase("Tidak") && binding.etTotalKredit2.getText().toString().trim().equalsIgnoreCase("0")) {
+            binding.tfTotalKredit2.setError(binding.tfTotalKredit2.getLabelText() + " " + getString(R.string.title_validate_field), true);
+            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), binding.tfTotalKredit2.getLabelText() + " " + getString(R.string.title_validate_field));
+            return false;
+
         } else {
             AppUtil.disableEditTexts(binding.getRoot());
+            binding.btnRekeningKoran1.setOnClickListener(null);
+            binding.btnSlipgajiP1.setOnClickListener(null);
+            binding.btnSlipgajiP2.setOnClickListener(null);
+            binding.btnSlipgajiP3.setOnClickListener(null);
+            binding.btnSliptunjanganP1.setOnClickListener(null);
+            binding.btnSliptunjanganP2.setOnClickListener(null);
+            binding.btnSliptunjanganP3.setOnClickListener(null);
+            binding.ivRekeningKoran1.setOnClickListener(null);
+            binding.ivSlipgajiP1.setOnClickListener(null);
+            binding.ivSlipgajiP2.setOnClickListener(null);
+            binding.ivSlipgajiP3.setOnClickListener(null);
+            binding.ivSliptunjanganP1.setOnClickListener(null);
+            binding.ivSliptunjanganP2.setOnClickListener(null);
+            binding.ivSliptunjanganP3.setOnClickListener(null);
+            binding.rlRekeningKoran1.setOnClickListener(null);
+            binding.rlSlipgajiP1.setOnClickListener(null);
+            binding.rlSlipgajiP2.setOnClickListener(null);
+            binding.rlSlipgajiP3.setOnClickListener(null);
+            binding.rlSlipgajiP1.setOnClickListener(null);
+            binding.rlSliptunjanganP1.setOnClickListener(null);
+            binding.rlSliptunjanganP2.setOnClickListener(null);
+            binding.rlSliptunjanganP3.setOnClickListener(null);
+            binding.btnRekeningKoran1.setVisibility(View.GONE);
+            binding.btnSlipgajiP1.setVisibility(View.GONE);
+            binding.btnSlipgajiP2.setVisibility(View.GONE);
+            binding.btnSlipgajiP3.setVisibility(View.GONE);
+            binding.btnSliptunjanganP1.setVisibility(View.GONE);
+            binding.btnSliptunjanganP2.setVisibility(View.GONE);
+            binding.btnSliptunjanganP3.setVisibility(View.GONE);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
             return false;
         }
