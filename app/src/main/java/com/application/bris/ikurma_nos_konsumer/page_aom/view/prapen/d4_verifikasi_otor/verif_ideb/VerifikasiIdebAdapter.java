@@ -16,6 +16,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.DropdownRecycl
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiIdeb;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.util.List;
 
@@ -47,12 +48,17 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         //never user BINDING ON ON BIND VIEW HOLDER DUDE!!!, USE HOLDER INSTEAD
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.etHasilVerifikasiFasilitas.setFocusable(false);
+        holder.etHasilVerifikasi.setFocusable(false);
+        holder.etHasilVerifikasi.setText(data.get(position).getHasilVerifikasi());
         holder.etHasilVerifikasiFasilitas.setText(data.get(position).getHasilVerifikasiIdeb());
         holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
         holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebet()));
         holder.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+
+        holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
+        holder.etAngsuranBulanan.setText(data.get(position).getAngsuranVerifikasi());
 
         onClicks(position,holder);
 
@@ -61,24 +67,49 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
     }
 
     private void onClicks(int currentPosition,@NonNull VerifikasiIdebAdapter.MenuViewHolder holder){
+
+        //VERIFIKASI FASILITAS
         holder.tfVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
             }
         });
 
         holder.etHasilVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
             }
         });
 
         holder.tfVerifikasiFasilitas.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
+            }
+        });
+
+
+        //HASIL VERIFIKASI
+        holder.tfHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
+            }
+        });
+
+        holder.etHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
+            }
+        });
+
+        holder.tfHasilVerifikasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
             }
         });
 
@@ -95,8 +126,8 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting;
-        TextFieldBoxes tfVerifikasiFasilitas;
-        EditText etHasilVerifikasiFasilitas;
+        TextFieldBoxes tfVerifikasiFasilitas,tfHasilVerifikasi;
+        EditText etHasilVerifikasiFasilitas,etHasilVerifikasi,etAngsuranBulanan;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
@@ -107,6 +138,9 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
             tvTreatmentPembiayaanEksisting=binding.tvTreatmentPembiayaanEksisting;
             tfVerifikasiFasilitas=binding.tfVerifikasiFasilitas;
             etHasilVerifikasiFasilitas=binding.etHasilVerifikasiFasilitas;
+            tfHasilVerifikasi=binding.tfHasilVerifikasi;
+            etHasilVerifikasi=binding.etHasilVerifikasi;
+            etAngsuranBulanan=binding.etAngsuranVerifikator;
 
 
         }

@@ -7,8 +7,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
@@ -37,8 +39,10 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
     private AppPreferences appPreferences;
     private PrapenAoActivityVerifIdebBinding binding;
     PrapenItemVerifikasiIdebBinding bindingNamaField;
+    private int hideButtonClickIndicator=1;
 
-    List<MGenericModel> dataDropdownVerif=new ArrayList<>();
+    List<MGenericModel> dataDropdownTreatmentFasilitas =new ArrayList<>();
+    List<MGenericModel> dataDropdownHasilVerifikasi=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
         setDropdownData();
         initialize();
         onClicks();
+        otherViewChanges();
 
 
     }
@@ -107,6 +112,8 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
         data1.setPerkiraanAngsuranBulanan("300000");
         data1.setTreatmentPembiayaan("Dilanjutkan");
         data1.setHasilVerifikasiIdeb("");
+        data1.setAngsuranVerifikasi("300000");
+        data1.setHasilVerifikasi("");
 
         DataVerifikasiIdeb data2=new DataVerifikasiIdeb();
         data2.setNamaLembagaKeuangan("Bank Rakyat Indonesia");
@@ -114,7 +121,9 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
         data2.setKualitasPembiayaan("Lancar");
         data2.setPerkiraanAngsuranBulanan("200000");
         data2.setTreatmentPembiayaan("Lunas");
-        data1.setHasilVerifikasiIdeb("");
+        data2.setHasilVerifikasiIdeb("");
+        data2.setAngsuranVerifikasi("200000");
+        data2.setHasilVerifikasi("");
 
         DataVerifikasiIdeb data3=new DataVerifikasiIdeb();
         data3.setNamaLembagaKeuangan("Bank Negara Indonesia");
@@ -122,11 +131,16 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
         data3.setKualitasPembiayaan("Lancar");
         data3.setPerkiraanAngsuranBulanan("300000");
         data3.setTreatmentPembiayaan("Dilanjutkan");
-        data1.setHasilVerifikasiIdeb("");
+        data3.setHasilVerifikasiIdeb("");
+        data3.setAngsuranVerifikasi("300000");
+        data3.setHasilVerifikasi("");
 
         data.add(data1);
         data.add(data2);
         data.add(data3);
+
+        binding.tvNamaAo.setText("Dummy Name");
+        binding.tvCatatanAo.setText("Ini adalah catatan saya sebagai AO yang mengaku bahwa sebenarnya isi catatan ini hanya sebagai contoh saja untuk dijadikan patokan dalam membuat desain front end");
 
         if(data.size()==0){
             binding.llEmptydata.setVisibility(View.VISIBLE);
@@ -134,12 +148,15 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
     }
 
     private void setDropdownData(){
-        dataDropdownVerif.add(new MGenericModel("Pembiayaan tetap dilanjutkan","Pembiayaan tetap dilanjutkan"));
-        dataDropdownVerif.add(new MGenericModel("Pembiayaan akan dilunasi melalui Pencairan","Pembiayaan akan dilunasi melalui Pencairan"));
-        dataDropdownVerif.add(new MGenericModel("Pembiayaan dilakukan Take Over","Pembiayaan dilakukan Take Over"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah merasa pembiayaan sudah Lunas/Selesai","Nasabah merasa pembiayaan sudah Lunas/Selesai"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah merasa tidak memiliki pembiayaan tersebut","Nasabah merasa tidak memiliki pembiayaan tersebut"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah Merasa Membayar Tepat Waktu","Nasabah Merasa Membayar Tepat Waktu"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Pembiayaan tetap dilanjutkan","Pembiayaan tetap dilanjutkan"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Pembiayaan akan dilunasi melalui Pencairan","Pembiayaan akan dilunasi melalui Pencairan"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Pembiayaan dilakukan Take Over","Pembiayaan dilakukan Take Over"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Nasabah menginfokan pembiayaan sudah Lunas/Selesai","Nasabah merasa pembiayaan sudah Lunas/Selesai"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Nasabah menginfokan tidak memiliki pembiayaan tersebut","Nasabah merasa tidak memiliki pembiayaan tersebut"));
+        dataDropdownTreatmentFasilitas.add(new MGenericModel("Nasabah menginfokan membayar tepat waktu","Nasabah Merasa Membayar Tepat Waktu"));
+
+        dataDropdownHasilVerifikasi.add(new MGenericModel("Sesuai","Sesuai"));
+        dataDropdownHasilVerifikasi.add(new MGenericModel("Tidak Sesuai","Tidak Sesuai"));
     }
 
 
@@ -158,6 +175,37 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
     }
 
     private void onClicks(){
+        binding.btSembunyiCatatan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hideButtonClickIndicator==0){
+
+                    binding.llCatatanAo.animate().translationY(0).setDuration(500);
+                    binding.llCatatanAo.setVisibility(View.GONE);
+
+                    binding.btSembunyiCatatan.setVisibility(View.GONE);
+                    binding.btTampilCatatan.setVisibility(View.VISIBLE);
+                    hideButtonClickIndicator++;
+
+                }
+
+            }
+        });
+
+        binding.btTampilCatatan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(hideButtonClickIndicator==1){
+                    binding.cvCatatanAo.setVisibility(View.VISIBLE);
+                    binding.llCatatanAo.setVisibility(View.VISIBLE);
+                    binding.btTampilCatatan.setVisibility(View.GONE);
+                    binding.btSembunyiCatatan.setVisibility(View.VISIBLE);
+                    hideButtonClickIndicator--;
+                }
+            }
+        });
+
         binding.btnSimpanVerifIdeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,8 +229,13 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
     }
 
     @Override
-    public void onDropdownRecyclerClick(int position) {
-        DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfVerifikasiFasilitas.getLabelText(),dataDropdownVerif, VerifikasiIdebActivity.this,position);
+    public void onDropdownRecyclerClick(int position,String title) {
+        if(title.equalsIgnoreCase(bindingNamaField.tfHasilVerifikasi.getLabelText())){
+            DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfHasilVerifikasi.getLabelText(), dataDropdownHasilVerifikasi, VerifikasiIdebActivity.this,position);
+        }
+        else if((title.equalsIgnoreCase(bindingNamaField.tfVerifikasiFasilitas.getLabelText()))){
+            DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfVerifikasiFasilitas.getLabelText(), dataDropdownTreatmentFasilitas, VerifikasiIdebActivity.this,position);
+        }
 
 //        this.data.get(position).setHasilVerifikasiVerif("sesuai");
 //        dataIdebAdapter.notifyItemChanged(position);
@@ -199,5 +252,15 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
             dataIdebAdapter.notifyDataSetChanged();
 
         }
+        else   if(title.equalsIgnoreCase(bindingNamaField.tfHasilVerifikasi.getLabelText())){
+            data.get(position).setHasilVerifikasi(dataModel.getDESC());
+            dataIdebAdapter.notifyDataSetChanged();
+
+        }
+    }
+
+    private void otherViewChanges(){
+        //biar keyboard gak nongol di awal activity kalau ada edittext
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 }

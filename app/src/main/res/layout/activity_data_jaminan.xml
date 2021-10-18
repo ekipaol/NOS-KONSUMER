@@ -554,7 +554,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Form Applikasi"
+                            android:text="Form Aplikasi"
                             android:textSize="16sp"
                             android:fontFamily="@font/muli_b"/>
                     </RelativeLayout>

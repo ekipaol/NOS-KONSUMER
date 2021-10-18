@@ -92,5 +92,17 @@
             android:gravity="center"/>
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_tambah_data_hutang_verif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/ic_add_white_24dp"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_anchorGravity="top|end"
+        app:borderWidth="0dp"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

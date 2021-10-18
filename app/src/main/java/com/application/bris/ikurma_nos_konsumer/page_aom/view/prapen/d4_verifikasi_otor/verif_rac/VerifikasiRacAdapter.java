@@ -49,6 +49,8 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
         holder.tv_hasil_engine.setText(data.get(position).getHasilVerifikasiEngine());
         holder.et_hasil_cek_verif.setText(data.get(position).getHasilVerifikasiVerif());
         holder.et_catatan.setText(data.get(position).getCatatan());
+        holder.tv_ketentuan.setText(data.get(position).getKetentuan());
+        holder.tv_hasil.setText(data.get(position).getHasil());
 
         onClicks(position);
 
@@ -60,21 +62,21 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
         binding.tfHasilCekVerifikator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
         binding.etHasilCekVerifikator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
         binding.tfHasilCekVerifikator.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
@@ -99,7 +101,7 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
 
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_nama_rac,tv_hasil_engine;
+        TextView tv_nama_rac,tv_hasil_engine,tv_ketentuan,tv_hasil;
         EditText et_hasil_cek_verif,et_catatan;
 
         public MenuViewHolder(View itemView) {
@@ -108,6 +110,8 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
             tv_hasil_engine=binding.tvHasilCekEngine;
             et_hasil_cek_verif=binding.etHasilCekVerifikator;
             et_catatan=binding.etCatatan;
+            tv_ketentuan=binding.tvKetentuan;
+            tv_hasil=binding.tvHasil;
 
         }
 

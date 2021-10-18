@@ -13,8 +13,28 @@ public class DataVerifikasiHutang {
     private String angsuranBulanan;
     @SerializedName("treatmentPembiayaan")
     private String treatmentPembiayaan;
+    @SerializedName("angsuranVerifikator")
+    private String angsuranVerifikator;
     @SerializedName("hasilVerifikasi")
-    private String hasilVerifikasiHutang;
+    private String hasilVerifikasi;
+    @SerializedName("verifikasiFasilitas")
+    private String verifikasiFasilitas;
+
+    public String getAngsuranVerifikator() {
+        return angsuranVerifikator;
+    }
+
+    public void setAngsuranVerifikator(String angsuranVerifikator) {
+        this.angsuranVerifikator = angsuranVerifikator;
+    }
+
+    public String getHasilVerifikasi() {
+        return hasilVerifikasi;
+    }
+
+    public void setHasilVerifikasi(String hasilVerifikasi) {
+        this.hasilVerifikasi = hasilVerifikasi;
+    }
 
     public String getNamaPemberiHutang() {
         return namaPemberiHutang;
@@ -56,11 +76,11 @@ public class DataVerifikasiHutang {
         this.treatmentPembiayaan = treatmentPembiayaan;
     }
 
-    public String getHasilVerifikasiHutang() {
-        return hasilVerifikasiHutang;
+    public String getVerifikasiFasilitas() {
+        return verifikasiFasilitas;
     }
 
-    public void setHasilVerifikasiHutang(String hasilVerifikasiHutang) {
-        this.hasilVerifikasiHutang = hasilVerifikasiHutang;
+    public void setVerifikasiFasilitas(String verifikasiFasilitas) {
+        this.verifikasiFasilitas = verifikasiFasilitas;
     }
 }

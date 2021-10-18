@@ -9,10 +9,30 @@ public class DataVerifikasiFitur {
     private String hasilVerifikasiEngine;
     @SerializedName("hasilVerifikasiVerif")
     private String hasilVerifikasiVerif;
+    @SerializedName("ketentuan")
+    private String ketentuan;
+    @SerializedName("hasil")
+    private String hasil;
     @SerializedName("Catatan")
     private String Catatan;
     @SerializedName("idDokumen")
     private String idDokumen;
+
+    public String getKetentuan() {
+        return ketentuan;
+    }
+
+    public void setKetentuan(String ketentuan) {
+        this.ketentuan = ketentuan;
+    }
+
+    public String getHasil() {
+        return hasil;
+    }
+
+    public void setHasil(String hasil) {
+        this.hasil = hasil;
+    }
 
     public String getNamaFitur() {
         return namaFitur;

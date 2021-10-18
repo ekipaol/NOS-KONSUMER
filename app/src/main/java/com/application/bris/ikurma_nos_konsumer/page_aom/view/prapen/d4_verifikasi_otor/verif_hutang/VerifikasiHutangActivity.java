@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
@@ -20,10 +22,10 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDat
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.DropdownRecyclerListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelectRecycler;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiFitur;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturAdapter;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.TambahDataHutangActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 import java.util.ArrayList;
@@ -38,9 +40,10 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private PrapenAoActivityVerifHutangBinding binding;
-    PrapenItemVerifikasiHutangBinding bindingNamaField;
+    private PrapenItemVerifikasiHutangBinding bindingNamaField;
 
     List<MGenericModel> dataDropdownVerif=new ArrayList<>();
+    List<MGenericModel> dataDropdownHasil=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
 
         //ini binding buat ngambil nama fieldnya aja
         bindingNamaField=PrapenItemVerifikasiHutangBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
@@ -62,6 +66,7 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         setDropdownData();
         initialize();
         onClicks();
+        otherViewChanges();
 
 
     }
@@ -108,7 +113,8 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         data1.setNominalPinjaman("30000000");
         data1.setSisaJangkaWaktu("180");
         data1.setTreatmentPembiayaan("Dilanjutkan");
-        data1.setHasilVerifikasiHutang("");
+        data1.setVerifikasiFasilitas("");
+        data1.setHasilVerifikasi("");
 
         DataVerifikasiHutang data2=new DataVerifikasiHutang();
         data2.setNamaPemberiHutang("Koperasi Mundur Roya");
@@ -116,7 +122,8 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         data2.setNominalPinjaman("20000000");
         data2.setSisaJangkaWaktu("120");
         data2.setTreatmentPembiayaan("Dilanjutkan");
-        data2.setHasilVerifikasiHutang("");
+        data2.setVerifikasiFasilitas("");
+        data2.setHasilVerifikasi("");
 
         DataVerifikasiHutang data3=new DataVerifikasiHutang();
         data3.setNamaPemberiHutang("Koperasi Diam Saja");
@@ -124,7 +131,8 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         data3.setNominalPinjaman("10000000");
         data3.setSisaJangkaWaktu("60");
         data3.setTreatmentPembiayaan("Dilanjutkan");
-        data3.setHasilVerifikasiHutang("");
+        data3.setVerifikasiFasilitas("");
+        data2.setHasilVerifikasi("");
 
         data.add(data1);
         data.add(data2);
@@ -139,9 +147,9 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         dataDropdownVerif.add(new MGenericModel("Pembiayaan tetap dilanjutkan","Pembiayaan tetap dilanjutkan"));
         dataDropdownVerif.add(new MGenericModel("Pembiayaan akan dilunasi melalui Pencairan","Pembiayaan akan dilunasi melalui Pencairan"));
         dataDropdownVerif.add(new MGenericModel("Pembiayaan dilakukan Take Over","Pembiayaan dilakukan Take Over"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah merasa pembiayaan sudah Lunas/Selesai","Nasabah merasa pembiayaan sudah Lunas/Selesai"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah merasa tidak memiliki pembiayaan tersebut","Nasabah merasa tidak memiliki pembiayaan tersebut"));
-        dataDropdownVerif.add(new MGenericModel("Nasabah Merasa Membayar Tepat Waktu","Nasabah Merasa Membayar Tepat Waktu"));
+
+        dataDropdownHasil.add(new MGenericModel("Sesuai","Sesuai"));
+        dataDropdownHasil.add(new MGenericModel("Tidak Sesuai","Tidak Sesuai"));
     }
 
 
@@ -172,6 +180,15 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
             }
         });
 
+        binding.btnTambahDataHutangVerif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(VerifikasiHutangActivity.this, TambahHutangVerifikatorActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -184,8 +201,13 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
     }
 
     @Override
-    public void onDropdownRecyclerClick(int position) {
-        DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfVerifikasiFasilitas.getLabelText(),dataDropdownVerif, VerifikasiHutangActivity.this,position);
+    public void onDropdownRecyclerClick(int position,String title) {
+        if(title.equalsIgnoreCase(bindingNamaField.tfVerifikasiFasilitas.getLabelText())){
+            DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfVerifikasiFasilitas.getLabelText(),dataDropdownVerif, VerifikasiHutangActivity.this,position);
+        }
+        else if(title.equalsIgnoreCase(bindingNamaField.tfHasilVerifikasi.getLabelText())){
+            DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),bindingNamaField.tfHasilVerifikasi.getLabelText(),dataDropdownHasil, VerifikasiHutangActivity.this,position);
+        }
 
 //        this.data.get(position).setHasilVerifikasiVerif("sesuai");
 //        dataIdebAdapter.notifyItemChanged(position);
@@ -196,11 +218,22 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
     public void onSelect(String title, MGenericModel dataModel, int position) {
 
         if(title.equalsIgnoreCase(bindingNamaField.tfVerifikasiFasilitas.getLabelText())){
-            data.get(position).setHasilVerifikasiHutang(dataModel.getDESC());
-            AppUtil.logSecure("setsuperdata","set posisi : "+String.valueOf(position)+" dengan nilai : "+dataModel.getDESC());
-//            dataIdebAdapter.notifyItemChanged(position);
+            data.get(position).setVerifikasiFasilitas(dataModel.getDESC());
+//            AppUtil.logSecure("setsuperdata","set posisi : "+String.valueOf(position)+" dengan nilai : "+dataModel.getDESC());
+
             dataHutangAdapter.notifyDataSetChanged();
 
         }
+       else if(title.equalsIgnoreCase(bindingNamaField.tfHasilVerifikasi.getLabelText())){
+            data.get(position).setHasilVerifikasi(dataModel.getDESC());
+
+            dataHutangAdapter.notifyDataSetChanged();
+
+        }
+    }
+
+    private void otherViewChanges(){
+        //biar keyboard gak nongol di awal activity kalau ada edittext
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 }

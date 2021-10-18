@@ -96,19 +96,25 @@ public class VerifikasiRacActivity extends AppCompatActivity implements GenericL
         //initialize status pertama
         DataVerifikasiRac data1=new DataVerifikasiRac();
         data1.setNamaRac("Nasabah sering menabung");
+        data1.setKetentuan("Minimal menabung 5 kali");
+        data1.setHasil("Nasabah menabung 25 kali");
         data1.setHasilVerifikasiEngine("Sesuai");
         data1.setHasilVerifikasiVerif("");
         data1.setCatatan("");
 
         DataVerifikasiRac data2=new DataVerifikasiRac();
         data2.setNamaRac("Nasabah rajin beribadah");
-        data2.setHasilVerifikasiEngine("Tidak Sesuai");
+        data2.setKetentuan("Minimal salat 5 waktu");
+        data2.setHasil("Nasabah salat 5 waktu");
+        data2.setHasilVerifikasiEngine("Sesuai");
         data2.setHasilVerifikasiVerif("");
         data2.setCatatan("");
 
         DataVerifikasiRac data3=new DataVerifikasiRac();
         data3.setNamaRac("Nasabah mencuri ayam kampung di dekat pos ronda disebelah rumahnya bu RT");
-        data3.setHasilVerifikasiEngine("Sesuai");
+        data3.setKetentuan("Maksimal mencuri 0 kali");
+        data3.setHasil("Nasabah mencuri 1 kali");
+        data3.setHasilVerifikasiEngine("Tidak Sesuai");
         data3.setHasilVerifikasiVerif("");
         data3.setCatatan("");
 
@@ -165,7 +171,7 @@ public class VerifikasiRacActivity extends AppCompatActivity implements GenericL
     }
 
     @Override
-    public void onDropdownRecyclerClick(int position) {
+    public void onDropdownRecyclerClick(int position,String title) {
         DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),"Hasil Cek Verifikator",dataDropdownVerif, VerifikasiRacActivity.this,position);
 
 //        this.data.get(position).setHasilVerifikasiVerif("sesuai");

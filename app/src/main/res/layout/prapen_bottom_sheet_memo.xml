@@ -104,7 +104,7 @@
                     android:gravity="center_horizontal">
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="275dp"
+                        android:layout_height="235dp"
                         >
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                             android:weightSum="10">
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
-                                android:layout_height="120dp"
+                                android:layout_height="100dp"
                                 android:layout_marginRight="5dp"
                                 app:cardCornerRadius="10dp"
                                 android:layout_weight="5">
@@ -121,7 +121,7 @@
                                     android:id="@+id/bt_tolak"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="TOLAK"
+                                    android:text="BATAL"
                                     android:textSize="25sp"
                                     android:textColor="@color/colorWhite"
                                     android:background="@drawable/red_button_background"
@@ -132,7 +132,7 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
-                                android:layout_height="120dp"
+                                android:layout_height="100dp"
                                 android:layout_marginRight="5dp"
                                 app:cardCornerRadius="10dp"
                                 android:layout_weight="5">
@@ -140,7 +140,7 @@
                                     android:id="@+id/bt_setuju"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="SETUJU"
+                                    android:text="LANJUT"
                                     android:textSize="25sp"
                                     android:textColor="@color/colorWhite"
                                     android:background="@drawable/green_button_background"
@@ -155,14 +155,14 @@
                         <LinearLayout
                             android:layout_marginTop="0dp"
                             android:layout_width="match_parent"
-                            android:layout_height="120dp"
+                            android:layout_height="100dp"
                             android:weightSum="10"
                             android:layout_alignParentBottom="true">
 
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
-                                android:layout_height="120dp"
+                                android:layout_height="100dp"
                                 android:layout_marginRight="5dp"
                                 app:cardCornerRadius="10dp"
                                 android:layout_weight="5">
@@ -181,7 +181,7 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
-                                android:layout_height="120dp"
+                                android:layout_height="100dp"
                                 android:layout_marginRight="5dp"
                                 app:cardCornerRadius="10dp"
                                 android:layout_weight="5">

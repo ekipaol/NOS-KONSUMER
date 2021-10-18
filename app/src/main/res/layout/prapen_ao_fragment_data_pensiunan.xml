@@ -340,7 +340,7 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Total Pendapatan"
+                    app:labelText="Perkiraan Total Pendapatan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"

@@ -189,7 +189,7 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Kode Penandatanganan Dokumen"
+                    app:labelText="Kota Penandatanganan Dokumen"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -210,7 +210,7 @@
                     android:paddingLeft="10dp"
                     android:paddingBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Data Rekening "
+                    android:text="Data Rekening Angsuran"
                     android:textSize="16sp" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes

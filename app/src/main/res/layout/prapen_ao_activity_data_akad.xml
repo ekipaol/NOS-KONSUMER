@@ -203,7 +203,7 @@
                         android:paddingRight="20dp"
                         app:iconSignifier="@drawable/ic_address"
                         app:isResponsiveIconColor="true"
-                        app:labelText="Nama dan Jenis Brang Objek Akad"
+                        app:labelText="Nama dan Jenis Barang/Jasa Objek Akad"
                         app:panelBackgroundColor="@color/colorBgEdittext"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
@@ -525,7 +525,7 @@
                                 android:id="@+id/et_luas_tanah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="meter"
+                                app:suffix="m2"
                                 android:inputType="number" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -772,7 +772,7 @@
                                 android:id="@+id/et_luas_tanah_tempat_tinggal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="meter"
+                                app:suffix="m2"
                                 android:inputType="number" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -785,7 +785,7 @@
                             android:paddingRight="20dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
-                            app:labelText="Harga Tanah"
+                            app:labelText="Harga Tanah per Meter"
                             app:panelBackgroundColor="@color/colorBgEdittext"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
@@ -840,7 +840,7 @@
                                 android:id="@+id/et_luas_bangunan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="meter"
+                                app:suffix="m2"
                                 android:inputType="number" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -853,7 +853,7 @@
                             android:paddingRight="20dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
-                            app:labelText="Harga Bangunan"
+                            app:labelText="Harga Bangunan per Meter"
                             app:panelBackgroundColor="@color/colorBgEdittext"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
@@ -1390,6 +1390,65 @@
                     </LinearLayout>
 
 
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_foto_aset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/muli_b"
+                    android:text="Foto Aset"
+                    android:textSize="16sp" />
+                <!--Foto Aset-->
+                <LinearLayout
+                    android:id="@+id/ll_foto_aset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_foto_aset"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_foto_aset"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="center"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_foto_aset"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
 
                 </LinearLayout>
 

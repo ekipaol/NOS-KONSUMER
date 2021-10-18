@@ -99,18 +99,24 @@ public class VerifikasiFiturActivity extends AppCompatActivity implements Generi
         //initialize status pertama
         DataVerifikasiFitur data1=new DataVerifikasiFitur();
         data1.setNamaFitur("Fitur Menggandakan Laba");
+        data1.setKetentuan("Minimal menabung 5 kali");
+        data1.setHasil("Nasabah menabung 25 kali");
         data1.setHasilVerifikasiEngine("Sesuai");
         data1.setHasilVerifikasiVerif("");
         data1.setCatatan("");
 
         DataVerifikasiFitur data2=new DataVerifikasiFitur();
         data2.setNamaFitur("Fitur Menerawang Jodoh");
+        data2.setKetentuan("Minimal salat 5 waktu");
+        data2.setHasil("Nasabah salat 5 waktu");
         data2.setHasilVerifikasiEngine("Tidak Sesuai");
         data2.setHasilVerifikasiVerif("");
         data2.setCatatan("");
 
         DataVerifikasiFitur data3=new DataVerifikasiFitur();
         data3.setNamaFitur("Fitur Merendam Amarah");
+        data3.setKetentuan("Maksimal mencuri 0 kali");
+        data3.setHasil("Nasabah mencuri 1 kali");
         data3.setHasilVerifikasiEngine("Sesuai");
         data3.setHasilVerifikasiVerif("");
         data3.setCatatan("");
@@ -168,7 +174,7 @@ public class VerifikasiFiturActivity extends AppCompatActivity implements Generi
     }
 
     @Override
-    public void onDropdownRecyclerClick(int position) {
+    public void onDropdownRecyclerClick(int position,String title) {
         DialogGenericDataFromService.displayByPosition((getSupportFragmentManager()),"Hasil Cek Verifikator",dataDropdownVerif, VerifikasiFiturActivity.this,position);
 
 //        this.data.get(position).setHasilVerifikasiVerif("sesuai");

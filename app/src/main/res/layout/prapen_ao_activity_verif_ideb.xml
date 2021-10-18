@@ -19,6 +19,117 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_catatan_ao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+
+                android:layout_below="@id/ll_info"
+                android:animateLayoutChanges="true"
+
+                >
+                <LinearLayout
+                    android:id="@+id/ll_catatan_ao"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/border_gold"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="7dp"
+                    android:visibility="gone"
+                    android:animateLayoutChanges="true"
+                    >
+                    <LinearLayout
+                        android:layout_marginTop="6dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Nama AO :  "
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:id="@+id/tv_nama_ao"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="{Nama AO}"
+                            android:textStyle="bold"
+                            android:layout_weight="1"/>
+
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bordertextbox_info"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+
+                        <TextView
+                            android:id="@+id/tv_catatan_ao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="4dp"
+                            android:text="Catatan : "
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorBlackHeader"
+                            android:fontFamily="@font/muli_b"/>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/bt_sembunyi_catatan"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:backgroundTint="@color/colorGreenSuccess"
+                        android:layout_marginTop="12dp"
+                        android:layout_height="40dp"
+                        android:visibility="gone"
+                        android:text="Sembunyikan Catatan"/>
+
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/bt_tampil_catatan"
+                android:layout_below="@id/cv_data_pembiayaan_catatan"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:backgroundTint="@color/colorGreenSuccess"
+                android:visibility="visible"
+                android:layout_height="40dp"
+                android:text="Tampilkan Catatan"/>
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/refresh"
                 android:layout_height="match_parent"

@@ -442,7 +442,9 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private void defaulViewSettings(){
         binding.tvHasilCekPayroll.setVisibility(View.GONE);
         binding.etNominalKiriman.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalKiriman));
-
+        binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
+        binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
+        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
         binding.tfInputLngp.setVisibility(View.GONE);
         binding.btnCekLngp.setVisibility(View.GONE);
         binding.tfNamaInstansiLngp.setVisibility(View.GONE);

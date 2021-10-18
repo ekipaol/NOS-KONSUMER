@@ -47,6 +47,8 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
         holder.tv_hasil_engine.setText(data.get(position).getHasilVerifikasiEngine());
         holder.et_hasil_cek_verif.setText(data.get(position).getHasilVerifikasiVerif());
         holder.et_catatan.setText(data.get(position).getCatatan());
+        holder.tv_hasil.setText(data.get(position).getHasil());
+        holder.tv_ketentuan.setText(data.get(position).getKetentuan());
 
         onClicks(position);
 
@@ -58,21 +60,21 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
         binding.tfHasilCekVerifikator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
         binding.etHasilCekVerifikator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
         binding.tfHasilCekVerifikator.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition);
+                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilCekVerifikator.getLabelText());
             }
         });
 
@@ -94,7 +96,7 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
 
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_nama_fitur,tv_hasil_engine;
+        TextView tv_nama_fitur,tv_hasil_engine,tv_ketentuan,tv_hasil;
         EditText et_hasil_cek_verif,et_catatan;
 
         public MenuViewHolder(View itemView) {
@@ -103,6 +105,8 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
             tv_hasil_engine=binding.tvHasilCekEngine;
             et_hasil_cek_verif=binding.etHasilCekVerifikator;
             et_catatan=binding.etCatatan;
+            tv_ketentuan=binding.tvKetentuan;
+            tv_hasil=binding.tvHasil;
 
         }
 

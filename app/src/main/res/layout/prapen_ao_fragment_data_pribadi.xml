@@ -404,7 +404,7 @@
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
-                app:labelText="Status Nikah Saat Ini"
+                app:labelText="Status Pernikahan Terbaru"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -427,7 +427,7 @@
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:secondaryColor="@color/colorPrimary"
                 app:primaryColor="@color/colorPrimary"
-                app:labelText="Status Nikah KTP"
+                app:labelText="Status Pernikahan KTP"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -598,7 +598,81 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
+
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:padding="15dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Upload Dokumen Persetujuan IDEB"
+                        android:textAlignment="center"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/img_foto_ideb"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/banner_placeholder"
+                            app:riv_border_width="1dip"
+                            app:riv_border_color="#f1efef"
+                            app:riv_corner_radius="8dip"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/btn_upload_persetujuan_ideb"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/photo_rounded_blue"
+                            android:padding="8dp"
+                            android:src="@mipmap/ico_upload"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <ProgressBar
+                            android:id="@+id/progress_foto_persetujuan_ideb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:background="@color/overlayWhite"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:elevation="10dp"
+                            android:progressDrawable="@drawable/custom_progressbar"
+                            tools:ignore="MissingConstraints" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
 
             <Button
                 android:id="@+id/btn_cek_nik_dukcapil"

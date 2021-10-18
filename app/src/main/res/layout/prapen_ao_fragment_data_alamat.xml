@@ -244,6 +244,22 @@
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btn_cek_alamat_dukcapil"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/shapeborderprimary"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="Cek Data Dukcapil"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary" />
+
             <include layout="@layout/loading" />
         </LinearLayout>
     </FrameLayout>

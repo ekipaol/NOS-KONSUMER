@@ -175,6 +175,37 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp"
+            android:visibility="visible"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_angsuran_verifikator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:isResponsiveIconColor="true"
+                app:labelText="Angsuran Hasil Verifikasi"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/text_color"
+                app:secondaryColor="@color/text_color"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_angsuran_verifikator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:prefix="Rp."
+                    android:inputType="number" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             android:paddingLeft="16dp"
@@ -187,7 +218,7 @@
                 android:layout_weight="1"
                 app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                 app:isResponsiveIconColor="true"
-                app:labelText="Hasil Verifikasi Fasilitas"
+                app:labelText="Treatment Fasilitas"
                 app:panelBackgroundColor="@color/colorBgEdittext"
                 app:alwaysShowHint="true"
                 app:primaryColor="@color/text_color"
@@ -196,6 +227,39 @@
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_hasil_verifikasi_fasilitas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Pilih"
+                    android:inputType="textMultiLine" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_hasil_verifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:labelText="Hasil Verifikasi"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:alwaysShowHint="true"
+                app:primaryColor="@color/text_color"
+                app:secondaryColor="@color/text_color"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_hasil_verifikasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Pilih"

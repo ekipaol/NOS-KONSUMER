@@ -90,7 +90,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Angsuran Bulanan"
+                android:text="Perkiraan Angsuran Bulanan"
                 android:layout_weight="1"
                 android:textSize="12sp"/>
 
@@ -182,7 +182,7 @@
                 android:textColor="@color/colorWhite"
                 android:background="@drawable/button_primary"
                 android:backgroundTint="@color/colorPrimary"
-                android:text="Ubah"
+                android:text="Perlakuan IDEB"
                 android:textAllCaps="false"
                 android:enabled="true"/>
 

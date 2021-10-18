@@ -94,7 +94,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d5_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d5_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d5_verifikasi)));
-//        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d5_memo)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d5_memo)));
     }
 
     public static void SubmenuD6(Context context, List<ListViewSubmenuHotprospek> menu){
@@ -109,13 +109,20 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d6_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d6_kalkulator_pemutus)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_verifikasi)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_memo)));
     }
 
     public static void SubmenuG1(Context context, List<ListViewSubmenuHotprospek> menu){
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_g1_OJK_BI)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_g1_asesoir)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_akad,context.getString(R.string.submenu_detil_aplikasi_g1_akad)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jaminan_document,context.getString(R.string.submenu_detil_aplikasi_g1_dokumen_persiapan_akad)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_g1_memo)));
+    }
+
+    public static void SubmenuG3(Context context, List<ListViewSubmenuHotprospek> menu){
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_g3_upload_dokumen)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_g3_memo)));
     }
 
     public static void SubmenuHotprospek(Context context, List<ListViewSubmenuHotprospek> menu){

@@ -70,6 +70,8 @@ public class DataMarketingActivity extends AppCompatActivity implements  View.On
         endIconOnClick();
         binding.etSumberAplikasi.setOnClickListener(this);
         binding.tfSumberAplikasi.setOnClickListener(this);
+        binding.btnCekDataAo.setOnClickListener(this);
+        binding.btnCekDataCabang.setOnClickListener(this);
 
     }
 
@@ -86,6 +88,15 @@ public class DataMarketingActivity extends AppCompatActivity implements  View.On
             case R.id.btn_simpan_data_marketing:
                 Toast.makeText(this, "Menyimpan Data Marketing", Toast.LENGTH_SHORT).show();
                 finish();
+                break;
+            case R.id.btn_cek_data_ao:
+               binding.etNamaAo.setText("Nama Dummy");
+                binding.etNamaAoReferal.setText("Nama AO Referal");
+                break;
+            case R.id.btn_cek_data_cabang:
+                binding.etNamaCabangReferal.setText("Nama Cabang");
+                binding.etNamaCabangPembukuan.setText("Nama Cabang Pembukuan");
+                break;
 
             default:break;
         }
@@ -104,12 +115,17 @@ public class DataMarketingActivity extends AppCompatActivity implements  View.On
     private void disableEditTexts(){
         binding.etSumberAplikasi.setFocusable(false);
         binding.etMitraFronting.setFocusable(false);
+        binding.etNamaAo.setFocusable(false);
+        binding.etNamaAoReferal.setFocusable(false);
+        binding.etNamaCabangPembukuan.setFocusable(false);
+        binding.etNamaCabangReferal.setFocusable(false);
 
     }
 
     private void isiDropdown(){
         dropdownSumberAplikasi.add(new MGenericModel("Pegawai Bank/ Reguler","Pegawai Bank/ Reguler"));
         dropdownSumberAplikasi.add(new MGenericModel("Mitra Fronting","Mitra Fronting"));
+        dropdownSumberAplikasi.add(new MGenericModel("Eksternal","Eksternal"));
     }
 
     @Override

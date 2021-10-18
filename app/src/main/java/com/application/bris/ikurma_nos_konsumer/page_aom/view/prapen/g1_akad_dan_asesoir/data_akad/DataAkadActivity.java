@@ -288,6 +288,8 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             binding.llAsetTempatTinggal.setVisibility(View.GONE);
             binding.llAsetKendaraan.setVisibility(View.GONE);
             binding.llAkadWakalah.setVisibility(View.GONE);
+            binding.tvFotoAset.setVisibility(View.VISIBLE);
+            binding.llFotoAset.setVisibility(View.VISIBLE);
         }
     }
 
@@ -349,6 +351,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etTotalNilaiAsetTanah.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalNilaiAsetTanah));
         binding.etTotalNilaiAsetTempatTinggal.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalNilaiAsetTempatTinggal));
         binding.etTotalNilaiTanah.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalNilaiTanah));
+        binding.etHargaPerolehanBarang.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHargaPerolehanBarang));
 
         binding.etHargaTanah.addTextChangedListener(new TextWatcher() {
             @Override

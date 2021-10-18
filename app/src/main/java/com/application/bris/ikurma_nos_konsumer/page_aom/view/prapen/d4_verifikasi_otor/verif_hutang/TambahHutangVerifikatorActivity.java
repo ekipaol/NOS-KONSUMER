@@ -1,4 +1,4 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoTambahDataHutangActivityBinding;
+import com.application.bris.ikurma_nos_konsumer.databinding.PrapenVerifTambahDataHutangActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
@@ -22,9 +22,9 @@ import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForT
 import java.util.ArrayList;
 import java.util.List;
 
-public class TambahDataHutangActivity extends AppCompatActivity implements  View.OnClickListener, GenericListenerOnSelect {
+public class TambahHutangVerifikatorActivity extends AppCompatActivity implements  View.OnClickListener, GenericListenerOnSelect {
 
-    private PrapenAoTambahDataHutangActivityBinding binding;
+    private PrapenVerifTambahDataHutangActivityBinding binding;
     private List<MGenericModel> dataDropdownTreatment=new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -32,12 +32,12 @@ public class TambahDataHutangActivity extends AppCompatActivity implements  View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = PrapenAoTambahDataHutangActivityBinding.inflate(getLayoutInflater());
+        binding = PrapenVerifTambahDataHutangActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         backgroundStatusBar();
-        AppUtil.toolbarRegular(this, "Tambah Kewajibah Lainnya");
+        AppUtil.toolbarRegular(this, "Tambah Kewajiban Lainnya");
 
         allOnClicks();
         disableEditTexts();
@@ -47,7 +47,7 @@ public class TambahDataHutangActivity extends AppCompatActivity implements  View
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDialog.DialogBackpress(TambahDataHutangActivity.this);
+                CustomDialog.DialogBackpress(TambahHutangVerifikatorActivity.this);
             }
         });
     }
@@ -62,7 +62,7 @@ public class TambahDataHutangActivity extends AppCompatActivity implements  View
 
     @Override
     public void onBackPressed() {
-        CustomDialog.DialogBackpress(TambahDataHutangActivity.this);
+        CustomDialog.DialogBackpress(TambahHutangVerifikatorActivity.this);
     }
 
     private void allOnClicks(){
@@ -81,10 +81,11 @@ public class TambahDataHutangActivity extends AppCompatActivity implements  View
             //MENGGUNAKAN LNGP
             case R.id.et_sumber_aplikasi:
             case R.id.tf_sumber_aplikasi:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTreatmentPembiayaan.getLabelText(),dataDropdownTreatment,TambahDataHutangActivity.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTreatmentPembiayaan.getLabelText(),dataDropdownTreatment, TambahHutangVerifikatorActivity.this);
                 break;
             case R.id.btn_tambah_data_hutang:
-                Toast.makeText(this, "Nit Not, menyimpan data hutang", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Nit Not, menyimpan data kewajiban", Toast.LENGTH_SHORT).show();
+                finish();
 
             default:break;
         }
@@ -93,7 +94,7 @@ public class TambahDataHutangActivity extends AppCompatActivity implements  View
         binding.tfTreatmentPembiayaan.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTreatmentPembiayaan.getLabelText(),dataDropdownTreatment,TambahDataHutangActivity.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTreatmentPembiayaan.getLabelText(),dataDropdownTreatment, TambahHutangVerifikatorActivity.this);
             }
         });
 

@@ -15,8 +15,28 @@ public class DataVerifikasiIdeb {
     private String treatmentPembiayaan;
     @SerializedName("idDokumen")
     private String idDokumen;
-    @SerializedName("hasilVerifikasi")
+    @SerializedName("treatmentFasilitas")
     private String hasilVerifikasiIdeb;
+    @SerializedName("hasilVerifikasi")
+    private String hasilVerifikasi;
+    @SerializedName("angsuranVerifikasi")
+    private String angsuranVerifikasi;
+
+    public String getHasilVerifikasi() {
+        return hasilVerifikasi;
+    }
+
+    public void setHasilVerifikasi(String hasilVerifikasi) {
+        this.hasilVerifikasi = hasilVerifikasi;
+    }
+
+    public String getAngsuranVerifikasi() {
+        return angsuranVerifikasi;
+    }
+
+    public void setAngsuranVerifikasi(String angsuranVerifikasi) {
+        this.angsuranVerifikasi = angsuranVerifikasi;
+    }
 
     public String getNamaLembagaKeuangan() {
         return namaLembagaKeuangan;

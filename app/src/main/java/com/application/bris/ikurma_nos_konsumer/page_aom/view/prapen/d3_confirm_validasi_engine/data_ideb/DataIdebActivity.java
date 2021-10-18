@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangAdapter;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +43,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
     private AppPreferences appPreferences;
     private PrapenAoDataIdebActivityBinding binding;
     List<MGenericModel> dataDropdownFlow=new ArrayList<>();
+    private BottomSheetBehavior bottomSheetBehavior;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         setContentView(binding.getRoot());
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
+        bottomSheetBehavior=BottomSheetBehavior.from(binding.bottomSheet.bottomSheet);
 
         //pantekan status untuk testing
         customToolbar();
@@ -160,6 +165,49 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
 
             }
         });
+
+        binding.btnSimpanDataPembiayaan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.bottomSheet.extendedCatatan.setEnabled(true);
+                binding.bottomSheet.extendedCatatan.setFocusable(true);
+
+                binding.bottomSheet.extendedCatatan.requestFocus();
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+        });
+
+        binding.bottomSheet.ivCapsuleClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        });
+
+        binding.bottomSheet.btnSimpanDataIdeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             finish();
+                Toast.makeText(DataIdebActivity.this, "Data IDEB Sudah Disimpan", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+
+            //close bottom sheet on click outside
+            if (bottomSheetBehavior.getState()==BottomSheetBehavior.STATE_EXPANDED) {
+
+                Rect outRect = new Rect();
+                binding.bottomSheet.bottomSheet.getGlobalVisibleRect(outRect);
+
+                if(!outRect.contains((int)ev.getRawX(), (int)ev.getRawY()))
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override

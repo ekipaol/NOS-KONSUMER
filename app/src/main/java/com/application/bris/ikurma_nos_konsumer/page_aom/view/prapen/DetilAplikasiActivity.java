@@ -42,7 +42,9 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifika
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_tempat_kerja.VerifikasiTempatKerjaActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.data_akad.DataAkadActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.data_asesoir.AsesoirActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.field_ojk_bi.ActivityFieldOjkBI;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad.PersiapanAkadActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g3_upload_dokumen.ActivityUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo.MemoActivity;
 
 
@@ -75,7 +77,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         appPreferences = new AppPreferences(this);
 
         //pantekan status untuk testing
-        status=getString(R.string.g1_asesoir_dan_akad);
+        status=getString(R.string.g3_upload_dokumen);
         customToolbar();
         backgroundStatusBar();
         isiDataDropdown();
@@ -181,7 +183,10 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Menu.SubmenuG1(this, menu);
             demoVisibility(true);
         }
-        // TODO: 14/09/21 harus ada if status d1, maka tampil menu d1, dst
+        else if(namaMenu.equalsIgnoreCase(getString(R.string.g3_upload_dokumen))){
+            Menu.SubmenuG3(this, menu);
+            demoVisibility(true);
+        }
      
         return menu;
     }
@@ -319,6 +324,11 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
 
         //G1
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_OJK_BI))){
+            Intent it = new Intent(this, ActivityFieldOjkBI.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_asesoir))){
             Intent it = new Intent(this, AsesoirActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
@@ -331,6 +341,13 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_dokumen_persiapan_akad))){
             Intent it = new Intent(this, PersiapanAkadActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            startActivity(it);
+        }
+
+        //G3
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g3_upload_dokumen))){
+            Intent it = new Intent(this, ActivityUploadDokumen.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
@@ -383,6 +400,15 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.d6_menunggu_putusan)));
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g1_asesoir_dan_akad)));
         }
+         //g3
+         else if(status.equalsIgnoreCase(getString(R.string.g3_upload_dokumen))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
+             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
+             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
+             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.d6_menunggu_putusan)));
+             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g1_asesoir_dan_akad)));
+             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g3_upload_dokumen)));
+         }
 
 
     }

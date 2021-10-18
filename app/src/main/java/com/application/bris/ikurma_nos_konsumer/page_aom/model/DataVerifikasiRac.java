@@ -7,12 +7,32 @@ public class DataVerifikasiRac {
     private String namaRac;
     @SerializedName("hasilVerifikasiEngine")
     private String hasilVerifikasiEngine;
+    @SerializedName("ketentuan")
+    private String ketentuan;
+    @SerializedName("hasil")
+    private String hasil;
     @SerializedName("hasilVerifikasiVerif")
     private String hasilVerifikasiVerif;
     @SerializedName("Catatan")
     private String Catatan;
     @SerializedName("idDokumen")
     private String idDokumen;
+
+    public String getHasil() {
+        return hasil;
+    }
+
+    public void setHasil(String hasil) {
+        this.hasil = hasil;
+    }
+
+    public String getKetentuan() {
+        return ketentuan;
+    }
+
+    public void setKetentuan(String ketentuan) {
+        this.ketentuan = ketentuan;
+    }
 
     public String getNamaRac() {
         return namaRac;
