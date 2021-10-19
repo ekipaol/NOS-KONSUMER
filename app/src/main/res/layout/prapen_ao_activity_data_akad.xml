@@ -538,7 +538,7 @@
                             android:paddingRight="20dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
-                            app:labelText="Harga Tanah"
+                            app:labelText="Harga Tanah per Meter"
                             app:panelBackgroundColor="@color/colorBgEdittext"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"

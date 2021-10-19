@@ -77,13 +77,13 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         //dropdown dokumen tanah
         dataDropdownDokumenTanah.add(new MGenericModel("SHM","SHM"));
         dataDropdownDokumenTanah.add(new MGenericModel("SHMSRS","SHMSRS"));
-        dataDropdownDokumenTanah.add(new MGenericModel("Non Sertifikat(Girik)","Non Sertifikat(Girik)"));
+        dataDropdownDokumenTanah.add(new MGenericModel("Non Sertifikat (Girik)","Non Sertifikat(Girik)"));
         dataDropdownDokumenTanah.add(new MGenericModel("HPL","HPL"));
 
         //dropdown dokumen tempat tinggal
         dataDropdownDokumenTempatTinggal.add(new MGenericModel("SHM","SHM"));
         dataDropdownDokumenTempatTinggal.add(new MGenericModel("SHMSRS","SHMSRS"));
-        dataDropdownDokumenTempatTinggal.add(new MGenericModel("Non Sertifikat(Girik)","Non Sertifikat(Girik)"));
+        dataDropdownDokumenTempatTinggal.add(new MGenericModel("Non Sertifikat (Girik)","Non Sertifikat(Girik)"));
         dataDropdownDokumenTempatTinggal.add(new MGenericModel("HPL","HPL"));
 
         //dropdown jenis kendaraan

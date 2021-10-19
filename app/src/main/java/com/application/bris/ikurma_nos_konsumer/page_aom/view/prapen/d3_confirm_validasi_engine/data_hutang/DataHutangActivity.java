@@ -78,7 +78,7 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
 
 
     public void customToolbar(){
-        binding.toolbarNosearch.tvPageTitle.setText("Data IDEB");
+        binding.toolbarNosearch.tvPageTitle.setText("Kewajiban Lainnya");
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

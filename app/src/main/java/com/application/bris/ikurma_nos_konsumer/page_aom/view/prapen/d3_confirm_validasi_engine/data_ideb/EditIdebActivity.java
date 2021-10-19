@@ -124,9 +124,9 @@ public class EditIdebActivity extends AppCompatActivity implements  View.OnClick
         dataDropdownTreatmentPembiayaan.add(new MGenericModel("Pembiayaan tetap dilanjutkan","Pembiayaan tetap dilanjutkan"));
         dataDropdownTreatmentPembiayaan.add(new MGenericModel("Pembiayaan akan dilunasi melalui Pencairan","Pembiayaan akan dilunasi melalui Pencairan"));
         dataDropdownTreatmentPembiayaan.add(new MGenericModel("Pembiayaan dilakukan Take Over","Pembiayaan dilakukan Take Over"));
-        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan pembiayaan sudah Lunas/Selesai","Nasabah merasa pembiayaan sudah Lunas/Selesai"));
-        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan tidak memiliki pembiayaan tersebut","Nasabah merasa tidak memiliki pembiayaan tersebut"));
-        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan Membayar Tepat Waktu","Nasabah Merasa Membayar Tepat Waktu"));
+        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan pembiayaan sudah Lunas/Selesai","Nasabah Menginfokan pembiayaan sudah Lunas/Selesai"));
+        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan tidak memiliki pembiayaan tersebut","Nasabah Menginfokan tidak memiliki pembiayaan tersebut"));
+        dataDropdownTreatmentPembiayaan.add(new MGenericModel("Nasabah Menginfokan Membayar Tepat Waktu","Nasabah Menginfokan Membayar Tepat Waktu"));
 
 
     }

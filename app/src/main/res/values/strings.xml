@@ -34,8 +34,8 @@
     <string name="submenu_detil_aplikasi_d4_kalkulator_verin">Kalkulator Verin</string>
     <string name="submenu_detil_aplikasi_d4_hasil_rac">Hasil RAC</string>
     <string name="submenu_detil_aplikasi_d4_hasil_fitur">Hasil Fitur</string>
-    <string name="submenu_detil_aplikasi_d4_data_tempat_kerja">Data Tempat Kerja</string>
-    <string name="submenu_detil_aplikasi_d4_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d4_data_tempat_kerja">Verifikasi Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d4_pendapatan_verin">Verin Pendapatan</string>
     <string name="submenu_detil_aplikasi_d4_ideb_verin">Verin IDEB</string>
     <string name="submenu_detil_aplikasi_d4_hutang_verin">Verin Kewajiban</string>
     <string name="submenu_detil_aplikasi_d4_kualitas_pembiayaan">DSR DBR</string>
@@ -48,8 +48,8 @@
     <string name="submenu_detil_aplikasi_d5_kalkulator_verin">Kalkulator Verin</string>
     <string name="submenu_detil_aplikasi_d5_hasil_rac">Hasil RAC</string>
     <string name="submenu_detil_aplikasi_d5_hasil_fitur">Hasil Fitur</string>
-    <string name="submenu_detil_aplikasi_d5_data_tempat_kerja">Data Tempat Kerja</string>
-    <string name="submenu_detil_aplikasi_d5_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d5_data_tempat_kerja">Verifikasi Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d5_pendapatan_verin">Verin Pendapatan</string>
     <string name="submenu_detil_aplikasi_d5_ideb_verin">Verin IDEB</string>
     <string name="submenu_detil_aplikasi_d5_hutang_verin">Verin Kewajiban</string>
     <string name="submenu_detil_aplikasi_d5_kualitas_pembiayaan">DSR DBR</string>
@@ -61,8 +61,8 @@
     <string name="submenu_detil_aplikasi_d6_canvassing">Hasil Canvassing</string>
     <string name="submenu_detil_aplikasi_d6_hasil_rac">Hasil RAC</string>
     <string name="submenu_detil_aplikasi_d6_hasil_fitur">Hasil Fitur</string>
-    <string name="submenu_detil_aplikasi_d6_data_tempat_kerja">Data Tempat Kerja</string>
-    <string name="submenu_detil_aplikasi_d6_pendapatan_verin">Pendapatan Verin</string>
+    <string name="submenu_detil_aplikasi_d6_data_tempat_kerja">Verifikasi Tempat Kerja</string>
+    <string name="submenu_detil_aplikasi_d6_pendapatan_verin">Verin Pendapatan</string>
     <string name="submenu_detil_aplikasi_d6_ideb_verin">Verin IDEB</string>
     <string name="submenu_detil_aplikasi_d6_hutang_verin">Verin Kewajiban</string>
     <string name="submenu_detil_aplikasi_d6_kualitas_pembiayaan">DSR DBR</string>

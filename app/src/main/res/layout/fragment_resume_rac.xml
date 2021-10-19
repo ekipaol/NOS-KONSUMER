@@ -62,6 +62,7 @@
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    android:visibility="gone"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText

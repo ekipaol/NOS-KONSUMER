@@ -499,21 +499,21 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 binding.etTglTunjanganP1.setText(calLahirString);
                 formatOutgoing.setTimeZone(tz);
                 s = formatOutgoing.format(calLahir.getTime());
-                binding.tp1.setText("Slip gaji " + s);
+                binding.tp1.setText("Slip Gaji " + s);
 
                 calLahir.add(Calendar.MONTH, -1);
                 String p2 = dateT.format(calLahir.getTime());
                 binding.etPeriodeGajiP2.setText(p2);
                 binding.etTglTunjanganP2.setText(p2);
                 s = formatOutgoing.format(calLahir.getTime());
-                binding.tp2.setText("Slip gaji " + s);
+                binding.tp2.setText("Slip Gaji " + s);
 
                 calLahir.add(Calendar.MONTH, -1);
                 String p3 = dateT.format(calLahir.getTime());
                 binding.etPeriodeGajiP3.setText(p3);
                 binding.etTglTunjanganP3.setText(p3);
                 s = formatOutgoing.format(calLahir.getTime());
-                binding.tp3.setText("Slip gaji " + s);
+                binding.tp3.setText("Slip Gaji " + s);
             } else {
                 et.setText(calLahirString);
             }

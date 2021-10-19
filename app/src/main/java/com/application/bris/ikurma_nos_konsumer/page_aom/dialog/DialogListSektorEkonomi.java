@@ -162,7 +162,7 @@ public class DialogListSektorEkonomi extends DialogFragment implements View.OnCl
         super.onViewCreated(view, savedInstanceState);
         customToolbar();
         apiClientAdapter = new ApiClientAdapter(getContext());
-        loadDataKategSekom();
+//        loadDataKategSekom();
     }
 
     public void customToolbar(){

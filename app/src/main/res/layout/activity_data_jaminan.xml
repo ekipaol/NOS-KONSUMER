@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     app:iconSignifier="@drawable/ic_date"
                     app:isResponsiveIconColor="true"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
                     app:labelText="Lembaga Penerbit SK"

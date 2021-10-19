@@ -186,6 +186,32 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_hasil_rekomendasi_scoring"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_document"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Hasil Rekomendasi Scoring"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_hasil_rekomendasi_scoring"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="numberDecimal"
+                        android:text="" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
