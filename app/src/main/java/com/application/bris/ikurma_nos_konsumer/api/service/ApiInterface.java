@@ -97,6 +97,9 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inquiryTujuan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUpdateDataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
@@ -701,5 +704,24 @@ public interface ApiInterface {
 
     @POST(UriApi.flpp.sendDataPipelineKprFlpp)
     Call<ParseResponse> sendDataPipelineKprFlpp(@Body KonsumerKPRInputPipeline inputPipeline);
+
+
+    //GADAI
+    @POST(UriApi.prapen.dropdownTipeProduk)
+    Call<ParseResponseArr> dropdownTipeProduk(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownSegmen)
+    Call<ParseResponseArr> dropdownSegmen(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownJenisPembiayaan)
+    Call<ParseResponseArr> dropdownJenisPembiayaan(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownTujuanPembiayaan)
+    Call<ParseResponseArr> dropdownTujuanPembiayaan(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownProgram)
+    Call<ParseResponseArr> dropdownProgram(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.cekHasilRekomendasiAkad)
+    Call<ParseResponseArr> cekHasilRekomendasiAkad(@Body ReqHasilRekomendasiAkad ReqHasilRekomendasiAkad);
+    @POST(UriApi.prapen.updateDataPembiayaan)
+    Call<ParseResponse> updateDataPembiayaan(@Body ReqUpdateDataPembiayaan ReqUpdateDataPembiayaan);
+    @POST(UriApi.prapen.listAplikasiMarketing)
+    Call<ParseResponseArr> listAplikasiMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 }
 

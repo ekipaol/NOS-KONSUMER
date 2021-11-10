@@ -20,17 +20,21 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.general.login;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.baseapp.RouteApp;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.model.general.DataLoginBsi;
 import com.application.bris.ikurma_nos_konsumer.model.general.dataLogin;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.Constants;
+import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.CoreLayoutActivity;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.activation.WelcomeActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 import butterknife.BindView;
@@ -60,6 +64,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private boolean expiredToken;
+    private DataLoginBsi dataUserBsi;
 
     public static int counter = 0;
 
@@ -68,7 +73,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        apiClientAdapter = new ApiClientAdapter(this, 0);
+        apiClientAdapter = new ApiClientAdapter(this,"http://10.0.116.37:8054/");
         appPreferences = new AppPreferences(this);
         appPreferences.setNama(AppUtil.encrypt("Developer"));
         backgroundStatusBar();
@@ -195,7 +200,9 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
 
     private void doLogin() {
         loading.setVisibility(View.VISIBLE);
-        login req = new login(et_username.getText().toString().trim(), "", getDeviceId(), "BRISI_KONSUMER");
+        MagicCryptHelper encryptor=new MagicCryptHelper();
+        login req = new login(et_username.getText().toString().trim(), encryptor.encrypt("12345678"), getDeviceId(), "NOS_GADAI");
+//        req.setPassword(encryptor.encrypt(et_password.getText().toString()));
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().login2(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -204,9 +211,11 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
                 try {
                     if(response.isSuccessful()){
                         if (response.body().getStatus().equalsIgnoreCase("00")){
+                            String listDataString = response.body().getData().toString();
                             Gson gson = new Gson();
-                            dataLogin data = gson.fromJson(response.body().getData().toString(), dataLogin.class);
-                            setPrefLogin(data);
+                            Type type = new TypeToken<DataLoginBsi>() {}.getType();
+                            dataUserBsi = gson.fromJson(listDataString, type);
+                            setPrefLoginBsi(dataUserBsi);
                             RouteApp router = new RouteApp(LoginActivity2.this);
                             router.openActivityAndClearAllPrevious(CoreLayoutActivity.class);
                         }
@@ -270,6 +279,20 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
         HashMap<String, String> deviceInfo = AppUtil.getDeviceInfo(this);
         String deviceId = deviceInfo.get(Constants.DEVICE_ID);
         return deviceId;
+    }
+
+    private void setPrefLoginBsi(DataLoginBsi dataLoginBsi){
+        appPreferences.setNama(AppUtil.encrypt(dataLoginBsi.getName()));
+        appPreferences.setJabatan(AppUtil.encrypt(dataLoginBsi.getRole().getRoleName()));
+        appPreferences.setNamaKantor(AppUtil.encrypt(dataLoginBsi.getBranch().getBranch_name()));
+        appPreferences.setKodeKantor(AppUtil.encrypt(String.valueOf(dataLoginBsi.getBranch().getBranch_code())));
+        appPreferences.setKodeKanwil((AppUtil.encrypt(String.valueOf(dataLoginBsi.getBranch().getId()))));
+        appPreferences.setFidRole(AppUtil.encrypt(String.valueOf(dataLoginBsi.getRole().getId())));
+        appPreferences.setUid(AppUtil.encrypt(String.valueOf(dataLoginBsi.getId())));
+        //appPreferences.setNik(AppUtil.encrypt(dataLoginBsi.getOfficer_code()));
+        appPreferences.setKodeAo(AppUtil.encrypt(dataLoginBsi.getOfficer_code()));
+        appPreferences.setKodeCabang(AppUtil.encrypt(String.valueOf(dataLoginBsi.getBranch().getId())));
+        appPreferences.setToken(AppUtil.encrypt(dataLoginBsi.getToken()));
     }
 
     @Override

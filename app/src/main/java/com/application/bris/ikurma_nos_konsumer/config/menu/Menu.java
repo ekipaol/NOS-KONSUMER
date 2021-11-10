@@ -19,14 +19,8 @@ public class Menu {
 
     /*************************** Main Menu AO***************************/
     public static void mainMenuAO(Context context, List<ListViewMenu> menu) {
-        menu.add(new ListViewMenu(R.drawable.ico_pipeline, context.getString(R.string.menu_pipeline), 0, 0, 0, 0));
-        menu.add(new ListViewMenu(R.drawable.ico_hotprospek, context.getString(R.string.menu_hotprospek), 0, 0, 0, 0));
-        menu.add(new ListViewMenu(R.drawable.ico_approved, context.getString(R.string.menu_approved), 0, 0, 0, 0));;
-        menu.add(new ListViewMenu(R.drawable.ico_rejected, context.getString(R.string.menu_rejected), 0,0,0, 0));
-        menu.add(new ListViewMenu(R.drawable.ic_followup_flpp, "FLPP", 0, 0, 0, 0));
-        menu.add(new ListViewMenu(R.drawable.ico_appraisal, context.getString(R.string.menu_appraisal), 0, 0, 0, 0));
-        menu.add(new ListViewMenu(R.drawable.ic_generalusericon, "Monitoring", 0, 0, 0, 0));
-        menu.add(new ListViewMenu(R.drawable.ic_feedback, "Feedback", 0,0,0, 0));
+        menu.add(new ListViewMenu(R.drawable.ico_pipeline, context.getString(R.string.menu_input), 0, 0, 0, 0));
+        menu.add(new ListViewMenu(R.drawable.ico_approved, context.getString(R.string.menu_aplikasi), 0, 0, 0, 0));
         menu.add(new ListViewMenu(R.drawable.ic_logout_front, "Logout", 0,0,0, 0));
     }
 

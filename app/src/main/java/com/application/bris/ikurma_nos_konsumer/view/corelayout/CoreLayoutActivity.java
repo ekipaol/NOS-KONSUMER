@@ -60,8 +60,8 @@ public class CoreLayoutActivity extends AppCompatActivity implements BottomNavig
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         appPreferences=new AppPreferences(this);
         loadFragment(new FragmentHome());
-        loadDataProduct();
-        loadKategSektorEkonomi();
+//        loadDataProduct();
+//        loadKategSektorEkonomi();
     }
 
     @Override

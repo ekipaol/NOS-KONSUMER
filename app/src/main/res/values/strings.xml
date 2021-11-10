@@ -100,6 +100,10 @@
     <string name="menu_rejected">Rejected</string>
     <string name="menu_appraisal">Appraisal</string>
 
+    <!--String Menu PRAPEN-->
+    <string name="menu_input">Input</string>
+    <string name="menu_aplikasi">Aplikasi</string>
+
     <!--String Sub Menu Hotprospek-->
     <string name="submenu_hotprospek_prescreening">Prescreening</string>
     <string name="submenu_hotprospek_datalengkap">Data Lengkap</string>

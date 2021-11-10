@@ -14,6 +14,8 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.HotprospekKpr;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.PipelineKpr;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.appraisal.AppraisalActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.feedback.FeedbackActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_monitoring.monitoring_pencairan.MonitoringPencairanActivity;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.login.LoginActivity;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.login.LoginActivity2;
@@ -466,21 +468,15 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public void onMenuClick(String menu) {
 
-        if (menu.equalsIgnoreCase(getString(R.string.menu_pipeline))){
+        if (menu.equalsIgnoreCase(getString(R.string.menu_input))){
 //            Intent it = new Intent(getContext(), KonsumerKMGPipelineActivity.class);
 //            startActivity(it);
-            Intent intent=new Intent(getContext(),MenuPutusanKonsumerActivity.class);
-            intent.putExtra("jenisMenu","pipeline");
+            Intent intent=new Intent(getContext(), DetilAplikasiActivity.class);
             startActivity(intent);
         }
-        else if (menu.equalsIgnoreCase(getString(R.string.menu_hotprospek))){
-//            Intent it = new Intent(getContext(), HotprospekActivity.class);
-//            startActivity(it);
-
-            Intent intent=new Intent(getContext(),MenuPutusanKonsumerActivity.class);
-            intent.putExtra("jenisMenu","hotprospek");
-            startActivity(intent);
-
+        else if (menu.equalsIgnoreCase(getString(R.string.menu_aplikasi))){
+            Intent it = new Intent(getContext(), ListAplikasiActivity.class);
+            startActivity(it);
 
         }
         else if (menu.equalsIgnoreCase(getString(R.string.menu_approved))){

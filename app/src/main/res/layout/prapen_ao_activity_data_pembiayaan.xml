@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -196,6 +197,8 @@
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
@@ -207,30 +210,54 @@
                         android:inputType="number" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_akad_pembiayaan"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_postcode"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Akad Pembiayaan"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
 
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_akad_pembiayaan"
-                        android:layout_width="match_parent"
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_akad_pembiayaan"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text=" "
-                        android:inputType="text" />
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="8"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_postcode"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Akad Pembiayaan"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:alwaysShowHint="true"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_akad_pembiayaan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Cek Akad Terlebih Dahulu"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <Button
+                        android:id="@+id/btn_cek_hasil_akad"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="20dp"
+                        android:textFontWeight="1"
+                        android:text="Cek Akad"
+                        android:padding="8dp"
+                      style="@style/Widget.AppCompat.Button.Colored"
+                        />
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/ll_syarat_umum_akad"
@@ -285,7 +312,7 @@
 
             </LinearLayout>
 
-            <include android:id="@+id/loading_layout" layout="@layout/loading" />
+
 
         </LinearLayout>
     </ScrollView>

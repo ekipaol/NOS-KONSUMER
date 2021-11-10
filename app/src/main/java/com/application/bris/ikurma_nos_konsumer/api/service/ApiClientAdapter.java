@@ -19,6 +19,9 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
 import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -178,7 +181,7 @@ public class ApiClientAdapter {
                             AppUtil.logSecure("okhttp_decrypter_request",encryptor.decrypt(encryptedRequest));
 
                             //comment for encryption, uncomment for no encryption
-//                            encryptedRequest=encryptor.decrypt(encryptedRequest);
+                            encryptedRequest=encryptor.decrypt(encryptedRequest);
 //                            Log.wtf("okhttp_decrypter_request",encryptedRequest);
 
 
@@ -270,17 +273,18 @@ public class ApiClientAdapter {
         }
 
 
-//        OkHttpClient httpClient = clientBuilder
-//                .connectTimeout(timeOut, timeUnit)
-//                .readTimeout(timeOut, timeUnit)
-//                // TODO: 19/04/21 comment this, uncomment above
-//                .hostnameVerifier(new HostnameVerifier() {
-//                    @Override
-//                    public boolean verify(String s, SSLSession sslSession) {
-//                        return true;
-//                    }
-//                })
-//                .build();
+        //BYPASS SSL, comment this when lewat middle tier
+         httpClient = clientBuilder
+                .connectTimeout(timeOut, timeUnit)
+                .readTimeout(timeOut, timeUnit)
+                // TODO: 19/04/21 comment this, uncomment above
+                .hostnameVerifier(new HostnameVerifier() {
+                    @Override
+                    public boolean verify(String s, SSLSession sslSession) {
+                        return true;
+                    }
+                })
+                .build();
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
