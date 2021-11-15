@@ -6,16 +6,23 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.ReqUid;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.config.menu.Menu;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDetilAplikasiBinding;
 import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDetailAplikasi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
@@ -46,11 +53,18 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad.PersiapanAkadActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g3_upload_dokumen.ActivityUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo.MemoActivity;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetilAplikasiActivity extends AppCompatActivity implements MenuClickListener, ConfirmListener, GenericListenerOnSelect {
 
@@ -58,10 +72,15 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     private SubmenuDetilAplikasiAdapter submenuDetilAplikasiAdapter;
     private GridLayoutManager layoutMenu;
     private int coloumMenu = 3;
-    public static int idAplikasi=0;
-    private String status;
+    public  String idAplikasi="";
+    private String status="";
+    private String statusId="";
+    private String nama="";
+    private String plafond="";
+    private String jangkaWaktu="";
     private hotprospek data;
     private hotprospek dataHp;
+    private DataDetailAplikasi dataDetailAplikasi;
     private String dataString;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -77,7 +96,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         appPreferences = new AppPreferences(this);
 
         //pantekan status untuk testing
-        status=getString(R.string.g3_upload_dokumen);
+        status=getIntent().getStringExtra("status");
+        statusId=getIntent().getStringExtra("statusId");
+        idAplikasi=getIntent().getStringExtra("idAplikasi");
         customToolbar();
         backgroundStatusBar();
         isiDataDropdown();
@@ -85,7 +106,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
         //initialize status
         initializeMenu(status);
-        setData();
+        loadDetailAplikasi();
 //        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
 
         binding.btnUbahFlow.setOnClickListener(new View.OnClickListener() {
@@ -131,14 +152,13 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.btnUbahFlow.setText("Flow : "+status);
 
         binding.tvStatus.setText(status);
-        binding.tvNama.setText("Dummy Name");
-        binding.tvProduk.setText("Pra Pensiun");
-        binding.tvTenor.setText("5 Tahun");
-        binding.tvPlafond.setText("Rp. 120,000,000");
-        binding.tvIdaplikasi.setText("NOSPP-2020-01-15-10352-0108");
-        binding.tvTujuanpenggunaan.setText("Barang");
-        binding.tvAkad.setText("MMQ");
-        //bla bla bla isi dari field lain
+        binding.tvNama.setText(dataDetailAplikasi.getNama());
+        binding.tvProduk.setText(dataDetailAplikasi.getTypeProduk());
+        binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu());
+        binding.tvPlafond.setText(AppUtil.parseRupiah(dataDetailAplikasi.getPlafond()));
+        binding.tvIdaplikasi.setText(dataDetailAplikasi.getApplicationNo());
+        binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
+        binding.tvAkad.setText(dataDetailAplikasi.getAkad());
     }
 
     private void setDataEmpty(){
@@ -195,7 +215,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         if(cardviewVisibility){
             binding.cvDataDetilAplikasi.setVisibility(View.VISIBLE);
             binding.llInfo.setVisibility(View.GONE);
-            setData();
+            loadDetailAplikasi();
         }
         else{
             binding.cvDataDetilAplikasi.setVisibility(View.GONE);
@@ -363,7 +383,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     private void isiDataDropdown(){
 
         //status inisialisasi pasti masuk list karena dia paling awal
-        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d05_inisialisasi)));
+//        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d05_inisialisasi)));
         dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
 
 
@@ -373,27 +393,27 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 //        }
 
         //d4
-         if(status.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
+         if(statusId.equalsIgnoreCase(getString(R.string.id_d4_verifikasi_otor))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
         }
 
         //d5
-        else if(status.equalsIgnoreCase(getString(R.string.d5_confirm_verifikasi))){
+        else if(statusId.equalsIgnoreCase(getString(R.string.id_d5_confirm_verifikasi))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
         }
 
         //d6
-        else if(status.equalsIgnoreCase(getString(R.string.d6_menunggu_putusan))){
+        else if(statusId.equalsIgnoreCase(getString(R.string.id_d6_menunggu_putusan))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.d6_menunggu_putusan)));
         }
         //g1
-        else if(status.equalsIgnoreCase(getString(R.string.g1_asesoir_dan_akad))){
+        else if(statusId.equalsIgnoreCase(getString(R.string.id_g1_asesoir_dan_akad))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
@@ -401,7 +421,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g1_asesoir_dan_akad)));
         }
          //g3
-         else if(status.equalsIgnoreCase(getString(R.string.g3_upload_dokumen))){
+         else if(statusId.equalsIgnoreCase(getString(R.string.id_g3_upload_dokumen))){
              dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
              dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
              dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
@@ -412,6 +432,45 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
 
     }
+
+
+    private void loadDetailAplikasi(){
+            //  dataUser = getListUser();
+            binding.loading.setVisibility(View.VISIBLE);
+            //pantekan no aplikasi dan aktifitas
+            ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+            req.setApplicationId(Long.parseLong(idAplikasi));
+
+            Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryDetailAplikasi(req);
+            call.enqueue(new Callback<ParseResponse>() {
+                @Override
+                public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                    binding.loading.setVisibility(View.GONE);
+                    if (response.isSuccessful()) {
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            String listDataString = response.body().getData().toString();
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<DataDetailAplikasi>() {
+                            }.getType();
+                             dataDetailAplikasi =  gson.fromJson(listDataString, type);
+                             setData();
+                        }
+                        else{
+                            AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ParseResponse> call, Throwable t) {
+                    binding.loading.setVisibility(View.GONE);
+                    AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                    Log.d("LOG D", t.getMessage());
+                }
+            });
+        }
+
 
     private void defaultView(){
         binding.cvDataDetilAplikasi.setVisibility(View.GONE);

@@ -6,6 +6,8 @@ import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
@@ -13,12 +15,14 @@ import com.stepstone.stepper.viewmodel.StepViewModel;
 
 public class DataNasabahStepAdapter extends AbstractFragmentStepAdapter {
     private String title;
-    private DataLengkap dataNasabah;
+    private DataNasabahPrapen dataNasabah;
+    private DataInstansiDapen dataInstansi;
 
 
-    public DataNasabahStepAdapter(@NonNull FragmentManager fm, @NonNull Context context, DataLengkap mdataLengkap) {
+    public DataNasabahStepAdapter(@NonNull FragmentManager fm, @NonNull Context context, DataNasabahPrapen mdataLengkap, DataInstansiDapen dataInstansiDapen) {
         super(fm, context);
         dataNasabah = mdataLengkap;
+        dataInstansi=dataInstansiDapen;
     }
 
     @NonNull
@@ -46,13 +50,13 @@ public class DataNasabahStepAdapter extends AbstractFragmentStepAdapter {
     public Step createStep(int position) {
         switch (position) {
             case 0:
-                FragmentDataPribadiPrapen fragmentDataPribadiPrapen = new FragmentDataPribadiPrapen();
+                FragmentDataPribadiPrapen fragmentDataPribadiPrapen = new FragmentDataPribadiPrapen(dataNasabah,"no");
                 return fragmentDataPribadiPrapen;
             case 1:
-                FragmentDataAlamatPrapen fragmentDataAlamatPrapen = new FragmentDataAlamatPrapen();
+                FragmentDataAlamatPrapen fragmentDataAlamatPrapen = new FragmentDataAlamatPrapen(dataNasabah,"no");
                 return fragmentDataAlamatPrapen;
             case 2:
-                FragmentDataPensiunPrapen fragmentDataPensiunPrapen = new FragmentDataPensiunPrapen();
+                FragmentDataPensiunPrapen fragmentDataPensiunPrapen = new FragmentDataPensiunPrapen(dataInstansi,"no");
                 return fragmentDataPensiunPrapen;
             default:
                 throw new IllegalArgumentException("Unsupported position: " + position);

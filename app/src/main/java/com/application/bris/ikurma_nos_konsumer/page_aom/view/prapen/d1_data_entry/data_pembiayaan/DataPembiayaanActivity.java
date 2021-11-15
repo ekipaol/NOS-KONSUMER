@@ -1,7 +1,10 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,25 +12,28 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUpdateDataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDataPembiayaanBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSRejectHotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekDetailActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.AdapterListAplikasi;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,6 +52,8 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
     private PrapenAoActivityDataPembiayaanBinding binding;
     private List<MGenericModel> dataDropdownMemilikiAset =new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
+    private  String idAplikasi="";
+    private DataPembiayaan dataPembiayaan;
     private AppPreferences appPreferences;
 
     private List<MGenericModel> dropdownTipeProduk=new ArrayList<>();
@@ -63,9 +71,14 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         View view = binding.getRoot();
         setContentView(view);
 
+        appPreferences=new AppPreferences(this);
         apiClientAdapter=new ApiClientAdapter(this);
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Data Pembiayaan");
+        if(getIntent().hasExtra("idAplikasi")){
+            idAplikasi=getIntent().getStringExtra("idAplikasi");
+            loadData();
+        }
 
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
@@ -267,6 +280,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         }
         if(title.equalsIgnoreCase(binding.tfAkadPembiayaan.getLabelText())){
             binding.etAkadPembiayaan.setText(data.getDESC());
+            binding.tvInfo.setText("Syarat Akad : "+data.getID());
         }
 
     }
@@ -276,6 +290,18 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         dataDropdownMemilikiAset.add(new MGenericModel("Tidak","Tidak"));
 
 
+    }
+
+    private void setData(){
+        binding.etJenisTipeProduk.setText(dataPembiayaan.getTipeProduk());
+        binding.etSegmen.setText(dataPembiayaan.getSegmen());
+        binding.etJenisPembiayaan.setText(dataPembiayaan.getJenisPembiayaan());
+        binding.etProgram.setText(dataPembiayaan.getProgram());
+        binding.etTujuanPembiayaan.setText(dataPembiayaan.getTujuanPembiayaan());
+        binding.etMemilikiAset.setText(dataPembiayaan.getMemilikiAset());
+        binding.etPriceDitawarkan.setText(String.valueOf(dataPembiayaan.getOfferingPrice()));
+        binding.etAkadPembiayaan.setText(dataPembiayaan.getPilihanAkad());
+        binding.tvInfo.setText(dataPembiayaan.getSyaratUmumAkad());
     }
 
     public void loadDropdownTipeProduk() {
@@ -405,10 +431,8 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         dropdownTujuanPembiayaan.clear();
                         for (int i = 0; i <dropdownTemp.size(); i++) {
                             dropdownTujuanPembiayaan.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
-
-                            loadDropdownProgram();
                         }
-
+                        loadDropdownProgram();
 
                     }
                 }
@@ -483,9 +507,49 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         binding.etAkadPembiayaan.setHint("Pilih");
                         dropdownAkad.clear();
                         for (int i = 0; i <dropdownTemp.size(); i++) {
-                            dropdownAkad.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
+                            dropdownAkad.add(new MGenericModel(dropdownTemp.get(i).getDescription(),dropdownTemp.get(i).getName()));
                         }
 
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    public void loadData() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        AppPreferences appPreferences=new AppPreferences(DataPembiayaanActivity.this);
+
+        //pantekan uid
+        req.setApplicationId(Long.parseLong(idAplikasi));
+
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().inquiryDataPembiayaan(req);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().get(0).getAsJsonObject().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<DataPembiayaan>() {
+                        }.getType();
+
+                        dataPembiayaan = gson.fromJson(listDataString, type);
+                        setData();
+                    }
+                    else{
+                        AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 }
             }
@@ -503,7 +567,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         //  dataUser = getListUser();
         binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
 
-        ReqUpdateDataPembiayaan req=new ReqUpdateDataPembiayaan();
+        DataPembiayaan req=new DataPembiayaan();
         req.setGroupProduk("PP"); //prapen dipantek pp
         req.setTipeProduk(binding.etJenisTipeProduk.getText().toString());
         req.setSegmen(binding.etSegmen.getText().toString());
@@ -516,9 +580,15 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         req.setPilihanAkad(binding.etAkadPembiayaan.getText().toString());
 
         //ambil dari data login nanti
-        req.setUid("123");
-        req.setKodeCabang("123");
+        req.setUid(Integer.toString(appPreferences.getUid()));
+        req.setKodeCabang(appPreferences.getKodeCabang());
 
+//        req.setUid("123");
+//        req.setKodeCabang("123");
+
+        if(!idAplikasi.isEmpty()){
+            req.setApplicationId(Long.parseLong(idAplikasi));
+        }
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateDataPembiayaan(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -555,7 +625,13 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
 
     @Override
     public void success(boolean val) {
-        finish();
+        if (val){
+            Intent intent = new Intent(DataPembiayaanActivity.this, DetilAplikasiActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("status","Initial Data Entry");
+            intent.putExtra("statusId","D.1");
+            startActivity(intent);
+        }
     }
 
     @Override

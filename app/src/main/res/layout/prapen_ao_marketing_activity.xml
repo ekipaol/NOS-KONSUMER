@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -223,6 +224,7 @@
                     android:gravity="center"
                     android:text="Cek Data Cabang"
                     android:textAllCaps="false"
+                    android:visibility="gone"
                     android:textColor="@color/colorPrimary" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -259,6 +261,7 @@
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    android:visibility="gone"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
@@ -336,7 +339,7 @@
 
             </LinearLayout>
 
-            <include android:id="@+id/loading_layout" layout="@layout/loading" />
+
 
         </LinearLayout>
     </ScrollView>

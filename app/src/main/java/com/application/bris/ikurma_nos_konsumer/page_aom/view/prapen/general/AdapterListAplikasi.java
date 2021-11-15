@@ -8,13 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.bris.ikurma_nos_konsumer.databinding.ItemListAplikasiGadaiBinding;
+import com.application.bris.ikurma_nos_konsumer.databinding.ItemListAplikasiPrapenBinding;
+import com.application.bris.ikurma_nos_konsumer.databinding.ItemListAplikasiPrapenBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
@@ -26,7 +28,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
     private List<DataListAplikasi> data;
     private List<DataListAplikasi> datafiltered;
     private Context context;
-    private ItemListAplikasiGadaiBinding binding;
+    private ItemListAplikasiPrapenBinding binding;
 
     public AdapterListAplikasi(Context context,List< DataListAplikasi> mdata) {
         this.context = context;
@@ -38,7 +40,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
     @Override
     public AdapterListAplikasi.MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        binding= ItemListAplikasiGadaiBinding.inflate(layoutInflater,parent,false);
+        binding= ItemListAplikasiPrapenBinding.inflate(layoutInflater,parent,false);
         View view = binding.getRoot();
         return new AdapterListAplikasi.MenuViewHolder(view);
     }
@@ -62,10 +64,13 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
                 intent.putExtra("plafond",datas.getPlafond());
                 intent.putExtra("noAplikasi",datas.getApplicationNo());
                 intent.putExtra("status",datas.getStatusAplikasi());
+                intent.putExtra("statusId",datas.getStatusAplikasiId());
                 context.startActivity(intent);
 
             }
         });
+
+        AppUtil.convertBase64ToImage(datas.getImg(),binding.ivFoto);
 
 
     }
@@ -113,6 +118,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNama,tvStatus,tvNoAplikasi,tvProduk,tvPlafon,tvTenor;
+        ImageView ivFoto;
         CardView cvData;
 
         public MenuViewHolder(View itemView) {
@@ -123,6 +129,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
             tvNoAplikasi=binding.tvIdAplikasi;
             tvPlafon=binding.tvPlafond;
             tvTenor=binding.tvTenor;
+            ivFoto=binding.ivFoto;
             cvData=binding.cvHotprospekFront;
         }
 

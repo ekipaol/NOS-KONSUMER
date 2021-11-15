@@ -16,6 +16,7 @@
             android:background="@color/colorWhite"
             android:orientation="vertical"
             android:paddingTop="20dp">
+            <include android:id="@+id/loading_layout" layout="@layout/loading" />
 
 
             <LinearLayout
@@ -194,6 +195,14 @@
                             android:inputType="text"
                             />
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <ProgressBar
+                        android:id="@+id/loadingLngp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:progressDrawable="@drawable/custom_progressbar"/>
 
                     <Button
                         android:id="@+id/btn_cek_lngp"
@@ -444,6 +453,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal">
+                    <ProgressBar
+                        android:id="@+id/loadingPayroll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentTop="true"
+                        android:visibility="gone"
+                        android:progressDrawable="@drawable/custom_progressbar"/>
                     <Button
                         android:id="@+id/btn_cek_payroll"
                         android:layout_width="wrap_content"
@@ -465,6 +483,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/muli_r"
                         android:text="Rekening Ditemukan : A/N Alex"
                         android:inputType="textMultiLine"
                         android:maxLines="2"
@@ -685,6 +704,6 @@
 
             </LinearLayout>
 
-            <include layout="@layout/loading" />
+
         </LinearLayout>
 </ScrollView>

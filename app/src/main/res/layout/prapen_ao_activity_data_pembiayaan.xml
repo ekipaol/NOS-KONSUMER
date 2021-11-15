@@ -303,6 +303,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:text="Simpan"
                     android:padding="8dp"
                     style="@style/Bordered.Button.Custom"

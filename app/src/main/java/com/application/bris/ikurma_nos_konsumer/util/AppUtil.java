@@ -3,7 +3,9 @@ package com.application.bris.ikurma_nos_konsumer.util;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,12 +31,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentManager;
 
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Base64OutputStream;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -51,7 +55,12 @@ import com.application.bris.ikurma_nos_konsumer.util.magiccrypt.MagicCrypt;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -782,6 +791,38 @@ public class AppUtil {
         return  imageByteArray;
     }
 
+    public static String encodeFileToBase64(Context context,Uri uri) {
+        InputStream inputStream = null;
+        String encodedFile= "", lastVal;
+        try {
+            inputStream = context.getContentResolver().openInputStream(uri);
+
+            byte[] buffer = new byte[10240];//specify the size to allow
+            int bytesRead;
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            Base64OutputStream output64 = new Base64OutputStream(output, Base64.DEFAULT);
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                output64.write(buffer, 0, bytesRead);
+            }
+            output64.close();
+            encodedFile =  output.toString();
+        }
+        catch (FileNotFoundException e1 ) {
+            e1.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        lastVal = encodedFile;
+        return lastVal;
+        }
+
+    public static byte[] decodeFileTobase64(String file){
+        byte[] fileByteArray = Base64.decode(file, Base64.DEFAULT);
+        return  fileByteArray;
+    }
+
     public static String maskString(String strText, int start, int end, char maskChar)
             throws Exception{
 
@@ -846,6 +887,48 @@ public class AppUtil {
         imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
         );
     }
+
+    public static void convertBase64ToFileWithOnClick(Context context,String base64String,ImageView imageView,String namaPdf){
+         File dwldsPath = new File(context.getExternalCacheDir()+"/"+namaPdf);
+        try {
+            if (base64String != null) {
+                byte[] pdfAsBytes = Base64.decode(base64String, 0);
+                FileOutputStream os;
+                os = new FileOutputStream(dwldsPath, false);
+                os.write(pdfAsBytes);
+                os.flush();
+                os.close();
+
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                            Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", dwldsPath);
+
+                        Intent target = new Intent(Intent.ACTION_VIEW);
+                        target.setDataAndType(path,"application/pdf");
+                        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                        Intent intent = Intent.createChooser(target, "Open File");
+                        try {
+                            context.startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            // Instruct the user to install a PDF reader here, or something
+                        }
+                    }
+                });
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     public final static String parseNpwp(String data)
     {

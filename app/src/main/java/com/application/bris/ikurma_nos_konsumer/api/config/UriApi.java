@@ -20,7 +20,7 @@ public class UriApi {
     }
 
     public class general {
-        public static final String searchAddress = "generic/pencarianKodePos";
+        public static final String searchAddress = "NOS_MIKRO_PROC/rest/API_NOS/pencarianKodepos";
         public static final String login = "user-service/logins";
         public static final String simpanFeedback = "generic/simpanFeedback";
         public static final String login2 = "user-service/logins";
@@ -339,14 +339,38 @@ public class UriApi {
     }
 
     public class prapen{
+
+        //D1
         public static final String dropdownTipeProduk = "NOS_PRAPEN_Services/rest/Picklist/TipeProduk";
         public static final String dropdownSegmen = "NOS_PRAPEN_Services/rest/Picklist/Segmen";
         public static final String dropdownJenisPembiayaan = "NOS_PRAPEN_Services/rest/Picklist/JenisPembiayaan";
         public static final String dropdownTujuanPembiayaan = "NOS_PRAPEN_Services/rest/Picklist/TujuanPembiayaan";
         public static final String dropdownProgram = "NOS_PRAPEN_Services/rest/Picklist/Program";
+        public static final String dropdownLembagaPengelolaPensiun = "NOS_PRAPEN_Services/rest/Picklist/LembagaPengelolaPensiun";
+        public static final String dropdownTreatmentRekening = "NOS_PRAPEN_Services/rest/Picklist/Treatment";
+        public static final String dropdownMitraFronting  = "NOS_PRAPEN_Services/rest/Picklist/MitraFronting";
         public static final String cekHasilRekomendasiAkad = "NOS_PRAPEN_Services/rest/D1/InquiryHasilRekomendasiAkad";
         public static final String updateDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/UpdateDataPembiayaan";
+        public static final String inquiryDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/InquiryDataPembiayaan";
         public static final String listAplikasiMarketing = "NOS_PRAPEN_Services/rest/APIUmum/ListDataAplikasiMarketing";
+        public static final String inquiryDedupe = "NOS_PRAPEN_Services/rest/D1/InquiryCheckDedupe";
+        public static final String updateDedupe = "NOS_PRAPEN_Services/rest/D1/UpdateCheckDedupe";
+        public static final String updateDataNasabah = "NOS_PRAPEN_Services/rest/D1/UpdateDataDukcapil";
+        public static final String inquiryDataNasabah = "NOS_PRAPEN_Services/rest/D1/InquiryDukcapilPribadiPasangan";
+        public static final String updateDataInstansiDapen = "NOS_PRAPEN_Services/rest/D1/UpdateInstansidanDapen";
+        public static final String inquiryDataInstansiDapen = "NOS_PRAPEN_Services/rest/D1/InquiryInstansidanDapen";
+        public static final String validasiPayroll = "NOS_PRAPEN_Services/rest/D1/ValidasiNoRekPayroll";
+        public static final String validasiDukcapil = "NOS_PRAPEN_Services/rest/D1/ValidasiDataDukcapil";
+        public static final String inquiryNamaKodeAo = "NOS_PRAPEN_Services/rest/D1/InquiryNamaKodeAO";
+        public static final String updateDataMarketing = "NOS_PRAPEN_Services/rest/D1/UpdateMitraMarketing";
+        public static final String inquiryDataMarketing = "NOS_PRAPEN_Services/rest/D1/InquiryMitraMarketing";
+
+
+        //api umum
+        public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
+
+
+
 
 
     }

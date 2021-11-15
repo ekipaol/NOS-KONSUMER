@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,19 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoItemDataHutangBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenItemDedupeBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenItemVerifikasiHutangBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDedupe;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.DropdownRecyclerListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataDedupe;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiHutang;
-import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 import java.util.List;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
-import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class DataDedupeAdapter extends RecyclerView.Adapter<DataDedupeAdapter.MenuViewHolder> {
     private List<DataDedupe> data;
@@ -53,9 +43,9 @@ public class DataDedupeAdapter extends RecyclerView.Adapter<DataDedupeAdapter.Me
         //never user BINDING ON ON BIND VIEW HOLDER DUDE!!!, USE HOLDER INSTEAD
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.tvNamaNasabah.setText(data.get(position).getNamaNasabah());
-        holder.tvProduk.setText(data.get(position).getProduk());
-        holder.tvStatusDalamAplikasi.setText(data.get(position).getStatusDalamAplikasi());
-        holder.tvStatusTerakhir.setText(data.get(position).getStatusTerakhir());
+        holder.tvProduk.setText(data.get(position).getProdukNOS());
+        holder.tvStatusDalamAplikasi.setText(data.get(position).getStatusNasabah());
+        holder.tvStatusTerakhir.setText(data.get(position).getStateAplikasi());
 
         holder.cv_data_dedupe.setOnClickListener(new View.OnClickListener() {
             @Override

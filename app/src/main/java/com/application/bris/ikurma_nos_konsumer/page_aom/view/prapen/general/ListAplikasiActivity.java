@@ -24,6 +24,7 @@ import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityListAplikasiPrapenBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -161,6 +162,9 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
                             binding.ivEmptyData.setVisibility(View.GONE);
                             binding.tvWhale.setVisibility(View.INVISIBLE);
                         }
+                    }
+                    else{
+                        AppUtil.notiferror(ListAplikasiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 }
             }

@@ -97,14 +97,22 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inquiryTujuan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUpdateDataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.LknPojo;
 import com.application.bris.ikurma_nos_konsumer.model.hotprospek.KonsumerKprFlppInputKelengkapanDokumen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -720,8 +728,40 @@ public interface ApiInterface {
     @POST(UriApi.prapen.cekHasilRekomendasiAkad)
     Call<ParseResponseArr> cekHasilRekomendasiAkad(@Body ReqHasilRekomendasiAkad ReqHasilRekomendasiAkad);
     @POST(UriApi.prapen.updateDataPembiayaan)
-    Call<ParseResponse> updateDataPembiayaan(@Body ReqUpdateDataPembiayaan ReqUpdateDataPembiayaan);
+    Call<ParseResponse> updateDataPembiayaan(@Body DataPembiayaan DataPembiayaan);
+    @POST(UriApi.prapen.inquiryDataPembiayaan)
+    Call<ParseResponseArr> inquiryDataPembiayaan(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
     @POST(UriApi.prapen.listAplikasiMarketing)
     Call<ParseResponseArr> listAplikasiMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryDedupe)
+    Call<ParseResponseArr> inquiryDedupe(@Body ReqDedupe ReqDedupe);
+    @POST(UriApi.prapen.updateDedupe)
+    Call<ParseResponse> updateDedupe(@Body ReqDedupe ReqDedupe);
+    @POST(UriApi.prapen.updateDataNasabah)
+    Call<ParseResponse> updateDataNasabah(@Body UpdateDataNasabah UpdateDataNasabah);
+    @POST(UriApi.prapen.inquiryDataNasabah)
+    Call<ParseResponse> inquiryDataNasabah(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryDataInstansiDapen)
+    Call<ParseResponseArr> inquiryDataInstansiDapen(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.updateDataInstansiDapen)
+    Call<ParseResponse> updateDataInstansiDapen(@Body UpdateDataInstansiDapen UpdateDataInstansiDapen);
+    @POST(UriApi.prapen.dropdownLembagaPengelolaPensiun)
+    Call<ParseResponseArr> dropdownLembagaPengelolaPensiun(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownTreatmentRekening)
+    Call<ParseResponseArr> dropdownTreatmentRekening(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownMitraFronting)
+    Call<ParseResponseArr> dropdownMitraFronting(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.validasiPayroll)
+    Call<ParseResponse> validasiPayroll(@Body ReqAcctNumber ReqAcctNumber);
+    @POST(UriApi.prapen.inquiryDetailAplikasi)
+    Call<ParseResponse> inquiryDetailAplikasi(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.validasiDukcapil)
+    Call<ParseResponse> validasiDukcapil(@Body ReqValidasiDukcapil ReqValidasiDukcapil);
+    @POST(UriApi.prapen.inquiryNamaKodeAo)
+    Call<ParseResponse> inquiryNamaKodeAo(@Body ReqKodeAo ReqKodeAo);
+    @POST(UriApi.prapen.updateDataMarketing)
+    Call<ParseResponse> updateDataMarketing(@Body ReqUpdateDataMarketing ReqUpdateDataMarketing);
+    @POST(UriApi.prapen.inquiryDataMarketing)
+    Call<ParseResponseArr> inquiryDataMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 }
 

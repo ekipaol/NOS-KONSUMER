@@ -50,6 +50,7 @@ public class DialogKeyValue extends DialogFragment{
     private static String type = "";
     private static int viewId=0;
     public static DialogKeyValue display(FragmentManager fragmentManager, String titleId, KeyValueListener keyValueListenerId) {
+        jenisPicklist="normal";
         title = titleId;
         keyValueListener = keyValueListenerId;
         DialogKeyValue dialogAddress = new DialogKeyValue();
@@ -149,10 +150,10 @@ public class DialogKeyValue extends DialogFragment{
         else if(viewId==R.id.tf_sumber_aplikasi) {
             dataKeyvalue = getSumberAplikasi();
         }
-        else if (title.equalsIgnoreCase("status nikah KTP")){
+        else if (title.equalsIgnoreCase("status pernikahan KTP")){
             dataKeyvalue = getDataStatusNikah();
         }
-        else if (title.equalsIgnoreCase("status nikah")){
+        else if (title.equalsIgnoreCase("status pernikahan terbaru")){
             dataKeyvalue = getDataStatusNikah();
         }
 

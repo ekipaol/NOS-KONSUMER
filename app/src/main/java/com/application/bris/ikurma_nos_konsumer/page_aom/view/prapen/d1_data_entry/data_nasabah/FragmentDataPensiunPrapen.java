@@ -1,47 +1,75 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataPensiunanBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
+import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import io.realm.Realm;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener {
+public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener, GenericListenerOnSelect {
     AppPreferences appPreferences;
 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-    private DataLengkap dataLengkap;
+    private DataInstansiDapen dataInstansi;
     private Realm realm;
     private String approved;
     private ApiClientAdapter apiClientAdapter;
     private PrapenAoFragmentDataPensiunanBinding binding;
+    private boolean valDapatBergerak=false,valDalamPengawasan=false,valMemilikiRiwayat=false,valSerumahDenganKeluarga=false,valMemilikiUsahaSampingan=false,valMemperolehKiriman =false,valMenggunakanLngp =false,valNasabahBsi =false;
+
+    private List<MGenericModel> dropdownLembagaPengelolaPensiun=new ArrayList<>();
+    private List<MGenericModel> dropdownTreatmentRekening=new ArrayList<>();
 
     public FragmentDataPensiunPrapen() {
     }
 
-    public FragmentDataPensiunPrapen(DataLengkap mdataLengkap, String maprroved) {
-        dataLengkap = mdataLengkap;
+    public FragmentDataPensiunPrapen(DataInstansiDapen mdataLengkap, String maprroved) {
+        dataInstansi = mdataLengkap;
         approved = maprroved;
     }
 
@@ -58,103 +86,117 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         allOnClicks();
         disableEditTexts();
         defaulViewSettings();
+        loadDropdownLembagaPengelolaPensiun();
 
+        if(dataInstansi!=null){
+            setData();
+        }
 
 //        setData();
 
         return view;
     }
 
-    //    private void setData(){
+    private void setData(){
+        try{
+            binding.etLembagaPengelolaPensiun.setText(dataInstansi.getLembagaPengelolaPensiun());
+            binding.etNomorPensiunan.setText(dataInstansi.getNomorPensiunan());
+            binding.etNomorKepegawaian.setText(dataInstansi.getNomorKepegawaian());
+
+            binding.etMenggunakanLngp.setText(dataInstansi.getIsLNGP());
+            if(dataInstansi.getIsLNGP().equalsIgnoreCase("ya")){
+                binding.tfInputLngp.setVisibility(View.VISIBLE);
+                binding.btnCekLngp.setVisibility(View.VISIBLE);
+                binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
+                binding.tfRateLngp.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.tfInputLngp.setVisibility(View.GONE);
+                binding.btnCekLngp.setVisibility(View.GONE);
+                binding.tfNamaInstansiLngp.setVisibility(View.GONE);
+                binding.tfRateLngp.setVisibility(View.GONE);
+            }
+
+            binding.etInputLngp.setText(dataInstansi.getNoLNGP());
+            binding.etRateLngp.setText(String.valueOf(dataInstansi.getRateLNGP()));
+            binding.etNamaInstansiLngp.setText(dataInstansi.getNamaInstansiLNGP());
+            binding.etNamaInstansi.setText(dataInstansi.getNamaInstansi());
+            binding.etKotaTempatBekerja.setText(dataInstansi.getKotaTempatBekerja());
+            binding.etPerkiraanGaji.setText(dataInstansi.getPerkiraanGaji());
+            binding.etPerkiraanTunjangan.setText(dataInstansi.getPerkiraanTunjangan());
+            binding.etNasabahBsi.setText(dataInstansi.getIsNasabahBSI());
+            binding.etTreatmentRekeningPendapatan.setText(dataInstansi.getTreatmentRekeningPendapata());
+            binding.etNomorRekening.setText(dataInstansi.getNomorRekening());
+            binding.etNominalKiriman.setText(dataInstansi.getNominalPerBulan());
+            binding.etCatatanMemo.setText(dataInstansi.getCatatan());
+
+            if(dataInstansi.getDapatBergerakAktifitas()){
+                binding.etDapatBergerak.setText("Ya");
+                valDapatBergerak=true;
+            }
+            else{
+                binding.etDapatBergerak.setText("Tidak");
+                valDapatBergerak=false;
+            }
+
+            if(dataInstansi.getDalamPengawasanDokter()){
+                binding.etDalamPengawasan.setText("Ya");
+                valDalamPengawasan=true;
+            }
+            else{
+                binding.etDalamPengawasan.setText("Tidak");
+                valDalamPengawasan=false;
+            }
+
+            if(dataInstansi.getRiwayatPenyakit()){
+                binding.etMemilikiRiwayat.setText("Ya");
+                valMemilikiRiwayat=true;
+            }
+            else{
+                binding.etMemilikiRiwayat.setText("Tidak");
+                valMemilikiRiwayat=false;
+            }
+
+            if(dataInstansi.getSatuRumah()){
+                binding.etTinggalDenganKeluargaLain.setText("Ya");
+                valSerumahDenganKeluarga=true;
+            }
+            else{
+                binding.etTinggalDenganKeluargaLain.setText("Tidak");
+                valSerumahDenganKeluarga=false;
+            }
+
+            if(dataInstansi.getMemilikiUsaha()){
+                binding.etUsahaSampingan.setText("Ya");
+                valMemilikiUsahaSampingan=true;
+            }
+            else{
+                binding.etUsahaSampingan.setText("Tidak");
+                valMemilikiUsahaSampingan=false;
+            }
+
+            if(dataInstansi.getKirimanRutin()){
+                binding.etKirimanRutin.setText("Ya");
+                valMemperolehKiriman=true;
+            }
+            else{
+                binding.etKirimanRutin.setText("Tidak");
+                valMemperolehKiriman=false;
+            }
+
 //
-//        et_nik.setText(dataLengkap.getNoKtp());
-//        et_expirednik.setText(AppUtil.parseTanggalGeneral(dataLengkap.getExpId(), "ddMMyyyy", "dd-MM-yyyy"));
-////            et_npwp.setText(dataLengkap.getNpwp().replaceAll("[-.]", ""));
-//        et_npwp.setText(AppUtil.parseNpwp(dataLengkap.getNpwp()));
-//        et_nama.setText(dataLengkap.getNamaNasabah());
-//        et_namaalias.setText(dataLengkap.getNamaAlias());
-//        et_tempatlahir.setText(dataLengkap.getTptLahir());
-//
-//        //parameter untuk testing
-//        tglLahirOri=dataLengkap.getTglLahir();
-//
-//        et_tanggallahir.setText(AppUtil.parseTanggalGeneral(dataLengkap.getTglLahir(), "ddMMyyyy", "dd-MM-yyyy"));
-//        et_statusnikah.setText(KeyValue.getKeyStatusNikah(dataLengkap.getStatusNikah()));
-//
-//        et_jeniskelamin.setText(KeyValue.getKeyJenisKelamin(dataLengkap.getJenkel()));
-//        et_nomorhp.setText(dataLengkap.getNoHp());
-//        et_email.setText(dataLengkap.getEmail());
-//        et_agama.setText(KeyValue.getKeyAgama(dataLengkap.getAgama()));
-//        et_ketagama.setText(dataLengkap.getKetAgama());
-//        et_namaibukandung.setText(dataLengkap.getNamaIbu());
-//        et_nikpasangan.setText(dataLengkap.getNoKtpPasangan());
-//        et_namapasangan.setText(dataLengkap.getNamaPasangan());
-//        et_tanggallahirpasangan.setText(AppUtil.parseTanggalGeneral(dataLengkap.getTgllahirPasangan(), "ddMMyyyy", "dd-MM-yyyy"));
-//        et_namakeluarga.setText(dataLengkap.getKeluarga());
-//        et_nomorhpkeluarga.setText(dataLengkap.getTelpKeluarga());
-//        et_jumlahtanggungan.setText(String.valueOf(dataLengkap.getJlhTanggungan()));
-////            et_tipependapatan.setText(KeyValue.getKeyTipePendapatan(dataLengkap.getTipePendapatan()));
-//        et_pendidikanterakhir.setText(KeyValue.getKeyPendidikanTerakhir(dataLengkap.getPendidikanTerakhir()));
-//        et_referensi.setText(KeyValue.getKeyReferensi(dataLengkap.getReferensi()));
-//
-//
-//
-//        if (dataLengkap.getStatusNikah().equalsIgnoreCase("2")){
-//            ll_pasangan.setVisibility(View.VISIBLE);
-////            et_namapasangan.setFocusable(false);
-//            et_tanggallahirpasangan.setFocusable(false);
-//            btn_cek_nik_pasangan.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    //kalo nik masi kosong udah main pencat pencet bae, validasi
-//                    if(et_nikpasangan.getText().toString().isEmpty()){
-//                        tf_nikpasangan.setError("Isi NIK pasangan",true);
-//                    }
-//
-//                    //kalau format nik gak bener, validasi
-//                    else if(!Validator.validateKtpRequired(et_nikpasangan.getText().toString().trim())){
-//                        tf_nikpasangan.setError("Format NIK belum benar",true);
-//                    }
-//
-//                    else{
-//                     
-//                        cekDukcapilPasangan();
-//
-////                        }
-//                    }
-//
-//
-//                }
-//            });
-//        }
-//        if (dataLengkap.getAgama().equalsIgnoreCase("ZZZ")){
-//            tf_ketagama.setVisibility(View.VISIBLE);
-//        }
-//
-//        if (approved.equalsIgnoreCase("yes")){
-//            AppUtil.disableEditTexts(ll_datapribadi);
-//        }
-//        
-//
-//        et_nikpasangan.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                if (dataLengkap.getStatusNikah().equalsIgnoreCase("2")){
-//                    nikPasanganBerubah=true;
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
-//    }
+//            setValueYesNo(binding.etDapatBergerak,valDapatBergerak,dataInstansi.getDapatBergerakAktifitas());
+//            setValueYesNo(binding.etDalamPengawasan,valDalamPengawasan,dataInstansi.getDalamPengawasanDokter());
+//            setValueYesNo(binding.etMemilikiRiwayat,valMemilikiRiwayat,dataInstansi.getRiwayatPenyakit());
+//            setValueYesNo(binding.etTinggalDenganKeluargaLain,valSerumahDenganKeluarga,dataInstansi.getSatuRumah());
+//            setValueYesNo(binding.etKirimanRutin,valMemperolehKiriman,dataInstansi.getKirimanRutin());
+//            setValueYesNo(binding.etUsahaSampingan,valMemilikiUsahaSampingan,dataInstansi.getMemilikiUsaha());
+        }
+        catch (Exception e){
+            AppUtil.logSecure("error setdata",e.getMessage());
+        }
+
+    }
     private void allOnClicks(){
         endIconOnClick();
         binding.etMenggunakanLngp.setOnClickListener(this);
@@ -184,6 +226,16 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etKirimanRutin.setOnClickListener(this);
         binding.tfKirimanRutin.setOnClickListener(this);
 
+        binding.btnCekLngp.setOnClickListener(this);
+        binding.btnCekPayroll.setOnClickListener(this);
+
+
+        binding.etTreatmentRekeningPendapatan.setOnClickListener(this);
+        binding.tfTreatmentRekeningPendapatan.setOnClickListener(this);
+
+        binding.etLembagaPengelolaPensiun.setOnClickListener(this);
+        binding.tfLembagaPengelolaPensiun.setOnClickListener(this);
+
 
 
 
@@ -200,33 +252,53 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 //        }
 
 //        else {
-//            setDataOnListerner();
+            setPojoData();
         return null;
 //        }
     }
 
-    public void setDataOnListerner(){
+    public void setPojoData(){
 
-//        val_Referensi = (KeyValue.getTypeReferensi(et_referensi.getText().toString().trim()));
 
-//        DataLengkapPojo d = realm.where(DataLengkapPojo.class).equalTo("idAplikasi", DataLengkapActivity.idAplikasi).findFirst();
-//        DataLengkapPojo copyRealm=new DataLengkapPojo();
-//
-//        if(!realm.isInTransaction()){
-//            realm.beginTransaction();
-//        }
-//
-//        if(d!=null){
-//            copyRealm=realm.copyFromRealm(d);
-//        }
-//        else{
-//            //karena id aplikasi primary key, jadi hanya ditambahkan jika sudah dipastikan data dari realm itu null
-//            copyRealm.setIdAplikasi(DataLengkapActivity.idAplikasi);
-//        }
-//        copyRealm.setCif(DataLengkapActivity.cif);
-//        copyRealm.setUid(DataLengkapActivity.uid);
-//        realm.insertOrUpdate(copyRealm);
-//        realm.close();
+        DataInstansiDapen d = realm.where(DataInstansiDapen.class).equalTo("applicationId", DataNasabahPrapenActivity.idAplikasi).findFirst();
+        DataInstansiDapen copyRealm=new DataInstansiDapen();
+
+        if(!realm.isInTransaction()){
+            realm.beginTransaction();
+        }
+
+        if(d!=null){
+            copyRealm=realm.copyFromRealm(d);
+        }
+        else{
+            //karena id aplikasi primary key, jadi hanya ditambahkan jika sudah dipastikan data dari realm itu null
+            copyRealm.setApplicationId((DataNasabahPrapenActivity.idAplikasi));
+        }
+        copyRealm.setLembagaPengelolaPensiun(binding.etLembagaPengelolaPensiun.getText().toString());
+        copyRealm.setNomorPensiunan(binding.etNomorPensiunan.getText().toString());
+        copyRealm.setNomorKepegawaian(binding.etNomorKepegawaian.getText().toString());
+        copyRealm.setNamaInstansi(binding.etNamaInstansi.getText().toString());
+        copyRealm.setIsLNGP(binding.etMenggunakanLngp.getText().toString());
+        copyRealm.setRateLNGP(Double.parseDouble(binding.etRateLngp.getText().toString()));
+        copyRealm.setNoLNGP(binding.etInputLngp.getText().toString());
+        copyRealm.setNamaInstansiLNGP(binding.etNamaInstansiLngp.getText().toString());
+        copyRealm.setKotaTempatBekerja(binding.etKotaTempatBekerja.getText().toString());
+        copyRealm.setPerkiraanGaji(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
+        copyRealm.setPerkiraanTunjangan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+        copyRealm.setIsNasabahBSI(binding.etNasabahBsi.getText().toString());
+        copyRealm.setTreatmentRekeningPendapata(binding.etTreatmentRekeningPendapatan.getText().toString());
+        copyRealm.setNomorRekening(binding.etNomorRekening.getText().toString());
+        copyRealm.setNominalPerBulan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etNominalKiriman.getText().toString()));
+        copyRealm.setCatatan(binding.etCatatanMemo.getText().toString());
+
+        copyRealm.setDapatBergerakAktifitas(valDapatBergerak);
+        copyRealm.setDalamPengawasanDokter(valDalamPengawasan);
+        copyRealm.setRiwayatPenyakit(valMemilikiRiwayat);
+        copyRealm.setSatuRumah(valSerumahDenganKeluarga);
+        copyRealm.setMemilikiUsaha(valMemilikiUsahaSampingan);
+        copyRealm.setKirimanRutin(valMemperolehKiriman);
+
+        realm.insertOrUpdate(copyRealm);
 
     }
 
@@ -268,26 +340,61 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         else if (title.equalsIgnoreCase(binding.tfNasabahBsi.getLabelText())){
             binding.etNasabahBsi.setText(data.getName());
         }
-        else if (title.equalsIgnoreCase(binding.tfNasabahBsi.getLabelText())){
-            binding.etNasabahBsi.setText(data.getName());
-        }
         else if (title.equalsIgnoreCase(binding.tfDapatBergerak.getLabelText())){
             binding.etDapatBergerak.setText(data.getName());
+
+            if(data.getName().equalsIgnoreCase("ya")){
+                valDapatBergerak=true;
+            }
+            else{
+                valDapatBergerak=false;
+            }
+
         }
         else if (title.equalsIgnoreCase(binding.tfDalamPengawasan.getLabelText())){
             binding.etDalamPengawasan.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                valDalamPengawasan=true;
+            }
+            else{
+                valDalamPengawasan=false;
+            }
         }
         else if (title.equalsIgnoreCase(binding.tfMemilikiRiwayat.getLabelText())){
             binding.etMemilikiRiwayat.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                valMemilikiRiwayat=true;
+            }
+            else{
+                valMemilikiRiwayat=false;
+            }
         }
         else if (title.equalsIgnoreCase(binding.tfTinggalDenganKeluargaLain.getLabelText())){
             binding.etTinggalDenganKeluargaLain.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                valSerumahDenganKeluarga=true;
+            }
+            else{
+                valSerumahDenganKeluarga=false;
+            }
         }
         else if (title.equalsIgnoreCase(binding.tfUsahaSampingan.getLabelText())){
             binding.etUsahaSampingan.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                valMemilikiUsahaSampingan=true;
+            }
+            else{
+                valMemilikiUsahaSampingan=false;
+            }
         }
         else if (title.equalsIgnoreCase(binding.tfKirimanRutin.getLabelText())){
             binding.etKirimanRutin.setText(data.getName());
+            if(data.getName().equalsIgnoreCase("ya")){
+                valMemperolehKiriman=true;
+            }
+            else{
+                valMemperolehKiriman=false;
+            }
         }
 
 
@@ -345,26 +452,28 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             case R.id.tf_kiriman_rutin:
                 openDialogYaTidak(binding.tfKirimanRutin.getLabelText());
                 break;
-//
-//            //TANGGAL LAHIR
-//            case R.id.et_tanggallahir:
-//            case R.id.tf_tanggallahir:
-//                dpCalLahir();
-//                break;
-//
-//            //STATUS NIKAH
-//            case R.id.et_statusnikah:
-//            case R.id.tf_statusnikah:
-//                openKeyValueDialog(tf_statusnikah.getLabelText().toString().trim());
-//                break;
-//
-//            //JENIS KELAMIN
-//            case R.id.et_jeniskelamin:
-//            case R.id.tf_jeniskelamin:
-//                openKeyValueDialog(tf_jeniskelamin.getLabelText().toString().trim());
-//                break;
-
-
+            //LMEBAGA PENGELOLA
+            case R.id.et_lembaga_pengelola_pensiun:
+            case R.id.tf_lembaga_pengelola_pensiun:
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfLembagaPengelolaPensiun.getLabelText(),dropdownLembagaPengelolaPensiun,FragmentDataPensiunPrapen.this);
+                break;
+            //TREATMENT REKENING
+            case R.id.et_treatment_rekening_pendapatan:
+            case R.id.tf_treatment_rekening_pendapatan:
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfTreatmentRekeningPendapatan.getLabelText(),dropdownTreatmentRekening,FragmentDataPensiunPrapen.this);
+                break;
+            case R.id.btn_cek_lngp:
+                binding.etRateLngp.setText("25");
+                binding.etNamaInstansiLngp.setText("instansi dummy");
+                break;
+            case R.id.btn_cek_payroll:
+                if(binding.etNomorRekening.getText().toString().isEmpty()){
+                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content),"Harap isi no rekening");
+                }
+                else{
+                    validasiPayroll();
+                }
+                break;
         }
     }
 
@@ -379,6 +488,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etUsahaSampingan.setFocusable(false);
         binding.etTinggalDenganKeluargaLain.setFocusable(false);
         binding.etKirimanRutin.setFocusable(false);
+        binding.etTotalPendapatan.setFocusable(false);
     }
 
     private void endIconOnClick(){
@@ -437,6 +547,20 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 openDialogYaTidak(binding.tfKirimanRutin.getLabelText());
             }
         });
+
+        binding.tfTreatmentRekeningPendapatan.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfTreatmentRekeningPendapatan.getLabelText(),dropdownTreatmentRekening,FragmentDataPensiunPrapen.this);
+            }
+        });
+
+        binding.tfLembagaPengelolaPensiun.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfLembagaPengelolaPensiun.getLabelText(),dropdownLembagaPengelolaPensiun,FragmentDataPensiunPrapen.this);
+            }
+        });
     }
 
     private void defaulViewSettings(){
@@ -449,9 +573,197 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.btnCekLngp.setVisibility(View.GONE);
         binding.tfNamaInstansiLngp.setVisibility(View.GONE);
         binding.tfRateLngp.setVisibility(View.GONE);
+
+        binding.etPerkiraanTunjangan.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if(!binding.etPerkiraanGaji.getText().toString().isEmpty()&&!binding.etPerkiraanTunjangan.getText().toString().isEmpty()){
+                Long nilaiTotal=Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()))+Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+
+                binding.etTotalPendapatan.setText(String.valueOf(nilaiTotal));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        binding.etPerkiraanGaji.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!binding.etPerkiraanGaji.getText().toString().isEmpty()&&!binding.etPerkiraanTunjangan.getText().toString().isEmpty()){
+                    Long nilaiTotal=Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()))+Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+
+                    binding.etTotalPendapatan.setText(String.valueOf(nilaiTotal));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
+
+    private void setValueYesNo(EditText editText,boolean valueString,Boolean kondisi){
+        if(kondisi!=null&&kondisi){
+            editText.setText("Ya");
+            valueString=kondisi;
+        }
+        else{
+            editText.setText("Tidak");
+            valueString=kondisi;
+        }
+    }
+
+    public void loadDropdownLembagaPengelolaPensiun() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownLembagaPengelolaPensiun(EmptyRequest.INSTANCE);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DropdownGlobalPrapen>>() {
+                        }.getType();
+                        List<DropdownGlobalPrapen> dropdownTemp= gson.fromJson(listDataString, type);
+                        dropdownLembagaPengelolaPensiun.clear();
+                        for (int i = 0; i <dropdownTemp.size(); i++) {
+                            dropdownLembagaPengelolaPensiun.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
+                        }
+                        loadDropdownTreatmentRekening();
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    public void loadDropdownTreatmentRekening() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownTreatmentRekening(EmptyRequest.INSTANCE);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DropdownGlobalPrapen>>() {
+                        }.getType();
+                        List<DropdownGlobalPrapen> dropdownTemp= gson.fromJson(listDataString, type);
+                        dropdownTreatmentRekening.clear();
+                        for (int i = 0; i <dropdownTemp.size(); i++) {
+                            dropdownTreatmentRekening.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
+                        }
+
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    public void validasiPayroll() {
+        //  dataUser = getListUser();
+        binding.loadingPayroll.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+        ReqAcctNumber req=new ReqAcctNumber();
+        req.setAccountNo(binding.etNomorRekening.getText().toString());
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().validasiPayroll(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingPayroll.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<DataCIfRekening>() {
+                        }.getType();
+                        DataCIfRekening dataCIfRekening =  gson.fromJson(listDataString, type);
+
+                        if(dataCIfRekening.getCIF()!=null&&!dataCIfRekening.getCIF().isEmpty()){
+                            binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
+                            binding.tvHasilCekPayroll.setText("Rekening Ditemukan");
+                            binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.main_green_color));
+
+                        }
+                        else{
+                            binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
+                            binding.tvHasilCekPayroll.setText("Rekening Tidak Ditemukan");
+                            binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
+                        }
+
+
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                        binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
+                        binding.tvHasilCekPayroll.setText("Rekening Tidak Ditemukan");
+                        binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loadingPayroll.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
     }
 
 
-
-
+    @Override
+    public void onSelect(String title, MGenericModel data) {
+        if(title.equalsIgnoreCase(binding.tfLembagaPengelolaPensiun.getLabelText())){
+            binding.etLembagaPengelolaPensiun.setText(data.getDESC());
+        }
+        else if(title.equalsIgnoreCase(binding.tfTreatmentRekeningPendapatan.getLabelText())){
+            binding.etTreatmentRekeningPendapatan.setText(data.getDESC());
+        }
+    }
 }

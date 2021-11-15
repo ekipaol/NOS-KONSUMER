@@ -3,7 +3,7 @@ package com.application.bris.ikurma_nos_konsumer.model.prapen;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class DataListAplikasi {
+public class DataDetailAplikasi {
     @SerializedName("Nama")
     @Expose
     private String nama;
@@ -34,17 +34,15 @@ public class DataListAplikasi {
     @SerializedName("StatusAplikasiId")
     @Expose
     private String statusAplikasiId;
+    @SerializedName("Akad")
+    @Expose
+    private String Akad;
     @SerializedName("Img")
     @Expose
     private String Img;
-
-    public String getImg() {
-        return Img;
-    }
-
-    public void setImg(String img) {
-        Img = img;
-    }
+    @SerializedName("TujuanPembiayaan")
+    @Expose
+    private String TujuanPembiayaan;
 
     public String getNama() {
         return nama;
@@ -124,5 +122,29 @@ public class DataListAplikasi {
 
     public void setStatusAplikasiId(String statusAplikasiId) {
         this.statusAplikasiId = statusAplikasiId;
+    }
+
+    public String getAkad() {
+        return Akad;
+    }
+
+    public void setAkad(String akad) {
+        Akad = akad;
+    }
+
+    public String getImg() {
+        return Img;
+    }
+
+    public void setImg(String img) {
+        Img = img;
+    }
+
+    public String getTujuanPembiayaan() {
+        return TujuanPembiayaan;
+    }
+
+    public void setTujuanPembiayaan(String tujuanPembiayaan) {
+        TujuanPembiayaan = tujuanPembiayaan;
     }
 }

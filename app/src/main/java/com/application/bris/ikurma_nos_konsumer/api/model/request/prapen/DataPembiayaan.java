@@ -3,14 +3,14 @@ package com.application.bris.ikurma_nos_konsumer.api.model.request.prapen;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ReqUpdateDataPembiayaan {
+public class DataPembiayaan {
     @SerializedName("Kode_Cabang")
     @Expose
     private String kodeCabang;
     @SerializedName("Group_Produk")
     @Expose
     private String groupProduk;
-    @SerializedName("Application_Id")
+    @SerializedName("ApplicationId")
     @Expose
     private Long applicationId;
     @SerializedName("Tipe_Produk")

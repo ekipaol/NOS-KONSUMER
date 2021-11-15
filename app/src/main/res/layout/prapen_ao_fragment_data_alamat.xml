@@ -244,6 +244,14 @@
 
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/loadingDukcapil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                android:progressDrawable="@drawable/custom_progressbar"/>
+
             <Button
                 android:id="@+id/btn_cek_alamat_dukcapil"
                 android:layout_width="match_parent"

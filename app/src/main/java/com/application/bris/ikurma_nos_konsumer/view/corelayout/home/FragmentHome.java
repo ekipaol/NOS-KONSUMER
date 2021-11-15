@@ -15,6 +15,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.PipelineKpr;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.appraisal.AppraisalActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.feedback.FeedbackActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_monitoring.monitoring_pencairan.MonitoringPencairanActivity;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.login.LoginActivity;
@@ -206,8 +207,8 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 
 
 
-        loadProfil();
-        loadData();
+//        loadProfil();
+//        loadData();
         initializeMenu();
         initializePipelineHome();
         initializeHotprospekHome();
@@ -221,7 +222,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 
         //di hide dulu di on resume karena berat bro
 
-//        loadProfil();
+        loadProfil();
 //        loadDataTop();
 //        initializeMenu();
 //        initializePipelineHome();
@@ -234,38 +235,6 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     private void loadProfil() {
-
-        if (appPreferences.getImageProfilBase64().equalsIgnoreCase("")){
-            String urlPhoto = UriApi.Baseurl.URL+UriApi.foto.urlPhotoProfil+appPreferences.getNik();
-            Glide
-                    .with(getContext())
-                    .asBitmap()
-                    .load(urlPhoto)
-                    .centerCrop()
-                    .placeholder(R.drawable.banner_placeholder)
-                    .into(new CustomTarget<Bitmap>() {
-                        @Override
-                        public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                            iv_profilpicture.setImageBitmap(resource);
-                            appPreferences.setImageProfilBase64(AppUtil.encodeImageTobase64(resource));
-                        }
-
-                        @Override
-                        public void onLoadCleared(@Nullable Drawable placeholder) {
-
-                        }
-                    });
-        }
-        else{
-            Glide
-                    .with(getContext())
-                    .asBitmap()
-                    .load(AppUtil.decodeImageTobase64(appPreferences.getImageProfilBase64()))
-                    .centerCrop()
-                    .placeholder(R.drawable.banner_placeholder)
-                    .into(iv_profilpicture);
-        }
-
         tv_nama.setText(appPreferences.getNama());
         tv_username.setText(appPreferences.getJabatan()+", "+appPreferences.getNamaKantor());
     }
@@ -430,15 +399,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 
     private List<ListViewMenu> getListMenu() {
         List<ListViewMenu> menu = new ArrayList<>();
-
-        //kalau ao NPF, hanya bisa akses menu untuk monitoring saja
-//        Log.d("logfidrole",String.valueOf(appPreferences.getFidRole()));
-        if(appPreferences.getFidRole()==123){
-            Menu.mainMenuAONpf(getContext(), menu);
-        }
-        else{
             Menu.mainMenuAO(getContext(), menu);
-        }
         return menu;
     }
 
@@ -471,7 +432,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         if (menu.equalsIgnoreCase(getString(R.string.menu_input))){
 //            Intent it = new Intent(getContext(), KonsumerKMGPipelineActivity.class);
 //            startActivity(it);
-            Intent intent=new Intent(getContext(), DetilAplikasiActivity.class);
+            Intent intent=new Intent(getContext(), DataPembiayaanActivity.class);
             startActivity(intent);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.menu_aplikasi))){
@@ -632,7 +593,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         rv_pipeline.setVisibility(View.GONE);
         checkCollapse();
         loadProfil();
-        loadData();
+//        loadData();
 //        initializeMenu();
         initializePipelineHome();
         initializeHotprospekHome();
