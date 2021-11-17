@@ -98,6 +98,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
@@ -109,6 +110,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanI
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
@@ -783,6 +785,24 @@ public interface ApiInterface {
     Call<ParseResponse> updateDataHutang(@Body UpdateDataHutang UpdateDataHutang);
     @POST(UriApi.prapen.hapusDataHutang)
     Call<ParseResponse> hapusDataHutang(@Body HapusDataHutang HapusDataHutang);
+    @POST(UriApi.prapen.inquiryRac)
+    Call<ParseResponse> inquiryRac(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryFitur)
+    Call<ParseResponse> inquiryFitur(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryMemo)
+    Call<ParseResponseArr> inquiryMemo(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.updateMemo)
+    Call<ParseResponse> updateMemo(@Body UpdateMemo UpdateMemo);
+    @POST(UriApi.prapen.lanjutPembiayaanKeVerifikator)
+    Call<ParseResponse> lanjutPembiayaanKeVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.batalPembiayaan)
+    Call<ParseResponse> batalPembiayaan(@Body ReqBatalAplikasi ReqBatalAplikasi);
+    @POST(UriApi.prapen.kembalikanPembiayaan)
+    Call<ParseResponse> kembalikanPembiayaan(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryVerifikasiIdeb)
+    Call<ParseResponse> inquiryVerifikasiIdeb(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryVerifikasiHutang)
+    Call<ParseResponseArr> inquiryVerifikasiHutang(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
 }
 

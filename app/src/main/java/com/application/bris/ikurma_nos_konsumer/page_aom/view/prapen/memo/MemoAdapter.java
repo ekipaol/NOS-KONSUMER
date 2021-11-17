@@ -44,8 +44,8 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
         binding.tvNamaPemutus.setText(data.get(position).getNama());
         binding.tvJabatanPemutus.setText(data.get(position).getJabatan());
         binding.tvTahapAplikasi.setText(data.get(position).getTahapAplikasi());
-        binding.tvJenisPutusan.setText(data.get(position).getJenisPutusan());
-        binding.tvTanggalMemo.setText(data.get(position).getTanggal());
+//        binding.tvJenisPutusan.setText(data.get(position).getJenisPutusan());
+        binding.tvTanggalMemo.setText(AppUtil.parseTanggalGeneral(data.get(position).getTanggalMemo(),"yyyy-MM-dd","dd-MM-yyyy"));
         binding.tvMemo.setText(data.get(position).getMemo());
 
 

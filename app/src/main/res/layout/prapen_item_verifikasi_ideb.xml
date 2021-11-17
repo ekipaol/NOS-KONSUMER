@@ -196,7 +196,6 @@
                     android:id="@+id/et_angsuran_verifikator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:prefix="Rp."
                     android:inputType="number" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
         </LinearLayout>

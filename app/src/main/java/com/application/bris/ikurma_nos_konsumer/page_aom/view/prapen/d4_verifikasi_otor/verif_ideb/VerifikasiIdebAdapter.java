@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,18 +50,30 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.etHasilVerifikasiFasilitas.setFocusable(false);
         holder.etHasilVerifikasi.setFocusable(false);
-        holder.etHasilVerifikasi.setText(data.get(position).getHasilVerifikasi());
-        holder.etHasilVerifikasiFasilitas.setText(data.get(position).getHasilVerifikasiIdeb());
+        holder.etHasilVerifikasi.setText(data.get(position).getTreatmentPembiayaan());
+        holder.etHasilVerifikasiFasilitas.setText(data.get(position).getTreatmentFasilitas());
         holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
-        holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebet()));
-        holder.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
+        holder.tvBakiDebet.setText((data.get(position).getBakiDebetTerakhir()));
+        holder.tvPerkiraanAngsuranBulanan.setText((data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
-
-        holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
         holder.etAngsuranBulanan.setText(data.get(position).getAngsuranVerifikasi());
 
+        holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
         onClicks(position,holder);
+
+        try{
+            if(data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
+                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivDokumen,data.get(position).getDokumen().getFile_Name());
+            }
+            else{
+                AppUtil.convertBase64ToImage(data.get(position).getDokumen().getImg(),holder.ivDokumen);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
 
 
@@ -129,6 +142,8 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         TextFieldBoxes tfVerifikasiFasilitas,tfHasilVerifikasi;
         EditText etHasilVerifikasiFasilitas,etHasilVerifikasi,etAngsuranBulanan;
 
+        ImageView ivDokumen;
+
         public MenuViewHolder(View itemView) {
             super(itemView);
             tvNamaLembagaKeuangan =binding.tvNamaLembagaKeuangan;
@@ -141,6 +156,7 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
             tfHasilVerifikasi=binding.tfHasilVerifikasi;
             etHasilVerifikasi=binding.etHasilVerifikasi;
             etAngsuranBulanan=binding.etAngsuranVerifikator;
+            ivDokumen=binding.ivDokumen;
 
 
         }

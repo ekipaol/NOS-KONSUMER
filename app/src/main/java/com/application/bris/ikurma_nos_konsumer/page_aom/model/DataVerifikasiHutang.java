@@ -1,47 +1,48 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DataVerifikasiHutang {
-    @SerializedName("namaPemberiHutang")
-    private String namaPemberiHutang;
-    @SerializedName("nominalPinjaman")
+    @SerializedName("Id")
+    @Expose
+    private Long id;
+    @SerializedName("NamaPemberiUtang")
+    @Expose
+    private String namaPemberiUtang;
+    @SerializedName("NominalPinjaman")
+    @Expose
     private String nominalPinjaman;
-    @SerializedName("sisaJangkaWaktu")
-    private String sisaJangkaWaktu;
-    @SerializedName("angsuranBulanan")
+    @SerializedName("SisaWaktuPinjaman")
+    @Expose
+    private String sisaWaktuPinjaman;
+    @SerializedName("AngsuranBulanan")
+    @Expose
     private String angsuranBulanan;
-    @SerializedName("treatmentPembiayaan")
+    @SerializedName("TreatmentPembiayaan")
+    @Expose
     private String treatmentPembiayaan;
-    @SerializedName("angsuranVerifikator")
-    private String angsuranVerifikator;
-    @SerializedName("hasilVerifikasi")
+    @SerializedName("HasilVerifikasi")
+    @Expose
     private String hasilVerifikasi;
-    @SerializedName("verifikasiFasilitas")
-    private String verifikasiFasilitas;
+    @SerializedName("AngsuranHasilVerifikasi")
+    @Expose
+    private String angsuranHasilVerifikasi;
 
-    public String getAngsuranVerifikator() {
-        return angsuranVerifikator;
+    public Long getId() {
+        return id;
     }
 
-    public void setAngsuranVerifikator(String angsuranVerifikator) {
-        this.angsuranVerifikator = angsuranVerifikator;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getHasilVerifikasi() {
-        return hasilVerifikasi;
+    public String getNamaPemberiUtang() {
+        return namaPemberiUtang;
     }
 
-    public void setHasilVerifikasi(String hasilVerifikasi) {
-        this.hasilVerifikasi = hasilVerifikasi;
-    }
-
-    public String getNamaPemberiHutang() {
-        return namaPemberiHutang;
-    }
-
-    public void setNamaPemberiHutang(String namaPemberiHutang) {
-        this.namaPemberiHutang = namaPemberiHutang;
+    public void setNamaPemberiUtang(String namaPemberiUtang) {
+        this.namaPemberiUtang = namaPemberiUtang;
     }
 
     public String getNominalPinjaman() {
@@ -52,12 +53,12 @@ public class DataVerifikasiHutang {
         this.nominalPinjaman = nominalPinjaman;
     }
 
-    public String getSisaJangkaWaktu() {
-        return sisaJangkaWaktu;
+    public String getSisaWaktuPinjaman() {
+        return sisaWaktuPinjaman;
     }
 
-    public void setSisaJangkaWaktu(String sisaJangkaWaktu) {
-        this.sisaJangkaWaktu = sisaJangkaWaktu;
+    public void setSisaWaktuPinjaman(String sisaWaktuPinjaman) {
+        this.sisaWaktuPinjaman = sisaWaktuPinjaman;
     }
 
     public String getAngsuranBulanan() {
@@ -76,11 +77,19 @@ public class DataVerifikasiHutang {
         this.treatmentPembiayaan = treatmentPembiayaan;
     }
 
-    public String getVerifikasiFasilitas() {
-        return verifikasiFasilitas;
+    public String getHasilVerifikasi() {
+        return hasilVerifikasi;
     }
 
-    public void setVerifikasiFasilitas(String verifikasiFasilitas) {
-        this.verifikasiFasilitas = verifikasiFasilitas;
+    public void setHasilVerifikasi(String hasilVerifikasi) {
+        this.hasilVerifikasi = hasilVerifikasi;
+    }
+
+    public String getAngsuranHasilVerifikasi() {
+        return angsuranHasilVerifikasi;
+    }
+
+    public void setAngsuranHasilVerifikasi(String angsuranHasilVerifikasi) {
+        this.angsuranHasilVerifikasi = angsuranHasilVerifikasi;
     }
 }

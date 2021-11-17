@@ -376,12 +376,25 @@ public class UriApi {
         public static final String inquiryDataHutang = "NOS_PRAPEN_Services/rest/D3/InquiryDataUtang";
         public static final String updateDataHutang = "NOS_PRAPEN_Services/rest/D3/SimpanDataUtang";
         public static final String hapusDataHutang = "NOS_PRAPEN_Services/rest/D3/HapusDataUtang";
+        public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutVerifikator";
+        public static final String kembalikanPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBackIDEB";
+        public static final String batalPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBatalPembiayaan";
+
+        //D4
+        public static final String inquiryRac = "NOS_PRAPEN_Services/rest/D4/InquiryParamRAC";
+        public static final String inquiryFitur = "NOS_PRAPEN_Services/rest/D4/InquiryParamFitur";
+        public static final String inquiryVerifikasiIdeb = "NOS_PRAPEN_Services/rest/D4/InqIDebSlikOjkVerifikator";
+        public static final String inquiryVerifikasiHutang = "NOS_PRAPEN_Services/rest/D4/InquiryDataUtangVerifikator";
+
+
 
 
 
 
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
+        public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";
+        public static final String updateMemo = "NOS_PRAPEN_Services/rest/D3/UpdateMemo";
 
         //D3
         public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatan";

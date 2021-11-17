@@ -1,34 +1,41 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.model;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DataVerifikasiIdeb {
-    @SerializedName("namaLembagaKeuangan")
+    @SerializedName("Fasilitas_Aktif_Id")
+    @Expose
+    private Long fasilitasAktifId;
+    @SerializedName("Nama_Lembaga_Keuangan")
+    @Expose
     private String namaLembagaKeuangan;
-    @SerializedName("bakiDebet")
-    private String bakiDebet;
-    @SerializedName("kualitasPembiayaan")
+    @SerializedName("Baki_Debet_Terakhir")
+    @Expose
+    private String bakiDebetTerakhir;
+    @SerializedName("Kualitas_Pembiayaan")
+    @Expose
     private String kualitasPembiayaan;
-    @SerializedName("perkiraanAngsuranBulanan")
+    @SerializedName("Perkiraan_Angsuran_Bulanan")
+    @Expose
     private String perkiraanAngsuranBulanan;
-    @SerializedName("treatmentPembiayaan")
+    @SerializedName("Treatment_Pembiayaan")
+    @Expose
     private String treatmentPembiayaan;
-    @SerializedName("idDokumen")
-    private String idDokumen;
-    @SerializedName("treatmentFasilitas")
-    private String hasilVerifikasiIdeb;
-    @SerializedName("hasilVerifikasi")
-    private String hasilVerifikasi;
-    @SerializedName("angsuranVerifikasi")
+    @SerializedName("Catatan_BU_untuk_Verifikator")
+    @Expose
+    private String catatanBUUntukVerifikator;
+    @SerializedName("HasilVerifikasi")
+    @Expose
+    private String treatmentFasilitas;
+    @SerializedName("AngsuranHasilVerifikasi")
+    @Expose
     private String angsuranVerifikasi;
+    @SerializedName("Dokumen")
+    @Expose
+    private UploadImage dokumen;
 
-    public String getHasilVerifikasi() {
-        return hasilVerifikasi;
-    }
-
-    public void setHasilVerifikasi(String hasilVerifikasi) {
-        this.hasilVerifikasi = hasilVerifikasi;
-    }
 
     public String getAngsuranVerifikasi() {
         return angsuranVerifikasi;
@@ -36,6 +43,30 @@ public class DataVerifikasiIdeb {
 
     public void setAngsuranVerifikasi(String angsuranVerifikasi) {
         this.angsuranVerifikasi = angsuranVerifikasi;
+    }
+
+    public UploadImage getDokumen() {
+        return dokumen;
+    }
+
+    public void setDokumen(UploadImage dokumen) {
+        this.dokumen = dokumen;
+    }
+
+    public String getTreatmentFasilitas() {
+        return treatmentFasilitas;
+    }
+
+    public void setTreatmentFasilitas(String treatmentFasilitas) {
+        this.treatmentFasilitas = treatmentFasilitas;
+    }
+
+    public Long getFasilitasAktifId() {
+        return fasilitasAktifId;
+    }
+
+    public void setFasilitasAktifId(Long fasilitasAktifId) {
+        this.fasilitasAktifId = fasilitasAktifId;
     }
 
     public String getNamaLembagaKeuangan() {
@@ -46,12 +77,12 @@ public class DataVerifikasiIdeb {
         this.namaLembagaKeuangan = namaLembagaKeuangan;
     }
 
-    public String getBakiDebet() {
-        return bakiDebet;
+    public String getBakiDebetTerakhir() {
+        return bakiDebetTerakhir;
     }
 
-    public void setBakiDebet(String bakiDebet) {
-        this.bakiDebet = bakiDebet;
+    public void setBakiDebetTerakhir(String bakiDebetTerakhir) {
+        this.bakiDebetTerakhir = bakiDebetTerakhir;
     }
 
     public String getKualitasPembiayaan() {
@@ -78,19 +109,11 @@ public class DataVerifikasiIdeb {
         this.treatmentPembiayaan = treatmentPembiayaan;
     }
 
-    public String getIdDokumen() {
-        return idDokumen;
+    public String getCatatanBUUntukVerifikator() {
+        return catatanBUUntukVerifikator;
     }
 
-    public void setIdDokumen(String idDokumen) {
-        this.idDokumen = idDokumen;
-    }
-
-    public String getHasilVerifikasiIdeb() {
-        return hasilVerifikasiIdeb;
-    }
-
-    public void setHasilVerifikasiIdeb(String hasilVerifikasiIdeb) {
-        this.hasilVerifikasiIdeb = hasilVerifikasiIdeb;
+    public void setCatatanBUUntukVerifikator(String catatanBUUntukVerifikator) {
+        this.catatanBUUntukVerifikator = catatanBUUntukVerifikator;
     }
 }

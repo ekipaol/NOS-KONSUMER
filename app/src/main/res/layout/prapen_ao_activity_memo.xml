@@ -6,6 +6,7 @@
 
     <include android:id="@+id/bottom_sheet" layout="@layout/prapen_bottom_sheet_memo"/>
     <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading" layout="@layout/loading" />
 
     <!--<include layout="@layout/loading"/>-->
 
@@ -334,5 +335,30 @@
 
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_emptydata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ico_empty_document"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_nodata"
+            android:textSize="16sp"
+            android:paddingTop="12dp"
+            android:paddingBottom="6dp"
+            android:paddingRight="40dp"
+            android:paddingLeft="40dp"
+            android:gravity="center"/>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

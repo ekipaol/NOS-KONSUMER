@@ -1,10 +1,12 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,11 +50,11 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
         holder.etVerifikasiFasilitas.setFocusable(false);
         holder.ethasilverifikasi.setFocusable(false);
         holder.ethasilverifikasi.setText(data.get(position).getHasilVerifikasi());
-        holder.etVerifikasiFasilitas.setText(data.get(position).getVerifikasiFasilitas());
-        holder.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiHutang());
+        holder.etVerifikasiFasilitas.setText(data.get(position).getHasilVerifikasi());
+        holder.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiUtang());
         holder.tvAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranBulanan()));
         holder.tvNominalPinjaman.setText(AppUtil.parseRupiah(data.get(position).getNominalPinjaman()));
-        holder.tvSisaJangkaWaktu.setText(data.get(position).getSisaJangkaWaktu()+ " Bulan");
+        holder.tvSisaJangkaWaktu.setText(data.get(position).getSisaWaktuPinjaman()+ " Bulan");
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
 
         holder.etAngsuranVerifikator.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranVerifikator));
@@ -124,7 +126,6 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
         TextView tvNamaPemberiHutang,tvAngsuranBulanan,tvNominalPinjaman,tvSisaJangkaWaktu,tvTreatmentPembiayaanEksisting;
         TextFieldBoxes tfVerifikasiFasilitas,tfHasilVerifikasi;
         EditText etVerifikasiFasilitas,etAngsuranVerifikator,ethasilverifikasi;
-
         public MenuViewHolder(View itemView) {
             super(itemView);
             tvNamaPemberiHutang =binding.tvNamaPemberiHutang;

@@ -43,12 +43,12 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
         //never user BINDING ON ON BIND VIEW HOLDER DUDE!!!
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.et_hasil_cek_verif.setFocusable(false);
-        holder.tv_nama_fitur.setText(data.get(position).getNamaFitur());
-        holder.tv_hasil_engine.setText(data.get(position).getHasilVerifikasiEngine());
-        holder.et_hasil_cek_verif.setText(data.get(position).getHasilVerifikasiVerif());
-        holder.et_catatan.setText(data.get(position).getCatatan());
-        holder.tv_hasil.setText(data.get(position).getHasil());
-        holder.tv_ketentuan.setText(data.get(position).getKetentuan());
+        holder.tv_nama_fitur.setText(data.get(position).getParameter());
+        holder.tv_hasil_engine.setText(data.get(position).getParameterDesc());
+        holder.et_hasil_cek_verif.setText(data.get(position).getParameterDescVerifikator());
+        holder.et_catatan.setText(data.get(position).getCatatanHasilVerifikasi());
+        holder.tv_hasil.setText(data.get(position).getValue());
+//        holder.tv_ketentuan.setText(data.get(position).getValue());
 
         onClicks(position);
 
