@@ -1,12 +1,15 @@
+
 package com.application.bris.ikurma_nos_konsumer.api.model.request.prapen;
 
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import io.realm.RealmObject;
 
-public class UploadImage extends RealmObject {
+public class UploadImage extends RealmObject implements Serializable {
 
     @SerializedName("Img")
     @Expose

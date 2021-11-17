@@ -10,6 +10,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -58,14 +59,23 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
         holder.cvData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, DetilAplikasiActivity.class);
-                intent.putExtra("idAplikasi",datas.getApplicationId());
-                intent.putExtra("nama",datas.getNama());
-                intent.putExtra("plafond",datas.getPlafond());
-                intent.putExtra("noAplikasi",datas.getApplicationNo());
-                intent.putExtra("status",datas.getStatusAplikasi());
-                intent.putExtra("statusId",datas.getStatusAplikasiId());
-                context.startActivity(intent);
+
+
+                //testing jadi dicomment dlu
+//                if(!datas.getStatusAplikasiId().equalsIgnoreCase("d.1")&&!datas.getStatusAplikasiId().equalsIgnoreCase("d.3")&&!datas.getStatusAplikasiId().equalsIgnoreCase("d.5")){
+//                    Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
+//                }
+//                else{
+                    Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                    intent.putExtra("idAplikasi",datas.getApplicationId());
+                    intent.putExtra("nama",datas.getNama());
+                    intent.putExtra("plafond",datas.getPlafond());
+                    intent.putExtra("noAplikasi",datas.getApplicationNo());
+                    intent.putExtra("status",datas.getStatusAplikasi());
+                    intent.putExtra("statusId",datas.getStatusAplikasiId());
+                    context.startActivity(intent);
+//                }
+
 
             }
         });

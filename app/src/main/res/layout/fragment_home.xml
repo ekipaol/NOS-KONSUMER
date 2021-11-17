@@ -265,6 +265,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:orientation="vertical"
+                        android:visibility="gone"
                         app:shimmer_duration="800">
 
                         <LinearLayout
@@ -369,6 +370,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:orientation="vertical"
+                        android:visibility="gone"
                         app:shimmer_duration="800">
 
                         <LinearLayout

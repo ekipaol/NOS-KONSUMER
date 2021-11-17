@@ -19,6 +19,7 @@
     <string name="submenu_detil_aplikasi_d1_data_marketing">Data Marketing</string>
     <string name="submenu_detil_aplikasi_d1_data_dedupe">Data DEDUPE</string>
     <string name="submenu_detil_aplikasi_d1_memo">Memo</string>
+    <string name="submenu_detil_aplikasi_d1_lanjut">Lanjut</string>
 
     <!--    D3-->
     <string name="submenu_detil_aplikasi_d3_canvassing">Hasil Canvassing</string>

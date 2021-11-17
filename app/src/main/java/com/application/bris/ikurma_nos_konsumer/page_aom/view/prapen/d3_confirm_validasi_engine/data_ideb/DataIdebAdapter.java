@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,10 +46,11 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
     @Override
     public void onBindViewHolder(@NonNull DataIdebAdapter.MenuViewHolder holder, final int position) {
         holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
-        holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebet()));
+        holder.tvBakiDebet.setText((data.get(position).getBakiDebet()));
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
-        holder.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
+        holder.tvPerkiraanAngsuranBulanan.setText((data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+
 
 
         holder.btnUbah.setOnClickListener(new View.OnClickListener() {
@@ -56,11 +58,32 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
             public void onClick(View v) {
                 Toast.makeText(context, "clicking", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(context,EditIdebActivity.class);
-                intent.putExtra("dataIdeb",data.get(position));
+                intent.putExtra("bakiDebet",data.get(position).getBakiDebet());
+                intent.putExtra("nama",data.get(position).getNama());
+                intent.putExtra("lembagaKeuangan",data.get(position).getNamaLembagaKeuangan());
+                intent.putExtra("kualitasPembiayaan",data.get(position).getKualitasPembiayaan());
+                intent.putExtra("treatmentPembiayaan",data.get(position).getTreatmentPembiayaan());
+                intent.putExtra("perkiraanAngsuran",data.get(position).getPerkiraanAngsuranBulanan());
+                intent.putExtra("fasilitasId",data.get(position).getIdDokumen());
+                intent.putExtra("idAplikasi",DataIdebActivity.idAplikasi);
                 context.startActivity(intent);
 
             }
         });
+
+
+        try{
+            if(data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
+                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivFoto,data.get(position).getDokumen().getFile_Name());
+            }
+            else{
+                AppUtil.convertBase64ToImage(data.get(position).getDokumen().getImg(),holder.ivFoto);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
@@ -74,6 +97,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
         TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting;
         Button btnUbah;
+        ImageView ivFoto;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
@@ -84,6 +108,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
             tvKualitasPembiayaan=binding.tvKualitasPembiayaan;
             tvPerkiraanAngsuranBulanan=binding.tvPerkiraanAngsuranBulanan;
             tvTreatmentPembiayaanEksisting=binding.tvTreatmentPembiayaanEksisting;
+            ivFoto=binding.ivDokumen;
         }
 
     }

@@ -10,22 +10,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.Error;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoItemDataHutangBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.HapusDataHutang;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.UpdateDataHutang;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DataHutangAdapter extends RecyclerView.Adapter<DataHutangAdapter.MenuViewHolder> {
     private List<DataHutang> data;
     private Context context;
     private PrapenAoItemDataHutangBinding binding;
+    AppPreferences appPreferences;
+    ApiClientAdapter apiClientAdapter;
 
     public DataHutangAdapter(Context context,List< DataHutang> mdata) {
         this.context = context;
         this.data = mdata;
+        appPreferences=new AppPreferences(context);
+        apiClientAdapter=new ApiClientAdapter(context);
     }
 
     @NonNull
@@ -58,33 +75,90 @@ public class DataHutangAdapter extends RecyclerView.Adapter<DataHutangAdapter.Me
                 dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        //do the delete operation
-//                        Toast.makeText(context, "Deleting : "+data.get(position).getNamaPemberiHutang(), Toast.LENGTH_SHORT).show();
-                        data.remove(position);
-//                        notifyItemRemoved(position);
-                        notifyDataSetChanged();
-                        dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        dialog.setTitleText("Berhasil");
-                        dialog.setContentText("Data Berhasil Dihapus");
-                        dialog.showCancelButton(false);
-                        dialog.setConfirmText("OK");
+                        updateDataHutang(position,dialog);
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+    }
+
+    public void updateDataHutang(int position,SweetAlertDialog dialog){
+        dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+        dialog.setTitleText("Loading");
+        dialog.setContentText("Harap Tunggu");
+
+        HapusDataHutang req=new HapusDataHutang();
+        req.setApplicationId(DataHutangActivity.idAplikasi);
+        req.setUID(Integer.toString(appPreferences.getUid()));
+        req.setUtang_Id(Long.parseLong(data.get(position).getId()));
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().hapusDataHutang(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                try {
+                    if (response.isSuccessful()){
+                        if(response.body().getStatus().equalsIgnoreCase("00")){
+                            dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            dialog.setTitleText("Berhasil");
+                            dialog.setContentText("Data Berhasil Dihapus, Silahkan Refresh Halaman\n\n");
+                            dialog.setConfirmText("OK");
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    dialog.dismissWithAnimation();
+                                }
+                            });
+
+                        }
+                        else{
+                            dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            dialog.setTitleText("Gagal");
+                            dialog.setContentText(response.body().getMessage());
+                            dialog.setConfirmText("OK");
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    dialog.dismissWithAnimation();
+                                }
+                            });
+                        }
+                    }
+                    else {
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                        dialog.setTitleText("Gagal");
+                        dialog.setContentText(error.getMessage());   dialog.setConfirmText("OK");
                         dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
                                 dialog.dismissWithAnimation();
                             }
                         });
+                    }
+                }
+                catch (Exception e){
+                }
+            }
 
-
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                dialog.setTitleText("Gagal");
+                dialog.setContentText("Gagal Terhubung ke Server");   dialog.setConfirmText("OK");
+                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        dialog.dismissWithAnimation();
                     }
                 });
-                dialog.show();
-
             }
         });
-
-
     }
+
+
 
     @Override
     public int getItemCount() {

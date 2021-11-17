@@ -78,7 +78,6 @@
                         android:id="@+id/et_baki_debet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:prefix="Rp. "
                         android:inputType="numberDecimal" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -125,7 +124,6 @@
                         android:id="@+id/et_perkiraan_angsuran_bulanan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:prefix="Rp."
                         android:inputType="text" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 

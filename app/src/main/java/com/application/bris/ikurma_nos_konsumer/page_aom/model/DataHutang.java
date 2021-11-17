@@ -3,16 +3,26 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.model;
 import com.google.gson.annotations.SerializedName;
 
 public class DataHutang {
-    @SerializedName("namaPemberiHutang")
+    @SerializedName("NamaPemberiUtang")
     private String namaPemberiHutang;
-    @SerializedName("nominalPinjaman")
+    @SerializedName("NominalPinjaman")
     private String nominalPinjaman;
-    @SerializedName("sisaJangkaWaktu")
+    @SerializedName("SisaWaktuPinjaman")
     private String sisaJangkaWaktu;
-    @SerializedName("angsuranBulanan")
+    @SerializedName("AngsuranBulanan")
     private String angsuranBulanan;
-    @SerializedName("treatmentPembiayaan")
+    @SerializedName("TreatmentPembiayaan")
     private String treatmentPembiayaan;
+    @SerializedName("Id")
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNamaPemberiHutang() {
         return namaPemberiHutang;

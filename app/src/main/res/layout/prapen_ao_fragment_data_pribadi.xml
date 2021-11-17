@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     app:iconSignifier="@drawable/ic_identity_card"
                     app:isResponsiveIconColor="true"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
                     app:labelText="Nomor KTP"

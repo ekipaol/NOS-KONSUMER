@@ -2,43 +2,52 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDataHutangBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoDataIdebActivityBinding;
-import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangAdapter;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataIdebActivity extends AppCompatActivity implements GenericListenerOnSelect, SwipeRefreshLayout.OnRefreshListener {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class DataIdebActivity extends AppCompatActivity implements GenericListenerOnSelect, SwipeRefreshLayout.OnRefreshListener, ConfirmListener {
 
     private DataIdebAdapter dataIdebAdapter;
 
-    public static int idAplikasi=0;
-    private List<DataIdeb> data=new ArrayList<>();
+    public static long idAplikasi=0;
+    private List<DataIdeb> dataIdeb =new ArrayList<>();
+    private UploadImage dataPdf;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private PrapenAoDataIdebActivityBinding binding;
@@ -53,14 +62,16 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         bottomSheetBehavior=BottomSheetBehavior.from(binding.bottomSheet.bottomSheet);
+        idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
 
         //pantekan status untuk testing
         customToolbar();
         backgroundStatusBar();
 
         //initialize status
-        setData();
-        initialize();
+//        setData();
+//        initialize();
+        loadData();
         onClicks();
 
 
@@ -76,7 +87,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
     public void initialize(){
         binding.rvListDataIdeb.setVisibility(View.VISIBLE);
         binding.rvListDataIdeb.setHasFixedSize(true);
-        dataIdebAdapter = new DataIdebAdapter(DataIdebActivity.this, data);
+        dataIdebAdapter = new DataIdebAdapter(DataIdebActivity.this, dataIdeb);
         binding.rvListDataIdeb.setLayoutManager(new LinearLayoutManager(DataIdebActivity.this));
         binding.rvListDataIdeb.setItemAnimator(new DefaultItemAnimator());
         binding.rvListDataIdeb.setAdapter(dataIdebAdapter);
@@ -120,13 +131,131 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         data3.setPerkiraanAngsuranBulanan("300000");
         data3.setTreatmentPembiayaan("Dilanjutkan");
 
-        data.add(data1);
-        data.add(data2);
-        data.add(data3);
+        dataIdeb.add(data1);
+        dataIdeb.add(data2);
+        dataIdeb.add(data3);
 
-        if(data.size()==0){
+        if(dataIdeb.size()==0){
             binding.llEmptydata.setVisibility(View.VISIBLE);
         }
+    }
+
+    private void loadData(){
+        binding.rvListDataIdeb.setVisibility(View.GONE);
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        //pantekan no aplikasi
+//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+//        req.setApplicationId(4);
+        req.setApplicationId(idAplikasi);
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryIdebOjk(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().get("DataInquiryIDEB").toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DataIdeb>>() {
+                        }.getType();
+                        dataIdeb =  gson.fromJson(listDataString, type);
+
+                        if(dataIdeb.size()==0){
+                            binding.llEmptydata.setVisibility(View.VISIBLE);
+                        }
+
+                        initialize();
+                    }
+                    else{
+                        AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    private void downloadIdeb(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        //pantekan no aplikasi
+        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+        req.setApplicationId(idAplikasi);
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().downloadIdeb(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<UploadImage>() {}.getType();
+                        dataPdf=gson.fromJson(listDataString, type);
+
+                        if(dataPdf!=null){
+                            AppUtil.convertBase64ToFileAutoOpen(DataIdebActivity.this,dataPdf.getImg(),"idebPdf");
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    private void simpanIdeb(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        SimpanIdebOjk req=new SimpanIdebOjk();
+        //pantekan no aplikasi
+//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+        req.setApplicationId(idAplikasi);
+        req.setCatatan(binding.bottomSheet.extendedCatatan.getText().toString());
+        req.setNama(appPreferences.getNama());
+        req.setUID(Integer.toString(appPreferences.getUid()));
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().simpanIdebOjk(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        CustomDialog.DialogSuccess(DataIdebActivity.this, "Success!", "Simpan Data IDEB sukses", DataIdebActivity.this);
+
+                    }
+                    else{
+                        AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
     }
 
 
@@ -140,31 +269,19 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
     public void onRefresh() {
         binding.refresh.setRefreshing(false);
         binding.rvListDataIdeb.setVisibility(View.GONE);
-        setData();
-        initialize();
+        loadData();
+//        setData();
+//        initialize();
     }
 
     private void onClicks(){
         binding.btnDownloadIdeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(DataIdebActivity.this, TambahDataIdebActivity.class);
-//                startActivity(intent);
-                Toast.makeText(DataIdebActivity.this, "Clicking download ideb", Toast.LENGTH_SHORT).show();
-
+              downloadIdeb();
             }
         });
 
-        binding.btnSimpanDataPembiayaan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent=new Intent(DataIdebActivity.this, TambahDataIdebActivity.class);
-//                startActivity(intent);
-                Toast.makeText(DataIdebActivity.this, "Clicking simpan", Toast.LENGTH_SHORT).show();
-                finish();
-
-            }
-        });
 
         binding.btnSimpanDataPembiayaan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,8 +304,8 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         binding.bottomSheet.btnSimpanDataIdeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             finish();
-                Toast.makeText(DataIdebActivity.this, "Data IDEB Sudah Disimpan", Toast.LENGTH_SHORT).show();
+                simpanIdeb();
+//                Toast.makeText(DataIdebActivity.this, "Data IDEB Sudah Disimpan", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -213,5 +330,15 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
     @Override
     public void onBackPressed() {
         CustomDialog.DialogBackpress(DataIdebActivity.this);
+    }
+
+    @Override
+    public void success(boolean val) {
+        finish();
+    }
+
+    @Override
+    public void confirm(boolean val) {
+
     }
 }

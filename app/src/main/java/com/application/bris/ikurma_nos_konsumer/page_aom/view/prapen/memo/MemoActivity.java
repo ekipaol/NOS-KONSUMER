@@ -68,8 +68,6 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         setData();
         initialize();
         onClicks();
-
-
     }
 
     private void backgroundStatusBar(){

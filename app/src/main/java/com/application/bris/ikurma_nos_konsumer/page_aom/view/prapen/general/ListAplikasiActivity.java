@@ -132,8 +132,8 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
         AppPreferences appPreferences=new AppPreferences(ListAplikasiActivity.this);
 
         //pantekan uid
-        req.setUID("");
-//        req.setUID(String.valueOf(appPreferences.getUid()));
+//        req.setUID("");
+        req.setUID(String.valueOf(appPreferences.getUid()));
 
         Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
         call.enqueue(new Callback<ParseResponseArr>() {

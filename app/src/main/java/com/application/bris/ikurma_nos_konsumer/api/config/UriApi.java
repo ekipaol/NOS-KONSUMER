@@ -366,6 +366,18 @@ public class UriApi {
         public static final String inquiryNamaKodeAo = "NOS_PRAPEN_Services/rest/D1/InquiryNamaKodeAO";
         public static final String updateDataMarketing = "NOS_PRAPEN_Services/rest/D1/UpdateMitraMarketing";
         public static final String inquiryDataMarketing = "NOS_PRAPEN_Services/rest/D1/InquiryMitraMarketing";
+        public static final String lanjutHotprospek = "NOS_PRAPEN_Services/rest/D1/UpdatelanjutHotProspek";
+
+        //D3
+        public static final String inquiryIdebOjk = "NOS_PRAPEN_Services/rest/D3/InquiryIDebSlikOJK";
+        public static final String updateIdebOjk = "NOS_PRAPEN_Services/rest/D3/UpdateIDebSlikOJK";
+        public static final String downloadIdeb = "NOS_PRAPEN_Services/rest/D3/DownloadIDEB";
+        public static final String simpanIdebOjk = "NOS_PRAPEN_Services/rest/D3/SimpanIDEBSlikOJK";
+        public static final String inquiryDataHutang = "NOS_PRAPEN_Services/rest/D3/InquiryDataUtang";
+        public static final String updateDataHutang = "NOS_PRAPEN_Services/rest/D3/SimpanDataUtang";
+        public static final String hapusDataHutang = "NOS_PRAPEN_Services/rest/D3/HapusDataUtang";
+
+
 
 
         //api umum

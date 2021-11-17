@@ -107,7 +107,15 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
                             Gson gson = new Gson();
                             dataPribadiString = response.body().getData().get("Dukcapil").getAsJsonArray().get(0).getAsJsonObject().toString();
                             String dataFotoKtpString = response.body().getData().get("DataDukcapilIMG2").getAsJsonArray().get(0).getAsJsonObject().toString();
-                            String dataFotoIdebString = response.body().getData().get("DataDukcapilSign").getAsJsonObject().toString();
+                            String dataFotoIdebString;
+                            try{
+                                 dataFotoIdebString = response.body().getData().get("DataDukcapilSign").getAsJsonObject().toString();
+                            }
+                            catch (Exception e){
+                                 dataFotoIdebString="{\"Img\": \"\",\n" +
+                                         "      \"File_Name\": \"\"}";
+                            }
+
                             dataNasabah = gson.fromJson(dataPribadiString, DataNasabahPrapen.class);
                             dataFotoKtp= gson.fromJson(dataFotoKtpString, UploadImage.class);
                             dataFotoIdeb= gson.fromJson(dataFotoIdebString, UploadImage.class);
@@ -141,6 +149,7 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
 
                             }
                             catch (NullPointerException e){
+                                e.printStackTrace();
                                 Log.d("ada error di ","realm data lengkap activity load data"+e.getMessage());
                             }
 

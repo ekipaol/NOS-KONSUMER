@@ -87,6 +87,8 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
     int dot4=0;
     int dot5=0;
 
+    //variabel untuk dokumen
+
     private String valBase64PdfKtp ="";
     private String valBase64PdfIdeb ="";
     private final int UPLOAD_KTP=1;
@@ -96,6 +98,8 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
     private String tipeFileKtp="";
     private String tipeFileIdeb="";
     private int idUpload;
+
+    //end of variabel dokumen
 
     private Realm realm;
 
@@ -134,9 +138,16 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         disableEditTexts();
         defaulViewSettings();
 
-        if(dataNasabah!=null){
+        //first time load cuma dapet data ktp doang
+        if(dataNasabah.getNoKTP()!=null){
+            binding.etNomorKtp.setText(dataNasabah.getNoKTP());
+        }
+
+        //second time load (setelah save) cek alamatnya
+        if(dataNasabah.getAlamat()!=null){
             setData();
         }
+
         npwpFormattingTextChange(binding.etNpwp);
 
 
@@ -545,12 +556,12 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             case R.id.btn_upload_foto_ktp:
                 idUpload=UPLOAD_KTP;
                 BSUploadFile.displayWithTitle(getFragmentManager(),FragmentDataPribadiPrapen.this,"Upload Foto KTP");
-                Toast.makeText(getContext(), "ambil ktp", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "ambil ktp", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_upload_persetujuan_ideb:
                 idUpload=UPLOAD_IDEB;
                 BSUploadFile.displayWithTitle(getFragmentManager(),FragmentDataPribadiPrapen.this,"Upload Foto IDEB");
-                Toast.makeText(getContext(), "ambil ideb", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "ambil ideb", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_cek_nik_dukcapil:
                 validasiDukcapil();
@@ -685,6 +696,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         binding.etStatusNikahKtp.setFocusable(false);
         binding.etStatusNikahSaatIni.setFocusable(false);
         binding.etTanggalLahirPasangan.setFocusable(false);
+        binding.etNomorKtp.setFocusable(false);
 
     }
 
@@ -807,17 +819,24 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
             } catch (Exception e) {
                 e.printStackTrace();
-                iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
 
-                if(KODE_UPLOAD==UPLOAD_IDEB){
-                    Uri uriPdf = data.getData();
-                    valBase64PdfIdeb= AppUtil.encodeFileToBase64(getContext(),uriPdf);
+                try{
+                    iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
 
+                    if(KODE_UPLOAD==UPLOAD_IDEB){
+                        Uri uriPdf = data.getData();
+                        valBase64PdfIdeb= AppUtil.encodeFileToBase64(getContext(),uriPdf);
+
+                    }
+                    else if(KODE_UPLOAD==UPLOAD_KTP){
+                        Uri uriPdf = data.getData();
+                        valBase64PdfKtp= AppUtil.encodeFileToBase64(getContext(),uriPdf);
+                    }
                 }
-                else if(KODE_UPLOAD==UPLOAD_KTP){
-                    Uri uriPdf = data.getData();
-                    valBase64PdfKtp= AppUtil.encodeFileToBase64(getContext(),uriPdf);
+                catch (Exception e2){
+                    e2.printStackTrace();
                 }
+
             }
         }
     }

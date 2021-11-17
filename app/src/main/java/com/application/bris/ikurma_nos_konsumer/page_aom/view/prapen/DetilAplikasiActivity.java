@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.Window;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.ReqUid;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.config.menu.Menu;
@@ -23,6 +26,9 @@ import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDetailAplikasi;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
@@ -62,6 +68,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -151,7 +158,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //initialize status pertama
         binding.btnUbahFlow.setText("Flow : "+status);
 
-        binding.tvStatus.setText(status);
+        binding.tvStatus.setText(dataDetailAplikasi.getStatusAplikasi());
         binding.tvNama.setText(dataDetailAplikasi.getNama());
         binding.tvProduk.setText(dataDetailAplikasi.getTypeProduk());
         binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu());
@@ -159,6 +166,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvIdaplikasi.setText(dataDetailAplikasi.getApplicationNo());
         binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
+
+        AppUtil.convertBase64ToImage(dataDetailAplikasi.getImg(),binding.ivPhoto);
     }
 
     private void setDataEmpty(){
@@ -250,6 +259,23 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Intent it = new Intent(this, DataPembiayaanActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_lanjut))){
+            final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
+            dialog.setTitleText("Konfirmasi?");
+            dialog.setContentText("Anda Akan Melanjutkan Aplikasi Ke Tahap Selanjutnya?\n");
+            dialog.setConfirmText("Ya");
+            dialog.setCancelText("Tidak");
+            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                  sendDataLanjutHotprospek(dialog);
+
+
+                }
+            });
+            dialog.show();
         }
 
         //FLOW D3
@@ -385,6 +411,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //status inisialisasi pasti masuk list karena dia paling awal
 //        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d05_inisialisasi)));
         dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
+        dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
+        dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
 
 
 //        //d3
@@ -436,7 +464,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     private void loadDetailAplikasi(){
             //  dataUser = getListUser();
-            binding.loading.setVisibility(View.VISIBLE);
+            binding.loadingAll.progressbarLoading.setVisibility(View.VISIBLE);
             //pantekan no aplikasi dan aktifitas
             ReqUidIdAplikasi req=new ReqUidIdAplikasi();
             req.setApplicationId(Long.parseLong(idAplikasi));
@@ -445,7 +473,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             call.enqueue(new Callback<ParseResponse>() {
                 @Override
                 public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
-                    binding.loading.setVisibility(View.GONE);
+                    binding.loadingAll.progressbarLoading.setVisibility(View.GONE);
                     if (response.isSuccessful()) {
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             String listDataString = response.body().getData().toString();
@@ -464,12 +492,75 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
                 @Override
                 public void onFailure(Call<ParseResponse> call, Throwable t) {
-                    binding.loading.setVisibility(View.GONE);
+                    binding.loadingAll.progressbarLoading.setVisibility(View.GONE);
                     AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
                     Log.d("LOG D", t.getMessage());
                 }
             });
         }
+
+
+    public void sendDataLanjutHotprospek(SweetAlertDialog dialog){
+        ReqLanjutHotprospek req=new ReqLanjutHotprospek();
+        req.setApplicationId(Long.valueOf(idAplikasi));
+        req.setUID(String.valueOf(appPreferences.getUid()));
+
+        if(appPreferences.getFidRole()==100){
+            req.setMitraFronting(false);
+        }
+        else{
+            req.setMitraFronting(true);
+        }
+
+        dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+        dialog.setTitleText("Loading");
+        dialog.setContentText("Harap Tunggu");
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().lanjutHotprospek(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingAll.progressbarLoading.setVisibility(View.GONE);
+                try {
+                    if (response.isSuccessful()){
+                        if(response.body().getStatus().equalsIgnoreCase("00")){
+
+
+                            dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            dialog.setTitleText("Berhasil");
+                            dialog.setContentText("Aplikasi Berhasil Dilanjutkan");
+                            dialog.showCancelButton(false);
+                            dialog.setConfirmText("OK");
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    dialog.dismissWithAnimation();
+                                    finish();
+                                }
+                            });
+                        }
+                        else{
+                            AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                            dialog.dismissWithAnimation();
+                        }
+                    }
+                    else {
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), error.getMessage());
+                        dialog.dismissWithAnimation();
+                    }
+                }
+                catch (Exception e){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                dialog.dismissWithAnimation();
+                AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
+    }
 
 
     private void defaultView(){
@@ -479,6 +570,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     @Override
     protected void onResume() {
         super.onResume();
+        loadDetailAplikasi();
         binding.loading.setVisibility(View.GONE);
     }
 

@@ -1,22 +1,53 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.model;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
 public class DataIdeb implements Serializable {
-    @SerializedName("namaLembagaKeuangan")
+    @SerializedName("Nama_Lembaga_Keuangan")
     private String namaLembagaKeuangan;
-    @SerializedName("bakiDebet")
+    @SerializedName("Baki_Debet_Terakhir")
     private String bakiDebet;
-    @SerializedName("kualitasPembiayaan")
+    @SerializedName("Kualitas_Pembiayaan")
     private String kualitasPembiayaan;
-    @SerializedName("perkiraanAngsuranBulanan")
+    @SerializedName("Perkiraan_Angsuran_Bulanan")
     private String perkiraanAngsuranBulanan;
-    @SerializedName("treatmentPembiayaan")
+    @SerializedName("Treatment_Pembiayaan")
     private String treatmentPembiayaan;
-    @SerializedName("idDokumen")
-    private String idDokumen;
+    @SerializedName("catatan")
+    private String catatan;
+    @SerializedName("nama")
+    private String nama;
+    @SerializedName("Fasilitas_Aktif_Id")
+    private Long idDokumen;
+    @SerializedName("Dokumen")
+    private UploadImage dokumen;
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public UploadImage getDokumen() {
+        return dokumen;
+    }
+
+    public void setDokumen(UploadImage dokumen) {
+        this.dokumen = dokumen;
+    }
+
+    public String getCatatan() {
+        return catatan;
+    }
+
+    public void setCatatan(String catatan) {
+        this.catatan = catatan;
+    }
 
     public String getNamaLembagaKeuangan() {
         return namaLembagaKeuangan;
@@ -58,11 +89,11 @@ public class DataIdeb implements Serializable {
         this.treatmentPembiayaan = treatmentPembiayaan;
     }
 
-    public String getIdDokumen() {
+    public Long getIdDokumen() {
         return idDokumen;
     }
 
-    public void setIdDokumen(String idDokumen) {
+    public void setIdDokumen(Long idDokumen) {
         this.idDokumen = idDokumen;
     }
 }
