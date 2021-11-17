@@ -10,6 +10,7 @@
 
     >
     <include layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading" layout="@layout/loading" />
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

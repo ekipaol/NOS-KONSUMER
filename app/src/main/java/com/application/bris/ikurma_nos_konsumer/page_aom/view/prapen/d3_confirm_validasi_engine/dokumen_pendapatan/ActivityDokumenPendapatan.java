@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.icu.util.Calendar;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,6 +24,16 @@ import androidx.core.content.FileProvider;
 
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.Error;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DokumenPendapatan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataPendapatan;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
@@ -30,16 +42,20 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Array;
-import java.text.ParseException;
+import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener, CameraListener {
 
@@ -53,11 +69,29 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     List<MGenericModel> dataDropdownPendapatan = new ArrayList<>(),
             dataDropdownPendapatan2 = new ArrayList<>(),
             dataDropdownPendapatan3 = new ArrayList<>();
+    String clicker,
+            pDatep1, pDatep2, pDatep3;
+    List<DokumenPendapatan> dp;
+    ReqDocument DPSlipGajiP1, DPSlipGajiP2, DPSlipGajiP3, DPSlipTunjanganP1, DPSlipTunjanganP2, DPSlipTunjanganP3, DPKoran;
+    private ApiClientAdapter apiClientAdapter;
+    private AppPreferences appPreferences;
+    DokumenPendapatan doc = new DokumenPendapatan();
+    ReqDocument DokumenPendapatanKoranBank = new ReqDocument(), DokumenPendapatanKoranBSI = new ReqDocument(),
+            DokumenPendapatanSlipGajiP1 = new ReqDocument(), DokumenPendapatanSlipTunjanganP1 = new ReqDocument(),
+            DataJaminanIDCard = new ReqDocument(), DokumenPendapatanSlipGajiP2 = new ReqDocument(),
+            DokumenPendapatanSlipTunjanganP2 = new ReqDocument(), DokumenPendapatanSlipGajiP3 = new ReqDocument(),
+            DokumenPendapatanSlipTunjanganP3 = new ReqDocument();
+    private Uri uri_koran, uri_slipgaji1, uri_slipgaji2, uri_slipgaji3, uri_sliptunjangan1, uri_sliptunjangan2, uri_sliptunjangan3;
+    private Bitmap bitmap_koran, bitmap_slipgaji1, bitmap_slipgaji2, bitmap_slipgaji3, bitmap_sliptunjangan1, bitmap_sliptunjangan2, bitmap_sliptunjangan3;
+    private final int UPLOAD_KORAN = 1, UPLOAD_SLIPGAJI1 = 2, UPLOAD_SLIPGAJI2 = 3, UPLOAD_SLIPGAJI3 = 4, UPLOAD_SLIPTUNJANGAN1 = 5, UPLOAD_SLIPTUNJANGAN2 = 6, UPLOAD_SLIPTUNJANGAN3 = 7;
+    private String val_koran, val_slipgaji1, val_slipgaji2, val_slipgaji3, val_sliptunjangan1, val_sliptunjangan2, val_sliptunjangan3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityPendapatanBinding.inflate(getLayoutInflater());
+        apiClientAdapter = new ApiClientAdapter(this);
+        appPreferences = new AppPreferences(this);
         View view = binding.getRoot();
         numberText();
         endIconClick();
@@ -66,8 +100,245 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         backgroundStatusBar();
         setParameterDropdown();
         disableEditText();
-
+        initdata();
         AppUtil.toolbarRegular(this, "Data Dokumen Pendapatan");
+    }
+
+    private void initdata() {
+        ReqInquery req = new ReqInquery();
+//        req.setApplicationId(13);
+        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().inqueryDataPendapatan(req);
+        call.enqueue(new Callback<ParseResponseAgunan>() {
+            @Override
+            public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
+                if (response.isSuccessful()) {
+                    binding.loading.progressbarLoading.setVisibility(View.GONE);
+
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().get("DokumenPendapatan").toString();
+                        String SSKoran = response.body().getData().get("DokumenPendapatanKoranBank").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipGajiP1 = response.body().getData().get("DokumenPendapatanSlipGajiP1").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipGajiP2 = response.body().getData().get("DokumenPendapatanSlipGajiP2").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipGajiP3 = response.body().getData().get("DokumenPendapatanSlipGajiP3").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipTunjanganP1 = response.body().getData().get("DokumenPendapatanSlipTunjanganP1").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipTunjanganP2 = response.body().getData().get("DokumenPendapatanSlipTunjanganP2").getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String SSlipTunjanganP3 = response.body().getData().get("DokumenPendapatanSlipTunjanganP3").getAsJsonArray().get(0).getAsJsonObject().toString();
+
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DokumenPendapatan>>() {
+                        }.getType();
+                        dp = gson.fromJson(listDataString, type);
+                        DPKoran = gson.fromJson(SSKoran, ReqDocument.class);
+                        DPSlipGajiP1 = gson.fromJson(SSlipGajiP1, ReqDocument.class);
+                        DPSlipTunjanganP1 = gson.fromJson(SSlipTunjanganP1, ReqDocument.class);
+                        DPSlipGajiP2 = gson.fromJson(SSlipGajiP2, ReqDocument.class);
+                        DPSlipTunjanganP2 = gson.fromJson(SSlipTunjanganP2, ReqDocument.class);
+                        DPSlipGajiP3 = gson.fromJson(SSlipGajiP3, ReqDocument.class);
+                        DPSlipTunjanganP3 = gson.fromJson(SSlipTunjanganP3, ReqDocument.class);
+
+                        // Set Data
+                        try {
+                            binding.etAkseptasiPendaptan.setText(dp.get(0).getAkseptasiPendapatan());
+                            binding.etPendapatanPensiun.setText(String.valueOf(dp.get(0).getSimulasiPendapatanSaatPen()));
+
+                            binding.etPeriodeGajiP1.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP1(), "yyyy-MM-dd", "MM-yyyy"));
+                            binding.etPeriodeGajiP2.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP2(), "yyyy-MM-dd", "MM-yyyy"));
+                            binding.etPeriodeGajiP3.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP3(), "yyyy-MM-dd", "MM-yyyy"));
+                            binding.etTglTunjanganP1.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeTunjanganP1(), "yyyy-MM-dd", "MM-yyyy"));
+                            binding.etTglTunjanganP2.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeTunjanganP2(), "yyyy-MM-dd", "MM-yyyy"));
+                            binding.etTglTunjanganP3.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeTunjanganP3(), "yyyy-MM-dd", "MM-yyyy"));
+                            pDatep1 = AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP1(), "yyyy-MM-dd", "dd-MM-yyyy");
+                            pDatep2 = AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP2(), "yyyy-MM-dd", "dd-MM-yyyy");
+                            pDatep3 = AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeGajiP3(), "yyyy-MM-dd", "dd-MM-yyyy");
+                            binding.etGajiBersihP1.setText(String.valueOf(dp.get(0).getTotalGajiBersihP1()));
+                            binding.etGajiBersihP2.setText(String.valueOf(dp.get(0).getTotalGajiBersihP2()));
+                            binding.etGajiBersihP3.setText(String.valueOf(dp.get(0).getTotalGajiBersihP3()));
+                            binding.etTunjanganP1.setText(String.valueOf(dp.get(0).getTotalTunjanganBersihP1()));
+                            binding.etTunjanganP2.setText(String.valueOf(dp.get(0).getTotalTunjanganBersihP2()));
+                            binding.etTunjanganP3.setText(String.valueOf(dp.get(0).getTotalTunjanganBersihP3()));
+
+                            binding.etVerfikasiGajiTunjangan.setText(dp.get(0).getCerminanGajiDanTunjangan());
+                            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+                                binding.etVerfikasiRekening.setText("Ya");
+                            } else {
+                                binding.etVerfikasiRekening.setText("Tidak");
+                            }
+                            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+                                binding.tfNorekTunjangan.setVisibility(View.GONE);
+                                binding.tfNamaBankTunjangan.setVisibility(View.GONE);
+                                binding.tfTotalKredit2.setVisibility(View.GONE);
+                                binding.tfTotalDebit2.setVisibility(View.GONE);
+                                binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
+                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
+                                binding.norekTunjangan.setVisibility(View.GONE);
+                            } else if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("false")) {
+                                binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
+                                binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
+                                binding.tfTotalKredit2.setVisibility(View.VISIBLE);
+                                binding.tfTotalDebit2.setVisibility(View.VISIBLE);
+                                binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
+                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
+                                binding.norekTunjangan.setVisibility(View.VISIBLE);
+                            }
+                            if (dp.get(0).getAkseptasiPendapatan().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+                                binding.tfGajiBersihP2.setVisibility(View.VISIBLE);
+                                binding.rlSlipgajiP2.setVisibility(View.VISIBLE);
+                                binding.tfPeriodeGajiP2.setVisibility(View.VISIBLE);
+                                binding.tfTunjanganP2.setVisibility(View.VISIBLE);
+                                binding.tfTglTunjanganP2.setVisibility(View.VISIBLE);
+                                binding.rlSliptunjanganP2.setVisibility(View.VISIBLE);
+                                binding.tp2.setVisibility(View.VISIBLE);
+                                binding.tpg2.setVisibility(View.VISIBLE);
+                                binding.tpt2.setVisibility(View.VISIBLE);
+                                binding.tfGajiBersihP3.setVisibility(View.VISIBLE);
+                                binding.rlSlipgajiP3.setVisibility(View.VISIBLE);
+                                binding.tfPeriodeGajiP3.setVisibility(View.VISIBLE);
+                                binding.tfTunjanganP3.setVisibility(View.VISIBLE);
+                                binding.tfTglTunjanganP3.setVisibility(View.VISIBLE);
+                                binding.rlSliptunjanganP3.setVisibility(View.VISIBLE);
+                                binding.tp3.setVisibility(View.VISIBLE);
+                                binding.tpg3.setVisibility(View.VISIBLE);
+                                binding.tpt3.setVisibility(View.VISIBLE);
+                            } else if (dp.get(0).getAkseptasiPendapatan().equalsIgnoreCase("Hanya Manfaat Pensiun")) {
+                                binding.tfGajiBersihP2.setVisibility(View.GONE);
+                                binding.rlSlipgajiP2.setVisibility(View.GONE);
+                                binding.tfPeriodeGajiP2.setVisibility(View.GONE);
+                                binding.tfTunjanganP2.setVisibility(View.GONE);
+                                binding.tfTglTunjanganP2.setVisibility(View.GONE);
+                                binding.rlSliptunjanganP2.setVisibility(View.GONE);
+                                binding.tp2.setVisibility(View.GONE);
+                                binding.tpg2.setVisibility(View.GONE);
+                                binding.tpt2.setVisibility(View.GONE);
+                                binding.tfGajiBersihP3.setVisibility(View.GONE);
+                                binding.rlSlipgajiP3.setVisibility(View.GONE);
+                                binding.tfPeriodeGajiP3.setVisibility(View.GONE);
+                                binding.tfTunjanganP3.setVisibility(View.GONE);
+                                binding.tfTglTunjanganP3.setVisibility(View.GONE);
+                                binding.rlSliptunjanganP3.setVisibility(View.GONE);
+                                binding.tp3.setVisibility(View.GONE);
+                                binding.tpg3.setVisibility(View.GONE);
+                                binding.tpt3.setVisibility(View.GONE);
+                            }
+
+                            binding.etNorekGaji.setText(dp.get(0).getNomorRekBank());
+                            binding.etNamaBankGaji.setText(dp.get(0).getNamaBank());
+                            binding.etPeriodeAwalWaktu1.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeDateFrom(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etPeriodeAkhirWaktu1.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeDateTo(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etTotalKredit1.setText(String.valueOf(dp.get(0).getTotalKredit()));
+                            binding.etTotalDebit1.setText(String.valueOf(dp.get(0).getTotalDebit()));
+
+                            binding.etNorekTunjangan.setText(dp.get(0).getNoRekeningTunjangan());
+                            binding.etNamaBankTunjangan.setText(dp.get(0).getNamaBankTunjangan());
+                            binding.etPeriodeAwalWaktu2.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeDateFromTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etPeriodeAkhirWaktu2.setText(AppUtil.parseTanggalGeneral(dp.get(0).getPeriodeDateToTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etTotalDebit2.setText(String.valueOf(dp.get(0).getTotalDebitTunjangan()));
+                            binding.etTotalKredit2.setText(String.valueOf(dp.get(0).getTotalKreditTunjangan()));
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Rekening Koran
+                        try {
+
+                            DokumenPendapatanKoranBank.setImg(DPKoran.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (DPKoran.getFileName().substring(DPKoran.getFileName().length() - 3, DPKoran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanKoranBank.setFileName("koran.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPKoran.getImg(), binding.ivRekeningKoran1, DPKoran.getFileName());
+                            } else {
+                                DokumenPendapatanKoranBank.setFileName("koran.png");
+                                AppUtil.convertBase64ToImage(DPKoran.getImg(), binding.ivRekeningKoran1);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Slip Gaji P1
+                        try {
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            DokumenPendapatanSlipGajiP1.setImg(DPSlipGajiP1.getImg());
+                            DokumenPendapatanSlipTunjanganP1.setImg(DPSlipTunjanganP1.getImg());
+
+                            if (DPSlipGajiP1.getFileName().substring(DPSlipGajiP1.getFileName().length() - 3, DPSlipGajiP1.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP1.getImg(), binding.ivSlipgajiP1, DPSlipGajiP1.getFileName());
+                            } else {
+                                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.png");
+                                AppUtil.convertBase64ToImage(DPSlipGajiP1.getImg(), binding.ivSlipgajiP1);
+                            }
+                            if (DPSlipTunjanganP1.getFileName().substring(DPSlipTunjanganP1.getFileName().length() - 3, DPSlipTunjanganP1.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1, DPSlipTunjanganP1.getFileName());
+                            } else {
+                                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.png");
+                                AppUtil.convertBase64ToImage(DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1);
+                            }
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Slip Gaji P2
+                        try {
+                            DokumenPendapatanSlipGajiP2.setImg(DPSlipGajiP2.getImg());
+                            DokumenPendapatanSlipTunjanganP2.setImg(DPSlipTunjanganP2.getImg());
+                            if (DPSlipGajiP2.getFileName().substring(DPSlipGajiP2.getFileName().length() - 3, DPSlipGajiP2.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.png");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP2.getImg(), binding.ivSlipgajiP2, DPSlipGajiP2.getFileName());
+                            } else {
+                                DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
+                                AppUtil.convertBase64ToImage(DPSlipGajiP2.getImg(), binding.ivSlipgajiP2);
+                            }
+                            if (DPSlipTunjanganP2.getFileName().substring(DPSlipTunjanganP2.getFileName().length() - 3, DPSlipTunjanganP2.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2, DPSlipTunjanganP2.getFileName());
+                            } else {
+                                DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.png");
+                                AppUtil.convertBase64ToImage(DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2);
+                            }
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Slip Gaji P3
+                        try {
+                            DokumenPendapatanSlipGajiP3.setImg(DPSlipGajiP3.getImg());
+                            DokumenPendapatanSlipTunjanganP3.setImg(DPSlipGajiP3.getImg());
+                            if (DPSlipGajiP3.getFileName().substring(DPSlipGajiP3.getFileName().length() - 3, DPSlipGajiP3.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP3.getImg(), binding.ivSlipgajiP3, DPSlipGajiP3.getFileName());
+                            } else {
+                                DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.png");
+                                AppUtil.convertBase64ToImage(DPSlipGajiP3.getImg(), binding.ivSlipgajiP3);
+                            }
+                            if (DPSlipTunjanganP3.getFileName().substring(DPSlipTunjanganP3.getFileName().length() - 3, DPSlipTunjanganP3.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3, DPSlipTunjanganP3.getFileName());
+                            } else {
+                                DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.png");
+                                AppUtil.convertBase64ToImage(DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3);
+                            }
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+
+                        AppUtil.logSecure("mmSecure", DPSlipGajiP1.toString());
+
+                    } else {
+                        AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                } else {
+                    binding.loading.progressbarLoading.setVisibility(View.GONE);
+                    Error error = ParseResponseError.confirmEror(response.errorBody());
+                    AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), error.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
     }
 
     private boolean validateData() {
@@ -227,8 +498,105 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             binding.btnSliptunjanganP2.setVisibility(View.GONE);
             binding.btnSliptunjanganP3.setVisibility(View.GONE);
             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
+            sendData();
             return false;
         }
+    }
+
+    private void docdata() {
+        doc.setAkseptasiPendapatan("asd");
+        doc.setCerminanGajiDanTunjangan("asd");
+        doc.setNamaBank("Asd");
+    }
+
+    private void sendData() {
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        AppPreferences appPreferences = new AppPreferences(this);
+        UpdateDataPendapatan req = new UpdateDataPendapatan();
+        doc.setAkseptasiPendapatan(binding.etAkseptasiPendaptan.getText().toString());
+        doc.setNamaBank(binding.etNamaBankGaji.getText().toString());
+        doc.setNomorRekBank(binding.etNorekGaji.getText().toString());
+        doc.setTotalDebit(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalDebit1.getText().toString())));
+        doc.setTotalKredit(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalKredit1.getText().toString())));
+        doc.setCerminanGajiDanTunjangan(binding.etVerfikasiGajiTunjangan.getText().toString());
+        doc.setPeriodeDateFrom(AppUtil.parseTanggalGeneral(binding.etPeriodeAwalWaktu1.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
+        doc.setPeriodeDateTo(AppUtil.parseTanggalGeneral(binding.etPeriodeAkhirWaktu1.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
+        if (binding.etVerfikasiRekening.getText().toString().equalsIgnoreCase("Tidak")) {
+            doc.setNoRekeningTunjangan(binding.etNorekTunjangan.getText().toString());
+            doc.setNamaBankTunjangan(binding.etNamaBankTunjangan.getText().toString());
+            doc.setPeriodeDateFromTunjangan(binding.etPeriodeAwalWaktu2.getText().toString());
+            doc.setPeriodeDateToTunjangan(binding.etPeriodeAkhirWaktu2.getText().toString());
+            doc.setTotalDebitTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalDebit2.getText().toString())));
+            doc.setTotalKreditTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalKredit2.getText().toString())));
+        } else {
+            doc.setNoRekeningTunjangan(binding.etNorekGaji.getText().toString());
+            doc.setNamaBankTunjangan(binding.etNamaBankGaji.getText().toString());
+            doc.setPeriodeDateFromTunjangan(AppUtil.parseTanggalGeneral(binding.etPeriodeAwalWaktu1.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setPeriodeDateToTunjangan(AppUtil.parseTanggalGeneral(binding.etPeriodeAkhirWaktu1.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setTotalDebitTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalDebit1.getText().toString())));
+            doc.setTotalKreditTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalKredit1.getText().toString())));
+        }
+        doc.setPeriodeGajiP1(AppUtil.parseTanggalGeneral(pDatep1, "dd-MM-yyyy", "yyyy-MM-dd"));
+        doc.setPeriodeTunjanganP1(AppUtil.parseTanggalGeneral(pDatep1, "dd-MM-yyyy", "yyyy-MM-dd"));
+        if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+            doc.setPeriodeGajiP2(AppUtil.parseTanggalGeneral(pDatep2, "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setPeriodeTunjanganP2(AppUtil.parseTanggalGeneral(pDatep2, "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setPeriodeGajiP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setPeriodeTunjanganP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
+        }
+        doc.setSimulasiPendapatanSaatPen(0.0);
+        doc.setTotalGajiBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiBersihP1.getText().toString())));
+        doc.setTotalTunjanganBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganP1.getText().toString())));
+        if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+            doc.setTotalGajiBersihP2(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiBersihP2.getText().toString())));
+            doc.setTotalTunjanganBersihP2(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganP2.getText().toString())));
+            doc.setTotalGajiBersihP3(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiBersihP3.getText().toString())));
+            doc.setTotalTunjanganBersihP3(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganP3.getText().toString())));
+        }
+        req.setAplikasiPendapatan(binding.etAkseptasiPendaptan.getText().toString());
+        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setDokumenPendapatan(doc);
+        req.setDokumenPendapatanKoranBank(DokumenPendapatanKoranBank);
+//        req.setDokumenPendapatanKoranBSI(DokumenPendapatanKoranBSI);
+        req.setDataJaminanIDCard(DataJaminanIDCard);
+        req.setDokumenPendapatanSlipGajiP1(DokumenPendapatanSlipGajiP1);
+        req.setDokumenPendapatanSlipTunjanganP1(DokumenPendapatanSlipTunjanganP1);
+        if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+            req.setDokumenPendapatanSlipGajiP2(DokumenPendapatanSlipGajiP2);
+            req.setDokumenPendapatanSlipTunjanganP2(DokumenPendapatanSlipTunjanganP2);
+            req.setDokumenPendapatanSlipGajiP3(DokumenPendapatanSlipGajiP3);
+            req.setDokumenPendapatanSlipTunjanganP3(DokumenPendapatanSlipTunjanganP3);
+        }
+        Call<ParseResponseReturn> call = apiClientAdapter.getApiInterface().UpdateDataPendapatan(req);
+        call.enqueue(new Callback<ParseResponseReturn>() {
+            @Override
+            public void onResponse(Call<ParseResponseReturn> call, Response<ParseResponseReturn> response) {
+                try {
+                    if (response.isSuccessful()) {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            finish();
+                        } else {
+                            AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+                    } else {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), error.getMessage());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseReturn> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
+
     }
 
     private void numberText() {
@@ -424,30 +792,46 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 validateData();
                 break;
             case R.id.btn_rekening_koran1:
-            case R.id.btn_rekening_koran2:
-            case R.id.btn_slipgaji_p1:
-            case R.id.btn_slipgaji_p2:
-            case R.id.btn_slipgaji_p3:
-            case R.id.btn_sliptunjangan_p1:
-            case R.id.btn_sliptunjangan_p2:
-            case R.id.btn_sliptunjangan_p3:
             case R.id.rl_rekening_koran1:
-            case R.id.rl_rekening_koran2:
-            case R.id.rl_slipgaji_p1:
-            case R.id.rl_slipgaji_p2:
-            case R.id.rl_slipgaji_p3:
-            case R.id.rl_sliptunjangan_p1:
-            case R.id.rl_sliptunjangan_p2:
-            case R.id.rl_sliptunjangan_p3:
             case R.id.iv_rekening_koran1:
-            case R.id.iv_rekening_koran2:
-            case R.id.iv_slipgaji_p1:
-            case R.id.iv_slipgaji_p2:
-            case R.id.iv_slipgaji_p3:
-            case R.id.iv_sliptunjangan_p1:
-            case R.id.iv_sliptunjangan_p2:
-            case R.id.iv_sliptunjangan_p3:
                 BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "koran";
+                break;
+            case R.id.btn_slipgaji_p1:
+            case R.id.rl_slipgaji_p1:
+            case R.id.iv_slipgaji_p1:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "slipgaji1";
+                break;
+            case R.id.btn_slipgaji_p2:
+            case R.id.rl_slipgaji_p2:
+            case R.id.iv_slipgaji_p2:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "slipgaji2";
+                break;
+            case R.id.btn_slipgaji_p3:
+            case R.id.rl_slipgaji_p3:
+            case R.id.iv_slipgaji_p3:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "slipgaji3";
+                break;
+            case R.id.btn_sliptunjangan_p1:
+            case R.id.rl_sliptunjangan_p1:
+            case R.id.iv_sliptunjangan_p1:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "tunjangan1";
+                break;
+            case R.id.rl_sliptunjangan_p2:
+            case R.id.btn_sliptunjangan_p2:
+            case R.id.iv_sliptunjangan_p2:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "tunjangan2";
+                break;
+            case R.id.rl_sliptunjangan_p3:
+            case R.id.iv_sliptunjangan_p3:
+            case R.id.btn_sliptunjangan_p3:
+                BSUploadFile.displayWithTitle(ActivityDokumenPendapatan.this.getSupportFragmentManager(), this, "");
+                clicker = "tunjangan3";
                 break;
             case R.id.tf_periode_akhir_waktu1:
             case R.id.et_periode_akhir_waktu1:
@@ -497,6 +881,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
 
                 binding.etPeriodeGajiP1.setText(calLahirString);
                 binding.etTglTunjanganP1.setText(calLahirString);
+                pDatep1 = dateClient2.format(calLahir.getTime());
                 formatOutgoing.setTimeZone(tz);
                 s = formatOutgoing.format(calLahir.getTime());
                 binding.tp1.setText("Slip Gaji " + s);
@@ -505,6 +890,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 String p2 = dateT.format(calLahir.getTime());
                 binding.etPeriodeGajiP2.setText(p2);
                 binding.etTglTunjanganP2.setText(p2);
+                pDatep2 = dateClient2.format(calLahir.getTime());
                 s = formatOutgoing.format(calLahir.getTime());
                 binding.tp2.setText("Slip Gaji " + s);
 
@@ -512,6 +898,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 String p3 = dateT.format(calLahir.getTime());
                 binding.etPeriodeGajiP3.setText(p3);
                 binding.etTglTunjanganP3.setText(p3);
+                pDatep3 = dateClient2.format(calLahir.getTime());
                 s = formatOutgoing.format(calLahir.getTime());
                 binding.tp3.setText("Slip Gaji " + s);
             } else {
@@ -531,23 +918,63 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     public void onSelectMenuCamera(String idMenu) {
         switch (idMenu) {
             case "Take Photo":
-                openCamera(TAKE_PICTURE_KANTOR1);
+                if (clicker.equalsIgnoreCase("koran")) {
+                    openCamera(UPLOAD_KORAN, "koran");
+                } else if (clicker.equalsIgnoreCase("slipgaji1")) {
+                    openCamera(UPLOAD_SLIPGAJI1, "slipgaji1");
+                } else if (clicker.equalsIgnoreCase("slipgaji2")) {
+                    openCamera(UPLOAD_SLIPGAJI2, "slipgaji2");
+                } else if (clicker.equalsIgnoreCase("slipgaji3")) {
+                    openCamera(UPLOAD_SLIPGAJI3, "slipgaji3");
+                } else if (clicker.equalsIgnoreCase("tunjangan1")) {
+                    openCamera(UPLOAD_SLIPTUNJANGAN1, "tunjangan1");
+                } else if (clicker.equalsIgnoreCase("tunjangan2")) {
+                    openCamera(UPLOAD_SLIPTUNJANGAN2, "tunjangan2");
+                } else if (clicker.equalsIgnoreCase("tunjangan3")) {
+                    openCamera(UPLOAD_SLIPTUNJANGAN3, "tunjangan3");
+                }
                 break;
             case "Pick Photo":
-                openGalery(PICK_PICTURE_KANTOR1);
+                if (clicker.equalsIgnoreCase("koran")) {
+                    openGalery(UPLOAD_KORAN);
+                } else if (clicker.equalsIgnoreCase("slipgaji1")) {
+                    openGalery(UPLOAD_SLIPGAJI1);
+                } else if (clicker.equalsIgnoreCase("slipgaji2")) {
+                    openGalery(UPLOAD_SLIPGAJI2);
+                } else if (clicker.equalsIgnoreCase("slipgaji3")) {
+                    openGalery(UPLOAD_SLIPGAJI3);
+                } else if (clicker.equalsIgnoreCase("tunjangan1")) {
+                    openGalery(UPLOAD_SLIPTUNJANGAN1);
+                } else if (clicker.equalsIgnoreCase("tunjangan2")) {
+                    openGalery(UPLOAD_SLIPTUNJANGAN2);
+                } else if (clicker.equalsIgnoreCase("tunjangan3")) {
+                    openGalery(UPLOAD_SLIPTUNJANGAN3);
+                }
+
                 break;
             case "Pick File":
-                openFile(PICK_PICTURE_KANTOR1);
+                if (clicker.equalsIgnoreCase("koran")) {
+                    openFile(UPLOAD_KORAN);
+                } else if (clicker.equalsIgnoreCase("slipgaji1")) {
+                    openFile(UPLOAD_SLIPGAJI1);
+                } else if (clicker.equalsIgnoreCase("slipgaji2")) {
+                    openFile(UPLOAD_SLIPGAJI2);
+                } else if (clicker.equalsIgnoreCase("slipgaji3")) {
+                    openFile(UPLOAD_SLIPGAJI3);
+                } else if (clicker.equalsIgnoreCase("tunjangan1")) {
+                    openFile(UPLOAD_SLIPTUNJANGAN1);
+                } else if (clicker.equalsIgnoreCase("tunjangan2")) {
+                    openFile(UPLOAD_SLIPTUNJANGAN2);
+                } else if (clicker.equalsIgnoreCase("tunjangan3")) {
+                    openFile(UPLOAD_SLIPTUNJANGAN3);
+                }
                 break;
         }
 
     }
 
-    private final int TAKE_PICTURE_KANTOR1 = 11;
-    private final int PICK_PICTURE_KANTOR1 = 22;
-
-    private void openCamera(int cameraCode) {
-        checkCameraPermission(cameraCode);
+    private void openCamera(int cameraCode, String namaFoto) {
+        checkCameraPermission(cameraCode, namaFoto);
     }
 
     public void openGalery(int cameraCode) {
@@ -565,13 +992,13 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static int CAMERA_CODE_FORE_PERMISSION = 0;
 
-    public void checkCameraPermission(int cameraCode) {
+    public void checkCameraPermission(int cameraCode, String namaFoto) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_REQUEST_CODE);
         } else {
-            Uri outputFileUri = getCaptureImageOutputUri();
+            Uri outputFileUri = getCaptureImageOutputUri(namaFoto);
             Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
@@ -579,24 +1006,141 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         }
     }
 
-    private void directOpenCamera(int cameraCode) {
-        Uri outputFileUri = getCaptureImageOutputUri();
+    private void directOpenCamera(int cameraCode, String namaFoto) {
+        Uri outputFileUri = getCaptureImageOutputUri(namaFoto);
         Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
         startActivityForResult(captureIntent, cameraCode);
     }
 
-    private Uri getCaptureImageOutputUri() {
+    private Uri getCaptureImageOutputUri(String namaFoto) {
         Uri outputFileUri = null;
         File getImage = this.getExternalCacheDir();
         if (getImage != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                outputFileUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), "fotoagunan.png"));
+                outputFileUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), namaFoto + ".png"));
             } else {
-                outputFileUri = Uri.fromFile(new File(getImage.getPath(), "fotoagunan.png"));
+                outputFileUri = Uri.fromFile(new File(getImage.getPath(), namaFoto + ".png"));
             }
         }
         return outputFileUri;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        switch (requestCode) {
+            case UPLOAD_KORAN:
+                setDataImage(uri_koran, bitmap_koran, binding.ivRekeningKoran1, imageReturnedIntent, "koran");
+                break;
+            case UPLOAD_SLIPGAJI1:
+                setDataImage(uri_slipgaji1, bitmap_slipgaji1, binding.ivSlipgajiP1, imageReturnedIntent, "slipgaji1");
+                break;
+            case UPLOAD_SLIPGAJI2:
+                setDataImage(uri_slipgaji2, bitmap_slipgaji2, binding.ivSlipgajiP2, imageReturnedIntent, "slipgaji2");
+                break;
+            case UPLOAD_SLIPGAJI3:
+                setDataImage(uri_slipgaji3, bitmap_slipgaji3, binding.ivSlipgajiP3, imageReturnedIntent, "slipgaji3");
+                break;
+            case UPLOAD_SLIPTUNJANGAN1:
+                setDataImage(uri_sliptunjangan1, bitmap_sliptunjangan1, binding.ivSliptunjanganP1, imageReturnedIntent, "sliptunjangan1");
+                break;
+            case UPLOAD_SLIPTUNJANGAN2:
+                setDataImage(uri_sliptunjangan2, bitmap_sliptunjangan2, binding.ivSliptunjanganP2, imageReturnedIntent, "sliptunjangan2");
+                break;
+            case UPLOAD_SLIPTUNJANGAN3:
+                setDataImage(uri_sliptunjangan3, bitmap_sliptunjangan3, binding.ivSliptunjanganP3, imageReturnedIntent, "sliptunjangan3");
+                break;
+        }
+    }
+
+    public Uri getPickImageResultUri(Intent data, String namaFoto) {
+        boolean isCamera = true;
+        if (data != null) {
+            String action = data.getAction();
+            isCamera = action != null && action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
+        }
+        return isCamera ? getCaptureImageOutputUri(namaFoto) : data.getData();
+    }
+
+    private void setDataImage(Uri uri, Bitmap bitmap, ImageView iv, Intent data, String namaFoto) {
+        if (getPickImageResultUri(data, namaFoto) != null) {
+            uri = getPickImageResultUri(data, namaFoto);
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                bitmap = AppUtil.getResizedBitmap(bitmap, 1024);
+                bitmap = AppUtil.rotateImageIfRequired(this, bitmap, uri);
+                iv.setImageBitmap(bitmap);
+                if (clicker.equalsIgnoreCase("koran")) {
+                    bitmap_koran = bitmap;
+                    DokumenPendapatanKoranBank.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanKoranBank.setFileName("koran.png");
+                } else if (clicker.equalsIgnoreCase("slipgaji1")) {
+                    bitmap_slipgaji1 = bitmap;
+                    DokumenPendapatanSlipGajiP1.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.png");
+                } else if (clicker.equalsIgnoreCase("slipgaji2")) {
+                    bitmap_slipgaji2 = bitmap;
+                    DokumenPendapatanSlipGajiP2.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.png");
+                } else if (clicker.equalsIgnoreCase("slipgaji3")) {
+                    bitmap_slipgaji3 = bitmap;
+                    DokumenPendapatanSlipGajiP3.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipGajiP3.setFileName("slipgaji3.png");
+                } else if (clicker.equalsIgnoreCase("tunjangan1")) {
+                    bitmap_sliptunjangan1 = bitmap;
+                    DokumenPendapatanSlipTunjanganP1.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.png");
+                } else if (clicker.equalsIgnoreCase("tunjangan2")) {
+                    bitmap_sliptunjangan2 = bitmap;
+                    DokumenPendapatanSlipTunjanganP2.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.png");
+                } else if (clicker.equalsIgnoreCase("tunjangan3")) {
+                    bitmap_sliptunjangan3 = bitmap;
+                    DokumenPendapatanSlipTunjanganP3.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.png");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
+                if (clicker.equalsIgnoreCase("koran")) {
+                    Uri uriPdf = data.getData();
+                    val_koran = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanKoranBank.setImg(val_koran);
+                    DokumenPendapatanKoranBank.setFileName("koran.pdf");
+                } else if (clicker.equalsIgnoreCase("slipgaji1")) {
+                    Uri uriPdf = data.getData();
+                    val_slipgaji1 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipGajiP1.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
+                } else if (clicker.equalsIgnoreCase("slipgaji2")) {
+                    Uri uriPdf = data.getData();
+                    val_slipgaji2 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipGajiP2.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
+                } else if (clicker.equalsIgnoreCase("slipgaji3")) {
+                    Uri uriPdf = data.getData();
+                    val_slipgaji3 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipGajiP3.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP3.setFileName("slipgaji3.pdf");
+                } else if (clicker.equalsIgnoreCase("tunjangan1")) {
+                    Uri uriPdf = data.getData();
+                    val_sliptunjangan1 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipTunjanganP1.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
+                } else if (clicker.equalsIgnoreCase("tunjangan2")) {
+                    Uri uriPdf = data.getData();
+                    val_sliptunjangan2 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipTunjanganP2.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
+                } else if (clicker.equalsIgnoreCase("tunjangan3")) {
+                    Uri uriPdf = data.getData();
+                    val_sliptunjangan3 = AppUtil.encodeFileToBase64(this, uriPdf);
+                    DokumenPendapatanSlipTunjanganP3.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
+                }
+
+            }
+        }
     }
 }

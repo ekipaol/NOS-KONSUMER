@@ -291,6 +291,8 @@ public class UriApi {
 
     }
 
+
+
     public class flpp{
         public static final String listFollowupFlpp = "generic/konsumer/kpr/pipeline/listFollowUpFlpp";
         public static final String listKonfirmasiFlpp = "generic/konsumer/kpr/pipeline/listKonfirmasiFlpp";
@@ -369,15 +371,11 @@ public class UriApi {
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
 
-
-
-
-
+        //D3
+        public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatan";
+        public static final String InquiryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatan";
+        public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasing";
     }
-
-
-
-
 }
 
 
