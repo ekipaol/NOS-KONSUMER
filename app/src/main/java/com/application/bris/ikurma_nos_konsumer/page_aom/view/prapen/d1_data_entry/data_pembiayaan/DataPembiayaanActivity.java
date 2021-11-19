@@ -601,7 +601,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         CustomDialog.DialogSuccess(DataPembiayaanActivity.this, "Success!", "Data Berhasil Disimpan", DataPembiayaanActivity.this);
 
-                        idAplikasi=response.body().getData().get("ApplicationNo").toString();
+                        idAplikasi=response.body().getData().get("ApplicationId").toString();
                     }
                 }
             }
