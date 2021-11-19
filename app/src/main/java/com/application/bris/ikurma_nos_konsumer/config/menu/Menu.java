@@ -74,7 +74,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d4_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d4_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d4_verifikasi)));
-//        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d4_memo)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d4_memo)));
     }
 
     public static void SubmenuD5(Context context, List<ListViewSubmenuHotprospek> menu){

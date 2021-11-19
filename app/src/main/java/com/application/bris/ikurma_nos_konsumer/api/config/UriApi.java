@@ -385,6 +385,14 @@ public class UriApi {
         public static final String inquiryFitur = "NOS_PRAPEN_Services/rest/D4/InquiryParamFitur";
         public static final String inquiryVerifikasiIdeb = "NOS_PRAPEN_Services/rest/D4/InqIDebSlikOjkVerifikator";
         public static final String inquiryVerifikasiHutang = "NOS_PRAPEN_Services/rest/D4/InquiryDataUtangVerifikator";
+        public static final String inquiryJangkaWaktu = "NOS_PRAPEN_Services/rest/D4/InquiryJangkaWaktu";
+        public static final String inquiryKesimpulanVerifikasi = "NOS_PRAPEN_Services/rest/D4/InquiryVerifikasi";
+        public static final String inquiryTempatKerja = "NOS_PRAPEN_Services/rest/D4/InquiryTempatKerjaVerifikator";
+
+
+
+
+
 
 
 

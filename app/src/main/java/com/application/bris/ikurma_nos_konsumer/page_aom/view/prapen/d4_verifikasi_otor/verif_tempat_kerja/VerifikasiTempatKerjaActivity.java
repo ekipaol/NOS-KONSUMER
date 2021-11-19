@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +21,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityVerifikasiTempatKerjaBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataJangkaWaktu;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataVerifikasiTempatKerja;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
@@ -28,19 +36,31 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListen
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.kalkulatorsimulasiangsuran;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_jangka_waktu.ActivityJangkaWaktuPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.BuildConfig;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, GenericListenerOnSelect, KeyValueListener {
     private ActivityVerifikasiTempatKerjaBinding binding;
     List<MGenericModel> dataDropdownTempatKerja = new ArrayList<>(), dataDropdownLGNP = new ArrayList<>();
+
+    private ApiClientAdapter apiClientAdapter;
+    private AppPreferences appPreferences;
+    private DataVerifikasiTempatKerja dataVerifikasiTempatKerja;
+    private long idAplikasi;
 
 
     @Override
@@ -48,6 +68,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         binding = ActivityVerifikasiTempatKerjaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        apiClientAdapter=new ApiClientAdapter(this);
+        appPreferences=new AppPreferences(this);
+        idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
         setContentView(view);
         onclickSelectDialog();
         setParameterDropdown();
@@ -57,33 +80,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         setContentView(view);
         backgroundStatusBar();
         disableEditText();
+        loadData();
         AppUtil.toolbarRegular(this, "Verifikasi Tempat Kerja");
     }
-
-//    private void chageListener() {
-//        binding.etPerkiraanTunjangan.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString( binding.etPerkiraanGaji.getText().toString()));
-//                BigDecimal vertunjangan= new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
-//                BigDecimal totalRpc=(vergaji.add(vertunjangan));
-//                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//
-//
-//        });
-//
-//    }
 
 
     private void onclickSelectDialog() {
@@ -117,10 +116,6 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.ivSuratRekomendasiInstansi.setOnClickListener(this);
         binding.rlSuratRekomendasiInstansi.setOnClickListener(this);
 
-        binding.btnResumeDokumenPembiayaan.setOnClickListener(this);
-        binding.ivResumeDokumenPembiayaan.setOnClickListener(this);
-        binding.rlSuratRekomendasiInstansi.setOnClickListener(this);
-
         binding.rlUploadDokumen.setOnClickListener(this);
         binding.btnUploadDokumen.setOnClickListener(this);
         binding.ivUploadDokumen.setOnClickListener(this);
@@ -128,6 +123,120 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.btnCekLngp.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
 
+    }
+
+    private void setDataFirstTime(){
+        binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansi());
+        binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getIsLNGP());
+        binding.etInputLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNoLNGP());
+        binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansiLNGP());
+        binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getInstansiDapen().getRateLNGP()));
+        binding.etKotaTempatBekerja.setText(dataVerifikasiTempatKerja.getInstansiDapen().getKotaTempatBekerja());
+        binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanGaji());
+        binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanTunjangan());
+        binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getTotalPendapatan());
+
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),binding.ivKtpNasabah,dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getImg());
+
+    }
+    private void setDataAfterUpdate(){
+
+        binding.etNamaInstansi2.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiTaspen());
+        binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiSPAN());
+        binding.etKesimpulanPensesuaianVerifikasi.setText(dataVerifikasiTempatKerja.getTempatKerja().getKesimpulan());
+        binding.etCatatanhasilverifikasi.setText(dataVerifikasiTempatKerja.getTempatKerja().getHasilVerifikasi());
+
+        binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansi());
+        binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansi());
+        binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getIsLNGP());
+        binding.etInputLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNoLNGP());
+        binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiLNGP());
+        binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
+        binding.etKotaTempatBekerja.setText(dataVerifikasiTempatKerja.getTempatKerja().getKotaTempatBekerja());
+        binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanGaji());
+        binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanTunjangan());
+        binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTotalPendapatan());
+
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),binding.ivKtpNasabah,dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(),binding.ivUploadDokumen,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+    }
+
+    private void checkImgOrPdfThenSetData(String fileName, ImageView imageView,String base64String){
+        try{
+            if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+
+                AppUtil.convertBase64ToFileWithOnClick(VerifikasiTempatKerjaActivity.this,base64String,imageView,fileName);
+            }
+            else{
+                AppUtil.convertBase64ToImage(base64String,imageView);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private void loadData(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        req.setApplicationId(idAplikasi);
+        req.setUID(Integer.toString(appPreferences.getUid()));
+        //pantekan no aplikasi
+//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+//        req.setApplicationId(4);
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryTempatKerja(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<DataVerifikasiTempatKerja>() {
+                        }.getType();
+                        dataVerifikasiTempatKerja =  gson.fromJson(listDataString, type);
+                        if(dataVerifikasiTempatKerja!=null&&dataVerifikasiTempatKerja.getTempatKerja()==null){
+                            setDataFirstTime();
+                        }
+                        else{
+                            setDataAfterUpdate();
+                        }
+                    }
+                    else if (response.body().getStatus().equalsIgnoreCase("01")) {
+                        AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");
+                    }
+                    else{
+                        AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
     }
 
     public void onClick(View view) {
@@ -155,11 +264,6 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                 BSUploadFile.displayWithTitle(VerifikasiTempatKerjaActivity.this.getSupportFragmentManager(), this, "");
                 break;
 
-            case R.id.rl_resume_dokumen_pembiayaan:
-            case R.id.iv_resume_dokumen_pembiayaan:
-            case R.id.btn_resume_dokumen_pembiayaan:
-                Toast.makeText(getApplicationContext(), "Menampilkan Dokumen Pribadi dan Pasangan",Toast.LENGTH_LONG).show();
-                break;
         }
     }
 

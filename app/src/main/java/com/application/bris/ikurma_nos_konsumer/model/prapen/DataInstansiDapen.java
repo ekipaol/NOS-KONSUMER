@@ -46,7 +46,7 @@ public class DataInstansiDapen extends RealmObject {
     private String perkiraanTunjangan;
     @SerializedName("Total_Pendapatan")
     @Expose
-    private Integer totalPendapatan;
+    private Long totalPendapatan;
     @SerializedName("Is_Nasabah_BSI")
     @Expose
     private String isNasabahBSI;
@@ -183,11 +183,11 @@ public class DataInstansiDapen extends RealmObject {
         this.perkiraanTunjangan = perkiraanTunjangan;
     }
 
-    public Integer getTotalPendapatan() {
+    public Long getTotalPendapatan() {
         return totalPendapatan;
     }
 
-    public void setTotalPendapatan(Integer totalPendapatan) {
+    public void setTotalPendapatan(Long totalPendapatan) {
         this.totalPendapatan = totalPendapatan;
     }
 

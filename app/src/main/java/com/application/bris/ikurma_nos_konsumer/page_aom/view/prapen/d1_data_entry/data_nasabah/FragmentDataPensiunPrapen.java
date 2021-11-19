@@ -61,6 +61,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private ApiClientAdapter apiClientAdapter;
     private PrapenAoFragmentDataPensiunanBinding binding;
     private boolean valDapatBergerak=false,valDalamPengawasan=false,valMemilikiRiwayat=false,valSerumahDenganKeluarga=false,valMemilikiUsahaSampingan=false,valMemperolehKiriman =false,valMenggunakanLngp =false,valNasabahBsi =false;
+    private String val_cif="";
 
     private List<MGenericModel> dropdownLembagaPengelolaPensiun=new ArrayList<>();
     private List<MGenericModel> dropdownTreatmentRekening=new ArrayList<>();
@@ -98,6 +99,9 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     }
 
     private void setData(){
+        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
+        binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
+        binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
         try{
             binding.etLembagaPengelolaPensiun.setText(dataInstansi.getLembagaPengelolaPensiun());
             binding.etNomorPensiunan.setText(dataInstansi.getNomorPensiunan());
@@ -129,6 +133,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             binding.etNomorRekening.setText(dataInstansi.getNomorRekening());
             binding.etNominalKiriman.setText(dataInstansi.getNominalPerBulan());
             binding.etCatatanMemo.setText(dataInstansi.getCatatan());
+            val_cif=dataInstansi.getNoCIF();
 
             if(dataInstansi.getDapatBergerakAktifitas()){
                 binding.etDapatBergerak.setText("Ya");
@@ -285,6 +290,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         copyRealm.setKotaTempatBekerja(binding.etKotaTempatBekerja.getText().toString());
         copyRealm.setPerkiraanGaji(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
         copyRealm.setPerkiraanTunjangan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));
+        copyRealm.setTotalPendapatan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalPendapatan.getText().toString())));
         copyRealm.setIsNasabahBSI(binding.etNasabahBsi.getText().toString());
         copyRealm.setTreatmentRekeningPendapata(binding.etTreatmentRekeningPendapatan.getText().toString());
         copyRealm.setNomorRekening(binding.etNomorRekening.getText().toString());
@@ -297,6 +303,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         copyRealm.setSatuRumah(valSerumahDenganKeluarga);
         copyRealm.setMemilikiUsaha(valMemilikiUsahaSampingan);
         copyRealm.setKirimanRutin(valMemperolehKiriman);
+        copyRealm.setNoCIF(val_cif);
 
         realm.insertOrUpdate(copyRealm);
 
@@ -728,6 +735,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                             binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
                             binding.tvHasilCekPayroll.setText("Rekening Ditemukan");
                             binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.main_green_color));
+                            val_cif=dataCIfRekening.getCIF();
 
                         }
                         else{

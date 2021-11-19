@@ -803,6 +803,12 @@ public interface ApiInterface {
     Call<ParseResponse> inquiryVerifikasiIdeb(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
     @POST(UriApi.prapen.inquiryVerifikasiHutang)
     Call<ParseResponseArr> inquiryVerifikasiHutang(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryJangkaWaktu)
+    Call<ParseResponse> inquiryJangkaWaktu(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryKesimpulanVerifikasi)
+    Call<ParseResponse> inquiryKesimpulanVerifikasi(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryTempatKerja)
+    Call<ParseResponse> inquiryTempatKerja(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
 }
 
