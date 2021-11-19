@@ -56,6 +56,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.Kon
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.KonsumerKPRKaryawanPnsInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.KonsumerKPRWiraswastaInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.Prescreening;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqScoringKmg;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.SimpanDataFinansial;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.SimpanDataFinansialKpr;
@@ -75,7 +76,6 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inq
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryLkn;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryNikPasangan;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryScoring;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquirySektorEkonomi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.kirimPutusanMikro;
@@ -97,17 +97,18 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inquiryTujuan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataPendapatan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJaminandanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseInquiryHasilCanvasing;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
@@ -115,7 +116,6 @@ import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBanguna
 import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.LknPojo;
 import com.application.bris.ikurma_nos_konsumer.model.hotprospek.KonsumerKprFlppInputKelengkapanDokumen;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
 
 import okhttp3.MultipartBody;
@@ -802,6 +802,13 @@ public interface ApiInterface {
     @POST(UriApi.prapen.UpdateDataPendapatan)
     Call<ParseResponseReturn> UpdateDataPendapatan(@Body UpdateDataPendapatan ReqUpdateDataPendapatan);
 
+    //
+    @POST(UriApi.prapen.UpdateJaminandanDokumen)
+    Call<ParseResponseReturn> UpdateJaminandanDokumen(@Body UpdateJaminandanDokumen ReqUpdateJaminandanDokumen);
+
+    @POST(UriApi.prapen.InquiryJaminandanDokumen)
+    Call<ParseResponseAgunan> InqueryJaminandanDokumen(@Body ReqInquery ReqInquery);
+
     //Inquery Data Penapatan
     @POST(UriApi.prapen.InquiryDataPendapatan)
     Call<ParseResponseAgunan> inqueryDataPendapatan(@Body ReqInquery ReqInquery);
@@ -809,5 +816,6 @@ public interface ApiInterface {
     //
     @POST(UriApi.prapen.InquiryHasilCanvasing)
     Call<ParseResponseInquiryHasilCanvasing> sendDetailAplikasiGadai(@Body ReqInquery ReqInquery);
+
 }
 

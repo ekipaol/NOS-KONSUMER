@@ -375,6 +375,8 @@ public class UriApi {
         public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatan";
         public static final String InquiryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatan";
         public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasing";
+        public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
+        public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
     }
 }
 
