@@ -95,6 +95,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
         }
 
     private void initdata() {
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
         Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InqueryJaminandanDokumen(req);
@@ -146,12 +147,13 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             binding.etLembagaTerbitSk2.setText(jd.get(0).getLembagaPenerbitSKPengangk());
                             binding.etLembagaTerbitSk3.setText(jd.get(0).getLembagaPenerbitSKTerakhir());
                             binding.etTanggalTerbitSk1.setText(AppUtil.parseTanggalGeneral(jd.get(0).getTanggalTerbitSKPensiun(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTanggalTerbitSk2.setText(AppUtil.parseTanggalGeneral(jd.get(0).getTanggalTerbitSKPengangkat(),  "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTanggalTerbitSk3.setText(AppUtil.parseTanggalGeneral(jd.get(0).getTanggalTerbitSKTerakhir(),  "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etTanggalTerbitSk2.setText(AppUtil.parseTanggalGeneral(jd.get(0).getTanggalTerbitSKPengangkat(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                            binding.etTanggalTerbitSk3.setText(AppUtil.parseTanggalGeneral(jd.get(0).getTanggalTerbitSKTerakhir(), "yyyy-MM-dd", "dd-MM-yyyy"));
 
                         } catch (Exception e) {
                             AppUtil.logSecure("error setdata", e.getMessage());
                         }
+
                         //Set Image KTP
                         try {
 
@@ -169,170 +171,174 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                         } catch (Exception e) {
                             AppUtil.logSecure("error setdata", e.getMessage());
                         }
-                    }
 
-                    //Set Image KTP Pasangan
-                    try {
 
-                        DataJaminanKTPPasangan.setImg(JDJaminanKTPPasangan.getImg());
+                        //Set Image KTP Pasangan
+                        try {
 
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanKTPPasangan.getFileName().substring(JDJaminanKTPPasangan.getFileName().length() - 3, JDJaminanKTPPasangan.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan, JDJaminanKTPPasangan.getFileName());
-                        } else {
-                            DataJaminanKTPPasangan.setFileName("ktppasangan.png");
-                            AppUtil.convertBase64ToImage(JDJaminanKTPPasangan.getImg(), binding.ivKtpNasabah);
+                            DataJaminanKTPPasangan.setImg(JDJaminanKTPPasangan.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanKTPPasangan.getFileName().substring(JDJaminanKTPPasangan.getFileName().length() - 3, JDJaminanKTPPasangan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan, JDJaminanKTPPasangan.getFileName());
+                            } else {
+                                DataJaminanKTPPasangan.setFileName("ktppasangan.png");
+                                AppUtil.convertBase64ToImage(JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
                         }
 
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
+                        //Set Image NPWP
+                        try {
 
-                    //Set Image NPWP
-                    try {
+                            DataJaminanNPWP.setImg(JDJaminanNPWP.getImg());
 
-                        DataJaminanNPWP.setImg(JDJaminanNPWP.getImg());
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanNPWP.getFileName().substring(JDJaminanNPWP.getFileName().length() - 3, JDJaminanNPWP.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanNPWP.setFileName("npwp.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanNPWP.getImg(), binding.ivNpwp, JDJaminanNPWP.getFileName());
+                            } else {
+                                DataJaminanNPWP.setFileName("npwp.png");
+                                AppUtil.convertBase64ToImage(JDJaminanNPWP.getImg(), binding.ivNpwp);
+                            }
 
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanNPWP.getFileName().substring(JDJaminanNPWP.getFileName().length() - 3, JDJaminanNPWP.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanNPWP.setFileName("npwp.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanNPWP.getImg(), binding.ivNpwp, JDJaminanNPWP.getFileName());
-                        } else {
-                            DataJaminanNPWP.setFileName("npwp.png");
-                            AppUtil.convertBase64ToImage(JDJaminanNPWP.getImg(), binding.ivKtpNasabah);
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Asset Akad
+                        try {
+
+                            DataJaminanAsetAkad.setImg(JDJaminanAsetAKAD.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanAsetAKAD.getFileName().substring(JDJaminanAsetAKAD.getFileName().length() - 3, JDJaminanAsetAKAD.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanAsetAkad.setFileName("assetakad.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad, JDJaminanAsetAKAD.getFileName());
+                            } else {
+                                DataJaminanAsetAkad.setFileName("assetakad.png");
+                                AppUtil.convertBase64ToImage(JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Form Aplikasi
+                        try {
+
+                            DataJaminanFormAplikasi.setImg(JDJaminanFormAplikasi.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanFormAplikasi.getFileName().substring(JDJaminanFormAplikasi.getFileName().length() - 3, JDJaminanFormAplikasi.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi, JDJaminanFormAplikasi.getFileName());
+                            } else {
+                                DataJaminanFormAplikasi.setFileName("formaplikasi.png");
+                                AppUtil.convertBase64ToImage(JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Sk Pensiun
+                        try {
+
+                            DataJaminanSKPensiun.setImg(JDJaminanSKPensiun.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanSKPensiun.getFileName().substring(JDJaminanSKPensiun.getFileName().length() - 3, JDJaminanSKPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanSKPensiun.setFileName("skpensiun.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPensiun.getImg(), binding.ivSkPensiun, JDJaminanSKPensiun.getFileName());
+                            } else {
+                                DataJaminanSKPensiun.setFileName("skpensiun.png");
+                                AppUtil.convertBase64ToImage(JDJaminanSKPensiun.getImg(), binding.ivSkPensiun);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Sk Pengangkatan
+                        try {
+
+                            DataJaminanSKPengangkatan.setImg(JDJaminanSKPengangkatan.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanSKPengangkatan.getFileName().substring(JDJaminanSKPengangkatan.getFileName().length() - 3, JDJaminanSKPengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan, JDJaminanSKPengangkatan.getFileName());
+                            } else {
+                                DataJaminanSKPengangkatan.setFileName("skpengangkatan.png");
+                                AppUtil.convertBase64ToImage(JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
                         }
 
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-                    //Set Image Asset Akad
-                    try {
+                        //Set Image Sk Terakhir
+                        try {
 
-                        DataJaminanAsetAkad.setImg(JDJaminanAsetAKAD.getImg());
+                            DataJaminanSKTerakhir.setImg(JDJaminanSKTerakhir.getImg());
 
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanAsetAKAD.getFileName().substring(JDJaminanAsetAKAD.getFileName().length() - 3, JDJaminanAsetAKAD.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanAsetAkad.setFileName("assetakad.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad, JDJaminanAsetAKAD.getFileName());
-                        } else {
-                            DataJaminanAsetAkad.setFileName("assetakad.png");
-                            AppUtil.convertBase64ToImage(JDJaminanAsetAKAD.getImg(), binding.ivKtpNasabah);
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanSKTerakhir.getFileName().substring(JDJaminanSKTerakhir.getFileName().length() - 3, JDJaminanSKTerakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir, JDJaminanSKTerakhir.getFileName());
+                            } else {
+                                DataJaminanSKTerakhir.setFileName("skterakhir.png");
+                                AppUtil.convertBase64ToImage(JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
                         }
 
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-                    //Set Image Form Aplikasi
-                    try {
+                        //Set Image Surat Instansi
+                        try {
 
-                        DataJaminanFormAplikasi.setImg(JDJaminanFormAplikasi.getImg());
+                            DataJaminanSuratRekomendasiInstansi.setImg(JDJaminanSuratRekomendasiInstansi.getImg());
 
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanFormAplikasi.getFileName().substring(JDJaminanFormAplikasi.getFileName().length() - 3, JDJaminanFormAplikasi.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi, JDJaminanFormAplikasi.getFileName());
-                        } else {
-                            DataJaminanFormAplikasi.setFileName("formaplikasi.png");
-                            AppUtil.convertBase64ToImage(JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi);
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanSuratRekomendasiInstansi.getFileName().substring(JDJaminanSuratRekomendasiInstansi.getFileName().length() - 3, JDJaminanSuratRekomendasiInstansi.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi, JDJaminanSuratRekomendasiInstansi.getFileName());
+                            } else {
+                                DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.png");
+                                AppUtil.convertBase64ToImage(JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
+                        }
+                        //Set Image Id Card
+                        try {
+
+                            DataJaminanIDCard.setImg(JDJaminanIDCard.getImg());
+
+                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+                            if (JDJaminanIDCard.getFileName().substring(JDJaminanIDCard.getFileName().length() - 3, JDJaminanIDCard.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                DataJaminanIDCard.setFileName("idcard.pdf");
+                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanIDCard.getImg(), binding.ivIdcard, JDJaminanIDCard.getFileName());
+                            } else {
+                                DataJaminanIDCard.setFileName("idcard.png");
+                                AppUtil.convertBase64ToImage(JDJaminanIDCard.getImg(), binding.ivIdcard);
+                            }
+
+                        } catch (Exception e) {
+                            AppUtil.logSecure("error setdata", e.getMessage());
                         }
 
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
+                    } else {
+                        AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
-                    //Set Image Sk Pensiun
-                    try {
-
-                        DataJaminanSKPensiun.setImg(JDJaminanSKPensiun.getImg());
-
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanSKPensiun.getFileName().substring(JDJaminanSKPensiun.getFileName().length() - 3, JDJaminanSKPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanSKPensiun.setFileName("skpensiun.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPensiun.getImg(), binding.ivSkPensiun, JDJaminanSKPensiun.getFileName());
-                        } else {
-                            DataJaminanSKPensiun.setFileName("skpensiun.png");
-                            AppUtil.convertBase64ToImage(JDJaminanSKPensiun.getImg(), binding.ivSkPensiun);
-                        }
-
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-                    //Set Image Sk Pengangkatan
-                    try {
-
-                        DataJaminanSKPengangkatan.setImg(JDJaminanSKPengangkatan.getImg());
-
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanSKPengangkatan.getFileName().substring(JDJaminanSKPengangkatan.getFileName().length() - 3, JDJaminanSKPengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan, JDJaminanSKPengangkatan.getFileName());
-                        } else {
-                            DataJaminanSKPengangkatan.setFileName("skpengangkatan.png");
-                            AppUtil.convertBase64ToImage(JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan);
-                        }
-
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-
-                    //Set Image Sk Terakhir
-                    try {
-
-                        DataJaminanSKTerakhir.setImg(JDJaminanSKTerakhir.getImg());
-
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanSKTerakhir.getFileName().substring(JDJaminanSKTerakhir.getFileName().length() - 3, JDJaminanSKTerakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir, JDJaminanSKTerakhir.getFileName());
-                        } else {
-                            DataJaminanSKTerakhir.setFileName("skterakhir.png");
-                            AppUtil.convertBase64ToImage(JDJaminanSKTerakhir.getImg(), binding.ivSkPengangkatan);
-                        }
-
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-
-                    //Set Image Surat Instansi
-                    try {
-
-                        DataJaminanSuratRekomendasiInstansi.setImg(JDJaminanSuratRekomendasiInstansi.getImg());
-
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanSuratRekomendasiInstansi.getFileName().substring(JDJaminanSuratRekomendasiInstansi.getFileName().length() - 3, JDJaminanSuratRekomendasiInstansi.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi, JDJaminanSuratRekomendasiInstansi.getFileName());
-                        } else {
-                            DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.png");
-                            AppUtil.convertBase64ToImage(JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi);
-                        }
-
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-                    //Set Image Id Card
-                    try {
-
-                        DataJaminanIDCard.setImg(JDJaminanIDCard.getImg());
-
-                        //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                        if (JDJaminanIDCard.getFileName().substring(JDJaminanIDCard.getFileName().length() - 3, JDJaminanIDCard.getFileName().length()).equalsIgnoreCase("pdf")) {
-                            DataJaminanIDCard.setFileName("idcard.pdf");
-                            AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanIDCard.getImg(), binding.ivIdcard, JDJaminanIDCard.getFileName());
-                        } else {
-                            DataJaminanIDCard.setFileName("idcard.png");
-                            AppUtil.convertBase64ToImage(JDJaminanIDCard.getImg(), binding.ivIdcard);
-                        }
-
-                    } catch (Exception e) {
-                        AppUtil.logSecure("error setdata", e.getMessage());
-                    }
-
                 } else {
-                    AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    binding.loading.progressbarLoading.setVisibility(View.GONE);
+                    Error error = ParseResponseError.confirmEror(response.errorBody());
+                    AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), error.getMessage());
                 }
             }
-
         @Override
         public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
             binding.loading.progressbarLoading.setVisibility(View.GONE);
