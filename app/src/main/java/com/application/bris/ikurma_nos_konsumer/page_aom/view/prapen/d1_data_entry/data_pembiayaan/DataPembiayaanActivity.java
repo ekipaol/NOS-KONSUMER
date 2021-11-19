@@ -511,6 +511,9 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         }
 
                     }
+                    else{
+                        AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
                 }
             }
 
@@ -598,6 +601,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         CustomDialog.DialogSuccess(DataPembiayaanActivity.this, "Success!", "Data Berhasil Disimpan", DataPembiayaanActivity.this);
 
+                        idAplikasi=response.body().getData().get("ApplicationNo").toString();
                     }
                 }
             }
@@ -630,6 +634,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             intent.putExtra("status","Initial Data Entry");
             intent.putExtra("statusId","D.1");
+            intent.putExtra("idAplikasi",idAplikasi);
             startActivity(intent);
         }
     }

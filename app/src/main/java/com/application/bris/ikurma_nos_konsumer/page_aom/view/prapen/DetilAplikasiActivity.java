@@ -105,7 +105,14 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //pantekan status untuk testing
         status=getIntent().getStringExtra("status");
         statusId=getIntent().getStringExtra("statusId");
-        idAplikasi=getIntent().getStringExtra("idAplikasi");
+
+        if(getIntent().hasExtra("idAplikasi")){
+            idAplikasi=getIntent().getStringExtra("idAplikasi");
+        }
+        else{
+            idAplikasi="0";
+        }
+
         customToolbar();
         backgroundStatusBar();
         isiDataDropdown();
@@ -401,6 +408,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_memo))){
             Intent it = new Intent(this, MemoActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
 //        binding.loading.progressbarLoading.setVisibility(View.GONE);

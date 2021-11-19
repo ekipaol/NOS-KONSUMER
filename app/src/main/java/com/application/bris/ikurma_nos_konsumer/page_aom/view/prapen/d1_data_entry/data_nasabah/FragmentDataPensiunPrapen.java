@@ -284,9 +284,11 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         copyRealm.setNomorKepegawaian(binding.etNomorKepegawaian.getText().toString());
         copyRealm.setNamaInstansi(binding.etNamaInstansi.getText().toString());
         copyRealm.setIsLNGP(binding.etMenggunakanLngp.getText().toString());
-        copyRealm.setRateLNGP(Double.parseDouble(binding.etRateLngp.getText().toString()));
-        copyRealm.setNoLNGP(binding.etInputLngp.getText().toString());
-        copyRealm.setNamaInstansiLNGP(binding.etNamaInstansiLngp.getText().toString());
+        if(binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("ya")){
+            copyRealm.setRateLNGP(Double.parseDouble(binding.etRateLngp.getText().toString()));
+            copyRealm.setNoLNGP(binding.etInputLngp.getText().toString());
+            copyRealm.setNamaInstansiLNGP(binding.etNamaInstansiLngp.getText().toString());
+        }
         copyRealm.setKotaTempatBekerja(binding.etKotaTempatBekerja.getText().toString());
         copyRealm.setPerkiraanGaji(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
         copyRealm.setPerkiraanTunjangan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanTunjangan.getText().toString()));

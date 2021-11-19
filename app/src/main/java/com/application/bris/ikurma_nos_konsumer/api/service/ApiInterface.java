@@ -810,5 +810,12 @@ public interface ApiInterface {
     @POST(UriApi.prapen.inquiryTempatKerja)
     Call<ParseResponse> inquiryTempatKerja(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.lanjutPembiayaanKeOtorVerifikator)
+    Call<ParseResponse> lanjutPembiayaanKeOtorVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.batalPembiayaanVerifikator)
+    Call<ParseResponse> batalPembiayaanVerifikator(@Body ReqBatalAplikasi ReqBatalAplikasi);
+    @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
+    Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
 }
 

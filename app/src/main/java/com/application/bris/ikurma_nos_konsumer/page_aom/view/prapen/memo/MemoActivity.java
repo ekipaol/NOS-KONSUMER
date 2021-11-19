@@ -59,6 +59,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
     private MemoAdapter memoAdapter;
 
     public long idAplikasi=0;
+    private String statusId;
     private List<DataMemo> dataMemo =new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -76,6 +77,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        statusId=getIntent().getStringExtra("statusId");
         bottomSheetBehavior=BottomSheetBehavior.from(binding.bottomSheet.bottomSheet);
 
         //pantekan default toolbar
@@ -215,7 +217,8 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         req.setMemo(binding.bottomSheet.extendedCatatan.getText().toString());
         req.setUID(String.valueOf(appPreferences.getUid()));
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateMemo(req);
+        Call<ParseResponse> call;
+        call = apiClientAdapter.getApiInterface().updateMemo(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -255,10 +258,19 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
         dialog.setTitleText("Memproses Aplikasi");
         dialog.setContentText("Harap Tunggu");
+
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         req.setApplicationId(idAplikasi);
         req.setUID(String.valueOf(appPreferences.getUid()));
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeVerifikator(req);
+
+        Call<ParseResponse> call=null;
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeVerifikator(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.4")){
+            call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeOtorVerifikator(req);
+        }
+
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -316,7 +328,13 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         req.setApplicationId(idAplikasi);
         req.setUID(String.valueOf(appPreferences.getUid()));
         req.setReasonDescription(binding.bottomSheet.extendedCatatan.getText().toString());
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().batalPembiayaan(req);
+        Call<ParseResponse> call=null;
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaan(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.4")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaanVerifikator(req);
+        }
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -372,7 +390,14 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         req.setApplicationId(idAplikasi);
         req.setUID(String.valueOf(appPreferences.getUid()));
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().kembalikanPembiayaan(req);
+
+        Call<ParseResponse> call=null;
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().kembalikanPembiayaan(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.4")){
+            call = apiClientAdapter.getApiInterface().kembalikanPembiayaanVerifikator(req);
+        }
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
