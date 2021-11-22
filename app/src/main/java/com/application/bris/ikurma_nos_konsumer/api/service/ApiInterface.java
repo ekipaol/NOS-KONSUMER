@@ -112,6 +112,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateD
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJaminandanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
@@ -826,6 +827,16 @@ public interface ApiInterface {
     Call<ParseResponseReturn> UpdateDataPendapatan(@Body UpdateDataPendapatan UpdateDataPendapatan);
     @POST(UriApi.prapen.InquiryDataPendapatanD4)
     Call<ParseResponseAgunan> InquiryDataPendapatanD4(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.InquiryTotalKualitasPemb)
+    Call<ParseResponseAgunan> sendInquiryTotalKualitasPemb(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.UpdateTotalKualitasPemb)
+    Call<ParseResponseAgunan> sendUpdateTotalKualitasPemb(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.InquiryHasilCanvasing)
+    Call<ParseResponseAgunan> sendDetailAplikasiGadai(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.UpdateJaminandanDokumen)
+    Call<ParseResponseReturn> UpdateJaminandanDokumen(@Body UpdateJaminandanDokumen UpdateJaminandanDokumen);
+    @POST(UriApi.prapen.InquiryJaminandanDokumen)
+    Call<ParseResponseAgunan> InqueryJaminandanDokumen(@Body ReqInquery ReqInquery);
 
 
 }
