@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <include android:id="@+id/loading" layout="@layout/loading" />
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -573,7 +573,7 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Masa Peserta Taspen/ Dapen Lainnya"
+                    app:labelText="Hasil RAC Masa Peserta Taspen"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"

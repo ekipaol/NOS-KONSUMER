@@ -7,15 +7,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
 
+import com.google.gson.JsonObject;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 import com.stepstone.stepper.viewmodel.StepViewModel;
 
 public class VerifikasiPendapatanStepper extends AbstractFragmentStepAdapter {
     private String title;
+    JsonObject dataO;
 
-    public VerifikasiPendapatanStepper(@NonNull FragmentManager fm, @NonNull Context context) {
+    public VerifikasiPendapatanStepper(@NonNull FragmentManager fm, @NonNull Context context, JsonObject dataPendaptan) {
         super(fm, context);
+        dataO = dataPendaptan;
     }
 
     @NonNull
@@ -40,7 +43,7 @@ public class VerifikasiPendapatanStepper extends AbstractFragmentStepAdapter {
     public Step createStep(int position) {
         switch (position) {
             case 0:
-                FragmentDokumenPendapatan FragmentDokumenPendapatan = new FragmentDokumenPendapatan();
+                FragmentDokumenPendapatan FragmentDokumenPendapatan = new FragmentDokumenPendapatan(dataO);
                 return FragmentDokumenPendapatan;
             case 1:
                 FragmentVerifikasiPendapatan FragmentVerifikasiPendapatan = new FragmentVerifikasiPendapatan();

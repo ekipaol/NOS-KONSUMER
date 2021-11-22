@@ -1,26 +1,52 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.canvasing;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.Error;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseFitur;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseHasilRAC;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseRAC;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseTaspen;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityHasilCanvasingBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.OnNavigationBarListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-public class HasilCanvasingActivity extends AppCompatActivity implements StepperLayout.StepperListener, OnNavigationBarListener,  View.OnClickListener {
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class HasilCanvasingActivity extends AppCompatActivity implements StepperLayout.StepperListener, OnNavigationBarListener, View.OnClickListener {
     ActivityHasilCanvasingBinding binding;
     private int startingStepPosition;
     private static final String CURRENT_STEP_POSITION_KEY = "position";
+    private ApiClientAdapter apiClientAdapter;
+    private AppPreferences appPreferences;
+    private List<MparseResponseRAC> dataRAC = new ArrayList<MparseResponseRAC>();
+    private List<MparseResponseFitur> dataFitur = new ArrayList<MparseResponseFitur>();
+    private List<MparseResponseTaspen> dataTaspen = new ArrayList<MparseResponseTaspen>();
+    private MparseResponseHasilRAC datahasilRAC = new MparseResponseHasilRAC();
+    private String rRAC, rTaspen, rFitur, rhasilRAC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +57,10 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Hasil Canvasing");
         startingStepPosition = savedInstanceState != null ? savedInstanceState.getInt(CURRENT_STEP_POSITION_KEY) : 0;
-//        loadDataLengkap();
+        apiClientAdapter = new ApiClientAdapter(this);
+        appPreferences = new AppPreferences(this);
 
-
-        //testing code, comment when done
-        binding.stepperlayout.setAdapter(new HasilCanvasingStepper(getSupportFragmentManager(), HasilCanvasingActivity.this), startingStepPosition );
-        binding.stepperlayout.setListener(HasilCanvasingActivity.this);
-        //end of testing
+        initData();
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,9 +68,67 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                 CustomDialog.DialogBackpressSaved(HasilCanvasingActivity.this);
             }
         });
+
     }
 
-    private void backgroundStatusBar(){
+    private void initData() {
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqInquery req = new ReqInquery();
+        req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().sendDetailAplikasiGadai(req);
+        call.enqueue(new Callback<ParseResponseAgunan>() {
+            @Override
+            public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
+                try {
+                    if (response.isSuccessful()) {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            Gson gson = new Gson();
+                            rTaspen = response.body().getData().get("ResponseTaspen").getAsJsonArray().toString();
+                            Type typeTaspen = new TypeToken<List<MparseResponseTaspen>>() {
+                            }.getType();
+                            rRAC = response.body().getData().get("ResponseRAC").toString();
+                            rhasilRAC = response.body().getData().get("HasilChecking").getAsJsonObject().toString();
+                            Type type = new TypeToken<List<MparseResponseRAC>>() {
+                            }.getType();
+                            String aRac = response.body().getData().get("StatusRAC").getAsString();
+                            rFitur = response.body().getData().get("ResponseFitur").getAsJsonArray().toString();
+                            Type typeFitur = new TypeToken<List<MparseResponseFitur>>() {
+                            }.getType();
+                            String aFitur = response.body().getData().get("StatusFitur").getAsString();
+                            dataRAC = gson.fromJson(rRAC, type);
+                            datahasilRAC = gson.fromJson(rhasilRAC, MparseResponseHasilRAC.class);
+                            dataFitur = gson.fromJson(rFitur, typeFitur);
+                            dataTaspen = gson.fromJson(rTaspen, typeTaspen);
+                            AppUtil.logSecure("mtag", response.body().getData().get("StatusRAC").getAsString());
+
+                            binding.stepperlayout.setAdapter(new HasilCanvasingStepper(getSupportFragmentManager(), HasilCanvasingActivity.this, dataRAC, aRac, datahasilRAC, dataFitur, aFitur, dataTaspen));
+                            binding.stepperlayout.setListener(HasilCanvasingActivity.this);
+
+                        } else {
+                            AppUtil.notiferror(HasilCanvasingActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+                    } else {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(HasilCanvasingActivity.this, findViewById(android.R.id.content), error.getMessage());
+                    }
+                } catch (
+                        Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(HasilCanvasingActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
+    }
+
+    private void backgroundStatusBar() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
@@ -89,7 +170,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
 
 
     public void success(boolean val) {
-        if(val){
+        if (val) {
             finish();
         }
     }

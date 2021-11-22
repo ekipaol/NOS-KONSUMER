@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DokumenPendapatan {
-
     @SerializedName("Simulasi_Pendapatan_Saat_Pen")
     @Expose
     private Double simulasiPendapatanSaatPen;
@@ -47,45 +46,45 @@ public class DokumenPendapatan {
     @SerializedName("Periode_Tunjangan_P3")
     @Expose
     private String periodeTunjanganP3;
-    @SerializedName("Cerminan_Gaji_dan_Tunjangan")
+    @SerializedName("Cerminan_Gaji_dan_TunjD3")
     @Expose
-    private String cerminanGajiDanTunjangan;
-    @SerializedName("Nama_Bank")
+    private String cerminanGajiDanTunjD3;
+    @SerializedName("Nama_Bank_Gaji")
     @Expose
-    private String namaBank;
-    @SerializedName("Nomor_Rek_Bank")
+    private String namaBankGaji;
+    @SerializedName("Nomor_Rek_Bank_Gaji")
     @Expose
-    private String nomorRekBank;
-    @SerializedName("Periode_Date_From")
+    private String nomorRekBankGaji;
+    @SerializedName("Periode_Date_FromGaji")
     @Expose
-    private String periodeDateFrom;
-    @SerializedName("Periode_Date_To")
+    private String periodeDateFromGaji;
+    @SerializedName("Periode_Date_ToGaji")
     @Expose
-    private String periodeDateTo;
-    @SerializedName("Total_Kredit")
+    private String periodeDateToGaji;
+    @SerializedName("Total_KreditGaji")
     @Expose
-    private Long totalKredit;
-    @SerializedName("Total_Debit")
+    private Long totalKreditGaji;
+    @SerializedName("Total_DebitGaji")
     @Expose
-    private Long totalDebit;
+    private Long totalDebitGaji;
     @SerializedName("Nama_Bank_Tunjangan")
     @Expose
-    private String NamaBankTunjangan;
+    private String namaBankTunjangan;
     @SerializedName("No_Rekening_Tunjangan")
     @Expose
-    private String NoRekeningTunjangan;
-    @SerializedName("Periode_Date_From_Tunjangan")
+    private String noRekeningTunjangan;
+    @SerializedName("Periode_Date_FromTunjangan")
     @Expose
-    private String PeriodeDateFromTunjangan;
-    @SerializedName("Periode_Date_To_Tunjangan")
+    private String periodeDateFromTunjangan;
+    @SerializedName("Periode_Date_ToTunjangan")
     @Expose
-    private String PeriodeDateToTunjangan;
-    @SerializedName("Total_Kredit_Tunjangan")
+    private String periodeDateToTunjangan;
+    @SerializedName("Total_KreditTunjangan")
     @Expose
-    private Long TotalKreditTunjangan;
-    @SerializedName("Total_Debit_Tunjangan")
+    private Long totalKreditTunjangan;
+    @SerializedName("Total_DebitTunjangan")
     @Expose
-    private Long TotalDebitTunjangan;
+    private Long totalDebitTunjangan;
 
     public Double getSimulasiPendapatanSaatPen() {
         return simulasiPendapatanSaatPen;
@@ -199,107 +198,107 @@ public class DokumenPendapatan {
         this.periodeTunjanganP3 = periodeTunjanganP3;
     }
 
-    public String getCerminanGajiDanTunjangan() {
-        return cerminanGajiDanTunjangan;
+    public String getCerminanGajiDanTunjD3() {
+        return cerminanGajiDanTunjD3;
     }
 
-    public void setCerminanGajiDanTunjangan(String cerminanGajiDanTunjangan) {
-        this.cerminanGajiDanTunjangan = cerminanGajiDanTunjangan;
+    public void setCerminanGajiDanTunjD3(String cerminanGajiDanTunjD3) {
+        this.cerminanGajiDanTunjD3 = cerminanGajiDanTunjD3;
     }
 
-    public String getNamaBank() {
-        return namaBank;
+    public String getNamaBankGaji() {
+        return namaBankGaji;
     }
 
-    public void setNamaBank(String namaBank) {
-        this.namaBank = namaBank;
+    public void setNamaBankGaji(String namaBankGaji) {
+        this.namaBankGaji = namaBankGaji;
     }
 
-    public String getNomorRekBank() {
-        return nomorRekBank;
+    public String getNomorRekBankGaji() {
+        return nomorRekBankGaji;
     }
 
-    public void setNomorRekBank(String nomorRekBank) {
-        this.nomorRekBank = nomorRekBank;
+    public void setNomorRekBankGaji(String nomorRekBankGaji) {
+        this.nomorRekBankGaji = nomorRekBankGaji;
     }
 
-    public String getPeriodeDateFrom() {
-        return periodeDateFrom;
+    public String getPeriodeDateFromGaji() {
+        return periodeDateFromGaji;
     }
 
-    public void setPeriodeDateFrom(String periodeDateFrom) {
-        this.periodeDateFrom = periodeDateFrom;
+    public void setPeriodeDateFromGaji(String periodeDateFromGaji) {
+        this.periodeDateFromGaji = periodeDateFromGaji;
     }
 
-    public String getPeriodeDateTo() {
-        return periodeDateTo;
+    public String getPeriodeDateToGaji() {
+        return periodeDateToGaji;
     }
 
-    public void setPeriodeDateTo(String periodeDateTo) {
-        this.periodeDateTo = periodeDateTo;
+    public void setPeriodeDateToGaji(String periodeDateToGaji) {
+        this.periodeDateToGaji = periodeDateToGaji;
     }
 
-    public Long getTotalKredit() {
-        return totalKredit;
+    public Long getTotalKreditGaji() {
+        return totalKreditGaji;
     }
 
-    public void setTotalKredit(Long totalKredit) {
-        this.totalKredit = totalKredit;
+    public void setTotalKreditGaji(Long totalKreditGaji) {
+        this.totalKreditGaji = totalKreditGaji;
     }
 
-    public Long getTotalDebit() {
-        return totalDebit;
+    public Long getTotalDebitGaji() {
+        return totalDebitGaji;
     }
 
-    public void setTotalDebit(Long totalDebit) {
-        this.totalDebit = totalDebit;
+    public void setTotalDebitGaji(Long totalDebitGaji) {
+        this.totalDebitGaji = totalDebitGaji;
     }
 
     public String getNamaBankTunjangan() {
-        return NamaBankTunjangan;
+        return namaBankTunjangan;
     }
 
     public void setNamaBankTunjangan(String namaBankTunjangan) {
-        NamaBankTunjangan = namaBankTunjangan;
+        this.namaBankTunjangan = namaBankTunjangan;
     }
 
     public String getNoRekeningTunjangan() {
-        return NoRekeningTunjangan;
+        return noRekeningTunjangan;
     }
 
     public void setNoRekeningTunjangan(String noRekeningTunjangan) {
-        NoRekeningTunjangan = noRekeningTunjangan;
+        this.noRekeningTunjangan = noRekeningTunjangan;
     }
 
     public String getPeriodeDateFromTunjangan() {
-        return PeriodeDateFromTunjangan;
+        return periodeDateFromTunjangan;
     }
 
     public void setPeriodeDateFromTunjangan(String periodeDateFromTunjangan) {
-        PeriodeDateFromTunjangan = periodeDateFromTunjangan;
+        this.periodeDateFromTunjangan = periodeDateFromTunjangan;
     }
 
     public String getPeriodeDateToTunjangan() {
-        return PeriodeDateToTunjangan;
+        return periodeDateToTunjangan;
     }
 
     public void setPeriodeDateToTunjangan(String periodeDateToTunjangan) {
-        PeriodeDateToTunjangan = periodeDateToTunjangan;
+        this.periodeDateToTunjangan = periodeDateToTunjangan;
     }
 
     public Long getTotalKreditTunjangan() {
-        return TotalKreditTunjangan;
+        return totalKreditTunjangan;
     }
 
     public void setTotalKreditTunjangan(Long totalKreditTunjangan) {
-        TotalKreditTunjangan = totalKreditTunjangan;
+        this.totalKreditTunjangan = totalKreditTunjangan;
     }
 
     public Long getTotalDebitTunjangan() {
-        return TotalDebitTunjangan;
+        return totalDebitTunjangan;
     }
 
     public void setTotalDebitTunjangan(Long totalDebitTunjangan) {
-        TotalDebitTunjangan = totalDebitTunjangan;
+        this.totalDebitTunjangan = totalDebitTunjangan;
     }
 }

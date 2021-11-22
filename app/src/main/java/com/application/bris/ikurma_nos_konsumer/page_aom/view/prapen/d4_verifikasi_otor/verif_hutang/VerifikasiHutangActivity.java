@@ -99,10 +99,8 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
         binding.rvListVerifHutang.setLayoutManager(new LinearLayoutManager(VerifikasiHutangActivity.this));
         binding.rvListVerifHutang.setItemAnimator(new DefaultItemAnimator());
         binding.rvListVerifHutang.setAdapter(dataHutangAdapter);
-
         binding.refresh.setOnRefreshListener(this);
         binding.refresh.setDistanceToTriggerSync(220);
-
         //disable dlu smenetara
         binding.refresh.setEnabled(false);
     }
@@ -110,7 +108,6 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
 
     public void customToolbar(){
         binding.toolbarNosearch.tvPageTitle.setText("Verifikasi Hutang");
-
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

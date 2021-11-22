@@ -9,21 +9,34 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.Error;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDsrDbrNasabahBinding ;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
-
+import com.google.gson.Gson;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.OnClickListener {
     private ActivityDsrDbrNasabahBinding binding;
+    private ApiClientAdapter apiClientAdapter;
+    private AppPreferences appPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        apiClientAdapter = new ApiClientAdapter(this);
+        appPreferences = new AppPreferences(this);
         binding = ActivityDsrDbrNasabahBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
@@ -32,6 +45,81 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         disableText();
         customToolbar();
         allOnClicks();
+        initialize();
+    }
+
+    private void initialize(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqInquery req = new ReqInquery();
+        req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().sendInquiryTotalKualitasPemb(req);
+        call.enqueue(new Callback<ParseResponseAgunan>() {
+            @Override
+            public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
+                try {
+                    if (response.isSuccessful()) {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            Gson gson = new Gson();
+                           
+                        } else {
+                            AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+                    } else {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), error.getMessage());
+                    }
+                } catch (
+                        Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
+    }
+
+    private void sendData(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqInquery req = new ReqInquery();
+        req.setUID(String.valueOf(String.valueOf(appPreferences.getUid())));
+        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().sendUpdateTotalKualitasPemb(req);
+        call.enqueue(new Callback<ParseResponseAgunan>() {
+            @Override
+            public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
+                try {
+                    if (response.isSuccessful()) {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            Gson gson = new Gson();
+
+                        } else {
+                            AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+                    } else {
+                        binding.loading.progressbarLoading.setVisibility(View.GONE);
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), error.getMessage());
+                    }
+                } catch (
+                        Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
     }
 
     private void allOnClicks(){

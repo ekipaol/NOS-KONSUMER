@@ -399,11 +399,16 @@ public class UriApi {
         public static final String updateMemo = "NOS_PRAPEN_Services/rest/D3/UpdateMemo";
 
         //D3
-        public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatan";
-        public static final String InquiryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatan";
-        public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasing";
+        public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatanD3";
+        public static final String inqueryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatanD3";
+        public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasingD3";
         public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
         public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
+        public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPemb";
+        public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
+        public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
+
+
     }
 }
 

@@ -4,12 +4,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class MparseResponseFitur {
+
     @SerializedName("Id")
     @Expose
-    private Long id;
+    private Integer id;
     @SerializedName("FITUR_LOG_Id")
     @Expose
-    private Long fITURLOGId;
+    private Integer fITURLOGId;
     @SerializedName("Value")
     @Expose
     private String value;
@@ -19,38 +20,26 @@ public class MparseResponseFitur {
     @SerializedName("Parameter_Desc")
     @Expose
     private String parameterDesc;
-    @SerializedName("Parameter_Desc_Verifikator")
-    @Expose
-    private String parameterDescVerifikator;
-    @SerializedName("Catatan_Hasil_Verifikasi")
-    @Expose
-    private String catatanHasilVerifikasi;
     @SerializedName("Created_By")
     @Expose
     private String createdBy;
     @SerializedName("Created_Date")
     @Expose
     private String createdDate;
-    @SerializedName("Modified_By")
-    @Expose
-    private String modifiedBy;
-    @SerializedName("Modified_Date")
-    @Expose
-    private String modifiedDate;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getfITURLOGId() {
+    public Integer getfITURLOGId() {
         return fITURLOGId;
     }
 
-    public void setfITURLOGId(Long fITURLOGId) {
+    public void setfITURLOGId(Integer fITURLOGId) {
         this.fITURLOGId = fITURLOGId;
     }
 
@@ -78,22 +67,6 @@ public class MparseResponseFitur {
         this.parameterDesc = parameterDesc;
     }
 
-    public String getParameterDescVerifikator() {
-        return parameterDescVerifikator;
-    }
-
-    public void setParameterDescVerifikator(String parameterDescVerifikator) {
-        this.parameterDescVerifikator = parameterDescVerifikator;
-    }
-
-    public String getCatatanHasilVerifikasi() {
-        return catatanHasilVerifikasi;
-    }
-
-    public void setCatatanHasilVerifikasi(String catatanHasilVerifikasi) {
-        this.catatanHasilVerifikasi = catatanHasilVerifikasi;
-    }
-
     public String getCreatedBy() {
         return createdBy;
     }
@@ -108,21 +81,5 @@ public class MparseResponseFitur {
 
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public String getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(String modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public String getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(String modifiedDate) {
-        this.modifiedDate = modifiedDate;
     }
 }

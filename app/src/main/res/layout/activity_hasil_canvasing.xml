@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
     <include android:id="@+id/loading_circle" layout="@layout/loading"/>
-
+    <include android:id="@+id/loading" layout="@layout/loading" />
     <com.stepstone.stepper.StepperLayout
         android:id="@+id/stepperlayout"
         android:orientation="vertical"

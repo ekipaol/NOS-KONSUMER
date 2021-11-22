@@ -101,6 +101,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcct
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
@@ -109,8 +110,10 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqVali
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
@@ -816,6 +819,14 @@ public interface ApiInterface {
     Call<ParseResponse> batalPembiayaanVerifikator(@Body ReqBatalAplikasi ReqBatalAplikasi);
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.inqueryDataPendapatan)
+    Call<ParseResponseAgunan> inqueryDataPendapatan(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.UpdateDataPendapatan)
+    Call<ParseResponseReturn> UpdateDataPendapatan(@Body UpdateDataPendapatan UpdateDataPendapatan);
+    @POST(UriApi.prapen.InquiryDataPendapatanD4)
+    Call<ParseResponseAgunan> InquiryDataPendapatanD4(@Body ReqInquery ReqInquery);
+
 
 }
 
