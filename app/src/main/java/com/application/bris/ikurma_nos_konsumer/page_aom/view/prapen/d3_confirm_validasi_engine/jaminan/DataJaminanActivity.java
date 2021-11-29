@@ -51,7 +51,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class dataJaminanActivity extends AppCompatActivity implements View.OnClickListener, CameraListener {
+public class DataJaminanActivity extends AppCompatActivity implements View.OnClickListener, CameraListener {
     private ActivityDataJaminanBinding binding;
     List <JaminandanDokumen> jd;
     JaminandanDokumen doc = new JaminandanDokumen();
@@ -98,7 +98,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InquiryJaminandanDokumen(req);
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InqueryJaminandanDokumen(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
@@ -162,7 +162,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanKTP.getFileName().substring(JDJaminanKTP.getFileName().length() - 3, JDJaminanKTP.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanKTP.setFileName("fotoktp.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanKTP.getImg(), binding.ivKtpNasabah, JDJaminanKTP.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanKTP.getImg(), binding.ivKtpNasabah, JDJaminanKTP.getFileName());
                             } else {
                                 DataJaminanKTP.setFileName("fotoktp.png");
                                 AppUtil.convertBase64ToImage(JDJaminanKTP.getImg(), binding.ivKtpNasabah);
@@ -181,7 +181,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanKTPPasangan.getFileName().substring(JDJaminanKTPPasangan.getFileName().length() - 3, JDJaminanKTPPasangan.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan, JDJaminanKTPPasangan.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan, JDJaminanKTPPasangan.getFileName());
                             } else {
                                 DataJaminanKTPPasangan.setFileName("ktppasangan.png");
                                 AppUtil.convertBase64ToImage(JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan);
@@ -199,7 +199,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanNPWP.getFileName().substring(JDJaminanNPWP.getFileName().length() - 3, JDJaminanNPWP.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanNPWP.setFileName("npwp.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanNPWP.getImg(), binding.ivNpwp, JDJaminanNPWP.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanNPWP.getImg(), binding.ivNpwp, JDJaminanNPWP.getFileName());
                             } else {
                                 DataJaminanNPWP.setFileName("npwp.png");
                                 AppUtil.convertBase64ToImage(JDJaminanNPWP.getImg(), binding.ivNpwp);
@@ -216,7 +216,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanAsetAKAD.getFileName().substring(JDJaminanAsetAKAD.getFileName().length() - 3, JDJaminanAsetAKAD.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanAsetAkad.setFileName("assetakad.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad, JDJaminanAsetAKAD.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad, JDJaminanAsetAKAD.getFileName());
                             } else {
                                 DataJaminanAsetAkad.setFileName("assetakad.png");
                                 AppUtil.convertBase64ToImage(JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad);
@@ -233,7 +233,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanFormAplikasi.getFileName().substring(JDJaminanFormAplikasi.getFileName().length() - 3, JDJaminanFormAplikasi.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi, JDJaminanFormAplikasi.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi, JDJaminanFormAplikasi.getFileName());
                             } else {
                                 DataJaminanFormAplikasi.setFileName("formaplikasi.png");
                                 AppUtil.convertBase64ToImage(JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi);
@@ -250,7 +250,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanSKPensiun.getFileName().substring(JDJaminanSKPensiun.getFileName().length() - 3, JDJaminanSKPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanSKPensiun.setFileName("skpensiun.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPensiun.getImg(), binding.ivSkPensiun, JDJaminanSKPensiun.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKPensiun.getImg(), binding.ivSkPensiun, JDJaminanSKPensiun.getFileName());
                             } else {
                                 DataJaminanSKPensiun.setFileName("skpensiun.png");
                                 AppUtil.convertBase64ToImage(JDJaminanSKPensiun.getImg(), binding.ivSkPensiun);
@@ -267,7 +267,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanSKPengangkatan.getFileName().substring(JDJaminanSKPengangkatan.getFileName().length() - 3, JDJaminanSKPengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan, JDJaminanSKPengangkatan.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan, JDJaminanSKPengangkatan.getFileName());
                             } else {
                                 DataJaminanSKPengangkatan.setFileName("skpengangkatan.png");
                                 AppUtil.convertBase64ToImage(JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan);
@@ -285,7 +285,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanSKTerakhir.getFileName().substring(JDJaminanSKTerakhir.getFileName().length() - 3, JDJaminanSKTerakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir, JDJaminanSKTerakhir.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir, JDJaminanSKTerakhir.getFileName());
                             } else {
                                 DataJaminanSKTerakhir.setFileName("skterakhir.png");
                                 AppUtil.convertBase64ToImage(JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir);
@@ -303,7 +303,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanSuratRekomendasiInstansi.getFileName().substring(JDJaminanSuratRekomendasiInstansi.getFileName().length() - 3, JDJaminanSuratRekomendasiInstansi.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi, JDJaminanSuratRekomendasiInstansi.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi, JDJaminanSuratRekomendasiInstansi.getFileName());
                             } else {
                                 DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.png");
                                 AppUtil.convertBase64ToImage(JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi);
@@ -320,7 +320,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                             if (JDJaminanIDCard.getFileName().substring(JDJaminanIDCard.getFileName().length() - 3, JDJaminanIDCard.getFileName().length()).equalsIgnoreCase("pdf")) {
                                 DataJaminanIDCard.setFileName("idcard.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(dataJaminanActivity.this, JDJaminanIDCard.getImg(), binding.ivIdcard, JDJaminanIDCard.getFileName());
+                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanIDCard.getImg(), binding.ivIdcard, JDJaminanIDCard.getFileName());
                             } else {
                                 DataJaminanIDCard.setFileName("idcard.png");
                                 AppUtil.convertBase64ToImage(JDJaminanIDCard.getImg(), binding.ivIdcard);
@@ -331,18 +331,18 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                         }
 
                     } else {
-                        AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                        AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 } else {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
                     Error error = ParseResponseError.confirmEror(response.errorBody());
-                    AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), error.getMessage());
+                    AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), error.getMessage());
                 }
             }
         @Override
         public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
             binding.loading.progressbarLoading.setVisibility(View.GONE);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
         }
     });
 }
@@ -401,12 +401,12 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             finish();
                         } else {
-                            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
                     } else {
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         Error error = ParseResponseError.confirmEror(response.errorBody());
-                        AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), error.getMessage());
+                        AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), error.getMessage());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -416,7 +416,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onFailure(Call<ParseResponseReturn> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
 
@@ -494,52 +494,52 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.iv_ktp_nasabah:
             case R.id.btn_ktp_nasabah:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "fotoktp";
                 break;
             case R.id.iv_asset_akad:
             case R.id.btn_asset_akad:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "assetakad";
                 break;
             case R.id.iv_form_applikasi:
             case R.id.btn_form_applikasi:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "formaplikasi";
                 break;
             case R.id.iv_idcard:
             case R.id.btn_idcard:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "idcard";
                 break;
             case R.id.iv_npwp:
             case R.id.btn_npwp:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "npwp";
                 break;
             case R.id.iv_ktp_pasangan:
             case R.id.btn_ktp_pasangan:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "ktppasangan";
                 break;
             case R.id.iv_sk_pengangkatan:
             case R.id.btn_sk_pengangkatan:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "skpengangkatan";
                 break;
             case R.id.iv_sk_pensiun:
             case R.id.btn_sk_pensiun:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "skpensiun";
                 break;
             case R.id.iv_sk_terakhir:
             case R.id.btn_sk_terakhir:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "skterakhir";
                 break;
             case R.id.iv_surat_instansi:
             case R.id.btn_surat_instansi:
-                BSUploadFile.displayWithTitle(dataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "datainstansi";
                 break;
             case R.id.ll_btn_send:
@@ -552,32 +552,32 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
     private boolean validasi() {
         if (binding.etNomorSkPengangkatan.getText().toString().trim().isEmpty() || binding.etNomorSkPengangkatan.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfNomorSkPengangkatan.setError(binding.tfNomorSkPengangkatan.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPengangkatan.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPengangkatan.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
         } else if (binding.etNomorSkPangkatTerakhir.getText().toString().trim().isEmpty() || binding.etNomorSkPangkatTerakhir.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfNomorSkPangkatTerakhir.setError(binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
         } else if (binding.etNomorSkPensiun.getText().toString().trim().isEmpty() || binding.etNomorSkPensiun.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfNomorSkPensiun.setError(binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
         } else if (binding.etTanggalTerbitSk1.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk1.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTanggalTerbitSk1.setError(binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
         } else if (binding.etTanggalTerbitSk2.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk2.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTanggalTerbitSk2.setError(binding.tfTanggalTerbitSk2.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk2.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk2.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
         } else if (binding.etTanggalTerbitSk3.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk3.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTanggalTerbitSk3.setError(binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
 
 
@@ -623,7 +623,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.btnSkPensiun.setVisibility(View.GONE);
             binding.btnSkTerakhir.setVisibility(View.GONE);
             binding.btnSuratInstansi.setVisibility(View.GONE);
-            AppUtil.notiferror(dataJaminanActivity.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
+            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
             sendDataJaminan();
             return false;
         }
@@ -643,7 +643,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
             }
         };
 
-        dpSK = new DatePickerDialog(dataJaminanActivity.this, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calLahir.get(Calendar.YEAR),
+        dpSK = new DatePickerDialog(DataJaminanActivity.this, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calLahir.get(Calendar.YEAR),
                 calLahir.get(Calendar.MONTH), calLahir.get(Calendar.DAY_OF_MONTH));
         dpSK.getDatePicker().setMaxDate(calLahir.getTimeInMillis());
         dpSK.show();

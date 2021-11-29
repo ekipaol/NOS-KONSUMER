@@ -14,8 +14,6 @@ import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.ReqUid;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -24,11 +22,7 @@ import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDetilAplikasiBinding;
 import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDetailAplikasi;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
@@ -42,7 +36,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_ent
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan.ActivityDokumenPendapatan;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.dataJaminanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.kalkulatorsimulasiangsuran;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_dsr_dbr.Activity_DSR_DBR_Nasabah;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity;
@@ -297,7 +291,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_jaminan))){
-            Intent it = new Intent(this, dataJaminanActivity.class);
+            Intent it = new Intent(this, DataJaminanActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }

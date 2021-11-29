@@ -109,7 +109,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InquiryDataPendapatan(req);
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().inqueryDataPendapatan(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {

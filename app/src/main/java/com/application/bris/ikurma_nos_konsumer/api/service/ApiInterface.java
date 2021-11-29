@@ -821,6 +821,27 @@ public interface ApiInterface {
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.lanjutPembiayaanKeD5)
+    Call<ParseResponse> lanjutPembiayaanKeD5(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.batalPembiayaanOtorVerifikator)
+    Call<ParseResponse> batalPembiayaanOtorVerifikator(@Body ReqBatalAplikasi ReqBatalAplikasi);
+    @POST(UriApi.prapen.kembalikanPembiayaanOtorVerifikator)
+    Call<ParseResponse> kembalikanPembiayaanOtorVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.lanjutPembiayaanKePemutus)
+    Call<ParseResponse> lanjutPembiayaanKePemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.batalPembiayaanD5)
+    Call<ParseResponse> batalPembiayaanD5(@Body ReqBatalAplikasi ReqBatalAplikasi);
+    @POST(UriApi.prapen.kembalikanPembiayaanOtorMarketing)
+    Call<ParseResponse> kembalikanPembiayaanOtorMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.lanjutPembiayaanKeAkad)
+    Call<ParseResponse> lanjutPembiayaanKeAkad(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.batalPembiayaanD6)
+    Call<ParseResponse> batalPembiayaanD6(@Body ReqBatalAplikasi ReqBatalAplikasi);
+    @POST(UriApi.prapen.kembalikanD6)
+    Call<ParseResponse> kembalikanD6(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
     @POST(UriApi.prapen.inqueryDataPendapatan)
     Call<ParseResponseAgunan> inqueryDataPendapatan(@Body ReqInquery ReqInquery);
     @POST(UriApi.prapen.UpdateDataPendapatan)

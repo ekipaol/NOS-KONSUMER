@@ -393,6 +393,22 @@ public class UriApi {
         public static final String batalPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
 
 
+        //D4.1
+        public static final String lanjutPembiayaanKeD5 = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
+        public static final String kembalikanPembiayaanOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
+        public static final String batalPembiayaanOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+
+        //D5
+        public static final String lanjutPembiayaanKePemutus = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
+        public static final String kembalikanPembiayaanOtorMarketing = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
+        public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+
+        //D6
+        public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
+        public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
+        public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+
+
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
         public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";

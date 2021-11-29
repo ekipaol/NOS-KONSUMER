@@ -632,7 +632,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         if (val){
             Intent intent = new Intent(DataPembiayaanActivity.this, DetilAplikasiActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            intent.putExtra("status","Initial Data Entry");
+            intent.putExtra("status","Data Entry");
             intent.putExtra("statusId","D.1");
             intent.putExtra("idAplikasi",idAplikasi);
             startActivity(intent);
