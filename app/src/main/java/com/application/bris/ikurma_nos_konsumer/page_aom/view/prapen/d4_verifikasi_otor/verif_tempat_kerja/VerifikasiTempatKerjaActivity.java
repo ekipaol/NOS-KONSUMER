@@ -80,6 +80,11 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         setContentView(view);
         backgroundStatusBar();
         disableEditText();
+
+        //disable all edittexts and button
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
+
         loadData();
         AppUtil.toolbarRegular(this, "Verifikasi Tempat Kerja");
     }

@@ -208,7 +208,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         });
     }
 
-    public void updateMemo(SweetAlertDialog dialog){
+    public void updateMemo(SweetAlertDialog dialog,String namaAktifitas){
         dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
         dialog.setTitleText("Memproses Memo");
         dialog.setContentText("Harap Tunggu");
@@ -226,7 +226,16 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                 try {
                     if (response.isSuccessful()){
                         if(response.body().getStatus().equalsIgnoreCase("00")){
-                            lanjutPembiayaan(dialog);
+                            if(namaAktifitas.equalsIgnoreCase("setuju")){
+                                lanjutPembiayaan(dialog);
+                            }
+                            else if(namaAktifitas.equalsIgnoreCase("kembalikan")){
+                                kembalikanPembiayaan(dialog);
+                            }
+                            else if(namaAktifitas.equalsIgnoreCase("tolak")){
+                                batalPembiayaan(dialog);
+                            }
+
                         }
                         else{
                             dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
@@ -270,6 +279,15 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.4")){
             call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeOtorVerifikator(req);
         }
+        else if(statusId.equalsIgnoreCase("d.4 otor")){
+            call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeD5(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().lanjutPembiayaanKePemutus(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeAkad(req);
+        }
 
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -287,10 +305,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                                 @Override
                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
                                     dialog.dismissWithAnimation();
-                                    finish();
-                                    overridePendingTransition(0, 0);
-                                    startActivity(getIntent());
-                                    overridePendingTransition(0, 0);
+                                    Intent intent=new Intent(MemoActivity.this, ListAplikasiActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+                                    startActivity(intent);
                                 }
                             });
                         }
@@ -334,6 +351,15 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         }
         else if(statusId.equalsIgnoreCase("d.4")){
             call = apiClientAdapter.getApiInterface().batalPembiayaanVerifikator(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.4 otor")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaanOtorVerifikator(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaanD5(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaanD6(req);
         }
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -398,6 +424,16 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.4")){
             call = apiClientAdapter.getApiInterface().kembalikanPembiayaanVerifikator(req);
         }
+        else if(statusId.equalsIgnoreCase("d.4 otor")){
+            call = apiClientAdapter.getApiInterface().kembalikanPembiayaanOtorVerifikator(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().kembalikanPembiayaanOtorMarketing(req);
+        }
+        else if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().kembalikanD6(req);
+        }
+
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -407,7 +443,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
 
                             dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             dialog.setTitleText("Berhasil");
-                            dialog.setContentText("Aplikasi Berhasil Dikembalikan ke Tahap IDE\n\n");
+                            dialog.setContentText("Aplikasi Berhasil Dikembalikan ke Tahap Sebelumnya?\n\n");
                             dialog.setConfirmText("OK");
                             dialog.showCancelButton(false);
                             dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -521,7 +557,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                     dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            updateMemo(dialog);
+                            updateMemo(dialog,"setuju");
                         }
                     });
                     dialog.show();
@@ -558,20 +594,26 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         binding.bottomSheet.btKembalikan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                    AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                }
+                else{
                     SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
                     dialog.setTitleText("Konfirmasi");
-                    dialog.setContentText("Apakah anda yakin ingin mengembalikan aplikasi ke tahap IDE?\n\n");
+                    dialog.setContentText("Apakah anda yakin ingin mengembalikan aplikasi ke tahap sebelumnya?\n\n");
                     dialog.setConfirmText("Ya");
                     dialog.setCanceledOnTouchOutside(false);
                     dialog.setCancelText("Batal");
                     dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                         @Override
                         public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            kembalikanPembiayaan(dialog);
+//                            kembalikanPembiayaan(dialog);
+                            updateMemo(dialog,"kembalikan");
                         }
                     });
                     dialog.show();
+                }
+
                 }
 
 

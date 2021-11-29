@@ -87,10 +87,10 @@
     <string name="d05_inisialisasi">Inisialisasi - Marketing</string>
     <string name="d1_data_entry">Data Entry</string>
     <string name="d3_confirm_validasi_engine">Confirm Validasi Engine</string>
-    <string name="d4_verifikasi_otor">Verifikasi + Otor</string>
+    <string name="d4_verifikasi_otor">D4 Verifikasi</string>
     <string name="d5_confirm_verifikasi">Confirm Verifikasi</string>
-    <string name="d6_menunggu_putusan">Menunggu Putusan Pemutus</string>
-    <string name="g1_asesoir_dan_akad">Persiapan Akad dan Asesoir</string>
+    <string name="d6_menunggu_putusan">Pemutus</string>
+    <string name="g1_asesoir_dan_akad">Akad dan Assesoir</string>
     <string name="g3_upload_dokumen">Upload Dokumen</string>
 
     <!--ID FLOW-->
@@ -98,6 +98,7 @@
     <string name="id_d1_data_entry">D.1</string>
     <string name="id_d3_confirm_validasi_engine">D.3</string>
     <string name="id_d4_verifikasi_otor">D.4</string>
+    <string name="id_d4_otor">D.4 Otor</string>
     <string name="id_d5_confirm_verifikasi">D.5</string>
     <string name="id_d6_menunggu_putusan">D.6</string>
     <string name="id_g1_asesoir_dan_akad">G.1</string>

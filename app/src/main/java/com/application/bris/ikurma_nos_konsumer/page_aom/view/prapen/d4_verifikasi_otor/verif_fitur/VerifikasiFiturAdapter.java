@@ -50,7 +50,7 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
         holder.tv_hasil.setText(data.get(position).getValue());
 //        holder.tv_ketentuan.setText(data.get(position).getValue());
 
-        onClicks(position);
+//        onClicks(position);
 
 
 
@@ -107,6 +107,8 @@ public class VerifikasiFiturAdapter extends RecyclerView.Adapter<VerifikasiFitur
             et_catatan=binding.etCatatan;
             tv_ketentuan=binding.tvKetentuan;
             tv_hasil=binding.tvHasil;
+
+            et_catatan.setFocusable(false);
 
         }
 

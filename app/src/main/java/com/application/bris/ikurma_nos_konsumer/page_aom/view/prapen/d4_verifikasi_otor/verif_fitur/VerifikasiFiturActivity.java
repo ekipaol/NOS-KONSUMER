@@ -159,9 +159,9 @@ public class VerifikasiFiturActivity extends AppCompatActivity implements Generi
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String listDataString = response.body().getData().get("ParamRACDetail").toString();
+                        String listDataString = response.body().getData().get("ParamFiturDetail").toString();
                         Gson gson = new Gson();
-                        Type type = new TypeToken<List<DataVerifikasiRac>>() {
+                        Type type = new TypeToken<List<DataVerifikasiFitur>>() {
                         }.getType();
                         dataFitur =  gson.fromJson(listDataString, type);
 

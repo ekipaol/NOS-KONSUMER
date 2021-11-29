@@ -98,7 +98,7 @@ public class dataJaminanActivity extends AppCompatActivity implements View.OnCli
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InqueryJaminandanDokumen(req);
+        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InquiryJaminandanDokumen(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {

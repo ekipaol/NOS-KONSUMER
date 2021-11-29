@@ -40,7 +40,9 @@
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
                 android:layout_weight="12"
-                android:layout_marginTop="-60dp">
+                android:layout_marginTop="-60dp"
+                android:visibility="gone"
+                >
 
                 <Button
                     android:id="@+id/btn_simpan_verif_rac"

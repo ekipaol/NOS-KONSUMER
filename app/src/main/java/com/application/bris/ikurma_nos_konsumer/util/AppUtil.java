@@ -44,6 +44,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -145,6 +146,33 @@ else if (view instanceof TextFieldBoxes) {
 
     }
 }
+
+    }
+
+    public static void disableButtons(View viewInduk){
+
+        if(viewInduk instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) viewInduk;
+            for (int i = 0, count = vg.getChildCount(); i < count; ++i) {
+                View view = vg.getChildAt(i);
+                disableButtons(view);
+                if (view instanceof Button) {
+                    ((Button) view).setVisibility(View.GONE);
+
+                }
+                else if (view instanceof TextFieldBoxes) {
+//    ((TextFieldBoxes) view).setEnabled(false);
+//    ((TextFieldBoxes) view).setClickable(false);
+                    ((TextFieldBoxes) view).setOnClickListener(null);
+//    ((TextFieldBoxes) view).getEndIconImageButton(false);
+                    ((TextFieldBoxes) view).removeEndIcon();
+
+
+                }
+
+
+            }
+        }
 
     }
 

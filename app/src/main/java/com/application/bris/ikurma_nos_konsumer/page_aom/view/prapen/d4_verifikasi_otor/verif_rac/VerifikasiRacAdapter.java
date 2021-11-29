@@ -52,7 +52,7 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
 //        holder.tv_ketentuan.setText(data.get(position).getKetentuan());
         holder.tv_hasil.setText(data.get(position).getValue());
 
-        onClicks(position);
+//        onClicks(position);
 
 
 
@@ -112,6 +112,9 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
             et_catatan=binding.etCatatan;
             tv_ketentuan=binding.tvKetentuan;
             tv_hasil=binding.tvHasil;
+
+            //disable text
+            et_catatan.setFocusable(false);
 
         }
 
