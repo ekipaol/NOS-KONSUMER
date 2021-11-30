@@ -98,6 +98,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
@@ -107,6 +108,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanj
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
@@ -763,6 +765,8 @@ public interface ApiInterface {
     Call<ParseResponseArr> dropdownMitraFronting(@Body EmptyRequest EmptyRequest);
     @POST(UriApi.prapen.validasiPayroll)
     Call<ParseResponse> validasiPayroll(@Body ReqAcctNumber ReqAcctNumber);
+    @POST(UriApi.prapen.validasiLngp)
+    Call<ParseResponse> validasiLngp(@Body ReqValidasiLngp ReqValidasiLngp);
     @POST(UriApi.prapen.inquiryDetailAplikasi)
     Call<ParseResponse> inquiryDetailAplikasi(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
     @POST(UriApi.prapen.validasiDukcapil)
@@ -858,6 +862,15 @@ public interface ApiInterface {
     Call<ParseResponseReturn> UpdateJaminandanDokumen(@Body UpdateJaminandanDokumen UpdateJaminandanDokumen);
     @POST(UriApi.prapen.InquiryJaminandanDokumen)
     Call<ParseResponseAgunan> InqueryJaminandanDokumen(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.inquiryAkadMmq)
+    Call<ParseResponse> inquiryAkadMmq(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.inquiryAkadMurabahahIjarah)
+    Call<ParseResponse> inquiryAkadMurabahahIjarah(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.updateAkadMmq)
+    Call<ParseResponse> updateAkadMmq(@Body ReqAkadAsesoir ReqAkadAsesoir);
+    @POST(UriApi.prapen.updateAkadMurabahahIjarah)
+    Call<ParseResponse> updateAkadMurabahahIjarah(@Body ReqAkadAsesoir ReqAkadAsesoir);
 
 
 }

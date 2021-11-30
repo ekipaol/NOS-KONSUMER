@@ -107,7 +107,7 @@ public class AppPreferences {
     }
 
     public String getNama (){
-        return AppUtil.decrypt(sharedPref.getString(Constants.Login.NAMA, "nama"));
+        return AppUtil.decrypt(sharedPref.getString(Constants.Login.NAMA, AppUtil.encrypt("nama")));
     }
 
     public void setKodeAo (String data){

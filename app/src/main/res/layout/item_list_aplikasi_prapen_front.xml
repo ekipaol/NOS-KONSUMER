@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/cv_pipeline"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="6dp"
+    app:cardElevation="2dp"
+    android:elevation="10dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/fr_image">
+            <ImageView
+                android:id="@+id/iv_foto"
+                android:src="@drawable/banner_placeholder"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/blacktransparent_image">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="{Status}"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorWhite"
+                        android:textAlignment="center"
+                        android:paddingRight="12dp"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/roundprimary"/>
+
+                    <TextView
+                        android:id="@+id/tv_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="{Nama Nasabah}"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="5dp"
+                        android:layout_alignParentBottom="true"
+                        android:textColor="@color/colorWhite"/>
+                </RelativeLayout>
+
+            </FrameLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_info_pipeline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/fr_image"
+            android:paddingLeft="6dp">
+            <TextView
+                android:id="@+id/tv_plafond"
+                android:layout_below="@+id/fr_image"
+                android:text="{Plafond}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textSize="12sp"
+                android:textColor="#595959"/>
+
+            <TextView
+                android:id="@+id/tv_tenor"
+                android:text="{Tenor}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textSize="12sp"
+                android:textColor="#595959"/>
+
+            <TextView
+                android:id="@+id/tv_waktu"
+                android:visibility="gone"
+                android:text="{Waktu Pengajuan}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_proses"
+            android:layout_below="@+id/fr_image"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:text="Proses"
+            android:textColor="#595959"
+            android:textAllCaps="false"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/shapeborder"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

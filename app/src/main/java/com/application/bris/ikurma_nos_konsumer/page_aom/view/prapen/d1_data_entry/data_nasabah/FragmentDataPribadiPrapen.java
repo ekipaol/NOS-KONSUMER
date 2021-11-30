@@ -387,7 +387,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                 binding.loadingDukcapil.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content),"Ddata DUKCAPIL Sudah Sesuai");
+                        AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content),"Data DUKCAPIL Sudah Sesuai");
                     }
                     else{
                         AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
@@ -586,7 +586,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         binding.tfStatusNikahSaatIni.setOnClickListener(this);
 
         binding.etStatusNikahKtp.setOnClickListener(this);
-        binding.etStatusNikahKtp.setOnClickListener(this);
+        binding.tfStatusNikahKtp.setOnClickListener(this);
 
         binding.etTanggalLahirPasangan.setOnClickListener(this);
         binding.tfTanggalLahirPasangan.setOnClickListener(this);

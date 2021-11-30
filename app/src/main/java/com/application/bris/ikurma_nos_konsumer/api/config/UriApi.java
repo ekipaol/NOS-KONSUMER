@@ -362,6 +362,7 @@ public class UriApi {
         public static final String updateDataInstansiDapen = "NOS_PRAPEN_Services/rest/D1/UpdateInstansidanDapen";
         public static final String inquiryDataInstansiDapen = "NOS_PRAPEN_Services/rest/D1/InquiryInstansidanDapen";
         public static final String validasiPayroll = "NOS_PRAPEN_Services/rest/D1/ValidasiNoRekPayroll";
+        public static final String validasiLngp = "NOS_PRAPEN_Services/rest/D1/ValidasiLNGP";
         public static final String validasiDukcapil = "NOS_PRAPEN_Services/rest/D1/ValidasiDataDukcapil";
         public static final String inquiryNamaKodeAo = "NOS_PRAPEN_Services/rest/D1/InquiryNamaKodeAO";
         public static final String updateDataMarketing = "NOS_PRAPEN_Services/rest/D1/UpdateMitraMarketing";
@@ -379,6 +380,14 @@ public class UriApi {
         public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutVerifikator";
         public static final String kembalikanPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBackIDEB";
         public static final String batalPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBatalPembiayaan";
+        public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatanD3";
+        public static final String inqueryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatanD3";
+        public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasingD3";
+        public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
+        public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
+        public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPemb";
+        public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
+        public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
 
         //D4
         public static final String inquiryRac = "NOS_PRAPEN_Services/rest/D4/InquiryParamRAC";
@@ -408,21 +417,20 @@ public class UriApi {
         public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
         public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
 
+        //G1
+        public static final String inquiryAkadMmq = "NOS_PRAPEN_Services/rest/G1/InqAkadMMQ";
+        public static final String inquiryAkadMurabahahIjarah = "NOS_PRAPEN_Services/rest/G1/InqAkadMurabahahdanIjarah";
+        public static final String updateAkadMurabahahIjarah = "NOS_PRAPEN_Services/rest/G1/UpdateAkadMurabahahdanIjarah";
+        public static final String updateAkadMmq = "NOS_PRAPEN_Services/rest/G1/UpdateAkadMMQ";
+
+
 
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
         public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";
         public static final String updateMemo = "NOS_PRAPEN_Services/rest/D3/UpdateMemo";
 
-        //D3
-        public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatanD3";
-        public static final String inqueryDataPendapatan = "NOS_PRAPEN_Services/rest/D3/InquiryDataPendapatanD3";
-        public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasingD3";
-        public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
-        public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
-        public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPemb";
-        public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
-        public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
+
 
 
     }

@@ -17,7 +17,10 @@ public class DataMarketing   {
     @SerializedName("Nama_AO")
     @Expose
     private String namaAO;
-    @SerializedName("Kode_AO2")
+    @SerializedName("Nama_AO_Referral")
+    @Expose
+    private String namaAOReferal;
+    @SerializedName("Kode_AO_Referral")
     @Expose
     private String kodeAO2;
     @SerializedName("Kode_Cabang_Pembukuan")
@@ -35,6 +38,14 @@ public class DataMarketing   {
     @SerializedName("UID")
     @Expose
     private String uid;
+
+    public String getNamaAOReferal() {
+        return namaAOReferal;
+    }
+
+    public void setNamaAOReferal(String namaAOReferal) {
+        this.namaAOReferal = namaAOReferal;
+    }
 
     public Long getApplicationId() {
         return applicationId;

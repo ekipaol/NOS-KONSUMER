@@ -638,6 +638,7 @@
                     app:iconSignifier="@drawable/ic_postcode"
                     app:isResponsiveIconColor="true"
                     app:labelText="Memperoleh Kiriman Rutin"
+                    app:alwaysShowHint="true"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"

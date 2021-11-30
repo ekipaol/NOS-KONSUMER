@@ -164,7 +164,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvProduk.setText(dataDetailAplikasi.getTypeProduk());
         binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu());
         binding.tvPlafond.setText(AppUtil.parseRupiah(dataDetailAplikasi.getPlafond()));
-        binding.tvIdaplikasi.setText(dataDetailAplikasi.getApplicationNo());
+        binding.tvIdaplikasi.setText("ID Aplikasi : "+dataDetailAplikasi.getApplicationId());
+        binding.tvNoaplikasi.setText(dataDetailAplikasi.getApplicationNo());
         binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
 
@@ -384,6 +385,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_akad))){
             Intent it = new Intent(this, DataAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("akad",dataDetailAplikasi.getAkad());
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_dokumen_persiapan_akad))){
@@ -515,11 +517,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         req.setApplicationId(Long.valueOf(idAplikasi));
         req.setUID(String.valueOf(appPreferences.getUid()));
 
-        if(appPreferences.getFidRole()==100){
-            req.setMitraFronting(false);
+        //role non organik
+        if(AppUtil.isPegawaiMitra(appPreferences.getFidRole())){
+            req.setMitraFronting(true);
         }
         else{
-            req.setMitraFronting(true);
+            req.setMitraFronting(false);
         }
 
         dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
@@ -580,7 +583,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     @Override
     protected void onResume() {
         super.onResume();
-        loadDetailAplikasi();
+//        loadDetailAplikasi();
         binding.loading.setVisibility(View.GONE);
     }
 

@@ -140,8 +140,8 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                 }
                 break;
             case R.id.btn_cek_data_ao:
-               if(binding.etKodeAo.getText().toString().isEmpty()||binding.etKodeAoReferal.getText().toString().isEmpty()){
-                   AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content),"Harap Isi Kode AO/Referal Terlebih Dahulu");
+               if(binding.etKodeAo.getText().toString().isEmpty()){
+                   AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content),"Harap Isi Kode AO");
                }
                else {
                    inquiryNamaKodeAo();
@@ -349,7 +349,10 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        inquiryNamaKodeAoReferal();
+        if(!binding.etKodeAoReferal.getText().toString().isEmpty()){
+            inquiryNamaKodeAoReferal();
+        }
+
     }
 
     public void inquiryNamaKodeAoReferal() {
@@ -395,6 +398,7 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         req.setKodeAO(binding.etKodeAo.getText().toString());
         req.setKodeAO2(binding.etKodeAoReferal.getText().toString());
         req.setNamaAO(binding.etNamaAo.getText().toString());
+        req.setNamaAOReferal(binding.etNamaAoReferal.getText().toString());
         req.setKodeCabangPembukuan(binding.etKodeCabangPembukuan.getText().toString());
         req.setKodeCabangReferral(binding.etKodeCabangReferal.getText().toString());
         req.setMitraFronting(binding.etMitraFronting.getText().toString());

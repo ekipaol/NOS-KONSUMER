@@ -85,6 +85,15 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_no_aplikasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{No Aplikasi}"
+                    android:padding="3dp"
+                    android:textSize="16dp"
+                    />
+
+                <TextView
                     android:id="@+id/tv_plafond"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

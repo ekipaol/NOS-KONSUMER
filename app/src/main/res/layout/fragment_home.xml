@@ -239,7 +239,7 @@
                             android:id="@+id/tv_pipeline"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Pipeline"
+                            android:text="Quick Access Aplikasi"
                             android:textSize="18dp"
                             android:paddingLeft="10dp"
                             android:textColor="@color/colorBlackHeader"
@@ -327,6 +327,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_pipeline"
                     android:animateLayoutChanges="true"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout

@@ -149,6 +149,30 @@ else if (view instanceof TextFieldBoxes) {
 
     }
 
+    public static boolean isPegawaiOrganik(int fidRole){
+        //- 149, Consumer Business Relation Manager : tom.holland
+        //- 150, Consumer Business Staff : hayamwuruk
+       switch (fidRole){
+           case 149:
+           case 150:
+               return true;
+           default :
+               return false;
+       }
+    }
+
+    public static boolean isPegawaiMitra(int fidRole){
+        //- 151, Consumer Financing Eksekutif : cfe010101
+        //- 152, Sales Force : sf010101
+        switch (fidRole){
+            case 151:
+            case 152:
+                return true;
+            default :
+                return false;
+        }
+    }
+
     public static void disableButtons(View viewInduk){
 
         if(viewInduk instanceof ViewGroup) {

@@ -18,6 +18,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataPensiunanBinding;
@@ -420,7 +421,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 openDialogYaTidak(binding.tfMenggunakanLngp.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //NASABAH BSI
             case R.id.et_nasabah_bsi:
             case R.id.tf_nasabah_bsi:
                 openDialogYaTidak(binding.tfNasabahBsi.getLabelText());
@@ -432,31 +433,31 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 openDialogYaTidak(binding.tfDapatBergerak.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //DALAM PENGAWASAN
             case R.id.et_dalam_pengawasan:
             case R.id.tf_dalam_pengawasan:
                 openDialogYaTidak(binding.tfDalamPengawasan.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //RIWAYAT
             case R.id.et_memiliki_riwayat:
             case R.id.tf_memiliki_riwayat:
                 openDialogYaTidak(binding.tfMemilikiRiwayat.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //KELUARGA LAIN
             case R.id.et_tinggal_dengan_keluarga_lain:
             case R.id.tf_tinggal_dengan_keluarga_lain:
                 openDialogYaTidak(binding.tfTinggalDenganKeluargaLain.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //USAHA SAMPINGAN
             case R.id.et_usaha_sampingan:
             case R.id.tf_usaha_sampingan:
                 openDialogYaTidak(binding.tfUsahaSampingan.getLabelText());
                 break;
 
-            //MENGGUNAKAN LNGP
+            //KIRIMAN RUTIN
             case R.id.et_kiriman_rutin:
             case R.id.tf_kiriman_rutin:
                 openDialogYaTidak(binding.tfKirimanRutin.getLabelText());
@@ -472,8 +473,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 DialogGenericDataFromService.display(getFragmentManager(),binding.tfTreatmentRekeningPendapatan.getLabelText(),dropdownTreatmentRekening,FragmentDataPensiunPrapen.this);
                 break;
             case R.id.btn_cek_lngp:
-                binding.etRateLngp.setText("25");
-                binding.etNamaInstansiLngp.setText("instansi dummy");
+                if(binding.etInputLngp.getText().toString().isEmpty()){
+                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content),"Harap isi no LNGP dahulu");
+                }
+                else{
+                    validasiLngp();
+                }
                 break;
             case R.id.btn_cek_payroll:
                 if(binding.etNomorRekening.getText().toString().isEmpty()){
@@ -760,6 +765,49 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             @Override
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingPayroll.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+    }
+
+    public void validasiLngp() {
+        //  dataUser = getListUser();
+        binding.loadingLngp.setVisibility(View.VISIBLE);
+        ReqValidasiLngp req=new ReqValidasiLngp();
+        req.setApplicationid(dataInstansi.getApplicationId());
+        req.setUid(Integer.toString(appPreferences.getUid()));
+        req.setNoLngp(binding.etInputLngp.getText().toString());
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().validasiLngp(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingLngp.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String instansiLngpString = response.body().getData().get("Instansi_LNGP").toString().replace("\"","");
+                        String rateLngpString = response.body().getData().get("Rate_LNGP").toString().replace("\"","");
+
+                        binding.etNamaInstansiLngp.setText(instansiLngpString);
+                        binding.etRateLngp.setText(rateLngpString);
+
+                    }
+                    else if(response.body().getStatus().equalsIgnoreCase("01")){
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Data LNGP tidak ditemukan");
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                        binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
+                        binding.tvHasilCekPayroll.setText("Rekening Tidak Ditemukan");
+                        binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loadingLngp.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
                 Log.d("LOG D", t.getMessage());
             }

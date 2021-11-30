@@ -238,6 +238,7 @@
                     app:isResponsiveIconColor="true"
                     app:labelText="Nama Cabang Pembukuan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
+                    android:visibility="gone"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
