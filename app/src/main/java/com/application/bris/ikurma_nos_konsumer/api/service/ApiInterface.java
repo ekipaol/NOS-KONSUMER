@@ -100,6 +100,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.proce
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPejabat;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
@@ -763,6 +764,8 @@ public interface ApiInterface {
     Call<ParseResponseArr> dropdownTreatmentRekening(@Body EmptyRequest EmptyRequest);
     @POST(UriApi.prapen.dropdownMitraFronting)
     Call<ParseResponseArr> dropdownMitraFronting(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownPejabat)
+    Call<ParseResponseArr> dropdownPejabat(@Body EmptyRequest EmptyRequest);
     @POST(UriApi.prapen.validasiPayroll)
     Call<ParseResponse> validasiPayroll(@Body ReqAcctNumber ReqAcctNumber);
     @POST(UriApi.prapen.validasiLngp)
@@ -871,6 +874,10 @@ public interface ApiInterface {
     Call<ParseResponse> updateAkadMmq(@Body ReqAkadAsesoir ReqAkadAsesoir);
     @POST(UriApi.prapen.updateAkadMurabahahIjarah)
     Call<ParseResponse> updateAkadMurabahahIjarah(@Body ReqAkadAsesoir ReqAkadAsesoir);
+    @POST(UriApi.prapen.inquiryDataPejabat)
+    Call<ParseResponse> inquiryDataPejabat(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+    @POST(UriApi.prapen.updateDataPejabat)
+    Call<ParseResponse> updateDataPejabat(@Body ReqDataPejabat ReqDataPejabat);
 
 
 }

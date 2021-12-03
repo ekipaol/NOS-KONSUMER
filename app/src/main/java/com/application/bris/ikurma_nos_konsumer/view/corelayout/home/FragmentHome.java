@@ -189,11 +189,11 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         }
 
 
-        if(appPreferences.isUpdateNotificationOn().equalsIgnoreCase("true")){
-
-            //MENAMPILKAN CHANGELOG UNTUK UPDATE TERBARU KORMA
-            CustomDialog.DialogUpdateInformation(getContext(), "Fitur Terbaru i-Kurma Konsumer","- Penyesuaian di halaman pipeline, data lengkap, dan prescreening untuk pengecekan dukcapil");
-        }
+//        if(appPreferences.isUpdateNotificationOn().equalsIgnoreCase("true")){
+//
+//            //MENAMPILKAN CHANGELOG UNTUK UPDATE TERBARU KORMA
+//            CustomDialog.DialogUpdateInformation(getContext(), "Fitur Terbaru i-Kurma Konsumer","- Penyesuaian di halaman pipeline, data lengkap, dan prescreening untuk pengecekan dukcapil");
+//        }
 
 
 

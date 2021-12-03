@@ -178,7 +178,7 @@ public class ApiClientAdapter {
 
                             String encryptedRequest=encryptor.encrypt(bodyToString(requestBody));
 
-                            AppUtil.logSecure("okhttp_decrypter_request",encryptor.decrypt(encryptedRequest));
+//                            AppUtil.logSecure("okhttp_decrypter_request",encryptor.decrypt(encryptedRequest));
 
                             //comment for encryption, uncomment for no encryption
                             encryptedRequest=encryptor.decrypt(encryptedRequest);

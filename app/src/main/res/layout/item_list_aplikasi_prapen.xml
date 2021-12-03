@@ -53,6 +53,7 @@
                 android:scaleType="centerCrop"
                 android:layout_gravity="center"
                 android:src="@drawable/banner_placeholder"
+                android:visibility="gone"
                 android:layout_weight="2.2"/>
 
             <LinearLayout
@@ -110,6 +111,19 @@
                     android:textSize="12dp"/>
             </LinearLayout>
 
+            <View
+                android:layout_width="4dp"
+                android:layout_height="fill_parent"
+                android:background="@color/colorBackgroundGrey3"/>
+
+            <Button
+                android:id="@+id/bt_pilih"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:text="Pilih"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+
 
         </LinearLayout>
 
@@ -122,6 +136,7 @@
             android:padding="4dp"
             android:textSize="11sp"
             android:gravity="right"
+            android:visibility="gone"
             android:textStyle="italic"
             android:textColor="@color/overlay"/>
     </LinearLayout>

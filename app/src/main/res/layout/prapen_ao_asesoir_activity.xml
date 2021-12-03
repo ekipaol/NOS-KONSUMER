@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -100,7 +101,7 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_nama_ao"
+                        android:id="@+id/et_nomor_skpp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -235,6 +236,14 @@
                         android:inputType="number" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <ProgressBar
+                    android:id="@+id/loadingRekening"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:progressDrawable="@drawable/custom_progressbar"/>
+
                 <Button
                     android:id="@+id/btn_cek_nomor_rekening"
                     android:layout_width="match_parent"
@@ -324,7 +333,7 @@
 
             </LinearLayout>
 
-            <include android:id="@+id/loading_layout" layout="@layout/loading" />
+
 
         </LinearLayout>
     </ScrollView>

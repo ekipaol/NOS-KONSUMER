@@ -240,6 +240,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 loading.setVisibility(View.GONE);
                 AppUtil.notiferror(LoginActivity2.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                t.printStackTrace();
             }
         });
     }

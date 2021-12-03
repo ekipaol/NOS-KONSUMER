@@ -1482,7 +1482,7 @@
                         android:paddingRight="20dp"
                         app:iconSignifier="@drawable/ic_address"
                         app:isResponsiveIconColor="true"
-                        app:labelText="Catatan Pemutus 1"
+                        app:labelText="Catatan Pemutus"
                         app:panelBackgroundColor="@color/colorDisableEdit"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
@@ -1508,6 +1508,7 @@
                         app:panelBackgroundColor="@color/colorDisableEdit"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
+                        android:visibility="gone"
                         app:useDenseSpacing="true">
 
                         <studio.carbonylgroup.textfieldboxes.ExtendedEditText

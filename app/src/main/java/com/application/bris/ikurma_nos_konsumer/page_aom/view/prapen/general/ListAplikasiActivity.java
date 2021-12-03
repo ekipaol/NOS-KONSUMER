@@ -89,7 +89,7 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
     @Override
     protected void onRestart() {
         super.onRestart();
-        ListAplikasiActivity.this.recreate();
+//        ListAplikasiActivity.this.recreate();
     }
 
     @Override

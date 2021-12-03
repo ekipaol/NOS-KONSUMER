@@ -422,17 +422,14 @@ public class UriApi {
         public static final String inquiryAkadMurabahahIjarah = "NOS_PRAPEN_Services/rest/G1/InqAkadMurabahahdanIjarah";
         public static final String updateAkadMurabahahIjarah = "NOS_PRAPEN_Services/rest/G1/UpdateAkadMurabahahdanIjarah";
         public static final String updateAkadMmq = "NOS_PRAPEN_Services/rest/G1/UpdateAkadMMQ";
-
-
+        public static final String inquiryDataPejabat = "NOS_PRAPEN_Services/rest/G1/InqAkaddanAsesoir";
+        public static final String updateDataPejabat = "NOS_PRAPEN_Services/rest/G1/UpdateAkaddanAsesoir";
+        public static final String dropdownPejabat = "NOS_PRAPEN_Services/rest/G1/InqListPejabatAkad";
 
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
         public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";
         public static final String updateMemo = "NOS_PRAPEN_Services/rest/D3/UpdateMemo";
-
-
-
-
     }
 }
 

@@ -164,7 +164,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvProduk.setText(dataDetailAplikasi.getTypeProduk());
         binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu());
         binding.tvPlafond.setText(AppUtil.parseRupiah(dataDetailAplikasi.getPlafond()));
-        binding.tvIdaplikasi.setText("ID Aplikasi : "+dataDetailAplikasi.getApplicationId());
+        binding.tvIdaplikasi.setText(dataDetailAplikasi.getApplicationId());
         binding.tvNoaplikasi.setText(dataDetailAplikasi.getApplicationNo());
         binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
@@ -263,6 +263,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_lanjut))){
+            binding.loading.setVisibility(View.GONE);
             final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
             dialog.setTitleText("Konfirmasi?");
             dialog.setContentText("Anda Akan Melanjutkan Aplikasi Ke Tahap Selanjutnya?\n");
@@ -497,6 +498,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
                         }
                         else{
                             AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                            finish();
 
                         }
                     }

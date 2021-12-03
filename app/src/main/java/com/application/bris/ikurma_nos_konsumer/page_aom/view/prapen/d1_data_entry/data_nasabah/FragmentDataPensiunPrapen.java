@@ -34,6 +34,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.data_akad.DataAkadActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -51,6 +52,7 @@ import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValueListener, View.OnClickListener, GenericListenerOnSelect {
     AppPreferences appPreferences;
@@ -63,6 +65,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private PrapenAoFragmentDataPensiunanBinding binding;
     private boolean valDapatBergerak=false,valDalamPengawasan=false,valMemilikiRiwayat=false,valSerumahDenganKeluarga=false,valMemilikiUsahaSampingan=false,valMemperolehKiriman =false,valMenggunakanLngp =false,valNasabahBsi =false;
     private String val_cif="";
+    private boolean adaFieldBelumDiisi=false;
 
     private List<MGenericModel> dropdownLembagaPengelolaPensiun=new ArrayList<>();
     private List<MGenericModel> dropdownTreatmentRekening=new ArrayList<>();
@@ -252,13 +255,33 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     }
 
     private VerificationError validateForm(){
-//        if (Validator.validateKtpRequired(et_nik.getText().toString().trim()) == false){
-//            tf_nik.setError("Format "+ tf_nik.getLabelText()+" "+getString(R.string.title_invalid_field), true);
-//            return new VerificationError("Format "+ tf_nik.getLabelText()+" "+getString(R.string.title_invalid_field));
-//        }
 
-//        else {
+        validateField(binding.etLembagaPengelolaPensiun,binding.tfLembagaPengelolaPensiun);
+        validateField(binding.etNomorPensiunan,binding.tfNomorPensiunan);
+        validateField(binding.etNamaInstansi,binding.tfNamaInstansi);
+        validateField(binding.etMenggunakanLngp,binding.tfMenggunakanLngp);
+        if(!binding.etMenggunakanLngp.getText().toString().isEmpty()&&binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("ya")){
+            validateField(binding.etInputLngp,binding.tfInputLngp);
+            validateField(binding.etNamaInstansiLngp,binding.tfNamaInstansiLngp);
+            validateField(binding.etRateLngp,binding.tfRateLngp);
+        }
+        validateField(binding.etKotaTempatBekerja,binding.tfKotaTempatBekerja);
+        validateField(binding.etPerkiraanGaji,binding.tfPerkiraanGaji);
+        validateField(binding.etPerkiraanTunjangan,binding.tfPerkiraanTunjangan);
+        validateField(binding.etNasabahBsi,binding.tfNasabahBsi);
+        validateField(binding.etTreatmentRekeningPendapatan,binding.tfTreatmentRekeningPendapatan);
+        validateField(binding.etDapatBergerak,binding.tfDapatBergerak);
+        validateField(binding.etDalamPengawasan,binding.tfDalamPengawasan);
+        validateField(binding.etMemilikiRiwayat,binding.tfMemilikiRiwayat);
+        validateField(binding.etTinggalDenganKeluargaLain,binding.tfTinggalDenganKeluargaLain);
+        validateField(binding.etUsahaSampingan,binding.tfUsahaSampingan);
+        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
+        validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
+
+        if(!adaFieldBelumDiisi){
             setPojoData();
+        }
+
         return null;
 //        }
     }
@@ -310,6 +333,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
         realm.insertOrUpdate(copyRealm);
 
+    }
+
+    private void validateField(EditText editText, TextFieldBoxes textFieldBoxes){
+        if(editText.getText().toString().isEmpty()){
+            adaFieldBelumDiisi=true;
+            AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Harap Isi "+textFieldBoxes.getLabelText());
+        }
     }
 
     @Nullable
@@ -775,7 +805,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         //  dataUser = getListUser();
         binding.loadingLngp.setVisibility(View.VISIBLE);
         ReqValidasiLngp req=new ReqValidasiLngp();
-        req.setApplicationid(dataInstansi.getApplicationId());
+        req.setApplicationid(DataNasabahPrapenActivity.idAplikasi);
         req.setUid(Integer.toString(appPreferences.getUid()));
         req.setNoLngp(binding.etInputLngp.getText().toString());
 
@@ -786,10 +816,17 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 binding.loadingLngp.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String instansiLngpString = response.body().getData().get("Instansi_LNGP").toString().replace("\"","");
-                        String rateLngpString = response.body().getData().get("Rate_LNGP").toString().replace("\"","");
 
-                        binding.etNamaInstansiLngp.setText(instansiLngpString);
+                        try{
+                            String instansiLngpString = response.body().getData().get("Instansi_LNGP").toString().replace("\"","");
+                            binding.etNamaInstansiLngp.setText(instansiLngpString);
+                        }
+
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        String rateLngpString = response.body().getData().get("Rate_LNGP").toString().replace("\"","");
                         binding.etRateLngp.setText(rateLngpString);
 
                     }

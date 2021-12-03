@@ -556,6 +556,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             case R.id.btn_upload_foto_ktp:
                 idUpload=UPLOAD_KTP;
                 BSUploadFile.displayWithTitle(getFragmentManager(),FragmentDataPribadiPrapen.this,"Upload Foto KTP");
+
 //                Toast.makeText(getContext(), "ambil ktp", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_upload_persetujuan_ideb:

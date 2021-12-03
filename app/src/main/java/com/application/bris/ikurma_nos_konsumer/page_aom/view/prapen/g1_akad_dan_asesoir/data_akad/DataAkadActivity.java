@@ -58,6 +58,7 @@ import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.io.File;
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,6 +77,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     private DataMmqTempatTinggal dataMmqTempatTinggal;
     private DataMmqLainnya dataMmqLainnya;
     private DataMurabahah dataMurabahah;
+    private UploadImage dataAset;
     private List<MGenericModel> dataDropdownAset=new ArrayList<>();
     private List<MGenericModel> dataDropdownDokumenTanah=new ArrayList<>();
     private List<MGenericModel> dataDropdownDokumenTempatTinggal=new ArrayList<>();
@@ -86,6 +88,8 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     private boolean adaFieldBelumDiisi=false;
     private String tipeFileAset="";
     private String valBase64PdfAset="";
+    DecimalFormat format = new DecimalFormat("#00,000,000.00");
+    DecimalFormat formatLuas = new DecimalFormat("#00,0");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +105,9 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
 
         //pantekan akad
-        Toast.makeText(this, "Ada pantekan akad", Toast.LENGTH_SHORT).show();
-        akad="mmq";
-//        akad=getIntent().getStringExtra("akad");
+//        Toast.makeText(this, "Ada pantekan akad", Toast.LENGTH_SHORT).show();
+//        akad="mmq";
+        akad=getIntent().getStringExtra("akad");
 
         allOnTextChanged();
         setData();
@@ -225,19 +229,54 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                         Type typeTanah = new TypeToken<DataMmqTanah>() {}.getType();
                         Type typeTempatTinggal = new TypeToken<DataMmqTempatTinggal>() {}.getType();
                         Type typeLainnya = new TypeToken<DataMmqLainnya>() {}.getType();
+                        Type typeAset = new TypeToken<UploadImage>() {}.getType();
 
                         try{
                             String listDataStringKendaraan = response.body().getData().get("MMQAsetKendaraan").toString();
-                            String listDataStringTanah = response.body().getData().get("MMQAsetTanah").toString();
-                            String listDataStringTempatTinggal= response.body().getData().get("MMQAsetTempatTinggal").toString();
-                            String listDataStringLainnya = response.body().getData().get("MMQAsetLainnya").toString();
                             dataMmqKendaraan =  gson.fromJson(listDataStringKendaraan, typeKendaraan);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        try{
+                            String listDataStringTanah = response.body().getData().get("MMQAsetTanah").toString();
                             dataMmqTanah =  gson.fromJson(listDataStringTanah, typeTanah);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        try{
+                            String listDataStringTempatTinggal= response.body().getData().get("MMQAsetTempatTinggal").toString();
                             dataMmqTempatTinggal =  gson.fromJson(listDataStringTempatTinggal, typeTempatTinggal);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+                        try{
+                            String listDataStringLainnya = response.body().getData().get("MMQAsetLainnya").toString();
                             dataMmqLainnya =  gson.fromJson(listDataStringLainnya, typeLainnya);
                         }
                         catch (Exception e){
                             e.printStackTrace();
+                        }
+
+                        try{
+                            String listDataAset = response.body().getData().get("FotoAset").toString();
+                            dataAset =  gson.fromJson(listDataAset, typeAset);
+                            AppUtil.convertBase64ToImage(dataAset.getImg(),binding.ivFotoAset);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        try{
+
+                            String stringMemo = response.body().getData().get("Memo").getAsJsonArray().get(0).getAsJsonObject().get("Memo").toString();
+                            binding.etCatatanPemutus1.setText(stringMemo);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+
                         }
 
 
@@ -254,6 +293,10 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                             setDataMmqLainnya();
                         }
 
+
+
+
+                        allOnTextChangedListener();
                     }
 //                    else if (response.body().getStatus().equalsIgnoreCase("01")) {
 //                        AppUtil.notiferror(DataAkadActivity.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");
@@ -297,10 +340,23 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                             e.printStackTrace();
                         }
 
+                        try{
+
+                            String stringMemo = response.body().getData().get("Memo").getAsJsonArray().get(0).getAsJsonObject().get("Memo").toString();
+                            binding.etCatatanPemutus1.setText(stringMemo);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+
+                        }
+
+
 
                         if(dataMurabahah!=null){
                             setDataMurabahah();
                         }
+
+                        allOnTextChangedListener();
 
                     }
 //                    else if (response.body().getStatus().equalsIgnoreCase("01")) {
@@ -449,10 +505,10 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             dataMmqTempatTinggal.setNomorIMB(binding.etNomorImb.getText().toString());
             dataMmqTempatTinggal.setAlamat(binding.etAlamatTempatTinggal.getText().toString());
             dataMmqTempatTinggal.setLuasAsetTanah(Double.parseDouble(binding.etLuasTanahTempatTinggal.getText().toString()));
-            dataMmqTempatTinggal.setHargaAsetTanah(Double.parseDouble(binding.etHargaTanahTempatTinggal.getText().toString()));
-            dataMmqTempatTinggal.setTotalNilaiTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etLuasTanahTempatTinggal.getText().toString())));
+            dataMmqTempatTinggal.setHargaAsetTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etHargaTanahTempatTinggal.getText().toString())));
+            dataMmqTempatTinggal.setTotalNilaiTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalNilaiTanah.getText().toString())));
             dataMmqTempatTinggal.setLuasAsetBangunan(Double.parseDouble(binding.etLuasBangunan.getText().toString()));
-            dataMmqTempatTinggal.setHargaAsetBangunan(Double.parseDouble(binding.etHargaBangunan.getText().toString()));
+            dataMmqTempatTinggal.setHargaAsetBangunan(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etHargaBangunan.getText().toString())));
             dataMmqTempatTinggal.setTotalNilaiBangunan(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalNilaiBangunan.getText().toString())));
             dataMmqTempatTinggal.setKondisiAset(binding.etKondisiTempatTinggal.getText().toString());
             dataMmqTempatTinggal.setSumberData(binding.etSumberDataTempatTinggal.getText().toString());
@@ -560,10 +616,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etAlamatKendaraan.setText(dataMmqKendaraan.getAlamat());
         binding.etMerek.setText(dataMmqKendaraan.getMerek());
         binding.etTipe.setText(dataMmqKendaraan.getTipe());
-        binding.etTahunPembuatan.setText(dataMmqKendaraan.getTahunPembuatan());
+        binding.etTahunPembuatan.setText(String.valueOf(dataMmqKendaraan.getTahunPembuatan()));
         binding.etKondisiKendaraan.setText(dataMmqKendaraan.getKondisiAset());
         binding.etSumberDataKendaraan.setText(dataMmqKendaraan.getSumberData());
-        binding.etHargaKendaraan.setText(Double.toString(dataMmqKendaraan.getHargaKendaraan()));
+
+        binding.etHargaKendaraan.setText(String.format("%.0f", dataMmqKendaraan.getHargaKendaraan()));
     }
 
     private void setDataMmqTempatTinggal(){
@@ -581,15 +638,15 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etNomorDokumenAsetTempatTinggal.setText(dataMmqTempatTinggal.getNomorDokumen());
         binding.etNomorImb.setText(dataMmqTempatTinggal.getNomorIMB());
         binding.etAlamatTempatTinggal.setText(dataMmqTempatTinggal.getAlamat());
-        binding.etLuasTanahTempatTinggal.setText(Double.toString(dataMmqTempatTinggal.getLuasAsetTanah()));
-        binding.etHargaTanahTempatTinggal.setText(Double.toString(dataMmqTempatTinggal.getHargaAsetTanah()));
-        binding.etTotalNilaiTanahTempatTinggal.setText(Double.toString(dataMmqTempatTinggal.getTotalNilaiTanah()));
-        binding.etLuasBangunan.setText(Double.toString(dataMmqTempatTinggal.getLuasAsetBangunan()));
-        binding.etHargaBangunan.setText(Double.toString(dataMmqTempatTinggal.getHargaAsetBangunan()));
-        binding.etTotalNilaiBangunan.setText(Double.toString(dataMmqTempatTinggal.getTotalNilaiBangunan()));
+        binding.etLuasTanahTempatTinggal.setText(String.format("%.0f", dataMmqTempatTinggal.getLuasAsetTanah()));
+        binding.etHargaTanahTempatTinggal.setText(String.format("%.0f", dataMmqTempatTinggal.getHargaAsetTanah()));
+        binding.etTotalNilaiTanahTempatTinggal.setText(String.format("%.0f", dataMmqTempatTinggal.getTotalNilaiTanah()));
+        binding.etLuasBangunan.setText(String.format("%.0f", dataMmqTempatTinggal.getLuasAsetBangunan()));
+        binding.etHargaBangunan.setText(String.format("%.0f", dataMmqTempatTinggal.getHargaAsetBangunan()));
+        binding.etTotalNilaiBangunan.setText(String.format("%.0f", dataMmqTempatTinggal.getTotalNilaiBangunan()));
         binding.etKondisiTempatTinggal.setText(dataMmqTempatTinggal.getKondisiAset());
         binding.etSumberDataTempatTinggal.setText(dataMmqTempatTinggal.getSumberData());
-        binding.etTotalNilaiAsetTempatTinggal.setText(Double.toString(dataMmqTempatTinggal.getTotalNilaiAset()));
+        binding.etTotalNilaiAsetTempatTinggal.setText(String.format("%.0f", dataMmqTempatTinggal.getTotalNilaiAset()));
     }
 
     private void setDataMmqTanah(){
@@ -606,12 +663,12 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etJenisDokumenTanah.setText(dataMmqTanah.getJenisDokumen());
         binding.etNomorDokumenAsetTanah.setText(dataMmqTanah.getNomorDokumen());
         binding.etAlamatTanah.setText(dataMmqTanah.getAlamat());
-        binding.etLuasTanah.setText(Double.toString(dataMmqTanah.getLuasAset()));
-        binding.etHargaTanah.setText(Double.toString(dataMmqTanah.getHargaAset()));
-        binding.etTotalNilaiTanah.setText(Double.toString(dataMmqTanah.getTotalNilaiTanah()));
+        binding.etLuasTanah.setText(String.format("%.0f", dataMmqTanah.getLuasAset()));
+        binding.etHargaTanah.setText(String.format("%.0f", dataMmqTanah.getHargaAset()));
+        binding.etTotalNilaiTanah.setText(String.format("%.0f", dataMmqTanah.getTotalNilaiTanah()));
         binding.etKondisiTanah.setText(dataMmqTanah.getKondisiAset());
         binding.etSumberDataTanah.setText(dataMmqTanah.getSumberData());
-        binding.etTotalNilaiAsetTanah.setText(Double.toString(dataMmqTanah.getTotalNilaiAset()));
+        binding.etTotalNilaiAsetTanah.setText(String.format("%.0f", dataMmqTanah.getTotalNilaiAset()));
     }
 
     private void setDataMmqLainnya(){
@@ -629,8 +686,8 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etDokumenKepemilikanLainnya.setText(dataMmqLainnya.getDokumenKepemilikan());
         binding.etAlamatLainnya.setText(dataMmqLainnya.getAlamat());
         binding.etKondisiLainnya.setText(dataMmqLainnya.getKondisi());
-        binding.etSumberDataLainnya.setText(dataMmqTanah.getSumberData());
-        binding.etNilaiAsetLainnya.setText(Double.toString(dataMmqLainnya.getNilaiAset()));
+        binding.etSumberDataLainnya.setText(dataMmqLainnya.getSumberData());
+        binding.etNilaiAsetLainnya.setText(String.format("%.0f", dataMmqLainnya.getNilaiAset()));
     }
 
     private void checkKepemilikanAset(){
@@ -706,6 +763,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                     BSUploadFile.displayWithTitle(getSupportFragmentManager(), DataAkadActivity.this,"Upload Aset");
                     break;
             case R.id.btn_simpan_data_akad:
+                adaFieldBelumDiisi=false;
                 validateField(binding.etRencanaPenandatangananAkad,binding.tfRencanaPenandatangananAkad);
                 validateField(binding.etBulanAngsuranPertama,binding.tfBulanAngsuranPertama);
                 validateField(binding.etNomorAktaNikah,binding.tfNomorAktaNikah);
@@ -959,6 +1017,10 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etTotalNilaiTanah.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalNilaiTanah));
         binding.etHargaPerolehanBarang.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHargaPerolehanBarang));
 
+    }
+
+    private void allOnTextChangedListener(){
+
         binding.etHargaTanah.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -1193,7 +1255,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         switch(idMenu){
             case "Take Photo":
                     tipeFileAset="png";
-                    openCamera("fotoAset");
+                    openCamera("dokumenaset");
                 break;
             case "Pick Photo":
                     openGalery();

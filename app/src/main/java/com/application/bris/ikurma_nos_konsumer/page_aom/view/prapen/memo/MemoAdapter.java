@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,15 +42,15 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MemoAdapter.MenuViewHolder holder, final int position) {
-        binding.tvNamaPemutus.setText(data.get(position).getNama());
-        binding.tvJabatanPemutus.setText(data.get(position).getJabatan());
-        binding.tvTahapAplikasi.setText(data.get(position).getTahapAplikasi());
+        holder.tvNamaPemutus.setText(data.get(position).getNama());
+        holder.tvJabatanPemutus.setText(data.get(position).getJabatan());
+        holder.tvTahapAplikasi.setText(data.get(position).getTahapAplikasi());
 //        binding.tvJenisPutusan.setText(data.get(position).getJenisPutusan());
-        binding.tvTanggalMemo.setText(AppUtil.parseTanggalGeneral(data.get(position).getTanggalMemo(),"yyyy-MM-dd","dd-MM-yyyy"));
-        binding.tvMemo.setText(data.get(position).getMemo());
+        holder.tvTanggalMemo.setText(AppUtil.parseTanggalGeneral(data.get(position).getTanggalMemo(),"yyyy-MM-dd","dd-MM-yyyy"));
+        holder.tvMemo.setText(data.get(position).getMemo());
 
 
-        binding.btSalinHistoryCatatan.setOnClickListener(new View.OnClickListener() {
+        holder.btSalin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(context, "clicking", Toast.LENGTH_SHORT).show();
@@ -71,11 +72,19 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        Button btnhapus;
+        Button btSalin;
+        TextView tvNamaPemutus,tvJabatanPemutus,tvTahapAplikasi,tvTanggalMemo,tvMemo;
+
 
         public MenuViewHolder(View itemView) {
             super(itemView);
-            btnhapus=binding.btSalinHistoryCatatan;
+            btSalin=binding.btSalinHistoryCatatan;
+            tvNamaPemutus=binding.tvNamaPemutus;
+            tvJabatanPemutus=binding.tvJabatanPemutus;
+            tvTahapAplikasi=binding.tvTahapAplikasi;
+            tvTanggalMemo=binding.tvTanggalMemo;
+            tvMemo=binding.tvMemo;
+
 
         }
 

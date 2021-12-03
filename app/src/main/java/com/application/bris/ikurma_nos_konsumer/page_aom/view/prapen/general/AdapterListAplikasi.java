@@ -82,6 +82,30 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
             }
         });
 
+        holder.btPilih.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //testing jadi dicomment dlu
+//                if(!datas.getStatusAplikasiId().equalsIgnoreCase("d.1")&&!datas.getStatusAplikasiId().equalsIgnoreCase("d.3")&&!datas.getStatusAplikasiId().equalsIgnoreCase("d.5")){
+//                    Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
+//                }
+//                else{
+                Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                intent.putExtra("idAplikasi",datas.getApplicationId());
+                intent.putExtra("nama",datas.getNama());
+                intent.putExtra("plafond",datas.getPlafond());
+                intent.putExtra("noAplikasi",datas.getApplicationNo());
+                intent.putExtra("status",datas.getStatusAplikasi());
+                intent.putExtra("statusId",datas.getStatusAplikasiId());
+                context.startActivity(intent);
+//                }
+
+
+            }
+        });
+
 
 
     }
@@ -131,6 +155,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
         TextView tvNama,tvStatus,tvNoAplikasi,tvIdAplikasi,tvPlafon,tvTenor;
         ImageView ivFoto;
         CardView cvData;
+        Button btPilih;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
@@ -143,6 +168,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
             tvTenor=binding.tvTenor;
             ivFoto=binding.ivFoto;
             cvData=binding.cvHotprospekFront;
+            btPilih=binding.btPilih;
         }
 
     }

@@ -10,6 +10,18 @@ public class DataCIfRekening {
     @SerializedName("OpeningDate")
     private String OpeningDate;
 
+    @SerializedName("Nama")
+    private String Nama;
+
+
+    public String getNama() {
+        return Nama;
+    }
+
+    public void setNama(String nama) {
+        Nama = nama;
+    }
+
     public String getCIF() {
         return CIF;
     }
