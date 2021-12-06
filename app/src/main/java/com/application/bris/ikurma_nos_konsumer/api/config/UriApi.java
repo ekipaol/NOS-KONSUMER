@@ -425,6 +425,12 @@ public class UriApi {
         public static final String inquiryDataPejabat = "NOS_PRAPEN_Services/rest/G1/InqAkaddanAsesoir";
         public static final String updateDataPejabat = "NOS_PRAPEN_Services/rest/G1/UpdateAkaddanAsesoir";
         public static final String dropdownPejabat = "NOS_PRAPEN_Services/rest/G1/InqListPejabatAkad";
+        public static final String dropdownSektorEkonomi = "NOS_PRAPEN_Services/rest/Picklist/SektorEkonomi";
+        public static final String dropdownKodePekerjaan = "NOS_PRAPEN_Services/rest/Picklist/KodePekerjaan";
+        public static final String dropdownBidangUsahaTempatKerja = "NOS_PRAPEN_Services/rest/Picklist/BidangUsahaTempatKerja";
+        public static final String inquiryOjkBi = "NOS_PRAPEN_Services/rest/G1/InqOJKBI";
+        public static final String updateDataOjkBi = "NOS_PRAPEN_Services/rest/G1/UpdateOJKBI";
+
 
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
