@@ -24,30 +24,23 @@
             android:paddingBottom="10dp">
 
             <LinearLayout
+                android:id="@+id/ll_field_ojk_bi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"
                 android:orientation="vertical"
                 android:paddingTop="20dp">
+                <include android:id="@+id/loading_layout" layout="@layout/loading"/>
 
                 <!--Kesimpulan Verifikasi-->
                 <LinearLayout
-                    android:id="@+id/ll_field_ojk_bi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:paddingTop="10dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_b"
-                        android:paddingStart="10dp"
-                        android:paddingBottom="10dp"
-                        android:text="Field OJK/BI"
-                        android:textSize="16sp" />
                 </LinearLayout>
+
                 <!--Pendidikan Terakhir-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_pendidikan_terakhir"
@@ -55,7 +48,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
-
                     android:paddingRight="20dp"
                     app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_education"
@@ -64,6 +56,7 @@
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    app:alwaysShowHint="true"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
 
@@ -71,7 +64,8 @@
                         android:id="@+id/et_pendidikan_terakhir"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
+                        android:hint="Pilih"
+                        android:inputType="text"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -90,6 +84,7 @@
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    app:alwaysShowHint="true"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
 
@@ -97,7 +92,8 @@
                         android:id="@+id/et_kode_pekerjaan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
+                        android:hint="Pilih"
+                        android:inputType="text"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -117,13 +113,15 @@
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
+                    app:alwaysShowHint="true"
                     tools:ignore="DuplicateIds">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_kode_bidang_usaha_tempat_kerja"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
+                        android:hint="Pilih"
+                        android:inputType="text"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -189,6 +187,7 @@
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    app:alwaysShowHint="true"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
 
@@ -196,7 +195,8 @@
                         android:id="@+id/et_kode_jenis_penggunaan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
+                        android:hint="Pilih"
+                        android:inputType="text"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -215,6 +215,7 @@
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
+                    app:alwaysShowHint="true"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
 
@@ -222,11 +223,30 @@
                         android:id="@+id/et_kode_sektor_ekonomi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
+                        android:hint="Pilih"
+                        android:inputType="text"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <LinearLayout
+                    android:id="@+id/ll_btn_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/colorWhite"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginBottom="10dp">
+                    <Button
+                        android:id="@+id/btn_sendojkbi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:text="Simpan"
+                        android:padding="8dp"
+                        style="@style/Bordered.Button.Custom"/>
+                </LinearLayout>
 
             </LinearLayout>
         </FrameLayout>

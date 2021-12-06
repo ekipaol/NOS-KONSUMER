@@ -95,7 +95,7 @@ public class DialogListSektorEkonomi extends DialogFragment implements View.OnCl
 
 
 
-    public static DialogListSektorEkonomi display(FragmentManager supportFragmentManager, int midAplikasi, String mlistkodeSekom, String dataListSektorEkonomi, ActivityFieldOjkBI activityFieldOjkBI) {
+    public static DialogListSektorEkonomi display(FragmentManager supportFragmentManager, int midAplikasi, String mlistkodeSekom, ActivityFieldOjkBI activityFieldOjkBI) {
         ActivityFieldOjkBI = activityFieldOjkBI;
         idAplikasi = midAplikasi;
         ListKodeSekom = mlistkodeSekom;

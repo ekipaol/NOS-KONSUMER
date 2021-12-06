@@ -110,9 +110,11 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidI
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SearchSekEkonomi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataOjkBi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJaminandanDokumen;
@@ -878,6 +880,18 @@ public interface ApiInterface {
     Call<ParseResponse> inquiryDataPejabat(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
     @POST(UriApi.prapen.updateDataPejabat)
     Call<ParseResponse> updateDataPejabat(@Body ReqDataPejabat ReqDataPejabat);
+
+
+    @POST(UriApi.prapen.inquiryOjkBi)
+    Call<ParseResponse> inquiryOjkBi(@Body ReqInquery ReqInquery);
+    @POST(UriApi.prapen.updateDataOjkBi)
+    Call<ParseResponse> updateDataOjkBi(@Body UpdateDataOjkBi UpdateDataOjkBi);
+    @POST(UriApi.prapen.dropdownSektorEkonomi)
+    Call<ParseResponseArr> dropdownSektorekonomi(@Body SearchSekEkonomi searchSektorEkonomi);
+    @POST(UriApi.prapen.dropdownKodePekerjaan)
+    Call<ParseResponseArr> dropdownKodePekerjaan(@Body EmptyRequest EmptyRequest);
+    @POST(UriApi.prapen.dropdownBidangUsahaTempatKerja)
+    Call<ParseResponse> dropdownBidangUsahaTempatKerja(@Body EmptyRequest EmptyRequest);
 
 
 }
