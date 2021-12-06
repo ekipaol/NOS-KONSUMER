@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +7,7 @@
     android:fitsSystemWindows="true">
 
     <include layout="@layout/toolbar_nosearch" />
+    <include android:id="@+id/loading" layout="@layout/loading"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Jangka Waktu-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_"
+                    android:id="@+id/tf_pricingsetara"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -100,10 +100,10 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_"
+                        android:id="@+id/et_pricingsetara"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:digits="0123456789"
+                        android:digits="0123456789."
                         android:inputType="numberDecimal"
                         android:maxLength="15"
                         app:suffix="%"
@@ -128,7 +128,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
-
                     android:paddingRight="20dp"
                     app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_district"
@@ -204,7 +203,7 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Treatment Biaya Asuransi-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_biayaasuransikhusus"
+                    android:id="@+id/tf_biaya_asuransi_khusus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -220,7 +219,7 @@
                     tools:ignore="DuplicateIds">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_biayaasuransikhusus"
+                        android:id="@+id/et_biaya_asuransi_khusus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
@@ -377,6 +376,7 @@
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
                     tools:ignore="DuplicateIds">
+
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_biayamaterai"
                         android:layout_width="match_parent"
@@ -504,7 +504,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/muli_b"
                                 android:inputType="numberDecimal"
-                                android:text="Rp."
+                                android:text="Rp. 0"
                                 android:textColor="@color/colorBlackHeader"
                                 android:textSize="14sp"
                                 app:prefix="Rp. "
@@ -537,7 +537,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/muli_b"
                                 android:inputType="numberDecimal"
-                                android:text="Rp."
+                                android:text="Rp. 0"
                                 android:textColor="@color/colorBlackHeader"
                                 android:textSize="14sp"
                                 app:prefix="Rp. "
@@ -568,12 +568,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/muli_b"
-                                android:inputType="numberDecimal"
-                                android:text="Rp."
+                                android:text="Rp. 0"
                                 android:textColor="@color/colorBlackHeader"
-                                android:textSize="14sp"
-                                app:prefix="Rp. "
-                                tools:ignore="TouchTargetSizeCheck" />
+                                android:textSize="14sp"/>
 
                         </LinearLayout>
 
@@ -581,22 +578,55 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:paddingTop="5dp">
 
-                    <Button
-                        android:id="@+id/bt_hitung_nilai_attribusi_biaya_angsuran_bulanan"
-                        style="@style/Widget.AppCompat.Button.Colored"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:text="Hitung" />
-                    <!--Hitung-->
+                        android:layout_weight="1">
+                        <!--Button Hitung-->
+                        <LinearLayout
+                            android:id="@+id/ll_btn_hitung"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="@color/colorWhite">
+                            <!--Button Hitung-->
+                            <Button
+                                android:id="@+id/btn_hitung"
+                                style="@style/Bordered.Button.Custom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Hitung" />
+                        </LinearLayout>
+                    </RelativeLayout>
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <!--Button Simpan-->
+                        <LinearLayout
+                            android:id="@+id/ll_btn_send"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:background="@color/colorWhite">
+
+                            <Button
+                                android:id="@+id/btn_send"
+                                style="@style/Bordered.Button.Custom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Simpan" />
+                        </LinearLayout>
+                    </RelativeLayout>
                 </LinearLayout>
 
             </LinearLayout>

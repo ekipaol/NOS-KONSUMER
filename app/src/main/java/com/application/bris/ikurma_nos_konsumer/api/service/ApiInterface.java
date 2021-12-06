@@ -102,7 +102,9 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkad
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPejabat;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungKalkulator;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
@@ -119,6 +121,8 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateD
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJaminandanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
@@ -880,6 +884,59 @@ public interface ApiInterface {
     Call<ParseResponse> inquiryDataPejabat(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
     @POST(UriApi.prapen.updateDataPejabat)
     Call<ParseResponse> updateDataPejabat(@Body ReqDataPejabat ReqDataPejabat);
+
+    @POST(UriApi.prapen.InqKalkulatorVerfikator)
+    Call<ParseResponseAgunan> InqKalkulatorVerfikator(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.HitungBiayadanAngsuran)
+    Call<ParseResponseAgunan> SendHitungBiayadanAngsuran(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
+    @POST(UriApi.prapen.UpdateKalkulatorVerifikator)
+    Call<ParseResponseAgunan> UpdateKalkulatorVerifikator(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
+    @POST(UriApi.prapen.inqListAsusransi)
+    Call<MParseArray> inqListAsusransi(@Body EmptyRequest EmptyRequest);
+
+
+    //    G1 Download File
+    @POST(UriApi.prapen.DownloadSUP)
+    Call<ParseResponseFile> DownloadSUP(@Body ReqDownloadFile ReqDownloadFile);
+
+    @POST(UriApi.prapen.DownloadAkadIjarah)
+    Call<ParseResponseFile> DownloadAkadIjarah(@Body ReqDownloadFile ReqDownloadFile);
+
+    @POST(UriApi.prapen.DownloadAkadMMQ)
+    Call<ParseResponseFile> DownloadAkadMMQ(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadAkadMurabahah)
+    Call<ParseResponseFile> DownloadAkadMurabahah(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadAkadRahn)
+    Call<ParseResponseFile> DownloadAkadRahn(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadFormMutasi)
+    Call<ParseResponseFile> DownloadFormMutasi(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadLampiranSuratKuasa)
+    Call<ParseResponseFile> DownloadLampiranSuratKuasa(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadLampiranSuratPernyataan)
+    Call<ParseResponseFile> DownloadLampiranSuratPernyataan(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadTandaTerimaSK)
+    Call<ParseResponseFile> DownloadTandaTerimaSK(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadWakalah)
+    Call<ParseResponseFile> DownloadWakalah(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadPurchaseMurabahah)
+    Call<ParseResponseFile> DownloadPurchaseMurabahah(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadPurchaseIjarah)
+    Call<ParseResponseFile> DownloadPurchaseIjarah(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadLampiranAngsMur)
+    Call<ParseResponseFile> DownloadLampiranAngsMur(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadJdwlAngsRahn)
+    Call<ParseResponseFile> DownloadJdwlAngsRahn(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadJadwalPengambilAlihan)
+    Call<ParseResponseFile> DownloadJadwalPengambilAlihan(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadLaporanPenilaianAset)
+    Call<ParseResponseFile> DownloadLaporanPenilaianAset(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadJadwalAngsuranUjrah)
+    Call<ParseResponseFile> DownloadJadwalAngsuranUjrah(@Body ReqDownloadFile ReqDownloadFile);
+    @POST(UriApi.prapen.DownloadSuratTandaTerima)
+    Call<ParseResponseFile> DownloadSuratTandaTerima(@Body ReqDownloadFile ReqDownloadFile);
 
 
     @POST(UriApi.prapen.inquiryOjkBi)

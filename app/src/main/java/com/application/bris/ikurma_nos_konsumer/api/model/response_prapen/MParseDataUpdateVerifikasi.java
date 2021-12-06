@@ -29,6 +29,28 @@ public class MParseDataUpdateVerifikasi {
     @SerializedName("CttnHItPendapatanSaatPensD4")
     @Expose
     private String cttnHItPendapatanSaatPensD4;
+    @SerializedName("NominalGajiSPAN")
+    @Expose
+    private String NominalGajiSPAN;
+    @SerializedName("TanggalPembayaranPayrollSPAN")
+    @Expose
+    private String TanggalPembayaranPayrollSPAN;
+
+    public String getNominalGajiSPAN() {
+        return NominalGajiSPAN;
+    }
+
+    public void setNominalGajiSPAN(String nominalGajiSPAN) {
+        NominalGajiSPAN = nominalGajiSPAN;
+    }
+
+    public String getTanggalPembayaranPayrollSPAN() {
+        return TanggalPembayaranPayrollSPAN;
+    }
+
+    public void setTanggalPembayaranPayrollSPAN(String tanggalPembayaranPayrollSPAN) {
+        TanggalPembayaranPayrollSPAN = tanggalPembayaranPayrollSPAN;
+    }
 
     public String getCerminanGajiDanTunjD4() {
         return cerminanGajiDanTunjD4;

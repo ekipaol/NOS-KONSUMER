@@ -28,143 +28,62 @@
                 android:orientation="vertical"
                 android:background="@color/colorWhite"
                 android:paddingTop="10dp">
-                    <!--Total Angsuran Pembiayaan Eksisting yang tidak di lunasi-->
-                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                        android:id="@+id/tf_angsuran_pinjaman_eksisting"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        app:enabled="true"
-                        android:layout_marginTop="10dp"
-                        app:iconSignifier="@drawable/ic_rupiah"
-                        app:isResponsiveIconColor="true"
-                        app:labelText="Total Angsuran Tidak Dilunasi"
-                        app:panelBackgroundColor="@color/colorDisableEdit"
-                        app:primaryColor="@color/colorPrimary"
-                        app:secondaryColor="@color/colorPrimary"
-                        app:useDenseSpacing="true">
-
-                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                            android:id="@+id/et_angsuran_pinjaman_eksisting"
-                            android:text="0"
-                            app:prefix="Rp."
-                            android:inputType="numberDecimal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLength="50" />
-
-                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                    <!--Sisa pendapatan yang dapat digunakan sebagai angsuran-->
-                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                        android:id="@+id/tf_sisapenghasilan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        app:enabled="false"
-                        android:layout_marginTop="10dp"
-                        app:iconSignifier="@drawable/ic_rupiah"
-                        app:isResponsiveIconColor="true"
-                        app:labelText="Sisa pendapatan Untuk angsuran"
-                        app:panelBackgroundColor="@color/colorDisableEdit"
-                        app:primaryColor="@color/colorPrimary"
-                        app:secondaryColor="@color/colorPrimary"
-                        app:useDenseSpacing="true">
-
-                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                            android:id="@+id/et_sisapenghasilan"
-                            android:text="0"
-                            app:prefix="Rp."
-                            android:inputType="numberDecimal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLength="50" />
-
-                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                    <!-- Catatan Hasil Verifikasi 1-->
-                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                        android:id="@+id/tf_catatan_verifikasi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
-                        android:layout_marginTop="10dp"
-                        app:iconSignifier="@drawable/ic_segmen"
-                        app:isResponsiveIconColor="true"
-                        app:labelText="Catatan Hasil Verifikasi"
-                        app:panelBackgroundColor="@color/colorBgEdittext"
-                        app:primaryColor="@color/colorPrimary"
-                        app:secondaryColor="@color/colorPrimary"
-                        app:useDenseSpacing="true">
-
-                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                            android:id="@+id/et_catatan_verifikasi"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:maxLength="50" />
-
-                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                    <!--Title Upload Dokumen 1-->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Upload Dokumen"
-                        android:textSize="16sp"
-                        android:layout_marginTop="10dp"
-                        android:paddingLeft="10dp"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/muli_b"
-                        android:paddingBottom="10dp"/>
-                    <!--Upload dokumen 1-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <RelativeLayout
-                            android:id="@+id/rl_dokumen1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
-                            android:layout_weight="1"
-                            android:padding="10dp">
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="200dp">
-
-                                <com.makeramen.roundedimageview.RoundedImageView
-                                    android:id="@+id/iv_dokumen1"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
-                                    android:scaleType="center"
-                                    android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
-                                    app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintLeft_toLeftOf="parent"
-                                    app:layout_constraintRight_toRightOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <ImageView
-                                    android:id="@+id/btn_dokumen1"
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:layout_marginRight="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:background="@drawable/photo_rounded_blue"
-                                    android:padding="8dp"
-                                    android:src="@mipmap/ico_upload"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintRight_toRightOf="parent" />
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
-                        </RelativeLayout>
-                    </LinearLayout>
-                <!--DSR/DBR nasabah yang telah di gunakan-->
+                <!--Total Angsuran Pembiayaan Eksisting yang tidak di lunasi-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_dsr_dbr"
+                    android:id="@+id/tf_angsuran_pinjaman_eksisting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:enabled="true"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Total Angsuran Tidak Dilunasi"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_angsuran_pinjaman_eksisting"
+                        android:text="0"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Sisa pendapatan yang dapat digunakan sebagai angsuran-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_sisapenghasilan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Sisa pendapatan Untuk angsuran"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_sisapenghasilan"
+                        android:text="0"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!-- Catatan Hasil Verifikasi 1-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_catatan_verifikasi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -172,14 +91,94 @@
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="DSR/DBR nasabah yang telah di gunakan"
+                    app:labelText="Catatan Hasil Verifikasi"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_dsr_dbr"
+                        android:id="@+id/et_catatan_verifikasi"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Title Upload Dokumen 1-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Dokumen"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingBottom="10dp"/>
+                <!--Upload dokumen 1-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RelativeLayout
+                        android:id="@+id/rl_dokumen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_dokumen1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:scaleType="center"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_width="1dip"
+                                app:riv_border_color="#f1efef"
+                                app:riv_corner_radius="8dip"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/btn_dokumen1"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+                <!--DBR nasabah yang telah di gunakan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dbr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="DBR nasabah yang telah di gunakan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dbr"
                         android:text="0"
                         android:textAlignment="textEnd"
                         app:suffix="%"
@@ -191,7 +190,7 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Sisa DSR/DBR Nasabah-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_sisa_dsr_dbr"
+                    android:id="@+id/tf_sisa_dbr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -199,14 +198,14 @@
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Sisa DSR/DBR Nasabah"
+                    app:labelText="Sisa DBR Nasabah"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_sisa_dsr_dbr"
+                        android:id="@+id/et_sisa_dbr"
                         android:text="0"
                         android:textAlignment="textEnd"
                         app:suffix="%"
@@ -216,9 +215,9 @@
                         android:maxLength="50" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                <!--Maksimal Angsuran bulanan Nasabah-->
+                <!--Maksimal Angsuran bulanan Nasabah DBR-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_max_angsuran"
+                    android:id="@+id/tf_max_angsuran_DBR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -233,7 +232,7 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_max_angsuran"
+                        android:id="@+id/et_max_angsuran_DBR"
                         android:text="0"
                         app:prefix="Rp."
                         android:inputType="numberDecimal"
@@ -242,9 +241,9 @@
                         android:maxLength="50" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                <!--DSR/DBR Final Sesuai Ketentuan-->
+                <!--DBR Final Sesuai Ketentuan-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_ketentuan"
+                    android:id="@+id/tf_final_DBR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -259,7 +258,112 @@
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_ketentuan"
+                        android:id="@+id/et_final_DBR"
+                        android:text=" "
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--DSR nasabah yang telah di gunakan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_dsr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="DSR/DBR nasabah yang telah di gunakan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_dsr"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%"
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Sisa DSR Nasabah-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_sisa_dsr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Sisa DSR/DBR Nasabah"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_sisa_dsr"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%"
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Maksimal DSR Angsuran bulanan Nasabah -->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_max_angsuran_dsr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Maksimal Angsuran bulanan Nasabah"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_max_angsuran_dsr"
+                        android:text="0"
+                        app:prefix="Rp."
+                        android:inputType="numberDecimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLength="50" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--DSR Final Sesuai Ketentuan-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_final_DSR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginTop="10dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="DSR/DBR Final Sesuai Ketentuan"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_final_DSR"
                         android:text=" "
                         android:inputType="numberDecimal"
                         android:layout_width="match_parent"
@@ -269,24 +373,24 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <!--Button Simpan-->
-                <LinearLayout
-                    android:id="@+id/ll_btn_send"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@color/colorWhite"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginBottom="10dp">
-                    <Button
-                        android:id="@+id/btn_send"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:text="Simpan"
-                        android:padding="8dp"
-                        style="@style/Bordered.Button.Custom"/>
-                </LinearLayout>
+                <!--                <LinearLayout-->
+                <!--                    android:id="@+id/ll_btn_send"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:background="@color/colorWhite"-->
+                <!--                    android:layout_marginTop="16dp"-->
+                <!--                    android:layout_marginRight="6dp"-->
+                <!--                    android:layout_marginLeft="6dp"-->
+                <!--                    android:layout_marginBottom="10dp">-->
+                <!--                    <Button-->
+                <!--                        android:id="@+id/btn_send"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="6"-->
+                <!--                        android:text="Simpan"-->
+                <!--                        android:padding="8dp"-->
+                <!--                        style="@style/Bordered.Button.Custom"/>-->
+                <!--                </LinearLayout>-->
             </LinearLayout>
         </FrameLayout>
     </ScrollView>

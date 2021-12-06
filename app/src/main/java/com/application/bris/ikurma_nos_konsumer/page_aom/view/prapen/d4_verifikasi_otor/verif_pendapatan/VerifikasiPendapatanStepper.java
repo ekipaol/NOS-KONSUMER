@@ -46,7 +46,7 @@ public class VerifikasiPendapatanStepper extends AbstractFragmentStepAdapter {
                 FragmentDokumenPendapatan FragmentDokumenPendapatan = new FragmentDokumenPendapatan(dataO);
                 return FragmentDokumenPendapatan;
             case 1:
-                FragmentVerifikasiPendapatan FragmentVerifikasiPendapatan = new FragmentVerifikasiPendapatan();
+                FragmentVerifikasiPendapatan FragmentVerifikasiPendapatan = new FragmentVerifikasiPendapatan(dataO);
                 return FragmentVerifikasiPendapatan;
             default:
                 throw new IllegalArgumentException("Unsupported position: " + position);

@@ -389,6 +389,8 @@ public class UriApi {
         public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
         public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
 
+        public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";
+
         //D4
         public static final String inquiryRac = "NOS_PRAPEN_Services/rest/D4/InquiryParamRAC";
         public static final String inquiryFitur = "NOS_PRAPEN_Services/rest/D4/InquiryParamFitur";
@@ -400,6 +402,8 @@ public class UriApi {
         public static final String lanjutPembiayaanKeOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
         public static final String kembalikanPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
         public static final String batalPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+        public static final String InqKalkulatorVerfikator = "NOS_PRAPEN_Services/rest/D4/InqKalkulatorVerfikator";
+        public static final String UpdateKalkulatorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateKalkulatorVerifikator";
 
 
         //D4.1
@@ -436,6 +440,32 @@ public class UriApi {
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
         public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";
         public static final String updateMemo = "NOS_PRAPEN_Services/rest/D3/UpdateMemo";
+        public static final String inqListAsusransi = "NOS_PRAPEN_Services/rest/Picklist/ListAsusransi";
+
+
+
+        //G1
+        public static final String DownloadSUP = "NOS_PRAPEN_Services/rest/G1/DownloadSUP";
+        public static final String DownloadAkadIjarah = "NOS_PRAPEN_Services/rest/G1/DownloadAkadIjarah";
+        public static final String DownloadAkadMMQ = "NOS_PRAPEN_Services/rest/G1/DownloadAkadMMQ";
+        public static final String DownloadAkadMurabahah = "NOS_PRAPEN_Services/rest/G1/DownloadAkadMurabahah";
+        public static final String DownloadAkadRahn = "NOS_PRAPEN_Services/rest/G1/DownloadAkadRahn";
+        public static final String DownloadFormMutasi = "NOS_PRAPEN_Services/rest/G1/DownloadFormMutasi";
+        public static final String DownloadLampiranSuratKuasa = "NOS_PRAPEN_Services/rest/G1/DownloadLampiranSuratKuasa";
+        public static final String DownloadLampiranSuratPernyataan = "NOS_PRAPEN_Services/rest/G1/DownloadLampiranSuratPernyataan";
+        public static final String DownloadTandaTerimaSK = "NOS_PRAPEN_Services/rest/G1/DownloadTandaTerimaSK";
+        public static final String DownloadWakalah = "NOS_PRAPEN_Services/rest/G1/DownloadWakalah";
+        public static final String DownloadPurchaseMurabahah = "NOS_PRAPEN_Services/rest/G1/DownloadPurchaseMurabahah";
+        public static final String DownloadPurchaseIjarah = "NOS_PRAPEN_Services/rest/G1/DownloadPurchaseIjarah";
+        public static final String DownloadLampiranAngsMur = "NOS_PRAPEN_Services/rest/G1/DownloadLampiranAngsMur";
+        public static final String DownloadJdwlAngsRahn = "NOS_PRAPEN_Services/rest/G1/DownloadJdwlAngsRahn";
+        public static final String DownloadJadwalPengambilAlihan = "NOS_PRAPEN_Services/rest/G1/DownloadJadwalPengambilAlihan";
+        public static final String DownloadLaporanPenilaianAset = "NOS_PRAPEN_Services/rest/G1/DownloadLaporanPenilaianAset";
+        public static final String DownloadJadwalAngsuranUjrah = "NOS_PRAPEN_Services/rest/G1/DownloadJadwalAngsuranUjrah";
+        public static final String DownloadSuratTandaTerima = "NOS_PRAPEN_Services/rest/G1/DownloadSuratTandaTerima";
+
+
+
     }
 }
 

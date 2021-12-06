@@ -26,13 +26,19 @@ import androidx.fragment.app.Fragment;
 
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DokumenPendapatan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseDataUpdateVerifikasi;
 import com.application.bris.ikurma_nos_konsumer.databinding.FragmentVerifikasiPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
@@ -43,31 +49,115 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FragmentVerifikasiPendapatan extends Fragment  implements Step, GenericListenerOnSelect, View.OnClickListener, CameraListener {
+public class FragmentVerifikasiPendapatan extends Fragment implements Step, GenericListenerOnSelect, View.OnClickListener, CameraListener {
     private FragmentVerifikasiPendapatanBinding binding;
     private DatePickerDialog dpSK;
+    private MParseDataUpdateVerifikasi dp;
     private Calendar calLahir;
+    private JsonObject data;
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
     List<MGenericModel> dataDropdownPendapatan = new ArrayList<>();
+    ReqDocument FileHasilVerifPensiun = new ReqDocument(), FileHasilVerifTotal = new ReqDocument();
+
+    public FragmentVerifikasiPendapatan(JsonObject object) {
+        data = object;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentVerifikasiPendapatanBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentVerifikasiPendapatanBinding.inflate(getLayoutInflater(), container, false);
         View view = binding.getRoot();
         setParameterDropdown();
-        onclickSelectDialog();
+//        onclickSelectDialog();
         numberTextEditor();
         chageListener();
         disabledText();
+        initialize();
         return view;
     }
-    
-    private void disabledText(){
-        binding.etTanggalGaji.setFocusable(false);
-        binding.etVerifikasiGajiTercermin.setFocusable(false);
+
+    private void initialize() {
+        Gson gson = new Gson();
+        if (data.get("DataUpdateVerifikasi") != null) {
+            String listDataString = data.get("DataUpdateVerifikasi").getAsJsonObject().toString();
+            dp = gson.fromJson(listDataString, MParseDataUpdateVerifikasi.class);
+            if (dp.getCttnHItPendapatanSaatPensD4() != null)
+                binding.etCatatanVerifikasi2.setText(dp.getCttnHItPendapatanSaatPensD4());
+            if (dp.getCttnTotalendTerverifikasiD4() != null)
+                binding.etCatatanVerifikasi1.setText(dp.getCttnTotalendTerverifikasiD4());
+            if (dp.getTotalPendTerverifikasiD4() != null)
+                binding.etTotalPendapatan.setText(String.valueOf(dp.getTotalPendTerverifikasiD4()));
+            if (dp.getNomorRekeningTercerminD4() != null)
+                binding.etNorekTercermin.setText(dp.getNomorRekeningTercerminD4());
+            if (dp.getHasilVerifikasiGajiD4() != null)
+                binding.etVerifikasiGaji.setText(dp.getHasilVerifikasiGajiD4());
+            if (dp.getHasilVerifikasiTunjanganD4() != null)
+                binding.etVerifikasiTunjangan.setText(dp.getHasilVerifikasiTunjanganD4());
+            if (dp.getPerhitPendapatanSaatPensD4() != null)
+                binding.etTotalPendapatanPensiun.setText(dp.getPerhitPendapatanSaatPensD4());
+            if (dp.getCerminanGajiDanTunjD4() != null)
+                binding.etVerifikasiGajiTercermin.setText(dp.getCerminanGajiDanTunjD4());
+            if (dp.getNominalGajiSPAN() != null)
+                binding.etNominalGaji.setText(dp.getNominalGajiSPAN());
+            if (dp.getTanggalPembayaranPayrollSPAN() != null)
+                binding.etTanggalGaji.setText(dp.getTanggalPembayaranPayrollSPAN());
+        }
+        if (data.get("FileHasilVerifPensiun") != null) {
+            String listDataString = data.get("FileHasilVerifPensiun").getAsJsonObject().toString();
+            FileHasilVerifPensiun = gson.fromJson(listDataString, ReqDocument.class);
+            //Set Image Slip Gaji P2
+            try {
+                FileHasilVerifPensiun.setImg(FileHasilVerifPensiun.getImg());
+                if (FileHasilVerifPensiun.getFileName().substring(FileHasilVerifPensiun.getFileName().length() - 3, FileHasilVerifPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    FileHasilVerifPensiun.setFileName("FileHasilVerifPensiun.png");
+                    AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifPensiun.getImg(), binding.ivDokumen2, FileHasilVerifPensiun.getFileName());
+                } else {
+                    FileHasilVerifPensiun.setFileName("FileHasilVerifTotal.pdf");
+                    AppUtil.convertBase64ToImage(FileHasilVerifPensiun.getImg(), binding.ivDokumen2);
+                }
+            } catch (Exception e) {
+                AppUtil.logSecure("error setdata", e.getMessage());
+            }
+
+        }
+        if (data.get("FileHasilVerifTotal") != null) {
+            String listDataString = data.get("FileHasilVerifTotal").getAsJsonObject().toString();
+            FileHasilVerifPensiun = gson.fromJson(listDataString, ReqDocument.class);
+
+            //Set Image Slip Gaji P2
+            try {
+                FileHasilVerifTotal.setImg(FileHasilVerifTotal.getImg());
+                if (FileHasilVerifTotal.getFileName().substring(FileHasilVerifTotal.getFileName().length() - 3, FileHasilVerifTotal.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    FileHasilVerifTotal.setFileName("FileHasilVerifTotal.png");
+                    AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifTotal.getImg(), binding.ivDokumen1, FileHasilVerifTotal.getFileName());
+                } else {
+                    FileHasilVerifTotal.setFileName("FileHasilVerifTotal.pdf");
+                    AppUtil.convertBase64ToImage(FileHasilVerifTotal.getImg(), binding.ivDokumen1);
+                }
+            } catch (Exception e) {
+                AppUtil.logSecure("error setdata", e.getMessage());
+            }
+        }
     }
 
-    private void chageListener(){
+    private void disabledText() {
+        binding.etTanggalGaji.setFocusable(false);
+        binding.etManfaatPensiun.setFocusable(false);
+        binding.etNominalGaji.setFocusable(false);
+        binding.etVerifikasiGajiTercermin.setFocusable(false);
+        binding.etCatatanVerifikasi2.setFocusable(false);
+        binding.etCatatanVerifikasi1.setFocusable(false);
+        binding.etTotalPendapatan.setFocusable(false);
+        binding.etNorekTercermin.setFocusable(false);
+        binding.etVerifikasiGaji.setFocusable(false);
+        binding.etVerifikasiTunjangan.setFocusable(false);
+        binding.etTotalPendapatanPensiun.setFocusable(false);
+        binding.etVerifikasiGajiTercermin.setFocusable(false);
+        binding.btnDokumen1.setVisibility(View.GONE);
+        binding.btnDokumen2.setVisibility(View.GONE);
+    }
+
+    private void chageListener() {
         binding.etVerifikasiGaji.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,10 +166,10 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString( binding.etVerifikasiGaji.getText().toString()));
-                BigDecimal vertunjangan= new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiTunjangan.getText().toString()));
-                BigDecimal totalRpc=(vergaji.add(vertunjangan));
-                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
+//                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiGaji.getText().toString()));
+//                BigDecimal vertunjangan = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiTunjangan.getText().toString()));
+//                BigDecimal totalRpc = (vergaji.add(vertunjangan));
+//                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
             }
 
             @Override
@@ -98,10 +188,10 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString( binding.etVerifikasiGaji.getText().toString()));
-                BigDecimal vertunjangan= new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiTunjangan.getText().toString()));
-                BigDecimal totalRpc=(vergaji.add(vertunjangan));
-                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
+//                BigDecimal vergaji = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiGaji.getText().toString()));
+//                BigDecimal vertunjangan = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etVerifikasiTunjangan.getText().toString()));
+//                BigDecimal totalRpc = (vergaji.add(vertunjangan));
+//                binding.etTotalPendapatan.setText(String.valueOf(totalRpc));
             }
 
             @Override
@@ -113,7 +203,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         });
     }
 
-    private void numberTextEditor(){
+    private void numberTextEditor() {
         binding.etNominalGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalGaji));
         binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
         binding.etTotalPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanPensiun));
@@ -122,7 +212,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
     }
 
 
-    private void onclickSelectDialog(){
+    private void onclickSelectDialog() {
         binding.btnDokumen1.setOnClickListener(this);
         binding.btnDokumen2.setOnClickListener(this);
         binding.ivDokumen1.setOnClickListener(this);
@@ -142,7 +232,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         binding.tfVerifikasiGajiTercermin.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogGenericDataFromService.display(getFragmentManager(),binding.tfVerifikasiGajiTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
+                DialogGenericDataFromService.display(getFragmentManager(), binding.tfVerifikasiGajiTercermin.getLabelText(), dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
             }
         });
     }
@@ -150,14 +240,14 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_dokumen1 :
-            case R.id.btn_dokumen2 :
-            case R.id.rl_dokumen1 :
-            case R.id.rl_dokumen2 :
-            case R.id.iv_dokumen1 :
-            case R.id.iv_dokumen2 :
-                BSUploadFile.displayWithTitle( getActivity().getSupportFragmentManager(),this,"");
+        switch (v.getId()) {
+            case R.id.btn_dokumen1:
+            case R.id.btn_dokumen2:
+            case R.id.rl_dokumen1:
+            case R.id.rl_dokumen2:
+            case R.id.iv_dokumen1:
+            case R.id.iv_dokumen2:
+                BSUploadFile.displayWithTitle(getActivity().getSupportFragmentManager(), this, "");
                 break;
             case R.id.et_tanggal_gaji:
             case R.id.tf_tanggal_gaji:
@@ -165,34 +255,34 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
                 break;
             case R.id.tf_verifikasi_gaji_tercermin:
             case R.id.et_verifikasi_gaji_tercermin:
-                DialogGenericDataFromService.display(getFragmentManager(),binding.tfVerifikasiGajiTercermin.getLabelText(),dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
+                DialogGenericDataFromService.display(getFragmentManager(), binding.tfVerifikasiGajiTercermin.getLabelText(), dataDropdownPendapatan, FragmentVerifikasiPendapatan.this);
                 break;
         }
     }
 
-    private void setParameterDropdown(){
+    private void setParameterDropdown() {
         //dropdown kalkulator
-        dataDropdownPendapatan.add(new MGenericModel("1","Tercermin"));
-        dataDropdownPendapatan.add(new MGenericModel("2","Tercermin tapi nominal lebih rendah"));
-        dataDropdownPendapatan.add(new MGenericModel("3","Tercermin tapi Nominal lebih Tinggi"));
-        dataDropdownPendapatan.add(new MGenericModel("4","Tidak tercermin direkening"));
+        dataDropdownPendapatan.add(new MGenericModel("1", "Tercermin"));
+        dataDropdownPendapatan.add(new MGenericModel("2", "Tercermin tapi nominal lebih rendah"));
+        dataDropdownPendapatan.add(new MGenericModel("3", "Tercermin tapi Nominal lebih Tinggi"));
+        dataDropdownPendapatan.add(new MGenericModel("4", "Tidak tercermin direkening"));
 
     }
 
 
     public void onSelect(String title, MGenericModel data) {
-        if(title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+        if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
             binding.etVerifikasiGajiTercermin.setText(data.getDESC());
-        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+        } else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
             binding.etVerifikasiGajiTercermin.setText(data.getDESC());
-        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+        } else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
             binding.etVerifikasiGajiTercermin.setText(data.getDESC());
-        }else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
+        } else if (title.equalsIgnoreCase(binding.tfVerifikasiGajiTercermin.getLabelText())) {
             binding.etVerifikasiGajiTercermin.setText(data.getDESC());
         }
     }
 
-    private void dpSKCalendar(View v){
+    private void dpSKCalendar(View v) {
         calLahir = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
             @SuppressLint("NonConstantResourceId")
@@ -228,12 +318,14 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         }
 
     }
+
     private final int TAKE_PICTURE_KANTOR1 = 11;
     private final int PICK_PICTURE_KANTOR1 = 22;
 
     private void openCamera(int cameraCode) {
         checkCameraPermission(cameraCode);
     }
+
     public void openGalery(int cameraCode) {
         Intent it = new Intent(Intent.ACTION_GET_CONTENT);
         it.setType("image/*");
@@ -248,6 +340,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
 
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private static int CAMERA_CODE_FORE_PERMISSION = 0;
+
     public void checkCameraPermission(int cameraCode) {
         if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -269,6 +362,7 @@ public class FragmentVerifikasiPendapatan extends Fragment  implements Step, Gen
         captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
         startActivityForResult(captureIntent, cameraCode);
     }
+
     private Uri getCaptureImageOutputUri() {
         Uri outputFileUri = null;
         File getImage = getActivity().getExternalCacheDir();

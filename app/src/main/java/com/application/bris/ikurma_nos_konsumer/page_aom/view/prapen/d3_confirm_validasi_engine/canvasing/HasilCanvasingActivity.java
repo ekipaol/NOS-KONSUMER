@@ -85,24 +85,35 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             Gson gson = new Gson();
-                            rTaspen = response.body().getData().get("ResponseTaspen").getAsJsonArray().toString();
-                            Type typeTaspen = new TypeToken<List<MparseResponseTaspen>>() {
-                            }.getType();
-                            rRAC = response.body().getData().get("ResponseRAC").toString();
-                            rhasilRAC = response.body().getData().get("HasilChecking").getAsJsonObject().toString();
-                            Type type = new TypeToken<List<MparseResponseRAC>>() {
-                            }.getType();
-                            String aRac = response.body().getData().get("StatusRAC").getAsString();
-                            rFitur = response.body().getData().get("ResponseFitur").getAsJsonArray().toString();
-                            Type typeFitur = new TypeToken<List<MparseResponseFitur>>() {
-                            }.getType();
-                            String aFitur = response.body().getData().get("StatusFitur").getAsString();
-                            dataRAC = gson.fromJson(rRAC, type);
-                            datahasilRAC = gson.fromJson(rhasilRAC, MparseResponseHasilRAC.class);
-                            dataFitur = gson.fromJson(rFitur, typeFitur);
-                            dataTaspen = gson.fromJson(rTaspen, typeTaspen);
-                            AppUtil.logSecure("mtag", response.body().getData().get("StatusRAC").getAsString());
-
+                            String aRac = "", aFitur = "";
+                            if (response.body().getData().get("ResponseTaspen") != null) {
+                                rTaspen = response.body().getData().get("ResponseTaspen").getAsJsonArray().toString();
+                                Type typeTaspen = new TypeToken<List<MparseResponseTaspen>>() {
+                                }.getType();
+                                dataTaspen = gson.fromJson(rTaspen, typeTaspen);
+                            }
+                            if (response.body().getData().get("ResponseRAC") != null) {
+                                rRAC = response.body().getData().get("ResponseRAC").toString();
+                                Type type = new TypeToken<List<MparseResponseRAC>>() {
+                                }.getType();
+                                dataRAC = gson.fromJson(rRAC, type);
+                            }
+                            if (response.body().getData().get("HasilChecking") != null) {
+                                rhasilRAC = response.body().getData().get("HasilChecking").getAsJsonObject().toString();
+                                datahasilRAC = gson.fromJson(rhasilRAC, MparseResponseHasilRAC.class);
+                            }
+                            if (response.body().getData().get("StatusRAC") != null) {
+                                aRac = response.body().getData().get("StatusRAC").getAsString();
+                            }
+                            if (response.body().getData().get("ResponseFitur") != null) {
+                                rFitur = response.body().getData().get("ResponseFitur").getAsJsonArray().toString();
+                                Type typeFitur = new TypeToken<List<MparseResponseFitur>>() {
+                                }.getType();
+                                dataFitur = gson.fromJson(rFitur, typeFitur);
+                            }
+                            if (response.body().getData().get("StatusFitur") != null) {
+                                aFitur = response.body().getData().get("StatusFitur").getAsString();
+                            }
                             binding.stepperlayout.setAdapter(new HasilCanvasingStepper(getSupportFragmentManager(), HasilCanvasingActivity.this, dataRAC, aRac, datahasilRAC, dataFitur, aFitur, dataTaspen));
                             binding.stepperlayout.setListener(HasilCanvasingActivity.this);
 

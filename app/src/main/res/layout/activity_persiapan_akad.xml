@@ -10,6 +10,7 @@
 
     >
     <include layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading" layout="@layout/loading"></include>
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -581,15 +582,16 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Jadwal Angsuran Ujrah (Lampiran)"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Jadwal Angsuran Ujrah (Lampiran)"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Jadwal Angsuran Ujrah (Lampiran)-->
                         <ImageView
@@ -639,15 +641,16 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Laporan Penilaian Aset MMQ "
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Laporan Penilaian Aset MMQ "
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Laporan Penilaian Aset MMQ -->
                         <ImageView

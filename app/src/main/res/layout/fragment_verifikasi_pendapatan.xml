@@ -44,7 +44,7 @@
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
                     app:labelText="Manfaat Pensiun"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -80,7 +80,7 @@
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Nominal GAJI"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -95,15 +95,15 @@
                         android:maxLength="50" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-                <!--Tanggal Pembayaran-->
+                <!--Periode Gaji-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_tanggal_gaji"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:iconSignifier="@drawable/ic_date"
                     app:isResponsiveIconColor="true"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
                     app:labelText="Periode Gaji"
@@ -146,9 +146,9 @@
                     android:inputType = "numberPassword"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+
                     app:labelText="Hasil Verifikasi Gaji dan Tunjangan Tercermin di rekening?"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -173,7 +173,7 @@
                     app:isResponsiveIconColor="true"
 
                     app:labelText="Nomor Rekening yang tercermin"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -197,7 +197,7 @@
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
                     app:labelText="Hasil Verifikasi GAJI"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -223,7 +223,7 @@
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
                     app:labelText="Hasil Verifikasi Tunjangan"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -248,7 +248,6 @@
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
-                    app:enabled="false"
                     app:labelText="Hasil Total Pendapatan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
@@ -276,14 +275,14 @@
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Catatan Hasil Verifikasi"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_catatan_verifikasi1"
-                        
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50" />
@@ -359,7 +358,7 @@
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
                     app:labelText="Perhitungan pendapatan saat Pensiun"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -385,14 +384,14 @@
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Catatan Hasil Verifikasi"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_catatan_verifikasi2"
-                    
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLength="50" />
