@@ -464,6 +464,9 @@ public class UriApi {
         public static final String DownloadJadwalAngsuranUjrah = "NOS_PRAPEN_Services/rest/G1/DownloadJadwalAngsuranUjrah";
         public static final String DownloadSuratTandaTerima = "NOS_PRAPEN_Services/rest/G1/DownloadSuratTandaTerima";
 
+        // G3
+        public static final String UploadDokumenUmum = "NOS_PRAPEN_Services/rest/G3/UploadDokumenUmum";
+        public static final String InqDokumenUpload = "NOS_PRAPEN_Services/rest/G3/InqDokumenUpload";
 
 
     }
