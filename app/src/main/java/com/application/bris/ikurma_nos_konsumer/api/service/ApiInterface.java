@@ -56,6 +56,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.Kon
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.KonsumerKPRKaryawanPnsInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.KonsumerKPRWiraswastaInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.Prescreening;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqScoringKmg;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.SimpanDataFinansial;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.SimpanDataFinansialKpr;
@@ -75,7 +76,6 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inq
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryLkn;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryNikPasangan;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.ReqIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquiryScoring;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.inquirySektorEkonomi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.hotprospek.kirimPutusanMikro;
@@ -97,12 +97,13 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inquiryTujuan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataSearchOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPejabat;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocumentUmum;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungKalkulator;
@@ -110,11 +111,9 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInqu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SearchSekEkonomi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataNasabah;
@@ -1035,20 +1034,18 @@ public interface ApiInterface {
     Call<ParseResponse> updateDataOjkBi(@Body UpdateDataOjkBi UpdateDataOjkBi);
 
     @POST(UriApi.prapen.dropdownSektorEkonomi)
-    Call<ParseResponseArr> dropdownSektorekonomi(@Body SearchSekEkonomi searchSektorEkonomi);
+    Call<ParseResponseArr> dropdownSektorekonomi(@Body DataSearchOjk dataSearchOjk);
 
     @POST(UriApi.prapen.dropdownKodePekerjaan)
     Call<ParseResponseArr> dropdownKodePekerjaan(@Body EmptyRequest EmptyRequest);
 
     @POST(UriApi.prapen.dropdownBidangUsahaTempatKerja)
-    Call<ParseResponse> dropdownBidangUsahaTempatKerja(@Body EmptyRequest EmptyRequest);
+    Call<ParseResponseArr> dropdownBidangUsahaTempatKerja(@Body DataSearchOjk dataSearchOjk);
 
     @POST(UriApi.prapen.UploadDokumenUmum)
     Call<ParseResponse> UploadDokumenUmum(@Body ReqUploadDokumen ReqUploadDokumen);
 
     @POST(UriApi.prapen.InqDokumenUpload)
     Call<ParseResponse> InqDokumenUpload(@Body ReqInquery ReqInquery);
-
-
 }
 

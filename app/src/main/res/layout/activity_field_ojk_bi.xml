@@ -9,7 +9,8 @@
     android:fitsSystemWindows="true"
     android:background="@color/colorWhite">
 
-    <include layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,7 +31,6 @@
                 android:background="@color/colorWhite"
                 android:orientation="vertical"
                 android:paddingTop="20dp">
-                <include android:id="@+id/loading_layout" layout="@layout/loading"/>
 
                 <!--Kesimpulan Verifikasi-->
                 <LinearLayout
