@@ -559,11 +559,11 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/muli_b"
-                                android:text="Angsuran Bulanan"
+                                android:text="Angsuran Bulanan Prapen"
                                 android:textSize="14sp" />
                             <!--Angsuran Bulanan-->
                             <TextView
-                                android:id="@+id/tv_Angsuran_bulanan"
+                                android:id="@+id/tv_Angsuran_bulanan_prapen"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

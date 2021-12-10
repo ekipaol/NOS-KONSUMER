@@ -9,10 +9,10 @@ public class MparseResponseSimulasiBiayaBiaya {
 
     @SerializedName("AsuransiPenjaminId")
     @Expose
-    private String AsuransiPenjaminId;
+    private Long asuransiPenjaminId;
     @SerializedName("NamaAsuransi")
     @Expose
-    private String NamaAsuransi;
+    private String namaAsuransi;
     @SerializedName("BiayaAsuransiPenjamin")
     @Expose
     private BigDecimal biayaAsuransiPenjamin;
@@ -44,19 +44,19 @@ public class MparseResponseSimulasiBiayaBiaya {
     @Expose
     private String treatmentBiayaMaterai;
 
-    public String getAsuransiPenjaminId() {
-        return AsuransiPenjaminId;
+    public Long getAsuransiPenjaminId() {
+        return asuransiPenjaminId;
     }
 
-    public void setAsuransiPenjaminId(String asuransiPenjamin) {
-        this.AsuransiPenjaminId = asuransiPenjamin;
+    public void setAsuransiPenjaminId(Long asuransiPenjamin) {
+        this.asuransiPenjaminId = asuransiPenjamin;
     }
     public String getNamaAsuransi() {
-        return NamaAsuransi;
+        return namaAsuransi;
     }
 
     public void setNamaAsuransi(String NamaAsuransi) {
-        this.NamaAsuransi = NamaAsuransi;
+        this.namaAsuransi = NamaAsuransi;
     }
 
     public BigDecimal getBiayaAsuransiPenjamin() {

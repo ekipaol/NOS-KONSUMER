@@ -16,9 +16,12 @@ public class MparseResponseSimulasiInqCal {
     @SerializedName("Rate")
     @Expose
     private Double rate;
-    @SerializedName("PMT")
+    @SerializedName("PMTPrapen")
     @Expose
-    private Double pmt;
+    private Double PMTPrapen;
+    @SerializedName("PMTPensiun")
+    @Expose
+    private Double PMTPensiun;
 
     public Double getTerm() {
         return term;
@@ -44,11 +47,19 @@ public class MparseResponseSimulasiInqCal {
         this.rate = rate;
     }
 
-    public Double getPmt() {
-        return pmt;
+    public Double getPMTPrapen() {
+        return PMTPrapen;
     }
 
-    public void setPmt(Double pmt) {
-        this.pmt = pmt;
+    public void setPMTPrapen(Double PMTPrapen) {
+        this.PMTPrapen = PMTPrapen;
+    }
+
+    public Double getPMTPensiun() {
+        return PMTPensiun;
+    }
+
+    public void setPMTPensiun(Double PMTPensiun) {
+        this.PMTPensiun = PMTPensiun;
     }
 }

@@ -1,10 +1,13 @@
 package com.application.bris.ikurma_nos_konsumer.api.model.request.prapen;
 
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseDataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseJadwalAngsuran;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseSimulasiBiayaBiaya;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseSimulasiInqCal;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class ReqHitungKalkulator {
 
@@ -23,6 +26,9 @@ public class ReqHitungKalkulator {
     @SerializedName("DataPembiayaan")
     @Expose
     private MparseResponseDataPembiayaan dataPembiayaan;
+    @SerializedName("JadwalAngsuran")
+    @Expose
+    private List<MparseResponseJadwalAngsuran> JadwalAngsuran;
 
     public Integer getApplicationId() {
         return applicationId;
@@ -62,5 +68,13 @@ public class ReqHitungKalkulator {
 
     public void setDataPembiayaan(MparseResponseDataPembiayaan dataPembiayaan) {
         this.dataPembiayaan = dataPembiayaan;
+    }
+
+    public List<MparseResponseJadwalAngsuran> getJadwalAngsuran() {
+        return JadwalAngsuran;
+    }
+
+    public void setJadwalAngsuran(List<MparseResponseJadwalAngsuran> jadwalAngsuran) {
+        JadwalAngsuran = jadwalAngsuran;
     }
 }

@@ -13,15 +13,12 @@ public class MparseResponseDataPembiayaan {
     @SerializedName("TotalCost")
     @Expose
     private BigDecimal totalCost;
-    @SerializedName("MonthInstalment")
+    @SerializedName("MonthInstalmentPrapen")
     @Expose
-    private BigDecimal monthInstalment;
-    @SerializedName("InsuranceCost")
+    private BigDecimal MonthInstalmentPrapen;
+    @SerializedName("MonthInstalmentPensiun")
     @Expose
-    private BigDecimal InsuranceCost;
-    @SerializedName("AdministrationsCost")
-    @Expose
-    private BigDecimal AdministrationsCost;
+    private BigDecimal MonthInstalmentPensiun;
 
     public BigDecimal getTotalAttributions() {
         return totalAttributions;
@@ -39,27 +36,19 @@ public class MparseResponseDataPembiayaan {
         this.totalCost = totalCost;
     }
 
-    public BigDecimal getMonthInstalment() {
-        return monthInstalment;
+    public BigDecimal getMonthInstalmentPrapen() {
+        return MonthInstalmentPrapen;
     }
 
-    public void setMonthInstalment(BigDecimal monthInstalment) {
-        this.monthInstalment = monthInstalment;
+    public void setMonthInstalmentPrapen(BigDecimal monthInstalmentPrapen) {
+        MonthInstalmentPrapen = monthInstalmentPrapen;
     }
 
-    public BigDecimal getInsuranceCost() {
-        return InsuranceCost;
+    public BigDecimal getMonthInstalmentPensiun() {
+        return MonthInstalmentPensiun;
     }
 
-    public void setInsuranceCost(BigDecimal insuranceCost) {
-        InsuranceCost = insuranceCost;
-    }
-
-    public BigDecimal getAdministrationsCost() {
-        return AdministrationsCost;
-    }
-
-    public void setAdministrationsCost(BigDecimal administrationsCost) {
-        AdministrationsCost = administrationsCost;
+    public void setMonthInstalmentPensiun(BigDecimal monthInstalmentPensiun) {
+        MonthInstalmentPensiun = monthInstalmentPensiun;
     }
 }

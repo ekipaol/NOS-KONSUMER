@@ -5,13 +5,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class MParseArray {
-    @SerializedName("Status")
+    @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("StatusMsg")
+    @SerializedName("statusMsg")
     @Expose
     private String statusMsg;
-    @SerializedName("Data")
+    @SerializedName("data")
     @Expose
     private JsonArray data;
 
