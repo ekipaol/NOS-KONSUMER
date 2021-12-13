@@ -118,12 +118,6 @@ public class DetailMonitoringNasabahActivity extends AppCompatActivity {
     SaldoNasabah dataSaldo;
 
     Call<ParseResponseSaldo> call;
-
-
-
-
-
-
     ApiClientAdapter apiClientAdapter;
 
 
