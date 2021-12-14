@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumen;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseJadwalAngsuran;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityUploadDokumenBinding;
@@ -38,8 +40,10 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListene
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -141,59 +145,31 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 if (response.isSuccessful()) {
                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
 
-                    if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String listDataString = response.body().getData().get("DokumenUmum").getAsJsonArray().toString();
-                        String SSFormMutasiKantorBayar = response.body().getData().get("Form_Mutas_Kantor_Bayar").getAsJsonObject().toString();
-                        String SSFormBayarTaspen = response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen").getAsJsonObject().toString();
-                        String SSOtentikasiNasabah = response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah").getAsJsonObject().toString();
-                        String SSCovernoteAsuransi = response.body().getData().get("Foto_Covernote_Asuransi").getAsJsonObject().toString();
-                        String SSProsesAkad = response.body().getData().get("Foto_Proses_Penandatanganan_Akad").getAsJsonObject().toString();
-                        String SSSkPengangkatan = response.body().getData().get("Foto_SK_Pengangkatan").getAsJsonObject().toString();
-                        String SSSkPensiun = response.body().getData().get("Foto_SK_Pensiun").getAsJsonObject().toString();
-                        String SSSTerakhir = response.body().getData().get("Foto_SK_Terakhir").getAsJsonObject().toString();
-                        String SSIjarahAkad = response.body().getData().get("Ijarah_Akad_Ijarah").getAsJsonObject().toString();
-                        String SSIjarahAkadWakalah = response.body().getData().get("Ijarah_Akad_Wakalah").getAsJsonObject().toString();
-                        String SSIjarahLampiranJadwal = response.body().getData().get("Ijarah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
-                        String SSIjarahPurchaseOrder = response.body().getData().get("Ijarah_Purchase_Order").getAsJsonObject().toString();
-                        String SSAkadMMQ = response.body().getData().get("MMQ_Akad_MMQ").getAsJsonObject().toString();
-                        String SSMMQJadwalPengambilAlihan = response.body().getData().get("MMQ_Lampiran_Jadwal_Pengambil_Alihan").getAsJsonObject().toString();
-                        String SSMMQPenilaianAset = response.body().getData().get("MMQ_Laporan_Penilaian_Aset").getAsJsonObject().toString();
-                        String SSMMQSuratPeryataanAsetKetiga = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga").getAsJsonObject().toString();
-                        String SSMMQSuratPeryataanAsetSendiri = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri").getAsJsonObject().toString();
-                        String SSMurabahahAkad = response.body().getData().get("Murabahah_Akad_Murabahah").getAsJsonObject().toString();
-                        String SSMurabahahSuratTandaTerima = response.body().getData().get("Murabahah_Surat_Tanda_Terima_Barang").getAsJsonObject().toString();
-                        String SSMurabahahLampiranJadwalAngsuran = response.body().getData().get("Murabahah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
-                        String SSMurabahahAkadWakalah = response.body().getData().get("Murabahah_Akad_Wakalah").getAsJsonObject().toString();
-                        String SSMurabahahPurchaseOrder = response.body().getData().get("Murabahah_Purchase_Order").getAsJsonObject().toString();
-                        String SSAkadRahn = response.body().getData().get("Rahn_Akad_Rahn").getAsJsonObject().toString();
-                        String SSRahnLampiranJadwalAngsuran = response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
-                        String SSSup = response.body().getData().get("SUP").getAsJsonObject().toString();
-                        String SSSuratKuasaPernyataanFlagging = response.body().getData().get("Surat_Kuasa_Pernyataan_Flagging").getAsJsonObject().toString();
-                        String SSSuratKuasaPembiayaan = response.body().getData().get("Surat_Pernyataan_Kuasa_Pembiayaan").getAsJsonObject().toString();
-                        String SSTandaTerimaDokumenSK = response.body().getData().get("Tanda_Terima_Dokumen_SK").getAsJsonObject().toString();
-
+                    if (response.body().getStatus().equalsIgnoreCase("00") && response.body().getData() != null) {
                         Gson gson = new Gson();
-//                        dp = gson.fromJson(listDataString, ReqDocumentUmum.class);
                         if (response.body().getData().get("Form_Mutas_Kantor_Bayar") != null) {
+                            String SSFormMutasiKantorBayar = response.body().getData().get("Form_Mutas_Kantor_Bayar").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar = gson.fromJson(SSFormMutasiKantorBayar, ReqDocument.class);
-                            try{
-                                Form_Mutasi_Kantor_Bayar.setImg(Form_Mutasi_Kantor_Bayar.getImg());
-
-                                if (FNkantorbayar.substring(FNkantorbayar.length() - 3, FNkantorbayar.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkantorbayar, FNkantorbayar);
+                            valkantorbayar = Form_Mutasi_Kantor_Bayar.getImg();
+                            try {
+                                if (Form_Mutasi_Kantor_Bayar.getFileName().substring(Form_Mutasi_Kantor_Bayar.getFileName().length() - 3, Form_Mutasi_Kantor_Bayar.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNkantorbayar = "kantorbayar.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", kantorbayar);
+                                    kantorbayar = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valkantorbayar), 0, AppUtil.decodeImageTobase64(valkantorbayar).length);
+                                    FNkantorbayar = "kantorbayar.png";
                                 }
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFormMutasiKantorBayar.setVisibility(View.VISIBLE);
                         }
+                        
                         if (response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen") != null) {
+
+                            String SSFormBayarTaspen = response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar_Taspen = gson.fromJson(SSFormBayarTaspen, ReqDocument.class);
                             try {
-                                Form_Mutasi_Kantor_Bayar.setImg(Form_Mutasi_Kantor_Bayar.getImg());
+                                Form_Mutasi_Kantor_Bayar_Taspen.setImg(Form_Mutasi_Kantor_Bayar_Taspen.getImg());
 
                                 if (FNmutasi.substring(FNmutasi.length() - 3, FNmutasi.length()).equalsIgnoreCase("pdf")) {
                                     AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmutasi, FNmutasi);
@@ -207,8 +183,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvMutasi.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah") != null) {
+                            String SSOtentikasiNasabah = response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah").getAsJsonObject().toString();
                             Foto_Bukti_Otentikasi_Nasabah = gson.fromJson(SSOtentikasiNasabah, ReqDocument.class);
-                            try{
+                            try {
                                 Foto_Bukti_Otentikasi_Nasabah.setImg(Foto_Bukti_Otentikasi_Nasabah.getImg());
 
                                 if (FNfotoakad.substring(FNfotoakad.length() - 3, FNfotoakad.length()).equalsIgnoreCase("pdf")) {
@@ -222,6 +199,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoScreenCaptureBuktiOtentikasiNasabahSaatAkad.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_Covernote_Asuransi") != null) {
+                            String SSCovernoteAsuransi = response.body().getData().get("Foto_Covernote_Asuransi").getAsJsonObject().toString();
                             Foto_Covernote_Asuransi = gson.fromJson(SSCovernoteAsuransi, ReqDocument.class);
                             try {
                                 Foto_Covernote_Asuransi.setImg(Foto_Covernote_Asuransi.getImg());
@@ -237,6 +215,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoCovernoteAsuransi.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_Proses_Penandatanganan_Akad") != null) {
+                            String SSProsesAkad = response.body().getData().get("Foto_Proses_Penandatanganan_Akad").getAsJsonObject().toString();
                             Foto_Proses_Penandatanganan_Akad = gson.fromJson(SSProsesAkad, ReqDocument.class);
                             try {
                                 Foto_Proses_Penandatanganan_Akad.setImg(Foto_Proses_Penandatanganan_Akad.getImg());
@@ -252,6 +231,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoProsesPenandatangananAkad.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_SK_Pengangkatan") != null) {
+                            String SSSkPengangkatan = response.body().getData().get("Foto_SK_Pengangkatan").getAsJsonObject().toString();
                             Foto_SK_Pengangkatan = gson.fromJson(SSSkPengangkatan, ReqDocument.class);
                             try {
                                 Foto_SK_Pengangkatan.setImg(Foto_SK_Pengangkatan.getImg());
@@ -267,6 +247,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoSkPengangkatan.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_SK_Pensiun") != null) {
+                            String SSSkPensiun = response.body().getData().get("Foto_SK_Pensiun").getAsJsonObject().toString();
                             Foto_SK_Pensiun = gson.fromJson(SSSkPensiun, ReqDocument.class);
                             try {
                                 Foto_SK_Pensiun.setImg(Foto_SK_Pensiun.getImg());
@@ -282,6 +263,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoSkPensiun.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_SK_Terakhir") != null) {
+                            String SSSTerakhir = response.body().getData().get("Foto_SK_Terakhir").getAsJsonObject().toString();
                             Foto_SK_Terakhir = gson.fromJson(SSSTerakhir, ReqDocument.class);
                             try {
                                 Foto_SK_Terakhir.setImg(Foto_SK_Terakhir.getImg());
@@ -297,6 +279,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Ijarah_Akad_Ijarah") != null) {
+                            String SSIjarahAkad = response.body().getData().get("Ijarah_Akad_Ijarah").getAsJsonObject().toString();
                             Ijarah_Akad_Ijarah = gson.fromJson(SSIjarahAkad, ReqDocument.class);
                             try {
                                 Ijarah_Akad_Ijarah.setImg(Ijarah_Akad_Ijarah.getImg());
@@ -312,6 +295,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAkadIjarah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Ijarah_Akad_Wakalah") != null) {
+                            String SSIjarahAkadWakalah = response.body().getData().get("Ijarah_Akad_Wakalah").getAsJsonObject().toString();
                             Ijarah_Akad_Wakalah = gson.fromJson(SSIjarahAkadWakalah, ReqDocument.class);
                             try {
                                 Ijarah_Akad_Wakalah.setImg(Ijarah_Akad_Wakalah.getImg());
@@ -327,6 +311,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAkadWakalahIjarah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Ijarah_Lampiran_Jadwal_Angsuran") != null) {
+                            String SSIjarahLampiranJadwal = response.body().getData().get("Ijarah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
                             Ijarah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSIjarahLampiranJadwal, ReqDocument.class);
                             try {
                                 Ijarah_Lampiran_Jadwal_Angsuran.setImg(Ijarah_Lampiran_Jadwal_Angsuran.getImg());
@@ -342,6 +327,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAngsuranUjrah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Ijarah_Purchase_Order") != null) {
+                            String SSIjarahPurchaseOrder = response.body().getData().get("Ijarah_Purchase_Order").getAsJsonObject().toString();
                             Ijarah_Purchase_Order = gson.fromJson(SSIjarahPurchaseOrder, ReqDocument.class);
                             try {
                                 Ijarah_Purchase_Order.setImg(Ijarah_Purchase_Order.getImg());
@@ -357,6 +343,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvPoIjarah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("MMQ_Akad_MMQ") != null) {
+                            String SSAkadMMQ = response.body().getData().get("MMQ_Akad_MMQ").getAsJsonObject().toString();
                             MMQ_Akad_MMQ = gson.fromJson(SSAkadMMQ, ReqDocument.class);
                             try {
                                 MMQ_Akad_MMQ.setImg(MMQ_Akad_MMQ.getImg());
@@ -372,8 +359,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAkadMmq.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("MMQ_Lampiran_Jadwal_Pengambil_Alihan") != null) {
+                            String SSMMQJadwalPengambilAlihan = response.body().getData().get("MMQ_Lampiran_Jadwal_Pengambil_Alihan").getAsJsonObject().toString();
                             MMQ_Lampiran_Jadwal_Pengambil_Alihan = gson.fromJson(SSMMQJadwalPengambilAlihan, ReqDocument.class);
-                            try{
+                            try {
                                 MMQ_Lampiran_Jadwal_Pengambil_Alihan.setImg(MMQ_Lampiran_Jadwal_Pengambil_Alihan.getImg());
 
                                 if (FNjadwalpengambilan.substring(FNjadwalpengambilan.length() - 3, FNjadwalpengambilan.length()).equalsIgnoreCase("pdf")) {
@@ -387,6 +375,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvJadwalPengambilalihan.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("MMQ_Laporan_Penilaian_Aset") != null) {
+                            String SSMMQPenilaianAset = response.body().getData().get("MMQ_Laporan_Penilaian_Aset").getAsJsonObject().toString();
                             MMQ_Laporan_Penilaian_Aset = gson.fromJson(SSMMQPenilaianAset, ReqDocument.class);
                             try {
                                 MMQ_Laporan_Penilaian_Aset.setImg(MMQ_Laporan_Penilaian_Aset.getImg());
@@ -402,6 +391,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAssetMmq.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga") != null) {
+                            String SSMMQSuratPeryataanAsetKetiga = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga").getAsJsonObject().toString();
                             MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga = gson.fromJson(SSMMQSuratPeryataanAsetKetiga, ReqDocument.class);
                             try {
                                 MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.setImg(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getImg());
@@ -417,6 +407,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvSuratPernyataanDanKuasaAsetMmqPihakKetiga.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri") != null) {
+                            String SSMMQSuratPeryataanAsetSendiri = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri").getAsJsonObject().toString();
                             MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri = gson.fromJson(SSMMQSuratPeryataanAsetSendiri, ReqDocument.class);
                             try {
                                 MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.setImg(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getImg());
@@ -432,6 +423,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvSuratPernyataanDanKuasaAsetMmqSendiri.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Murabahah_Akad_Murabahah") != null) {
+                            String SSMurabahahAkad = response.body().getData().get("Murabahah_Akad_Murabahah").getAsJsonObject().toString();
                             Murabahah_Akad_Murabahah = gson.fromJson(SSMurabahahAkad, ReqDocument.class);
                             try {
                                 Murabahah_Akad_Murabahah.setImg(Murabahah_Akad_Murabahah.getImg());
@@ -447,6 +439,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAkadMurabahah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Murabahah_Surat_Tanda_Terima_Barang") != null) {
+                            String SSMurabahahSuratTandaTerima = response.body().getData().get("Murabahah_Surat_Tanda_Terima_Barang").getAsJsonObject().toString();
                             Murabahah_Surat_Tanda_Terima_Barang = gson.fromJson(SSMurabahahSuratTandaTerima, ReqDocument.class);
                             try {
                                 Murabahah_Surat_Tanda_Terima_Barang.setImg(Murabahah_Surat_Tanda_Terima_Barang.getImg());
@@ -459,9 +452,10 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                             binding.pvTerimaBarang.setVisibility(View.VISIBLE);
+                            binding.pvTerimaBarang.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Murabahah_Lampiran_Jadwal_Angsuran") != null) {
+                            String SSMurabahahLampiranJadwalAngsuran = response.body().getData().get("Murabahah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
                             try {
                                 Murabahah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSMurabahahLampiranJadwalAngsuran, ReqDocument.class);
 
@@ -478,6 +472,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvJadwalAngsuran.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Murabahah_Akad_Wakalah") != null) {
+                            String SSMurabahahAkadWakalah = response.body().getData().get("Murabahah_Akad_Wakalah").getAsJsonObject().toString();
                             Murabahah_Akad_Wakalah = gson.fromJson(SSMurabahahAkadWakalah, ReqDocument.class);
                             try {
                                 Murabahah_Akad_Wakalah.setImg(Murabahah_Akad_Wakalah.getImg());
@@ -493,6 +488,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvAkadWakalah.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Murabahah_Purchase_Order") != null) {
+                            String SSMurabahahPurchaseOrder = response.body().getData().get("Murabahah_Purchase_Order").getAsJsonObject().toString();
                             Murabahah_Purchase_Order = gson.fromJson(SSMurabahahPurchaseOrder, ReqDocument.class);
                             try {
                                 Murabahah_Purchase_Order.setImg(Murabahah_Purchase_Order.getImg());
@@ -508,6 +504,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvPo.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran") != null) {
+                            String SSRahnLampiranJadwalAngsuran = response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
                             Murabahah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSRahnLampiranJadwalAngsuran, ReqDocument.class);
                             try {
                                 Murabahah_Lampiran_Jadwal_Angsuran.setImg(Murabahah_Lampiran_Jadwal_Angsuran.getImg());
@@ -523,6 +520,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvJadwalAngsuran.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Rahn_Akad_Rahn") != null) {
+                            String SSAkadRahn = response.body().getData().get("Rahn_Akad_Rahn").getAsJsonObject().toString();
+
                             Rahn_Akad_Rahn = gson.fromJson(SSAkadRahn, ReqDocument.class);
                             try {
 
@@ -538,22 +537,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvAkadRahn.setVisibility(View.VISIBLE);
                         }
-                        if (response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran") != null) {
-                            Rahn_Lampiran_Jadwal_Angsuran = gson.fromJson(SSTandaTerimaDokumenSK, ReqDocument.class);
-                            try {
-                                Rahn_Lampiran_Jadwal_Angsuran.setImg(Rahn_Lampiran_Jadwal_Angsuran.getImg());
-
-                                if (FNangsuranrahn.substring(FNangsuranrahn.length() - 3, FNangsuranrahn.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranrahn, FNangsuranrahn);
-                                } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", angsuranrahn);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            binding.pvJadwalAngsuranRahn.setVisibility(View.VISIBLE);
-                        }
                         if (response.body().getData().get("SUP") != null) {
+                            String SSSup = response.body().getData().get("SUP").getAsJsonObject().toString();
                             SUP = gson.fromJson(SSSup, ReqDocument.class);
                             try {
                                 SUP.setImg(SUP.getImg());
@@ -569,6 +554,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvSup.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Surat_Kuasa_Pernyataan_Flagging") != null) {
+
+                            String SSSuratKuasaPernyataanFlagging = response.body().getData().get("Surat_Kuasa_Pernyataan_Flagging").getAsJsonObject().toString();
                             Surat_Kuasa_Pernyataan_Flagging = gson.fromJson(SSSuratKuasaPernyataanFlagging, ReqDocument.class);
                             try {
                                 Surat_Kuasa_Pernyataan_Flagging.setImg(Surat_Kuasa_Pernyataan_Flagging.getImg());
@@ -584,6 +571,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvKuasa.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah") != null) {
+
+                            String SSSuratKuasaPembiayaan = response.body().getData().get("Surat_Pernyataan_Kuasa_Pembiayaan").getAsJsonObject().toString();
                             Surat_Pernyataan_Kuasa_Pembiayaan = gson.fromJson(SSSuratKuasaPembiayaan, ReqDocument.class);
                             try {
                                 Surat_Pernyataan_Kuasa_Pembiayaan.setImg(Surat_Pernyataan_Kuasa_Pembiayaan.getImg());
@@ -599,6 +588,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             binding.pvPernyataan.setVisibility(View.VISIBLE);
                         }
                         if (response.body().getData().get("Tanda_Terima_Dokumen_SK") != null) {
+                            String SSTandaTerimaDokumenSK = response.body().getData().get("Tanda_Terima_Dokumen_SK").getAsJsonObject().toString();
                             Tanda_Terima_Dokumen_SK = gson.fromJson(SSTandaTerimaDokumenSK, ReqDocument.class);
                             try {
                                 Tanda_Terima_Dokumen_SK.setImg(Tanda_Terima_Dokumen_SK.getImg());
@@ -613,9 +603,133 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvSk.setVisibility(View.VISIBLE);
                         }
+                        if (response.body().getData().get("Dokumen_Umum") != null) {
+                            String SSDokumen_Umum = response.body().getData().get("Dokumen_Umum").toString();
+                            Type type = new TypeToken<List<ReqDocumentUmum>>() {
+                            }.getType();
+                            DokumenUmum = gson.fromJson(SSDokumen_Umum, type);
+                            for (int i = 0; i < DokumenUmum.size(); i++) {
+                                if (i == 0) {
+                                    valDokumenA = DokumenUmum.get(i).getImg();
+                                    binding.etKeteranganDokumen1.setText(DokumenUmum.get(i).getKeteranganDokumen());
+                                    binding.etNamaDokumen1.setText(DokumenUmum.get(i).getNamaDokumen());
+                                    binding.cvUploadDokumen1.setVisibility(View.VISIBLE);
+                                    binding.tvUploadDokumen.setVisibility(View.VISIBLE);
+                                    binding.tfNamaDokumen1.setVisibility(View.VISIBLE);
+                                    binding.tfKeteranganDokumen1.setVisibility(View.VISIBLE);
+                                    binding.tfUploadDokumen1.setVisibility(View.VISIBLE);
+                                    binding.etNamaDokumen1.setVisibility(View.VISIBLE);
+                                    binding.etKeteranganDokumen1.setVisibility(View.VISIBLE);
+                                    binding.ivUploadDokumen1.setVisibility(View.VISIBLE);
+                                    binding.btnUploadDokumen1.setVisibility(View.VISIBLE);
+                                    try {
+                                        valDokumenA = DokumenUmum.get(i).getImg();
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenA, binding.ivUploadDokumen1, "dokumenA.pdf");
+                                        } else {
+                                            AppUtil.convertBase64ToImage(valDokumenA, binding.ivUploadDokumen1);
+                                            dokumenA = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenA), 0, AppUtil.decodeImageTobase64(valDokumenA).length);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                } else if (i == 1) {
+                                    try {
+                                        valDokumenB = DokumenUmum.get(i).getImg();
+                                        binding.etKeteranganDokumen2.setText(DokumenUmum.get(i).getKeteranganDokumen());
+                                        binding.etNamaDokumen2.setText(DokumenUmum.get(i).getNamaDokumen());
+                                        binding.cvUploadDokumen2.setVisibility(View.VISIBLE);
+                                        binding.tvUploadDokumen2.setVisibility(View.VISIBLE);
+                                        binding.tfNamaDokumen2.setVisibility(View.VISIBLE);
+                                        binding.tfKeteranganDokumen2.setVisibility(View.VISIBLE);
+                                        binding.tfUploadDokumen2.setVisibility(View.VISIBLE);
+                                        binding.etNamaDokumen2.setVisibility(View.VISIBLE);
+                                        binding.etKeteranganDokumen2.setVisibility(View.VISIBLE);
+                                        binding.ivUploadDokumen2.setVisibility(View.VISIBLE);
+                                        binding.btnUploadDokumen2.setVisibility(View.VISIBLE);
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenB, binding.ivUploadDokumen2, "dokumenB.pdf");
+                                        } else {
+                                            AppUtil.convertBase64ToImage(valDokumenB, binding.ivUploadDokumen2);
+                                            dokumenB = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenB), 0, AppUtil.decodeImageTobase64(valDokumenB).length);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                } else if (i == 2) {
+                                    try {
+                                        valDokumenC = DokumenUmum.get(i).getImg();
+                                        binding.etKeteranganDokumen3.setText(DokumenUmum.get(i).getKeteranganDokumen());
+                                        binding.etNamaDokumen3.setText(DokumenUmum.get(i).getNamaDokumen());
+                                        binding.cvUploadDokumen3.setVisibility(View.VISIBLE);
+                                        binding.tvUploadDokumen3.setVisibility(View.VISIBLE);
+                                        binding.tfNamaDokumen3.setVisibility(View.VISIBLE);
+                                        binding.tfKeteranganDokumen3.setVisibility(View.VISIBLE);
+                                        binding.tfUploadDokumen3.setVisibility(View.VISIBLE);
+                                        binding.etNamaDokumen3.setVisibility(View.VISIBLE);
+                                        binding.etKeteranganDokumen3.setVisibility(View.VISIBLE);
+                                        binding.ivUploadDokumen3.setVisibility(View.VISIBLE);
+                                        binding.btnUploadDokumen3.setVisibility(View.VISIBLE);
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenC, binding.ivUploadDokumen3, "dokumenC.pdf");
+                                        } else {
+                                            AppUtil.convertBase64ToImage(valDokumenC, binding.ivUploadDokumen3);
+                                            dokumenC = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenC), 0, AppUtil.decodeImageTobase64(valDokumenC).length);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                } else if (i == 3) {
+                                    try {
+                                        valDokumenD = DokumenUmum.get(i).getImg();
+                                        binding.etKeteranganDokumen4.setText(DokumenUmum.get(i).getKeteranganDokumen());
+                                        binding.etNamaDokumen4.setText(DokumenUmum.get(i).getNamaDokumen());
+                                        binding.cvUploadDokumen4.setVisibility(View.VISIBLE);
+                                        binding.tvUploadDokumen4.setVisibility(View.VISIBLE);
+                                        binding.tfNamaDokumen4.setVisibility(View.VISIBLE);
+                                        binding.tfKeteranganDokumen4.setVisibility(View.VISIBLE);
+                                        binding.tfUploadDokumen4.setVisibility(View.VISIBLE);
+                                        binding.etNamaDokumen4.setVisibility(View.VISIBLE);
+                                        binding.etKeteranganDokumen4.setVisibility(View.VISIBLE);
+                                        binding.ivUploadDokumen4.setVisibility(View.VISIBLE);
+                                        binding.btnUploadDokumen4.setVisibility(View.VISIBLE);
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenD, binding.ivUploadDokumen4, "dokumenD.pdf");
+                                        } else {
+                                            AppUtil.convertBase64ToImage(valDokumenD, binding.ivUploadDokumen4);
+                                            dokumenD = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenD), 0, AppUtil.decodeImageTobase64(valDokumenD).length);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                } else if (i == 4) {
+                                    try {
+                                        valDokumenE = DokumenUmum.get(i).getImg();
+                                        binding.etKeteranganDokumen5.setText(DokumenUmum.get(i).getKeteranganDokumen());
+                                        binding.etNamaDokumen5.setText(DokumenUmum.get(i).getNamaDokumen());
+                                        binding.cvUploadDokumen5.setVisibility(View.VISIBLE);
+                                        binding.tvUploadDokumen5.setVisibility(View.VISIBLE);
+                                        binding.tfNamaDokumen5.setVisibility(View.VISIBLE);
+                                        binding.tfKeteranganDokumen5.setVisibility(View.VISIBLE);
+                                        binding.tfUploadDokumen5.setVisibility(View.VISIBLE);
+                                        binding.etNamaDokumen5.setVisibility(View.VISIBLE);
+                                        binding.etKeteranganDokumen5.setVisibility(View.VISIBLE);
+                                        binding.ivUploadDokumen5.setVisibility(View.VISIBLE);
+                                        binding.btnUploadDokumen5.setVisibility(View.VISIBLE);
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenE, binding.ivUploadDokumen5, "dokumenE.pdf");
+                                        } else {
+                                            AppUtil.convertBase64ToImage(valDokumenE, binding.ivUploadDokumen5);
+                                            dokumenE = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenE), 0, AppUtil.decodeImageTobase64(valDokumenE).length);
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
 
-                    } else {
-                        AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+
                     }
                 } else {
                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
