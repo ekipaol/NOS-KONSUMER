@@ -16,6 +16,17 @@ public class DataVerifikasiKesimpulan {
     @SerializedName("MaksimalAngsuranBulanan")
     @Expose
     private String MaksimalAngsuranBulanan;
+    @SerializedName("RekomendasiScoring")
+    @Expose
+    private String RekomendasiScoring;
+
+    public String getRekomendasiScoring() {
+        return RekomendasiScoring;
+    }
+
+    public void setRekomendasiScoring(String rekomendasiScoring) {
+        RekomendasiScoring = rekomendasiScoring;
+    }
 
     public String getSesuaiRAC() {
         return SesuaiRAC;
