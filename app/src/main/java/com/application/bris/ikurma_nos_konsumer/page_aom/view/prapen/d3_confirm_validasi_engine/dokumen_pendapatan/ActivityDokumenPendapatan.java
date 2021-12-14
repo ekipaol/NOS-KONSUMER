@@ -21,7 +21,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
-
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
@@ -36,18 +35,16 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseR
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPendapatanBinding;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
+import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -558,7 +555,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             doc.setPeriodeGajiP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
             doc.setPeriodeTunjanganP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
         }
-        doc.setSimulasiPendapatanSaatPen(0.0);
+        doc.setSimulasiPendapatanSaatPen(Double.parseDouble(binding.etPendapatanPensiun.getText().toString()));
         doc.setTotalGajiBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiBersihP1.getText().toString())));
         doc.setTotalTunjanganBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganP1.getText().toString())));
         if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
@@ -1124,32 +1121,32 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 } else if (clicker.equalsIgnoreCase("slipgaji1")) {
                     Uri uriPdf = data.getData();
                     val_slipgaji1 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipGajiP1.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP1.setImg(val_slipgaji1);
                     DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
                 } else if (clicker.equalsIgnoreCase("slipgaji2")) {
                     Uri uriPdf = data.getData();
                     val_slipgaji2 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipGajiP2.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP2.setImg(val_slipgaji2);
                     DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
                 } else if (clicker.equalsIgnoreCase("slipgaji3")) {
                     Uri uriPdf = data.getData();
                     val_slipgaji3 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipGajiP3.setImg(val_koran);
+                    DokumenPendapatanSlipGajiP3.setImg(val_slipgaji3);
                     DokumenPendapatanSlipGajiP3.setFileName("slipgaji3.pdf");
                 } else if (clicker.equalsIgnoreCase("tunjangan1")) {
                     Uri uriPdf = data.getData();
                     val_sliptunjangan1 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipTunjanganP1.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP1.setImg(val_sliptunjangan1);
                     DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
                 } else if (clicker.equalsIgnoreCase("tunjangan2")) {
                     Uri uriPdf = data.getData();
                     val_sliptunjangan2 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipTunjanganP2.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP2.setImg(val_sliptunjangan2);
                     DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
                 } else if (clicker.equalsIgnoreCase("tunjangan3")) {
                     Uri uriPdf = data.getData();
                     val_sliptunjangan3 = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DokumenPendapatanSlipTunjanganP3.setImg(val_koran);
+                    DokumenPendapatanSlipTunjanganP3.setImg(val_sliptunjangan3);
                     DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
                 }
 

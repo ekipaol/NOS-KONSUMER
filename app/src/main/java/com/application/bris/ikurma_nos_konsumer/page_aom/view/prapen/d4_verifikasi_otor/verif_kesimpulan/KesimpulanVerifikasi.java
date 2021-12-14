@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,9 +16,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidI
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityKesimpulanVerifikasiBinding;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataJangkaWaktu;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataVerifikasiKesimpulan;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_jangka_waktu.ActivityJangkaWaktuPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -27,7 +24,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -80,6 +76,8 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu());
         binding.etPensesuaianFiturPembiayaan.setText(dataVerifikasiKesimpulan.getSesuaiFiturPembiayaan());
         binding.etPensesuaianRac.setText(dataVerifikasiKesimpulan.getSesuaiRAC());
+        binding.etHasilRekomendasiScoring.setText(dataVerifikasiKesimpulan.getRekomendasiScoring());
+
 
     }
 

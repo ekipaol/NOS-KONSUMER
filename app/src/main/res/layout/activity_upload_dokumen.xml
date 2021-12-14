@@ -9,6 +9,7 @@
     android:background="@color/colorWhite">
 
     <include layout="@layout/toolbar_nosearch"/>
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
 
     <ScrollView
         android:layout_width="match_parent"

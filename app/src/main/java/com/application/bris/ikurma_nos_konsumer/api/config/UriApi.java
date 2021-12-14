@@ -377,7 +377,7 @@ public class UriApi {
         public static final String inquiryDataHutang = "NOS_PRAPEN_Services/rest/D3/InquiryDataUtang";
         public static final String updateDataHutang = "NOS_PRAPEN_Services/rest/D3/SimpanDataUtang";
         public static final String hapusDataHutang = "NOS_PRAPEN_Services/rest/D3/HapusDataUtang";
-        public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutVerifikator";
+        public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutMarketing";
         public static final String kembalikanPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBackIDEB";
         public static final String batalPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBatalPembiayaan";
         public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatanD3";
@@ -399,7 +399,7 @@ public class UriApi {
         public static final String inquiryJangkaWaktu = "NOS_PRAPEN_Services/rest/D4/InquiryJangkaWaktu";
         public static final String inquiryKesimpulanVerifikasi = "NOS_PRAPEN_Services/rest/D4/InquiryVerifikasi";
         public static final String inquiryTempatKerja = "NOS_PRAPEN_Services/rest/D4/InquiryTempatKerjaVerifikator";
-        public static final String lanjutPembiayaanKeOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
+        public static final String lanjutPembiayaanKeOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutVerifikator";
         public static final String kembalikanPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
         public static final String batalPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
         public static final String InqKalkulatorVerfikator = "NOS_PRAPEN_Services/rest/D4/InqKalkulatorVerfikator";
@@ -412,14 +412,19 @@ public class UriApi {
         public static final String batalPembiayaanOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
 
         //D5
-        public static final String lanjutPembiayaanKePemutus = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
-        public static final String kembalikanPembiayaanOtorMarketing = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
-        public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+        public static final String lanjutPembiayaanKePemutus = "NOS_PRAPEN_Services/rest/D5/UpdateLanjutkePemutus";
+        public static final String kembalikanPembiayaanOtorMarketing = "NOS_PRAPEN_Services/rest/D5/UpdateBackOtorMarketing";
+        public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D5/UpdateBatalPembiayaanConfirmVerifikasi";
 
         //D6
-        public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
-        public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
-        public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+        public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D6/UpdateLanjutkeAkad";
+        public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBackkeVerifikator";
+        public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBatalPembiayaan";
+
+        //G1
+        public static final String lanjutUploadDok = "NOS_PRAPEN_Services/rest/G1/UpdateLanjutkeUploadDok";
+        public static final String kembalikanKePemutus = "NOS_PRAPEN_Services/rest/G1/UpdateBackkePemutus";
+        public static final String batalPembiayaanG1 = "NOS_PRAPEN_Services/rest/G1/UpdateBatalPembiayaan";
 
         //G1
         public static final String inquiryAkadMmq = "NOS_PRAPEN_Services/rest/G1/InqAkadMMQ";

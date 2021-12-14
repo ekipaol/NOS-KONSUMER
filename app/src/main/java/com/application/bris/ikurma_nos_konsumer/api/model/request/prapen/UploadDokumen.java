@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ReqUploadDokumen {
+public class UploadDokumen {
 
     @SerializedName("Form_Mutas_Kantor_Bayar")
     @Expose

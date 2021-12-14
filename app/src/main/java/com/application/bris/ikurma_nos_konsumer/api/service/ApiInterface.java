@@ -111,7 +111,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInqu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
+//import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
@@ -122,6 +122,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateD
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJaminandanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
@@ -1042,8 +1043,19 @@ public interface ApiInterface {
     @POST(UriApi.prapen.dropdownBidangUsahaTempatKerja)
     Call<ParseResponseArr> dropdownBidangUsahaTempatKerja(@Body DataSearchOjk dataSearchOjk);
 
+    @POST(UriApi.prapen.lanjutUploadDok)
+    Call<ParseResponse> lanjutpembiayaankeG3(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.batalPembiayaanG1)
+    Call<ParseResponse> batalPembiayaanG1(@Body ReqBatalAplikasi ReqBatalAplikasi);
+
+    @POST(UriApi.prapen.kembalikanKePemutus)
+    Call<ParseResponse> kembalikanKePemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+
+
     @POST(UriApi.prapen.UploadDokumenUmum)
-    Call<ParseResponse> UploadDokumenUmum(@Body ReqUploadDokumen ReqUploadDokumen);
+    Call<ParseResponse> UploadDokumenUmum(@Body UpdateUploadDokumen updateUploadDokumen);
 
     @POST(UriApi.prapen.InqDokumenUpload)
     Call<ParseResponse> InqDokumenUpload(@Body ReqInquery ReqInquery);

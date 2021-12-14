@@ -1,11 +1,6 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,15 +10,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.ReqUid;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
@@ -33,16 +30,11 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataMemo;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.EditIdebActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
-import com.application.bris.ikurma_nos_konsumer.view.corelayout.CoreLayoutActivity;
-import com.application.bris.ikurma_nos_konsumer.view.corelayout.menu.MenuFlppActivity;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -288,6 +280,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeAkad(req);
         }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().lanjutpembiayaankeG3(req);
+        }
 
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -361,6 +356,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().batalPembiayaanD6(req);
         }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().batalPembiayaanG1(req);
+        }
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -432,6 +430,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         }
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().kembalikanD6(req);
+        }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().kembalikanKePemutus(req);
         }
 
         call.enqueue(new Callback<ParseResponse>() {
