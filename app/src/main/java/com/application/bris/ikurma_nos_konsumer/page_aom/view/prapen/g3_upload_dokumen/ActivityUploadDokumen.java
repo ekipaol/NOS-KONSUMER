@@ -163,7 +163,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvFormMutasiKantorBayar.setVisibility(View.VISIBLE);
                         }
-                        
+
                         if (response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen") != null) {
 
                             String SSFormBayarTaspen = response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen").getAsJsonObject().toString();
@@ -624,7 +624,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     binding.btnUploadDokumen1.setVisibility(View.VISIBLE);
                                     try {
                                         valDokumenA = DokumenUmum.get(i).getImg();
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                        if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
                                             AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenA, binding.ivUploadDokumen1, "dokumenA.pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenA, binding.ivUploadDokumen1);
@@ -647,7 +647,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen2.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen2.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen2.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
                                             AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenB, binding.ivUploadDokumen2, "dokumenB.pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenB, binding.ivUploadDokumen2);
@@ -670,7 +670,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen3.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen3.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen3.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
                                             AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenC, binding.ivUploadDokumen3, "dokumenC.pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenC, binding.ivUploadDokumen3);
@@ -693,7 +693,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen4.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen4.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen4.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
                                             AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenD, binding.ivUploadDokumen4, "dokumenD.pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenD, binding.ivUploadDokumen4);
@@ -716,7 +716,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen5.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen5.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen5.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getNamaDokumen().length() - 3, DokumenUmum.get(i).getNamaDokumen().length()).equalsIgnoreCase("pdf")) {
+                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
                                             AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenE, binding.ivUploadDokumen5, "dokumenE.pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenE, binding.ivUploadDokumen5);
@@ -1753,118 +1753,120 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        switch (requestCode) {
-            case IntDokumenA:
-                setDataImage(UridokumenA, dokumenA, binding.ivUploadDokumen1, imageReturnedIntent, "dokumenA");
-                break;
-            case IntDokumenB:
-                setDataImage(UridokumenB, dokumenB, binding.ivUploadDokumen2, imageReturnedIntent, "dokumenB");
-                break;
-            case IntDokumenC:
-                setDataImage(UridokumenC, dokumenC, binding.ivUploadDokumen3, imageReturnedIntent, "dokumenC");
-                break;
-            case IntDokumenD:
-                setDataImage(UridokumenD, dokumenD, binding.ivUploadDokumen4, imageReturnedIntent, "dokumenD");
-                break;
-            case IntDokumenE:
-                setDataImage(UridokumenE, dokumenE, binding.ivUploadDokumen5, imageReturnedIntent, "dokumenE");
-                break;
-            // Dokumen Jaminan
-            case Intskpensiun:
-                setDataImage(Uriskpensiun, skpensiun, null, imageReturnedIntent, "skpensiun");
-                break;
-            case Intskpenangakatan:
-                setDataImage(Uriskpenangakatan, skpenangakatan, null, imageReturnedIntent, "skpenangakatan");
-                break;
-            case Intskterakhir:
-                setDataImage(Uriskterakhir, skterakhir, null, imageReturnedIntent, "skterakhir");
-                break;
-            // Asuransi Khusus
-            case Intcovernoteasuransi:
-                setDataImage(Uricovernoteasuransi, covernoteasuransi, null, imageReturnedIntent, "covernoteasuransi");
-                break;
-            // Dokumen Produk
-            case Intsk:
-                setDataImage(Urisk, sk, null, imageReturnedIntent, "sk");
-                break;
-            case Intmutasi:
-                setDataImage(Urimutasi, mutasi, null, imageReturnedIntent, "mutasi");
-                break;
-            case Intkuasa:
-                setDataImage(Urikuasa, kuasa, null, imageReturnedIntent, "kuasa");
-                break;
-            case Intpernyataan:
-                setDataImage(Uripernyataan, pernyataan, null, imageReturnedIntent, "pernyataan");
-                break;
-            case Intsup:
-                setDataImage(Urisup, sup, null, imageReturnedIntent, "sup");
-                break;
-            // Tanda Tangan Akad
-            case Intttdakad:
-                setDataImage(Urittdakad, ttdakad, null, imageReturnedIntent, "ttdakad");
-                break;
-            // Dokumen Murabahah
-            case Intpo:
-                setDataImage(Uripo, po, null, imageReturnedIntent, "po");
-                break;
-            case Intwakalah:
-                setDataImage(Uriwakalah, wakalah, null, imageReturnedIntent, "wakalah");
-                break;
-            case Intmurabahah:
-                setDataImage(Urimurabahah, murabahah, null, imageReturnedIntent, "murabahah");
-                break;
-            case Intjadwalangsuran:
-                setDataImage(Urijadwalangsuran, jadwalangsuran, null, imageReturnedIntent, "jadwalangsuran");
-                break;
-            case Intterimabarang:
-                setDataImage(Uriterimabarang, terimabarang, null, imageReturnedIntent, "terimabarang");
-                break;
-            // Dokumen Ijarah
-            case Intpoijarah:
-                setDataImage(Uripoijarah, poijarah, null, imageReturnedIntent, "poijarah");
-                break;
-            case Intwakalahijarah:
-                setDataImage(Uriwakalahijarah, wakalahijarah, null, imageReturnedIntent, "wakalahijarah");
-                break;
-            case Intijarah:
-                setDataImage(Uriijarah, ijarah, null, imageReturnedIntent, "ijarah");
-                break;
-            case Intangsuranujrah:
-                setDataImage(Uriangsuranujrah, angsuranujrah, null, imageReturnedIntent, "angsuranujrah");
-                break;
-            // Dokumen MMQ
+        if (resultCode != 0) {
+            switch (requestCode) {
+                case IntDokumenA:
+                    setDataImage(UridokumenA, dokumenA, binding.ivUploadDokumen1, imageReturnedIntent, "dokumenA");
+                    break;
+                case IntDokumenB:
+                    setDataImage(UridokumenB, dokumenB, binding.ivUploadDokumen2, imageReturnedIntent, "dokumenB");
+                    break;
+                case IntDokumenC:
+                    setDataImage(UridokumenC, dokumenC, binding.ivUploadDokumen3, imageReturnedIntent, "dokumenC");
+                    break;
+                case IntDokumenD:
+                    setDataImage(UridokumenD, dokumenD, binding.ivUploadDokumen4, imageReturnedIntent, "dokumenD");
+                    break;
+                case IntDokumenE:
+                    setDataImage(UridokumenE, dokumenE, binding.ivUploadDokumen5, imageReturnedIntent, "dokumenE");
+                    break;
+                // Dokumen Jaminan
+                case Intskpensiun:
+                    setDataImage(Uriskpensiun, skpensiun, null, imageReturnedIntent, "skpensiun");
+                    break;
+                case Intskpenangakatan:
+                    setDataImage(Uriskpenangakatan, skpenangakatan, null, imageReturnedIntent, "skpenangakatan");
+                    break;
+                case Intskterakhir:
+                    setDataImage(Uriskterakhir, skterakhir, null, imageReturnedIntent, "skterakhir");
+                    break;
+                // Asuransi Khusus
+                case Intcovernoteasuransi:
+                    setDataImage(Uricovernoteasuransi, covernoteasuransi, null, imageReturnedIntent, "covernoteasuransi");
+                    break;
+                // Dokumen Produk
+                case Intsk:
+                    setDataImage(Urisk, sk, null, imageReturnedIntent, "sk");
+                    break;
+                case Intmutasi:
+                    setDataImage(Urimutasi, mutasi, null, imageReturnedIntent, "mutasi");
+                    break;
+                case Intkuasa:
+                    setDataImage(Urikuasa, kuasa, null, imageReturnedIntent, "kuasa");
+                    break;
+                case Intpernyataan:
+                    setDataImage(Uripernyataan, pernyataan, null, imageReturnedIntent, "pernyataan");
+                    break;
+                case Intsup:
+                    setDataImage(Urisup, sup, null, imageReturnedIntent, "sup");
+                    break;
+                // Tanda Tangan Akad
+                case Intttdakad:
+                    setDataImage(Urittdakad, ttdakad, null, imageReturnedIntent, "ttdakad");
+                    break;
+                // Dokumen Murabahah
+                case Intpo:
+                    setDataImage(Uripo, po, null, imageReturnedIntent, "po");
+                    break;
+                case Intwakalah:
+                    setDataImage(Uriwakalah, wakalah, null, imageReturnedIntent, "wakalah");
+                    break;
+                case Intmurabahah:
+                    setDataImage(Urimurabahah, murabahah, null, imageReturnedIntent, "murabahah");
+                    break;
+                case Intjadwalangsuran:
+                    setDataImage(Urijadwalangsuran, jadwalangsuran, null, imageReturnedIntent, "jadwalangsuran");
+                    break;
+                case Intterimabarang:
+                    setDataImage(Uriterimabarang, terimabarang, null, imageReturnedIntent, "terimabarang");
+                    break;
+                // Dokumen Ijarah
+                case Intpoijarah:
+                    setDataImage(Uripoijarah, poijarah, null, imageReturnedIntent, "poijarah");
+                    break;
+                case Intwakalahijarah:
+                    setDataImage(Uriwakalahijarah, wakalahijarah, null, imageReturnedIntent, "wakalahijarah");
+                    break;
+                case Intijarah:
+                    setDataImage(Uriijarah, ijarah, null, imageReturnedIntent, "ijarah");
+                    break;
+                case Intangsuranujrah:
+                    setDataImage(Uriangsuranujrah, angsuranujrah, null, imageReturnedIntent, "angsuranujrah");
+                    break;
+                // Dokumen MMQ
 
-            case Intassetmmq:
-                setDataImage(Uriassetmmq, assetmmq, null, imageReturnedIntent, "assetmmq");
-                break;
-            case Intakadmmq:
-                setDataImage(Uriakadmmq, akadmmq, null, imageReturnedIntent, "akadmmq");
-                break;
-            case Intjadwalpengambilan:
-                setDataImage(Urijadwalpengambilan, jadwalpengambilan, null, imageReturnedIntent, "jadwalpengambilan");
-                break;
-            case Intpihak1:
-                setDataImage(Uripihak1, pihak1, null, imageReturnedIntent, "pihak1");
-                break;
-            case Intpihak3:
-                setDataImage(Uripihak3, pihak3, null, imageReturnedIntent, "pihak3");
-                break;
-            // Dokumen MMQ
+                case Intassetmmq:
+                    setDataImage(Uriassetmmq, assetmmq, null, imageReturnedIntent, "assetmmq");
+                    break;
+                case Intakadmmq:
+                    setDataImage(Uriakadmmq, akadmmq, null, imageReturnedIntent, "akadmmq");
+                    break;
+                case Intjadwalpengambilan:
+                    setDataImage(Urijadwalpengambilan, jadwalpengambilan, null, imageReturnedIntent, "jadwalpengambilan");
+                    break;
+                case Intpihak1:
+                    setDataImage(Uripihak1, pihak1, null, imageReturnedIntent, "pihak1");
+                    break;
+                case Intpihak3:
+                    setDataImage(Uripihak3, pihak3, null, imageReturnedIntent, "pihak3");
+                    break;
+                // Dokumen MMQ
 
-            case Intakadrahn:
-                setDataImage(Uriakadrahn, akadrahn, null, imageReturnedIntent, "akadrahn");
-                break;
-            case Intangsuranrahn:
-                setDataImage(Uriangsuranrahn, angsuranrahn, null, imageReturnedIntent, "angsuranrahn");
-                break;
-            // Dokumen Pembiayaan
+                case Intakadrahn:
+                    setDataImage(Uriakadrahn, akadrahn, null, imageReturnedIntent, "akadrahn");
+                    break;
+                case Intangsuranrahn:
+                    setDataImage(Uriangsuranrahn, angsuranrahn, null, imageReturnedIntent, "angsuranrahn");
+                    break;
+                // Dokumen Pembiayaan
 
-            case Intkantorbayar:
-                setDataImage(Urikantorbayar, kantorbayar, null, imageReturnedIntent, "kantorbayar");
-                break;
-            case Intfotoakad:
-                setDataImage(Urifotoakad, fotoakad, null, imageReturnedIntent, "fotoakad");
-                break;
+                case Intkantorbayar:
+                    setDataImage(Urikantorbayar, kantorbayar, null, imageReturnedIntent, "kantorbayar");
+                    break;
+                case Intfotoakad:
+                    setDataImage(Urifotoakad, fotoakad, null, imageReturnedIntent, "fotoakad");
+                    break;
+            }
         }
     }
 
@@ -1892,7 +1894,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     doc.setImg(AppUtil.encodeImageTobase64(bitmap));
                     doc.setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                     doc.setNamaDokumen(binding.etNamaDokumen1.getText().toString());
-                    DokumenUmum.add(0, doc);
+                    if (DokumenUmum.get(0) == null) {
+                        DokumenUmum.add(0, doc);
+                    }else {
+                        DokumenUmum.get(0).setFilename("dokumenA.png");
+                        DokumenUmum.get(0).setImg(valDokumenA);
+                        DokumenUmum.get(0).setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
+                        DokumenUmum.get(0).setNamaDokumen(binding.etNamaDokumen1.getText().toString());
+                    }
                     valDokumenA = AppUtil.encodeImageTobase64(bitmap);
                     iv.setImageBitmap(bitmap);
                 } else if (clicker.equalsIgnoreCase("dokumenB")) {
@@ -1905,7 +1914,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 1) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        DokumenUmum.add(1, doc);
+                        if (DokumenUmum.get(1) == null) {
+                            DokumenUmum.add(1, doc);
+                        }else {
+                            DokumenUmum.get(1).setFilename("dokumenB.png");
+                            DokumenUmum.get(1).setImg(valDokumenB);
+                            DokumenUmum.get(1).setKeteranganDokumen(binding.etKeteranganDokumen2.getText().toString());
+                            DokumenUmum.get(1).setNamaDokumen(binding.etNamaDokumen2.getText().toString());
+                        }
                         iv.setImageBitmap(bitmap);
                         valDokumenB = AppUtil.encodeImageTobase64(bitmap);
                     }
@@ -1919,7 +1935,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 2) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        DokumenUmum.add(2, doc);
+                        if (DokumenUmum.get(2) == null) {
+                            DokumenUmum.add(2, doc);
+                        }else {
+                            DokumenUmum.get(2).setFilename("dokumenC.png");
+                            DokumenUmum.get(2).setImg(valDokumenC);
+                            DokumenUmum.get(2).setKeteranganDokumen(binding.etKeteranganDokumen3.getText().toString());
+                            DokumenUmum.get(2).setNamaDokumen(binding.etNamaDokumen3.getText().toString());
+                        }
                         iv.setImageBitmap(bitmap);
                         valDokumenC = AppUtil.encodeImageTobase64(bitmap);
                     }
@@ -1933,7 +1956,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 3) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        DokumenUmum.add(3, doc);
+                        if (DokumenUmum.get(3) == null) {
+                            DokumenUmum.add(3, doc);
+                        }else {
+                            DokumenUmum.get(3).setFilename("dokumenD.png");
+                            DokumenUmum.get(3).setImg(valDokumenD);
+                            DokumenUmum.get(3).setKeteranganDokumen(binding.etKeteranganDokumen4.getText().toString());
+                            DokumenUmum.get(3).setNamaDokumen(binding.etNamaDokumen4.getText().toString());
+                        }
                         iv.setImageBitmap(bitmap);
                         valDokumenD = AppUtil.encodeImageTobase64(bitmap);
                     }
@@ -1947,7 +1977,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 4) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        DokumenUmum.add(4, doc);
+                        if (DokumenUmum.get(4) == null) {
+                            DokumenUmum.add(4, doc);
+                        }else {
+                            DokumenUmum.get(4).setFilename("dokumenE.png");
+                            DokumenUmum.get(4).setImg(valDokumenE);
+                            DokumenUmum.get(4).setKeteranganDokumen(binding.etKeteranganDokumen5.getText().toString());
+                            DokumenUmum.get(4).setNamaDokumen(binding.etNamaDokumen5.getText().toString());
+                        }
                         iv.setImageBitmap(bitmap);
                         valDokumenE = AppUtil.encodeImageTobase64(bitmap);
                     }
@@ -2182,13 +2219,22 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
                     if (clicker.equalsIgnoreCase("dokumenA")) {
                         Uri uriPdf = data.getData();
+
                         valDokumenA = AppUtil.encodeFileToBase64(this, uriPdf);
                         ReqDocumentUmum doc = new ReqDocumentUmum();
                         doc.setFilename("dokumenA.pdf");
                         doc.setImg(valDokumenA);
                         doc.setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                         doc.setNamaDokumen(binding.etNamaDokumen1.getText().toString());
-                        DokumenUmum.add(0, doc);
+                        if (DokumenUmum.get(0) == null) {
+                            DokumenUmum.add(0, doc);
+                        }else {
+                            DokumenUmum.get(0).setFilename("dokumenA.pdf");
+                            DokumenUmum.get(0).setImg(valDokumenA);
+                            DokumenUmum.get(0).setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
+                            DokumenUmum.get(0).setNamaDokumen(binding.etNamaDokumen1.getText().toString());
+                        }
+                        AppUtil.logSecure("dataD",String.valueOf(DokumenUmum.size()));
                         iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                     } else if (clicker.equalsIgnoreCase("dokumenB")) {
                         Uri uriPdf = data.getData();
@@ -2201,7 +2247,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 1) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            DokumenUmum.add(1, doc);
+                            if (DokumenUmum.get(1) == null) {
+                                DokumenUmum.add(1, doc);
+                            }else {
+                                DokumenUmum.get(1).setFilename("dokumenB.pdf");
+                                DokumenUmum.get(1).setImg(valDokumenB);
+                                DokumenUmum.get(1).setKeteranganDokumen(binding.etKeteranganDokumen2.getText().toString());
+                                DokumenUmum.get(1).setNamaDokumen(binding.etNamaDokumen2.getText().toString());
+                            }
                             iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                         }
                     } else if (clicker.equalsIgnoreCase("dokumenC")) {
@@ -2215,7 +2268,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 2) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            DokumenUmum.add(2, doc);
+                            if (DokumenUmum.get(2) == null) {
+                                DokumenUmum.add(2, doc);
+                            }else {
+                                DokumenUmum.get(2).setFilename("dokumenC.pdf");
+                                DokumenUmum.get(2).setImg(valDokumenC);
+                                DokumenUmum.get(2).setKeteranganDokumen(binding.etKeteranganDokumen3.getText().toString());
+                                DokumenUmum.get(2).setNamaDokumen(binding.etNamaDokumen3.getText().toString());
+                            }
                             iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                         }
                     } else if (clicker.equalsIgnoreCase("dokumenD")) {
@@ -2229,7 +2289,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 3) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            DokumenUmum.add(3, doc);
+                            if (DokumenUmum.get(3) == null) {
+                                DokumenUmum.add(3, doc);
+                            }else {
+                                DokumenUmum.get(3).setFilename("dokumenD.pdf");
+                                DokumenUmum.get(3).setImg(valDokumenD);
+                                DokumenUmum.get(3).setKeteranganDokumen(binding.etKeteranganDokumen4.getText().toString());
+                                DokumenUmum.get(3).setNamaDokumen(binding.etNamaDokumen4.getText().toString());
+                            }
                             iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                         }
                     } else if (clicker.equalsIgnoreCase("dokumenE")) {
@@ -2243,7 +2310,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 4) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            DokumenUmum.add(4, doc);
+                            if (DokumenUmum.get(4) == null) {
+                                DokumenUmum.add(4, doc);
+                            }else {
+                                DokumenUmum.get(4).setFilename("dokumenE.pdf");
+                                DokumenUmum.get(4).setImg(valDokumenE);
+                                DokumenUmum.get(4).setKeteranganDokumen(binding.etKeteranganDokumen5.getText().toString());
+                                DokumenUmum.get(4).setNamaDokumen(binding.etNamaDokumen5.getText().toString());
+                            }
                             iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                         }
                     }
