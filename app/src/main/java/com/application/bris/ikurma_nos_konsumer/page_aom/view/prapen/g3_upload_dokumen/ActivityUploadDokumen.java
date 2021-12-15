@@ -28,7 +28,6 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumen;
-import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseJadwalAngsuran;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityUploadDokumenBinding;
@@ -163,18 +162,16 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvFormMutasiKantorBayar.setVisibility(View.VISIBLE);
                         }
-
                         if (response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen") != null) {
-
                             String SSFormBayarTaspen = response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar_Taspen = gson.fromJson(SSFormBayarTaspen, ReqDocument.class);
+                            valmutasi = Form_Mutasi_Kantor_Bayar_Taspen.getImg();
                             try {
-                                Form_Mutasi_Kantor_Bayar_Taspen.setImg(Form_Mutasi_Kantor_Bayar_Taspen.getImg());
-
-                                if (FNmutasi.substring(FNmutasi.length() - 3, FNmutasi.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmutasi, FNmutasi);
+                                if (Form_Mutasi_Kantor_Bayar_Taspen.getFileName().substring(Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length() - 3, Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNmutasi = "mutasi.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", mutasi);
+                                    mutasi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmutasi),0, AppUtil.decodeImageTobase64(valmutasi).length);
+                                    FNmutasi = "mutasi.png";
                                 }
 
                             } catch (Exception e) {
@@ -182,427 +179,454 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvMutasi.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah") != null) {
                             String SSOtentikasiNasabah = response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah").getAsJsonObject().toString();
                             Foto_Bukti_Otentikasi_Nasabah = gson.fromJson(SSOtentikasiNasabah, ReqDocument.class);
+                            valfotoakad = Foto_Bukti_Otentikasi_Nasabah.getImg();
                             try {
-                                Foto_Bukti_Otentikasi_Nasabah.setImg(Foto_Bukti_Otentikasi_Nasabah.getImg());
-
-                                if (FNfotoakad.substring(FNfotoakad.length() - 3, FNfotoakad.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valfotoakad, FNfotoakad);
+                                if (Foto_Bukti_Otentikasi_Nasabah.getFileName().substring(Foto_Bukti_Otentikasi_Nasabah.getFileName().length() - 3, Foto_Bukti_Otentikasi_Nasabah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNfotoakad = "fotoakad.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", fotoakad);
+                                    fotoakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valfotoakad),0, AppUtil.decodeImageTobase64(valfotoakad).length) ;
+                                    FNfotoakad = "fotoakad.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoScreenCaptureBuktiOtentikasiNasabahSaatAkad.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_Covernote_Asuransi") != null) {
                             String SSCovernoteAsuransi = response.body().getData().get("Foto_Covernote_Asuransi").getAsJsonObject().toString();
                             Foto_Covernote_Asuransi = gson.fromJson(SSCovernoteAsuransi, ReqDocument.class);
+                            valcovernoteasuransi = Foto_Covernote_Asuransi.getImg();
                             try {
-                                Foto_Covernote_Asuransi.setImg(Foto_Covernote_Asuransi.getImg());
-
-                                if (FNcovernoteasuransi.substring(FNcovernoteasuransi.length() - 3, FNcovernoteasuransi.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valcovernoteasuransi, FNcovernoteasuransi);
+                                if (Foto_Covernote_Asuransi.getFileName().substring(Foto_Covernote_Asuransi.getFileName().length() - 3, Foto_Covernote_Asuransi.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNcovernoteasuransi = "covernoteasuransi.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", covernoteasuransi);
+                                    covernoteasuransi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valcovernoteasuransi),0, AppUtil.decodeImageTobase64(valcovernoteasuransi).length);
+                                    FNcovernoteasuransi = "covernoteasuransi.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoCovernoteAsuransi.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_Proses_Penandatanganan_Akad") != null) {
                             String SSProsesAkad = response.body().getData().get("Foto_Proses_Penandatanganan_Akad").getAsJsonObject().toString();
                             Foto_Proses_Penandatanganan_Akad = gson.fromJson(SSProsesAkad, ReqDocument.class);
+                            valttdakad = Foto_Proses_Penandatanganan_Akad.getImg();
                             try {
-                                Foto_Proses_Penandatanganan_Akad.setImg(Foto_Proses_Penandatanganan_Akad.getImg());
-
-                                if (FNttdakad.substring(FNttdakad.length() - 3, FNttdakad.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valttdakad, FNttdakad);
+                                if (Foto_Proses_Penandatanganan_Akad.getFileName().substring(Foto_Proses_Penandatanganan_Akad.getFileName().length() - 3, Foto_Proses_Penandatanganan_Akad.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNttdakad = "ttdakad.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", ttdakad);
+                                    ttdakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valttdakad),0, AppUtil.decodeImageTobase64(valttdakad).length);
+                                    FNttdakad = "ttdakad.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoProsesPenandatangananAkad.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_SK_Pengangkatan") != null) {
                             String SSSkPengangkatan = response.body().getData().get("Foto_SK_Pengangkatan").getAsJsonObject().toString();
                             Foto_SK_Pengangkatan = gson.fromJson(SSSkPengangkatan, ReqDocument.class);
+                            valskpenangakatan = Foto_SK_Pengangkatan.getImg();
                             try {
-                                Foto_SK_Pengangkatan.setImg(Foto_SK_Pengangkatan.getImg());
-
-                                if (FNskpenangakatan.substring(FNskpenangakatan.length() - 3, FNskpenangakatan.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpenangakatan, FNskpenangakatan);
+                                if (Foto_SK_Pengangkatan.getFileName().substring(Foto_SK_Pengangkatan.getFileName().length() - 3, Foto_SK_Pengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNskpenangakatan = "skpenangkatan.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skpenangakatan);
+                                    skpenangakatan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpenangakatan),0, AppUtil.decodeImageTobase64(valskpenangakatan).length);
+                                    FNskpenangakatan = "skpenangkatan.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoSkPengangkatan.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_SK_Pensiun") != null) {
                             String SSSkPensiun = response.body().getData().get("Foto_SK_Pensiun").getAsJsonObject().toString();
                             Foto_SK_Pensiun = gson.fromJson(SSSkPensiun, ReqDocument.class);
+                            valskpensiun = Foto_SK_Pensiun.getImg();
                             try {
-                                Foto_SK_Pensiun.setImg(Foto_SK_Pensiun.getImg());
-
-                                if (FNskpensiun.substring(FNskpensiun.length() - 3, FNskpensiun.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpensiun, FNskpensiun);
+                                valskpensiun = Foto_SK_Pensiun.getImg();
+                                if (Foto_SK_Pensiun.getFileName().substring(Foto_SK_Pensiun.getFileName().length() - 3, Foto_SK_Pensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNskpensiun = "skpensiun.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skpensiun);
+                                    skpensiun = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpensiun),0, AppUtil.decodeImageTobase64(valskpensiun).length);
+                                    FNskpensiun ="skpensiun.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoSkPensiun.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Foto_SK_Terakhir") != null) {
                             String SSSTerakhir = response.body().getData().get("Foto_SK_Terakhir").getAsJsonObject().toString();
                             Foto_SK_Terakhir = gson.fromJson(SSSTerakhir, ReqDocument.class);
+                            valskterakhir = Foto_SK_Terakhir.getImg();
                             try {
-                                Foto_SK_Terakhir.setImg(Foto_SK_Terakhir.getImg());
-
                                 if (FNskterakhir.substring(FNskterakhir.length() - 3, FNskterakhir.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskterakhir, FNskterakhir);
+                                    FNskterakhir = "skterakhir.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skterakhir);
+                                    skterakhir = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskterakhir),0, AppUtil.decodeImageTobase64(valskterakhir).length);
+                                    FNskterakhir = "skterakhir.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Ijarah_Akad_Ijarah") != null) {
                             String SSIjarahAkad = response.body().getData().get("Ijarah_Akad_Ijarah").getAsJsonObject().toString();
                             Ijarah_Akad_Ijarah = gson.fromJson(SSIjarahAkad, ReqDocument.class);
+                            valijarah = Ijarah_Akad_Ijarah.getImg();
                             try {
-                                Ijarah_Akad_Ijarah.setImg(Ijarah_Akad_Ijarah.getImg());
-
-                                if (FNijarah.substring(FNijarah.length() - 3, FNijarah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valijarah, FNijarah);
+                                if (Ijarah_Akad_Ijarah.getFileName().substring(Ijarah_Akad_Ijarah.getFileName().length() - 3, Ijarah_Akad_Ijarah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNijarah = "ijarah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", ijarah);
+                                    ijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valijarah),0, AppUtil.decodeImageTobase64(valijarah).length);
+                                    FNijarah = "ijarah.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadIjarah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Ijarah_Akad_Wakalah") != null) {
                             String SSIjarahAkadWakalah = response.body().getData().get("Ijarah_Akad_Wakalah").getAsJsonObject().toString();
                             Ijarah_Akad_Wakalah = gson.fromJson(SSIjarahAkadWakalah, ReqDocument.class);
+                            valwakalahijarah = Ijarah_Akad_Wakalah.getImg();
                             try {
-                                Ijarah_Akad_Wakalah.setImg(Ijarah_Akad_Wakalah.getImg());
-
-                                if (FNwakalahijarah.substring(FNwakalahijarah.length() - 3, FNwakalahijarah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalahijarah, FNwakalahijarah);
+                                if (Ijarah_Akad_Wakalah.getFileName().substring(Ijarah_Akad_Wakalah.getFileName().length() - 3, Ijarah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNwakalahijarah = "wakalahijarah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", wakalahijarah);
+                                    wakalahijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalahijarah),0, AppUtil.decodeImageTobase64(valwakalahijarah).length);
+                                    FNwakalahijarah = "wakalahijarah.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadWakalahIjarah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Ijarah_Lampiran_Jadwal_Angsuran") != null) {
                             String SSIjarahLampiranJadwal = response.body().getData().get("Ijarah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
                             Ijarah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSIjarahLampiranJadwal, ReqDocument.class);
+                            valangsuranujrah = Ijarah_Lampiran_Jadwal_Angsuran.getImg();
                             try {
-                                Ijarah_Lampiran_Jadwal_Angsuran.setImg(Ijarah_Lampiran_Jadwal_Angsuran.getImg());
-
-                                if (FNangsuranujrah.substring(FNangsuranujrah.length() - 3, FNangsuranujrah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranujrah, FNangsuranujrah);
+                                if (Ijarah_Lampiran_Jadwal_Angsuran.getFileName().substring(Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNangsuranujrah = "angsuranujrah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", angsuranujrah);
+                                    angsuranujrah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranujrah),0, AppUtil.decodeImageTobase64(valangsuranujrah).length);
+                                    FNangsuranujrah = "angsuranujrah.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAngsuranUjrah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Ijarah_Purchase_Order") != null) {
                             String SSIjarahPurchaseOrder = response.body().getData().get("Ijarah_Purchase_Order").getAsJsonObject().toString();
                             Ijarah_Purchase_Order = gson.fromJson(SSIjarahPurchaseOrder, ReqDocument.class);
+                            valpoijarah = Ijarah_Purchase_Order.getImg();
                             try {
-                                Ijarah_Purchase_Order.setImg(Ijarah_Purchase_Order.getImg());
-
-                                if (FNpoijarah.substring(FNpoijarah.length() - 3, FNpoijarah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpoijarah, FNpoijarah);
+                                if (Ijarah_Purchase_Order.getFileName().substring(Ijarah_Purchase_Order.getFileName().length() - 3, Ijarah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNpoijarah = "poijarah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", poijarah);
+                                    poijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpoijarah),0, AppUtil.decodeImageTobase64(valpoijarah).length);
+                                    FNpoijarah = "poijarah.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvPoIjarah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("MMQ_Akad_MMQ") != null) {
                             String SSAkadMMQ = response.body().getData().get("MMQ_Akad_MMQ").getAsJsonObject().toString();
                             MMQ_Akad_MMQ = gson.fromJson(SSAkadMMQ, ReqDocument.class);
+                            valakadmmq = MMQ_Akad_MMQ.getImg();
                             try {
-                                MMQ_Akad_MMQ.setImg(MMQ_Akad_MMQ.getImg());
-
-                                if (FNakadmmq.substring(FNakadmmq.length() - 3, FNakadmmq.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadmmq, FNakadmmq);
+                                if (MMQ_Akad_MMQ.getFileName().substring(MMQ_Akad_MMQ.getFileName().length() - 3, MMQ_Akad_MMQ.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNakadmmq = "akadmmq.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", akadmmq);
+                                    akadmmq = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadmmq),0, AppUtil.decodeImageTobase64(valakadmmq).length);
+                                    FNakadmmq = "akadmmq.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadMmq.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("MMQ_Lampiran_Jadwal_Pengambil_Alihan") != null) {
                             String SSMMQJadwalPengambilAlihan = response.body().getData().get("MMQ_Lampiran_Jadwal_Pengambil_Alihan").getAsJsonObject().toString();
                             MMQ_Lampiran_Jadwal_Pengambil_Alihan = gson.fromJson(SSMMQJadwalPengambilAlihan, ReqDocument.class);
+                            valjadwalpengambilan = MMQ_Lampiran_Jadwal_Pengambil_Alihan.getImg();
                             try {
-                                MMQ_Lampiran_Jadwal_Pengambil_Alihan.setImg(MMQ_Lampiran_Jadwal_Pengambil_Alihan.getImg());
-
-                                if (FNjadwalpengambilan.substring(FNjadwalpengambilan.length() - 3, FNjadwalpengambilan.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalpengambilan, FNjadwalpengambilan);
+                                if (MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().substring(MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length() - 3, MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNjadwalpengambilan = "jadwalpengambilan.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", jadwalpengambilan);
+                                    jadwalpengambilan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalpengambilan),0, AppUtil.decodeImageTobase64(valjadwalpengambilan).length);
+                                    FNjadwalpengambilan = "jadwalpengambilan.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvJadwalPengambilalihan.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("MMQ_Laporan_Penilaian_Aset") != null) {
                             String SSMMQPenilaianAset = response.body().getData().get("MMQ_Laporan_Penilaian_Aset").getAsJsonObject().toString();
                             MMQ_Laporan_Penilaian_Aset = gson.fromJson(SSMMQPenilaianAset, ReqDocument.class);
+                            valassetmmq = MMQ_Laporan_Penilaian_Aset.getImg();
                             try {
-                                MMQ_Laporan_Penilaian_Aset.setImg(MMQ_Laporan_Penilaian_Aset.getImg());
-
-                                if (FNassetmmq.substring(FNassetmmq.length() - 3, FNassetmmq.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valassetmmq, FNassetmmq);
+                                if (MMQ_Laporan_Penilaian_Aset.getFileName().substring(MMQ_Laporan_Penilaian_Aset.getFileName().length() - 3, MMQ_Laporan_Penilaian_Aset.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNassetmmq = "assetmmq.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", assetmmq);
+                                    assetmmq= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valassetmmq),0, AppUtil.decodeImageTobase64(valassetmmq).length);
+                                    FNassetmmq = "assetmmq.png";
+
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAssetMmq.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga") != null) {
                             String SSMMQSuratPeryataanAsetKetiga = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga").getAsJsonObject().toString();
                             MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga = gson.fromJson(SSMMQSuratPeryataanAsetKetiga, ReqDocument.class);
+                            valpihak3 = MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getImg();
                             try {
-                                MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.setImg(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getImg());
-
-                                if (FNpihak3.substring(FNpihak3.length() - 3, FNpihak3.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak3, FNpihak3);
+                                if (MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNpihak3 = "pihak3.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pihak3);
+                                    pihak3= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak3),0, AppUtil.decodeImageTobase64(valpihak3).length);
+                                    FNpihak3 = "pihak3.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvSuratPernyataanDanKuasaAsetMmqPihakKetiga.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri") != null) {
                             String SSMMQSuratPeryataanAsetSendiri = response.body().getData().get("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri").getAsJsonObject().toString();
                             MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri = gson.fromJson(SSMMQSuratPeryataanAsetSendiri, ReqDocument.class);
+                            valpihak1 = MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getImg();
                             try {
-                                MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.setImg(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getImg());
-
-                                if (FNpihak1.substring(FNpihak1.length() - 3, FNpihak1.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak1, FNpihak1);
+                                if (MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNpihak1 = "pihak1.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pihak1);
+                                    pihak1= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak1),0, AppUtil.decodeImageTobase64(valpihak1).length);
+                                    FNpihak1 = "pihak1.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvSuratPernyataanDanKuasaAsetMmqSendiri.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Murabahah_Akad_Murabahah") != null) {
                             String SSMurabahahAkad = response.body().getData().get("Murabahah_Akad_Murabahah").getAsJsonObject().toString();
                             Murabahah_Akad_Murabahah = gson.fromJson(SSMurabahahAkad, ReqDocument.class);
+                            valmurabahah = Murabahah_Akad_Murabahah.getImg();
                             try {
-                                Murabahah_Akad_Murabahah.setImg(Murabahah_Akad_Murabahah.getImg());
-
-                                if (FNmurabahah.substring(FNmurabahah.length() - 3, FNmurabahah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmurabahah, FNmurabahah);
+                                if (Murabahah_Akad_Murabahah.getFileName().substring(Murabahah_Akad_Murabahah.getFileName().length() - 3, Murabahah_Akad_Murabahah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNmurabahah = "murabahah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", murabahah);
+                                    murabahah= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmurabahah),0, AppUtil.decodeImageTobase64(valmurabahah).length);
+                                    FNmurabahah = "murabahah.pdf";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadMurabahah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Murabahah_Surat_Tanda_Terima_Barang") != null) {
                             String SSMurabahahSuratTandaTerima = response.body().getData().get("Murabahah_Surat_Tanda_Terima_Barang").getAsJsonObject().toString();
                             Murabahah_Surat_Tanda_Terima_Barang = gson.fromJson(SSMurabahahSuratTandaTerima, ReqDocument.class);
+                            valterimabarang = Murabahah_Surat_Tanda_Terima_Barang.getImg();
                             try {
-                                Murabahah_Surat_Tanda_Terima_Barang.setImg(Murabahah_Surat_Tanda_Terima_Barang.getImg());
-
-                                if (FNterimabarang.substring(FNterimabarang.length() - 3, FNterimabarang.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valterimabarang, FNterimabarang);
+                                if (Murabahah_Surat_Tanda_Terima_Barang.getFileName().substring(Murabahah_Surat_Tanda_Terima_Barang.getFileName().length() - 3, Murabahah_Surat_Tanda_Terima_Barang.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNterimabarang = "terimabarang.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", terimabarang);
+                                    terimabarang= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valterimabarang),0, AppUtil.decodeImageTobase64(valterimabarang).length);
+                                    FNterimabarang = "terimabarang.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvTerimaBarang.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Murabahah_Lampiran_Jadwal_Angsuran") != null) {
                             String SSMurabahahLampiranJadwalAngsuran = response.body().getData().get("Murabahah_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
+                            Murabahah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSMurabahahLampiranJadwalAngsuran, ReqDocument.class);
+                            valjadwalangsuran = Murabahah_Lampiran_Jadwal_Angsuran.getImg();
                             try {
-                                Murabahah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSMurabahahLampiranJadwalAngsuran, ReqDocument.class);
-
-                                Murabahah_Lampiran_Jadwal_Angsuran.setImg(Murabahah_Lampiran_Jadwal_Angsuran.getImg());
-
-                                if (FNjadwalangsuran.substring(FNjadwalangsuran.length() - 3, FNjadwalangsuran.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalangsuran, FNjadwalangsuran);
+                                if (Murabahah_Lampiran_Jadwal_Angsuran.getFileName().substring(Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNjadwalangsuran = "jadwalangsuran.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", jadwalangsuran);
+                                    jadwalangsuran= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalangsuran),0, AppUtil.decodeImageTobase64(valjadwalangsuran).length);
+                                    FNjadwalangsuran = "jadwalangsuran.png";
                                 }
                             } catch (JsonSyntaxException e) {
                                 e.printStackTrace();
                             }
                             binding.pvJadwalAngsuran.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Murabahah_Akad_Wakalah") != null) {
                             String SSMurabahahAkadWakalah = response.body().getData().get("Murabahah_Akad_Wakalah").getAsJsonObject().toString();
                             Murabahah_Akad_Wakalah = gson.fromJson(SSMurabahahAkadWakalah, ReqDocument.class);
                             try {
-                                Murabahah_Akad_Wakalah.setImg(Murabahah_Akad_Wakalah.getImg());
+                                valwakalah = Murabahah_Akad_Wakalah.getImg();
 
-                                if (FNwakalah.substring(FNwakalah.length() - 3, FNwakalah.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalah, FNwakalah);
+                                if (Murabahah_Akad_Wakalah.getFileName().substring(Murabahah_Akad_Wakalah.getFileName().length() - 3, Murabahah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNwakalah = "akadwakalah.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", wakalah);
+                                    wakalah= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalah),0, AppUtil.decodeImageTobase64(valwakalah).length);
+                                    FNwakalah = "akadwakalah.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadWakalah.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Murabahah_Purchase_Order") != null) {
                             String SSMurabahahPurchaseOrder = response.body().getData().get("Murabahah_Purchase_Order").getAsJsonObject().toString();
                             Murabahah_Purchase_Order = gson.fromJson(SSMurabahahPurchaseOrder, ReqDocument.class);
+                            valpo = Murabahah_Purchase_Order.getImg();
                             try {
-                                Murabahah_Purchase_Order.setImg(Murabahah_Purchase_Order.getImg());
-
-                                if (FNpo.substring(FNpo.length() - 3, FNpo.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpo, FNpo);
+                                if (Murabahah_Purchase_Order.getFileName().substring(Murabahah_Purchase_Order.getFileName().length() - 3, Murabahah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNpo = "po.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", po);
+                                    po = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpo),0, AppUtil.decodeImageTobase64(valpo).length);
+                                    FNpo = "po.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvPo.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran") != null) {
                             String SSRahnLampiranJadwalAngsuran = response.body().getData().get("Rahn_Lampiran_Jadwal_Angsuran").getAsJsonObject().toString();
-                            Murabahah_Lampiran_Jadwal_Angsuran = gson.fromJson(SSRahnLampiranJadwalAngsuran, ReqDocument.class);
+                            Rahn_Lampiran_Jadwal_Angsuran = gson.fromJson(SSRahnLampiranJadwalAngsuran, ReqDocument.class);
+                            valjadwalangsuran = Rahn_Lampiran_Jadwal_Angsuran.getImg();
                             try {
-                                Murabahah_Lampiran_Jadwal_Angsuran.setImg(Murabahah_Lampiran_Jadwal_Angsuran.getImg());
-
-                                if (FNjadwalangsuran.substring(FNjadwalangsuran.length() - 3, FNjadwalangsuran.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalangsuran, FNjadwalangsuran);
+                                if (Rahn_Lampiran_Jadwal_Angsuran.getFileName().substring(Rahn_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Rahn_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNjadwalangsuran = "angsuranrahn.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", jadwalangsuran);
+                                    angsuranrahn = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranrahn),0, AppUtil.decodeImageTobase64(valangsuranrahn).length);
+                                    FNjadwalangsuran = "angsuranrahn.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvJadwalAngsuran.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Rahn_Akad_Rahn") != null) {
                             String SSAkadRahn = response.body().getData().get("Rahn_Akad_Rahn").getAsJsonObject().toString();
-
                             Rahn_Akad_Rahn = gson.fromJson(SSAkadRahn, ReqDocument.class);
+                            valakadrahn = Rahn_Akad_Rahn.getImg();
                             try {
-
-                                Rahn_Akad_Rahn.setImg(Rahn_Akad_Rahn.getImg());
-
-                                if (FNakadrahn.substring(FNakadrahn.length() - 3, FNakadrahn.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadrahn, FNakadrahn);
+                                if (Rahn_Akad_Rahn.getFileName().substring(Rahn_Akad_Rahn.getFileName().length() - 3, Rahn_Akad_Rahn.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNakadrahn = "akadrahn.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", akadrahn);
+                                    akadrahn= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadrahn),0, AppUtil.decodeImageTobase64(valakadrahn).length);
+                                    FNakadrahn = "akadrahn.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvAkadRahn.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("SUP") != null) {
                             String SSSup = response.body().getData().get("SUP").getAsJsonObject().toString();
                             SUP = gson.fromJson(SSSup, ReqDocument.class);
+                            valsup = SUP.getImg();
                             try {
-                                SUP.setImg(SUP.getImg());
-
-                                if (FNsup.substring(FNsup.length() - 3, FNsup.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsup, FNsup);
+                                if (SUP.getFileName().substring(SUP.getFileName().length() - 3, SUP.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNsup = "sup.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", sup);
+                                    sup= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsup),0, AppUtil.decodeImageTobase64(valsup).length);
+                                    FNsup = "sup.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvSup.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Surat_Kuasa_Pernyataan_Flagging") != null) {
 
                             String SSSuratKuasaPernyataanFlagging = response.body().getData().get("Surat_Kuasa_Pernyataan_Flagging").getAsJsonObject().toString();
                             Surat_Kuasa_Pernyataan_Flagging = gson.fromJson(SSSuratKuasaPernyataanFlagging, ReqDocument.class);
+                            valkuasa = Surat_Kuasa_Pernyataan_Flagging.getImg();
                             try {
-                                Surat_Kuasa_Pernyataan_Flagging.setImg(Surat_Kuasa_Pernyataan_Flagging.getImg());
-
-                                if (FNpernyataan.substring(FNpernyataan.length() - 3, FNpernyataan.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpernyataan, FNpernyataan);
+                                if (Surat_Kuasa_Pernyataan_Flagging.getFileName().substring(Surat_Kuasa_Pernyataan_Flagging.getFileName().length() - 3, Surat_Kuasa_Pernyataan_Flagging.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNkuasa = "kuasa.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pernyataan);
+                                    pernyataan= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valkuasa),0, AppUtil.decodeImageTobase64(valkuasa).length);
+                                    FNkuasa = "kuasa.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvKuasa.setVisibility(View.VISIBLE);
                         }
-                        if (response.body().getData().get("Foto_Bukti_Otentikasi_Nasabah") != null) {
+
+                        if (response.body().getData().get("Surat_Pernyataan_Kuasa_Pembiayaan") != null) {
 
                             String SSSuratKuasaPembiayaan = response.body().getData().get("Surat_Pernyataan_Kuasa_Pembiayaan").getAsJsonObject().toString();
                             Surat_Pernyataan_Kuasa_Pembiayaan = gson.fromJson(SSSuratKuasaPembiayaan, ReqDocument.class);
+                            valpernyataan = Surat_Pernyataan_Kuasa_Pembiayaan.getImg();
                             try {
-                                Surat_Pernyataan_Kuasa_Pembiayaan.setImg(Surat_Pernyataan_Kuasa_Pembiayaan.getImg());
-
-                                if (FNkuasa.substring(FNkuasa.length() - 3, FNkuasa.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkuasa, FNkuasa);
+                                if (Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().substring(Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length() - 3, Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNpernyataan = "pernyataan.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", kuasa);
+                                    kuasa= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpernyataan),0, AppUtil.decodeImageTobase64(valpernyataan).length);
+                                    FNpernyataan = "pernyataan.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvPernyataan.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Tanda_Terima_Dokumen_SK") != null) {
                             String SSTandaTerimaDokumenSK = response.body().getData().get("Tanda_Terima_Dokumen_SK").getAsJsonObject().toString();
                             Tanda_Terima_Dokumen_SK = gson.fromJson(SSTandaTerimaDokumenSK, ReqDocument.class);
+                            valsk = Tanda_Terima_Dokumen_SK.getImg();
                             try {
-                                Tanda_Terima_Dokumen_SK.setImg(Tanda_Terima_Dokumen_SK.getImg());
-
-                                if (FNsk.substring(FNsk.length() - 3, FNsk.length()).equalsIgnoreCase("pdf")) {
-                                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsk, FNsk);
+                                if (Tanda_Terima_Dokumen_SK.getFileName().substring(Tanda_Terima_Dokumen_SK.getFileName().length() - 3, Tanda_Terima_Dokumen_SK.getFileName().length()).equalsIgnoreCase("pdf")) {
+                                    FNsk = "sk.pdf";
                                 } else {
-                                    DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", sk);
+                                    sk = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsk),0, AppUtil.decodeImageTobase64(valsk).length);
+                                    FNsk = "sk.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             binding.pvSk.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Dokumen_Umum") != null) {
                             String SSDokumen_Umum = response.body().getData().get("Dokumen_Umum").toString();
                             Type type = new TypeToken<List<ReqDocumentUmum>>() {
