@@ -286,10 +286,10 @@
                         <RelativeLayout
                             android:id="@+id/d_sk"
                             android:layout_width="match_parent"
-                            android:layout_height="60dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:padding="0dp">
+                            android:paddingB="0dp">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -297,7 +297,7 @@
                                 android:fontFamily="@font/muli_b"
                                 android:paddingLeft="10dp"
                                 android:paddingBottom="10dp"
-                                android:text="Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir"
+                                android:text="Tanda Terima Dokumen SK"
                                 android:textAlignment="textStart"
                                 android:textSize="16sp" />
                         </RelativeLayout>

@@ -9,342 +9,315 @@ public class UploadDokumen {
 
     @SerializedName("Form_Mutas_Kantor_Bayar")
     @Expose
-    private ReqDocument Form_Mutas_Kantor_Bayar;
-
+    private ReqDocument formMutasKantorBayar;
     @SerializedName("Form_Mutasi_Kantor_Bayar_Taspen")
     @Expose
-    private ReqDocument Form_Mutasi_Kantor_Bayar_Taspen;
-
+    private ReqDocument formMutasiKantorBayarTaspen;
     @SerializedName("Foto_Bukti_Otentikasi_Nasabah")
     @Expose
-    private ReqDocument Foto_Bukti_Otentikasi_Nasabah;
-
+    private ReqDocument fotoBuktiOtentikasiNasabah;
     @SerializedName("Foto_Covernote_Asuransi")
     @Expose
-    private ReqDocument Foto_Covernote_Asuransi;
-
+    private ReqDocument fotoCovernoteAsuransi;
     @SerializedName("Foto_Proses_Penandatanganan_Akad")
     @Expose
-    private ReqDocument Foto_Proses_Penandatanganan_Akad;
-
+    private ReqDocument fotoProsesPenandatangananAkad;
     @SerializedName("Foto_SK_Pengangkatan")
     @Expose
-    private ReqDocument Foto_SK_Pengangkatan;
-
+    private ReqDocument fotoSKPengangkatan;
     @SerializedName("Foto_SK_Pensiun")
     @Expose
-    private ReqDocument Foto_SK_Pensiun;
-
+    private ReqDocument fotoSKPensiun;
     @SerializedName("Foto_SK_Terakhir")
     @Expose
-    private ReqDocument Foto_SK_Terakhir;
-
+    private ReqDocument fotoSKTerakhir;
     @SerializedName("Ijarah_Akad_Ijarah")
     @Expose
-    private ReqDocument Ijarah_Akad_Ijarah;
-
+    private ReqDocument ijarahAkadIjarah;
     @SerializedName("Ijarah_Akad_Wakalah")
     @Expose
-    private ReqDocument Ijarah_Akad_Wakalah;
-
+    private ReqDocument ijarahAkadWakalah;
     @SerializedName("Ijarah_Lampiran_Jadwal_Angsuran")
     @Expose
-    private ReqDocument Ijarah_Lampiran_Jadwal_Angsuran;
-
+    private ReqDocument ijarahLampiranJadwalAngsuran;
     @SerializedName("Ijarah_Purchase_Order")
     @Expose
-    private ReqDocument Ijarah_Purchase_Order;
-
+    private ReqDocument ijarahPurchaseOrder;
     @SerializedName("MMQ_Akad_MMQ")
     @Expose
-    private ReqDocument MMQ_Akad_MMQ;
-
+    private ReqDocument mMQAkadMMQ;
     @SerializedName("MMQ_Lampiran_Jadwal_Pengambil_Alihan")
     @Expose
-    private ReqDocument MMQ_Lampiran_Jadwal_Pengambil_Alihan;
-
+    private ReqDocument mMQLampiranJadwalPengambilAlihan;
     @SerializedName("MMQ_Laporan_Penilaian_Aset")
     @Expose
-    private ReqDocument MMQ_Laporan_Penilaian_Aset;
-
+    private ReqDocument mMQLaporanPenilaianAset;
     @SerializedName("MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga")
     @Expose
-    private ReqDocument MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga;
-
+    private ReqDocument mMQSuratPernyataanKuasaAsetKetiga;
     @SerializedName("MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri")
     @Expose
-    private ReqDocument MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri;
-
+    private ReqDocument mMQSuratPernyataanKuasaAsetSendiri;
     @SerializedName("Murabahah_Akad_Murabahah")
     @Expose
-    private ReqDocument Murabahah_Akad_Murabahah;
-
+    private ReqDocument murabahahAkadMurabahah;
     @SerializedName("Murabahah_Akad_Wakalah")
     @Expose
-    private ReqDocument Murabahah_Akad_Wakalah;
-
+    private ReqDocument murabahahAkadWakalah;
     @SerializedName("Murabahah_Lampiran_Jadwal_Angsuran")
     @Expose
-    private ReqDocument Murabahah_Lampiran_Jadwal_Angsuran;
-
+    private ReqDocument murabahahLampiranJadwalAngsuran;
     @SerializedName("Murabahah_Purchase_Order")
     @Expose
-    private ReqDocument Murabahah_Purchase_Order;
-
+    private ReqDocument murabahahPurchaseOrder;
     @SerializedName("Murabahah_Surat_Tanda_Terima_Barang")
     @Expose
-    private ReqDocument Murabahah_Surat_Tanda_Terima_Barang;
-
+    private ReqDocument murabahahSuratTandaTerimaBarang;
     @SerializedName("Rahn_Akad_Rahn")
     @Expose
-    private ReqDocument Rahn_Akad_Rahn;
-
+    private ReqDocument rahnAkadRahn;
     @SerializedName("Rahn_Lampiran_Jadwal_Angsuran")
     @Expose
-    private ReqDocument Rahn_Lampiran_Jadwal_Angsuran;
-
+    private ReqDocument rahnLampiranJadwalAngsuran;
     @SerializedName("SUP")
     @Expose
-    private ReqDocument SUP;
-
+    private ReqDocument sup;
     @SerializedName("Surat_Kuasa_Pernyataan_Flagging")
     @Expose
-    private ReqDocument Surat_Kuasa_Pernyataan_Flagging;
-
+    private ReqDocument suratKuasaPernyataanFlagging;
     @SerializedName("Surat_Pernyataan_Kuasa_Pembiayaan")
     @Expose
-    private ReqDocument Surat_Pernyataan_Kuasa_Pembiayaan;
-
+    private ReqDocument suratPernyataanKuasaPembiayaan;
     @SerializedName("Tanda_Terima_Dokumen_SK")
     @Expose
-    private ReqDocument Tanda_Terima_Dokumen_SK;
+    private ReqDocument tandaTerimaDokumenSK;
 
     @SerializedName("DokumenUmum")
     @Expose
     private List<ReqDocumentUmum> DokumenUmum;
 
-    public ReqDocument getForm_Mutas_Kantor_Bayar() {
-        return Form_Mutas_Kantor_Bayar;
+    public void setFormMutasKantorBayar(ReqDocument formMutasKantorBayar) {
+        this.formMutasKantorBayar = formMutasKantorBayar;
     }
 
-    public void setForm_Mutas_Kantor_Bayar(ReqDocument form_Mutas_Kantor_Bayar) {
-        Form_Mutas_Kantor_Bayar = form_Mutas_Kantor_Bayar;
+    public void setFormMutasiKantorBayarTaspen(ReqDocument formMutasiKantorBayarTaspen) {
+        this.formMutasiKantorBayarTaspen = formMutasiKantorBayarTaspen;
     }
 
-    public ReqDocument getForm_Mutasi_Kantor_Bayar_Taspen() {
-        return Form_Mutasi_Kantor_Bayar_Taspen;
+    public void setFotoBuktiOtentikasiNasabah(ReqDocument fotoBuktiOtentikasiNasabah) {
+        this.fotoBuktiOtentikasiNasabah = fotoBuktiOtentikasiNasabah;
     }
 
-    public void setForm_Mutasi_Kantor_Bayar_Taspen(ReqDocument form_Mutasi_Kantor_Bayar_Taspen) {
-        Form_Mutasi_Kantor_Bayar_Taspen = form_Mutasi_Kantor_Bayar_Taspen;
+    public void setFotoCovernoteAsuransi(ReqDocument fotoCovernoteAsuransi) {
+        this.fotoCovernoteAsuransi = fotoCovernoteAsuransi;
     }
 
-    public ReqDocument getFoto_Bukti_Otentikasi_Nasabah() {
-        return Foto_Bukti_Otentikasi_Nasabah;
+    public void setFotoProsesPenandatangananAkad(ReqDocument fotoProsesPenandatangananAkad) {
+        this.fotoProsesPenandatangananAkad = fotoProsesPenandatangananAkad;
     }
 
-    public void setFoto_Bukti_Otentikasi_Nasabah(ReqDocument foto_Bukti_Otentikasi_Nasabah) {
-        Foto_Bukti_Otentikasi_Nasabah = foto_Bukti_Otentikasi_Nasabah;
+    public void setFotoSKPengangkatan(ReqDocument fotoSKPengangkatan) {
+        this.fotoSKPengangkatan = fotoSKPengangkatan;
     }
 
-    public ReqDocument getFoto_Covernote_Asuransi() {
-        return Foto_Covernote_Asuransi;
+    public void setFotoSKPensiun(ReqDocument fotoSKPensiun) {
+        this.fotoSKPensiun = fotoSKPensiun;
     }
 
-    public void setFoto_Covernote_Asuransi(ReqDocument foto_Covernote_Asuransi) {
-        Foto_Covernote_Asuransi = foto_Covernote_Asuransi;
+    public void setFotoSKTerakhir(ReqDocument fotoSKTerakhir) {
+        this.fotoSKTerakhir = fotoSKTerakhir;
     }
 
-    public ReqDocument getFoto_Proses_Penandatanganan_Akad() {
-        return Foto_Proses_Penandatanganan_Akad;
+    public void setIjarahAkadIjarah(ReqDocument ijarahAkadIjarah) {
+        this.ijarahAkadIjarah = ijarahAkadIjarah;
     }
 
-    public void setFoto_Proses_Penandatanganan_Akad(ReqDocument foto_Proses_Penandatanganan_Akad) {
-        Foto_Proses_Penandatanganan_Akad = foto_Proses_Penandatanganan_Akad;
+    public void setIjarahAkadWakalah(ReqDocument ijarahAkadWakalah) {
+        this.ijarahAkadWakalah = ijarahAkadWakalah;
     }
 
-    public ReqDocument getFoto_SK_Pengangkatan() {
-        return Foto_SK_Pengangkatan;
+    public void setIjarahLampiranJadwalAngsuran(ReqDocument ijarahLampiranJadwalAngsuran) {
+        this.ijarahLampiranJadwalAngsuran = ijarahLampiranJadwalAngsuran;
     }
 
-    public void setFoto_SK_Pengangkatan(ReqDocument foto_SK_Pengangkatan) {
-        Foto_SK_Pengangkatan = foto_SK_Pengangkatan;
+    public void setIjarahPurchaseOrder(ReqDocument ijarahPurchaseOrder) {
+        this.ijarahPurchaseOrder = ijarahPurchaseOrder;
     }
 
-    public ReqDocument getFoto_SK_Pensiun() {
-        return Foto_SK_Pensiun;
+    public void setmMQAkadMMQ(ReqDocument mMQAkadMMQ) {
+        this.mMQAkadMMQ = mMQAkadMMQ;
     }
 
-    public void setFoto_SK_Pensiun(ReqDocument foto_SK_Pensiun) {
-        Foto_SK_Pensiun = foto_SK_Pensiun;
+    public void setmMQLampiranJadwalPengambilAlihan(ReqDocument mMQLampiranJadwalPengambilAlihan) {
+        this.mMQLampiranJadwalPengambilAlihan = mMQLampiranJadwalPengambilAlihan;
     }
 
-    public ReqDocument getFoto_SK_Terakhir() {
-        return Foto_SK_Terakhir;
+    public void setmMQLaporanPenilaianAset(ReqDocument mMQLaporanPenilaianAset) {
+        this.mMQLaporanPenilaianAset = mMQLaporanPenilaianAset;
     }
 
-    public void setFoto_SK_Terakhir(ReqDocument foto_SK_Terakhir) {
-        Foto_SK_Terakhir = foto_SK_Terakhir;
+    public void setmMQSuratPernyataanKuasaAsetKetiga(ReqDocument mMQSuratPernyataanKuasaAsetKetiga) {
+        this.mMQSuratPernyataanKuasaAsetKetiga = mMQSuratPernyataanKuasaAsetKetiga;
     }
 
-    public ReqDocument getIjarah_Akad_Ijarah() {
-        return Ijarah_Akad_Ijarah;
+    public void setmMQSuratPernyataanKuasaAsetSendiri(ReqDocument mMQSuratPernyataanKuasaAsetSendiri) {
+        this.mMQSuratPernyataanKuasaAsetSendiri = mMQSuratPernyataanKuasaAsetSendiri;
     }
 
-    public void setIjarah_Akad_Ijarah(ReqDocument ijarah_Akad_Ijarah) {
-        Ijarah_Akad_Ijarah = ijarah_Akad_Ijarah;
+    public void setMurabahahAkadMurabahah(ReqDocument murabahahAkadMurabahah) {
+        this.murabahahAkadMurabahah = murabahahAkadMurabahah;
     }
 
-    public ReqDocument getIjarah_Akad_Wakalah() {
-        return Ijarah_Akad_Wakalah;
+    public void setMurabahahAkadWakalah(ReqDocument murabahahAkadWakalah) {
+        this.murabahahAkadWakalah = murabahahAkadWakalah;
     }
 
-    public void setIjarah_Akad_Wakalah(ReqDocument ijarah_Akad_Wakalah) {
-        Ijarah_Akad_Wakalah = ijarah_Akad_Wakalah;
+    public void setMurabahahLampiranJadwalAngsuran(ReqDocument murabahahLampiranJadwalAngsuran) {
+        this.murabahahLampiranJadwalAngsuran = murabahahLampiranJadwalAngsuran;
     }
 
-    public ReqDocument getIjarah_Lampiran_Jadwal_Angsuran() {
-        return Ijarah_Lampiran_Jadwal_Angsuran;
+    public void setMurabahahPurchaseOrder(ReqDocument murabahahPurchaseOrder) {
+        this.murabahahPurchaseOrder = murabahahPurchaseOrder;
     }
 
-    public void setIjarah_Lampiran_Jadwal_Angsuran(ReqDocument ijarah_Lampiran_Jadwal_Angsuran) {
-        Ijarah_Lampiran_Jadwal_Angsuran = ijarah_Lampiran_Jadwal_Angsuran;
+    public void setMurabahahSuratTandaTerimaBarang(ReqDocument murabahahSuratTandaTerimaBarang) {
+        this.murabahahSuratTandaTerimaBarang = murabahahSuratTandaTerimaBarang;
     }
 
-    public ReqDocument getIjarah_Purchase_Order() {
-        return Ijarah_Purchase_Order;
+    public void setRahnAkadRahn(ReqDocument rahnAkadRahn) {
+        this.rahnAkadRahn = rahnAkadRahn;
     }
 
-    public void setIjarah_Purchase_Order(ReqDocument ijarah_Purchase_Order) {
-        Ijarah_Purchase_Order = ijarah_Purchase_Order;
+    public void setRahnLampiranJadwalAngsuran(ReqDocument rahnLampiranJadwalAngsuran) {
+        this.rahnLampiranJadwalAngsuran = rahnLampiranJadwalAngsuran;
     }
 
-    public ReqDocument getMMQ_Akad_MMQ() {
-        return MMQ_Akad_MMQ;
+    public void setSup(ReqDocument sup) {
+        this.sup = sup;
     }
 
-    public void setMMQ_Akad_MMQ(ReqDocument MMQ_Akad_MMQ) {
-        this.MMQ_Akad_MMQ = MMQ_Akad_MMQ;
+    public void setSuratKuasaPernyataanFlagging(ReqDocument suratKuasaPernyataanFlagging) {
+        this.suratKuasaPernyataanFlagging = suratKuasaPernyataanFlagging;
     }
 
-    public ReqDocument getMMQ_Lampiran_Jadwal_Pengambil_Alihan() {
-        return MMQ_Lampiran_Jadwal_Pengambil_Alihan;
+    public void setSuratPernyataanKuasaPembiayaan(ReqDocument suratPernyataanKuasaPembiayaan) {
+        this.suratPernyataanKuasaPembiayaan = suratPernyataanKuasaPembiayaan;
     }
 
-    public void setMMQ_Lampiran_Jadwal_Pengambil_Alihan(ReqDocument MMQ_Lampiran_Jadwal_Pengambil_Alihan) {
-        this.MMQ_Lampiran_Jadwal_Pengambil_Alihan = MMQ_Lampiran_Jadwal_Pengambil_Alihan;
+    public void setTandaTerimaDokumenSK(ReqDocument tandaTerimaDokumenSK) {
+        this.tandaTerimaDokumenSK = tandaTerimaDokumenSK;
     }
 
-    public ReqDocument getMMQ_Laporan_Penilaian_Aset() {
-        return MMQ_Laporan_Penilaian_Aset;
+    public ReqDocument getFormMutasKantorBayar() {
+        return formMutasKantorBayar;
     }
 
-    public void setMMQ_Laporan_Penilaian_Aset(ReqDocument MMQ_Laporan_Penilaian_Aset) {
-        this.MMQ_Laporan_Penilaian_Aset = MMQ_Laporan_Penilaian_Aset;
+    public ReqDocument getFormMutasiKantorBayarTaspen() {
+        return formMutasiKantorBayarTaspen;
     }
 
-    public ReqDocument getMMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga() {
-        return MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga;
+    public ReqDocument getFotoBuktiOtentikasiNasabah() {
+        return fotoBuktiOtentikasiNasabah;
     }
 
-    public void setMMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga(ReqDocument MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga) {
-        this.MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga = MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga;
+    public ReqDocument getFotoCovernoteAsuransi() {
+        return fotoCovernoteAsuransi;
     }
 
-    public ReqDocument getMMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri() {
-        return MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri;
+    public ReqDocument getFotoProsesPenandatangananAkad() {
+        return fotoProsesPenandatangananAkad;
     }
 
-    public void setMMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri(ReqDocument MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri) {
-        this.MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri = MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri;
+    public ReqDocument getFotoSKPengangkatan() {
+        return fotoSKPengangkatan;
     }
 
-    public ReqDocument getMurabahah_Akad_Murabahah() {
-        return Murabahah_Akad_Murabahah;
+    public ReqDocument getFotoSKPensiun() {
+        return fotoSKPensiun;
     }
 
-    public void setMurabahah_Akad_Murabahah(ReqDocument murabahah_Akad_Murabahah) {
-        Murabahah_Akad_Murabahah = murabahah_Akad_Murabahah;
+    public ReqDocument getFotoSKTerakhir() {
+        return fotoSKTerakhir;
     }
 
-    public ReqDocument getMurabahah_Akad_Wakalah() {
-        return Murabahah_Akad_Wakalah;
+    public ReqDocument getIjarahAkadIjarah() {
+        return ijarahAkadIjarah;
     }
 
-    public void setMurabahah_Akad_Wakalah(ReqDocument murabahah_Akad_Wakalah) {
-        Murabahah_Akad_Wakalah = murabahah_Akad_Wakalah;
+    public ReqDocument getIjarahAkadWakalah() {
+        return ijarahAkadWakalah;
     }
 
-    public ReqDocument getMurabahah_Lampiran_Jadwal_Angsuran() {
-        return Murabahah_Lampiran_Jadwal_Angsuran;
+    public ReqDocument getIjarahLampiranJadwalAngsuran() {
+        return ijarahLampiranJadwalAngsuran;
     }
 
-    public void setMurabahah_Lampiran_Jadwal_Angsuran(ReqDocument murabahah_Lampiran_Jadwal_Angsuran) {
-        Murabahah_Lampiran_Jadwal_Angsuran = murabahah_Lampiran_Jadwal_Angsuran;
+    public ReqDocument getIjarahPurchaseOrder() {
+        return ijarahPurchaseOrder;
     }
 
-    public ReqDocument getMurabahah_Purchase_Order() {
-        return Murabahah_Purchase_Order;
+    public ReqDocument getmMQAkadMMQ() {
+        return mMQAkadMMQ;
     }
 
-    public void setMurabahah_Purchase_Order(ReqDocument murabahah_Purchase_Order) {
-        Murabahah_Purchase_Order = murabahah_Purchase_Order;
+    public ReqDocument getmMQLampiranJadwalPengambilAlihan() {
+        return mMQLampiranJadwalPengambilAlihan;
     }
 
-    public ReqDocument getMurabahah_Surat_Tanda_Terima_Barang() {
-        return Murabahah_Surat_Tanda_Terima_Barang;
+    public ReqDocument getmMQLaporanPenilaianAset() {
+        return mMQLaporanPenilaianAset;
     }
 
-    public void setMurabahah_Surat_Tanda_Terima_Barang(ReqDocument murabahah_Surat_Tanda_Terima_Barang) {
-        Murabahah_Surat_Tanda_Terima_Barang = murabahah_Surat_Tanda_Terima_Barang;
+    public ReqDocument getmMQSuratPernyataanKuasaAsetKetiga() {
+        return mMQSuratPernyataanKuasaAsetKetiga;
     }
 
-    public ReqDocument getRahn_Akad_Rahn() {
-        return Rahn_Akad_Rahn;
+    public ReqDocument getmMQSuratPernyataanKuasaAsetSendiri() {
+        return mMQSuratPernyataanKuasaAsetSendiri;
     }
 
-    public void setRahn_Akad_Rahn(ReqDocument rahn_Akad_Rahn) {
-        Rahn_Akad_Rahn = rahn_Akad_Rahn;
+    public ReqDocument getMurabahahAkadMurabahah() {
+        return murabahahAkadMurabahah;
     }
 
-    public ReqDocument getRahn_Lampiran_Jadwal_Angsuran() {
-        return Rahn_Lampiran_Jadwal_Angsuran;
+    public ReqDocument getMurabahahAkadWakalah() {
+        return murabahahAkadWakalah;
     }
 
-    public void setRahn_Lampiran_Jadwal_Angsuran(ReqDocument rahn_Lampiran_Jadwal_Angsuran) {
-        Rahn_Lampiran_Jadwal_Angsuran = rahn_Lampiran_Jadwal_Angsuran;
+    public ReqDocument getMurabahahLampiranJadwalAngsuran() {
+        return murabahahLampiranJadwalAngsuran;
     }
 
-    public ReqDocument getSUP() {
-        return SUP;
+    public ReqDocument getMurabahahPurchaseOrder() {
+        return murabahahPurchaseOrder;
     }
 
-    public void setSUP(ReqDocument SUP) {
-        this.SUP = SUP;
+    public ReqDocument getMurabahahSuratTandaTerimaBarang() {
+        return murabahahSuratTandaTerimaBarang;
     }
 
-    public ReqDocument getSurat_Kuasa_Pernyataan_Flagging() {
-        return Surat_Kuasa_Pernyataan_Flagging;
+    public ReqDocument getRahnAkadRahn() {
+        return rahnAkadRahn;
     }
 
-    public void setSurat_Kuasa_Pernyataan_Flagging(ReqDocument surat_Kuasa_Pernyataan_Flagging) {
-        Surat_Kuasa_Pernyataan_Flagging = surat_Kuasa_Pernyataan_Flagging;
+    public ReqDocument getRahnLampiranJadwalAngsuran() {
+        return rahnLampiranJadwalAngsuran;
     }
 
-    public ReqDocument getSurat_Pernyataan_Kuasa_Pembiayaan() {
-        return Surat_Pernyataan_Kuasa_Pembiayaan;
+    public ReqDocument getSup() {
+        return sup;
     }
 
-    public void setSurat_Pernyataan_Kuasa_Pembiayaan(ReqDocument surat_Pernyataan_Kuasa_Pembiayaan) {
-        Surat_Pernyataan_Kuasa_Pembiayaan = surat_Pernyataan_Kuasa_Pembiayaan;
+    public ReqDocument getSuratKuasaPernyataanFlagging() {
+        return suratKuasaPernyataanFlagging;
     }
 
-    public ReqDocument getTanda_Terima_Dokumen_SK() {
-        return Tanda_Terima_Dokumen_SK;
+    public ReqDocument getSuratPernyataanKuasaPembiayaan() {
+        return suratPernyataanKuasaPembiayaan;
     }
 
-    public void setTanda_Terima_Dokumen_SK(ReqDocument tanda_Terima_Dokumen_SK) {
-        Tanda_Terima_Dokumen_SK = tanda_Terima_Dokumen_SK;
+    public ReqDocument getTandaTerimaDokumenSK() {
+        return tandaTerimaDokumenSK;
     }
 
     public List<ReqDocumentUmum> getDokumenUmum() {

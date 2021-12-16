@@ -170,7 +170,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Form_Mutasi_Kantor_Bayar_Taspen.getFileName().substring(Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length() - 3, Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNmutasi = "mutasi.pdf";
                                 } else {
-                                    mutasi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmutasi),0, AppUtil.decodeImageTobase64(valmutasi).length);
+                                    mutasi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmutasi), 0, AppUtil.decodeImageTobase64(valmutasi).length);
                                     FNmutasi = "mutasi.png";
                                 }
 
@@ -188,7 +188,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Foto_Bukti_Otentikasi_Nasabah.getFileName().substring(Foto_Bukti_Otentikasi_Nasabah.getFileName().length() - 3, Foto_Bukti_Otentikasi_Nasabah.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNfotoakad = "fotoakad.pdf";
                                 } else {
-                                    fotoakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valfotoakad),0, AppUtil.decodeImageTobase64(valfotoakad).length) ;
+                                    fotoakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valfotoakad), 0, AppUtil.decodeImageTobase64(valfotoakad).length);
                                     FNfotoakad = "fotoakad.png";
                                 }
                             } catch (Exception e) {
@@ -205,7 +205,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Foto_Covernote_Asuransi.getFileName().substring(Foto_Covernote_Asuransi.getFileName().length() - 3, Foto_Covernote_Asuransi.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNcovernoteasuransi = "covernoteasuransi.pdf";
                                 } else {
-                                    covernoteasuransi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valcovernoteasuransi),0, AppUtil.decodeImageTobase64(valcovernoteasuransi).length);
+                                    covernoteasuransi = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valcovernoteasuransi), 0, AppUtil.decodeImageTobase64(valcovernoteasuransi).length);
                                     FNcovernoteasuransi = "covernoteasuransi.png";
                                 }
                             } catch (Exception e) {
@@ -222,7 +222,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Foto_Proses_Penandatanganan_Akad.getFileName().substring(Foto_Proses_Penandatanganan_Akad.getFileName().length() - 3, Foto_Proses_Penandatanganan_Akad.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNttdakad = "ttdakad.pdf";
                                 } else {
-                                    ttdakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valttdakad),0, AppUtil.decodeImageTobase64(valttdakad).length);
+                                    ttdakad = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valttdakad), 0, AppUtil.decodeImageTobase64(valttdakad).length);
                                     FNttdakad = "ttdakad.png";
                                 }
                             } catch (Exception e) {
@@ -239,7 +239,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Foto_SK_Pengangkatan.getFileName().substring(Foto_SK_Pengangkatan.getFileName().length() - 3, Foto_SK_Pengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNskpenangakatan = "skpenangkatan.pdf";
                                 } else {
-                                    skpenangakatan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpenangakatan),0, AppUtil.decodeImageTobase64(valskpenangakatan).length);
+                                    skpenangakatan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpenangakatan), 0, AppUtil.decodeImageTobase64(valskpenangakatan).length);
                                     FNskpenangakatan = "skpenangkatan.png";
                                 }
                             } catch (Exception e) {
@@ -257,8 +257,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Foto_SK_Pensiun.getFileName().substring(Foto_SK_Pensiun.getFileName().length() - 3, Foto_SK_Pensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNskpensiun = "skpensiun.pdf";
                                 } else {
-                                    skpensiun = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpensiun),0, AppUtil.decodeImageTobase64(valskpensiun).length);
-                                    FNskpensiun ="skpensiun.png";
+                                    skpensiun = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskpensiun), 0, AppUtil.decodeImageTobase64(valskpensiun).length);
+                                    FNskpensiun = "skpensiun.png";
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -274,7 +274,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (FNskterakhir.substring(FNskterakhir.length() - 3, FNskterakhir.length()).equalsIgnoreCase("pdf")) {
                                     FNskterakhir = "skterakhir.pdf";
                                 } else {
-                                    skterakhir = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskterakhir),0, AppUtil.decodeImageTobase64(valskterakhir).length);
+                                    skterakhir = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskterakhir), 0, AppUtil.decodeImageTobase64(valskterakhir).length);
                                     FNskterakhir = "skterakhir.png";
                                 }
                             } catch (Exception e) {
@@ -291,7 +291,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Ijarah_Akad_Ijarah.getFileName().substring(Ijarah_Akad_Ijarah.getFileName().length() - 3, Ijarah_Akad_Ijarah.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNijarah = "ijarah.pdf";
                                 } else {
-                                    ijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valijarah),0, AppUtil.decodeImageTobase64(valijarah).length);
+                                    ijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valijarah), 0, AppUtil.decodeImageTobase64(valijarah).length);
                                     FNijarah = "ijarah.png";
                                 }
                             } catch (Exception e) {
@@ -308,7 +308,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Ijarah_Akad_Wakalah.getFileName().substring(Ijarah_Akad_Wakalah.getFileName().length() - 3, Ijarah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNwakalahijarah = "wakalahijarah.pdf";
                                 } else {
-                                    wakalahijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalahijarah),0, AppUtil.decodeImageTobase64(valwakalahijarah).length);
+                                    wakalahijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalahijarah), 0, AppUtil.decodeImageTobase64(valwakalahijarah).length);
                                     FNwakalahijarah = "wakalahijarah.png";
                                 }
                             } catch (Exception e) {
@@ -325,7 +325,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Ijarah_Lampiran_Jadwal_Angsuran.getFileName().substring(Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNangsuranujrah = "angsuranujrah.pdf";
                                 } else {
-                                    angsuranujrah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranujrah),0, AppUtil.decodeImageTobase64(valangsuranujrah).length);
+                                    angsuranujrah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranujrah), 0, AppUtil.decodeImageTobase64(valangsuranujrah).length);
                                     FNangsuranujrah = "angsuranujrah.png";
                                 }
                             } catch (Exception e) {
@@ -342,7 +342,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Ijarah_Purchase_Order.getFileName().substring(Ijarah_Purchase_Order.getFileName().length() - 3, Ijarah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNpoijarah = "poijarah.pdf";
                                 } else {
-                                    poijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpoijarah),0, AppUtil.decodeImageTobase64(valpoijarah).length);
+                                    poijarah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpoijarah), 0, AppUtil.decodeImageTobase64(valpoijarah).length);
                                     FNpoijarah = "poijarah.png";
                                 }
                             } catch (Exception e) {
@@ -359,7 +359,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (MMQ_Akad_MMQ.getFileName().substring(MMQ_Akad_MMQ.getFileName().length() - 3, MMQ_Akad_MMQ.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNakadmmq = "akadmmq.pdf";
                                 } else {
-                                    akadmmq = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadmmq),0, AppUtil.decodeImageTobase64(valakadmmq).length);
+                                    akadmmq = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadmmq), 0, AppUtil.decodeImageTobase64(valakadmmq).length);
                                     FNakadmmq = "akadmmq.png";
                                 }
                             } catch (Exception e) {
@@ -376,7 +376,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().substring(MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length() - 3, MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNjadwalpengambilan = "jadwalpengambilan.pdf";
                                 } else {
-                                    jadwalpengambilan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalpengambilan),0, AppUtil.decodeImageTobase64(valjadwalpengambilan).length);
+                                    jadwalpengambilan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalpengambilan), 0, AppUtil.decodeImageTobase64(valjadwalpengambilan).length);
                                     FNjadwalpengambilan = "jadwalpengambilan.png";
                                 }
                             } catch (Exception e) {
@@ -393,7 +393,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (MMQ_Laporan_Penilaian_Aset.getFileName().substring(MMQ_Laporan_Penilaian_Aset.getFileName().length() - 3, MMQ_Laporan_Penilaian_Aset.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNassetmmq = "assetmmq.pdf";
                                 } else {
-                                    assetmmq= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valassetmmq),0, AppUtil.decodeImageTobase64(valassetmmq).length);
+                                    assetmmq = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valassetmmq), 0, AppUtil.decodeImageTobase64(valassetmmq).length);
                                     FNassetmmq = "assetmmq.png";
 
                                 }
@@ -411,7 +411,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNpihak3 = "pihak3.pdf";
                                 } else {
-                                    pihak3= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak3),0, AppUtil.decodeImageTobase64(valpihak3).length);
+                                    pihak3 = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak3), 0, AppUtil.decodeImageTobase64(valpihak3).length);
                                     FNpihak3 = "pihak3.png";
                                 }
                             } catch (Exception e) {
@@ -428,7 +428,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNpihak1 = "pihak1.pdf";
                                 } else {
-                                    pihak1= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak1),0, AppUtil.decodeImageTobase64(valpihak1).length);
+                                    pihak1 = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpihak1), 0, AppUtil.decodeImageTobase64(valpihak1).length);
                                     FNpihak1 = "pihak1.png";
                                 }
                             } catch (Exception e) {
@@ -445,7 +445,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Murabahah_Akad_Murabahah.getFileName().substring(Murabahah_Akad_Murabahah.getFileName().length() - 3, Murabahah_Akad_Murabahah.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNmurabahah = "murabahah.pdf";
                                 } else {
-                                    murabahah= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmurabahah),0, AppUtil.decodeImageTobase64(valmurabahah).length);
+                                    murabahah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valmurabahah), 0, AppUtil.decodeImageTobase64(valmurabahah).length);
                                     FNmurabahah = "murabahah.pdf";
                                 }
                             } catch (Exception e) {
@@ -462,7 +462,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Murabahah_Surat_Tanda_Terima_Barang.getFileName().substring(Murabahah_Surat_Tanda_Terima_Barang.getFileName().length() - 3, Murabahah_Surat_Tanda_Terima_Barang.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNterimabarang = "terimabarang.pdf";
                                 } else {
-                                    terimabarang= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valterimabarang),0, AppUtil.decodeImageTobase64(valterimabarang).length);
+                                    terimabarang = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valterimabarang), 0, AppUtil.decodeImageTobase64(valterimabarang).length);
                                     FNterimabarang = "terimabarang.png";
                                 }
                             } catch (Exception e) {
@@ -479,7 +479,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Murabahah_Lampiran_Jadwal_Angsuran.getFileName().substring(Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNjadwalangsuran = "jadwalangsuran.pdf";
                                 } else {
-                                    jadwalangsuran= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalangsuran),0, AppUtil.decodeImageTobase64(valjadwalangsuran).length);
+                                    jadwalangsuran = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valjadwalangsuran), 0, AppUtil.decodeImageTobase64(valjadwalangsuran).length);
                                     FNjadwalangsuran = "jadwalangsuran.png";
                                 }
                             } catch (JsonSyntaxException e) {
@@ -497,7 +497,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Murabahah_Akad_Wakalah.getFileName().substring(Murabahah_Akad_Wakalah.getFileName().length() - 3, Murabahah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNwakalah = "akadwakalah.pdf";
                                 } else {
-                                    wakalah= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalah),0, AppUtil.decodeImageTobase64(valwakalah).length);
+                                    wakalah = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valwakalah), 0, AppUtil.decodeImageTobase64(valwakalah).length);
                                     FNwakalah = "akadwakalah.png";
                                 }
                             } catch (Exception e) {
@@ -514,7 +514,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Murabahah_Purchase_Order.getFileName().substring(Murabahah_Purchase_Order.getFileName().length() - 3, Murabahah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNpo = "po.pdf";
                                 } else {
-                                    po = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpo),0, AppUtil.decodeImageTobase64(valpo).length);
+                                    po = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpo), 0, AppUtil.decodeImageTobase64(valpo).length);
                                     FNpo = "po.png";
                                 }
                             } catch (Exception e) {
@@ -531,7 +531,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Rahn_Lampiran_Jadwal_Angsuran.getFileName().substring(Rahn_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Rahn_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNjadwalangsuran = "angsuranrahn.pdf";
                                 } else {
-                                    angsuranrahn = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranrahn),0, AppUtil.decodeImageTobase64(valangsuranrahn).length);
+                                    angsuranrahn = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valangsuranrahn), 0, AppUtil.decodeImageTobase64(valangsuranrahn).length);
                                     FNjadwalangsuran = "angsuranrahn.png";
                                 }
                             } catch (Exception e) {
@@ -548,7 +548,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Rahn_Akad_Rahn.getFileName().substring(Rahn_Akad_Rahn.getFileName().length() - 3, Rahn_Akad_Rahn.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNakadrahn = "akadrahn.pdf";
                                 } else {
-                                    akadrahn= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadrahn),0, AppUtil.decodeImageTobase64(valakadrahn).length);
+                                    akadrahn = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valakadrahn), 0, AppUtil.decodeImageTobase64(valakadrahn).length);
                                     FNakadrahn = "akadrahn.png";
                                 }
                             } catch (Exception e) {
@@ -565,7 +565,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (SUP.getFileName().substring(SUP.getFileName().length() - 3, SUP.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNsup = "sup.pdf";
                                 } else {
-                                    sup= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsup),0, AppUtil.decodeImageTobase64(valsup).length);
+                                    sup = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsup), 0, AppUtil.decodeImageTobase64(valsup).length);
                                     FNsup = "sup.png";
                                 }
                             } catch (Exception e) {
@@ -583,7 +583,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Surat_Kuasa_Pernyataan_Flagging.getFileName().substring(Surat_Kuasa_Pernyataan_Flagging.getFileName().length() - 3, Surat_Kuasa_Pernyataan_Flagging.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNkuasa = "kuasa.pdf";
                                 } else {
-                                    pernyataan= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valkuasa),0, AppUtil.decodeImageTobase64(valkuasa).length);
+                                    pernyataan = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valkuasa), 0, AppUtil.decodeImageTobase64(valkuasa).length);
                                     FNkuasa = "kuasa.png";
                                 }
                             } catch (Exception e) {
@@ -601,7 +601,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().substring(Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length() - 3, Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNpernyataan = "pernyataan.pdf";
                                 } else {
-                                    kuasa= BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpernyataan),0, AppUtil.decodeImageTobase64(valpernyataan).length);
+                                    kuasa = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valpernyataan), 0, AppUtil.decodeImageTobase64(valpernyataan).length);
                                     FNpernyataan = "pernyataan.png";
                                 }
                             } catch (Exception e) {
@@ -618,7 +618,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 if (Tanda_Terima_Dokumen_SK.getFileName().substring(Tanda_Terima_Dokumen_SK.getFileName().length() - 3, Tanda_Terima_Dokumen_SK.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNsk = "sk.pdf";
                                 } else {
-                                    sk = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsk),0, AppUtil.decodeImageTobase64(valsk).length);
+                                    sk = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valsk), 0, AppUtil.decodeImageTobase64(valsk).length);
                                     FNsk = "sk.png";
                                 }
                             } catch (Exception e) {
@@ -1029,7 +1029,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 BSUploadFile.displayWithTitle(ActivityUploadDokumen.this.getSupportFragmentManager(), this, "");
                 break;
             case R.id.btn_akad_ijarah:
-                clicker = "akadijarah";
+                clicker = "ijarah";
                 BSUploadFile.displayWithTitle(ActivityUploadDokumen.this.getSupportFragmentManager(), this, "");
                 break;
             case R.id.btn_angsuran_ujrah:
@@ -1381,39 +1381,58 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         UpdateUploadDokumen req = new UpdateUploadDokumen();
         req.setApplicationId(idAplikasi);
         req.setUid(String.valueOf(appPreferences.getUid()));
-        upD.setForm_Mutas_Kantor_Bayar(Form_Mutasi_Kantor_Bayar);
-        upD.setForm_Mutasi_Kantor_Bayar_Taspen(Form_Mutasi_Kantor_Bayar_Taspen);
-        upD.setFoto_Bukti_Otentikasi_Nasabah(Foto_Bukti_Otentikasi_Nasabah);
-        upD.setFoto_Covernote_Asuransi(Foto_Covernote_Asuransi);
-        upD.setFoto_Proses_Penandatanganan_Akad(Foto_Proses_Penandatanganan_Akad);
-        upD.setFoto_SK_Pengangkatan(Foto_SK_Pengangkatan);
-        upD.setFoto_SK_Pensiun(Foto_SK_Pensiun);
-        upD.setFoto_SK_Terakhir(Foto_SK_Terakhir);
-        upD.setIjarah_Akad_Ijarah(Ijarah_Akad_Ijarah);
-        upD.setIjarah_Akad_Wakalah(Ijarah_Akad_Wakalah);
-        upD.setIjarah_Lampiran_Jadwal_Angsuran(Ijarah_Lampiran_Jadwal_Angsuran);
-        upD.setIjarah_Purchase_Order(Ijarah_Purchase_Order);
-        upD.setMMQ_Akad_MMQ(MMQ_Akad_MMQ);
-        upD.setMMQ_Lampiran_Jadwal_Pengambil_Alihan(MMQ_Lampiran_Jadwal_Pengambil_Alihan);
-        upD.setMMQ_Laporan_Penilaian_Aset(MMQ_Laporan_Penilaian_Aset);
-        upD.setMMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga);
-        upD.setMMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri);
-        upD.setMurabahah_Akad_Murabahah(Murabahah_Akad_Murabahah);
-        upD.setMurabahah_Akad_Wakalah(Murabahah_Akad_Wakalah);
-        upD.setMurabahah_Lampiran_Jadwal_Angsuran(Murabahah_Lampiran_Jadwal_Angsuran);
-        upD.setMurabahah_Purchase_Order(Murabahah_Purchase_Order);
+        upD.setFormMutasKantorBayar(Form_Mutasi_Kantor_Bayar);
+        upD.setFormMutasiKantorBayarTaspen(Form_Mutasi_Kantor_Bayar_Taspen);
+        upD.setFotoBuktiOtentikasiNasabah(Foto_Bukti_Otentikasi_Nasabah);
+        upD.setFotoCovernoteAsuransi(Foto_Covernote_Asuransi);
+        upD.setFotoProsesPenandatangananAkad(Foto_Proses_Penandatanganan_Akad);
+        upD.setFotoSKPengangkatan(Foto_SK_Pengangkatan);
+        upD.setFotoSKPensiun(Foto_SK_Pensiun);
+        upD.setFotoSKTerakhir(Foto_SK_Terakhir);
+        upD.setIjarahAkadIjarah(Ijarah_Akad_Ijarah);
+        upD.setIjarahAkadWakalah(Ijarah_Akad_Wakalah);
+        upD.setIjarahLampiranJadwalAngsuran(Ijarah_Lampiran_Jadwal_Angsuran);
+        upD.setIjarahPurchaseOrder(Ijarah_Purchase_Order);
+        upD.setmMQAkadMMQ(MMQ_Akad_MMQ);
+        upD.setmMQLampiranJadwalPengambilAlihan(MMQ_Lampiran_Jadwal_Pengambil_Alihan);
+        upD.setmMQLaporanPenilaianAset(MMQ_Laporan_Penilaian_Aset);
+        upD.setmMQSuratPernyataanKuasaAsetKetiga(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga);
+        upD.setmMQSuratPernyataanKuasaAsetSendiri(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri);
+        upD.setMurabahahAkadMurabahah(Murabahah_Akad_Murabahah);
+        upD.setMurabahahAkadWakalah(Murabahah_Akad_Wakalah);
+        upD.setMurabahahLampiranJadwalAngsuran(Murabahah_Lampiran_Jadwal_Angsuran);
+        upD.setMurabahahPurchaseOrder(Murabahah_Purchase_Order);
+        upD.setMurabahahSuratTandaTerimaBarang(Murabahah_Surat_Tanda_Terima_Barang);
+        upD.setRahnAkadRahn(Rahn_Akad_Rahn);
+        upD.setRahnLampiranJadwalAngsuran(Rahn_Lampiran_Jadwal_Angsuran);
+        upD.setSuratKuasaPernyataanFlagging(Surat_Kuasa_Pernyataan_Flagging);
+        upD.setSuratPernyataanKuasaPembiayaan(Surat_Pernyataan_Kuasa_Pembiayaan);
+        upD.setTandaTerimaDokumenSK(Tanda_Terima_Dokumen_SK);
         upD.setDokumenUmum(DokumenUmum);
+        upD.setSup(SUP);
+        AppUtil.logSecure("deltaforce",Foto_SK_Pengangkatan.getFileName());
+        AppUtil.logSecure("deltaforce",Foto_SK_Pensiun.getFileName());
+        AppUtil.logSecure("deltaforce",Foto_SK_Terakhir.getFileName());
+        AppUtil.logSecure("deltaforce",Ijarah_Akad_Ijarah.getFileName());
+        AppUtil.logSecure("deltaforce",Ijarah_Lampiran_Jadwal_Angsuran.getFileName());
+        AppUtil.logSecure("deltaforce",Murabahah_Akad_Murabahah.getFileName());
+        AppUtil.logSecure("deltaforce",Murabahah_Lampiran_Jadwal_Angsuran.getFileName());
+        AppUtil.logSecure("deltaforce",Murabahah_Surat_Tanda_Terima_Barang.getFileName());
+        AppUtil.logSecure("deltaforce",Rahn_Akad_Rahn.getFileName());
+        AppUtil.logSecure("deltaforce",Rahn_Lampiran_Jadwal_Angsuran.getFileName());
+        AppUtil.logSecure("deltaforce",SUP.getFileName());
         req.setUploadDokumen(upD);
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().UploadDokumenUmum(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 try {
                     if (response.isSuccessful()) {
-                        binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
-                        if (response.body().getStatus().equalsIgnoreCase("00")) {
 
-                            CustomDialog.DialogSuccess(ActivityUploadDokumen.this, "Success!", "Update Data Sukses", ActivityUploadDokumen.this);
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            CustomDialog.DialogSuccess(ActivityUploadDokumen.this, "Success!", "Update Data Sukses", ActivityUploadDokumen.this) ;
+                            finish();
                         } else {
                             AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
@@ -1422,6 +1441,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), error.getMessage());
                     }
                 } catch (Exception e) {
+
                 }
             }
 
@@ -1918,9 +1938,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     doc.setImg(AppUtil.encodeImageTobase64(bitmap));
                     doc.setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                     doc.setNamaDokumen(binding.etNamaDokumen1.getText().toString());
-                    if (DokumenUmum.get(0) == null) {
+                    if (DokumenUmum.size() == 0) {
                         DokumenUmum.add(0, doc);
-                    }else {
+                    } else {
                         DokumenUmum.get(0).setFilename("dokumenA.png");
                         DokumenUmum.get(0).setImg(valDokumenA);
                         DokumenUmum.get(0).setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
@@ -1938,9 +1958,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 1) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        if (DokumenUmum.get(1) == null) {
+                        if (DokumenUmum.size() <= 1) {
                             DokumenUmum.add(1, doc);
-                        }else {
+                        } else {
                             DokumenUmum.get(1).setFilename("dokumenB.png");
                             DokumenUmum.get(1).setImg(valDokumenB);
                             DokumenUmum.get(1).setKeteranganDokumen(binding.etKeteranganDokumen2.getText().toString());
@@ -1959,9 +1979,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 2) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        if (DokumenUmum.get(2) == null) {
+                        if (DokumenUmum.size() <= 2) {
                             DokumenUmum.add(2, doc);
-                        }else {
+                        } else {
                             DokumenUmum.get(2).setFilename("dokumenC.png");
                             DokumenUmum.get(2).setImg(valDokumenC);
                             DokumenUmum.get(2).setKeteranganDokumen(binding.etKeteranganDokumen3.getText().toString());
@@ -1980,9 +2000,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 3) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        if (DokumenUmum.get(3) == null) {
+                        if (DokumenUmum.size() <= 3) {
                             DokumenUmum.add(3, doc);
-                        }else {
+                        } else {
                             DokumenUmum.get(3).setFilename("dokumenD.png");
                             DokumenUmum.get(3).setImg(valDokumenD);
                             DokumenUmum.get(3).setKeteranganDokumen(binding.etKeteranganDokumen4.getText().toString());
@@ -2001,9 +2021,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (DokumenUmum.size() < 4) {
                         AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                     } else {
-                        if (DokumenUmum.get(4) == null) {
+                        if (DokumenUmum.size() <= 4) {
                             DokumenUmum.add(4, doc);
-                        }else {
+                        } else {
                             DokumenUmum.get(4).setFilename("dokumenE.png");
                             DokumenUmum.get(4).setImg(valDokumenE);
                             DokumenUmum.get(4).setKeteranganDokumen(binding.etKeteranganDokumen5.getText().toString());
@@ -2022,6 +2042,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkPensiun.setVisibility(View.VISIBLE);
                     valskpensiun = AppUtil.encodeImageTobase64(bitmap);
                     skpensiun = bitmap;
+                    AppUtil.logSecure("deltaforce",Foto_SK_Pensiun.getFileName());
                 } else if (clicker.equalsIgnoreCase("skpenangakatan")) {
                     FNskpenangakatan = "skpenangakatan.png";
                     Foto_SK_Pengangkatan.setFileName(FNskpenangakatan);
@@ -2029,6 +2050,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkPengangkatan.setVisibility(View.VISIBLE);
                     valskpenangakatan = AppUtil.encodeImageTobase64(bitmap);
                     skpenangakatan = bitmap;
+                    AppUtil.logSecure("deltaforce",Foto_SK_Pengangkatan.getFileName());
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
                     FNskterakhir = "skterakhir.png";
                     Foto_SK_Terakhir.setFileName(FNskterakhir);
@@ -2036,6 +2058,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
                     valskterakhir = AppUtil.encodeImageTobase64(bitmap);
                     skterakhir = bitmap;
+                    AppUtil.logSecure("deltaforce",Foto_SK_Terakhir.getFileName());
                 }
                 // AsuransiKhusus
 
@@ -2237,6 +2260,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     valfotoakad = AppUtil.encodeImageTobase64(bitmap);
                     fotoakad = bitmap;
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
                 if (data.getData() != null) {
@@ -2250,15 +2274,15 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         doc.setImg(valDokumenA);
                         doc.setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                         doc.setNamaDokumen(binding.etNamaDokumen1.getText().toString());
-                        if (DokumenUmum.get(0) == null) {
+                        if (DokumenUmum.size() == 0) {
                             DokumenUmum.add(0, doc);
-                        }else {
+                        } else {
                             DokumenUmum.get(0).setFilename("dokumenA.pdf");
                             DokumenUmum.get(0).setImg(valDokumenA);
                             DokumenUmum.get(0).setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                             DokumenUmum.get(0).setNamaDokumen(binding.etNamaDokumen1.getText().toString());
                         }
-                        AppUtil.logSecure("dataD",String.valueOf(DokumenUmum.size()));
+                        AppUtil.logSecure("dataD", String.valueOf(DokumenUmum.size()));
                         iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
                     } else if (clicker.equalsIgnoreCase("dokumenB")) {
                         Uri uriPdf = data.getData();
@@ -2271,9 +2295,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 1) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            if (DokumenUmum.get(1) == null) {
+                            if (DokumenUmum.size() <= 1) {
                                 DokumenUmum.add(1, doc);
-                            }else {
+                            } else {
                                 DokumenUmum.get(1).setFilename("dokumenB.pdf");
                                 DokumenUmum.get(1).setImg(valDokumenB);
                                 DokumenUmum.get(1).setKeteranganDokumen(binding.etKeteranganDokumen2.getText().toString());
@@ -2292,9 +2316,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 2) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            if (DokumenUmum.get(2) == null) {
+                            if (DokumenUmum.size() <= 2) {
                                 DokumenUmum.add(2, doc);
-                            }else {
+                            } else {
                                 DokumenUmum.get(2).setFilename("dokumenC.pdf");
                                 DokumenUmum.get(2).setImg(valDokumenC);
                                 DokumenUmum.get(2).setKeteranganDokumen(binding.etKeteranganDokumen3.getText().toString());
@@ -2313,9 +2337,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 3) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            if (DokumenUmum.get(3) == null) {
+                            if (DokumenUmum.size() <= 3) {
                                 DokumenUmum.add(3, doc);
-                            }else {
+                            } else {
                                 DokumenUmum.get(3).setFilename("dokumenD.pdf");
                                 DokumenUmum.get(3).setImg(valDokumenD);
                                 DokumenUmum.get(3).setKeteranganDokumen(binding.etKeteranganDokumen4.getText().toString());
@@ -2334,9 +2358,9 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         if (DokumenUmum.size() < 4) {
                             AppUtil.notiferror(this, findViewById(android.R.id.content), "Upload Dokuman Sebelumnya Terlebih Dahulu");
                         } else {
-                            if (DokumenUmum.get(4) == null) {
+                            if (DokumenUmum.size() <= 4) {
                                 DokumenUmum.add(4, doc);
-                            }else {
+                            } else {
                                 DokumenUmum.get(4).setFilename("dokumenE.pdf");
                                 DokumenUmum.get(4).setImg(valDokumenE);
                                 DokumenUmum.get(4).setKeteranganDokumen(binding.etKeteranganDokumen5.getText().toString());
@@ -2387,7 +2411,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         FNsk = "sk.pdf";
                         Tanda_Terima_Dokumen_SK.setFileName(FNsk);
                         Tanda_Terima_Dokumen_SK.setImg(valsk);
-                        binding.pvTerimaBarang.setVisibility(View.VISIBLE);
+                        binding.pvSk.setVisibility(View.VISIBLE);
                     } else if (clicker.equalsIgnoreCase("mutasi")) {
                         Uri uriPdf = data.getData();
                         valmutasi = AppUtil.encodeFileToBase64(this, uriPdf);
@@ -2568,8 +2592,11 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         Foto_Bukti_Otentikasi_Nasabah.setImg(valfotoakad);
                         binding.pvFotoScreenCaptureBuktiOtentikasiNasabahSaatAkad.setVisibility(View.VISIBLE);
                     }
+
+
                 }
             }
+
         }
     }
 
