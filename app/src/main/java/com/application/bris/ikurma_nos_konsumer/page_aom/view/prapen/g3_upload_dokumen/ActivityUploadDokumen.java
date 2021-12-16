@@ -1410,17 +1410,6 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         upD.setTandaTerimaDokumenSK(Tanda_Terima_Dokumen_SK);
         upD.setDokumenUmum(DokumenUmum);
         upD.setSup(SUP);
-        AppUtil.logSecure("deltaforce",Foto_SK_Pengangkatan.getFileName());
-        AppUtil.logSecure("deltaforce",Foto_SK_Pensiun.getFileName());
-        AppUtil.logSecure("deltaforce",Foto_SK_Terakhir.getFileName());
-        AppUtil.logSecure("deltaforce",Ijarah_Akad_Ijarah.getFileName());
-        AppUtil.logSecure("deltaforce",Ijarah_Lampiran_Jadwal_Angsuran.getFileName());
-        AppUtil.logSecure("deltaforce",Murabahah_Akad_Murabahah.getFileName());
-        AppUtil.logSecure("deltaforce",Murabahah_Lampiran_Jadwal_Angsuran.getFileName());
-        AppUtil.logSecure("deltaforce",Murabahah_Surat_Tanda_Terima_Barang.getFileName());
-        AppUtil.logSecure("deltaforce",Rahn_Akad_Rahn.getFileName());
-        AppUtil.logSecure("deltaforce",Rahn_Lampiran_Jadwal_Angsuran.getFileName());
-        AppUtil.logSecure("deltaforce",SUP.getFileName());
         req.setUploadDokumen(upD);
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().UploadDokumenUmum(req);
         call.enqueue(new Callback<ParseResponse>() {
