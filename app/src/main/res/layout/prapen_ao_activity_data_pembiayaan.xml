@@ -206,8 +206,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:suffix="%"
-                        android:maxLength="3"
-                        android:inputType="number" />
+                        android:maxLength="6"
+                        android:inputType="numberDecimal" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <LinearLayout

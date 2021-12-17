@@ -288,6 +288,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().lanjutPembiayaanKeAkad(req);
         }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().lanjutG1(req);
+        }
 
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -361,6 +364,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().batalPembiayaanD6(req);
         }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().batalG1(req);
+        }
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -432,6 +438,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         }
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().kembalikanD6(req);
+        }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().kembalikanG1(req);
         }
 
         call.enqueue(new Callback<ParseResponse>() {

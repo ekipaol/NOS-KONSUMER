@@ -36,11 +36,14 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseR
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPendapatanBinding;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -58,7 +61,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener, CameraListener {
+public class ActivityDokumenPendapatan extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener, CameraListener, ConfirmListener {
 
     private ActivityPendapatanBinding binding;
     private DatePickerDialog dpSK;
@@ -589,7 +592,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                     if (response.isSuccessful()) {
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
-                            finish();
+                            CustomDialog.DialogSuccess(ActivityDokumenPendapatan.this, "Success!", "Update Data Pendapatan sukses", ActivityDokumenPendapatan.this);
                         } else {
                             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
@@ -1056,13 +1059,13 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 setDataImage(uri_slipgaji3, bitmap_slipgaji3, binding.ivSlipgajiP3, imageReturnedIntent, "slipgaji3");
                 break;
             case UPLOAD_SLIPTUNJANGAN1:
-                setDataImage(uri_sliptunjangan1, bitmap_sliptunjangan1, binding.ivSliptunjanganP1, imageReturnedIntent, "sliptunjangan1");
+                setDataImage(uri_sliptunjangan1, bitmap_sliptunjangan1, binding.ivSliptunjanganP1, imageReturnedIntent, "tunjangan1");
                 break;
             case UPLOAD_SLIPTUNJANGAN2:
-                setDataImage(uri_sliptunjangan2, bitmap_sliptunjangan2, binding.ivSliptunjanganP2, imageReturnedIntent, "sliptunjangan2");
+                setDataImage(uri_sliptunjangan2, bitmap_sliptunjangan2, binding.ivSliptunjanganP2, imageReturnedIntent, "tunjangan2");
                 break;
             case UPLOAD_SLIPTUNJANGAN3:
-                setDataImage(uri_sliptunjangan3, bitmap_sliptunjangan3, binding.ivSliptunjanganP3, imageReturnedIntent, "sliptunjangan3");
+                setDataImage(uri_sliptunjangan3, bitmap_sliptunjangan3, binding.ivSliptunjanganP3, imageReturnedIntent, "tunjangan3");
                 break;
         }
     }
@@ -1155,5 +1158,15 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
 
             }
         }
+    }
+
+    @Override
+    public void success(boolean val) {
+        finish();
+    }
+
+    @Override
+    public void confirm(boolean val) {
+
     }
 }

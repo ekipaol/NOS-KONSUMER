@@ -886,6 +886,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.batalPembiayaanVerifikator)
     Call<ParseResponse> batalPembiayaanVerifikator(@Body ReqBatalAplikasi ReqBatalAplikasi);
 
+    @POST(UriApi.prapen.batalD1)
+    Call<ParseResponse> batalD1(@Body ReqBatalAplikasi ReqBatalAplikasi);
+
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
@@ -915,6 +918,15 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.kembalikanD6)
     Call<ParseResponse> kembalikanD6(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.lanjutG1)
+    Call<ParseResponse> lanjutG1(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.batalG1)
+    Call<ParseResponse> batalG1(@Body ReqBatalAplikasi ReqBatalAplikasi);
+
+    @POST(UriApi.prapen.kembalikanG1)
+    Call<ParseResponse> kembalikanG1(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
     @POST(UriApi.prapen.inqueryDataPendapatan)
     Call<ParseResponseAgunan> inqueryDataPendapatan(@Body ReqInquery ReqInquery);
@@ -964,8 +976,22 @@ public interface ApiInterface {
     @POST(UriApi.prapen.HitungBiayadanAngsuran)
     Call<ParseResponseAgunan> SendHitungBiayadanAngsuran(@Body ReqHitungKalkulator ReqHitungKalkulator);
 
+    @POST(UriApi.prapen.inquiryKalkulatorMarketing)
+    Call<ParseResponseAgunan> inquiryKalkulatorMarketing(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.updateKalkulatorMarketing)
+    Call<ParseResponseAgunan> updateKalkulatorMarketing(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
+    @POST(UriApi.prapen.inqKalkulatorMarketingD5)
+    Call<ParseResponseAgunan> inqKalkulatorMarketingD5(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.updateKalkulatorMarketingD5)
+    Call<ParseResponseAgunan> updateKalkulatorMarketingD5(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
     @POST(UriApi.prapen.UpdateKalkulatorVerifikator)
-    Call<ParseResponseAgunan> UpdateKalkulatorVerifikator(@Body ReqHitungKalkulator ReqHitungKalkulator);
+    Call<ParseResponseAgunan> updateKalkulatorVerifikator(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
+
 
     @POST(UriApi.prapen.inqListAsusransi)
     Call<MParseArray> inqListAsusransi(@Body EmptyRequest EmptyRequest);

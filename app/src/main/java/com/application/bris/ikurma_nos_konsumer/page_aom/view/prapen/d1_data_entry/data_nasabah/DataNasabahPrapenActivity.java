@@ -190,6 +190,7 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingCircle.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataNasabahPrapenActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                t.printStackTrace();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

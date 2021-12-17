@@ -50,6 +50,7 @@
                     android:textSize="16sp"
                     android:textAlignment="center"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:paddingLeft="10dp"
                     android:fontFamily="@font/muli_b"
                     android:paddingBottom="10dp"/>
@@ -67,6 +68,7 @@
                     app:labelText="Nomer SK Pensiun"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    android:visibility="gone"
                     android:layout_marginTop="10dp"
                     app:useDenseSpacing="true">
 
@@ -90,6 +92,7 @@
                     app:primaryColor="@color/colorPrimary"
                     app:labelText="Tanggal Terbit SK"
                     app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:visibility="gone"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:layout_marginTop="10dp"
@@ -118,7 +121,8 @@
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:secondaryColor="@color/colorPrimary"
                     app:primaryColor="@color/colorPrimary"
-                    app:labelText="Lembaga Penerbit SK"
+                    app:labelText="Lembaga Pengelola Pensiun"
+                    android:visibility="gone"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:layout_marginTop="10dp"
@@ -327,50 +331,6 @@
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Title File Dokumen -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Data Pribadi dan Pasangan"
-                    android:textSize="16sp"
-                    android:textAlignment="center"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="10dp"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingBottom="10dp"/>
-                <!--Title File KTP Nasabah & Pasangan-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="0dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nasabah"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/muli_b"/>
-                </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pasangan"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
-                </LinearLayout>
                 <!--Foto Document Nasabah & Pasangan-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -460,27 +420,30 @@
                     </RelativeLayout>
 
                 </LinearLayout>
-                <!--Title File NPWP Nasabah-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
+                    android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_b"
-                            android:text="NPWP Nasabah"
-                            android:textSize="16sp" />
-                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="KTP Nasabah"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="KTP Pasangan"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
+
                 </LinearLayout>
+
                 <!--Foto Document NPWP Nasabah-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -529,49 +492,20 @@
                     </RelativeLayout>
 
                 </LinearLayout>
-                <!--Title File Dokumen Pembiayaan-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Data Pembiayaan"
-                    android:textSize="16sp"
-                    android:textAlignment="center"
-                    android:layout_marginTop="20dp"
-                    android:paddingLeft="10dp"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingBottom="10dp"/>
-                <!--Title File Form Applikasi & Asset-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Form Aplikasi"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Aset Akad"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
+                        android:text="Foto NPWP"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
+
                 </LinearLayout>
                 <!--Foto Document Form Aplikasi & Asset-->
                 <LinearLayout
@@ -662,40 +596,30 @@
                     </RelativeLayout>
 
                 </LinearLayout>
-                <!--Title File SK Pensiun & SK Pengangkatan-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SK Pensiun"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
-                    <RelativeLayout
+                        android:text="Form Aplikasi"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SK Pengangkatan"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
+                        android:text="Aset Akad"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
 
                 </LinearLayout>
+
                 <!--Foto Document SK Pensiun & SK Pengangkatan-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -786,39 +710,27 @@
 
 
                 </LinearLayout>
-                <!--Title File SK Terakhir & Surat Rekomendasi Instansi-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="SK Terakhir"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
-                    <RelativeLayout
+                        android:text="SK Pensiun"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Surat Rekomendasi Instansi"
-                            android:textSize="16sp"
-                            android:textAlignment="center"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
+                        android:text="SK Pengangkatan"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
 
                 </LinearLayout>
                 <!--Foto Document SK Terakhir & Surat Rekomendasi Instansi-->
@@ -911,26 +823,30 @@
 
 
                 </LinearLayout>
-                <!--Title File ID Card Nasabah-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <RelativeLayout
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="0dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ID Card Nasabah"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/muli_b"/>
-                    </RelativeLayout>
+                        android:text="SK Terakhir"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Surat Rekomendasi Instansi"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"/>
+
                 </LinearLayout>
+
                 <!--Foto Document NPWP Nasabah-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -955,13 +871,13 @@
                                 android:layout_height="0dp"
                                 android:scaleType="center"
                                 android:src="@mipmap/ico_img_for_upload"
-                                app:riv_border_width="1dip"
-                                app:riv_border_color="#f1efef"
-                                app:riv_corner_radius="8dip"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
 
                             <ImageView
                                 android:id="@+id/btn_idcard"
@@ -977,6 +893,21 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </RelativeLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ID Card"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        />
 
                 </LinearLayout>
                 <!--Button Simpan-->

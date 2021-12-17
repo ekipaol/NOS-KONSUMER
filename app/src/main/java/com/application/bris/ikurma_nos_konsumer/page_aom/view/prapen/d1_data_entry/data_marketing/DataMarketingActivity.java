@@ -77,6 +77,7 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         allOnClicks();
         isiDropdown();
         disableEditTexts();
+        defaultViewCondition();
         loadData();
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -187,6 +188,10 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         dropdownSumberAplikasi.add(new MGenericModel("Pegawai Bank/ Reguler","Pegawai Bank/ Reguler"));
         dropdownSumberAplikasi.add(new MGenericModel("Mitra Fronting","Mitra Fronting"));
         dropdownSumberAplikasi.add(new MGenericModel("Eksternal","Eksternal"));
+    }
+
+    private void defaultViewCondition(){
+        binding.etKodeCabangPembukuan.setText(appPreferences.getKodeKantor());
     }
 
     @Override

@@ -47,6 +47,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d1_data_nasabah)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_marketing,context.getString(R.string.submenu_detil_aplikasi_d1_data_marketing)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_checked,context.getString(R.string.submenu_detil_aplikasi_d1_lanjut)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_reject,context.getString(R.string.submenu_detil_aplikasi_d1_batal)));
 //        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d1_memo)));
 
     }

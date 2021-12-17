@@ -17,6 +17,9 @@ import com.application.bris.ikurma_nos_konsumer.view.corelayout.login.LoginActiv
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
@@ -26,6 +29,7 @@ import okhttp3.CertificatePinner;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -217,11 +221,6 @@ public class ApiClientAdapter {
                 else{
                     return chain.proceed(request);
                 }
-
-
-
-
-
 //                    okhttp3.Response response = chain.proceed(request);
 //
 //
@@ -274,9 +273,13 @@ public class ApiClientAdapter {
 
 
         //BYPASS SSL, comment this when lewat middle tier
+
+
          httpClient = clientBuilder
                 .connectTimeout(timeOut, timeUnit)
                 .readTimeout(timeOut, timeUnit)
+                 //hati hati ini gaktau ngaruh ke hhtps apa engga
+//                 .protocols(Arrays.asList(Protocol.HTTP_1_1))
                 // TODO: 19/04/21 comment this, uncomment above
                 .hostnameVerifier(new HostnameVerifier() {
                     @Override
@@ -285,6 +288,10 @@ public class ApiClientAdapter {
                     }
                 })
                 .build();
+
+//        List<Protocol> protocols = new ArrayList<>();
+//        protocols.add(Protocol.HTTP_1_1);
+//         httpClient.protocols(protocols)
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)

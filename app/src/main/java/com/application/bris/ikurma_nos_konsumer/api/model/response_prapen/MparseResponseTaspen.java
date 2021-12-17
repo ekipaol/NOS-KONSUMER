@@ -7,123 +7,211 @@ public class MparseResponseTaspen {
 
     @SerializedName("Id")
     @Expose
-    private Long id;
-    @SerializedName("Group_Id")
+    private Integer id;
+    @SerializedName("ApplicationId")
     @Expose
-    private Long groupId;
-    @SerializedName("Parameter_Code")
+    private Integer applicationId;
+    @SerializedName("NIP")
     @Expose
-    private String parameterCode;
-    @SerializedName("Parameter_Name")
+    private String nip;
+    @SerializedName("No_KPE")
     @Expose
-    private String parameterName;
-    @SerializedName("Parameter_Value")
+    private String noKPE;
+    @SerializedName("Nama_Lengkap_Peserta")
     @Expose
-    private String parameterValue;
-    @SerializedName("IsActive")
+    private String namaLengkapPeserta;
+    @SerializedName("Tanggal_Lahir_Peserta")
     @Expose
-    private Boolean isActive;
-    @SerializedName("Description")
+    private String tanggalLahirPeserta;
+    @SerializedName("Tanggal_BUP")
     @Expose
-    private String description;
-    @SerializedName("Created_By")
+    private String tanggalBUP;
+    @SerializedName("Instansi_Kantor_Bayar")
     @Expose
-    private Integer createdBy;
-    @SerializedName("Created_Date")
+    private String instansiKantorBayar;
+    @SerializedName("Keterangan_Flagging")
     @Expose
-    private String createdDate;
-    @SerializedName("Modified_By")
+    private String keteranganFlagging;
+    @SerializedName("Tanggal_Mulai_Taspen")
     @Expose
-    private Integer modifiedBy;
-    @SerializedName("Modified_Date")
+    private String tanggalMulaiTaspen;
+    @SerializedName("Pangkat")
     @Expose
-    private String modifiedDate;
+    private String pangkat;
+    @SerializedName("Tanggal_Pensiun")
+    @Expose
+    private String tanggalPensiun;
+    @SerializedName("Hak_Tabungan_Hari_Tua")
+    @Expose
+    private String hakTabunganHariTua;
+    @SerializedName("Hak_Pensiun")
+    @Expose
+    private String hakPensiun;
+    @SerializedName("CreatedOn")
+    @Expose
+    private String createdOn;
+    @SerializedName("CreatedBy")
+    @Expose
+    private String createdBy;
+    @SerializedName("ModifiedOn")
+    @Expose
+    private String modifiedOn;
+    @SerializedName("ModiefiedBy")
+    @Expose
+    private String modiefiedBy;
+    @SerializedName("nomorTaspen")
+    @Expose
+    private String nomorTaspen;
 
-    public Long getId() {
+    public String getNomorTaspen() {
+        return nomorTaspen;
+    }
+
+    public void setNomorTaspen(String nomorTaspen) {
+        this.nomorTaspen = nomorTaspen;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getGroupId() {
-        return groupId;
+    public Integer getApplicationId() {
+        return applicationId;
     }
 
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
+    public void setApplicationId(Integer applicationId) {
+        this.applicationId = applicationId;
     }
 
-    public String getParameterCode() {
-        return parameterCode;
+    public String getNip() {
+        return nip;
     }
 
-    public void setParameterCode(String parameterCode) {
-        this.parameterCode = parameterCode;
+    public void setNip(String nip) {
+        this.nip = nip;
     }
 
-    public String getParameterName() {
-        return parameterName;
+    public String getNoKPE() {
+        return noKPE;
     }
 
-    public void setParameterName(String parameterName) {
-        this.parameterName = parameterName;
+    public void setNoKPE(String noKPE) {
+        this.noKPE = noKPE;
     }
 
-    public String getParameterValue() {
-        return parameterValue;
+    public String getNamaLengkapPeserta() {
+        return namaLengkapPeserta;
     }
 
-    public void setParameterValue(String parameterValue) {
-        this.parameterValue = parameterValue;
+    public void setNamaLengkapPeserta(String namaLengkapPeserta) {
+        this.namaLengkapPeserta = namaLengkapPeserta;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public String getTanggalLahirPeserta() {
+        return tanggalLahirPeserta;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setTanggalLahirPeserta(String tanggalLahirPeserta) {
+        this.tanggalLahirPeserta = tanggalLahirPeserta;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTanggalBUP() {
+        return tanggalBUP;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTanggalBUP(String tanggalBUP) {
+        this.tanggalBUP = tanggalBUP;
     }
 
-    public Integer getCreatedBy() {
+    public String getInstansiKantorBayar() {
+        return instansiKantorBayar;
+    }
+
+    public void setInstansiKantorBayar(String instansiKantorBayar) {
+        this.instansiKantorBayar = instansiKantorBayar;
+    }
+
+    public String getKeteranganFlagging() {
+        return keteranganFlagging;
+    }
+
+    public void setKeteranganFlagging(String keteranganFlagging) {
+        this.keteranganFlagging = keteranganFlagging;
+    }
+
+    public String getTanggalMulaiTaspen() {
+        return tanggalMulaiTaspen;
+    }
+
+    public void setTanggalMulaiTaspen(String tanggalMulaiTaspen) {
+        this.tanggalMulaiTaspen = tanggalMulaiTaspen;
+    }
+
+    public String getPangkat() {
+        return pangkat;
+    }
+
+    public void setPangkat(String pangkat) {
+        this.pangkat = pangkat;
+    }
+
+    public String getTanggalPensiun() {
+        return tanggalPensiun;
+    }
+
+    public void setTanggalPensiun(String tanggalPensiun) {
+        this.tanggalPensiun = tanggalPensiun;
+    }
+
+    public String getHakTabunganHariTua() {
+        return hakTabunganHariTua;
+    }
+
+    public void setHakTabunganHariTua(String hakTabunganHariTua) {
+        this.hakTabunganHariTua = hakTabunganHariTua;
+    }
+
+    public String getHakPensiun() {
+        return hakPensiun;
+    }
+
+    public void setHakPensiun(String hakPensiun) {
+        this.hakPensiun = hakPensiun;
+    }
+
+    public String getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(String createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
+    public String getModifiedOn() {
+        return modifiedOn;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public void setModifiedOn(String modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
-    public Integer getModifiedBy() {
-        return modifiedBy;
+    public String getModiefiedBy() {
+        return modiefiedBy;
     }
 
-    public void setModifiedBy(Integer modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public String getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(String modifiedDate) {
-        this.modifiedDate = modifiedDate;
+    public void setModiefiedBy(String modiefiedBy) {
+        this.modiefiedBy = modiefiedBy;
     }
 }

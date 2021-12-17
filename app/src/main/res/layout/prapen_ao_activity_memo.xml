@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"
             android:layout_margin="8dp"
+            android:visibility="gone"
             android:layout_below="@id/ll_info"
             android:animateLayoutChanges="true"
 
@@ -244,7 +245,7 @@
 
 
                 </LinearLayout>
-                
+
 
                 <Button
                     android:id="@+id/bt_sembunyi_info"
@@ -272,13 +273,14 @@
             android:layout_gravity="center"
             style="@style/Widget.AppCompat.Button.Colored"
             android:backgroundTint="@color/colorGreenSuccess"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_height="40dp"
+
             android:text="Tampilkan Info"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_memo"
-            android:layout_below="@id/bt_tampil_info"
+            android:layout_below="@id/ll_info"
             android:layout_marginBottom="50dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

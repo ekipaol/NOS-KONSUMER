@@ -44,7 +44,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
     private AppPreferences appPreferences;
     private List<MparseResponseRAC> dataRAC = new ArrayList<MparseResponseRAC>();
     private List<MparseResponseFitur> dataFitur = new ArrayList<MparseResponseFitur>();
-    private List<MparseResponseTaspen> dataTaspen = new ArrayList<MparseResponseTaspen>();
+    private MparseResponseTaspen dataTaspen = new MparseResponseTaspen();
     private MparseResponseHasilRAC datahasilRAC = new MparseResponseHasilRAC();
     private String rRAC, rTaspen, rFitur, rhasilRAC;
 
@@ -86,11 +86,18 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             Gson gson = new Gson();
                             String aRac = "", aFitur = "";
-                            if (response.body().getData().get("ResponseTaspen") != null) {
-                                rTaspen = response.body().getData().get("ResponseTaspen").getAsJsonArray().toString();
-                                Type typeTaspen = new TypeToken<List<MparseResponseTaspen>>() {
+                            if (response.body().getData().get("ResponseTaspenPrapen") != null) {
+
+
+
+                                rTaspen = response.body().getData().get("ResponseTaspenPrapen").getAsJsonObject().toString();
+                                Type typeTaspen = new TypeToken<MparseResponseTaspen>() {
                                 }.getType();
                                 dataTaspen = gson.fromJson(rTaspen, typeTaspen);
+
+                                if (response.body().getData().get("NoTaspen") != null) {
+                                    dataTaspen.setNomorTaspen(response.body().getData().get("NoTaspen").toString());
+                                }
                             }
                             if (response.body().getData().get("ResponseRAC") != null) {
                                 rRAC = response.body().getData().get("ResponseRAC").toString();

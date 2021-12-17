@@ -368,6 +368,7 @@ public class UriApi {
         public static final String updateDataMarketing = "NOS_PRAPEN_Services/rest/D1/UpdateMitraMarketing";
         public static final String inquiryDataMarketing = "NOS_PRAPEN_Services/rest/D1/InquiryMitraMarketing";
         public static final String lanjutHotprospek = "NOS_PRAPEN_Services/rest/D1/UpdatelanjutHotProspek";
+        public static final String batalD1 = "NOS_PRAPEN_Services/rest/D1/UpdateBatalPembiayaan";
 
         //D3
         public static final String inquiryIdebOjk = "NOS_PRAPEN_Services/rest/D3/InquiryIDebSlikOJK";
@@ -377,7 +378,7 @@ public class UriApi {
         public static final String inquiryDataHutang = "NOS_PRAPEN_Services/rest/D3/InquiryDataUtang";
         public static final String updateDataHutang = "NOS_PRAPEN_Services/rest/D3/SimpanDataUtang";
         public static final String hapusDataHutang = "NOS_PRAPEN_Services/rest/D3/HapusDataUtang";
-        public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutVerifikator";
+        public static final String lanjutPembiayaanKeVerifikator = "NOS_PRAPEN_Services/rest/D3/UpdateLanjutMarketing";
         public static final String kembalikanPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBackIDEB";
         public static final String batalPembiayaan = "NOS_PRAPEN_Services/rest/D3/UpdateBatalPembiayaan";
         public static final String UpdateDataPendapatan = "NOS_PRAPEN_Services/rest/D3/UpdateDataPendapatanD3";
@@ -390,6 +391,8 @@ public class UriApi {
         public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
 
         public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";
+        public static final String inquiryKalkulatorMarketing = "NOS_PRAPEN_Services/rest/D3/InqKalkulatordanBiayaD3";
+        public static final String updateKalkulatorMarketing = "NOS_PRAPEN_Services/rest/D3/UpdateKalkulatorMarketing";
 
         //D4
         public static final String inquiryRac = "NOS_PRAPEN_Services/rest/D4/InquiryParamRAC";
@@ -412,14 +415,16 @@ public class UriApi {
         public static final String batalPembiayaanOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
 
         //D5
-        public static final String lanjutPembiayaanKePemutus = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
-        public static final String kembalikanPembiayaanOtorMarketing = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
-        public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+        public static final String lanjutPembiayaanKePemutus = "NOS_PRAPEN_Services/rest/D5/UpdateLanjutkePemutus";
+        public static final String kembalikanPembiayaanOtorMarketing = "NOS_PRAPEN_Services/rest/D5/UpdateBackOtorMarketing";
+        public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D5/UpdateBatalPembiayaanConfirmVerifikasi";
+        public static final String inqKalkulatorMarketingD5 = "NOS_PRAPEN_Services/rest/D5/InqKalkulatorMarketingD5";
+        public static final String updateKalkulatorMarketingD5 = "NOS_PRAPEN_Services/rest/D5/UpdateKalkulatorMarketingD5";
 
         //D6
-        public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
-        public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
-        public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
+        public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D6/UpdateLanjutkeAkad";
+        public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBackkeVerifikator";
+        public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBatalPembiayaan";
 
         //G1
         public static final String inquiryAkadMmq = "NOS_PRAPEN_Services/rest/G1/InqAkadMMQ";
@@ -434,6 +439,11 @@ public class UriApi {
         public static final String dropdownBidangUsahaTempatKerja = "NOS_PRAPEN_Services/rest/Picklist/BidangUsahaTempatKerja";
         public static final String inquiryOjkBi = "NOS_PRAPEN_Services/rest/G1/InqOJKBI";
         public static final String updateDataOjkBi = "NOS_PRAPEN_Services/rest/G1/UpdateOJKBI";
+        public static final String lanjutG1 = "NOS_PRAPEN_Services/rest/G1/UpdateLanjutkeUploadDok";
+        public static final String kembalikanG1 = "NOS_PRAPEN_Services/rest/G1/UpdateBackkePemutus";
+        public static final String batalG1 = "NOS_PRAPEN_Services/rest/G1/UpdateBatalPembiayaan";
+
+
 
 
         //api umum

@@ -127,6 +127,11 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
             binding.etInputLngp.setText(dataInstansi.getNoLNGP());
             binding.etRateLngp.setText(String.valueOf(dataInstansi.getRateLNGP()));
+
+            if(binding.etRateLngp.getText().toString().equalsIgnoreCase("null")){
+                binding.etRateLngp.setText("0");
+            }
+
             binding.etNamaInstansiLngp.setText(dataInstansi.getNamaInstansiLNGP());
             binding.etNamaInstansi.setText(dataInstansi.getNamaInstansi());
             binding.etKotaTempatBekerja.setText(dataInstansi.getKotaTempatBekerja());
@@ -533,6 +538,8 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etTinggalDenganKeluargaLain.setFocusable(false);
         binding.etKirimanRutin.setFocusable(false);
         binding.etTotalPendapatan.setFocusable(false);
+        binding.etRateLngp.setFocusable(false);
+        binding.etNamaInstansiLngp.setFocusable(false);
     }
 
     private void endIconOnClick(){

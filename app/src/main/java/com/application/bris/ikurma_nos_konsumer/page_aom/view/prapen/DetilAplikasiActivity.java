@@ -14,6 +14,7 @@ import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -37,7 +38,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_ent
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan.ActivityDokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.kalkulatorsimulasiangsuran;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.KalkulatorActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_dsr_dbr.Activity_DSR_DBR_Nasabah;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity;
@@ -52,6 +53,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.field_ojk_bi.ActivityFieldOjkBI;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad.PersiapanAkadActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g3_upload_dokumen.ActivityUploadDokumen;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.memo.MemoActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
@@ -281,6 +283,22 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             dialog.show();
         }
 
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_batal))){
+            binding.loading.setVisibility(View.GONE);
+            final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
+            dialog.setTitleText("Konfirmasi?");
+            dialog.setContentText("Anda Akan Membatalkan Aplikasi?\n");
+            dialog.setConfirmText("Ya");
+            dialog.setCancelText("Tidak");
+            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    batalPembiayaan(dialog);
+                }
+            });
+            dialog.show();
+        }
+
         //FLOW D3
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_hutang))){
             Intent it = new Intent(this, DataHutangActivity.class);
@@ -303,8 +321,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_kalkulator))){
-            Intent it = new Intent(this, kalkulatorsimulasiangsuran.class);
+            Intent it = new Intent(this, KalkulatorActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_canvassing))){
@@ -320,7 +339,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_kalkulator_verin))){
-            Intent it = new Intent(this, kalkulatorsimulasiangsuran.class);
+            Intent it = new Intent(this, KalkulatorActivity.class);
+            it.putExtra("statusId",statusId);
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
@@ -367,8 +387,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
         //D6
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d6_kalkulator_pemutus))){
-            Intent it = new Intent(this, kalkulatorsimulasiangsuran.class);
+            Intent it = new Intent(this, KalkulatorActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
 
@@ -566,6 +587,65 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
                 }
                 catch (Exception e){
 
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                dialog.dismissWithAnimation();
+                AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
+    }
+
+    public void batalPembiayaan(SweetAlertDialog dialog){
+        dialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+        dialog.setTitleText("Memproses Aplikasi");
+        dialog.setContentText("Harap Tunggu");
+        ReqBatalAplikasi req=new ReqBatalAplikasi();
+        req.setApplicationId(Long.parseLong(idAplikasi));
+        req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setReasonDescription("Aplikasi Dibatalkan di Data Entry");
+        req.setReasonCode("Aplikasi Dibatalkan di Data Entry");
+        Call<ParseResponse> call=null;
+        call = apiClientAdapter.getApiInterface().batalD1(req);
+
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                try {
+                    if (response.isSuccessful()){
+                        if(response.body().getStatus().equalsIgnoreCase("00")){
+
+                            dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            dialog.setTitleText("Berhasil");
+                            dialog.setContentText("Aplikasi Berhasil Dibatalkan\n\n");
+                            dialog.setConfirmText("OK");
+                            dialog.showCancelButton(false);
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    dialog.dismissWithAnimation();
+                                    Intent intent=new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+                        else{
+                            dialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+                            dialog.setTitleText("Gagal");
+                            dialog.setConfirmText("Coba Lagi");
+                            dialog.setContentText(response.body().getMessage()+"\n\n");
+                        }
+                    }
+                    else {
+                        dialog.dismissWithAnimation();
+                        Error error = ParseResponseError.confirmEror(response.errorBody());
+                        AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), error.getMessage());
+                    }
+                }
+                catch (Exception e){
                 }
             }
 

@@ -23,10 +23,10 @@ public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
     private String title, aRAC,aFitur;
     private List<MparseResponseRAC> lRAC = new ArrayList<MparseResponseRAC>();
     private List<MparseResponseFitur> LFitur = new ArrayList<MparseResponseFitur>();
-    private List<MparseResponseTaspen> LTaspen = new ArrayList<MparseResponseTaspen>();
+    private MparseResponseTaspen LTaspen = new MparseResponseTaspen();
     private MparseResponseHasilRAC objRAC;
 
-    public HasilCanvasingStepper(@NonNull FragmentManager fm, @NonNull Context context, List<MparseResponseRAC> listRac, String aprroveRAC, MparseResponseHasilRAC objHasilRAc, List<MparseResponseFitur> dataFitur,String hasilFitur ,List<MparseResponseTaspen> dataTaspen) {
+    public HasilCanvasingStepper(@NonNull FragmentManager fm, @NonNull Context context, List<MparseResponseRAC> listRac, String aprroveRAC, MparseResponseHasilRAC objHasilRAc, List<MparseResponseFitur> dataFitur,String hasilFitur ,MparseResponseTaspen dataTaspen) {
         super(fm, context);
         aRAC = aprroveRAC;
         lRAC = listRac;

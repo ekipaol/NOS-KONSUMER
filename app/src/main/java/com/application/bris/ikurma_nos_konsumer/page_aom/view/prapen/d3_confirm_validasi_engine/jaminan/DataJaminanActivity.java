@@ -36,7 +36,10 @@ import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataJaminanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.KalkulatorActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -51,7 +54,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DataJaminanActivity extends AppCompatActivity implements View.OnClickListener, CameraListener {
+public class DataJaminanActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, ConfirmListener {
     private ActivityDataJaminanBinding binding;
     List <JaminandanDokumen> jd;
     JaminandanDokumen doc = new JaminandanDokumen();
@@ -399,7 +402,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     if (response.isSuccessful()) {
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
-                            finish();
+                            CustomDialog.DialogSuccess(DataJaminanActivity.this, "Success!", "Update Data Jaminan sukses", DataJaminanActivity.this);
                         } else {
                             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
@@ -559,12 +562,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.tfNomorSkPangkatTerakhir.setError(binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
-
-        } else if (binding.etNomorSkPensiun.getText().toString().trim().isEmpty() || binding.etNomorSkPensiun.getText().toString().trim().equalsIgnoreCase(" ")) {
-            binding.tfNomorSkPensiun.setError(binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
-            return false;
-
+//        } else if (binding.etNomorSkPensiun.getText().toString().trim().isEmpty() || binding.etNomorSkPensiun.getText().toString().trim().equalsIgnoreCase(" ")) {
+//            binding.tfNomorSkPensiun.setError(binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field), true);
+//            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
+//            return false;
         } else if (binding.etTanggalTerbitSk1.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk1.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTanggalTerbitSk1.setError(binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field));
@@ -623,7 +624,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.btnSkPensiun.setVisibility(View.GONE);
             binding.btnSkTerakhir.setVisibility(View.GONE);
             binding.btnSuratInstansi.setVisibility(View.GONE);
-            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
+//            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), "Field Telah Terisi Penuh");
             sendDataJaminan();
             return false;
         }
@@ -937,6 +938,16 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
             }
         }
+
+    }
+
+    @Override
+    public void success(boolean val) {
+        finish();
+    }
+
+    @Override
+    public void confirm(boolean val) {
 
     }
 }

@@ -31,7 +31,7 @@
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.VerifikasiHutangActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity" />
-        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.kalkulatorsimulasiangsuran" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.KalkulatorActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_pendapatan.ActivityVerifikasiPendapatan" />
         <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan.ActivityDokumenPendapatan" />
         <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity" />

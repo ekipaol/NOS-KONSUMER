@@ -168,11 +168,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 //        backgroundStatusBar();
         checkCollapse();
 
-        //disable onlick for AO NPF
-        if(appPreferences.getFidRole()!=123){
-            iv_morepipeline.setOnClickListener(this);
-            iv_morehotprospek.setOnClickListener(this);
-        }
+
 
 //        swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -478,19 +474,12 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onClick(View v) {
-        Intent intent=new Intent(getContext(),MenuPutusanKonsumerActivity.class);
+        Intent intent=new Intent(getContext(),ListAplikasiActivity.class);
         switch (v.getId()){
 
             case R.id.iv_morepipeline:
-//                moreActivity(PipelineActivity.class);
-                intent.putExtra("jenisMenu","pipeline");
-                startActivity(intent);
-//                moreActivity(MenuPutusanKonsumerActivity.class);
-                break;
             case R.id.iv_morehotprospek:
-                intent.putExtra("jenisMenu","hotprospek");
                 startActivity(intent);
-//                moreActivity(MenuPutusanKonsumerActivity.class);
                 break;
         }
     }

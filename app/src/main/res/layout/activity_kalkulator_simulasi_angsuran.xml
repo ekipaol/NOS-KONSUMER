@@ -79,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
-                        android:maxLength="2"
+                        android:maxLength="3"
                         app:suffix="Bulan" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -546,7 +546,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="42dp"
+                            android:layout_height="wrap_content"
                             android:background="@color/colorDisableEdit"
                             android:orientation="horizontal"
                             android:paddingLeft="16dp"

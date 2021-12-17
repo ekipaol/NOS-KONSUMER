@@ -175,7 +175,7 @@ public class AppPreferences {
     }
 
     public void setUid(String uid){
-        spEditor.putString(Constants.Login.UID, uid);
+        spEditor.putString(Constants.Login.UID, AppUtil.encrypt(uid));
         spEditor.commit();
     }
 

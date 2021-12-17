@@ -188,7 +188,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         //pantekan no aplikasi
-        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
         req.setApplicationId(idAplikasi);
 
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().downloadIdeb(req);

@@ -11,9 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungKalkulator;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
@@ -24,7 +22,9 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.Mparse
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityKalkulatorSimulasiAngsuranBinding;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
@@ -34,7 +34,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class kalkulatorsimulasiangsuran extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener {
+public class KalkulatorActivity extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener, ConfirmListener {
     private ActivityKalkulatorSimulasiAngsuranBinding binding;
     List<MGenericModel> dataDropdownKalkulator = new ArrayList<>(), dataAsuransi = new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
@@ -51,7 +50,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
     MparseResponseSimulasiBiayaBiaya DPSimulasiBiayaBiaya;
     MparseResponseDataPembiayaan DPDataPembiayaan;
     List<MparseResponseJadwalAngsuran> DPJadwalAngsuran;
-    String hitung;
+    String hitung,statusId;
     Long id;
 
     @Override
@@ -67,6 +66,11 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
         setContentView(view);
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Kalkulator");
+
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
+        }
+
         setParameterDropdown();
         allOnClick();
         onClickEndIcon();
@@ -97,20 +101,33 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                         dataAsuransi.add(new MGenericModel(response.body().getData().get(i).getAsJsonObject().get("Id").toString(), response.body().getData().get(i).getAsJsonObject().get("Nama_Asuransi").getAsString()));
                     }
                 } else {
-                    AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                    AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<MParseArray> call, @NonNull Throwable t) {
-                AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
         //Inq Kalkulator
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        req.setUID(String.valueOf(appPreferences.getUid()));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InqKalkulatorVerfikator(req);
+        req.setUID(Integer.toString(appPreferences.getUid()));
+        Call<ParseResponseAgunan> call=null;
+
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().inquiryKalkulatorMarketing(req);
+        }
+        else    if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().inqKalkulatorMarketingD5(req);
+        }
+
+        //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D4 D5, DIAMBIL DARI D3 DLU
+        else{
+            call = apiClientAdapter.getApiInterface().inquiryKalkulatorMarketing(req);
+        }
+
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(@NonNull Call<ParseResponseAgunan> call, @NonNull Response<ParseResponseAgunan> response) {
@@ -174,7 +191,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                             DPJadwalAngsuran = gson.fromJson(SSJadwalAngsuran, type);
                         }
                     } else {
-                        AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                        AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
                     }
                 }
             }
@@ -182,7 +199,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             @Override
             public void onFailure(@NonNull Call<ParseResponseAgunan> call, @NonNull Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
     }
@@ -191,37 +208,37 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
         binding.tfPilihanasuransipenjaminan.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfPilihanasuransipenjaminan.getLabelText(), dataAsuransi, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfPilihanasuransipenjaminan.getLabelText(), dataAsuransi, KalkulatorActivity.this);
             }
         });
         binding.tfTreatmentBiayaAsuransi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransi.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransi.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
         binding.tfTreatmentBiayaAsuransiKhusus.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransiKhusus.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransiKhusus.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
         binding.tfTreatmentBiayaAdministrasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAdministrasi.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAdministrasi.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
         binding.tfTreatmentBiayaPenalti.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaPenalti.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaPenalti.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
         binding.tfTreatmentBiayaMaterai.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
     }
@@ -264,31 +281,31 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             //treatment_biaya_asuransi
             case R.id.et_treatment_biaya_asuransi:
             case R.id.tf_treatment_biaya_asuransi:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransi.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransi.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
             //treatment_biaya_asuransi_khusus
             case R.id.et_treatment_biaya_asuransi_khusus:
             case R.id.tf_treatment_biaya_asuransi_khusus:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransiKhusus.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAsuransiKhusus.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
             //treatment_biaya_administrasi
             case R.id.et_treatment_biaya_administrasi:
             case R.id.tf_treatment_biaya_administrasi:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAdministrasi.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaAdministrasi.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
             //treatment_biaya_penalti
             case R.id.et_treatment_biaya_penalti:
             case R.id.tf_treatment_biaya_penalti:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaPenalti.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaPenalti.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
             //treatment_biaya_materai
             case R.id.et_treatment_biaya_materai:
             case R.id.tf_treatment_biaya_materai:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
             //Button Send
@@ -297,7 +314,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                 if (hitung != null)
                     sendData();
                 else
-                    AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), "Klik Button Hitung Terlebih dahulu");
+                    AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), "Klik Button Hitung Terlebih dahulu");
                 break;
             //Button Hitung
             case R.id.btn_hitung:
@@ -307,7 +324,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             //Button Pilih Asuransi
             case R.id.tf_pilihanasuransipenjaminan:
             case R.id.et_pilihan_asuransi_penjaminan:
-                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfPilihanasuransipenjaminan.getLabelText(), dataAsuransi, kalkulatorsimulasiangsuran.this);
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfPilihanasuransipenjaminan.getLabelText(), dataAsuransi, KalkulatorActivity.this);
                 break;
         }
     }
@@ -343,7 +360,21 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
         req.setSimulasiAngsuranCalc(scal);
         req.setDataPembiayaan(spem);
         req.setJadwalAngsuran(DPJadwalAngsuran);
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().UpdateKalkulatorVerifikator(req);
+
+        Call<ParseResponseAgunan> call=null;
+
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
+        }
+        else    if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().updateKalkulatorMarketingD5(req);
+        }
+
+        //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D4 D5, DIAMBIL DARI D3 DLU
+        else{
+            call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
+        }
+        call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
@@ -351,8 +382,10 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         finish();
+                        CustomDialog.DialogSuccess(KalkulatorActivity.this, "Success!", "Update Data Kalkulator sukses", KalkulatorActivity.this);
+
                     } else {
-                        AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                        AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 }
             }
@@ -360,7 +393,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             @Override
             public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
     }
@@ -429,7 +462,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
                         }
 
                     } else {
-                        AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), response.body().getMessage());
+                        AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 }
             }
@@ -437,7 +470,7 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
             @Override
             public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(kalkulatorsimulasiangsuran.this, findViewById(android.R.id.content), t.getMessage());
+                AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), t.getMessage());
             }
         });
     }
@@ -480,6 +513,16 @@ public class kalkulatorsimulasiangsuran extends AppCompatActivity implements Gen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
         }
+    }
+
+    @Override
+    public void success(boolean val) {
+        finish();
+    }
+
+    @Override
+    public void confirm(boolean val) {
+
     }
 }
 

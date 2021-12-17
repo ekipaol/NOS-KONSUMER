@@ -14,6 +14,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.Mparse
 import com.application.bris.ikurma_nos_konsumer.databinding.FragmentResumeTaspenBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
@@ -24,9 +25,9 @@ import java.util.List;
 public class FragmentResumeCekTaspen extends Fragment implements Step, KeyValueListener, View.OnClickListener {
 
     FragmentResumeTaspenBinding binding;
-    List<MparseResponseTaspen> lTaspen = new ArrayList<MparseResponseTaspen>();
+    MparseResponseTaspen lTaspen = new MparseResponseTaspen();
 
-    public FragmentResumeCekTaspen(List<MparseResponseTaspen> ldataTaspen) {
+    public FragmentResumeCekTaspen(MparseResponseTaspen ldataTaspen) {
         lTaspen = ldataTaspen;
     }
 
@@ -37,38 +38,29 @@ public class FragmentResumeCekTaspen extends Fragment implements Step, KeyValueL
         View view = binding.getRoot();
         disableText();
         numberText();
-        initialize();
+
+        if(lTaspen.getHakPensiun()!=null){
+            initialize();
+        }
+
         return view;
     }
     
     private void initialize(){
-        for (int i = 0; i < lTaspen.size(); i++) {
-            if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Nama Penerima Pensiun")) {
-                binding.etNama.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Tanggal Lahir Penerima Taspen")) {
-                binding.etTglLahir.setText(lTaspen.get(i).getParameterValue());
-            }  else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Gaji/Manfaat Pensiun Terakhir")) {
-                binding.etManfaatPensiun.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Kantor Bayar Sebelumnya")) {
-                binding.etKantorBayar.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Data Flagging")) {
-                binding.etFlagging.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Tanggal BUP")) {
-                binding.etTglPensiun.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Pangkat")) {
-                binding.etPangkat.setText(lTaspen.get(i).getParameterValue());
-            } else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("No Taspen")) {
-                binding.etNotas.setText(lTaspen.get(i).getParameterValue());
-            }else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("No KPE")) {
-                binding.etKpe.setText(lTaspen.get(i).getParameterValue());
-            }else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Hak Tabungan Hari Tua")) {
-                binding.etNotas.setText(lTaspen.get(i).getParameterValue());
-            }else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Tanggal Mulai Taspen")) {
-                binding.etTglMulaiTaspen.setText(lTaspen.get(i).getParameterValue());
-            }else if (lTaspen.get(i).getParameterName().equalsIgnoreCase("Nomor Induk Dummy")) {
-                binding.etNip.setText(lTaspen.get(i).getParameterValue());
-            }
-        }
+
+            binding.etNama.setText(lTaspen.getNamaLengkapPeserta());
+            binding.etTglLahir.setText(AppUtil.parseTanggalGeneral(lTaspen.getTanggalLahirPeserta(),"yyyy-MM-dd","dd-MM-yyyy"));
+            binding.etManfaatPensiun.setText((lTaspen.getHakPensiun()));
+            binding.etKantorBayar.setText(lTaspen.getInstansiKantorBayar());
+            binding.etFlagging.setText(lTaspen.getKeteranganFlagging());
+            binding.etTglPensiun.setText(AppUtil.parseTanggalGeneral(lTaspen.getTanggalPensiun(),"yyyy-MM-dd","dd-MM-yyyy"));
+            binding.etPangkat.setText(lTaspen.getPangkat());
+            binding.etKpe.setText(lTaspen.getNoKPE());
+            binding.etNotas.setText(lTaspen.getNomorTaspen());
+            binding.etHariTua.setText((lTaspen.getHakTabunganHariTua()));
+            binding.etTglMulaiTaspen.setText(AppUtil.parseTanggalGeneral(lTaspen.getTanggalMulaiTaspen(),"yyyy-MM-dd","dd-MM-yyyy"));
+            binding.etNip.setText(lTaspen.getNip());
+
     }
 
     private void disableText() {
