@@ -562,14 +562,6 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.tfNomorSkPangkatTerakhir.setError(binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPangkatTerakhir.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
-//        } else if (binding.etNomorSkPensiun.getText().toString().trim().isEmpty() || binding.etNomorSkPensiun.getText().toString().trim().equalsIgnoreCase(" ")) {
-//            binding.tfNomorSkPensiun.setError(binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field), true);
-//            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfNomorSkPensiun.getLabelText() + " " + getString(R.string.title_validate_field));
-//            return false;
-        } else if (binding.etTanggalTerbitSk1.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk1.getText().toString().trim().equalsIgnoreCase(" ")) {
-            binding.tfTanggalTerbitSk1.setError(binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk1.getLabelText() + " " + getString(R.string.title_validate_field));
-            return false;
 
         } else if (binding.etTanggalTerbitSk2.getText().toString().trim().isEmpty() || binding.etTanggalTerbitSk2.getText().toString().trim().equalsIgnoreCase(" ")) {
             binding.tfTanggalTerbitSk2.setError(binding.tfTanggalTerbitSk2.getLabelText() + " " + getString(R.string.title_validate_field), true);
@@ -580,8 +572,6 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.tfTanggalTerbitSk3.setError(binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
-
-
         } else {
             AppUtil.disableEditTexts(binding.getRoot());
             binding.ivKtpNasabah.setOnClickListener(null);

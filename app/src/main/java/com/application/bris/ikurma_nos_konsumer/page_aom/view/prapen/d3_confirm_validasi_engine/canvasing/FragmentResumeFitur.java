@@ -47,13 +47,13 @@ public class FragmentResumeFitur extends Fragment implements Step, KeyValueListe
             if (lFitur.get(j).getParameter().equalsIgnoreCase("Limit Pembiayaan")) {
                 binding.etLimitPembiayaan.setText(lFitur.get(j).getValue());
             }
-            else if (lFitur.get(j).getParameter().equalsIgnoreCase("Loan type")) {
+            else if (lFitur.get(j).getParameter().equalsIgnoreCase("Loan Type")) {
                 binding.etLoanType.setText(lFitur.get(j).getValue());
             }
             else if (lFitur.get(j).getParameter().equalsIgnoreCase("Jangka Waktu Pembiayaan")) {
                 binding.etJangkaWaktu.setText(lFitur.get(j).getValue());
             }
-            else if (lFitur.get(j).getParameter().equalsIgnoreCase("Asuransi Pembiayaan")) {
+            else if (lFitur.get(j).getParameter().equalsIgnoreCase("Pilihan Maskai Asuransi")) {
                 binding.etAsuransi.setText(lFitur.get(j).getValue());
             }
         }

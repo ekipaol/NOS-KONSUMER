@@ -45,6 +45,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -128,8 +129,33 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         hidePreviewButton();
         setContentView(view);
         onclickSelectDialog();
+        showUploaded();
         initdata();
         AppUtil.toolbarRegular(this, "Upload Dokumen");
+    }
+
+    private void showUploaded() {
+        if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("mmq")) {
+            binding.akadmmq.setVisibility(View.VISIBLE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("ijarah")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.VISIBLE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("murabahah")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.VISIBLE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("rahn")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initdata() {
@@ -1420,7 +1446,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     if (response.isSuccessful()) {
 
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
-                            CustomDialog.DialogSuccess(ActivityUploadDokumen.this, "Success!", "Update Data Sukses", ActivityUploadDokumen.this) ;
+                            CustomDialog.DialogSuccess(ActivityUploadDokumen.this, "Success!", "Update Data Sukses", ActivityUploadDokumen.this);
                             finish();
                         } else {
                             AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), response.body().getMessage());
@@ -1763,14 +1789,6 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         }
     }
 
-    private void directOpenCamera(int cameraCode, String namaFoto) {
-        Uri outputFileUri = getCaptureImageOutputUri(namaFoto);
-        Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        captureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-        startActivityForResult(captureIntent, cameraCode);
-    }
-
     private Uri getCaptureImageOutputUri(String namaFoto) {
         Uri outputFileUri = null;
         File getImage = this.getExternalCacheDir();
@@ -2031,7 +2049,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkPensiun.setVisibility(View.VISIBLE);
                     valskpensiun = AppUtil.encodeImageTobase64(bitmap);
                     skpensiun = bitmap;
-                    AppUtil.logSecure("deltaforce",Foto_SK_Pensiun.getFileName());
+                    AppUtil.logSecure("deltaforce", Foto_SK_Pensiun.getFileName());
                 } else if (clicker.equalsIgnoreCase("skpenangakatan")) {
                     FNskpenangakatan = "skpenangakatan.png";
                     Foto_SK_Pengangkatan.setFileName(FNskpenangakatan);
@@ -2039,7 +2057,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkPengangkatan.setVisibility(View.VISIBLE);
                     valskpenangakatan = AppUtil.encodeImageTobase64(bitmap);
                     skpenangakatan = bitmap;
-                    AppUtil.logSecure("deltaforce",Foto_SK_Pengangkatan.getFileName());
+                    AppUtil.logSecure("deltaforce", Foto_SK_Pengangkatan.getFileName());
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
                     FNskterakhir = "skterakhir.png";
                     Foto_SK_Terakhir.setFileName(FNskterakhir);
@@ -2047,7 +2065,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
                     valskterakhir = AppUtil.encodeImageTobase64(bitmap);
                     skterakhir = bitmap;
-                    AppUtil.logSecure("deltaforce",Foto_SK_Terakhir.getFileName());
+                    AppUtil.logSecure("deltaforce", Foto_SK_Terakhir.getFileName());
                 }
                 // AsuransiKhusus
 

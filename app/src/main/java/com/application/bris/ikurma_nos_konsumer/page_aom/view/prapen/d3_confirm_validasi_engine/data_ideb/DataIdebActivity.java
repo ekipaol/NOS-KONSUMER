@@ -147,8 +147,8 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         //pantekan no aplikasi
 //        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
 //        req.setApplicationId(4);
-        req.setApplicationId(idAplikasi);
-
+        req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
+        req.setUID(String.valueOf(appPreferences.getUid()));
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryIdebOjk(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -190,7 +190,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         //pantekan no aplikasi
 //        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
         req.setApplicationId(idAplikasi);
-
+        req.setUID(String.valueOf(appPreferences.getUid()));
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().downloadIdeb(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override

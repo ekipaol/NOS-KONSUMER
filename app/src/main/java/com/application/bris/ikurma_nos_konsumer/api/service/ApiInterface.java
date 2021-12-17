@@ -1069,17 +1069,6 @@ public interface ApiInterface {
     @POST(UriApi.prapen.dropdownBidangUsahaTempatKerja)
     Call<ParseResponseArr> dropdownBidangUsahaTempatKerja(@Body DataSearchOjk dataSearchOjk);
 
-    @POST(UriApi.prapen.lanjutUploadDok)
-    Call<ParseResponse> lanjutpembiayaankeG3(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
-
-    @POST(UriApi.prapen.batalPembiayaanG1)
-    Call<ParseResponse> batalPembiayaanG1(@Body ReqBatalAplikasi ReqBatalAplikasi);
-
-    @POST(UriApi.prapen.kembalikanKePemutus)
-    Call<ParseResponse> kembalikanKePemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
-
-
-
     @POST(UriApi.prapen.UploadDokumenUmum)
     Call<ParseResponse> UploadDokumenUmum(@Body UpdateUploadDokumen updateUploadDokumen);
 

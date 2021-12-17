@@ -61,12 +61,12 @@ public class FragmentResumeRAC extends Fragment implements Step, KeyValueListene
     private void initialize() {
         binding.etResumeRac.setText(approved);
         for (int i = 0; i < lrac.size(); i++) {
-            if (lrac.get(i).getParameter().equalsIgnoreCase("Umur Nasabaha Jatuh Tempo")) {
+            if (lrac.get(i).getParameter().equalsIgnoreCase("Umur Nasabah Jatuh Tempo")) {
                 Double kk = Double.parseDouble(lrac.get(i).getValue()) / 12;
                 BigDecimal dsrNasabah = new BigDecimal(kk).setScale(0, RoundingMode.HALF_DOWN);
                 binding.etUmurNasabah.setText(String.valueOf(dsrNasabah.intValue()));
                 binding.etRacUmurNasabah.setText(lrac.get(i).getParameterDesc());
-            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Umur minimal saat pengajuan")) {
+            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Umur Minimal Nasabah Saat Pengajuan")) {
                 Double kk = Double.parseDouble(lrac.get(i).getValue()) / 12;
                 BigDecimal dsrNasabah = new BigDecimal(kk).setScale(0, RoundingMode.HALF_DOWN);
                 binding.etUmurMin.setText(String.valueOf(dsrNasabah.intValue()));
@@ -75,24 +75,24 @@ public class FragmentResumeRAC extends Fragment implements Step, KeyValueListene
                 binding.etNomorTaspen.setText(lrac.get(i).getValue());
                 binding.etRacNomorTaspen.setText(lrac.get(i).getParameterDesc());
             } else if (lrac.get(i).getParameter().equalsIgnoreCase("DSR")) {
-                binding.etNominalDsr.setText(lrac.get(i).getValue());
+                binding.etPersentaseDsr.setText(lrac.get(i).getValue());
             } else if (lrac.get(i).getParameter().equalsIgnoreCase("DBR")) {
                 binding.etPersentaseDsr.setText(lrac.get(i).getValue());
-            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Histori Kolektiblitas IDEB")) {
+            } else if (lrac.get(i).getParameter().equalsIgnoreCase("History Kolektibilitas IDEB")) {
                 binding.etHistoryIdeb.setText(lrac.get(i).getValue());
             }else if (lrac.get(i).getParameter().equalsIgnoreCase("Nasabah telah terflagging")) {
                 binding.etNasabahFlaging.setText(lrac.get(i).getValue());
-            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Nasabah Sudah Payroll di BSI")) {
+            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Nasabah Sudah Payroll")) {
                 binding.etPayrollBsi.setText(lrac.get(i).getValue());
-            } else if (lrac.get(i).getParameter().equalsIgnoreCase("TMT ke pensiun aktif maksimum xx bln")) {
+            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Terhitung Mulai Tanggal")) {
                 binding.etTmtPensiun.setText(lrac.get(i).getValue());
                 binding.etRacTmtPensiun.setText(lrac.get(i).getParameterDesc());
-            }else if (lrac.get(i).getParameter().equalsIgnoreCase("Masa Peserta Taspen/ Dapen Lainnya")) {
+            }else if (lrac.get(i).getParameter().equalsIgnoreCase("Masa Peserta Taspen")) {
                 binding.etMasaPeserta.setText(lrac.get(i).getValue());
                 binding.etRacMasaPeserta.setText(lrac.get(i).getParameterDesc());
             }else if (lrac.get(i).getParameter().equalsIgnoreCase("Surat Rekomendasi dari Instansi")) {
                 binding.etSuratRekomendasi.setText(lrac.get(i).getValue());
-            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Umur Pembiayaan Eksisting")) {
+            } else if (lrac.get(i).getParameter().equalsIgnoreCase("Pembiayaan Eksisting")) {
                 binding.etUmurPembiayaEksisting.setText(lrac.get(i).getValue());
             }
 

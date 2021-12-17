@@ -446,6 +446,8 @@ public class UriApi {
 
 
 
+
+
         //api umum
         public static final String inquiryDetailAplikasi = "NOS_PRAPEN_Services/rest/APIUmum/InqDetailAplikasi";
         public static final String inquiryMemo = "NOS_PRAPEN_Services/rest/D3/InquiryMemo";

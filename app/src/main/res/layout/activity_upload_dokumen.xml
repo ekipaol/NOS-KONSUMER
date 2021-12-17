@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true">
 
-    <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
-    <include android:id="@+id/loading_layout" layout="@layout/loading" />
+    <include
+        android:id="@+id/toolbar_nosearch"
+        layout="@layout/toolbar_nosearch" />
+
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/loading" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
         android:layout_marginTop="50dp"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -26,34 +31,34 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/colorWhite"
+                android:orientation="vertical"
                 android:paddingTop="10dp">
                 <!--Title Generate Dokumen Yang Harus di Upload Dokumen Jaminan-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Generate Dokumen Yang Harus di Upload Dokumen Jaminan"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Generate Dokumen Yang Harus di Upload Dokumen Jaminan"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Generate Dokumen Yang Harus di Upload Dokumen Jaminan-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto SK Pensiun-->
                         <RelativeLayout
@@ -63,15 +68,16 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Foto SK Pensiun"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Foto SK Pensiun"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Foto SK Pensiun-->
                         <ImageView
@@ -82,7 +88,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto SK Pensiun-->
                         <ImageView
                             android:id="@+id/pv_foto_sk_pensiun"
@@ -92,14 +98,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Foto SK Pengangkatan-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto SK Pengangkatan-->
                         <RelativeLayout
@@ -129,7 +135,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto SK Pengangkatan-->
                         <ImageView
                             android:id="@+id/pv_foto_sk_pengangkatan"
@@ -139,14 +145,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Foto SK Terakhir-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto SK Terakhir-->
                         <RelativeLayout
@@ -176,44 +182,44 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto SK Terakhir-->
                         <ImageView
                             android:id="@+id/pv_foto_sk_terakhir"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
                 <!--Upload Dokumen Asuransi Khusus-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Upload Dokumen Asuransi Khusus"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Upload Dokumen Asuransi Khusus"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Foto Covernote Asuransi-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto CoverNote Asuransi -->
                         <RelativeLayout
@@ -243,7 +249,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto CoverNote Asuransi-->
                         <ImageView
                             android:id="@+id/pv_foto_covernote_asuransi"
@@ -253,34 +259,34 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
                 <!--Title Dokumen Produk-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Dokumen Produk"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Dokumen Produk"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Dokumen Produk-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
                     <!--Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir-->
                         <RelativeLayout
@@ -289,7 +295,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:paddingB="0dp">
+                            android:padding="0dp">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -310,7 +316,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Tanda Terima Dokumen SK Pensiun / SK Pengangkatan / SK Terakhir-->
                         <ImageView
                             android:id="@+id/pv_sk"
@@ -320,14 +326,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Form Mutasi Kantor Bayar (Khusus Taspen)-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Form Mutasi Kantor Bayar (Khusus Taspen)-->
                         <RelativeLayout
@@ -357,7 +363,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Form Mutasi Kantor Bayar (Khusus Taspen)-->
                         <ImageView
                             android:id="@+id/pv_mutasi"
@@ -367,14 +373,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Surat Kuasa & Pernyataan Flagging-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Surat Kuasa & Pernyataan Flagging-->
                         <RelativeLayout
@@ -404,7 +410,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Surat Kuasa & Pernyataan Flagging-->
                         <ImageView
                             android:id="@+id/pv_kuasa"
@@ -414,14 +420,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Surat Pernyataan dan Kuasa Pembiayaan-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Surat Pernyataan dan Kuasa Pembiayaan-->
                         <RelativeLayout
@@ -451,7 +457,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Download Surat Pernyataan dan Kuasa Pembiayaan-->
                         <ImageView
                             android:id="@+id/pv_pernyataan"
@@ -461,14 +467,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--SUP Pembiayaan Retail / Pensiun / Pra Pensiun-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title SUP Pembiayaan Retail / Pensiun / Pra Pensiun-->
                         <RelativeLayout
@@ -498,7 +504,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview SUP Pembiayaan Retail / Pensiun / Pra Pensiun-->
                         <ImageView
                             android:id="@+id/pv_sup"
@@ -508,7 +514,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -516,27 +522,27 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Proses Penandatanganan Akad"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Proses Penandatanganan Akad"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Foto Proses Penandatanganan Akad-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto Proses Penandatanganan Akad-->
                         <RelativeLayout
@@ -566,7 +572,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto Proses Penandatanganan Akad-->
                         <ImageView
                             android:id="@+id/pv_foto_proses_penandatanganan_akad"
@@ -576,295 +582,304 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
 
-
-                <!--Title Dokumen Murabahah-->
-                <TextView
+                <LinearLayout
+                    android:id="@+id/akadmurabahah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Dokumen Murabahah"
-                    android:textSize="16sp"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
-
-                <!--Dokumen Murabahah-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
                     android:orientation="vertical">
-
-                    <!--Purchase Order-->
-                    <LinearLayout
+                    <!--Title Dokumen Murabahah-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:background="@color/colorBackgroundCore"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Dokumen Murabahah"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+
+                    <!--Dokumen Murabahah-->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!--Title Purchase Order-->
-                        <RelativeLayout
-                            android:id="@+id/d_po"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
 
-                            <TextView
+                        <!--Purchase Order-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Purchase Order-->
+                            <RelativeLayout
+                                android:id="@+id/d_po"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Purchase Order"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Purchase Order-->
-                        <ImageView
-                            android:id="@+id/btn_po"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
-                        <!--Download Purchase Order-->
-                        <ImageView
-                            android:id="@+id/pv_po"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <!--Akad Wakalah-->
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!--Title Akad Wakalah-->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_wakalah"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Purchase Order"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Purchase Order-->
+                            <ImageView
+                                android:id="@+id/btn_po"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Download Purchase Order-->
+                            <ImageView
+                                android:id="@+id/pv_po"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Akad Wakalah-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Akad Wakalah-->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_wakalah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad Wakalah"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad Wakalah-->
-                        <ImageView
-                            android:id="@+id/btn_akad_wakalah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
-                        <!--Download Akad Wakalah-->
-                        <ImageView
-                            android:id="@+id/pv_akad_wakalah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <!--Akad Murabahah-->
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!--Title Akad Wakalah-->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_murabahah"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad Wakalah"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad Wakalah-->
+                            <ImageView
+                                android:id="@+id/btn_akad_wakalah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Download Akad Wakalah-->
+                            <ImageView
+                                android:id="@+id/pv_akad_wakalah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Akad Murabahah-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Akad Wakalah-->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_murabahah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad Murabahah"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad Murabahah-->
-                        <ImageView
-                            android:id="@+id/btn_akad_murabahah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
-                        <!--Download Akad Murabahah-->
-                        <ImageView
-                            android:id="@+id/pv_akad_murabahah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <!--Jadwal Angsuran Murabahah (Lampiran)-->
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!--Title Jadwal Angsuran Murabahah (Lampiran)-->
-                        <RelativeLayout
-                            android:id="@+id/d_jadwal_angsuran"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad Murabahah"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad Murabahah-->
+                            <ImageView
+                                android:id="@+id/btn_akad_murabahah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Download Akad Murabahah-->
+                            <ImageView
+                                android:id="@+id/pv_akad_murabahah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Jadwal Angsuran Murabahah (Lampiran)-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Jadwal Angsuran Murabahah (Lampiran)-->
+                            <RelativeLayout
+                                android:id="@+id/d_jadwal_angsuran"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Jadwal Angsuran Murabahah (Lampiran)"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Jadwal Angsuran Murabahah (Lampiran)-->
-                        <ImageView
-                            android:id="@+id/btn_jadwal_angsuran"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
-                        <!--Download Jadwal Angsuran Murabahah (Lampiran)-->
-                        <ImageView
-                            android:id="@+id/pv_jadwal_angsuran"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <!--Surat Tanda Terima Barang-->
-                    <LinearLayout
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <!--Title Surat Tanda Terima Barang-->
-                        <RelativeLayout
-                            android:id="@+id/d_terima_barang"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Jadwal Angsuran Murabahah (Lampiran)"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Jadwal Angsuran Murabahah (Lampiran)-->
+                            <ImageView
+                                android:id="@+id/btn_jadwal_angsuran"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Download Jadwal Angsuran Murabahah (Lampiran)-->
+                            <ImageView
+                                android:id="@+id/pv_jadwal_angsuran"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Surat Tanda Terima Barang-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Surat Tanda Terima Barang-->
+                            <RelativeLayout
+                                android:id="@+id/d_terima_barang"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Surat Tanda Terima Barang"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Surat Tanda Terima Barang-->
-                        <ImageView
-                            android:id="@+id/btn_terima_barang"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
-                        <!--Preview Surat Tanda Terima Barang-->
-                        <ImageView
-                            android:id="@+id/pv_terima_barang"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Surat Tanda Terima Barang"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Surat Tanda Terima Barang-->
+                            <ImageView
+                                android:id="@+id/btn_terima_barang"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Surat Tanda Terima Barang-->
+                            <ImageView
+                                android:id="@+id/pv_terima_barang"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
-
+            <LinearLayout
+                android:id="@+id/akadijarah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <!--Title Dokumen Ijarah-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Dokumen Ijarah"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Dokumen Ijarah"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Dokumen Ijarah-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <!--Purchase Order Ijarah-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Purchase Order Ijarah-->
                         <RelativeLayout
@@ -894,7 +909,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Surat Tanda Terima Barang-->
                         <ImageView
                             android:id="@+id/pv_po_Ijarah"
@@ -904,14 +919,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Akad Wakalah-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Akad Wakalah-->
                         <RelativeLayout
@@ -941,7 +956,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Akad Wakalah-->
                         <ImageView
                             android:id="@+id/pv_akad_wakalah_Ijarah"
@@ -951,14 +966,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Akad Ijarah-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Akad Ijarah-->
                         <RelativeLayout
@@ -988,7 +1003,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Akad Ijarah-->
                         <ImageView
                             android:id="@+id/pv_akad_ijarah"
@@ -998,14 +1013,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Jadwal Angsuran Ujrah (Lampiran)-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Jadwal Angsuran Ujrah (Lampiran)-->
                         <RelativeLayout
@@ -1035,7 +1050,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Jadwal Angsuran Ujrah (Lampiran)-->
                         <ImageView
                             android:id="@+id/pv_angsuran_ujrah"
@@ -1045,36 +1060,41 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
-
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/akadmmq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
                 <!--Title Dokumen MMQ-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Dokumen MMQ"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Dokumen MMQ"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Dokumen MMQ-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <!--Laporan Penilaian Aset MMQ -->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Laporan Penilaian Aset MMQ -->
                         <RelativeLayout
@@ -1104,7 +1124,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Laporan Penilaian Aset MMQ -->
                         <ImageView
                             android:id="@+id/pv_asset_mmq"
@@ -1114,14 +1134,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Akad MMQ -->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Akad MMQ -->
                         <RelativeLayout
@@ -1151,7 +1171,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Download Akad MMQ -->
                         <ImageView
                             android:id="@+id/pv_akad_mmq"
@@ -1161,14 +1181,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--LAMPIRAN JADWAL PENGAMBILALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
                         <RelativeLayout
@@ -1198,7 +1218,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
                         <ImageView
                             android:id="@+id/pv_jadwal_pengambilalihan"
@@ -1208,14 +1228,14 @@
                             android:layout_marginTop="10dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Surat Pernyataan & Kuasa Aset MMQ Sendiri-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
                         <RelativeLayout
@@ -1245,7 +1265,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
                         <ImageView
                             android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
@@ -1255,13 +1275,13 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
                         <RelativeLayout
@@ -1291,7 +1311,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
                         <ImageView
                             android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
@@ -1301,36 +1321,41 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
-
-                    <!--Title Dokumen Rahn-->
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/akadrahn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--Title Dokumen Rahn-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Dokumen Rahn"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Dokumen Rahn"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Dokumen Rahn-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <!--Akad Rahn -->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Akad Rahn -->
                         <RelativeLayout
@@ -1360,7 +1385,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--preview Akad Rahn -->
                         <ImageView
                             android:id="@+id/pv_akad_rahn"
@@ -1370,14 +1395,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Jadwal Angsuran Rahn -->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Jadwal Angsuran Rahn -->
                         <RelativeLayout
@@ -1387,15 +1412,16 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:padding="0dp">
+
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Jadwal Angsuran Rahn"
-                                android:textSize="16sp"
-                                android:textAlignment="textStart"
-                                android:paddingLeft="10dp"
                                 android:fontFamily="@font/muli_b"
-                                android:paddingBottom="10dp"/>
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Jadwal Angsuran Rahn"
+                                android:textAlignment="textStart"
+                                android:textSize="16sp" />
                         </RelativeLayout>
                         <!--Download Jadwal Angsuran Rahn -->
                         <ImageView
@@ -1406,7 +1432,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Jadwal Angsuran Rahn -->
                         <ImageView
                             android:id="@+id/pv_jadwal_angsuran_rahn"
@@ -1416,37 +1442,37 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                 </LinearLayout>
-
+            </LinearLayout>
                 <!--Title Formulir Permintaan Pembiayaan-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBackgroundCore"
-                    android:text="Formulir Permintaan Pembiayaan"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
+                    android:background="@color/colorBackgroundCore"
                     android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
                     android:paddingBottom="10dp"
-                    android:paddingTop="10dp"/>
+                    android:text="Formulir Permintaan Pembiayaan"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
 
                 <!--Dokumen Form Mutasi Kantor Bayar-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
                     <!--Form Mutasi Kantor Bayar-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Form Mutasi Kantor Bayar-->
                         <RelativeLayout
@@ -1476,7 +1502,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Form Mutasi Kantor Bayar-->
                         <ImageView
                             android:id="@+id/pv_form_mutasi_kantor_bayar"
@@ -1486,14 +1512,14 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
 
                     <!--Foto / Screen Captuce Bukti Otentikasi Nasabah saat akad-->
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
                         <!--Title Foto / Screen Captuce Bukti Otentikasi Nasabah saat akad-->
                         <RelativeLayout
@@ -1523,7 +1549,7 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/photo_rounded_blue"
                             android:padding="8dp"
-                            android:src="@mipmap/ico_upload"/>
+                            android:src="@mipmap/ico_upload" />
                         <!--Preview Foto / Screen Captuce Bukti Otentikasi Nasabah saat akad-->
                         <ImageView
                             android:id="@+id/pv_foto_screen_capture_bukti_otentikasi_nasabah_saat_akad"
@@ -1533,24 +1559,23 @@
                             android:layout_marginBottom="0dp"
                             android:background="@drawable/blue_button_background"
                             android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp"/>
+                            android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"></LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_upload_dokumen1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
                     android:layout_margin="12dp"
-                    app:cardElevation="3dp"
-                    app:cardBackgroundColor="@color/colorWhite">
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1562,81 +1587,81 @@
                             android:id="@+id/tv_upload_dokumen"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Upload Dokumen A"
-                            android:textStyle="bold"
-                            android:padding="12dp"
-                            android:textSize="14sp"
+                            android:background="@color/colorBackgroundGrey1"
                             android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Upload Dokumen A"
                             android:textColor="@color/colorBlackHeader"
-                            android:background="@color/colorBackgroundGrey1"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                         <!--Tittle Nama Dokumen-->
                         <TextView
                             android:id="@+id/tf_nama_dokumen1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nama Dokumen A"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="10dp"
-                            android:paddingLeft="15dp"/>
+                            android:paddingBottom="8dp"
+                            android:text="Nama Dokumen A"
+                            android:textSize="16sp" />
                         <!--=Input Nama Dokumen-->
                         <EditText
                             android:id="@+id/et_nama_dokumen1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Nama Dokumen"
-                            android:textSize="15sp"
                             android:inputType="text"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
                         <!--Title Keterangan Dokumen-->
                         <TextView
                             android:id="@+id/tf_keterangan_dokumen1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Keterangan Dokumen A"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
                             android:paddingLeft="15dp"
-                            android:paddingTop="20dp"/>
+                            android:paddingTop="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="Keterangan Dokumen A"
+                            android:textSize="16sp" />
                         <!--Input Keterangan Dokumen A-->
                         <EditText
                             android:id="@+id/et_keterangan_dokumen1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Keterangan Dokumen"
-                            android:textSize="15sp"
                             android:inputType="textMultiLine"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/placholderBg"
                             android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"/>
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/placholderBg" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="8dp"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
 
                             <TextView
                                 android:id="@+id/tf_upload_dokumen1"
@@ -1653,21 +1678,21 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.4"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1.4">
 
                                 <!--Title Upload Dokumen-->
                                 <com.makeramen.roundedimageview.RoundedImageView
                                     android:id="@+id/iv_upload_dokumen1"
                                     android:layout_width="70dp"
                                     android:layout_height="90dp"
-                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
                                     android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
                                     android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
                                     app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    android:layout_centerInParent="true"/>
+                                    app:riv_border_width="1dip"
+                                    app:riv_corner_radius="8dip" />
                                 <!--Foto Upload Dokumen-->
                                 <ImageView
                                     android:id="@+id/btn_upload_dokumen1"
@@ -1687,17 +1712,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"></LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_upload_dokumen2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
                     android:layout_margin="12dp"
-                    app:cardElevation="3dp"
-                    app:cardBackgroundColor="@color/colorWhite">
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1709,81 +1733,81 @@
                             android:id="@+id/tv_upload_dokumen2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Upload Dokumen B"
-                            android:textStyle="bold"
-                            android:padding="12dp"
-                            android:textSize="14sp"
+                            android:background="@color/colorBackgroundGrey1"
                             android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Upload Dokumen B"
                             android:textColor="@color/colorBlackHeader"
-                            android:background="@color/colorBackgroundGrey1"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                         <!--Tittle Nama Dokumen B-->
                         <TextView
                             android:id="@+id/tf_nama_dokumen2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nama Dokumen B"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="10dp"
-                            android:paddingLeft="15dp"/>
+                            android:paddingBottom="8dp"
+                            android:text="Nama Dokumen B"
+                            android:textSize="16sp" />
                         <!--=Input Nama Dokumen B-->
                         <EditText
                             android:id="@+id/et_nama_dokumen2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Nama Dokumen"
-                            android:textSize="15sp"
                             android:inputType="text"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
                         <!--Title Keterangan Dokumen B-->
                         <TextView
                             android:id="@+id/tf_keterangan_dokumen2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Keterangan Dokumen B"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
                             android:paddingLeft="15dp"
-                            android:paddingTop="20dp"/>
+                            android:paddingTop="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="Keterangan Dokumen B"
+                            android:textSize="16sp" />
                         <!--Input Keterangan Dokumen B-->
                         <EditText
                             android:id="@+id/et_keterangan_dokumen2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Keterangan Dokumen"
-                            android:textSize="15sp"
                             android:inputType="textMultiLine"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/placholderBg"
                             android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"/>
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/placholderBg" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="8dp"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
                             <!--Title Upload Dokumen B-->
                             <TextView
                                 android:id="@+id/tf_upload_dokumen2"
@@ -1800,20 +1824,20 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.4"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1.4">
 
                                 <com.makeramen.roundedimageview.RoundedImageView
                                     android:id="@+id/iv_upload_dokumen2"
                                     android:layout_width="70dp"
                                     android:layout_height="90dp"
-                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
                                     android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
                                     android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
                                     app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    android:layout_centerInParent="true"/>
+                                    app:riv_border_width="1dip"
+                                    app:riv_corner_radius="8dip" />
                                 <!--Foto Upload Dokumen B-->
                                 <ImageView
                                     android:id="@+id/btn_upload_dokumen2"
@@ -1833,17 +1857,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"></LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_upload_dokumen3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
                     android:layout_margin="12dp"
-                    app:cardElevation="3dp"
-                    app:cardBackgroundColor="@color/colorWhite">
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -1855,81 +1878,81 @@
                             android:id="@+id/tv_upload_dokumen3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Upload Dokumen C"
-                            android:textStyle="bold"
-                            android:padding="12dp"
-                            android:textSize="14sp"
+                            android:background="@color/colorBackgroundGrey1"
                             android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Upload Dokumen C"
                             android:textColor="@color/colorBlackHeader"
-                            android:background="@color/colorBackgroundGrey1"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                         <!--Tittle Nama Dokumen C-->
                         <TextView
                             android:id="@+id/tf_nama_dokumen3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nama Dokumen C"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="10dp"
-                            android:paddingLeft="15dp"/>
+                            android:paddingBottom="8dp"
+                            android:text="Nama Dokumen C"
+                            android:textSize="16sp" />
                         <!--=Input Nama Dokumen C-->
                         <EditText
                             android:id="@+id/et_nama_dokumen3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Nama Dokumen"
-                            android:textSize="15sp"
                             android:inputType="text"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
                         <!--Title Keterangan Dokumen C-->
                         <TextView
                             android:id="@+id/tf_keterangan_dokumen3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Keterangan Dokumen C"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
                             android:paddingLeft="15dp"
-                            android:paddingTop="20dp"/>
+                            android:paddingTop="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="Keterangan Dokumen C"
+                            android:textSize="16sp" />
                         <!--Input Keterangan Dokumen C-->
                         <EditText
                             android:id="@+id/et_keterangan_dokumen3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Keterangan Dokumen"
-                            android:textSize="15sp"
                             android:inputType="textMultiLine"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/placholderBg"
                             android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"/>
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/placholderBg" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="8dp"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
 
                             <TextView
                                 android:id="@+id/tf_upload_dokumen3"
@@ -1946,21 +1969,21 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.4"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1.4">
 
                                 <!--Title Upload Dokumen C-->
                                 <com.makeramen.roundedimageview.RoundedImageView
                                     android:id="@+id/iv_upload_dokumen3"
                                     android:layout_width="70dp"
                                     android:layout_height="90dp"
-                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
                                     android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
                                     android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
                                     app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    android:layout_centerInParent="true"/>
+                                    app:riv_border_width="1dip"
+                                    app:riv_corner_radius="8dip" />
                                 <!--Foto Upload Dokumen C-->
                                 <ImageView
                                     android:id="@+id/btn_upload_dokumen3"
@@ -1980,17 +2003,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"></LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_upload_dokumen4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
                     android:layout_margin="12dp"
-                    app:cardElevation="3dp"
-                    app:cardBackgroundColor="@color/colorWhite">
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -2002,81 +2024,81 @@
                             android:id="@+id/tv_upload_dokumen4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Upload Dokumen D"
-                            android:textStyle="bold"
-                            android:padding="12dp"
-                            android:textSize="14sp"
+                            android:background="@color/colorBackgroundGrey1"
                             android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Upload Dokumen D"
                             android:textColor="@color/colorBlackHeader"
-                            android:background="@color/colorBackgroundGrey1"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                         <!--Tittle Nama Dokumen D-->
                         <TextView
                             android:id="@+id/tf_nama_dokumen4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nama Dokumen D"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="10dp"
-                            android:paddingLeft="15dp"/>
+                            android:paddingBottom="8dp"
+                            android:text="Nama Dokumen D"
+                            android:textSize="16sp" />
                         <!--=Input Nama Dokumen D-->
                         <EditText
                             android:id="@+id/et_nama_dokumen4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Nama Dokumen"
-                            android:textSize="15sp"
                             android:inputType="text"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
                         <!--Title Keterangan Dokumen D-->
                         <TextView
                             android:id="@+id/tf_keterangan_dokumen4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Keterangan Dokumen D"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
                             android:paddingLeft="15dp"
-                            android:paddingTop="20dp"/>
+                            android:paddingTop="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="Keterangan Dokumen D"
+                            android:textSize="16sp" />
                         <!--Input Keterangan Dokumen D-->
                         <EditText
                             android:id="@+id/et_keterangan_dokumen4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Keterangan Dokumen"
-                            android:textSize="15sp"
                             android:inputType="textMultiLine"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/placholderBg"
                             android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"/>
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/placholderBg" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="8dp"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
                             <!--Title Upload Dokumen D-->
                             <TextView
                                 android:id="@+id/tf_upload_dokumen4"
@@ -2093,20 +2115,20 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.4"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1.4">
 
                                 <com.makeramen.roundedimageview.RoundedImageView
                                     android:id="@+id/iv_upload_dokumen4"
                                     android:layout_width="70dp"
                                     android:layout_height="90dp"
-                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
                                     android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
                                     android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
                                     app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    android:layout_centerInParent="true"/>
+                                    app:riv_border_width="1dip"
+                                    app:riv_corner_radius="8dip" />
                                 <!--Foto Upload Dokumen D-->
                                 <ImageView
                                     android:id="@+id/btn_upload_dokumen4"
@@ -2126,17 +2148,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
-                </LinearLayout>
+                    android:layout_marginBottom="10dp"></LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cv_upload_dokumen5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp"
                     android:layout_margin="12dp"
-                    app:cardElevation="3dp"
-                    app:cardBackgroundColor="@color/colorWhite">
+                    app:cardBackgroundColor="@color/colorWhite"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="3dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -2148,81 +2169,81 @@
                             android:id="@+id/tv_upload_dokumen5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Upload Dokumen E"
-                            android:textStyle="bold"
-                            android:padding="12dp"
-                            android:textSize="14sp"
+                            android:background="@color/colorBackgroundGrey1"
                             android:gravity="center"
+                            android:padding="12dp"
+                            android:text="Upload Dokumen E"
                             android:textColor="@color/colorBlackHeader"
-                            android:background="@color/colorBackgroundGrey1"/>
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                         <!--Tittle Nama Dokumen E-->
                         <TextView
                             android:id="@+id/tf_nama_dokumen5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nama Dokumen E"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
+                            android:paddingLeft="15dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="8dp"
-                            android:paddingLeft="15dp"/>
+                            android:text="Nama Dokumen E"
+                            android:textSize="16sp" />
                         <!--=Input Nama Dokumen E-->
                         <EditText
                             android:id="@+id/et_nama_dokumen5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Nama Dokumen"
-                            android:textSize="15sp"
                             android:inputType="text"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
                         <!--Title Keterangan Dokumen E-->
                         <TextView
                             android:id="@+id/tf_keterangan_dokumen5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Keterangan Dokumen E"
                             android:fontFamily="@font/muli_b"
-                            android:textSize="16sp"
-                            android:paddingBottom="8dp"
                             android:paddingLeft="15dp"
-                            android:paddingTop="20dp"/>
+                            android:paddingTop="20dp"
+                            android:paddingBottom="8dp"
+                            android:text="Keterangan Dokumen E"
+                            android:textSize="16sp" />
                         <!--Input Keterangan Dokumen E-->
                         <EditText
                             android:id="@+id/et_keterangan_dokumen5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginBottom="8dp"
                             android:background="@drawable/shapegrey"
                             android:hint="Keterangan Dokumen"
-                            android:textSize="15sp"
                             android:inputType="textMultiLine"
-                            android:textColor="#000"
                             android:padding="8dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textColor="#000"
+                            android:textSize="15sp" />
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:background="@color/placholderBg"
                             android:layout_marginTop="4dp"
-                            android:layout_marginBottom="4dp"/>
+                            android:layout_marginBottom="4dp"
+                            android:background="@color/placholderBg" />
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="8dp"
                             android:layout_gravity="center"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
                             <!--Title Upload Dokumen E-->
                             <TextView
                                 android:id="@+id/tf_upload_dokumen5"
@@ -2239,20 +2260,20 @@
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.4"
-                                android:layout_gravity="center">
+                                android:layout_gravity="center"
+                                android:layout_weight="1.4">
 
                                 <com.makeramen.roundedimageview.RoundedImageView
                                     android:id="@+id/iv_upload_dokumen5"
                                     android:layout_width="70dp"
                                     android:layout_height="90dp"
-                                    android:scaleType="centerCrop"
+                                    android:layout_centerInParent="true"
                                     android:layout_gravity="center"
+                                    android:scaleType="centerCrop"
                                     android:src="@mipmap/ico_img_for_upload"
-                                    app:riv_border_width="1dip"
                                     app:riv_border_color="#f1efef"
-                                    app:riv_corner_radius="8dip"
-                                    android:layout_centerInParent="true"/>
+                                    app:riv_border_width="1dip"
+                                    app:riv_corner_radius="8dip" />
                                 <!--Foto Upload Dokumen E-->
                                 <ImageView
                                     android:id="@+id/btn_upload_dokumen5"
@@ -2274,19 +2295,20 @@
                     android:id="@+id/ll_tambahan_dokumen"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@color/colorWhite"
+                    android:layout_marginLeft="6dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="6dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorWhite">
+
                     <Button
                         android:id="@+id/btn_tambahan_dokumen"
+                        style="@style/Bordered.Button.Custom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="6"
-                        android:text="tambah dokumen"
                         android:padding="8dp"
-                        style="@style/Bordered.Button.Custom"/>
+                        android:text="tambah dokumen" />
                 </LinearLayout>
 
 
@@ -2295,20 +2317,21 @@
                     android:id="@+id/ll_btn_send"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginLeft="6dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="6dp"
-                    android:layout_marginLeft="6dp"
                     android:layout_marginBottom="10dp">
+
                     <Button
                         android:id="@+id/btn_send"
+                        style="@style/Bordered.Button.Custom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="6"
-                        android:text="Selanjutnya"
-                        android:textColor="@color/colorWhite"
                         android:background="@drawable/button_primary"
                         android:padding="8dp"
-                        style="@style/Bordered.Button.Custom"/>
+                        android:text="Selanjutnya"
+                        android:textColor="@color/colorWhite" />
                 </LinearLayout>
             </LinearLayout>
         </FrameLayout>

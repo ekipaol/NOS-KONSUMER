@@ -81,7 +81,8 @@ public class FragmentResumeCekTaspen extends Fragment implements Step, KeyValueL
 
     private void numberText() {
         binding.etHariTua.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHariTua));
-        binding.etManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etHariTua));
+        binding.etManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etManfaatPensiun));
+
     }
 
     @Override
