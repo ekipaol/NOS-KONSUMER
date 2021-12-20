@@ -59,7 +59,7 @@ public class TambahDataHutangActivity extends AppCompatActivity implements View.
         idAplikasi=getIntent().getLongExtra("idAplikasi",0);
 
         backgroundStatusBar();
-        AppUtil.toolbarRegular(this, "Tambah Kewajibah Lainnya");
+        AppUtil.toolbarRegular(this, "Tambah Kewajiban Lainnya");
 
         allOnClicks();
         disableEditTexts();
