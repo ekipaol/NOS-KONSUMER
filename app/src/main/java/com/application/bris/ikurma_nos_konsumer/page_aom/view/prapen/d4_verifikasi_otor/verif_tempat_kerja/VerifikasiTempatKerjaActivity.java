@@ -60,9 +60,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         binding = ActivityVerifikasiTempatKerjaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        apiClientAdapter=new ApiClientAdapter(this);
-        appPreferences=new AppPreferences(this);
-        idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        apiClientAdapter = new ApiClientAdapter(this);
+        appPreferences = new AppPreferences(this);
+        idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
         setContentView(view);
         onclickSelectDialog();
         setParameterDropdown();
@@ -122,7 +122,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     }
 
-    private void setDataFirstTime(){
+    private void setDataFirstTime() {
         binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansi());
         binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getIsLNGP());
         binding.etInputLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNoLNGP());
@@ -132,19 +132,28 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanGaji());
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanTunjangan());
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getTotalPendapatan());
-
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),binding.ivKtpNasabah,dataVerifikasiTempatKerja.getKTPNasabah().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getImg());
+        if (dataVerifikasiTempatKerja.getKTPNasabah() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        if (dataVerifikasiTempatKerja.getKTPPasangan() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+        if (dataVerifikasiTempatKerja.getSKPensiun() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        if (dataVerifikasiTempatKerja.getSKPengangkatan() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+        if (dataVerifikasiTempatKerja.getSKTerakhir() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+        if (dataVerifikasiTempatKerja.getIDCard() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+        if (dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+        if (dataVerifikasiTempatKerja.getFormAplikasi() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        if (dataVerifikasiTempatKerja.getAset() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
 
     }
-    private void setDataAfterUpdate(){
+
+    private void setDataAfterUpdate() {
 
         binding.etNamaInstansi2.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiTaspen());
         binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiSPAN());
@@ -162,36 +171,36 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanTunjangan());
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTotalPendapatan());
 
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),binding.ivKtpNasabah,dataVerifikasiTempatKerja.getKTPNasabah().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(),binding.ivUploadDokumen,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
     }
 
-    private void checkImgOrPdfThenSetData(String fileName, ImageView imageView,String base64String){
-        try{
-            if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+    private void checkImgOrPdfThenSetData(String fileName, ImageView imageView, String base64String) {
 
-                AppUtil.convertBase64ToFileWithOnClick(VerifikasiTempatKerjaActivity.this,base64String,imageView,fileName);
+        try {
+            if (fileName.substring(fileName.length() - 3, fileName.length()).equalsIgnoreCase("pdf")) {
+
+                AppUtil.convertBase64ToFileWithOnClick(VerifikasiTempatKerjaActivity.this, base64String, imageView, fileName);
+            } else {
+                AppUtil.convertBase64ToImage(base64String, imageView);
             }
-            else{
-                AppUtil.convertBase64ToImage(base64String,imageView);
-            }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
-    private void loadData(){
+    private void loadData() {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        ReqUidIdAplikasi req = new ReqUidIdAplikasi();
         req.setApplicationId(idAplikasi);
         req.setUID(Integer.toString(appPreferences.getUid()));
         //pantekan no aplikasi
@@ -209,18 +218,15 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                         Gson gson = new Gson();
                         Type type = new TypeToken<DataVerifikasiTempatKerja>() {
                         }.getType();
-                        dataVerifikasiTempatKerja =  gson.fromJson(listDataString, type);
-                        if(dataVerifikasiTempatKerja!=null&&dataVerifikasiTempatKerja.getTempatKerja()==null){
+                        dataVerifikasiTempatKerja = gson.fromJson(listDataString, type);
+                        if (dataVerifikasiTempatKerja != null && dataVerifikasiTempatKerja.getTempatKerja() == null) {
                             setDataFirstTime();
-                        }
-                        else{
+                        } else {
                             setDataAfterUpdate();
                         }
-                    }
-                    else if (response.body().getStatus().equalsIgnoreCase("01")) {
+                    } else if (response.body().getStatus().equalsIgnoreCase("01")) {
                         AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");
-                    }
-                    else{
+                    } else {
                         AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), response.body().getMessage());
 
                     }
@@ -395,7 +401,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     public void onSelect(String title, MGenericModel data) {
         if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())) {
             binding.etMenggunakanLngp.setText(data.getDESC());
-        } else if(title.equalsIgnoreCase(binding.tfKesimpulanPensesuaianVerifikasi.getLabelText())) {
+        } else if (title.equalsIgnoreCase(binding.tfKesimpulanPensesuaianVerifikasi.getLabelText())) {
             binding.etKesimpulanPensesuaianVerifikasi.setText(data.getDESC());
         }
         if (data.getDESC().equalsIgnoreCase("Ya")) {
