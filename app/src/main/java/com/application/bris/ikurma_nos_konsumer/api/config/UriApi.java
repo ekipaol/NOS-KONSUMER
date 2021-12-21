@@ -402,7 +402,7 @@ public class UriApi {
         public static final String inquiryJangkaWaktu = "NOS_PRAPEN_Services/rest/D4/InquiryJangkaWaktu";
         public static final String inquiryKesimpulanVerifikasi = "NOS_PRAPEN_Services/rest/D4/InquiryVerifikasi";
         public static final String inquiryTempatKerja = "NOS_PRAPEN_Services/rest/D4/InquiryTempatKerjaVerifikator";
-        public static final String lanjutPembiayaanKeOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutOtorVerifikator";
+        public static final String lanjutPembiayaanKeOtorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateLanjutVerifikator";
         public static final String kembalikanPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBackVerifikator";
         public static final String batalPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
         public static final String InqKalkulatorVerfikator = "NOS_PRAPEN_Services/rest/D4/InqKalkulatorVerfikator";

@@ -237,7 +237,9 @@
                         android:id="@+id/et_perkiraan_gaji"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text=" " />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Perkiraan Tunjangan-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -249,7 +251,7 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Kota Tempat Bekerja"
+                    app:labelText="Perkiraan Tunjangan"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -259,7 +261,9 @@
                         android:id="@+id/et_perkiraan_tunjangan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text=" "/>
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Total Pendapatan-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -281,7 +285,9 @@
                         android:id="@+id/et_total_pendapatan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="numberDecimal"
+                        app:prefix="Rp."
+                        android:text=" "/>
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Title Resume Validasi NOS-->
                 <LinearLayout

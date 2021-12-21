@@ -32,6 +32,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListen
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -76,6 +77,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         //disable all edittexts and button
         AppUtil.disableEditTexts(binding.getRoot());
         AppUtil.disableButtons(binding.getRoot());
+        binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
+        binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
+        binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
 
         loadData();
         AppUtil.toolbarRegular(this, "Verifikasi Tempat Kerja");

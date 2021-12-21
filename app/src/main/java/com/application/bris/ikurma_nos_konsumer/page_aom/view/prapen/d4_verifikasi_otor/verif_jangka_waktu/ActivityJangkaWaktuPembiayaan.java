@@ -16,8 +16,6 @@ import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityJangkaWaktuBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataJangkaWaktu;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiIdeb;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_ideb.VerifikasiIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -26,7 +24,6 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -101,6 +98,8 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
         binding.etUmurMaksimalNasabahRac.setText(getUmurTahunBulan(dataJangkaWaktu.getUmurMaksimalNasabahRAC()));
         binding.etUmurNasabahDukcapil.setText(getUmurTahunBulan(dataJangkaWaktu.getUmurNasabahDukCapil()));
         binding.etUmurNasabahTaspen.setText(getUmurTahunBulan(dataJangkaWaktu.getUmurNasabahTASPEN()));
+        binding.etJangkaWaktuPembiayaanMaksimalDifiturProduk.setText(getUmurTahunBulan(dataJangkaWaktu.getJangkaWaktuProduk()));
+        binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(getUmurTahunBulan(dataJangkaWaktu.getMaksimalJangkaWaktu()));
 
     }
 
