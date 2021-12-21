@@ -574,7 +574,35 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorDisableEdit"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="16dp"
+                            android:paddingBottom="5dp">
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/muli_b"
+                                android:text="Angsuran Bulanan Pensiun"
+                                android:textSize="14sp" />
+                            <!--Angsuran Bulanan-->
+                            <TextView
+                                android:id="@+id/tv_Angsuran_bulanan_pensiun"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/muli_b"
+                                android:text="Rp. 0"
+                                android:textColor="@color/colorBlackHeader"
+                                android:textSize="14sp"/>
+
+                        </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

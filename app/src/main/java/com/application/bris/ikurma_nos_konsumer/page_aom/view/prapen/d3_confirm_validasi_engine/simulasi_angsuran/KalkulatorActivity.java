@@ -183,6 +183,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 binding.tvTotalAttribusi.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getTotalAttributions())));
                             if (DPDataPembiayaan.getTotalCost() != null)
                                 binding.tvTotalBiaya.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getTotalCost())));
+                            if (DPDataPembiayaan.getMonthInstalmentPensiun() != null)
+                                binding.tvAngsuranBulananPensiun.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getMonthInstalmentPensiun())));
                         }
                         if (response.body().getData().get("JadwalAngsuran") != null) {
                             SSJadwalAngsuran = response.body().getData().get("JadwalAngsuran").toString();
@@ -363,6 +365,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
 
         Call<ParseResponseAgunan> call=null;
 
+
         if(statusId.equalsIgnoreCase("d.3")){
             call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
         }
@@ -453,6 +456,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 binding.tvTotalAttribusi.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getTotalAttributions())));
                             if (DPDataPembiayaan.getTotalCost() != null)
                                 binding.tvTotalBiaya.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getTotalCost())));
+                            if (DPDataPembiayaan.getMonthInstalmentPensiun() != null)
+                                binding.tvAngsuranBulananPensiun.setText("Rp. " + AppUtil.parseNumberWatcher(String.valueOf(DPDataPembiayaan.getMonthInstalmentPensiun())));
                         }
                         if (response.body().getData().get("JadwalAngsuran") != null) {
                             SSJadwalAngsuran = response.body().getData().get("JadwalAngsuran").toString();
