@@ -21,6 +21,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.Mparse
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseSimulasiInqCal;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityKalkulatorSimulasiAngsuranBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
@@ -37,6 +38,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -50,6 +52,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
     MparseResponseSimulasiBiayaBiaya DPSimulasiBiayaBiaya;
     MparseResponseDataPembiayaan DPDataPembiayaan;
     List<MparseResponseJadwalAngsuran> DPJadwalAngsuran;
+    Long idAplikasi;
     String hitung,statusId;
     Long id;
 
@@ -69,6 +72,10 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
 
         if(getIntent().hasExtra("statusId")){
             statusId=getIntent().getStringExtra("statusId");
+        }
+
+        if(getIntent().hasExtra("idAplikasi")){
+            idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
         }
 
         setParameterDropdown();
@@ -386,6 +393,19 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         finish();
                         CustomDialog.DialogSuccess(KalkulatorActivity.this, "Success!", "Update Data Kalkulator sukses", KalkulatorActivity.this);
+
+                        //update Flagging
+                        Realm realm=Realm.getDefaultInstance();
+                        FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                        if(!realm.isInTransaction()){
+                            realm.beginTransaction();
+                        }
+
+                        if(dataFlag!=null){
+                            dataFlag.setFlagD3Kalkulator(true);
+                            realm.insertOrUpdate(dataFlag);
+                        }
+                        realm.close();
 
                     } else {
                         AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), response.body().getMessage());

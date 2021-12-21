@@ -44,6 +44,18 @@ public class DataDetailAplikasi {
     @Expose
     private String TujuanPembiayaan;
 
+    @SerializedName("StatusReject")
+    @Expose
+    private String[] StatusReject;
+
+    public String[] getStatusReject() {
+        return StatusReject;
+    }
+
+    public void setStatusReject(String[] statusReject) {
+        StatusReject = statusReject;
+    }
+
     public String getNama() {
         return nama;
     }

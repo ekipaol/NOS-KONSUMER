@@ -75,7 +75,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     private SubmenuDetilAplikasiAdapter submenuDetilAplikasiAdapter;
     private GridLayoutManager layoutMenu;
     private int coloumMenu = 3;
-    public  String idAplikasi="";
+    public  String idAplikasi="0";
     private String status="";
     private String statusId="";
     private String nama="";
@@ -136,9 +136,10 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     public void initializeMenu(String namaMenu){
         binding.rvSubmenuHotprospek.setHasFixedSize(true);
-        dataHp = data;
+        dataHp = new hotprospek();
+        dataHp.setId_aplikasi(Integer.valueOf(idAplikasi));
         dataMenu = getListMenu(namaMenu);
-        submenuDetilAplikasiAdapter = new SubmenuDetilAplikasiAdapter(this, dataMenu, dataHp,this);
+        submenuDetilAplikasiAdapter = new SubmenuDetilAplikasiAdapter(this, dataMenu, Long.parseLong(idAplikasi),this);
         layoutMenu = new GridLayoutManager(this, coloumMenu);
         binding.rvSubmenuHotprospek.setLayoutManager(layoutMenu);
         binding.rvSubmenuHotprospek.setAdapter(submenuDetilAplikasiAdapter);
@@ -172,6 +173,22 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
 
         AppUtil.convertBase64ToImage(dataDetailAplikasi.getImg(),binding.ivPhoto);
+
+
+        //pantekan array
+//        String[] dataDummyReject={"Ada error di iman anda","ada kesalahan di wajah anda","ada udang dibalik batu"};
+//        dataDetailAplikasi.setStatusReject(dataDummyReject);
+
+
+        if(dataDetailAplikasi.getStatusReject().length>0){
+            binding.tvNotice.setText("");
+            binding.llNotice.setVisibility(View.VISIBLE);
+            for (int i = 0; i <dataDetailAplikasi.getStatusReject().length ; i++) {
+                binding.tvNotice.setText(binding.tvNotice.getText()+dataDetailAplikasi.getStatusReject()[i]+"\n");
+            }
+            binding.tvNotice.setText(binding.tvNotice.getText().toString().trim());
+        }
+
     }
 
     private void setDataEmpty(){
@@ -666,6 +683,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     protected void onResume() {
         super.onResume();
 //        loadDetailAplikasi();
+        initializeMenu(status);
         binding.loading.setVisibility(View.GONE);
     }
 

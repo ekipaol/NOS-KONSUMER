@@ -34,6 +34,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.isiReqD
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
@@ -56,6 +57,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -89,6 +91,9 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     private final int UPLOAD_KORAN = 1, UPLOAD_SLIPGAJI1 = 2, UPLOAD_SLIPGAJI2 = 3, UPLOAD_SLIPGAJI3 = 4, UPLOAD_SLIPTUNJANGAN1 = 5, UPLOAD_SLIPTUNJANGAN2 = 6, UPLOAD_SLIPTUNJANGAN3 = 7;
     private String val_koran, val_slipgaji1, val_slipgaji2, val_slipgaji3, val_sliptunjangan1, val_sliptunjangan2, val_sliptunjangan3;
 
+
+    private Long idAplikasi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +101,10 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         View view = binding.getRoot();
+
+        if(getIntent().hasExtra("idAplikasi")){
+            idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        }
         numberText();
         endIconClick();
         onclickSelectDialog();
@@ -592,6 +601,19 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             CustomDialog.DialogSuccess(ActivityDokumenPendapatan.this, "Success!", "Update Data Pendapatan sukses", ActivityDokumenPendapatan.this);
+
+                            //update Flagging
+                            Realm realm=Realm.getDefaultInstance();
+                            FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                            if(!realm.isInTransaction()){
+                                realm.beginTransaction();
+                            }
+
+                            if(dataFlag!=null){
+                                dataFlag.setFlagD3Pendapatan(true);
+                                realm.insertOrUpdate(dataFlag);
+                            }
+                            realm.close();
                         } else {
                             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
                         }

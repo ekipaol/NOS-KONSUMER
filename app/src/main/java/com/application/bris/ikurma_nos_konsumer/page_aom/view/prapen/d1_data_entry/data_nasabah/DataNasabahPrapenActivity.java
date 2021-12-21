@@ -21,6 +21,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateD
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataNasabahPrapenBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
@@ -299,11 +300,6 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
                     if (response.isSuccessful()){
                         if(response.body().getStatus().equalsIgnoreCase("00")){
 
-                            //kalau realm di delete bisa menyebabkan error di fragment pekerjaan, di comment dulu
-//                            realm.beginTransaction();
-//                            data.deleteFromRealm();
-//                            realm.commitTransaction();
-//                            CustomDialog.DialogSuccess(DataNasabahPrapenActivity.this, "Success!", "Update Data Nasabah sukses", DataNasabahPrapenActivity.this);
                             sendDataInstansiDapen();
                         }
                         else{
@@ -353,6 +349,16 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
 //                            data.deleteFromRealm();
 //                            realm.commitTransaction();
                             CustomDialog.DialogSuccess(DataNasabahPrapenActivity.this, "Success!", "Update Data Nasabah sukses", DataNasabahPrapenActivity.this);
+
+                            //update Flagging
+                            FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                            if(!realm.isInTransaction()){
+                                realm.beginTransaction();
+                            }
+                            dataFlag.setFlagD1DataNasabah(true);
+                            realm.insertOrUpdate(dataFlag);
+                            realm.close();
+
                         }
                         else{
                             AppUtil.notiferror(DataNasabahPrapenActivity.this, findViewById(android.R.id.content), response.body().getMessage());

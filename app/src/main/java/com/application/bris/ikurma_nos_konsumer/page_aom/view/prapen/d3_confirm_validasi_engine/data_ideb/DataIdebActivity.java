@@ -21,6 +21,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanI
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoDataIdebActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
@@ -37,6 +38,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -240,6 +242,19 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         CustomDialog.DialogSuccess(DataIdebActivity.this, "Success!", "Simpan Data IDEB sukses", DataIdebActivity.this);
+
+                        //update Flagging
+                        Realm realm=Realm.getDefaultInstance();
+                        FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                        if(!realm.isInTransaction()){
+                            realm.beginTransaction();
+                        }
+
+                        if(dataFlag!=null){
+                            dataFlag.setFlagD3Ideb(true);
+                            realm.insertOrUpdate(dataFlag);
+                        }
+                        realm.close();
 
                     }
                     else{

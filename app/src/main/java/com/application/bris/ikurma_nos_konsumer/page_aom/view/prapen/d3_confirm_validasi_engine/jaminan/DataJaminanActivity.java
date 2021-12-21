@@ -34,6 +34,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJ
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataJaminanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
@@ -50,6 +51,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,6 +79,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
+
+
 
 
     @Override
@@ -403,6 +407,19 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             CustomDialog.DialogSuccess(DataJaminanActivity.this, "Success!", "Update Data Jaminan sukses", DataJaminanActivity.this);
+
+                            //update Flagging
+                            Realm realm=Realm.getDefaultInstance();
+                            FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.valueOf(idAplikasi)).findFirst();
+                            if(!realm.isInTransaction()){
+                                realm.beginTransaction();
+                            }
+
+                            if(dataFlag!=null){
+                                dataFlag.setFlagD3Jaminan(true);
+                                realm.insertOrUpdate(dataFlag);
+                            }
+                            realm.close();
                         } else {
                             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                         }

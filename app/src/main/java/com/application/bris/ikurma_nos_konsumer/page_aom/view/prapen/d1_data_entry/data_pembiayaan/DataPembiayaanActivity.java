@@ -22,6 +22,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPem
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDataPembiayaanBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
@@ -42,6 +43,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +54,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
     private PrapenAoActivityDataPembiayaanBinding binding;
     private List<MGenericModel> dataDropdownMemilikiAset =new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
-    private  String idAplikasi="";
+    private  String idAplikasi="0";
     private DataPembiayaan dataPembiayaan;
     private AppPreferences appPreferences;
 
@@ -602,6 +604,20 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         CustomDialog.DialogSuccess(DataPembiayaanActivity.this, "Success!", "Data Berhasil Disimpan", DataPembiayaanActivity.this);
 
                         idAplikasi=response.body().getData().get("ApplicationId").toString();
+
+                        //update Flagging
+                        Realm realm=Realm.getDefaultInstance();
+//                        FlagAplikasiPojo dataFlagOld= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.parseLong(idAplikasi)).findFirst();
+
+                        FlagAplikasiPojo dataFlagNew=new FlagAplikasiPojo();
+
+                        if(!realm.isInTransaction()){
+                            realm.beginTransaction();
+                        }
+                        dataFlagNew.setIdAplikasi(Long.parseLong(idAplikasi));
+                        dataFlagNew.setFlagD1DataPembiayaan(true);
+                        realm.insertOrUpdate(dataFlagNew);
+                        realm.close();
                     }
                 }
             }

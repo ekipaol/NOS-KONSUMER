@@ -19,6 +19,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDedupeBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDedupe;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
@@ -33,6 +34,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -223,6 +225,16 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         CustomDialog.DialogSuccess(DataDedupeActivity.this, "Success!", "Data Berhasil Disimpan", DataDedupeActivity.this);
+
+                        //update Flagging
+                        Realm realm=Realm.getDefaultInstance();
+                        FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.parseLong(idAplikasi)).findFirst();
+                        if(!realm.isInTransaction()){
+                            realm.beginTransaction();
+                        }
+                        dataFlag.setFlagD1DataDedupe(true);
+                        realm.insertOrUpdate(dataFlag);
+                        realm.close();
 
                     }
                     else{

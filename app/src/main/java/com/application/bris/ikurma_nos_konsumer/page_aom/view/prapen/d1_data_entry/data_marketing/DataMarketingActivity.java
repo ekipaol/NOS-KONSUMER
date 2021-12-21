@@ -22,6 +22,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidI
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoMarketingActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
@@ -45,6 +46,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -424,6 +426,16 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                         if(response.body().getStatus().equalsIgnoreCase("00")){
 
                             CustomDialog.DialogSuccess(DataMarketingActivity.this, "Success!", "Update Data Marketing sukses", DataMarketingActivity.this);
+
+                            //update Flagging
+                            Realm realm=Realm.getDefaultInstance();
+                            FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                            if(!realm.isInTransaction()){
+                                realm.beginTransaction();
+                                dataFlag.setFlagD1DataDataMarketing(true);
+                                realm.insertOrUpdate(dataFlag);
+                                realm.close();
+                            }
                         }
                         else{
                             AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), response.body().getMessage());
