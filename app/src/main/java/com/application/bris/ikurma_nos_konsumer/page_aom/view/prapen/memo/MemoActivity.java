@@ -452,7 +452,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
 
                             dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             dialog.setTitleText("Berhasil");
-                            dialog.setContentText("Aplikasi Berhasil Dikembalikan ke Tahap Sebelumnya?\n\n");
+                            dialog.setContentText("Aplikasi Berhasil Dikembalikan ke Tahap Sebelumnya\n\n");
                             dialog.setConfirmText("OK");
                             dialog.showCancelButton(false);
                             dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

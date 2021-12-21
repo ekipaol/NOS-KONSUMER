@@ -160,7 +160,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     private void setData(){
         //initialize status pertama
-        binding.btnUbahFlow.setText("Flow : "+status);
+        binding.btnUbahFlow.setText("Flow : "+dataDetailAplikasi.getStatusAplikasi());
 
         binding.tvStatus.setText(dataDetailAplikasi.getStatusAplikasi());
         binding.tvNama.setText(dataDetailAplikasi.getNama());
