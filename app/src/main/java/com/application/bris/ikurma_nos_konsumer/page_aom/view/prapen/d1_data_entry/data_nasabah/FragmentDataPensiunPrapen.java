@@ -275,12 +275,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         validateField(binding.etPerkiraanTunjangan,binding.tfPerkiraanTunjangan);
         validateField(binding.etNasabahBsi,binding.tfNasabahBsi);
         validateField(binding.etTreatmentRekeningPendapatan,binding.tfTreatmentRekeningPendapatan);
-        validateField(binding.etDapatBergerak,binding.tfDapatBergerak);
-        validateField(binding.etDalamPengawasan,binding.tfDalamPengawasan);
-        validateField(binding.etMemilikiRiwayat,binding.tfMemilikiRiwayat);
-        validateField(binding.etTinggalDenganKeluargaLain,binding.tfTinggalDenganKeluargaLain);
-        validateField(binding.etUsahaSampingan,binding.tfUsahaSampingan);
-        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
+//        validateField(binding.etDapatBergerak,binding.tfDapatBergerak);
+//        validateField(binding.etDalamPengawasan,binding.tfDalamPengawasan);
+//        validateField(binding.etMemilikiRiwayat,binding.tfMemilikiRiwayat);
+//        validateField(binding.etTinggalDenganKeluargaLain,binding.tfTinggalDenganKeluargaLain);
+//        validateField(binding.etUsahaSampingan,binding.tfUsahaSampingan);
+//        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
         validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
 
         if(!adaFieldBelumDiisi){
