@@ -225,6 +225,7 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         binding.etKodeAo.setText(dataMarketing.getKodeAO());
         binding.etKodeAoReferal.setText(dataMarketing.getKodeAO2());
         binding.etNamaAo.setText(dataMarketing.getNamaAO());
+        binding.etNamaAoReferal.setText(dataMarketing.getNamaAOReferal());
         binding.etKodeCabangPembukuan.setText(dataMarketing.getKodeCabangPembukuan());
         binding.etKodeCabangReferal.setText(dataMarketing.getKodeCabangReferral());
 
