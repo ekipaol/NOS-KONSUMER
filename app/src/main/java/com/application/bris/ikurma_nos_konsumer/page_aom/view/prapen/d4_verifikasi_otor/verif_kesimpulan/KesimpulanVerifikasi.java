@@ -24,6 +24,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,9 +46,9 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         binding = ActivityKesimpulanVerifikasiBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        appPreferences=new AppPreferences(this);
-        apiClientAdapter=new ApiClientAdapter(this);
-        idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        appPreferences = new AppPreferences(this);
+        apiClientAdapter = new ApiClientAdapter(this);
+        idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
         setContentView(view);
         disableEditText();
         NumberText();
@@ -70,10 +71,17 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         binding.tfMaksimalAngsuranBulanan.setFocusable(false);
     }
 
-    private void setData(){
+    private void setData() {
 //        binding.etHasilRekomendasiScoring.setText(dataVerifikasiKesimpulan.get);
         binding.etMaksimalAngsuranBulanan.setText(dataVerifikasiKesimpulan.getMaksimalAngsuranBulanan());
-        binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu());
+        if (Integer.parseInt(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) >= 12) {
+            Double kk = Double.parseDouble(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) / 12;
+            BigDecimal tahunK = new BigDecimal(kk).setScale(0, RoundingMode.HALF_DOWN);
+            BigDecimal bulan = new BigDecimal(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()).remainder(new BigDecimal(12));
+            binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(tahunK.toString() + " Tahun" + bulan.toString() + " Bulan");
+        } else {
+            binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu() + " Bulan");
+        }
         binding.etPensesuaianFiturPembiayaan.setText(dataVerifikasiKesimpulan.getSesuaiFiturPembiayaan());
         binding.etPensesuaianRac.setText(dataVerifikasiKesimpulan.getSesuaiRAC());
         binding.etHasilRekomendasiScoring.setText(dataVerifikasiKesimpulan.getRekomendasiScoring());
@@ -81,9 +89,9 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
 
     }
 
-    private void loadData(){
+    private void loadData() {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        ReqUidIdAplikasi req = new ReqUidIdAplikasi();
         req.setApplicationId(idAplikasi);
         //pantekan no aplikasi
 //        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
@@ -100,18 +108,16 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
                         Gson gson = new Gson();
                         Type type = new TypeToken<DataVerifikasiKesimpulan>() {
                         }.getType();
-                        dataVerifikasiKesimpulan =  gson.fromJson(listDataString, type);
+                        dataVerifikasiKesimpulan = gson.fromJson(listDataString, type);
 
-                        if(dataVerifikasiKesimpulan!=null){
+                        if (dataVerifikasiKesimpulan != null) {
                             setData();
                         }
 
 
-                    }
-                    else if (response.body().getStatus().equalsIgnoreCase("01")) {
+                    } else if (response.body().getStatus().equalsIgnoreCase("01")) {
                         AppUtil.notiferror(KesimpulanVerifikasi.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");
-                    }
-                    else{
+                    } else {
                         AppUtil.notiferror(KesimpulanVerifikasi.this, findViewById(android.R.id.content), response.body().getMessage());
 
                     }
@@ -127,7 +133,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         });
     }
 
-    private void NumberText(){
+    private void NumberText() {
         binding.etMaksimalAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaksimalAngsuranBulanan));
     }
 
@@ -141,7 +147,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private void allOnClicks(){
+    private void allOnClicks() {
         binding.btnClose.setOnClickListener(this);
     }
 
@@ -153,7 +159,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
     }
 
 //        public void sendMessage(View view) {
-        // Do something in response to button
+    // Do something in response to button
 //        Intent intent = new Intent(this, KesimpulanVerifikasi.class);
 //        EditText editText = (EditText) findViewById(R.id.et_pensesuaian_rac);
 //        String message = editText.getText().toString();
