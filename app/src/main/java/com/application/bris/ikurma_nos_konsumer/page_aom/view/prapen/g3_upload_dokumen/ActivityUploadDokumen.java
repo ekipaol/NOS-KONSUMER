@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -132,6 +133,13 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         showUploaded();
         initdata();
         AppUtil.toolbarRegular(this, "Upload Dokumen");
+
+        binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog.DialogBackpress(ActivityUploadDokumen.this);
+            }
+        });
     }
 
     private void showUploaded() {
@@ -1393,7 +1401,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             case R.id.btn_send:
                 Validate();
                 sendData();
-                break;
+            default:break;
         }
     }
 
@@ -1447,7 +1455,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
                         if (response.body().getStatus().equalsIgnoreCase("00")) {
                             CustomDialog.DialogSuccess(ActivityUploadDokumen.this, "Success!", "Update Data Sukses", ActivityUploadDokumen.this);
-                            finish();
+
                         } else {
                             AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
@@ -1466,6 +1474,18 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
+    }
+
+    private void backgroundStatusBar() {
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        CustomDialog.DialogBackpress(ActivityUploadDokumen.this);
     }
 
     @Override
@@ -2609,10 +2629,10 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
 
     @Override
-    public void success(boolean val) {
-
+    public void success(boolean val)  {
+        finish();
     }
-
+    
     @Override
     public void confirm(boolean val) {
 
