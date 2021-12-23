@@ -260,7 +260,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     }
 
     private VerificationError validateForm(){
-
+        adaFieldBelumDiisi=false;
         validateField(binding.etLembagaPengelolaPensiun,binding.tfLembagaPengelolaPensiun);
         validateField(binding.etNomorPensiunan,binding.tfNomorPensiunan);
         validateField(binding.etNamaInstansi,binding.tfNamaInstansi);
@@ -777,7 +777,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
                         if(dataCIfRekening.getCIF()!=null&&!dataCIfRekening.getCIF().isEmpty()){
                             binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
-                            binding.tvHasilCekPayroll.setText("Rekening Ditemukan");
+                            binding.tvHasilCekPayroll.setText("Rekening Ditemukan atas nama : "+dataCIfRekening.getNama());
                             binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.main_green_color));
                             val_cif=dataCIfRekening.getCIF();
 
@@ -787,8 +787,6 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                             binding.tvHasilCekPayroll.setText("Rekening Tidak Ditemukan");
                             binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
                         }
-
-
                     }
                     else{
                         AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());

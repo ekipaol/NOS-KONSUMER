@@ -162,17 +162,17 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         binding.etNamaKtp.setText(dataNasabah.getNamaLengkapSesuaiKTP());
         binding.etJenisKelamin.setText(dataNasabah.getJenisKelamin());
         binding.etTempatLahir.setText(dataNasabah.getTempatLahir());
-        binding.etTanggallahir.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalLahir(), "yyyy-mm-dd", "dd-MM-yyyy"));
+        binding.etTanggallahir.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalLahir(), "yyyy-MM-dd", "dd-MM-yyyy"));
         binding.etNamaIbuKandung.setText(dataNasabah.getNamaIbuKandung());
         binding.etNomorHp.setText(dataNasabah.getNomorHandphone());
         binding.etTelponRumah.setText(dataNasabah.getNoTelpRumah());
         binding.etEmail.setText(dataNasabah.getEmail());
         binding.etAgama.setText(dataNasabah.getAgama());
-        binding.etTanggalTerbitKtp.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalPenerbitanKTP(), "yyyy-mm-dd", "dd-MM-yyyy"));
+        binding.etTanggalTerbitKtp.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalPenerbitanKTP(), "yyyy-MM-dd", "dd-MM-yyyy"));
         binding.etStatusNikahKtp.setText(dataNasabah.getStatusPernikahanSesuaiKTP());
         binding.etStatusNikahSaatIni.setText(dataNasabah.getStatusPernikahan());
         binding.etNomorKtpPasangan.setText(dataNasabah.getNoKTPPasangan());
-        binding.etTanggalLahirPasangan.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalLahirPasangan(), "yyyy-mm-dd", "dd-MM-yyyy"));
+        binding.etTanggalLahirPasangan.setText(AppUtil.parseTanggalGeneral(dataNasabah.getTanggalLahirPasangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
         binding.etNamaLengkapPasangan.setText(dataNasabah.getNamaLengkapPasangan());
 
 
@@ -241,7 +241,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
     private void dpCalLahir(){
         calLahir = Calendar.getInstance();
-        calLahir.add(Calendar.YEAR, -10);
+        calLahir.add(Calendar.YEAR, -17);
         DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -322,18 +322,18 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         copyRealm.setNamaLengkapSesuaiKTP(binding.etNamaKtp.getText().toString());
         copyRealm.setJenisKelamin(binding.etJenisKelamin.getText().toString());
         copyRealm.setTempatLahir(binding.etTempatLahir.getText().toString());
-        copyRealm.setTanggalLahir(AppUtil.parseTanggalGeneral(binding.etTanggallahir.getText().toString(),"dd-mm-yyyy","yyyy-mm-dd"));
+        copyRealm.setTanggalLahir(AppUtil.parseTanggalGeneral(binding.etTanggallahir.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
         copyRealm.setNamaIbuKandung(binding.etNamaIbuKandung.getText().toString());
         copyRealm.setNomorHandphone(binding.etNomorHp.getText().toString());
         copyRealm.setNoTelpRumah(binding.etTelponRumah.getText().toString());
         copyRealm.setEmail(binding.etEmail.getText().toString());
         copyRealm.setAgama(binding.etAgama.getText().toString());
-        copyRealm.setTanggalPenerbitanKTP(AppUtil.parseTanggalGeneral(binding.etTanggalTerbitKtp.getText().toString(),"dd-mm-yyyy","yyyy-mm-dd"));
+        copyRealm.setTanggalPenerbitanKTP(AppUtil.parseTanggalGeneral(binding.etTanggalTerbitKtp.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
         copyRealm.setStatusPernikahan(binding.etStatusNikahSaatIni.getText().toString());
         copyRealm.setStatusPernikahanSesuaiKTP(binding.etStatusNikahKtp.getText().toString());
         copyRealm.setNamaLengkapPasangan(binding.etNamaLengkapPasangan.getText().toString());
         copyRealm.setNoKTPPasangan(binding.etNomorKtpPasangan.getText().toString());
-        copyRealm.setTanggalLahirPasangan(AppUtil.parseTanggalGeneral(binding.etTanggalLahirPasangan.getText().toString(),"dd-mm-yyyy","yyyy-mm-dd"));
+        copyRealm.setTanggalLahirPasangan(AppUtil.parseTanggalGeneral(binding.etTanggalLahirPasangan.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
 
 //        ambil gambar
         binding.imgFotoKtp.invalidate();

@@ -444,6 +444,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         req.setUid(String.valueOf(appPreferences.getUid()));
         req.setSimulasiBiayaBiaya(sbiaya);
         req.setSimulasiAngsuranCalc(scal);
+        req.setProcessFlow(statusId);
         req.setDataPembiayaan(new MparseResponseDataPembiayaan());
         Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().SendHitungBiayadanAngsuran(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
@@ -486,7 +487,11 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                             DPJadwalAngsuran = gson.fromJson(SSJadwalAngsuran, type);
                         }
 
-                    } else {
+                    }
+                    else  if (response.body().getStatus().equalsIgnoreCase("00") && response.body().getData() == null) {
+                        AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                    else {
                         AppUtil.notiferror(KalkulatorActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 }

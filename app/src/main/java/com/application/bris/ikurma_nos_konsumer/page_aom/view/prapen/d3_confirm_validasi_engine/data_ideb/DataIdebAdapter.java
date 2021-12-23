@@ -50,6 +50,8 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
         holder.tvPerkiraanAngsuranBulanan.setText((data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+        holder.tvStatus.setText(data.get(position).getStatusIdeb());
+        holder.tvJenisKredit.setText(data.get(position).getJenisKredit());
 
 
 
@@ -95,7 +97,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting;
+        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting,tvJenisKredit,tvStatus;
         Button btnUbah;
         ImageView ivFoto;
 
@@ -108,6 +110,8 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
             tvKualitasPembiayaan=binding.tvKualitasPembiayaan;
             tvPerkiraanAngsuranBulanan=binding.tvPerkiraanAngsuranBulanan;
             tvTreatmentPembiayaanEksisting=binding.tvTreatmentPembiayaanEksisting;
+            tvStatus=binding.tvStatusIdeb;
+            tvJenisKredit=binding.tvJenisKredit;
             ivFoto=binding.ivDokumen;
         }
 

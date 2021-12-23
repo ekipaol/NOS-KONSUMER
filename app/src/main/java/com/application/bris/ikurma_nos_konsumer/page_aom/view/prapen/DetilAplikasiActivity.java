@@ -20,6 +20,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidI
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.config.menu.Menu;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDetilAplikasiBinding;
 import com.application.bris.ikurma_nos_konsumer.listener.menu.MenuClickListener;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
@@ -65,6 +66,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -159,6 +161,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     }
 
     private void setData(){
+
+        statusId=dataDetailAplikasi.getStatusAplikasiId();
         //initialize status pertama
         binding.btnUbahFlow.setText("Flow : "+dataDetailAplikasi.getStatusAplikasi());
 
@@ -441,10 +445,44 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
         //MEMO
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_memo))){
-            Intent it = new Intent(this, MemoActivity.class);
-            it.putExtra("idAplikasi",idAplikasi);
-            it.putExtra("statusId",statusId);
-            startActivity(it);
+            if(statusId.equalsIgnoreCase("d.3")){
+                Realm realm=Realm.getDefaultInstance();
+                FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.parseLong(idAplikasi)).findFirst();
+                AppUtil.logSecure("warnawarni","masuk ke 1");
+                if(dataFlag!=null){
+                    AppUtil.logSecure("warnawarni","masuk ke 1.1");
+                    if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
+                        Intent it = new Intent(this, MemoActivity.class);
+                        it.putExtra("idAplikasi",idAplikasi);
+                        it.putExtra("statusId",statusId);
+                        startActivity(it);
+                        AppUtil.logSecure("warnawarni","masuk ke 1.2");
+
+                    }
+                    else{
+                        AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Harap isi seluruh data terlebih dahulu");
+                        binding.loading.setVisibility(View.GONE);
+                        AppUtil.logSecure("warnawarni","masuk ke 2");
+                    }
+                }
+                else{
+                    AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Data Flag Tidak Ditemukan - Bypassed");
+                    Intent it = new Intent(this, MemoActivity.class);
+                    it.putExtra("idAplikasi",idAplikasi);
+                    it.putExtra("statusId",statusId);
+                    startActivity(it);
+                    AppUtil.logSecure("warnawarni","masuk ke 3");
+                }
+            }
+            else{
+                Intent it = new Intent(this, MemoActivity.class);
+                it.putExtra("idAplikasi",idAplikasi);
+                it.putExtra("statusId",statusId);
+                startActivity(it);
+                AppUtil.logSecure("warnawarni","masuk ke 4");
+            }
+
+
         }
 //        binding.loading.progressbarLoading.setVisibility(View.GONE);
     }
@@ -461,6 +499,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 //        //d3
          if (status.equalsIgnoreCase(getString(R.string.d3_confirm_validasi_engine))){
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
         }
 
         //d4

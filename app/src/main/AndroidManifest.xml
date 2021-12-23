@@ -43,7 +43,9 @@
         <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity" />
         <activity android:name=".page_aom.view.prapen.DetilAplikasiActivity"></activity>
         <activity android:name=".page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity" />
-        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity" />
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".page_aom.view.flpp.InputUlangFlppActivity" />
         <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.kpr.KonsumerKprFlppKelengkapanDokumenActivity" />
         <activity android:name=".page_aom.view.flpp.DetailKonfirmasiFlppActivity" />

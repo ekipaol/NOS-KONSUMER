@@ -27,6 +27,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateI
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
+import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityMemoBinding;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
@@ -49,6 +50,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -553,24 +555,35 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         binding.bottomSheet.btSetuju.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
-                    AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
-                }
-                else{
-                    SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
-                    dialog.setTitleText("Konfirmasi");
-                    dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
-                    dialog.setConfirmText("Ya");
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.setCancelText("Batal");
-                    dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            updateMemo(dialog,"setuju");
+                Realm realm=Realm.getDefaultInstance();
+                FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+
+                if(dataFlag!=null){
+                    if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
+                        if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                            AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
                         }
-                    });
-                    dialog.show();
+                        else{
+                            SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                            dialog.setTitleText("Konfirmasi");
+                            dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
+                            dialog.setConfirmText("Ya");
+                            dialog.setCanceledOnTouchOutside(false);
+                            dialog.setCancelText("Batal");
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    updateMemo(dialog,"setuju");
+                                }
+                            });
+                            dialog.show();
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi seluruh data terlebih dahulu");
+                    }
                 }
+
 
             }
         });

@@ -22,8 +22,29 @@ public class DataIdeb implements Serializable {
     private String nama;
     @SerializedName("Fasilitas_Aktif_Id")
     private Long idDokumen;
+    @SerializedName("Jenis_Kredit")
+    private String jenisKredit;
+    @SerializedName("StatusIDEB")
+    private String statusIdeb;
     @SerializedName("Dokumen")
     private UploadImage dokumen;
+
+
+    public String getJenisKredit() {
+        return jenisKredit;
+    }
+
+    public void setJenisKredit(String jenisKredit) {
+        this.jenisKredit = jenisKredit;
+    }
+
+    public String getStatusIdeb() {
+        return statusIdeb;
+    }
+
+    public void setStatusIdeb(String statusIdeb) {
+        this.statusIdeb = statusIdeb;
+    }
 
     public String getNama() {
         return nama;

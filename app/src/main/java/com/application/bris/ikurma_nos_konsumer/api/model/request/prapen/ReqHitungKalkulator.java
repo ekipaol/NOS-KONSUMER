@@ -29,6 +29,17 @@ public class ReqHitungKalkulator {
     @SerializedName("JadwalAngsuran")
     @Expose
     private List<MparseResponseJadwalAngsuran> JadwalAngsuran;
+    @SerializedName("ProcessFlow")
+    @Expose
+    private String ProcessFlow;
+
+    public String getProcessFlow() {
+        return ProcessFlow;
+    }
+
+    public void setProcessFlow(String processFlow) {
+        ProcessFlow = processFlow;
+    }
 
     public Integer getApplicationId() {
         return applicationId;

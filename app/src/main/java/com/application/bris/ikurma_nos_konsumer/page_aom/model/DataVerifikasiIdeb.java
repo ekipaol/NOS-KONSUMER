@@ -32,10 +32,29 @@ public class DataVerifikasiIdeb {
     @SerializedName("AngsuranHasilVerifikasi")
     @Expose
     private String angsuranVerifikasi;
+    @SerializedName("Jenis_Kredit")
+    private String jenisKredit;
+    @SerializedName("StatusIDEB")
+    private String statusIdeb;
     @SerializedName("Dokumen")
     @Expose
     private UploadImage dokumen;
 
+    public String getJenisKredit() {
+        return jenisKredit;
+    }
+
+    public void setJenisKredit(String jenisKredit) {
+        this.jenisKredit = jenisKredit;
+    }
+
+    public String getStatusIdeb() {
+        return statusIdeb;
+    }
+
+    public void setStatusIdeb(String statusIdeb) {
+        this.statusIdeb = statusIdeb;
+    }
 
     public String getAngsuranVerifikasi() {
         return angsuranVerifikasi;

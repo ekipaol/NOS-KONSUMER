@@ -90,6 +90,32 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Jenis Kredit"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_jenis_kredit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{jenis kredit}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Perkiraan Angsuran Bulanan"
                 android:layout_weight="1"
                 android:textSize="12sp"/>
@@ -99,6 +125,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="{Angsuran_bulanan}"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_weight="1"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_status_ideb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Status}"
                 android:textSize="13sp"
                 android:textColor="@color/colorBlackHeader"
                 android:layout_weight="1"

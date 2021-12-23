@@ -57,6 +57,8 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         holder.tvBakiDebet.setText((data.get(position).getBakiDebetTerakhir()));
         holder.tvPerkiraanAngsuranBulanan.setText((data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
+        holder.tvStatus.setText(data.get(position).getStatusIdeb());
+        holder.tvJenisKredit.setText(data.get(position).getJenisKredit());
         holder.etAngsuranBulanan.setText(data.get(position).getAngsuranVerifikasi());
 
         holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
@@ -138,7 +140,7 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
 
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting;
+        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting,tvStatus,tvJenisKredit;
         TextFieldBoxes tfVerifikasiFasilitas,tfHasilVerifikasi;
         EditText etHasilVerifikasiFasilitas,etHasilVerifikasi,etAngsuranBulanan;
 
@@ -156,6 +158,8 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
             tfHasilVerifikasi=binding.tfHasilVerifikasi;
             etHasilVerifikasi=binding.etHasilVerifikasi;
             etAngsuranBulanan=binding.etAngsuranVerifikator;
+            tvStatus=binding.tvStatus;
+            tvJenisKredit=binding.tvJenisKredit;
             ivDokumen=binding.ivDokumen;
 
 

@@ -356,4 +356,10 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
     public void confirm(boolean val) {
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
 }

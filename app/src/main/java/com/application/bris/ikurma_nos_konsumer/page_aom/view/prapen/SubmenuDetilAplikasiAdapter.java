@@ -70,10 +70,10 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
             validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d1_data_dedupe,dataFlag.getFlagD1DataPembiayaan(),holder);
             validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d1_data_nasabah,dataFlag.getFlagD1DataDedupe(),holder);
             validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d1_data_marketing,dataFlag.getFlagD1DataNasabah(),holder);
-            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_jaminan,dataFlag.getFlagD3Kalkulator(),holder);
-            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_data_pendapatan,dataFlag.getFlagD3Jaminan(),holder);
-            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_ideb,dataFlag.getFlagD3Pendapatan(),holder);
-            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_data_hutang,dataFlag.getFlagD3Ideb(),holder);
+//            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_jaminan,dataFlag.getFlagD3Kalkulator(),holder);
+//            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_data_pendapatan,dataFlag.getFlagD3Jaminan(),holder);
+//            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_ideb,dataFlag.getFlagD3Pendapatan(),holder);
+//            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_data_hutang,dataFlag.getFlagD3Ideb(),holder);
 //            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_memo,dataFlag.getFlagD3Kewajiban(),holder);
         }
         else{
@@ -132,14 +132,17 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
             if(title.equalsIgnoreCase(context.getString(idString))&&!flag){
                 setGreyorRegularIcon(holder.iv_iconmenu, 0);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 1");
+                holder.rl_menu.setEnabled(false);
             }
             else if(title.equalsIgnoreCase(context.getString(idString))&&flag){
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 2");
+                holder.rl_menu.setEnabled(true);
             }
             else{
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 3");
+                holder.rl_menu.setEnabled(true);
             }
         }
 

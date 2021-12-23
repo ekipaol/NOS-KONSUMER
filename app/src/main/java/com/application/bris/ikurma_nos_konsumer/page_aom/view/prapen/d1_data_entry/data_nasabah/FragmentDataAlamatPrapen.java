@@ -178,7 +178,7 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
                 binding.loadingDukcapil.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content),"Ddata DUKCAPIL Sudah Sesuai");
+                        AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content),"Data DUKCAPIL Sudah Sesuai");
                     }
                     else{
                         AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
