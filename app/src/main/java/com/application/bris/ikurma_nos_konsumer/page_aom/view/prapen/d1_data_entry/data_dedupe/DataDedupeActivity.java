@@ -187,6 +187,7 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                         binding.rvListDedupe.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
                         binding.rvListDedupe.setItemAnimator(new DefaultItemAnimator());
                         binding.rvListDedupe.setAdapter(dataDedupeAdapter);
+                        dataDedupeAdapter.notifyDataSetChanged();
 
 
                         if (dataDedupe.size() == 0) {
