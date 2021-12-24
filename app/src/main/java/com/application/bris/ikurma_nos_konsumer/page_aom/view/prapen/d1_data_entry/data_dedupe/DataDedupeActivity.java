@@ -169,6 +169,7 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
         req.setApplicationId(idAplikasi);
 //        req.setUID(String.valueOf(appPreferences.getUid()));
 
+
         Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().inquiryDedupe(req);
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override

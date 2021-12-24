@@ -95,6 +95,11 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
     }
 
     private void initdata() {
+
+        //pantekan khusus biaya asuransi dan biaya materai
+        binding.etTreatmentBiayaAdministrasi.setText("Bayar Nasabah");
+        binding.etTreatmentBiayaMaterai.setText("Bayar Nasabah");
+
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         EmptyRequest emptyRequest = new EmptyRequest();
 
@@ -170,14 +175,14 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 binding.etTreatmentBiayaAsuransiKhusus.setText(DPSimulasiBiayaBiaya.getTreatmentBiayaAsuransiKhusus());
                             if (DPSimulasiBiayaBiaya.getBiayaAdministrasi() != null)
                                 binding.etBiayaAdministrasi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAdministrasi().setScale(2)));
-                            if (DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi() != null)
-                                binding.etTreatmentBiayaAdministrasi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi());
+//                            if (DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi() != null)
+//                                binding.etTreatmentBiayaAdministrasi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi());
                             if (DPSimulasiBiayaBiaya.getBiayaPenalti() != null)
                                 binding.etBiayapenaltiKhususTakeover.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaPenalti()));
                             if (DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti() != null)
                                 binding.etTreatmentBiayaPenalti.setText(DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti());
-                            if (DPSimulasiBiayaBiaya.getBiayaMaterai() != null)
-                                binding.etBiayamaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaMaterai()));
+//                            if (DPSimulasiBiayaBiaya.getBiayaMaterai() != null)
+//                                binding.etBiayamaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaMaterai()));
                             if (DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai() != null)
                                 binding.etTreatmentBiayaMaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai()));
                         }
@@ -258,6 +263,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         dataDropdownKalkulator.add(new MGenericModel("Bayar Nasabah", "Bayar Nasabah"));
         dataDropdownKalkulator.add(new MGenericModel("Atribusi", "Atribusi"));
         dataDropdownKalkulator.add(new MGenericModel("Potong Pencairan", "Potong Pencairan"));
+        dataDropdownKalkulator.add(new MGenericModel("Tidak Digunakan", "Tidak Digunakan"));
 
 
     }
@@ -524,12 +530,12 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         binding.etTreatmentBiayaAsuransi.setOnClickListener(this);
         binding.tfTreatmentBiayaAsuransiKhusus.setOnClickListener(this);
         binding.etTreatmentBiayaAsuransiKhusus.setOnClickListener(this);
-        binding.tfTreatmentBiayaAdministrasi.setOnClickListener(this);
-        binding.etTreatmentBiayaAdministrasi.setOnClickListener(this);
+//        binding.tfTreatmentBiayaAdministrasi.setOnClickListener(this);
+//        binding.etTreatmentBiayaAdministrasi.setOnClickListener(this);
         binding.tfTreatmentBiayaPenalti.setOnClickListener(this);
         binding.etTreatmentBiayaPenalti.setOnClickListener(this);
-        binding.tfTreatmentBiayaMaterai.setOnClickListener(this);
-        binding.etTreatmentBiayaMaterai.setOnClickListener(this);
+//        binding.tfTreatmentBiayaMaterai.setOnClickListener(this);
+//        binding.etTreatmentBiayaMaterai.setOnClickListener(this);
         binding.tfPilihanasuransipenjaminan.setOnClickListener(this);
         binding.etPilihanAsuransiPenjaminan.setOnClickListener(this);
         binding.btnHitung.setOnClickListener(this);

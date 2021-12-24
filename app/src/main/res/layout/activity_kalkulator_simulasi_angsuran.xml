@@ -129,9 +129,9 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_district"
                     app:isResponsiveIconColor="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:labelText="Input Pilihan Asuransi Penjaminan"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
@@ -287,13 +287,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
-
                     android:paddingRight="20dp"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_district"
                     app:isResponsiveIconColor="true"
                     app:labelText="Treatment Biaya Administrasi"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
@@ -303,7 +301,6 @@
                         android:id="@+id/et_treatment_biaya_administrasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -393,13 +390,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
-
                     android:paddingRight="20dp"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_district"
                     app:isResponsiveIconColor="true"
                     app:labelText="Treatment Biaya Materai"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true"
@@ -409,7 +404,6 @@
                         android:id="@+id/et_treatment_biaya_materai"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Pilih"
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
