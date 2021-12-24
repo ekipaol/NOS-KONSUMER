@@ -96,7 +96,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                                 dataTaspen = gson.fromJson(rTaspen, typeTaspen);
 
                                 if (response.body().getData().get("NoTaspen") != null) {
-                                    dataTaspen.setNomorTaspen(response.body().getData().get("NoTaspen").toString());
+                                    dataTaspen.setNomorTaspen(response.body().getData().get("NoTaspen").getAsString());
                                 }
                             }
                             if (response.body().getData().get("ResponseRAC") != null) {

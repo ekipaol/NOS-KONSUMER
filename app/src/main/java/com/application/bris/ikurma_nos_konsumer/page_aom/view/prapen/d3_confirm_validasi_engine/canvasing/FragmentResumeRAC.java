@@ -40,10 +40,14 @@ public class FragmentResumeRAC extends Fragment implements Step, SwipeRefreshLay
         binding = FragmentHasilCanvasingBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         MparseResponseRAC rac = new MparseResponseRAC();
-        rac.setParameter("Resume Rac");
-        rac.setValue(approved);
-        lrac.add(0, rac);
-        initialize();
+        if (lrac.get(0).getParameter().equalsIgnoreCase("Resume Rac")) {
+            initialize();
+        }else{
+            rac.setParameter("Resume Rac");
+            rac.setValue(approved);
+            lrac.add(0, rac);
+            initialize();
+        }
         return view;
     }
 
