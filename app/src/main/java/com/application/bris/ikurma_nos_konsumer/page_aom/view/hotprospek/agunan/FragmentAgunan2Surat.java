@@ -377,7 +377,7 @@ public class FragmentAgunan2Surat extends Fragment implements Step, KeyValueList
 //                    });
 
 
-            String ImgPbb = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + id_pbb;
+            String ImgPbb = UriApi.Baseurl.URL + UriApi.foto.urlFile + id_pbb;
             val_ImgPbb = String.valueOf(id_pbb);
             Glide
                     .with(getContext())
@@ -393,7 +393,7 @@ public class FragmentAgunan2Surat extends Fragment implements Step, KeyValueList
                     });
 
 
-            String ImgImb = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + id_imb;
+            String ImgImb = UriApi.Baseurl.URL + UriApi.foto.urlFile + id_imb;
             val_ImgImb = String.valueOf(id_imb);
             Glide
                     .with(getContext())
@@ -774,7 +774,7 @@ public class FragmentAgunan2Surat extends Fragment implements Step, KeyValueList
         File imageFile = new File(getActivity().getApplicationContext().getCacheDir(), filename);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -925,7 +925,7 @@ public class FragmentAgunan2Surat extends Fragment implements Step, KeyValueList
 //        RequestBody requestBody = RequestBody.create(MediaType.parse("text/plain"), imageFile);
 //        MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
 
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFile(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

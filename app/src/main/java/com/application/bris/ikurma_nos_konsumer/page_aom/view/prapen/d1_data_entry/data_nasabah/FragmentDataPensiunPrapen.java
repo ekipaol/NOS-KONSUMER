@@ -260,32 +260,35 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     }
 
     private VerificationError validateForm(){
-        adaFieldBelumDiisi=false;
-        validateField(binding.etLembagaPengelolaPensiun,binding.tfLembagaPengelolaPensiun);
-        validateField(binding.etNomorPensiunan,binding.tfNomorPensiunan);
-        validateField(binding.etNamaInstansi,binding.tfNamaInstansi);
-        validateField(binding.etMenggunakanLngp,binding.tfMenggunakanLngp);
-        if(!binding.etMenggunakanLngp.getText().toString().isEmpty()&&binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("ya")){
-            validateField(binding.etInputLngp,binding.tfInputLngp);
-            validateField(binding.etNamaInstansiLngp,binding.tfNamaInstansiLngp);
-            validateField(binding.etRateLngp,binding.tfRateLngp);
-        }
-        validateField(binding.etKotaTempatBekerja,binding.tfKotaTempatBekerja);
-        validateField(binding.etPerkiraanGaji,binding.tfPerkiraanGaji);
-        validateField(binding.etPerkiraanTunjangan,binding.tfPerkiraanTunjangan);
-        validateField(binding.etNasabahBsi,binding.tfNasabahBsi);
-        validateField(binding.etTreatmentRekeningPendapatan,binding.tfTreatmentRekeningPendapatan);
+//        adaFieldBelumDiisi=false;
+//        validateField(binding.etLembagaPengelolaPensiun,binding.tfLembagaPengelolaPensiun);
+//        validateField(binding.etNomorPensiunan,binding.tfNomorPensiunan);
+//        validateField(binding.etNamaInstansi,binding.tfNamaInstansi);
+//        validateField(binding.etMenggunakanLngp,binding.tfMenggunakanLngp);
+//        if(!binding.etMenggunakanLngp.getText().toString().isEmpty()&&binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("ya")){
+//            validateField(binding.etInputLngp,binding.tfInputLngp);
+//            validateField(binding.etNamaInstansiLngp,binding.tfNamaInstansiLngp);
+//            validateField(binding.etRateLngp,binding.tfRateLngp);
+//        }
+//        validateField(binding.etKotaTempatBekerja,binding.tfKotaTempatBekerja);
+//        validateField(binding.etPerkiraanGaji,binding.tfPerkiraanGaji);
+//        validateField(binding.etPerkiraanTunjangan,binding.tfPerkiraanTunjangan);
+//        validateField(binding.etNasabahBsi,binding.tfNasabahBsi);
+//        validateField(binding.etTreatmentRekeningPendapatan,binding.tfTreatmentRekeningPendapatan);
+
+
+
 //        validateField(binding.etDapatBergerak,binding.tfDapatBergerak);
 //        validateField(binding.etDalamPengawasan,binding.tfDalamPengawasan);
 //        validateField(binding.etMemilikiRiwayat,binding.tfMemilikiRiwayat);
 //        validateField(binding.etTinggalDenganKeluargaLain,binding.tfTinggalDenganKeluargaLain);
 //        validateField(binding.etUsahaSampingan,binding.tfUsahaSampingan);
 //        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
-        validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
+//        validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
 
-        if(!adaFieldBelumDiisi){
+//        if(!adaFieldBelumDiisi){
             setPojoData();
-        }
+//        }
 
         return null;
 //        }

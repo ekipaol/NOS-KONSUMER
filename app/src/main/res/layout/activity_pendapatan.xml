@@ -52,6 +52,7 @@
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_pendapatan_pensiun"
                     android:text=" "
+                    app:suffix="Rp. "
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="50" />

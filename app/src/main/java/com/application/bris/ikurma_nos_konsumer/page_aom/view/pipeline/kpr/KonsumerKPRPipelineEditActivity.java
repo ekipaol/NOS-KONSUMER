@@ -512,7 +512,7 @@ public class KonsumerKPRPipelineEditActivity extends AppCompatActivity implement
 
         getBidangPekerjaan(dataPL.getBidang_usaha());
 
-        val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataPL.getFid_photo();
+        val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlFile + dataPL.getFid_photo();
         Glide
                 .with(KonsumerKPRPipelineEditActivity.this)
                 .asBitmap()
@@ -1419,7 +1419,7 @@ public class KonsumerKPRPipelineEditActivity extends AppCompatActivity implement
             File imageFile = new File(getApplicationContext().getCacheDir(), filename);
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
             MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-            Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+            Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
             call.enqueue(new Callback<ParseResponse>() {
                 @Override
                 public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

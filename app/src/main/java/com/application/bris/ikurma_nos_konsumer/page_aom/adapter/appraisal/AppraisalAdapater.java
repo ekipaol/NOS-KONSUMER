@@ -54,7 +54,7 @@ public class AppraisalAdapater extends RecyclerView.Adapter<AppraisalAdapater.Ho
         final Appraisal datas = datafiltered.get(position);
         Glide
                 .with(context)
-                .load(UriApi.Baseurl.URL+UriApi.foto.urlPhoto+datas.getFID_PHOTO())
+                .load(UriApi.Baseurl.URL+UriApi.foto.urlFile +datas.getFID_PHOTO())
                 .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
                 .into(holder.iv_foto);

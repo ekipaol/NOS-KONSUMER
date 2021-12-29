@@ -143,7 +143,7 @@ public class RejectDetailActivity extends AppCompatActivity implements MenuClick
                             Gson gson = new Gson();
                             dataString = response.body().getData().get("aplikasi").toString();
                             data = gson.fromJson(dataString, hotprospek.class);
-                            String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + data.getFid_photo();
+                            String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile + data.getFid_photo();
                             Glide
                                     .with(RejectDetailActivity.this)
                                     .asBitmap()

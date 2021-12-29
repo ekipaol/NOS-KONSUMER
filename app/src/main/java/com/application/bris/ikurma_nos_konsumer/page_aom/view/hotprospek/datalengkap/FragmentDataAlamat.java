@@ -321,7 +321,7 @@ public class FragmentDataAlamat extends Fragment implements Step, KeyValueListen
     }
 
     public Bitmap setLoadImage(final ImageView iv, int idFoto){
-        String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + idFoto;
+        String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile + idFoto;
         Glide
                 .with(getContext())
                 .asBitmap()
@@ -907,7 +907,7 @@ public class FragmentDataAlamat extends Fragment implements Step, KeyValueListen
         File imageFile = new File(getActivity().getApplicationContext().getCacheDir(), filename);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

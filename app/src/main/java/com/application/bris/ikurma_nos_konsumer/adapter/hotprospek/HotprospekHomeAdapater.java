@@ -53,7 +53,7 @@ public class HotprospekHomeAdapater extends RecyclerView.Adapter<HotprospekHomeA
         final HotprospekKpr datas = data.get(position);
         Glide
                 .with(context)
-                .load(UriApi.Baseurl.URL+UriApi.foto.urlPhoto+datas.getFid_photo())
+                .load(UriApi.Baseurl.URL+UriApi.foto.urlFile +datas.getFid_photo())
                 .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
                 .into(holder.iv_foto);

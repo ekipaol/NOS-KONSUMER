@@ -159,13 +159,25 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         String listDataString = response.body().getData().get("DataInquiryIDEB").toString();
+                        String listDataLunasString = response.body().getData().get("DataInquiryIDEBLunas").toString();
+
+
+
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<DataIdeb>>() {
                         }.getType();
+
                         dataIdeb =  gson.fromJson(listDataString, type);
+                        List<DataIdeb> dataIdebLunas = gson.fromJson(listDataLunasString, type);
 
                         if(dataIdeb.size()==0){
                             binding.llEmptydata.setVisibility(View.VISIBLE);
+                        }
+
+                        if(dataIdebLunas!=null&&dataIdebLunas.size()!=0){
+                            for (int i = 0; i <dataIdebLunas.size() ; i++) {
+                                dataIdeb.add(dataIdebLunas.get(i));
+                            }
                         }
 
                         initialize();
@@ -251,6 +263,12 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                         }
 
                         if(dataFlag!=null){
+                            dataFlag.setFlagD3Ideb(true);
+                            realm.insertOrUpdate(dataFlag);
+                        }
+                        else{
+                            dataFlag=new FlagAplikasiPojo();
+                            dataFlag.setIdAplikasi(idAplikasi);
                             dataFlag.setFlagD3Ideb(true);
                             realm.insertOrUpdate(dataFlag);
                         }

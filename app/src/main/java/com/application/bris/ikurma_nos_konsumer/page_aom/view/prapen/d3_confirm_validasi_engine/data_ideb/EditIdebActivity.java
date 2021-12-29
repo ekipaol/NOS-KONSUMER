@@ -60,6 +60,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
     private Long idAplikasi;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
+    private  boolean uploadFoto=false;
 
 
     //dokumen variabel
@@ -273,6 +274,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         setDataImage(binding.ivFotoDokumen, data, namaDokumen);
+        uploadFoto=true;
     }
 
     private void setDataImage(ImageView iv, Intent data, String namaFoto) {
@@ -309,18 +311,19 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
         req.setTreatmentPembiayaan(binding.etTreatmentPembiayaan.getText().toString());
         req.setUid(String.valueOf(appPreferences.getUid()));
 
-        if(tipeFile.equalsIgnoreCase("pdf")){
-            req.setImg(valBase64Pdf);
-            req.setFileName("_ideb_"+dataIdeb.getIdDokumen() +".pdf");
+        if(uploadFoto){
+            if(tipeFile.equalsIgnoreCase("pdf")){
+                req.setImg(valBase64Pdf);
+                req.setFileName("_ideb_"+dataIdeb.getIdDokumen() +".pdf");
+            }
+            else{
+                binding.ivFotoDokumen.invalidate();
+                RoundedDrawable drawableIdeb = (RoundedDrawable) binding.ivFotoDokumen.getDrawable();
+                Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
+                req.setImg(AppUtil.encodeImageTobase64(bitmapIdeb));
+                req.setFileName("_ideb_"+dataIdeb.getIdDokumen() +".png");
+            }
         }
-        else{
-            binding.ivFotoDokumen.invalidate();
-            RoundedDrawable drawableIdeb = (RoundedDrawable) binding.ivFotoDokumen.getDrawable();
-            Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-            req.setImg(AppUtil.encodeImageTobase64(bitmapIdeb));
-            req.setFileName("_ideb_"+dataIdeb.getIdDokumen() +".png");
-        }
-
         binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateIdebOjk(req);
         call.enqueue(new Callback<ParseResponse>() {

@@ -419,6 +419,12 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                                 dataFlag.setFlagD3Jaminan(true);
                                 realm.insertOrUpdate(dataFlag);
                             }
+                            else{
+                                dataFlag=new FlagAplikasiPojo();
+                                dataFlag.setIdAplikasi(Long.valueOf(idAplikasi));
+                                dataFlag.setFlagD3Jaminan(true);
+                                realm.insertOrUpdate(dataFlag);
+                            }
                             realm.close();
                         } else {
                             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), response.body().getMessage());

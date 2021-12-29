@@ -367,7 +367,7 @@ public class BSKirimPutusan extends BottomSheetDialogFragment implements View.On
 
                             if (!dataString.equalsIgnoreCase("{}")){
                                 KelengkapanDokumen dataDoc = gson.fromJson(dataString, KelengkapanDokumen.class);
-                                String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataDoc.getiDDOKUMENAPLIKASI();
+                                String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile + dataDoc.getiDDOKUMENAPLIKASI();
                                 Glide
                                     .with(context)
                                     .asBitmap()

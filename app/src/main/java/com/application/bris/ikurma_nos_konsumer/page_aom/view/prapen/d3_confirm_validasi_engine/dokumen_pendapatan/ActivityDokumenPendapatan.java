@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -569,7 +570,15 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             doc.setPeriodeGajiP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
             doc.setPeriodeTunjanganP3(AppUtil.parseTanggalGeneral(pDatep3, "dd-MM-yyyy", "yyyy-MM-dd"));
         }
-        doc.setSimulasiPendapatanSaatPen(Double.parseDouble(binding.etPendapatanPensiun.getText().toString()));
+
+        try{
+            doc.setSimulasiPendapatanSaatPen(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPendapatanPensiun.getText().toString())));
+        }
+        catch (Exception e){
+            doc.setSimulasiPendapatanSaatPen(0d);
+            Toast.makeText(this, "Simulasi pendapatan kosong - bypass", Toast.LENGTH_SHORT).show();
+        }
+
         doc.setTotalGajiBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiBersihP1.getText().toString())));
         doc.setTotalTunjanganBersihP1(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganP1.getText().toString())));
         if (binding.etAkseptasiPendaptan.getText().toString().trim().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
@@ -613,6 +622,12 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                                 dataFlag.setFlagD3Pendapatan(true);
                                 realm.insertOrUpdate(dataFlag);
                             }
+                            else{
+                                dataFlag=new FlagAplikasiPojo();
+                                dataFlag.setIdAplikasi(idAplikasi);
+                                dataFlag.setFlagD3Pendapatan(true);
+                                realm.insertOrUpdate(dataFlag);
+                            }
                             realm.close();
                         } else {
                             AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
@@ -647,6 +662,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         binding.etTotalDebit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalDebit2));
         binding.etTotalKredit1.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit1));
         binding.etTotalKredit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit2));
+        binding.etPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPendapatanPensiun));
     }
 
     private void disableEditText() {

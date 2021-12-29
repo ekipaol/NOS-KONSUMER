@@ -198,7 +198,7 @@ public class RemaksSlikEditActivity extends AppCompatActivity implements View.On
 
         Glide
                 .with(this)
-                .load(UriApi.Baseurl.URL+UriApi.foto.urlPhoto+data.getfIDPHOTO())
+                .load(UriApi.Baseurl.URL+UriApi.foto.urlFile +data.getfIDPHOTO())
                 .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
                 .into(iv_foto);
@@ -422,7 +422,7 @@ public class RemaksSlikEditActivity extends AppCompatActivity implements View.On
         File imageFile = new File(getApplicationContext().getCacheDir(), filename);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

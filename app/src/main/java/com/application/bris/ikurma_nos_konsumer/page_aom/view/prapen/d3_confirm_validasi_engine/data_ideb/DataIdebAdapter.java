@@ -84,6 +84,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
         }
         catch (Exception e){
+//            holder.ivFoto.setVisibility(View.GONE);
             e.printStackTrace();
         }
 

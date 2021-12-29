@@ -48,7 +48,7 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
     private AppPreferences appPreferences;
     private PrapenAoActivityDedupeBinding binding;
     private List<DataDedupe> dataDedupe;
-    private String idAplikasi="";
+    private String idAplikasi="0";
     private boolean nikChange=false;
     List<MGenericModel> dataDropdownFlow=new ArrayList<>();
 
@@ -234,7 +234,16 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                         if(!realm.isInTransaction()){
                             realm.beginTransaction();
                         }
-                        dataFlag.setFlagD1DataDedupe(true);
+
+                        if(dataFlag!=null){
+                            dataFlag.setFlagD1DataDedupe(true);
+                        }
+                        else{
+                            dataFlag=new FlagAplikasiPojo();
+                            dataFlag.setIdAplikasi(Long.parseLong(idAplikasi));
+                            dataFlag.setFlagD1DataDedupe(true);
+                        }
+
                         realm.insertOrUpdate(dataFlag);
                         realm.close();
 

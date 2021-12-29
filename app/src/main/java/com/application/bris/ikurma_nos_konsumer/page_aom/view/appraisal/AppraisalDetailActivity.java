@@ -175,7 +175,7 @@ public class AppraisalDetailActivity extends AppCompatActivity implements MenuCl
                             Gson gson = new Gson();
                             dataString = response.body().getData().get("aplikasi").toString();
                             data = gson.fromJson(dataString, HotprospekKpr.class);
-                            String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + data.getFid_photo();
+                            String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile + data.getFid_photo();
                             Glide
                                     .with(AppraisalDetailActivity.this)
                                     .asBitmap()

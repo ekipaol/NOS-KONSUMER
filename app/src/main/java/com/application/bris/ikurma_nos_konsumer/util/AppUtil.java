@@ -2,9 +2,11 @@ package com.application.bris.ikurma_nos_konsumer.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -12,16 +14,24 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.media.FaceDetector;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.api.config.UriApi;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.PesanDashboardPojo;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
+import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -49,6 +59,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,15 +67,16 @@ import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.util.magiccrypt.MagicCrypt;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -83,6 +95,9 @@ import java.util.Random;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.realm.Realm;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import studio.carbonylgroup.textfieldboxes.ExtendedEditText;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
@@ -93,6 +108,7 @@ import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 public class AppUtil {
     public static MagicCrypt magicCrypt = new MagicCrypt();
     private Snackbar snackbar;
+    public static String idFoto="0";
 
     public static void showToastShort(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
@@ -395,6 +411,9 @@ public class AppUtil {
     }
 
     public static String encrypt(String data) {
+        //added to check if another cipher not initialized error occured
+        MagicCrypt magicCrypt = new MagicCrypt();
+
         if (data == null) {
             return "";
         } else {
@@ -403,6 +422,9 @@ public class AppUtil {
     }
 
     public static String decrypt(String data) {
+        //added to check if another cipher not initialized error occured
+        MagicCrypt magicCrypt = new MagicCrypt();
+
         return magicCrypt.decrypt(data);
     }
 
@@ -634,6 +656,43 @@ public class AppUtil {
 
     }
 
+    public static void setLoadPdf(Context context, int idPdf, ImageView imageView) {
+        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+        String url_pdf = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + idPdf;
+        Uri external = Uri.parse(url_pdf);
+        Intent intentPdf;
+        intentPdf = new Intent(Intent.ACTION_VIEW);
+        intentPdf.setDataAndType(external, "application/pdf");
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    context.startActivity(intentPdf);
+                } catch (ActivityNotFoundException e) {
+                    // No application to view, ask to download one
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Aplikasi PDF Tidak Ditemukan");
+                    builder.setMessage("Download Dari Playstore?");
+                    builder.setPositiveButton("Ya",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                                    marketIntent
+                                            .setData(Uri
+                                                    .parse("market://details?id=com.adobe.reader"));
+                                    context.startActivity(marketIntent);
+                                }
+                            });
+                    builder.setNegativeButton("Tidak", null);
+                    builder.create().show();
+                }
+            }
+        });
+
+    }
+
     public static void loadPhotoUserWithCache(Context context, ImageView imageView, String idFoto) {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -646,6 +705,28 @@ public class AppUtil {
                 .load(UriApi.Baseurl.URL + UriApi.foto.urlPhotoProfil + idFoto)
                 .apply(options)
                 .into(imageView);
+    }
+
+    public static void setImageGlide(Context context,int fidPhoto,ImageView iv_foto){
+        MagicCryptHelper encryptor=new MagicCryptHelper();
+        AppPreferences appPreferences=new AppPreferences(context);
+
+        String imageUrlToEncode= encryptor.encrypt(Integer.toString(appPreferences.getUid())+"_"+fidPhoto);
+
+        String url_photo = null;
+        try {
+//            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhotoSecure + URLEncoder.encode(imageUrlToEncode, StandardCharsets.UTF_8.toString());
+            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + fidPhoto;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Glide
+                .with(context)
+                .load(url_photo)
+                .centerCrop()
+                .placeholder(R.drawable.banner_placeholder)
+                .into(iv_foto);
     }
 
     public static Bitmap getResizedBitmap(Bitmap image, int maxSize) {
@@ -826,6 +907,38 @@ public class AppUtil {
         }
     }
 
+    public static String encodeImageToBinary(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        return b.toString();
+    }
+
+    public static String encodeFileToBinary(Context context, Uri uri) {
+        InputStream inputStream = null;
+        String encodedFile = "", lastVal;
+        try {
+            inputStream = context.getContentResolver().openInputStream(uri);
+
+            byte[] buffer = new byte[10240];//specify the size to allow
+            int bytesRead;
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                output.write(buffer, 0, bytesRead);
+            }
+            output.close();
+            encodedFile = output.toString();
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        lastVal = encodedFile;
+        return lastVal;
+    }
+
     public static String encodeImageTobase64(Bitmap image) {
         Bitmap immage = image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -973,6 +1086,53 @@ public class AppUtil {
 
     }
 
+    public static void convertBinaryToImage(String binaryString, ImageView imageView) {
+        byte[] imageAsBytes = binaryString.getBytes();
+        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
+        );
+    }
+
+
+    public static void convertBinaryToFileWithOnClick(Context context, String binaryString, ImageView imageView, String namaPdf) {
+        File dwldsPath = new File(context.getExternalCacheDir() + "/" + namaPdf);
+        try {
+            if (binaryString != null) {
+                byte[] pdfAsBytes =binaryString.getBytes();
+                FileOutputStream os;
+                os = new FileOutputStream(dwldsPath, false);
+                os.write(pdfAsBytes);
+                os.flush();
+                os.close();
+
+                imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", dwldsPath);
+
+                        Intent target = new Intent(Intent.ACTION_VIEW);
+                        target.setDataAndType(path, "application/pdf");
+                        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                        Intent intent = Intent.createChooser(target, "Open File");
+                        try {
+                            context.startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            // Instruct the user to install a PDF reader here, or something
+                        }
+                    }
+                });
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void convertBase64ToFileAutoOpen(Context context, String base64String, String namaPdf) {
         File dwldsPath = new File(context.getExternalCacheDir() + "/" + namaPdf);
         try {
@@ -1028,6 +1188,53 @@ public class AppUtil {
 
     public void showFragmentDialog(FragmentManager fragmentManager, String title, List<MGenericModel> mGenericModel, GenericListenerOnSelect listenerOnSelect) {
         DialogGenericDataFromService.display(fragmentManager, title, mGenericModel, listenerOnSelect);
+    }
+
+    public static String getIdFolderLogicalDoc(){
+        return "415";
+    }
+
+
+    //METHOD INI BELUM BISA DIPAKE, KARENA TETEP HARUS PAKE CALLBACK KE KELAS YANG MANGGILNYA
+    //JADI DARIPADA REPOT YAUDAH SAK METHOD INI LANGSUNG TARUH DI MASING MASING KELAS BAE
+    //TADINYA INI BIAR DINAMIS GITU, EH TERNYATA GABISA YOWIS LAH
+    public static String uploadFile(Context context, String base64, String fileName, RelativeLayout loading, Activity activity) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(context);
+        //  dataUser = getListUser();
+        loading.setVisibility(View.VISIBLE);
+        ReqUploadFile req=new ReqUploadFile();
+        //pantekan uid
+        req.setFolderId(AppUtil.getIdFolderLogicalDoc());
+        req.setLanguage("en");
+        req.setFileB64(base64);
+        req.setFileName(fileName);
+        Call<ParseResponseFile> call = apiClientAdapter.getApiInterface().uploadFileLogicalDoc(req);
+        call.enqueue(new Callback<ParseResponseFile>() {
+            @Override
+            public void onResponse(Call<ParseResponseFile> call, Response<ParseResponseFile> response) {
+                loading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    idFoto=response.body().getId();
+                    logSecure("dataFile","idFoto1: "+response.body().getId());
+                    AppUtil.notifsuccess(context, activity.findViewById(android.R.id.content), "Upload Berhasil");
+                }
+                else{
+                    AppUtil.notiferror(context, activity.findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseFile> call, Throwable t) {
+               loading.setVisibility(View.GONE);
+                AppUtil.notiferror(context, activity.findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+        logSecure("dataFile","idFoto: "+idFoto);
+        logSecure("dataFile","fileName: "+fileName);
+        logSecure("dataFile","folderId: "+req.getFolderId());
+        return idFoto;
+
     }
 
 

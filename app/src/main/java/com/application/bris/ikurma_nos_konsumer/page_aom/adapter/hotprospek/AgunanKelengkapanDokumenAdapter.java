@@ -90,7 +90,7 @@ public class AgunanKelengkapanDokumenAdapter extends RecyclerView.Adapter<Agunan
     }
 
     public Bitmap setLoadImage(final ImageView iv, int idFoto){
-        String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + idFoto;
+        String url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile + idFoto;
         Glide
                 .with(context)
                 .asBitmap()

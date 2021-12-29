@@ -53,7 +53,7 @@ public class RejectedAdapater extends RecyclerView.Adapter<RejectedAdapater.Hotp
         final Rejected datas = datafiltered.get(position);
         Glide
                 .with(context)
-                .load(UriApi.Baseurl.URL+UriApi.foto.urlPhoto+datas.getfIDPHOTO())
+                .load(UriApi.Baseurl.URL+UriApi.foto.urlFile +datas.getfIDPHOTO())
                 .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
                 .into(holder.iv_foto);

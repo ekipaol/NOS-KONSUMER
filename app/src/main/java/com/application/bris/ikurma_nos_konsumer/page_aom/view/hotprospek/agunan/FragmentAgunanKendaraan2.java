@@ -254,7 +254,7 @@ public class FragmentAgunanKendaraan2 extends Fragment implements Step, KeyValue
             et_thn_pembuatan.setText(dataAgunan.getTahunPembuatan());
             final int id_bpn = dataAgunan.getIdPhotoKDBPKB();
 
-            String ImgBpn = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + id_bpn;
+            String ImgBpn = UriApi.Baseurl.URL + UriApi.foto.urlFile + id_bpn;
             val_ImgBpkb = String.valueOf(id_bpn);
             Glide
                     .with(getContext())
@@ -581,7 +581,7 @@ public class FragmentAgunanKendaraan2 extends Fragment implements Step, KeyValue
         File imageFile = new File(getActivity().getApplicationContext().getCacheDir(), filename);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

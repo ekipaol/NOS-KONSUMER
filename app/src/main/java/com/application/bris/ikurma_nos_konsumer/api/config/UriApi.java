@@ -20,7 +20,7 @@ public class UriApi {
     }
 
     public class general {
-        public static final String searchAddress = "NOS_MIKRO_PROC/rest/API_NOS/pencarianKodepos";
+        public static final String searchAddress = "NOS_PRAPEN_Services/rest/APIUmum/InqListRegion";
         public static final String login = "user-service/logins";
         public static final String simpanFeedback = "generic/simpanFeedback";
         public static final String login2 = "user-service/logins";
@@ -285,8 +285,10 @@ public class UriApi {
     }
 
     public class foto{
-        public static final String urlPhoto = "generic/getImage/";
+        public static final String urlFile = "TestAPI/rest/TestAPI/GetFile";
+        public static final String urlFileDirect = "TestAPI/rest/TestAPI/GetFile?FileId=";
         public static final String urlPhotoProfil = "generic/getImageProfile/";
+        public static final String uploadFile = "TestAPI/rest/TestAPI/CreateFile";
 
 
     }

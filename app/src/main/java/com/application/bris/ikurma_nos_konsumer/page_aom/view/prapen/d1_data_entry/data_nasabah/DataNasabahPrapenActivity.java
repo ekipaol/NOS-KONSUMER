@@ -69,7 +69,7 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
         }
 
         backgroundStatusBar();
-        AppUtil.toolbarRegular(this, "Data Entry");
+        AppUtil.toolbarRegular(this, "Data Nasabah");
         startingStepPosition = savedInstanceState != null ? savedInstanceState.getInt(CURRENT_STEP_POSITION_KEY) : 0;
 //        loadDataLengkap();
 

@@ -8,6 +8,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArrAgunan
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArrAgunanByCif;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseDataDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseDataInstansi;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseGmapsV3;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseSaldo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
@@ -40,6 +41,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.flpp.ReqRumahF
 import com.application.bris.ikurma_nos_konsumer.api.model.request.flpp.ReqSimpanFollowUpFlpp;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.flpp.ReqSimpanKonfirmasiFlpp;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.flpp.ReqSimpanUpdateIdLokasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.general.Activation;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.general.Checkupdate;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.general.ListDeviasi;
@@ -124,7 +126,6 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJ
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
-import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
@@ -142,6 +143,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -204,7 +206,7 @@ public interface ApiInterface {
 
     @Multipart
     @POST(UriApi.pipeline.uploadFoto)
-    Call<ParseResponse> uploadFoto(@Part MultipartBody.Part file);
+    Call<ParseResponse> uploadFileLogicalDoc(@Part MultipartBody.Part file);
 
     @POST(UriApi.pipeline.sendDataPipeline)
     Call<ParseResponse> sendDataPipeline(@Body inputPipeline inputPipeline);
@@ -663,7 +665,7 @@ public interface ApiInterface {
 
     @Multipart
     @POST(UriApi.hotprospek.uploadFile)
-    Call<ParseResponse> uploadFile(@Part MultipartBody.Part file);
+    Call<ParseResponse> uploadFileOld(@Part MultipartBody.Part file);
 
 
     //KONSUMER PURNA
@@ -1000,58 +1002,58 @@ public interface ApiInterface {
 
     //    G1 Download File
     @POST(UriApi.prapen.DownloadSUP)
-    Call<ParseResponseFile> DownloadSUP(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadSUP(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadAkadIjarah)
-    Call<ParseResponseFile> DownloadAkadIjarah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadAkadIjarah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadAkadMMQ)
-    Call<ParseResponseFile> DownloadAkadMMQ(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadAkadMMQ(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadAkadMurabahah)
-    Call<ParseResponseFile> DownloadAkadMurabahah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadAkadMurabahah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadAkadRahn)
-    Call<ParseResponseFile> DownloadAkadRahn(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadAkadRahn(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadFormMutasi)
-    Call<ParseResponseFile> DownloadFormMutasi(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadFormMutasi(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadLampiranSuratKuasa)
-    Call<ParseResponseFile> DownloadLampiranSuratKuasa(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadLampiranSuratKuasa(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadLampiranSuratPernyataan)
-    Call<ParseResponseFile> DownloadLampiranSuratPernyataan(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadLampiranSuratPernyataan(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadTandaTerimaSK)
-    Call<ParseResponseFile> DownloadTandaTerimaSK(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadTandaTerimaSK(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadWakalah)
-    Call<ParseResponseFile> DownloadWakalah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadWakalah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadPurchaseMurabahah)
-    Call<ParseResponseFile> DownloadPurchaseMurabahah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadPurchaseMurabahah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadPurchaseIjarah)
-    Call<ParseResponseFile> DownloadPurchaseIjarah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadPurchaseIjarah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadLampiranAngsMur)
-    Call<ParseResponseFile> DownloadLampiranAngsMur(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadLampiranAngsMur(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadJdwlAngsRahn)
-    Call<ParseResponseFile> DownloadJdwlAngsRahn(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadJdwlAngsRahn(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadJadwalPengambilAlihan)
-    Call<ParseResponseFile> DownloadJadwalPengambilAlihan(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadJadwalPengambilAlihan(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadLaporanPenilaianAset)
-    Call<ParseResponseFile> DownloadLaporanPenilaianAset(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadLaporanPenilaianAset(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadJadwalAngsuranUjrah)
-    Call<ParseResponseFile> DownloadJadwalAngsuranUjrah(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadJadwalAngsuranUjrah(@Body ReqDownloadFile ReqDownloadFile);
 
     @POST(UriApi.prapen.DownloadSuratTandaTerima)
-    Call<ParseResponseFile> DownloadSuratTandaTerima(@Body ReqDownloadFile ReqDownloadFile);
+    Call<com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile> DownloadSuratTandaTerima(@Body ReqDownloadFile ReqDownloadFile);
 
 
     @POST(UriApi.prapen.inquiryOjkBi)
@@ -1074,5 +1076,14 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.InqDokumenUpload)
     Call<ParseResponse> InqDokumenUpload(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.foto.uploadFile)
+    Call<ParseResponseFile> uploadFileLogicalDoc(@Body ReqUploadFile ReqUploadFile);
+
+//    @GET(UriApi.foto.urlFile)
+//    Call<ParseResponse> getFile(@Body EmptyRequest EmptyRequest);
+
+    @GET(UriApi.foto.urlFile)
+    Call<ParseResponse> getFile(@Query(value = "FileId", encoded = true) String fileId);
 }
 

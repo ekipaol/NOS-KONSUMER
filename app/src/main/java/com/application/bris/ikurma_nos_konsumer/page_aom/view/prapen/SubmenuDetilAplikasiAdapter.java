@@ -75,8 +75,7 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
 //            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_ideb,dataFlag.getFlagD3Pendapatan(),holder);
 //            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_data_hutang,dataFlag.getFlagD3Ideb(),holder);
 //            validateMenu(listMenu.get(position).getTitle(),R.string.submenu_detil_aplikasi_d3_memo,dataFlag.getFlagD3Kewajiban(),holder);
-        }
-        else{
+        } else{
             if(listMenu.get(position).getTitle().equalsIgnoreCase(context.getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan))){
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
             }
@@ -90,7 +89,7 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
             }
             else{
-                setGreyorRegularIcon(holder.iv_iconmenu, 0);
+                setGreyorRegularIcon(holder.iv_iconmenu, 1);
             }
         }
 
@@ -132,17 +131,17 @@ public class SubmenuDetilAplikasiAdapter extends RecyclerView.Adapter<SubmenuDet
             if(title.equalsIgnoreCase(context.getString(idString))&&!flag){
                 setGreyorRegularIcon(holder.iv_iconmenu, 0);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 1");
-                holder.rl_menu.setEnabled(false);
+//                holder.rl_menu.setEnabled(false);
             }
             else if(title.equalsIgnoreCase(context.getString(idString))&&flag){
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 2");
-                holder.rl_menu.setEnabled(true);
+//                holder.rl_menu.setEnabled(true);
             }
             else{
                 setGreyorRegularIcon(holder.iv_iconmenu, 1);
                 AppUtil.logSecure("warnawarni",title+" masuk kondisi 3");
-                holder.rl_menu.setEnabled(true);
+//                holder.rl_menu.setEnabled(true);
             }
         }
 

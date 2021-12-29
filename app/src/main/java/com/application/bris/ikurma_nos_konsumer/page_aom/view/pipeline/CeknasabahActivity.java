@@ -150,7 +150,7 @@ public class CeknasabahActivity extends AppCompatActivity implements View.OnClic
                                 dataPribadi = response.body().getData().get("dataPribadi").toString();
                                 Gson gson = new Gson();
                                 datapribadi datapribadi = gson.fromJson(dataPribadi, datapribadi.class);
-                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + datapribadi.getFid_photo();
+                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlFile + datapribadi.getFid_photo();
 
                                 Glide
                                         .with(CeknasabahActivity.this)

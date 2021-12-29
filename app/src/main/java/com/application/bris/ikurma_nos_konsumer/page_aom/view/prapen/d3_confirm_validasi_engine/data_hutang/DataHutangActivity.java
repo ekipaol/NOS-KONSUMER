@@ -180,6 +180,12 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
                         dataFlag.setFlagD3Kewajiban(true);
                         realm.insertOrUpdate(dataFlag);
                     }
+                    else{
+                        dataFlag=new FlagAplikasiPojo();
+                        dataFlag.setIdAplikasi(idAplikasi);
+                        dataFlag.setFlagD3Kewajiban(true);
+                        realm.insertOrUpdate(dataFlag);
+                    }
                     realm.close();
                 }
             }

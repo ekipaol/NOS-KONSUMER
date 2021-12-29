@@ -217,7 +217,7 @@ public class KonsumerKPRPipelineDetailActivity extends AppCompatActivity impleme
                                 Gson gson = new Gson();
                                 data = gson.fromJson(dataPipeline, KonsumerKPRDetailPipeline.class);
                                 val_title = data.getNama();
-                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + data.getFid_photo();
+                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlFile + data.getFid_photo();
                                 Glide
                                         .with(KonsumerKPRPipelineDetailActivity.this)
                                         .asBitmap()

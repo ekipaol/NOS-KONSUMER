@@ -555,32 +555,82 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         binding.bottomSheet.btSetuju.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Realm realm=Realm.getDefaultInstance();
-                FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
 
-                if(dataFlag!=null){
-                    if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
-                        if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
-                            AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                if(statusId.equalsIgnoreCase("d.3")){
+                    AppUtil.logSecure("warnawarni","masuk ke 1");
+                    Realm realm=Realm.getDefaultInstance();
+                    FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
+                    if(dataFlag!=null){
+                        if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
+                            if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                                AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                            }
+                            else{
+                                SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                                dialog.setTitleText("Konfirmasi");
+                                dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
+                                dialog.setConfirmText("Ya");
+                                dialog.setCanceledOnTouchOutside(false);
+                                dialog.setCancelText("Batal");
+                                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        updateMemo(dialog,"setuju");
+                                    }
+                                });
+                                dialog.show();
+                            }
                         }
                         else{
-                            SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
-                            dialog.setTitleText("Konfirmasi");
-                            dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
-                            dialog.setConfirmText("Ya");
-                            dialog.setCanceledOnTouchOutside(false);
-                            dialog.setCancelText("Batal");
-                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    updateMemo(dialog,"setuju");
+                            List<String> menuBelumDiisi=new ArrayList<>();
+                            if(!dataFlag.getFlagD3Kalkulator()){
+                                menuBelumDiisi.add("Kalkulator");
+                            }
+                            if(!dataFlag.getFlagD3Jaminan()){
+                                menuBelumDiisi.add("Jaminan");
+                            }
+                            if(!dataFlag.getFlagD3Pendapatan()){
+                                menuBelumDiisi.add("Pendapatan");
+                            }
+                            if(!dataFlag.getFlagD3Ideb()){
+                                menuBelumDiisi.add("IDEB");
+                            }
+
+                            String allMenu="";
+                            for (int i = 0; i <menuBelumDiisi.size() ; i++) {
+                                if(i==menuBelumDiisi.size()-1){
+                                    allMenu=allMenu+menuBelumDiisi.get(i);
                                 }
-                            });
-                            dialog.show();
+                                else{
+                                    allMenu=allMenu+menuBelumDiisi.get(i)+", ";
+                                }
+
+                            }
+                            AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Anda Belum Mengisi Data : "+allMenu);
                         }
                     }
                     else{
-                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi seluruh data terlebih dahulu");
+                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Flagging tidak ditemukan - Harap isi data terlebih dahulu");
+                    }
+                }
+                else{
+                    if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                    }
+                    else{
+                        SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                        dialog.setTitleText("Konfirmasi");
+                        dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
+                        dialog.setConfirmText("Ya");
+                        dialog.setCanceledOnTouchOutside(false);
+                        dialog.setCancelText("Batal");
+                        dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                updateMemo(dialog,"setuju");
+                            }
+                        });
+                        dialog.show();
                     }
                 }
 

@@ -488,7 +488,7 @@ public class GlobalData {
     }
 
     public static void jenisKelamin(Context context, List<keyvalue> data){
-        data.add(new keyvalue("Laki - Laki", "L"));
+        data.add(new keyvalue("Laki-Laki", "L"));
         data.add(new keyvalue("Perempuan", "P"));
     }
 

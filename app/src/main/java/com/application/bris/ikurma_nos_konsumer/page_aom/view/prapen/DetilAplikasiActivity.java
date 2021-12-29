@@ -118,7 +118,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
         //initialize status
         initializeMenu(status);
-        loadDetailAplikasi();
+        loadDetailAplikasi(true);
 //        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
 
         binding.btnUbahFlow.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +163,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     private void setData(){
 
         statusId=dataDetailAplikasi.getStatusAplikasiId();
+        status=dataDetailAplikasi.getStatusAplikasi();
+        initializeMenu(status);
+
         //initialize status pertama
         binding.btnUbahFlow.setText("Flow : "+dataDetailAplikasi.getStatusAplikasi());
 
@@ -249,7 +252,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         if(cardviewVisibility){
             binding.cvDataDetilAplikasi.setVisibility(View.VISIBLE);
             binding.llInfo.setVisibility(View.GONE);
-            loadDetailAplikasi();
+//            loadDetailAplikasi();
         }
         else{
             binding.cvDataDetilAplikasi.setVisibility(View.GONE);
@@ -445,42 +448,42 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
         //MEMO
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d4_memo))){
-            if(statusId.equalsIgnoreCase("d.3")){
-                Realm realm=Realm.getDefaultInstance();
-                FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.parseLong(idAplikasi)).findFirst();
-                AppUtil.logSecure("warnawarni","masuk ke 1");
-                if(dataFlag!=null){
-                    AppUtil.logSecure("warnawarni","masuk ke 1.1");
-                    if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
-                        Intent it = new Intent(this, MemoActivity.class);
-                        it.putExtra("idAplikasi",idAplikasi);
-                        it.putExtra("statusId",statusId);
-                        startActivity(it);
-                        AppUtil.logSecure("warnawarni","masuk ke 1.2");
-
-                    }
-                    else{
-                        AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Harap isi seluruh data terlebih dahulu");
-                        binding.loading.setVisibility(View.GONE);
-                        AppUtil.logSecure("warnawarni","masuk ke 2");
-                    }
-                }
-                else{
-                    AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Data Flag Tidak Ditemukan - Bypassed");
-                    Intent it = new Intent(this, MemoActivity.class);
-                    it.putExtra("idAplikasi",idAplikasi);
-                    it.putExtra("statusId",statusId);
-                    startActivity(it);
-                    AppUtil.logSecure("warnawarni","masuk ke 3");
-                }
-            }
-            else{
+//            if(statusId.equalsIgnoreCase("d.3")){
+//                Realm realm=Realm.getDefaultInstance();
+//                FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", Long.parseLong(idAplikasi)).findFirst();
+//                AppUtil.logSecure("warnawarni","masuk ke 1");
+//                if(dataFlag!=null){
+//                    AppUtil.logSecure("warnawarni","masuk ke 1.1");
+//                    if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
+//                        Intent it = new Intent(this, MemoActivity.class);
+//                        it.putExtra("idAplikasi",idAplikasi);
+//                        it.putExtra("statusId",statusId);
+//                        startActivity(it);
+//                        AppUtil.logSecure("warnawarni","masuk ke 1.2");
+//
+//                    }
+//                    else{
+//                        AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Harap isi seluruh data terlebih dahulu");
+//                        binding.loading.setVisibility(View.GONE);
+//                        AppUtil.logSecure("warnawarni","masuk ke 2");
+//                    }
+//                }
+//                else{
+//                    AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Data Flag Tidak Ditemukan - Bypassed");
+//                    Intent it = new Intent(this, MemoActivity.class);
+//                    it.putExtra("idAplikasi",idAplikasi);
+//                    it.putExtra("statusId",statusId);
+//                    startActivity(it);
+//                    AppUtil.logSecure("warnawarni","masuk ke 3");
+//                }
+//            }
+//            else{
                 Intent it = new Intent(this, MemoActivity.class);
                 it.putExtra("idAplikasi",idAplikasi);
                 it.putExtra("statusId",statusId);
                 startActivity(it);
                 AppUtil.logSecure("warnawarni","masuk ke 4");
-            }
+//            }
 
 
         }
@@ -488,6 +491,8 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     }
 
     private void isiDataDropdown(){
+
+        dataDropdownFlow.clear();
 
         //status inisialisasi pasti masuk list karena dia paling awal
 //        dataDropdownFlow.add(new MGenericModel("0",getString(R.string.d05_inisialisasi)));
@@ -552,9 +557,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     }
 
 
-    private void loadDetailAplikasi(){
+    private void loadDetailAplikasi(boolean lakukanLoading){
             //  dataUser = getListUser();
+        if(lakukanLoading){
             binding.loadingAll.progressbarLoading.setVisibility(View.VISIBLE);
+        }
+
             //pantekan no aplikasi dan aktifitas
             ReqUidIdAplikasi req=new ReqUidIdAplikasi();
             req.setApplicationId(Long.parseLong(idAplikasi));
@@ -721,7 +729,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     @Override
     protected void onResume() {
         super.onResume();
-//        loadDetailAplikasi();
+        loadDetailAplikasi(false);
         initializeMenu(status);
         binding.loading.setVisibility(View.GONE);
     }

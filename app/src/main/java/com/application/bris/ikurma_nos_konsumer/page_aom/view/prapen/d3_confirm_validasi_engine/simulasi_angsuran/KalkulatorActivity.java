@@ -398,7 +398,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                 if (response.isSuccessful()) {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        finish();
+//                        finish();
                         CustomDialog.DialogSuccess(KalkulatorActivity.this, "Success!", "Update Data Kalkulator sukses", KalkulatorActivity.this);
 
                         //update Flagging
@@ -409,6 +409,12 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                         }
 
                         if(dataFlag!=null){
+                            dataFlag.setFlagD3Kalkulator(true);
+                            realm.insertOrUpdate(dataFlag);
+                        }
+                        else{
+                            dataFlag=new FlagAplikasiPojo();
+                            dataFlag.setIdAplikasi(idAplikasi);
                             dataFlag.setFlagD3Kalkulator(true);
                             realm.insertOrUpdate(dataFlag);
                         }

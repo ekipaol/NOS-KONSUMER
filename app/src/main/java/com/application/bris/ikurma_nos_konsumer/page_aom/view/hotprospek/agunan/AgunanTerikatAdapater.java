@@ -64,7 +64,7 @@ public class AgunanTerikatAdapater extends RecyclerView.Adapter<AgunanTerikatAda
 
         Glide
                 .with(context)
-                .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + datas.getID())
+                .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + datas.getID())
                 .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
                 .into(holder.iv_foto);

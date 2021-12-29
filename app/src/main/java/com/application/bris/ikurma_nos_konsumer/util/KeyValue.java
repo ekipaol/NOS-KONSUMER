@@ -145,11 +145,11 @@ public class KeyValue {
 
         //mikro
         //Data Type Address Search
-        mapTypeAddressSearch.put("Provinsi", "PROPINSI");
+        mapTypeAddressSearch.put("Provinsi", "PROVINSI");
         mapTypeAddressSearch.put("Kota/Kabupaten", "KOTA");
         mapTypeAddressSearch.put("Kecamatan", "KECAMATAN");
         mapTypeAddressSearch.put("Kelurahan", "KELURAHAN");
-        mapTypeAddressSearch.put("Kodepos", "KODE_POS");
+        mapTypeAddressSearch.put("Kodepos", "KODEPOS");
 
         //Data Type Usaha or Job
         //Usaha

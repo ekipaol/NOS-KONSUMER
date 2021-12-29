@@ -626,7 +626,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
         File imageFile = new File(getApplicationContext().getCacheDir(), filename);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -1015,7 +1015,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             //load foto
 
-                            String baseurl_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhoto;
+                            String baseurl_photo = UriApi.Baseurl.URL + UriApi.foto.urlFile;
 
                             RequestOptions options = new RequestOptions()
                                     .centerCrop()
@@ -1025,7 +1025,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataTanahKosong.getIdPhotoTKutama())
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + dataTanahKosong.getIdPhotoTKutama())
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override
@@ -1038,7 +1038,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataTanahKosong.getIdPhotoTKutara())
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + dataTanahKosong.getIdPhotoTKutara())
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override
@@ -1051,7 +1051,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataTanahKosong.getIdPhotoTKselatan())
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + dataTanahKosong.getIdPhotoTKselatan())
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override
@@ -1063,7 +1063,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataTanahKosong.getIdPhotoTKbarat())
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + dataTanahKosong.getIdPhotoTKbarat())
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override
@@ -1076,7 +1076,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataTanahKosong.getIdPhotoTKtimur())
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + dataTanahKosong.getIdPhotoTKtimur())
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override
@@ -1089,7 +1089,7 @@ public class ActivityAgunanTanahKosong extends AppCompatActivity implements KeyV
 
                             Glide.with(ActivityAgunanTanahKosong.this)
                                     .asBitmap()
-                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlPhoto + Long.toString(dataTanahKosong.getIdPhotoTKbpn()))
+                                    .load(UriApi.Baseurl.URL + UriApi.foto.urlFile + Long.toString(dataTanahKosong.getIdPhotoTKbpn()))
                                     .apply(options)
                                     .into(new SimpleTarget<Bitmap>() {
                                         @Override

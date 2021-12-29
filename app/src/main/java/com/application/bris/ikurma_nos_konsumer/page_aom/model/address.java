@@ -7,15 +7,15 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class address {
-    @SerializedName("PROPINSI")
+    @SerializedName("Provinsi")
     private String provinsi;
-    @SerializedName("KOTA")
+    @SerializedName("Kota")
     private String kota;
-    @SerializedName("KECAMATAN")
+    @SerializedName("Kecamatan")
     private String kecamatan;
-    @SerializedName("KELURAHAN")
+    @SerializedName("Kelurahan")
     private String kelurahan;
-    @SerializedName("KODE_POS")
+    @SerializedName("KodePos")
     private String kodepos;
 
     public address(String provinsi, String kota, String kecamatan, String kelurahan, String kodepos) {

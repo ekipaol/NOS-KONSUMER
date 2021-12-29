@@ -496,7 +496,7 @@ public class KonsumerKprPipelineInputActivity extends AppCompatActivity implemen
         Gson gson = new Gson();
         dataPr = gson.fromJson(dataPribadi, datapribadi.class);
 
-        val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + dataPr.getFid_photo();
+        val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlFile + dataPr.getFid_photo();
         Glide
                 .with(KonsumerKprPipelineInputActivity.this)
                 .asBitmap()
@@ -1211,7 +1211,7 @@ public class KonsumerKprPipelineInputActivity extends AppCompatActivity implemen
             File imageFile = new File(getApplicationContext().getCacheDir(), filename);
             RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
             MultipartBody.Part fileBody = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-            Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFoto(fileBody);
+            Call<ParseResponse> call = apiClientAdapter.getApiInterface().uploadFileOld(fileBody);
             call.enqueue(new Callback<ParseResponse>() {
                 @Override
                 public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {

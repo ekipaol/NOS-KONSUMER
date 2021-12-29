@@ -227,7 +227,7 @@ public class KonsumerKMGPipelineDetailActivity extends AppCompatActivity impleme
                                 data = gson.fromJson(dataPipeline, KonsumerKMGDetailPipeline.class);
 //                                Log.d("detail rekanan", data.getREKANAN_DM());
                                 val_title = data.getNama();
-                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlPhoto + data.getFid_photo();
+                                val_urlphoto = UriApi.Baseurl.URL + UriApi.foto.urlFile + data.getFid_photo();
                                 Glide
                                         .with(KonsumerKMGPipelineDetailActivity.this)
                                         .asBitmap()
