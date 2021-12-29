@@ -342,7 +342,7 @@ public class UriApi {
 
     public class prapen{
 
-        //D1
+        // PickList
         public static final String dropdownTipeProduk = "NOS_PRAPEN_Services/rest/Picklist/TipeProduk";
         public static final String dropdownSegmen = "NOS_PRAPEN_Services/rest/Picklist/Segmen";
         public static final String dropdownJenisPembiayaan = "NOS_PRAPEN_Services/rest/Picklist/JenisPembiayaan";
@@ -351,6 +351,8 @@ public class UriApi {
         public static final String dropdownLembagaPengelolaPensiun = "NOS_PRAPEN_Services/rest/Picklist/LembagaPengelolaPensiun";
         public static final String dropdownTreatmentRekening = "NOS_PRAPEN_Services/rest/Picklist/Treatment";
         public static final String dropdownMitraFronting  = "NOS_PRAPEN_Services/rest/Picklist/MitraFronting";
+
+        //D1
         public static final String cekHasilRekomendasiAkad = "NOS_PRAPEN_Services/rest/D1/InquiryHasilRekomendasiAkad";
         public static final String updateDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/UpdateDataPembiayaan";
         public static final String inquiryDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/InquiryDataPembiayaan";
@@ -386,9 +388,7 @@ public class UriApi {
         public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasingD3";
         public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
         public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
-        public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPemb";
-        public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
-        public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
+
 
         public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";
         public static final String inquiryKalkulatorMarketing = "NOS_PRAPEN_Services/rest/D3/InqKalkulatordanBiayaD3";
@@ -407,6 +407,9 @@ public class UriApi {
         public static final String batalPembiayaanVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateBatalPembiayaanVerifikator";
         public static final String InqKalkulatorVerfikator = "NOS_PRAPEN_Services/rest/D4/InqKalkulatorVerfikator";
         public static final String UpdateKalkulatorVerifikator = "NOS_PRAPEN_Services/rest/D4/UpdateKalkulatorVerifikator";
+        public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPembVerifikator";
+        public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
+        public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
 
 
         //D4.1

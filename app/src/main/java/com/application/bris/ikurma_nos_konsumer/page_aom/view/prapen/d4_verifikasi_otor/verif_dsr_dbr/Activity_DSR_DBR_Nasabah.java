@@ -46,7 +46,6 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         View view = binding.getRoot();
         setContentView(view);
         numberText();
-        onchangeText();
         disableText();
         customToolbar();
         allOnClicks();
@@ -72,17 +71,21 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                                 listDataString = response.body().getData().toString();
                                 DPDSR = gson.fromJson(listDataString, MparseTotalKualitasPembiayaan.class);
                                 try {
-                                    binding.etAngsuranPinjamanEksisting.setText(DPDSR.getTotalAngsuranPembiayaan().toString());
-                                    binding.etSisapenghasilan.setText(DPDSR.getSisaPendapatan());
-                                    binding.etCatatanVerifikasi.setText(DPDSR.getCatatanVerifikasi2());
-                                    binding.etDbr.setText(DPDSR.getdBRyangdigunakan());
-                                    binding.etSisaDbr.setText(DPDSR.getSisaDBR());
-                                    binding.etMaxAngsuranDBR.setText(DPDSR.getMaksimalAngsuranBulananDBR());
-                                    binding.etFinalDSR.setText(DPDSR.getdBRFinal());
-                                    binding.etDsr.setText(DPDSR.getdSRyangdigunakan());
-                                    binding.etSisaDsr.setText(DPDSR.getSisaDSR());
-                                    binding.etMaxAngsuranDsr.setText(DPDSR.getMaksimalAngsuranBulananDSR());
-                                    binding.etFinalDSR.setText(DPDSR.getdSRFinal());
+                                    binding.etSisaPendapatanGajiAktif.setText(String.valueOf(DPDSR.getSisaPendapatanGajiAktif()));
+                                    binding.etSisaPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getSisaPendapatanManfaatPensiun()));
+                                    binding.etTotalPendapatanGajiAktif.setText(String.valueOf(DPDSR.getTotalPendapatanGajiAktif()));
+                                    binding.etTotalPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getTotalPendapatanManfaatPensiun()));
+                                    binding.etTotalAngsPembEksNotlunasDbr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDBR()));
+                                    binding.etTotalAngsPembEksNotlunasDsr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDSR()));
+                                    binding.etGajiAktifDigunakan.setText(DPDSR.getGajiAktifDigunakan());
+                                    binding.etManfaatPensiunDigunakan.setText(DPDSR.getManfaatPensiunDigunakan());
+                                    binding.etSisaGajiAktif.setText(DPDSR.getSisaGajiAktif());
+                                    binding.etSisaManfaatPensiun.setText(DPDSR.getSisaManfaatPensiun());
+                                    binding.etMaksimalAngsuranBulananGajiAktif.setText(DPDSR.getMaksimalAngsuranBulananGajiAktif());
+                                    binding.etMaksimalAngsuranManfaatPensiun.setText(DPDSR.getMaksimalAngsuranManfaatPensiun());
+                                    binding.etKetentuanGajiAktif.setText(DPDSR.getKetentuanGajiAktif());
+                                    binding.etKetentuanManfaatPensiun.setText(DPDSR.getKetentuanManfaatPensiun());
+                                    binding.etCatatanVerifikasi.setText(DPDSR.getCatatanVerifikasi());
                                     try {
                                         //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                                         if (DPDSR.getFileName().substring(DPDSR.getFileName().length() - 3, DPDSR.getFileName().length()).equalsIgnoreCase("pdf")) {
@@ -110,8 +113,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                         Error error = ParseResponseError.confirmEror(response.errorBody());
                         AppUtil.notiferror(Activity_DSR_DBR_Nasabah.this, findViewById(android.R.id.content), error.getMessage());
                     }
-                } catch (
-                        Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -166,61 +168,31 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     }
 
     private void disableText() {
-        binding.etAngsuranPinjamanEksisting.setFocusable(false);
-        binding.etSisapenghasilan.setFocusable(false);
-        binding.etDbr.setFocusable(false);
-        binding.etFinalDBR.setFocusable(false);
-        binding.etSisaDbr.setFocusable(false);
-        binding.etMaxAngsuranDBR.setFocusable(false);
-        binding.etDsr.setFocusable(false);
-        binding.etFinalDSR.setFocusable(false);
-        binding.etSisaDsr.setFocusable(false);
-        binding.etMaxAngsuranDsr.setFocusable(false);
+        binding.etSisaPendapatanGajiAktif.setFocusable(false);
         binding.etCatatanVerifikasi.setFocusable(false);
+        binding.etSisaPendapatanManfaatPensiun.setFocusable(false);
+        binding.etTotalPendapatanGajiAktif.setFocusable(false);
+        binding.etTotalPendapatanManfaatPensiun.setFocusable(false);
+        binding.etTotalAngsPembEksNotlunasDbr.setFocusable(false);
+        binding.etTotalAngsPembEksNotlunasDsr.setFocusable(false);
+        binding.etGajiAktifDigunakan.setFocusable(false);
+        binding.etManfaatPensiunDigunakan.setFocusable(false);
+        binding.etSisaGajiAktif.setFocusable(false);
+        binding.etSisaManfaatPensiun.setFocusable(false);
+        binding.etMaksimalAngsuranBulananGajiAktif.setFocusable(false);
+        binding.etMaksimalAngsuranManfaatPensiun.setFocusable(false);
+        binding.etKetentuanGajiAktif.setFocusable(false);
+        binding.etKetentuanManfaatPensiun.setFocusable(false);
         binding.btnDokumen1.setVisibility(View.GONE);
     }
 
-    private void onchangeText() {
-        binding.etAngsuranPinjamanEksisting.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                BigDecimal verangsuran = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etAngsuranPinjamanEksisting.getText().toString()));
-//                BigDecimal vertotverpendapatan = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString("10000"));
-//                BigDecimal verparamProduk = new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString("10000"));
-//                BigDecimal sisaPendapatan = (vertotverpendapatan.subtract(verangsuran));
-//                BigDecimal dsrNasabah = (verangsuran.divide(vertotverpendapatan, 2, RoundingMode.HALF_EVEN).multiply(new BigDecimal(1)));
-//                BigDecimal sisaDsr = (verparamProduk.subtract(sisaPendapatan));
-//                BigDecimal max_angsuran = (vertotverpendapatan.multiply(sisaDsr));
-//                binding.etSisapenghasilan.setText(String.valueOf(sisaPendapatan));
-//                binding.etDsrDbr.setText(String.valueOf(dsrNasabah));
-//                binding.etSisaDsrDbr.setText(String.valueOf(sisaDsr));
-//                binding.etMaxAngsuran.setText(String.valueOf(max_angsuran));
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-    }
-
     private void numberText() {
-        binding.etSisapenghasilan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisapenghasilan));
-        binding.etAngsuranPinjamanEksisting.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etAngsuranPinjamanEksisting));
-        binding.etDsr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etDsr));
-        binding.etSisaDsr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaDsr));
-        binding.etFinalDSR.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etFinalDSR));
-        binding.etMaxAngsuranDsr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaxAngsuranDsr));
-
-        binding.etDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etDbr));
-        binding.etSisaDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaDbr));
-        binding.etFinalDBR.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etFinalDBR));
-        binding.etMaxAngsuranDBR.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaxAngsuranDBR));
+        binding.etSisaPendapatanGajiAktif.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaPendapatanGajiAktif));
+        binding.etSisaPendapatanManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaPendapatanManfaatPensiun));
+        binding.etTotalPendapatanGajiAktif.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanGajiAktif));
+        binding.etTotalPendapatanManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanManfaatPensiun));
+        binding.etTotalAngsPembEksNotlunasDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalAngsPembEksNotlunasDbr));
+        binding.etTotalAngsPembEksNotlunasDsr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalAngsPembEksNotlunasDsr));
     }
 
     public void customToolbar() {

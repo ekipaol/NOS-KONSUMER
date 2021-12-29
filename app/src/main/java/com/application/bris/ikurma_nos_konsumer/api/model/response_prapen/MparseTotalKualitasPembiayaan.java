@@ -3,149 +3,195 @@ package com.application.bris.ikurma_nos_konsumer.api.model.response_prapen;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
+
 public class MparseTotalKualitasPembiayaan {
 
-    @SerializedName("CatatanVerifikasi2")
+    @SerializedName("CatatanVerifikasi")
     @Expose
-    private String catatanVerifikasi2;
-    @SerializedName("File_Name")
-    @Expose
-    private String fileName;
+    private String catatanVerifikasi;
     @SerializedName("Img")
     @Expose
     private String img;
-    @SerializedName("TotalAngsuranPembiayaan")
+    @SerializedName("File_Name")
     @Expose
-    private Long totalAngsuranPembiayaan;
-    @SerializedName("SisaPendapatan")
+    private String fileName;
+    @SerializedName("Sisa_Pendapatan_Gaji_Aktif")
     @Expose
-    private String sisaPendapatan;
-    @SerializedName("DSRyangdigunakan")
+    private BigDecimal sisaPendapatanGajiAktif;
+    @SerializedName("Sisa_Pendapatan_Manfaat_Pensiun")
     @Expose
-    private String dSRyangdigunakan;
-    @SerializedName("DBRyangdigunakan")
+    private BigDecimal sisaPendapatanManfaatPensiun;
+    @SerializedName("TotalPendapatanGajiAktif")
     @Expose
-    private String dBRyangdigunakan;
-    @SerializedName("SisaDSR")
+    private BigDecimal totalPendapatanGajiAktif;
+    @SerializedName("TotalPendapatanManfaatPensiun")
     @Expose
-    private String sisaDSR;
-    @SerializedName("SisaDBR")
+    private BigDecimal totalPendapatanManfaatPensiun;
+    @SerializedName("Total_Angs_Pemb_Eks_NotLunas_DBR")
     @Expose
-    private String sisaDBR;
-    @SerializedName("MaksimalAngsuranBulananDBR")
+    private BigDecimal totalAngsPembEksNotLunasDBR;
+    @SerializedName("Total_Angs_Pemb_Eks_NotLunas_DSR")
     @Expose
-    private String maksimalAngsuranBulananDBR;
-    @SerializedName("MaksimalAngsuranBulananDSR")
+    private BigDecimal totalAngsPembEksNotLunasDSR;
+    @SerializedName("GajiAktifDigunakan")
     @Expose
-    private String maksimalAngsuranBulananDSR;
-    @SerializedName("DSRFinal")
+    private String gajiAktifDigunakan;
+    @SerializedName("ManfaatPensiunDigunakan")
     @Expose
-    private String dSRFinal;
-    @SerializedName("DBRFinal")
+    private String manfaatPensiunDigunakan;
+    @SerializedName("SisaGajiAktif")
     @Expose
-    private String dBRFinal;
+    private String sisaGajiAktif;
+    @SerializedName("SisaManfaatPensiun")
+    @Expose
+    private String sisaManfaatPensiun;
+    @SerializedName("MaksimalAngsuranBulananGajiAktif")
+    @Expose
+    private String maksimalAngsuranBulananGajiAktif;
+    @SerializedName("MaksimalAngsuranManfaatPensiun")
+    @Expose
+    private String maksimalAngsuranManfaatPensiun;
+    @SerializedName("KetentuanGajiAktif")
+    @Expose
+    private String ketentuanGajiAktif;
+    @SerializedName("KetentuanManfaatPensiun")
+    @Expose
+    private String ketentuanManfaatPensiun;
 
-    public String getCatatanVerifikasi2() {
-        return catatanVerifikasi2;
-    }
-
-    public void setCatatanVerifikasi2(String catatanVerifikasi2) {
-        this.catatanVerifikasi2 = catatanVerifikasi2;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public String getCatatanVerifikasi() {
+        return catatanVerifikasi;
     }
 
     public String getImg() {
         return img;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public BigDecimal getSisaPendapatanGajiAktif() {
+        return sisaPendapatanGajiAktif;
+    }
+
+    public BigDecimal getSisaPendapatanManfaatPensiun() {
+        return sisaPendapatanManfaatPensiun;
+    }
+
+    public BigDecimal getTotalPendapatanGajiAktif() {
+        return totalPendapatanGajiAktif;
+    }
+
+    public BigDecimal getTotalPendapatanManfaatPensiun() {
+        return totalPendapatanManfaatPensiun;
+    }
+
+    public BigDecimal getTotalAngsPembEksNotLunasDBR() {
+        return totalAngsPembEksNotLunasDBR;
+    }
+
+    public BigDecimal getTotalAngsPembEksNotLunasDSR() {
+        return totalAngsPembEksNotLunasDSR;
+    }
+
+    public String getGajiAktifDigunakan() {
+        return gajiAktifDigunakan;
+    }
+
+    public String getManfaatPensiunDigunakan() {
+        return manfaatPensiunDigunakan;
+    }
+
+    public String getSisaGajiAktif() {
+        return sisaGajiAktif;
+    }
+
+    public String getSisaManfaatPensiun() {
+        return sisaManfaatPensiun;
+    }
+
+    public String getMaksimalAngsuranBulananGajiAktif() {
+        return maksimalAngsuranBulananGajiAktif;
+    }
+
+    public String getMaksimalAngsuranManfaatPensiun() {
+        return maksimalAngsuranManfaatPensiun;
+    }
+
+    public String getKetentuanGajiAktif() {
+        return ketentuanGajiAktif;
+    }
+
+    public String getKetentuanManfaatPensiun() {
+        return ketentuanManfaatPensiun;
+    }
+
+    public void setCatatanVerifikasi(String catatanVerifikasi) {
+        this.catatanVerifikasi = catatanVerifikasi;
+    }
+
     public void setImg(String img) {
         this.img = img;
     }
 
-    public Long getTotalAngsuranPembiayaan() {
-        return totalAngsuranPembiayaan;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public void setTotalAngsuranPembiayaan(Long totalAngsuranPembiayaan) {
-        this.totalAngsuranPembiayaan = totalAngsuranPembiayaan;
+    public void setSisaPendapatanGajiAktif(BigDecimal sisaPendapatanGajiAktif) {
+        this.sisaPendapatanGajiAktif = sisaPendapatanGajiAktif;
     }
 
-    public String getSisaPendapatan() {
-        return sisaPendapatan;
+    public void setSisaPendapatanManfaatPensiun(BigDecimal sisaPendapatanManfaatPensiun) {
+        this.sisaPendapatanManfaatPensiun = sisaPendapatanManfaatPensiun;
     }
 
-    public void setSisaPendapatan(String sisaPendapatan) {
-        this.sisaPendapatan = sisaPendapatan;
+    public void setTotalPendapatanGajiAktif(BigDecimal totalPendapatanGajiAktif) {
+        this.totalPendapatanGajiAktif = totalPendapatanGajiAktif;
     }
 
-    public String getdSRyangdigunakan() {
-        return dSRyangdigunakan;
+    public void setTotalPendapatanManfaatPensiun(BigDecimal totalPendapatanManfaatPensiun) {
+        this.totalPendapatanManfaatPensiun = totalPendapatanManfaatPensiun;
     }
 
-    public void setdSRyangdigunakan(String dSRyangdigunakan) {
-        this.dSRyangdigunakan = dSRyangdigunakan;
+    public void setTotalAngsPembEksNotLunasDBR(BigDecimal totalAngsPembEksNotLunasDBR) {
+        this.totalAngsPembEksNotLunasDBR = totalAngsPembEksNotLunasDBR;
     }
 
-    public String getdBRyangdigunakan() {
-        return dBRyangdigunakan;
+    public void setTotalAngsPembEksNotLunasDSR(BigDecimal totalAngsPembEksNotLunasDSR) {
+        this.totalAngsPembEksNotLunasDSR = totalAngsPembEksNotLunasDSR;
     }
 
-    public void setdBRyangdigunakan(String dBRyangdigunakan) {
-        this.dBRyangdigunakan = dBRyangdigunakan;
+    public void setGajiAktifDigunakan(String gajiAktifDigunakan) {
+        this.gajiAktifDigunakan = gajiAktifDigunakan;
     }
 
-    public String getSisaDSR() {
-        return sisaDSR;
+    public void setManfaatPensiunDigunakan(String manfaatPensiunDigunakan) {
+        this.manfaatPensiunDigunakan = manfaatPensiunDigunakan;
     }
 
-    public void setSisaDSR(String sisaDSR) {
-        this.sisaDSR = sisaDSR;
+    public void setSisaGajiAktif(String sisaGajiAktif) {
+        this.sisaGajiAktif = sisaGajiAktif;
     }
 
-    public String getSisaDBR() {
-        return sisaDBR;
+    public void setSisaManfaatPensiun(String sisaManfaatPensiun) {
+        this.sisaManfaatPensiun = sisaManfaatPensiun;
     }
 
-    public void setSisaDBR(String sisaDBR) {
-        this.sisaDBR = sisaDBR;
+    public void setMaksimalAngsuranBulananGajiAktif(String maksimalAngsuranBulananGajiAktif) {
+        this.maksimalAngsuranBulananGajiAktif = maksimalAngsuranBulananGajiAktif;
     }
 
-    public String getMaksimalAngsuranBulananDBR() {
-        return maksimalAngsuranBulananDBR;
+    public void setMaksimalAngsuranManfaatPensiun(String maksimalAngsuranManfaatPensiun) {
+        this.maksimalAngsuranManfaatPensiun = maksimalAngsuranManfaatPensiun;
     }
 
-    public void setMaksimalAngsuranBulananDBR(String maksimalAngsuranBulananDBR) {
-        this.maksimalAngsuranBulananDBR = maksimalAngsuranBulananDBR;
+    public void setKetentuanGajiAktif(String ketentuanGajiAktif) {
+        this.ketentuanGajiAktif = ketentuanGajiAktif;
     }
 
-    public String getMaksimalAngsuranBulananDSR() {
-        return maksimalAngsuranBulananDSR;
-    }
-
-    public void setMaksimalAngsuranBulananDSR(String maksimalAngsuranBulananDSR) {
-        this.maksimalAngsuranBulananDSR = maksimalAngsuranBulananDSR;
-    }
-
-    public String getdSRFinal() {
-        return dSRFinal;
-    }
-
-    public void setdSRFinal(String dSRFinal) {
-        this.dSRFinal = dSRFinal;
-    }
-
-    public String getdBRFinal() {
-        return dBRFinal;
-    }
-
-    public void setdBRFinal(String dBRFinal) {
-        this.dBRFinal = dBRFinal;
+    public void setKetentuanManfaatPensiun(String ketentuanManfaatPensiun) {
+        this.ketentuanManfaatPensiun = ketentuanManfaatPensiun;
     }
 }

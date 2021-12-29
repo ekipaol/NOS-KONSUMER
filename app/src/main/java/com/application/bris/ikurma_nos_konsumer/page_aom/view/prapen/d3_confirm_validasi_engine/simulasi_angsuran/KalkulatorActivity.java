@@ -90,6 +90,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         binding.etBiayaAsuransiKhusus.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaAsuransiKhusus));
         binding.etBiayaAdministrasi.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayaAdministrasi));
         binding.etBiayapenaltiKhususTakeover.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayapenaltiKhususTakeover));
+        binding.etMaxAngsuran.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaxAngsuran));
         binding.etBiayamaterai.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etBiayamaterai));
 
     }
@@ -156,7 +157,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                             if (DPSimulasi.getTerm() != null)
                                 binding.etJangkaWaktu.setText(String.valueOf(DPSimulasi.getTerm()));
                             if (DPSimulasi.getRate() != null)
-                                binding.etPricingsetara.setText(String.valueOf(DPSimulasi.getRate()));
+                                binding.etPricingPraPensiun.setText(String.valueOf(DPSimulasi.getRate()));
                         }
                         if (response.body().getData().get("SimulasiBiayaBiaya") != null) {
                             SSSimulasiBiayaBiaya = response.body().getData().get("SimulasiBiayaBiaya").getAsJsonObject().toString();
@@ -355,7 +356,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         MparseResponseSimulasiInqCal scal = new MparseResponseSimulasiInqCal();
         scal.setTerm(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etJangkaWaktu.getText().toString())));
         scal.setPv(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString()))));
-        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingsetara.getText().toString())));
+        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
         MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
         sbiaya.setAsuransiPenjaminId(id);
         sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
@@ -432,7 +433,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         MparseResponseSimulasiInqCal scal = new MparseResponseSimulasiInqCal();
         scal.setTerm(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etJangkaWaktu.getText().toString())));
         scal.setPv(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString()))));
-        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingsetara.getText().toString())));
+        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
         MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
         sbiaya.setAsuransiPenjaminId(id);
         sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
