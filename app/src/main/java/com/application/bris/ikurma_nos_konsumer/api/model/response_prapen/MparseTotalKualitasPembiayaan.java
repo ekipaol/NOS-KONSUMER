@@ -58,6 +58,9 @@ public class MparseTotalKualitasPembiayaan {
     @SerializedName("KetentuanManfaatPensiun")
     @Expose
     private String ketentuanManfaatPensiun;
+    @SerializedName("TreatmentPembayaran")
+    @Expose
+    private String TreatmentPembayaran;
 
     public String getCatatanVerifikasi() {
         return catatanVerifikasi;
@@ -127,6 +130,10 @@ public class MparseTotalKualitasPembiayaan {
         return ketentuanManfaatPensiun;
     }
 
+    public String getTreatmentPembayaran() {
+        return TreatmentPembayaran;
+    }
+
     public void setCatatanVerifikasi(String catatanVerifikasi) {
         this.catatanVerifikasi = catatanVerifikasi;
     }
@@ -193,5 +200,9 @@ public class MparseTotalKualitasPembiayaan {
 
     public void setKetentuanManfaatPensiun(String ketentuanManfaatPensiun) {
         this.ketentuanManfaatPensiun = ketentuanManfaatPensiun;
+    }
+
+    public void setTreatmentPembayaran(String treatmentPembayaran) {
+        TreatmentPembayaran = treatmentPembayaran;
     }
 }

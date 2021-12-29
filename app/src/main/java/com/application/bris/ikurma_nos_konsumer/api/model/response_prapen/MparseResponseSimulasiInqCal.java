@@ -9,25 +9,37 @@ public class MparseResponseSimulasiInqCal {
 
     @SerializedName("Term")
     @Expose
-    private Double term;
+    private Integer term;
     @SerializedName("PV")
     @Expose
     private BigDecimal pv;
-    @SerializedName("Rate")
+    @SerializedName("PricingPrapen")
     @Expose
-    private Double rate;
+    private Double pricingPrapen;
+    @SerializedName("PricingPensiun")
+    @Expose
+    private Double pricingPensiun;
     @SerializedName("PMTPrapen")
     @Expose
-    private Double PMTPrapen;
+    private Double pMTPrapen;
     @SerializedName("PMTPensiun")
     @Expose
-    private Double PMTPensiun;
+    private Double pMTPensiun;
+    @SerializedName("PricingPrapenAfter")
+    @Expose
+    private Double pricingPrapenAfter;
+    @SerializedName("PricingPensiunAfter")
+    @Expose
+    private Double pricingPensiunAfter;
+    @SerializedName("BatasAtasAngsuranPrapen")
+    @Expose
+    private BigDecimal batasAtasAngsuranPrapen;
 
-    public Double getTerm() {
+    public Integer getTerm() {
         return term;
     }
 
-    public void setTerm(Double term) {
+    public void setTerm(Integer term) {
         this.term = term;
     }
 
@@ -39,27 +51,59 @@ public class MparseResponseSimulasiInqCal {
         this.pv = pv;
     }
 
-    public Double getRate() {
-        return rate;
+    public Double getPricingPrapen() {
+        return pricingPrapen;
     }
 
-    public void setRate(Double rate) {
-        this.rate = rate;
+    public void setPricingPrapen(Double pricingPrapen) {
+        this.pricingPrapen = pricingPrapen;
     }
 
-    public Double getPMTPrapen() {
-        return PMTPrapen;
+    public Double getPricingPensiun() {
+        return pricingPensiun;
     }
 
-    public void setPMTPrapen(Double PMTPrapen) {
-        this.PMTPrapen = PMTPrapen;
+    public void setPricingPensiun(Double pricingPensiun) {
+        this.pricingPensiun = pricingPensiun;
     }
 
-    public Double getPMTPensiun() {
-        return PMTPensiun;
+    public Double getpMTPrapen() {
+        return pMTPrapen;
     }
 
-    public void setPMTPensiun(Double PMTPensiun) {
-        this.PMTPensiun = PMTPensiun;
+    public void setpMTPrapen(Double pMTPrapen) {
+        this.pMTPrapen = pMTPrapen;
+    }
+
+    public Double getpMTPensiun() {
+        return pMTPensiun;
+    }
+
+    public void setpMTPensiun(Double pMTPensiun) {
+        this.pMTPensiun = pMTPensiun;
+    }
+
+    public Double getPricingPrapenAfter() {
+        return pricingPrapenAfter;
+    }
+
+    public void setPricingPrapenAfter(Double pricingPrapenAfter) {
+        this.pricingPrapenAfter = pricingPrapenAfter;
+    }
+
+    public Double getPricingPensiunAfter() {
+        return pricingPensiunAfter;
+    }
+
+    public void setPricingPensiunAfter(Double pricingPensiunAfter) {
+        this.pricingPensiunAfter = pricingPensiunAfter;
+    }
+
+    public BigDecimal getBatasAtasAngsuranPrapen() {
+        return batasAtasAngsuranPrapen;
+    }
+
+    public void setBatasAtasAngsuranPrapen(BigDecimal batasAtasAngsuranPrapen) {
+        this.batasAtasAngsuranPrapen = batasAtasAngsuranPrapen;
     }
 }

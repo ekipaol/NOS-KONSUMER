@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:digits="0123456789."
                         android:inputType="numberDecimal"
-                        android:maxLength="15"
+                        android:maxLength="5"
                         app:suffix="%"
                         tools:ignore="DuplicateIds" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:digits="0123456789."
                         android:inputType="numberDecimal"
-                        android:maxLength="15"
+                        android:maxLength="5"
                         app:suffix="%"
                         tools:ignore="DuplicateIds" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -652,6 +652,7 @@
                                 android:textSize="14sp"/>
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -668,11 +669,42 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/muli_b"
                                 android:layout_marginRight="10dp"
-                                android:text="Pricing Attribusi"
+                                android:text="Pricing Attribusi Pra Pensiun"
                                 android:textSize="14sp" />
                             <!--Angsuran Bulanan-->
                             <TextView
-                                android:id="@+id/tv_pricing_atribusi"
+                                android:id="@+id/tv_pricing_atribusi_prapen"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/muli_b"
+                                android:text="0%"
+                                android:textColor="@color/colorBlackHeader"
+                                android:textSize="14sp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorDisableEdit"
+                            android:orientation="horizontal"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="16dp"
+                            android:paddingBottom="5dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/muli_b"
+                                android:layout_marginRight="10dp"
+                                android:text="Pricing Attribusi Pensiun"
+                                android:textSize="14sp" />
+                            <!--Angsuran Bulanan-->
+                            <TextView
+                                android:id="@+id/tv_pricing_atribusi_pensiun"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

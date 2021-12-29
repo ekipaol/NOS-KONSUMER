@@ -132,7 +132,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         if(statusId.equalsIgnoreCase("d.3")){
             call = apiClientAdapter.getApiInterface().inquiryKalkulatorMarketing(req);
         }
-        else    if(statusId.equalsIgnoreCase("d.5")){
+        else if(statusId.equalsIgnoreCase("d.5")){
             call = apiClientAdapter.getApiInterface().inqKalkulatorMarketingD5(req);
         }
 
@@ -153,11 +153,22 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                             SSSimulasi = response.body().getData().get("SimulasiInqCal").getAsJsonObject().toString();
                             DPSimulasi = gson.fromJson(SSSimulasi, MparseResponseSimulasiInqCal.class);
                             if (DPSimulasi.getPv() != null)
-                                binding.etPlafondYangDibutuhkan.setText(String.valueOf(DPSimulasi.getPv()));
+                                binding.etPlafondYangDibutuhkan.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPv())));
                             if (DPSimulasi.getTerm() != null)
                                 binding.etJangkaWaktu.setText(String.valueOf(DPSimulasi.getTerm()));
-                            if (DPSimulasi.getRate() != null)
-                                binding.etPricingPraPensiun.setText(String.valueOf(DPSimulasi.getRate()));
+
+                            if (DPSimulasi.getPricingPensiun() != null)
+                                binding.etPricingPensiun.setText(String.valueOf(DPSimulasi.getPricingPensiun()));
+                            if (DPSimulasi.getPricingPrapen() != null)
+                                binding.etPricingPraPensiun.setText(String.valueOf(DPSimulasi.getPricingPrapen()));
+
+                            if (DPSimulasi.getBatasAtasAngsuranPrapen() != null)
+                                binding.etMaxAngsuran.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getBatasAtasAngsuranPrapen())));
+
+                            if (DPSimulasi.getPricingPensiunAfter() != null)
+                                binding.tvPricingAtribusiPensiun.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPricingPensiunAfter())) + "%");
+                            if (DPSimulasi.getPricingPrapenAfter() != null)
+                                binding.tvPricingAtribusiPrapen.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPricingPrapenAfter())) + "%");
                         }
                         if (response.body().getData().get("SimulasiBiayaBiaya") != null) {
                             SSSimulasiBiayaBiaya = response.body().getData().get("SimulasiBiayaBiaya").getAsJsonObject().toString();
@@ -348,33 +359,12 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
     private void sendData() {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
 //        AppUtil.logSecure("SSd",binding.tvAngsuranBulanan.getText().toString().substring(4, binding.tvAngsuranBulanan.getText().length()).replace(",",""));
-        MparseResponseDataPembiayaan spem = new MparseResponseDataPembiayaan();
-        spem.setMonthInstalmentPrapen(BigDecimal.valueOf(Double.parseDouble(binding.tvAngsuranBulananPrapen.getText().toString().substring(4, binding.tvAngsuranBulananPrapen.getText().length()).replace(",", ""))));
-        spem.setMonthInstalmentPensiun(DPDataPembiayaan.getMonthInstalmentPensiun());
-        spem.setTotalAttributions(BigDecimal.valueOf(Double.parseDouble(binding.tvTotalAttribusi.getText().toString().substring(4, binding.tvTotalAttribusi.getText().length()).replace(",", ""))));
-        spem.setTotalCost(BigDecimal.valueOf(Double.parseDouble(binding.tvTotalBiaya.getText().toString().substring(4, binding.tvTotalBiaya.getText().length()).replace(",", ""))));
-        MparseResponseSimulasiInqCal scal = new MparseResponseSimulasiInqCal();
-        scal.setTerm(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etJangkaWaktu.getText().toString())));
-        scal.setPv(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString()))));
-        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
-        MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
-        sbiaya.setAsuransiPenjaminId(id);
-        sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
-        sbiaya.setTreatementBiayaAsuransiPenjamin(binding.etTreatmentBiayaAsuransi.getText().toString());
-        sbiaya.setBiayaAsuransiKhusus(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransiKhusus.getText().toString()))));
-        sbiaya.setTreatmentBiayaAsuransiKhusus(binding.etTreatmentBiayaAsuransiKhusus.getText().toString());
-        sbiaya.setBiayaAdministrasi(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAdministrasi.getText().toString()))));
-        sbiaya.setTreatementBiayaAdministrasi(binding.etTreatmentBiayaAdministrasi.getText().toString());
-        sbiaya.setBiayaPenalti(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayapenaltiKhususTakeover.getText().toString()))));
-        sbiaya.setTreatmentBiayaPenalti(binding.etTreatmentBiayaPenalti.getText().toString());
-        sbiaya.setBiayaMaterai(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayamaterai.getText().toString()))));
-        sbiaya.setTreatmentBiayaMaterai(binding.etTreatmentBiayaMaterai.getText().toString());
         ReqHitungKalkulator req = new ReqHitungKalkulator();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
         req.setUid(String.valueOf(appPreferences.getUid()));
-        req.setSimulasiBiayaBiaya(sbiaya);
-        req.setSimulasiAngsuranCalc(scal);
-        req.setDataPembiayaan(spem);
+        req.setSimulasiBiayaBiaya(DPSimulasiBiayaBiaya);
+        req.setSimulasiAngsuranCalc(DPSimulasi);
+        req.setDataPembiayaan(DPDataPembiayaan);
         req.setJadwalAngsuran(DPJadwalAngsuran);
 
         Call<ParseResponseAgunan> call=null;
@@ -437,9 +427,11 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
     private void hitungData() {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         MparseResponseSimulasiInqCal scal = new MparseResponseSimulasiInqCal();
-        scal.setTerm(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etJangkaWaktu.getText().toString())));
+        scal.setTerm(Integer.parseInt(binding.etJangkaWaktu.getText().toString()));
         scal.setPv(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString()))));
-        scal.setRate(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
+        scal.setPricingPrapen(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
+        scal.setPricingPensiun(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPensiun.getText().toString())));
+        scal.setBatasAtasAngsuranPrapen(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etMaxAngsuran.getText().toString()))));
         MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
         sbiaya.setAsuransiPenjaminId(id);
         sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
@@ -471,15 +463,54 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                         hitung = "Selesai Hitung";
                         Gson gson = new Gson();
 
+                        if (response.body().getData().get("SimulasiInqCal") != null) {
+                            SSSimulasi = response.body().getData().get("SimulasiInqCal").getAsJsonObject().toString();
+                            DPSimulasi = gson.fromJson(SSSimulasi, MparseResponseSimulasiInqCal.class);
+                            if (DPSimulasi.getPv() != null)
+                                binding.etPlafondYangDibutuhkan.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPv())));
+                            if (DPSimulasi.getTerm() != null)
+                                binding.etJangkaWaktu.setText(String.valueOf(DPSimulasi.getTerm()));
+
+                            if (DPSimulasi.getPricingPensiun() != null)
+                                binding.etPricingPensiun.setText(String.valueOf(DPSimulasi.getPricingPensiun()));
+                            if (DPSimulasi.getPricingPrapen() != null)
+                                binding.etPricingPraPensiun.setText(String.valueOf(DPSimulasi.getPricingPrapen()));
+
+                            if (DPSimulasi.getBatasAtasAngsuranPrapen() != null)
+                                binding.etMaxAngsuran.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getBatasAtasAngsuranPrapen())));
+
+                            if (DPSimulasi.getPricingPensiunAfter() != null)
+                                binding.tvPricingAtribusiPensiun.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPricingPensiunAfter())) + "%");
+                            if (DPSimulasi.getPricingPrapenAfter() != null)
+                                binding.tvPricingAtribusiPrapen.setText(AppUtil.parseNumberWatcher(String.valueOf(DPSimulasi.getPricingPrapenAfter())) + "%");
+                        }
                         if (response.body().getData().get("SimulasiBiayaBiaya") != null) {
                             SSSimulasiBiayaBiaya = response.body().getData().get("SimulasiBiayaBiaya").getAsJsonObject().toString();
                             DPSimulasiBiayaBiaya = gson.fromJson(SSSimulasiBiayaBiaya, MparseResponseSimulasiBiayaBiaya.class);
-
+                            if (DPSimulasiBiayaBiaya.getAsuransiPenjaminId() != null) {
+                                binding.etPilihanAsuransiPenjaminan.setText(DPSimulasiBiayaBiaya.getNamaAsuransi());
+                                id = DPSimulasiBiayaBiaya.getAsuransiPenjaminId();
+                            }
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin() != null)
-                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin().setScale(2)));
-
+                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin()));
+                            if (DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin() != null)
+                                binding.etTreatmentBiayaAsuransi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin());
+                            if (DPSimulasiBiayaBiaya.getBiayaAsuransiKhusus() != null)
+                                binding.etBiayaAsuransiKhusus.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiKhusus()));
+                            if (DPSimulasiBiayaBiaya.getTreatmentBiayaAsuransiKhusus() != null)
+                                binding.etTreatmentBiayaAsuransiKhusus.setText(DPSimulasiBiayaBiaya.getTreatmentBiayaAsuransiKhusus());
                             if (DPSimulasiBiayaBiaya.getBiayaAdministrasi() != null)
                                 binding.etBiayaAdministrasi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAdministrasi().setScale(2)));
+//                            if (DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi() != null)
+//                                binding.etTreatmentBiayaAdministrasi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAdministrasi());
+                            if (DPSimulasiBiayaBiaya.getBiayaPenalti() != null)
+                                binding.etBiayapenaltiKhususTakeover.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaPenalti()));
+                            if (DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti() != null)
+                                binding.etTreatmentBiayaPenalti.setText(DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti());
+//                            if (DPSimulasiBiayaBiaya.getBiayaMaterai() != null)
+//                                binding.etBiayamaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaMaterai()));
+                            if (DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai() != null)
+                                binding.etTreatmentBiayaMaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai()));
                         }
                         if (response.body().getData().get("DataPembiayaan") != null) {
                             SSDataPembiayaan = response.body().getData().get("DataPembiayaan").getAsJsonObject().toString();

@@ -86,6 +86,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                                     binding.etKetentuanGajiAktif.setText(DPDSR.getKetentuanGajiAktif());
                                     binding.etKetentuanManfaatPensiun.setText(DPDSR.getKetentuanManfaatPensiun());
                                     binding.etCatatanVerifikasi.setText(DPDSR.getCatatanVerifikasi());
+                                    binding.etStatusPayroll.setText(DPDSR.getTreatmentPembayaran());
                                     try {
                                         //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
                                         if (DPDSR.getFileName().substring(DPDSR.getFileName().length() - 3, DPDSR.getFileName().length()).equalsIgnoreCase("pdf")) {
