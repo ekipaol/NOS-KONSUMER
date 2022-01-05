@@ -178,7 +178,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 id = DPSimulasiBiayaBiaya.getAsuransiPenjaminId();
                             }
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin() != null)
-                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin()));
+                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin().setScale(2)));
                             if (DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin() != null)
                                 binding.etTreatmentBiayaAsuransi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin());
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiKhusus() != null)
@@ -492,7 +492,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 id = DPSimulasiBiayaBiaya.getAsuransiPenjaminId();
                             }
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin() != null)
-                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin()));
+                                binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin().setScale(2)));
                             if (DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin() != null)
                                 binding.etTreatmentBiayaAsuransi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin());
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiKhusus() != null)
