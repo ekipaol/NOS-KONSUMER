@@ -54,6 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="0123456789"
+                        android:text="0"
                         android:inputType="numberDecimal"
                         android:maxLength="15"
                         app:prefix="Rp. " />
@@ -80,6 +81,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
+                        android:text=" "
                         android:maxLength="3"
                         app:suffix="Bulan" />
 
@@ -105,6 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="0123456789."
+                        android:text="0"
                         android:inputType="numberDecimal"
                         android:maxLength="15"
                         app:prefix="Rp. "
@@ -118,7 +121,7 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_rupiah"
+                    app:iconSignifier="@drawable/i"
                     app:isResponsiveIconColor="true"
                     app:labelText="Pricing Pra Pensiun"
                     app:panelBackgroundColor="@color/colorBgEdittext"
@@ -131,6 +134,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:digits="0123456789."
+                        android:text="0"
                         android:inputType="numberDecimal"
                         android:maxLength="5"
                         app:suffix="%"
@@ -160,6 +164,7 @@
                         android:inputType="numberDecimal"
                         android:maxLength="5"
                         app:suffix="%"
+                        android:text="0"
                         tools:ignore="DuplicateIds" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Kalkulator Simulasi Angsuran-->
