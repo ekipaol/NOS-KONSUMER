@@ -107,7 +107,8 @@ public class ActivityVerifikasiPendapatan extends AppCompatActivity implements S
     @Override
     public void onCompleted(View completeButton) {
 
-        validasi();
+        finish();
+//        validasi();
     }
 
     private boolean validasi() {

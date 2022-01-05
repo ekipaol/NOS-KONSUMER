@@ -180,7 +180,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvNoaplikasi.setText(dataDetailAplikasi.getApplicationNo());
         binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
-        binding.tvTanggalEntry.setText("Tgl Input : "+AppUtil.parseTanggalGeneral(dataDetailAplikasi.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
+        binding.tvTanggalEntry.setText(AppUtil.parseTanggalGeneral(dataDetailAplikasi.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
 
         //logical doc
         AppUtil.loadImageWithFileNameCheck(DetilAplikasiActivity.this,"frofil.png",dataDetailAplikasi.getImg(),binding.ivPhoto);

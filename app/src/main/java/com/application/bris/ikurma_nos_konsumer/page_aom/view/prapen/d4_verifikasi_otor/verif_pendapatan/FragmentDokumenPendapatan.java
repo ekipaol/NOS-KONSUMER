@@ -332,6 +332,7 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
         binding.etTotalDebit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalDebit2));
         binding.etTotalKredit1.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit1));
         binding.etTotalKredit2.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalKredit2));
+        binding.etPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPendapatanPensiun));
     }
 
     private void hideItem(){

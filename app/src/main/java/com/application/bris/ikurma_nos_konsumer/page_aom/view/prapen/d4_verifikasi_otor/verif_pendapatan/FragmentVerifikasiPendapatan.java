@@ -101,6 +101,8 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
                 binding.etNominalGaji.setText(dp.getNominalGajiSPAN());
             if (dp.getTanggalPembayaranPayrollSPAN() != null)
                 binding.etTanggalGaji.setText(dp.getTanggalPembayaranPayrollSPAN());
+            if (dp.getManfaatPensiunNOS() != null)
+                binding.etManfaatPensiun.setText(dp.getManfaatPensiunNOS());
         }
         if (data.get("FileHasilVerifPensiun") != null) {
             String listDataString = data.get("FileHasilVerifPensiun").getAsJsonObject().toString();
@@ -209,6 +211,7 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
         binding.etTotalPendapatanPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanPensiun));
         binding.etVerifikasiGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiGaji));
         binding.etVerifikasiTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etVerifikasiTunjangan));
+        binding.etManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etManfaatPensiun));
     }
 
 

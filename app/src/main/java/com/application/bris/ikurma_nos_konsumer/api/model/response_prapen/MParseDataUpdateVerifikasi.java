@@ -35,6 +35,17 @@ public class MParseDataUpdateVerifikasi {
     @SerializedName("TanggalPembayaranPayrollSPAN")
     @Expose
     private String TanggalPembayaranPayrollSPAN;
+    @SerializedName("ManfaatPensiunNOS")
+    @Expose
+    private String ManfaatPensiunNOS;
+
+    public String getManfaatPensiunNOS() {
+        return ManfaatPensiunNOS;
+    }
+
+    public void setManfaatPensiunNOS(String manfaatPensiunNOS) {
+        ManfaatPensiunNOS = manfaatPensiunNOS;
+    }
 
     public String getNominalGajiSPAN() {
         return NominalGajiSPAN;
