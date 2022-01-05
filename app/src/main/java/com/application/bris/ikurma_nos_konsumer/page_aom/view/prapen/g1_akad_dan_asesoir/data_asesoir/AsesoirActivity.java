@@ -360,6 +360,7 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
                         if(dataCIfRekening.getCIF()!=null&&!dataCIfRekening.getCIF().isEmpty()){
                             binding.etNomorCif.setText(dataCIfRekening.getCIF());
                             binding.etAtasNamaRekening.setText(dataCIfRekening.getNama());
+                            AppUtil.notifsuccess(AsesoirActivity.this, findViewById(android.R.id.content), "Rekening Ditemukan");
                         }
                     }
                     else{

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
@@ -84,6 +85,9 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
         }
+
+        //biar keyboard gak nongol di awal activity kalau ada edittext
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     public void initialize(){
@@ -174,11 +178,17 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                             binding.llEmptydata.setVisibility(View.VISIBLE);
                         }
 
-                        if(dataIdebLunas!=null&&dataIdebLunas.size()!=0){
-                            for (int i = 0; i <dataIdebLunas.size() ; i++) {
-                                dataIdeb.add(dataIdebLunas.get(i));
-                            }
+                        dataIdeb.addAll(dataIdebLunas);
+
+                        for (int i = 0; i < dataIdeb.size() ; i++) {
+                            AppUtil.logSecure("isidataideb","posisi : "+i+" "+dataIdeb.get(i).getNamaLembagaKeuangan());
                         }
+
+//                        if(dataIdebLunas!=null&&dataIdebLunas.size()!=0){
+//                            for (int i = 0; i <dataIdebLunas.size() ; i++) {
+//                                dataIdeb.add(dataIdebLunas.get(i));
+//                            }
+//                        }
 
                         initialize();
                     }

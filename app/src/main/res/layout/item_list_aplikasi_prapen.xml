@@ -109,6 +109,14 @@
                     android:text="{Tenor}"
                     android:padding="3dp"
                     android:textSize="12dp"/>
+
+                <TextView
+                    android:id="@+id/tv_tanggal_entry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="{tanggal entry}"
+                    android:padding="3dp"
+                    android:textSize="12dp"/>
             </LinearLayout>
 
             <View
@@ -127,18 +135,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_tanggal_entry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="{Tanggal Entry}"
-            android:layout_marginRight="8dp"
-            android:padding="4dp"
-            android:textSize="11sp"
-            android:gravity="right"
-            android:visibility="gone"
-            android:textStyle="italic"
-            android:textColor="@color/overlay"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -112,6 +112,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqProgram;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 //import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
@@ -759,6 +760,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.dropdownProgram)
     Call<ParseResponseArr> dropdownProgram(@Body EmptyRequest EmptyRequest);
+
+    @POST(UriApi.prapen.dropdownProgramNew)
+    Call<ParseResponseArr> dropdownProgramNew(@Body ReqProgram ReqProgram);
 
     @POST(UriApi.prapen.cekHasilRekomendasiAkad)
     Call<ParseResponseArr> cekHasilRekomendasiAkad(@Body ReqHasilRekomendasiAkad ReqHasilRekomendasiAkad);

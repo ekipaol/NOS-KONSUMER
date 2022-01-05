@@ -185,66 +185,36 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
         }
 
+        //logical doc
+        AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ktp(),dataNasabah.getImgKtp(),binding.imgFotoKtp);
+        AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ideb(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
 
 
-
+        //legacy
 //        try{
 //            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
 //
 //            if(dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()).equalsIgnoreCase("pdf")){
+//                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()));
 //
 //                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgKtp(),binding.imgFotoKtp,dataNasabah.getFile_Name_Ktp());
-//
-////                loadFile(dataNasabah.getImgKtp());
-////                AppUtil.setLoadPdf(getContext(),Integer.parseInt(dataNasabah.getImgKtp()),binding.imgFotoKtp);
-////                AppUtil.setImageGlide(getContext(),Integer.parseInt(dataNasabah.getImgKtp()),binding.imgFotoKtp);
 //            }
 //            else{
 //                AppUtil.convertBase64ToImage(dataNasabah.getImgKtp(),binding.imgFotoKtp);
-////                loadFile(dataNasabah.getImgKtp());
-////                AppUtil.setImageGlide(getContext(),Integer.parseInt(dataNasabah.getImgKtp()),binding.imgFotoKtp);
 //            }
 //
 //            if(dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()).equalsIgnoreCase("pdf")){
+//                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()));
+//
 //                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb,dataNasabah.getFile_Name_Ideb());
-////                loadFile(dataNasabah.getImgIdeb());
-////                AppUtil.setLoadPdf(getContext(),Integer.parseInt(dataNasabah.getImgIdeb()),binding.imgFotoIdeb);
 //            }
 //            else{
 //                AppUtil.convertBase64ToImage(dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
-////                loadFile(dataNasabah.getImgIdeb());
-////                AppUtil.setImageGlide(getContext(),Integer.parseInt(dataNasabah.getImgIdeb()),binding.imgFotoIdeb);
 //            }
 //        }
 //        catch (Exception e){
-//            logSecure("error setdata",e.getMessage());
+//            AppUtil.logSecure("error setdata",e.getMessage());
 //        }
-
-
-        try{
-            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-
-            if(dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()).equalsIgnoreCase("pdf")){
-                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()));
-
-                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgKtp(),binding.imgFotoKtp,dataNasabah.getFile_Name_Ktp());
-            }
-            else{
-                AppUtil.convertBase64ToImage(dataNasabah.getImgKtp(),binding.imgFotoKtp);
-            }
-
-            if(dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()).equalsIgnoreCase("pdf")){
-                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()));
-
-                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb,dataNasabah.getFile_Name_Ideb());
-            }
-            else{
-                AppUtil.convertBase64ToImage(dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
-            }
-        }
-        catch (Exception e){
-            AppUtil.logSecure("error setdata",e.getMessage());
-        }
     }
 
 
@@ -371,39 +341,39 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
 
         //ini kalo pake logical doc
-//            copyRealm.setImgKtp(idFileKtp);
-//            copyRealm.setFile_Name_Ktp(fileNameKtp);
-//
-//            copyRealm.setImgIdeb(idFileIdeb);
-//            copyRealm.setFile_Name_Ideb(fileNameIdeb);
+            copyRealm.setImgKtp(idFileKtp);
+            copyRealm.setFile_Name_Ktp(fileNameKtp);
+
+            copyRealm.setImgIdeb(idFileIdeb);
+            copyRealm.setFile_Name_Ideb(fileNameIdeb);
 
         //ini pake metode legacy
 
 //        ambil gambar
-        binding.imgFotoKtp.invalidate();
-        binding.imgFotoIdeb.invalidate();
-        RoundedDrawable drawableKtp = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
-        RoundedDrawable drawableIdeb = (RoundedDrawable) binding.imgFotoIdeb.getDrawable();
-        Bitmap bitmapKtp = drawableKtp.getSourceBitmap();
-        Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-
-        if(tipeFileKtp.equalsIgnoreCase("pdf")){
-            copyRealm.setImgKtp(valBase64PdfKtp);
-            copyRealm.setFile_Name_Ktp(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ktp.pdf");
-        }
-        else{
-            copyRealm.setImgKtp(AppUtil.encodeImageTobase64(bitmapKtp));
-            copyRealm.setFile_Name_Ktp(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ktp.png");
-        }
-
-        if(tipeFileIdeb.equalsIgnoreCase("pdf")){
-            copyRealm.setImgIdeb(valBase64PdfIdeb);
-            copyRealm.setFile_Name_Ideb(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ideb.pdf");
-        }
-        else{
-            copyRealm.setImgIdeb(AppUtil.encodeImageTobase64(bitmapIdeb));
-            copyRealm.setFile_Name_Ideb(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ideb.png");
-        }
+//        binding.imgFotoKtp.invalidate();
+//        binding.imgFotoIdeb.invalidate();
+//        RoundedDrawable drawableKtp = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
+//        RoundedDrawable drawableIdeb = (RoundedDrawable) binding.imgFotoIdeb.getDrawable();
+//        Bitmap bitmapKtp = drawableKtp.getSourceBitmap();
+//        Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
+//
+//        if(tipeFileKtp.equalsIgnoreCase("pdf")){
+//            copyRealm.setImgKtp(valBase64PdfKtp);
+//            copyRealm.setFile_Name_Ktp(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ktp.pdf");
+//        }
+//        else{
+//            copyRealm.setImgKtp(AppUtil.encodeImageTobase64(bitmapKtp));
+//            copyRealm.setFile_Name_Ktp(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ktp.png");
+//        }
+//
+//        if(tipeFileIdeb.equalsIgnoreCase("pdf")){
+//            copyRealm.setImgIdeb(valBase64PdfIdeb);
+//            copyRealm.setFile_Name_Ideb(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ideb.pdf");
+//        }
+//        else{
+//            copyRealm.setImgIdeb(AppUtil.encodeImageTobase64(bitmapIdeb));
+//            copyRealm.setFile_Name_Ideb(String.valueOf(DataNasabahPrapenActivity.idAplikasi)+"_ideb.png");
+//        }
 
 
         //dummy base 64
@@ -859,67 +829,67 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
     //activity result logical doc
 
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        switch (requestCode) {
-//            case UPLOAD_KTP:
-//                setDataImage(binding.imgFotoKtp, data, namaFotoKtp,UPLOAD_KTP);
-//
-//                binding.imgFotoKtp.invalidate();
-//                RoundedDrawable drawableKtp = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
-//                Bitmap bitmapKtp = drawableKtp.getSourceBitmap();
-//
-//                if(tipeFileKtp.equalsIgnoreCase("png")){
-//                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.png";
-//                    uploadFile(AppUtil.encodeImageTobase64(bitmapKtp),fileNameKtp+"_ktp.png",UPLOAD_KTP);
-//                }
-//                else if(tipeFileKtp.equalsIgnoreCase("pdf")){
-//                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.pdf";
-//                    uploadFile(valBase64PdfKtp,fileNameKtp,UPLOAD_KTP);
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                break;
-//            case UPLOAD_IDEB:
-//                setDataImage(binding.imgFotoIdeb, data, namaFotoIdeb,UPLOAD_IDEB);
-//
-//
-//                binding.imgFotoIdeb.invalidate();
-//                RoundedDrawable drawableIdeb = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
-//                Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-//
-//                if(tipeFileIdeb.equalsIgnoreCase("png")){
-//                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.png";
-//                    uploadFile(AppUtil.encodeImageTobase64(bitmapIdeb),fileNameIdeb,UPLOAD_IDEB);
-//                }
-//                else if(tipeFileIdeb.equalsIgnoreCase("pdf")){
-//                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.pdf";
-//                    uploadFile(valBase64PdfIdeb,fileNameIdeb,UPLOAD_IDEB);
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
-//
-//        }
-//    }
-
-    //activity result legacy
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case UPLOAD_KTP:
                 setDataImage(binding.imgFotoKtp, data, namaFotoKtp,UPLOAD_KTP);
+
+                binding.imgFotoKtp.invalidate();
+                RoundedDrawable drawableKtp = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
+                Bitmap bitmapKtp = drawableKtp.getSourceBitmap();
+
+                if(tipeFileKtp.equalsIgnoreCase("png")){
+                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.png";
+                    uploadFile(AppUtil.encodeImageTobase64(bitmapKtp),fileNameKtp+"_ktp.png",UPLOAD_KTP);
+                }
+                else if(tipeFileKtp.equalsIgnoreCase("pdf")){
+                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.pdf";
+                    uploadFile(valBase64PdfKtp,fileNameKtp,UPLOAD_KTP);
+                }
+                else{
+                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case UPLOAD_IDEB:
                 setDataImage(binding.imgFotoIdeb, data, namaFotoIdeb,UPLOAD_IDEB);
+
+
+                binding.imgFotoIdeb.invalidate();
+                RoundedDrawable drawableIdeb = (RoundedDrawable) binding.imgFotoIdeb.getDrawable();
+                Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
+
+                if(tipeFileIdeb.equalsIgnoreCase("png")){
+                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.png";
+                    uploadFile(AppUtil.encodeImageTobase64(bitmapIdeb),fileNameIdeb,UPLOAD_IDEB);
+                }
+                else if(tipeFileIdeb.equalsIgnoreCase("pdf")){
+                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.pdf";
+                    uploadFile(valBase64PdfIdeb,fileNameIdeb,UPLOAD_IDEB);
+                }
+                else{
+                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
         }
     }
+
+    //activity result legacy
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//            case UPLOAD_KTP:
+//                setDataImage(binding.imgFotoKtp, data, namaFotoKtp,UPLOAD_KTP);
+//                break;
+//            case UPLOAD_IDEB:
+//                setDataImage(binding.imgFotoIdeb, data, namaFotoIdeb,UPLOAD_IDEB);
+//                break;
+//
+//        }
+//    }
 
     private void setDataImage(ImageView iv, Intent data, String namaFoto,int KODE_UPLOAD) {
         Bitmap bitmap = null;

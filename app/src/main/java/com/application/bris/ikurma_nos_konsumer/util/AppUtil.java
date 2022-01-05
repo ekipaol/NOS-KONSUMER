@@ -693,6 +693,43 @@ public class AppUtil {
 
     }
 
+    public static void setLoadPdf(Context context, String idPdf, ImageView imageView) {
+        imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+        String url_pdf = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + idPdf;
+        Uri external = Uri.parse(url_pdf);
+        Intent intentPdf;
+        intentPdf = new Intent(Intent.ACTION_VIEW);
+        intentPdf.setDataAndType(external, "application/pdf");
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    context.startActivity(intentPdf);
+                } catch (ActivityNotFoundException e) {
+                    // No application to view, ask to download one
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Aplikasi PDF Tidak Ditemukan");
+                    builder.setMessage("Download Dari Playstore?");
+                    builder.setPositiveButton("Ya",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                                    marketIntent
+                                            .setData(Uri
+                                                    .parse("market://details?id=com.adobe.reader"));
+                                    context.startActivity(marketIntent);
+                                }
+                            });
+                    builder.setNegativeButton("Tidak", null);
+                    builder.create().show();
+                }
+            }
+        });
+
+    }
+
     public static void loadPhotoUserWithCache(Context context, ImageView imageView, String idFoto) {
         RequestOptions options = new RequestOptions()
                 .centerCrop()
@@ -728,6 +765,29 @@ public class AppUtil {
                 .placeholder(R.drawable.banner_placeholder)
                 .into(iv_foto);
     }
+
+    public static void setImageGlide(Context context,String fidPhoto,ImageView iv_foto){
+        MagicCryptHelper encryptor=new MagicCryptHelper();
+        AppPreferences appPreferences=new AppPreferences(context);
+
+        String imageUrlToEncode= encryptor.encrypt(Integer.toString(appPreferences.getUid())+"_"+fidPhoto);
+
+        String url_photo = null;
+        try {
+//            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhotoSecure + URLEncoder.encode(imageUrlToEncode, StandardCharsets.UTF_8.toString());
+            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + fidPhoto;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Glide
+                .with(context)
+                .load(url_photo)
+                .centerCrop()
+                .placeholder(R.drawable.banner_placeholder)
+                .into(iv_foto);
+    }
+
 
     public static Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
@@ -840,6 +900,40 @@ public class AppUtil {
             return Long.parseLong(data);
         } catch (NumberFormatException e) {
             return defaultValue;
+        }
+    }
+
+    public static void loadImageWithFileNameCheck(Context context,String filename,String idFoto,ImageView imageView){
+        try{
+            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+
+            if(filename.substring(filename.length()-3,filename.length()).equalsIgnoreCase("pdf")){
+                AppUtil.setLoadPdf(context,idFoto,imageView);
+            }
+            else{
+                AppUtil.setImageGlide(context,idFoto,imageView);
+            }
+
+        }
+        catch (Exception e){
+            logSecure("error setdata",e.getMessage());
+        }
+    }
+
+    public static void loadImageWithFileNameCheck(Context context,String filename,int idFoto,ImageView imageView){
+        try{
+            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+
+            if(filename.substring(filename.length()-3,filename.length()).equalsIgnoreCase("pdf")){
+                AppUtil.setLoadPdf(context,idFoto,imageView);
+            }
+            else{
+                AppUtil.setImageGlide(context,idFoto,imageView);
+            }
+
+        }
+        catch (Exception e){
+            logSecure("error setdata",e.getMessage());
         }
     }
 
@@ -1041,8 +1135,17 @@ public class AppUtil {
 
     public static void convertBase64ToImage(String base64String, ImageView imageView) {
         byte[] imageAsBytes = Base64.decode(base64String.getBytes(), Base64.DEFAULT);
-        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
-        );
+        imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+    }
+
+    public static void convertBase64ToImageUsingGlide(Context context,String base64String, ImageView imageView) {
+        byte[] imageAsBytes = Base64.decode(base64String.getBytes(), Base64.DEFAULT);
+        Glide
+                .with(context)
+                .load(imageAsBytes)
+                .centerCrop()
+                .placeholder(R.drawable.banner_placeholder)
+                .into(imageView);
     }
 
 

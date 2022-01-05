@@ -8,6 +8,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.application.bris.ikurma_nos_konsumer.databinding.ActivityListAplikasi
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
+import com.application.bris.ikurma_nos_konsumer.view.corelayout.CoreLayoutActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -60,7 +62,9 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
         backToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent=new Intent(ListAplikasiActivity.this, CoreLayoutActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+                startActivity(intent);
             }
         });
 
@@ -90,6 +94,12 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
     protected void onRestart() {
         super.onRestart();
 //        ListAplikasiActivity.this.recreate();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        main();
     }
 
     @Override
@@ -213,10 +223,10 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-//        Intent intent=new Intent(ListAplikasiActivity.this, CoreLayoutActivity.class);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
-//        startActivity(intent);
-        finish();
+        Intent intent=new Intent(ListAplikasiActivity.this, CoreLayoutActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+        startActivity(intent);
+//        finish();
     }
 
 

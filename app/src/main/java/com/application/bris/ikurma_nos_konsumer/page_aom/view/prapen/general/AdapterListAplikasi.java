@@ -52,11 +52,24 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
 
         holder.tvNama.setText(datas.getNama());
         holder.tvStatus.setText(datas.getStatusAplikasi());
-        holder.tvTenor.setText(datas.getJangkaWaktu());
+        holder.tvTenor.setText(datas.getJangkaWaktu()+" Bulan");
         holder.tvNoAplikasi.setText(datas.getApplicationNo());
         holder.tvIdAplikasi.setText("ID Aplikasi : "+datas.getApplicationId());
         holder.tvPlafon.setText(AppUtil.parseRupiah(datas.getPlafond()));
+        holder.tvTanggal.setText(AppUtil.parseTanggalGeneral("Tgl Input : "+datas.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
 //        AppUtil.convertBase64ToImage(datas.getImg(),holder.ivFoto);
+
+        if(datas.getJangkaWaktu().equalsIgnoreCase("0")){
+            holder.tvTenor.setText("Belum ada tenor");
+        }
+
+        if(datas.getPlafond().equalsIgnoreCase("0")){
+            holder.tvPlafon.setText("Belum ada plafond");
+        }
+
+        if(datas.getNama()==null||datas.getNama().isEmpty()){
+            holder.tvNama.setText("Nama : -");
+        }
 
         holder.cvData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +165,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNama,tvStatus,tvNoAplikasi,tvIdAplikasi,tvPlafon,tvTenor;
+        TextView tvNama,tvStatus,tvNoAplikasi,tvIdAplikasi,tvPlafon,tvTenor,tvTanggal;
         ImageView ivFoto;
         CardView cvData;
         Button btPilih;
@@ -167,6 +180,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
             tvPlafon=binding.tvPlafond;
             tvTenor=binding.tvTenor;
             ivFoto=binding.ivFoto;
+            tvTanggal=binding.tvTanggalEntry;
             cvData=binding.cvHotprospekFront;
             btPilih=binding.btPilih;
         }

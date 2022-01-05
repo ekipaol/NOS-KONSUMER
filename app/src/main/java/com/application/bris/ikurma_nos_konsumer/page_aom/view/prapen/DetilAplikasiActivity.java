@@ -155,7 +155,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent intent=new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+                startActivity(intent);
             }
         });
     }
@@ -172,14 +174,30 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         binding.tvStatus.setText(dataDetailAplikasi.getStatusAplikasi());
         binding.tvNama.setText(dataDetailAplikasi.getNama());
         binding.tvProduk.setText(dataDetailAplikasi.getTypeProduk());
-        binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu());
+        binding.tvTenor.setText(dataDetailAplikasi.getJangkaWaktu()+ " Bulan");
         binding.tvPlafond.setText(AppUtil.parseRupiah(dataDetailAplikasi.getPlafond()));
         binding.tvIdaplikasi.setText(dataDetailAplikasi.getApplicationId());
         binding.tvNoaplikasi.setText(dataDetailAplikasi.getApplicationNo());
         binding.tvTujuanpenggunaan.setText(dataDetailAplikasi.getTujuanPembiayaan());
         binding.tvAkad.setText(dataDetailAplikasi.getAkad());
+        binding.tvTanggalEntry.setText("Tgl Input : "+AppUtil.parseTanggalGeneral(dataDetailAplikasi.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
 
-        AppUtil.convertBase64ToImage(dataDetailAplikasi.getImg(),binding.ivPhoto);
+        //logical doc
+        AppUtil.loadImageWithFileNameCheck(DetilAplikasiActivity.this,"frofil.png",dataDetailAplikasi.getImg(),binding.ivPhoto);
+
+        //legacy foto
+//        AppUtil.convertBase64ToImage(dataDetailAplikasi.getImg(),binding.ivPhoto);
+
+        if(dataDetailAplikasi.getJangkaWaktu().equalsIgnoreCase("0")){
+            binding.tvTenor.setText("Belum ada tenor");
+        }
+        if(dataDetailAplikasi.getPlafond().equalsIgnoreCase("0")){
+            binding.tvPlafond.setText("Belum ada plafond");
+        }
+
+        if(dataDetailAplikasi.getNama()==null||dataDetailAplikasi.getNama().isEmpty()){
+            binding.tvNama.setText("Nama : -");
+        }
 
 
         //pantekan array
@@ -751,5 +769,13 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             status=data.getDESC();
             initializeMenu(data.getDESC());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent intent=new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT );
+        startActivity(intent);
     }
 }

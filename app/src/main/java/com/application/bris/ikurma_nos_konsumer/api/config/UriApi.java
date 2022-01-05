@@ -286,8 +286,9 @@ public class UriApi {
 
     public class foto{
         public static final String urlFile = "TestAPI/rest/TestAPI/GetFile";
-        public static final String urlFileDirect = "TestAPI/rest/TestAPI/GetFile?FileId=";
+        public static final String urlFileDirect = "TestAPI/rest/TestAPI/GetFileDoc?FileId=";
         public static final String urlPhotoProfil = "generic/getImageProfile/";
+//        public static final String urlPhotoProfil = "generic/getImageProfile/";
         public static final String uploadFile = "TestAPI/rest/TestAPI/CreateFile";
 
 
@@ -350,6 +351,7 @@ public class UriApi {
         public static final String dropdownJenisPembiayaan = "NOS_PRAPEN_Services/rest/Picklist/JenisPembiayaan";
         public static final String dropdownTujuanPembiayaan = "NOS_PRAPEN_Services/rest/Picklist/TujuanPembiayaan";
         public static final String dropdownProgram = "NOS_PRAPEN_Services/rest/Picklist/Program";
+        public static final String dropdownProgramNew = "NOS_PRAPEN_Services/rest/Picklist/ProgramNew";
         public static final String dropdownLembagaPengelolaPensiun = "NOS_PRAPEN_Services/rest/Picklist/LembagaPengelolaPensiun";
         public static final String dropdownTreatmentRekening = "NOS_PRAPEN_Services/rest/Picklist/Treatment";
         public static final String dropdownMitraFronting  = "NOS_PRAPEN_Services/rest/Picklist/MitraFronting";

@@ -354,8 +354,6 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     });
 }
 
-
-
         private void sendDoc() {
         doc.setNoSKPensiun("asd");
         doc.setLembagaPenerbitSKPensiun("asd");
@@ -372,7 +370,6 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         UpdateJaminandanDokumen req = new UpdateJaminandanDokumen();
         AppPreferences appPreferences = new AppPreferences(this);
-
         doc.setNoSKPensiun(binding.etNomorSkPensiun.getText().toString());
         doc.setLembagaPenerbitSKPensiun(binding.etLembagaTerbitSk.getText().toString());
         doc.setTanggalTerbitSKPensiun(AppUtil.parseTanggalGeneral(binding.etTanggalTerbitSk1.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));

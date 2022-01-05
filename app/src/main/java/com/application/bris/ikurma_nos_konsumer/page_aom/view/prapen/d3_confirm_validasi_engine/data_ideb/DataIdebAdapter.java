@@ -68,20 +68,62 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
                 intent.putExtra("perkiraanAngsuran",data.get(position).getPerkiraanAngsuranBulanan());
                 intent.putExtra("fasilitasId",data.get(position).getIdDokumen());
                 intent.putExtra("idAplikasi",DataIdebActivity.idAplikasi);
+                if(data.get(position).getDokumen()!=null){
+                    intent.putExtra("idDokumen",data.get(position).getDokumen().getImg());
+                    intent.putExtra("namaDokumen",data.get(position).getDokumen().getFile_Name());
+                }
+                else{
+                    intent.putExtra("idDokumen","0");
+                    intent.putExtra("namaDokumen","none");
+                }
+
                 context.startActivity(intent);
 
             }
         });
 
 
-        try{
-            if(data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
-                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivFoto,data.get(position).getDokumen().getFile_Name());
-            }
-            else{
-                AppUtil.convertBase64ToImage(data.get(position).getDokumen().getImg(),holder.ivFoto);
-            }
+        //legacy get image
 
+//        try{
+//            if(data.get(position).getDokumen()!=null&&data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
+//                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivFoto,data.get(position).getDokumen().getFile_Name());
+//                AppUtil.logSecure("imageorder","posisi : "+position+" dokumen not null pdf");
+//            }
+//            else if(data.get(position).getDokumen()!=null&&data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("png")){
+//                AppUtil.convertBase64ToImageUsingGlide(context,data.get(position).getDokumen().getImg(),holder.ivFoto);
+//                AppUtil.logSecure("imageorder","posisi : "+position+" dokumen not null png");
+//            }
+//            else if(data.get(position).getDokumen()==null){
+//                holder.ivFoto.setVisibility(View.GONE);
+//                holder.tvDokumen.setVisibility(View.GONE);
+//                AppUtil.logSecure("imageorder","posisi : "+position+" dokumen IS null");
+//            }
+////            else{
+////                holder.ivFoto.setVisibility(View.GONE);
+////                holder.tvDokumen.setVisibility(View.GONE);
+////                AppUtil.logSecure("imageorder","posisi : "+position+" dokumen IS null");
+////            }
+//
+//        }
+//        catch (Exception e){
+////            holder.ivFoto.setVisibility(View.GONE);
+//            e.printStackTrace();
+//        }
+
+
+        //logical doc
+        try{
+            if(data.get(position).getDokumen()!=null&&data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
+                AppUtil.setLoadPdf(context,data.get(position).getDokumen().getImg(),holder.ivFoto);
+            }
+            else if(data.get(position).getDokumen()!=null&&data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("png")){
+                AppUtil.setImageGlide(context,data.get(position).getDokumen().getImg(),holder.ivFoto);
+            }
+            else if(data.get(position).getDokumen()==null){
+                holder.ivFoto.setVisibility(View.GONE);
+                holder.tvDokumen.setVisibility(View.GONE);
+            }
         }
         catch (Exception e){
 //            holder.ivFoto.setVisibility(View.GONE);
@@ -98,7 +140,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting,tvJenisKredit,tvStatus;
+        TextView tvNamaLembagaKeuangan,tvBakiDebet,tvKualitasPembiayaan,tvPerkiraanAngsuranBulanan,tvTreatmentPembiayaanEksisting,tvJenisKredit,tvStatus,tvDokumen;
         Button btnUbah;
         ImageView ivFoto;
 
@@ -114,6 +156,7 @@ public class DataIdebAdapter extends RecyclerView.Adapter<DataIdebAdapter.MenuVi
             tvStatus=binding.tvStatusIdeb;
             tvJenisKredit=binding.tvJenisKredit;
             ivFoto=binding.ivDokumen;
+            tvDokumen=binding.tvDokumen;
         }
 
     }

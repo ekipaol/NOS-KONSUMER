@@ -19,6 +19,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqProgram;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
@@ -164,7 +165,11 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.et_program:
             case R.id.tf_program:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfProgram.getLabelText(), dropdownProgram, DataPembiayaanActivity.this);
+                if(binding.etJenisTipeProduk.getText().toString().isEmpty()){
+                    AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), "Harap Pilih Produk Terlebih Dahulu");
+                }else{
+                    DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfProgram.getLabelText(), dropdownProgram, DataPembiayaanActivity.this);
+                }
                 break;
             case R.id.et_akad_pembiayaan:
             case R.id.tf_akad_pembiayaan:
@@ -234,7 +239,11 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.tfProgram.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfProgram.getLabelText(), dropdownProgram, DataPembiayaanActivity.this);
+                if(binding.etJenisTipeProduk.getText().toString().isEmpty()){
+                    AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), "Harap Pilih Produk Terlebih Dahulu");
+                }else{
+                    DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfProgram.getLabelText(), dropdownProgram, DataPembiayaanActivity.this);
+                }
             }
 
         });
@@ -267,6 +276,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         }
         if(title.equalsIgnoreCase(binding.tfJenisTipeProduk.getLabelText())){
             binding.etJenisTipeProduk.setText(data.getDESC());
+            loadDropdownProgram();
         }
         if(title.equalsIgnoreCase(binding.tfSegmen.getLabelText())){
             binding.etSegmen.setText(data.getDESC());
@@ -304,6 +314,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.etPriceDitawarkan.setText(String.valueOf(dataPembiayaan.getOfferingPrice()));
         binding.etAkadPembiayaan.setText(dataPembiayaan.getPilihanAkad());
         binding.tvInfo.setText(dataPembiayaan.getSyaratUmumAkad());
+        binding.etPricingPensiun.setText(String.valueOf(dataPembiayaan.getPensiunPrice()));
     }
 
     public void loadDropdownTipeProduk() {
@@ -434,7 +445,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         for (int i = 0; i <dropdownTemp.size(); i++) {
                             dropdownTujuanPembiayaan.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
                         }
-                        loadDropdownProgram();
+//                        loadDropdownProgram();
 
                     }
                 }
@@ -453,7 +464,9 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
         //pantekan no aplikasi dan aktifitas
 
-        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownProgram(EmptyRequest.INSTANCE);
+        ReqProgram req=new ReqProgram();
+        req.setNamaProduk(binding.etJenisTipeProduk.getText().toString());
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownProgramNew(req);
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override
             public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
@@ -583,6 +596,8 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         req.setTipeProduk(binding.etJenisTipeProduk.getText().toString());
         req.setOfferingPrice(Double.parseDouble(binding.etPriceDitawarkan.getText().toString()));
         req.setPilihanAkad(binding.etAkadPembiayaan.getText().toString());
+        req.setPensiunPrice(Double.parseDouble(binding.etPricingPensiun.getText().toString()));
+
 
         //ambil dari data login nanti
         req.setUid(Integer.toString(appPreferences.getUid()));

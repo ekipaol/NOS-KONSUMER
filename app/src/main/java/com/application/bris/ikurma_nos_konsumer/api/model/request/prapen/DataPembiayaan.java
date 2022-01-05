@@ -43,6 +43,18 @@ public class DataPembiayaan {
     @SerializedName("UID")
     @Expose
     private String uid;
+    @SerializedName("Pensiun_Price")
+    @Expose
+    private Double pensiunPrice;
+
+
+    public Double getPensiunPrice() {
+        return pensiunPrice;
+    }
+
+    public void setPensiunPrice(Double pensiunPrice) {
+        this.pensiunPrice = pensiunPrice;
+    }
 
     public String getKodeCabang() {
         return kodeCabang;

@@ -552,6 +552,13 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
+
+        binding.bottomSheet.btTunda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        });
         binding.bottomSheet.btSetuju.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -607,10 +614,51 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
 
                             }
                             AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Anda Belum Mengisi Data : "+allMenu);
+
+                            if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                                AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                            }
+                            else{
+                                SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                                dialog.setTitleText("Konfirmasi");
+                                dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
+                                dialog.setConfirmText("Ya");
+                                dialog.setCanceledOnTouchOutside(false);
+                                dialog.setCancelText("Batal");
+                                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        updateMemo(dialog,"setuju");
+                                    }
+                                });
+                                dialog.show();
+                            }
+
+
                         }
                     }
                     else{
                         AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Flagging tidak ditemukan - Harap isi data terlebih dahulu");
+
+                        //comment ini ketika naik prod
+                        if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                            AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                        }
+                        else{
+                            SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                            dialog.setTitleText("Konfirmasi");
+                            dialog.setContentText("Apakah anda yakin ingin melanjutkan aplikasi?\n\n");
+                            dialog.setConfirmText("Ya");
+                            dialog.setCanceledOnTouchOutside(false);
+                            dialog.setCancelText("Batal");
+                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    updateMemo(dialog,"setuju");
+                                }
+                            });
+                            dialog.show();
+                        }
                     }
                 }
                 else{

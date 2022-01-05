@@ -96,7 +96,7 @@
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_rupiah"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Maksimum Angsuran"
+                    app:labelText="Maksimal Angsuran Aktif yang Diinginkan"
                     app:panelBackgroundColor="@color/colorBgEdittext"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
