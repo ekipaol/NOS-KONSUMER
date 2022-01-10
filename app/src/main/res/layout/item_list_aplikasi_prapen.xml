@@ -27,7 +27,9 @@
             android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
-            android:background="@color/colorPrimarySoft"/>
+            android:background="@color/colorPrimarySoft"
+            style="@style/JakartaSansBold"
+            />
 
         <View
             android:id="@+id/divider"
@@ -74,6 +76,7 @@
                     android:padding="3dp"
                     android:textSize="16dp"
                     android:textStyle="bold"
+                    style="@style/JakartaSansBold"
                     />
 
                 <TextView
@@ -83,6 +86,7 @@
                     android:text="{ID Aplikasi}"
                     android:padding="3dp"
                     android:textSize="16dp"
+                    style="@style/JakartaSansRegular"
                     />
 
                 <TextView
@@ -92,6 +96,7 @@
                     android:text="{No Aplikasi}"
                     android:padding="3dp"
                     android:textSize="16dp"
+                    style="@style/JakartaSansRegular"
                     />
 
                 <TextView
@@ -99,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="{Plafond}"
+                    style="@style/JakartaSansRegular"
                     android:padding="3dp"
                     android:textSize="12dp"/>
 
@@ -107,6 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="{Tenor}"
+                    style="@style/JakartaSansRegular"
                     android:padding="3dp"
                     android:textSize="12dp"/>
 
@@ -115,6 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="{tanggal entry}"
+                    style="@style/JakartaSansRegular"
                     android:padding="3dp"
                     android:textSize="12dp"/>
             </LinearLayout>

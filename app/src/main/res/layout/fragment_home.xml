@@ -89,11 +89,12 @@
                         android:layout_marginTop="28dp"
                         android:text="{Full Name}"
                         android:textColor="#fff"
-                        android:fontFamily="@font/muli_b"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/iv_profilpicture"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        style="@style/JakartaSansBold"
+                        />
 
                     <TextView
                         android:id="@+id/tv_username"
@@ -101,11 +102,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:text="{Username}"
-                        android:fontFamily="@font/muli_r"
                         android:textColor="#fff"
                         android:textSize="13sp"
                         app:layout_constraintStart_toEndOf="@+id/iv_profilpicture"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_nama" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_nama"
+                        style="@style/JakartaSansRegular"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -243,9 +245,10 @@
                             android:textSize="18dp"
                             android:paddingLeft="10dp"
                             android:textColor="@color/colorBlackHeader"
-                            android:fontFamily="@font/muli_b"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent"
+                            style="@style/JakartaSansBold"
+                            />
 
                         <ImageView
                             android:id="@+id/iv_morepipeline"

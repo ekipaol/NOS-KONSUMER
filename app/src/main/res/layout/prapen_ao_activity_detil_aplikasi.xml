@@ -55,7 +55,7 @@
                     android:text="Silahkan Masukkan Data Pembiayaan Aplikasi"
                     android:textSize="12sp"
                     android:textColor="@color/colorBlackHeader"
-                    android:fontFamily="@font/muli_r"/>
+                    style="@style/JakartaSansRegular"/>
 
             </LinearLayout>
 
@@ -108,7 +108,9 @@
                                         android:textColor="@color/colorWhite"
                                         android:text="{Nama}"
                                         android:layout_weight="1"
-                                        android:layout_marginRight="8dp"/>
+                                        android:layout_marginRight="8dp"
+                                        style="@style/JakartaSansBold"
+                                        />
 
                                     <TextView
                                         android:id="@+id/tv_tenor"
@@ -119,7 +121,8 @@
                                         android:text="{Tenor}"
                                         android:layout_weight="1"
                                         android:layout_marginLeft="8dp"
-                                        android:gravity="right"/>
+                                        android:gravity="right"
+                                        style="@style/JakartaSansRegular"/>
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -135,7 +138,8 @@
                                         android:textColor="@color/colorWhite"
                                         android:text="{Produk}"
                                         android:layout_weight="1"
-                                        android:layout_marginRight="8dp"/>
+                                        android:layout_marginRight="8dp"
+                                        style="@style/JakartaSansRegular"/>
 
                                     <TextView
                                         android:id="@+id/tv_plafond"
@@ -146,7 +150,8 @@
                                         android:text="{Plafond}"
                                         android:layout_weight="1"
                                         android:layout_marginLeft="8dp"
-                                        android:gravity="right"/>
+                                        android:gravity="right"
+                                        style="@style/JakartaSansRegular"/>
 
                                 </LinearLayout>
 
@@ -221,7 +226,9 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
                         android:background="@color/colorPrimarySoft"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        style="@style/JakartaSansBold"
+                        />
 
                     <View
                         android:id="@+id/divider"
@@ -242,7 +249,8 @@
                             android:layout_height="wrap_content"
                             android:text="ID Aplikasi"
                             android:layout_weight="1"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            style="@style/JakartaSansRegular"/>
 
                         <TextView
                             android:id="@+id/tv_idaplikasi"
@@ -251,7 +259,8 @@
                             android:text="{ID Aplikasi}"
                             android:textSize="13sp"
                             android:textColor="@color/colorBlackHeader"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            style="@style/JakartaSansRegular"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -267,7 +276,8 @@
                             android:layout_height="wrap_content"
                             android:text="Nomor Aplikasi"
                             android:layout_weight="1"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            style="@style/JakartaSansRegular"/>
 
                         <TextView
                             android:id="@+id/tv_noaplikasi"
@@ -276,7 +286,8 @@
                             android:text="{No Aplikasi}"
                             android:textSize="13sp"
                             android:textColor="@color/colorBlackHeader"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            style="@style/JakartaSansRegular"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -289,7 +300,8 @@
                             android:layout_height="wrap_content"
                             android:text="Akad"
                             android:layout_weight="1"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            style="@style/JakartaSansRegular"/>
 
                         <TextView
                             android:id="@+id/tv_akad"
@@ -298,7 +310,8 @@
                             android:text="{Akad}"
                             android:textSize="13sp"
                             android:textColor="@color/colorBlackHeader"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            style="@style/JakartaSansRegular"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -314,7 +327,8 @@
                             android:layout_height="wrap_content"
                             android:text="Tujuan Penggunaan"
                             android:layout_weight="1"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            style="@style/JakartaSansRegular"/>
 
                         <TextView
                             android:id="@+id/tv_tujuanpenggunaan"
@@ -323,7 +337,8 @@
                             android:text="{Tujuan Penggunaan}"
                             android:textSize="13sp"
                             android:textColor="@color/colorBlackHeader"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            style="@style/JakartaSansRegular"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -339,7 +354,8 @@
                             android:layout_height="wrap_content"
                             android:text="Tanggal Pengajuan"
                             android:layout_weight="1"
-                            android:textSize="12sp"/>
+                            android:textSize="12sp"
+                            style="@style/JakartaSansRegular"/>
 
                         <TextView
                             android:id="@+id/tv_tanggal_entry"
@@ -348,7 +364,8 @@
                             android:text="{Tanggal entry}"
                             android:textSize="13sp"
                             android:textColor="@color/colorBlackHeader"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            style="@style/JakartaSansRegular"/>
                     </LinearLayout>
 
 
@@ -380,7 +397,7 @@
                         android:textAlignment="textStart"
                         android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
                         android:text="Flow : "
-                        android:fontFamily="@font/roboto_m"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
                         />
 
 
