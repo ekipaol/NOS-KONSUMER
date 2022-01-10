@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.ExifInterface;
 import android.media.FaceDetector;
 import android.media.Image;
@@ -28,21 +29,28 @@ import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.PesanDashboardPojo;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.kelengkapandokumen.KelengkapanDokumenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.fragment.app.FragmentManager;
 
 import android.telephony.TelephonyManager;
@@ -69,6 +77,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -759,11 +768,17 @@ public class AppUtil {
         }
 
         Glide
+
                 .with(context)
+                .asBitmap()
                 .load(url_photo)
-                .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
-                .into(iv_foto);
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        iv_foto.setImageBitmap(resource);
+                    }
+                });
     }
 
     public static void setImageGlide(Context context,String fidPhoto,ImageView iv_foto){
@@ -781,11 +796,33 @@ public class AppUtil {
         }
 
         Glide
+
                 .with(context)
+                .asBitmap()
                 .load(url_photo)
-                .centerCrop()
                 .placeholder(R.drawable.banner_placeholder)
-                .into(iv_foto);
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        iv_foto.setImageBitmap(resource);
+                    }
+                });
+
+        iv_foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    DialogPreviewPhoto.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", ((BitmapDrawable)iv_foto.getDrawable()).getBitmap());
+                }
+                catch (ClassCastException e){
+                    DialogPreviewPhoto.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", (((RoundedDrawable)iv_foto.getDrawable()).getSourceBitmap()));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
 
@@ -1136,6 +1173,26 @@ public class AppUtil {
     public static void convertBase64ToImage(String base64String, ImageView imageView) {
         byte[] imageAsBytes = Base64.decode(base64String.getBytes(), Base64.DEFAULT);
         imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+
+//        imageView.buildDrawingCache();
+//        Bitmap bmap = imageView.getDrawingCache();
+
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try{
+                        DialogPreviewPhoto.display(((AppCompatActivity) imageView.getContext()).getSupportFragmentManager(), "Preview Foto", ((BitmapDrawable)imageView.getDrawable()).getBitmap());
+                    }
+                    catch (ClassCastException e){
+                        DialogPreviewPhoto.display(((AppCompatActivity) imageView.getContext()).getSupportFragmentManager(), "Preview Foto", ((RoundedDrawable)imageView.getDrawable()).getSourceBitmap());
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
     }
 
     public static void convertBase64ToImageUsingGlide(Context context,String base64String, ImageView imageView) {

@@ -199,6 +199,8 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                     }
                     else{
                         AppUtil.notiferror(DataDedupeActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                        dataDedupe.clear();
+                        dataDedupeAdapter.notifyDataSetChanged();
                     }
                 }
             }

@@ -74,11 +74,12 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
     private void setData() {
 //        binding.etHasilRekomendasiScoring.setText(dataVerifikasiKesimpulan.get);
         binding.etMaksimalAngsuranBulanan.setText(dataVerifikasiKesimpulan.getMaksimalAngsuranBulanan());
+        binding.etMaksimalAngsuranManfaatPensiun.setText(dataVerifikasiKesimpulan.getMaksimalAngsuranBulananManfaatPensiun());
         if (Integer.parseInt(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) >= 12) {
             Double kk = Double.parseDouble(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) / 12;
             BigDecimal tahunK = new BigDecimal(kk).setScale(0, RoundingMode.HALF_DOWN);
             BigDecimal bulan = new BigDecimal(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()).remainder(new BigDecimal(12));
-            binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(tahunK.toString() + " Tahun" + bulan.toString() + " Bulan");
+            binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(tahunK.toString() + " Tahun " + bulan.toString() + " Bulan");
         } else {
             binding.etMaksimalJangkaWaktuPembiayaanNasabah.setText(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu() + " Bulan");
         }
@@ -116,7 +117,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
 
 
                     } else if (response.body().getStatus().equalsIgnoreCase("01")) {
-                        AppUtil.notiferror(KesimpulanVerifikasi.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");
+                        AppUtil.notiferror(KesimpulanVerifikasi.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebelumnya, Silahkan Diisi");
                     } else {
                         AppUtil.notiferror(KesimpulanVerifikasi.this, findViewById(android.R.id.content), response.body().getMessage());
 
@@ -135,6 +136,7 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
 
     private void NumberText() {
         binding.etMaksimalAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaksimalAngsuranBulanan));
+        binding.etMaksimalAngsuranManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaksimalAngsuranManfaatPensiun));
     }
 
 

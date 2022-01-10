@@ -13,12 +13,23 @@ public class DataVerifikasiKesimpulan {
     @SerializedName("MaksimalJangkaWaktu")
     @Expose
     private String MaksimalJangkaWaktu;
-    @SerializedName("MaksimalAngsuranBulanan")
+    @SerializedName("MaksimalAngsuranBulananGajiAktif")
     @Expose
     private String MaksimalAngsuranBulanan;
+    @SerializedName("MaksimalAngsuranBulananManfaatPensiun")
+    @Expose
+    private String MaksimalAngsuranBulananManfaatPensiun;
     @SerializedName("RekomendasiScoring")
     @Expose
     private String RekomendasiScoring;
+
+    public String getMaksimalAngsuranBulananManfaatPensiun() {
+        return MaksimalAngsuranBulananManfaatPensiun;
+    }
+
+    public void setMaksimalAngsuranBulananManfaatPensiun(String maksimalAngsuranBulananManfaatPensiun) {
+        MaksimalAngsuranBulananManfaatPensiun = maksimalAngsuranBulananManfaatPensiun;
+    }
 
     public String getRekomendasiScoring() {
         return RekomendasiScoring;

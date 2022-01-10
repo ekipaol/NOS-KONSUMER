@@ -9,6 +9,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarket
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
@@ -119,6 +121,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
         binding.tfTreatmentPembiayaan.setOnClickListener(this);
         binding.btnSimpanEditIdeb.setOnClickListener(this);
         binding.btnFotoDokumen.setOnClickListener(this);
+        binding.ivFotoDokumen.setOnClickListener(this);
 
     }
 
@@ -143,6 +146,9 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btn_foto_dokumen:
                 BSUploadFile.displayWithTitle(getSupportFragmentManager(), EditIdebActivity.this,"Upload Dokumen");
+                break;
+            case R.id.iv_foto_dokumen:
+                DialogPreviewPhoto.display(((AppCompatActivity) binding.ivFotoDokumen.getContext()).getSupportFragmentManager(), "Preview Foto", ((RoundedDrawable)binding.ivFotoDokumen.getDrawable()).getSourceBitmap());
             default:break;
         }
     }

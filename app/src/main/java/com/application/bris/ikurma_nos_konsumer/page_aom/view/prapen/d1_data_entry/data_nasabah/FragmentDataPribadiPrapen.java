@@ -53,6 +53,7 @@ import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -188,6 +189,11 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         //logical doc
         AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ktp(),dataNasabah.getImgKtp(),binding.imgFotoKtp);
         AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ideb(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
+
+        idFileIdeb=dataNasabah.getImgIdeb();
+        idFileKtp=dataNasabah.getImgKtp();
+        fileNameIdeb=dataNasabah.getFile_Name_Ideb();
+        fileNameKtp=dataNasabah.getFile_Name_Ktp();
 
 
         //legacy
@@ -904,7 +910,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                     iv.setImageBitmap(bitmap);
 
 
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
 
                 try{
@@ -923,7 +929,12 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                 catch (Exception e2){
                     e2.printStackTrace();
                 }
-
+            }
+            catch (FileNotFoundException e2){
+                e2.printStackTrace();
+            }
+            catch (Exception e3){
+                e3.printStackTrace();
             }
         }
     }
