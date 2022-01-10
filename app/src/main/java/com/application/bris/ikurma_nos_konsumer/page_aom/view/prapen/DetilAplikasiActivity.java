@@ -455,6 +455,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_dokumen_persiapan_akad))){
             Intent it = new Intent(this, PersiapanAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("akad",dataDetailAplikasi.getAkad());
             startActivity(it);
         }
 
@@ -462,6 +463,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g3_upload_dokumen))){
             Intent it = new Intent(this, ActivityUploadDokumen.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("akad",dataDetailAplikasi.getAkad());
             startActivity(it);
         }
         //MEMO
