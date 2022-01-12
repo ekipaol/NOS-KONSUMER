@@ -43,7 +43,7 @@
                 app:enabled="false"
                 app:iconSignifier="@drawable/ic_rupiah"
                 app:isResponsiveIconColor="true"
-                app:labelText="Simulasi Pendapatan Saat Pensiun"
+                app:labelText="Pendapatan Saat Pensiun"
                 app:panelBackgroundColor="@color/colorDisableEdit"
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"

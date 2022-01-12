@@ -434,6 +434,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         scal.setBatasAtasAngsuranPrapen(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etMaxAngsuran.getText().toString()))));
         MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
         sbiaya.setAsuransiPenjaminId(id);
+        sbiaya.setNamaAsuransi(binding.etPilihanAsuransiPenjaminan.getText().toString());
         sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
         sbiaya.setTreatementBiayaAsuransiPenjamin(binding.etTreatmentBiayaAsuransi.getText().toString());
         sbiaya.setBiayaAsuransiKhusus(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransiKhusus.getText().toString()))));
@@ -460,6 +461,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                 if (response.isSuccessful()) {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
                     if (response.body().getStatus().equalsIgnoreCase("00") && response.body().getData() != null) {
+                        AppUtil.notifsuccess(KalkulatorActivity.this, findViewById(android.R.id.content), "Berhasil Menghitung Kalkulator");
                         hitung = "Selesai Hitung";
                         Gson gson = new Gson();
 

@@ -31,9 +31,11 @@ import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityMemoBinding;
 import com.application.bris.ikurma_nos_konsumer.model.menu.ListViewSubmenuHotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataMemo;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.EditIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
@@ -67,7 +69,9 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
     private AppPreferences appPreferences;
     private PrapenAoActivityMemoBinding binding;
     private BottomSheetBehavior bottomSheetBehavior;
-    List<MGenericModel> dataDropdownFlow=new ArrayList<>();
+    List<MGenericModel> dataDropdownReasonCode=new ArrayList<>();
+    private boolean doBatal=false;
+    private String valReasonCode;
 
     int hideButtonClickIndicator=1;
 
@@ -86,6 +90,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         customToolbar();
         backgroundStatusBar();
         otherViewChanges();
+        setDropdownList();
         onClicks();
         loadData();
 
@@ -125,11 +130,30 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
     }
 
     private void otherViewChanges(){
+        //default reason code hide
+        if(doBatal){
+            binding.bottomSheet.tfReasonCode.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.bottomSheet.tfReasonCode.setVisibility(View.GONE);
+        }
+
+
         //default bottom shit position
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        binding.bottomSheet.etReasonCode.setFocusable(false);
+    }
+
+    private void setDropdownList(){
+        dataDropdownReasonCode.add(new MGenericModel("1","Permintaan Nasabah"));
+        dataDropdownReasonCode.add(new MGenericModel("2","Nasabah Mendapatkan Penawaran Lain"));
+        dataDropdownReasonCode.add(new MGenericModel("3","Adanya Ketentuan yang Tidak Bisa Dilengkapi Nasabah"));
+        dataDropdownReasonCode.add(new MGenericModel("4","Nasabah Tidak Sesuai dengan Ketentuan BSI"));
+        dataDropdownReasonCode.add(new MGenericModel("5","Terdapat Indikasi Fraud"));
     }
 
     private void setData(){
@@ -218,6 +242,12 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         req.setApplicationId(idAplikasi);
         req.setMemo(binding.bottomSheet.extendedCatatan.getText().toString());
         req.setUID(String.valueOf(appPreferences.getUid()));
+
+        //kalau ditolak, maka di memonya ditambah reason code didepannya
+        if(namaAktifitas.equalsIgnoreCase("tolak")){
+            req.setMemo("Batal Karena "+binding.bottomSheet.etReasonCode.getText().toString()+" : "+binding.bottomSheet.extendedCatatan.getText().toString());
+        }
+
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         Call<ParseResponse> call;
         call = apiClientAdapter.getApiInterface().updateMemo(req);
@@ -349,6 +379,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         ReqBatalAplikasi req=new ReqBatalAplikasi();
         req.setApplicationId(idAplikasi);
         req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setReasonCode(valReasonCode);
         req.setReasonDescription(binding.bottomSheet.extendedCatatan.getText().toString());
         Call<ParseResponse> call=null;
         if(statusId.equalsIgnoreCase("d.3")){
@@ -498,10 +529,15 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
     @Override
     public void onSelect(String title, MGenericModel data) {
 
+        if(title.equalsIgnoreCase(binding.bottomSheet.tfReasonCode.getLabelText())){
+            binding.bottomSheet.etReasonCode.setText(data.getDESC());
+            valReasonCode=data.getID();
+        }
     }
 
 
     private void onClicks(){
+
         binding.btSembunyiInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -550,6 +586,20 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
             @Override
             public void onClick(View view) {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
+        });
+
+        binding.bottomSheet.tfReasonCode.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.bottomSheet.tfReasonCode.getLabelText(),dataDropdownReasonCode, MemoActivity.this);
+            }
+        });
+
+        binding.bottomSheet.tfReasonCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.bottomSheet.tfReasonCode.getLabelText(),dataDropdownReasonCode, MemoActivity.this);
             }
         });
 
@@ -689,24 +739,37 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         binding.bottomSheet.btTolak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
-                    AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                if(!doBatal){
+                    doBatal=true;
+                    AppUtil.notifinfoLong(MemoActivity.this, findViewById(android.R.id.content), "Silahkan Pilih Alasan Batal");
+                    binding.bottomSheet.tfReasonCode.setVisibility(View.VISIBLE);
+                    binding.bottomSheet.tfReasonCode.setError("Silahkan Pilih",false);
                 }
                 else{
-                    SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
-                    dialog.setTitleText("Konfirmasi");
-                    dialog.setContentText("Apakah anda yakin ingin membatalkan aplikasi?\n\n");
-                    dialog.setConfirmText("Ya");
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.setCancelText("Batal");
-                    dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            batalPembiayaan(dialog);
-                        }
-                    });
-                    dialog.show();
+                    if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
+                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
+                    }
+                    else if(binding.bottomSheet.etReasonCode.getText().toString().isEmpty()){
+                        AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap pilih alasan batal terlebih dahulu");
+                    }
+                    else{
+                        SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
+                        dialog.setTitleText("Konfirmasi");
+                        dialog.setContentText("Apakah anda yakin ingin membatalkan aplikasi?\n\n");
+                        dialog.setConfirmText("Ya");
+                        dialog.setCanceledOnTouchOutside(false);
+                        dialog.setCancelText("Batal");
+                        dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                updateMemo(dialog,"tolak");
+                            }
+                        });
+                        dialog.show();
+                    }
                 }
+
+
 
             }
         });
