@@ -951,7 +951,14 @@ public interface ApiInterface {
     Call<ParseResponseAgunan> sendUpdateTotalKualitasPemb(@Body ReqInquery ReqInquery);
 
     @POST(UriApi.prapen.InquiryHasilCanvasing)
-    Call<ParseResponseAgunan> sendDetailAplikasiGadai(@Body ReqInquery ReqInquery);
+    Call<ParseResponseAgunan> inquiryCanvassingD3(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.InquiryHasilCanvasingD5)
+    Call<ParseResponseAgunan> InquiryHasilCanvasingD5(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.InquiryHasilCanvasingD6)
+    Call<ParseResponseAgunan> InquiryHasilCanvasingD6(@Body ReqInquery ReqInquery);
+
 
     @POST(UriApi.prapen.UpdateJaminandanDokumen)
     Call<ParseResponseReturn> UpdateJaminandanDokumen(@Body UpdateJaminandanDokumen UpdateJaminandanDokumen);

@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
                     android:layout_marginLeft="10dp"
-                    android:text="Simpan"
+                    android:text="Lanjut"
                     android:textStyle="bold"
                     android:padding="8dp"
                     android:textColor="@color/colorPrimary"

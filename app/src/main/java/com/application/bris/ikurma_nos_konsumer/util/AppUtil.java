@@ -1325,6 +1325,38 @@ public class AppUtil {
 
     }
 
+    public static void convertBase64ToFileAutoOpenDocx(Context context, String base64String, String namaPdf) {
+        File dwldsPath = new File(context.getExternalCacheDir() + "/" + namaPdf);
+        try {
+            if (base64String != null) {
+                byte[] pdfAsBytes = Base64.decode(base64String, 0);
+                FileOutputStream os;
+                os = new FileOutputStream(dwldsPath, false);
+                os.write(pdfAsBytes);
+                os.flush();
+                os.close();
+
+                Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", dwldsPath);
+
+                Intent target = new Intent(Intent.ACTION_VIEW);
+                target.setDataAndType(path, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+                target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                Intent intent = Intent.createChooser(target, "Open File");
+                try {
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(context, "Anda belum memiliki aplikasi untuk buka PDF", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Terjadi Kesalahan Ketika Download PDF", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 
     public final static String parseNpwp(String data) {
         String strfix = "";

@@ -283,7 +283,7 @@
                     android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Instansi Kantor Bayar"
+                    app:labelText="Instansi/Kantor Bayar"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"

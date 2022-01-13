@@ -50,16 +50,17 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.etHasilVerifikasiFasilitas.setFocusable(false);
         holder.etHasilVerifikasi.setFocusable(false);
+        holder.etAngsuranBulanan.setFocusable(false);
         holder.etHasilVerifikasi.setText(data.get(position).getTreatmentPembiayaan());
         holder.etHasilVerifikasiFasilitas.setText(data.get(position).getTreatmentFasilitas());
         holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
-        holder.tvBakiDebet.setText((data.get(position).getBakiDebetTerakhir()));
-        holder.tvPerkiraanAngsuranBulanan.setText((data.get(position).getPerkiraanAngsuranBulanan()));
+        holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebetTerakhir()));
+        holder.tvPerkiraanAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getPerkiraanAngsuranBulanan()));
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
         holder.tvStatus.setText(data.get(position).getStatusIdeb());
         holder.tvJenisKredit.setText(data.get(position).getJenisKredit());
-        holder.etAngsuranBulanan.setText(data.get(position).getAngsuranVerifikasi());
+        holder.etAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranVerifikasi()));
 
         holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
         onClicks(position,holder);
@@ -84,49 +85,49 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
     private void onClicks(int currentPosition,@NonNull VerifikasiIdebAdapter.MenuViewHolder holder){
 
         //VERIFIKASI FASILITAS
-        holder.tfVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-
-        holder.etHasilVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-
-        holder.tfVerifikasiFasilitas.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-
-
-        //HASIL VERIFIKASI
-        holder.tfHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
-            }
-        });
-
-        holder.etHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
-            }
-        });
-
-        holder.tfHasilVerifikasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
-            }
-        });
+//        holder.tfVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//
+//        holder.etHasilVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//
+//        holder.tfVerifikasiFasilitas.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//
+//
+//        //HASIL VERIFIKASI
+//        holder.tfHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
+//
+//        holder.etHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
+//
+//        holder.tfHasilVerifikasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,binding.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
 
 
     }

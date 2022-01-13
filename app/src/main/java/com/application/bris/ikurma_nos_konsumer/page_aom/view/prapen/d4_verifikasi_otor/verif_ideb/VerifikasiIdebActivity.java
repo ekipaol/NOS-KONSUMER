@@ -270,7 +270,7 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
             public void onClick(View view) {
 //                Intent intent=new Intent(VerifikasiIdebActivity.this, TambahVerifikasiIdebActivity.class);
 //                startActivity(intent);
-                Toast.makeText(VerifikasiIdebActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(VerifikasiIdebActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
@@ -319,5 +319,6 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
     private void otherViewChanges(){
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        binding.btTampilCatatan.setVisibility(View.GONE);
     }
 }

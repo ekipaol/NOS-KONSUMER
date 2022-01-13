@@ -167,24 +167,88 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansi());
         binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansi());
         binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getIsLNGP());
+
+        if(binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("tidak")){
+            binding.tfInputLngp.setVisibility(View.GONE);
+            binding.tfNamaInstansiLngp.setVisibility(View.GONE);
+            binding.tfRateLngp.setVisibility(View.GONE);
+        }
+
         binding.etInputLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNoLNGP());
         binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiLNGP());
-        binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
+        try{
+            binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
         binding.etKotaTempatBekerja.setText(dataVerifikasiTempatKerja.getTempatKerja().getKotaTempatBekerja());
         binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanGaji());
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanTunjangan());
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTotalPendapatan());
 
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
-        checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        }
+        catch (NullPointerException e){
+          e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        try{
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
     }
 
     private void checkImgOrPdfThenSetData(String fileName, ImageView imageView, String base64String) {

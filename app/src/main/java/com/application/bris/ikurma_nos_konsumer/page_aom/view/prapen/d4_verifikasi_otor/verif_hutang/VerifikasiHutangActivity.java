@@ -185,7 +185,7 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
             public void onClick(View view) {
 //                Intent intent=new Intent(VerifikasiHutangActivity.this, TambahVerifikasiHutangActivity.class);
 //                startActivity(intent);
-                Toast.makeText(VerifikasiHutangActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(VerifikasiHutangActivity.this, "Clicking Simpan", Toast.LENGTH_SHORT).show();
                 finish();
 
             }
@@ -289,5 +289,6 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
     private void otherViewChanges(){
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
 }

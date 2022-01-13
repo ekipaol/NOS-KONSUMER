@@ -2,7 +2,6 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 
@@ -47,6 +46,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
     private MparseResponseTaspen dataTaspen = new MparseResponseTaspen();
     private MparseResponseHasilRAC datahasilRAC = new MparseResponseHasilRAC();
     private String rRAC, rTaspen, rFitur, rhasilRAC;
+    String statusId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         startingStepPosition = savedInstanceState != null ? savedInstanceState.getInt(CURRENT_STEP_POSITION_KEY) : 0;
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
+        statusId=getIntent().getStringExtra("statusId");
 
         initData();
 
@@ -76,7 +77,21 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         ReqInquery req = new ReqInquery();
         req.setUID(String.valueOf(appPreferences.getUid()));
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().sendDetailAplikasiGadai(req);
+        Call<ParseResponseAgunan> call;
+         call = apiClientAdapter.getApiInterface().inquiryCanvassingD3(req);
+
+        if(statusId.equalsIgnoreCase("d.3")){
+            call = apiClientAdapter.getApiInterface().inquiryCanvassingD3(req);
+        }
+        else   if(statusId.equalsIgnoreCase("d.5")){
+            call = apiClientAdapter.getApiInterface().InquiryHasilCanvasingD5(req);
+        }
+        else   if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().InquiryHasilCanvasingD6(req);
+        }
+        else{
+            call = apiClientAdapter.getApiInterface().inquiryCanvassingD3(req);
+        }
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {

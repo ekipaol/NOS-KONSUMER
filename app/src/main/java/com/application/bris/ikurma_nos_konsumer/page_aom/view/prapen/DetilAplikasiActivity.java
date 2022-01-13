@@ -371,6 +371,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_canvassing))){
             Intent it = new Intent(this, HasilCanvasingActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
 

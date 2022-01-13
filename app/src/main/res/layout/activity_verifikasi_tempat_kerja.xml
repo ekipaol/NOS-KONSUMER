@@ -1041,7 +1041,7 @@
                         android:textSize="16dp"
                         android:textColor="@color/colorWhite"
                         android:background="@drawable/button_primary"
-                        android:text="Simpan"
+                        android:text="Lanjut"
                         android:textAllCaps="false"/>
                 </LinearLayout>
             </LinearLayout>

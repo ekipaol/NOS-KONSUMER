@@ -427,6 +427,7 @@ public class UriApi {
         public static final String batalPembiayaanD5 = "NOS_PRAPEN_Services/rest/D5/UpdateBatalPembiayaanConfirmVerifikasi";
         public static final String inqKalkulatorMarketingD5 = "NOS_PRAPEN_Services/rest/D5/InqKalkulatorMarketingD5";
         public static final String updateKalkulatorMarketingD5 = "NOS_PRAPEN_Services/rest/D5/UpdateKalkulatorMarketingD5";
+        public static final String InquiryHasilCanvasingD5 = "NOS_PRAPEN_Services/rest/D5/InquiryHasilCanvasingConfirmVerifikasi";
 
         //D6
         public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D6/UpdateLanjutkeAkad";
@@ -434,6 +435,7 @@ public class UriApi {
         public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBatalPembiayaan";
         public static final String updateKalkulatorD6 = "NOS_PRAPEN_Services/rest/D6/UpdateKalkulatorPemutusD6";
         public static final String inqKalkulatorD6 = "NOS_PRAPEN_Services/rest/D6/InqKalkulatorPemutusD6";
+        public static final String InquiryHasilCanvasingD6 = "NOS_PRAPEN_Services/rest/D6/InquiryHasilCanvasing";
 
         //G1
         public static final String inquiryAkadMmq = "NOS_PRAPEN_Services/rest/G1/InqAkadMMQ";
