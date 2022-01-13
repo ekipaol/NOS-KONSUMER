@@ -45,7 +45,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
         holder.tvNamaPemutus.setText(data.get(position).getNama());
         holder.tvJabatanPemutus.setText(data.get(position).getJabatan());
         holder.tvTahapAplikasi.setText(data.get(position).getTahapAplikasi());
-//        binding.tvJenisPutusan.setText(data.get(position).getJenisPutusan());
+        holder.tvJenisPutusan.setText(data.get(position).getJenisPutusan());
         holder.tvTanggalMemo.setText(AppUtil.parseTanggalGeneral(data.get(position).getTanggalMemo(),"yyyy-MM-dd","dd-MM-yyyy"));
         holder.tvMemo.setText(data.get(position).getMemo());
 
@@ -73,7 +73,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
         Button btSalin;
-        TextView tvNamaPemutus,tvJabatanPemutus,tvTahapAplikasi,tvTanggalMemo,tvMemo;
+        TextView tvNamaPemutus,tvJabatanPemutus,tvTahapAplikasi,tvTanggalMemo,tvMemo,tvJenisPutusan;
 
 
         public MenuViewHolder(View itemView) {
@@ -84,6 +84,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoAdapter.MenuViewHolder
             tvTahapAplikasi=binding.tvTahapAplikasi;
             tvTanggalMemo=binding.tvTanggalMemo;
             tvMemo=binding.tvMemo;
+            tvJenisPutusan=binding.tvJenisPutusan;
 
 
         }

@@ -432,6 +432,8 @@ public class UriApi {
         public static final String lanjutPembiayaanKeAkad = "NOS_PRAPEN_Services/rest/D6/UpdateLanjutkeAkad";
         public static final String kembalikanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBackkeVerifikator";
         public static final String batalPembiayaanD6 = "NOS_PRAPEN_Services/rest/D6/UpdateBatalPembiayaan";
+        public static final String updateKalkulatorD6 = "NOS_PRAPEN_Services/rest/D6/UpdateKalkulatorPemutusD6";
+        public static final String inqKalkulatorD6 = "NOS_PRAPEN_Services/rest/D6/InqKalkulatorPemutusD6";
 
         //G1
         public static final String inquiryAkadMmq = "NOS_PRAPEN_Services/rest/G1/InqAkadMMQ";

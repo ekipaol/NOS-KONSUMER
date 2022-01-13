@@ -13,6 +13,17 @@ public class UpdateMemo {
     @SerializedName("Memo")
     @Expose
     private String Memo;
+    @SerializedName("JenisPutusan")
+    @Expose
+    private String JenisPutusan;
+
+    public String getJenisPutusan() {
+        return JenisPutusan;
+    }
+
+    public void setJenisPutusan(String jenisPutusan) {
+        JenisPutusan = jenisPutusan;
+    }
 
     public Long getApplicationId() {
         return ApplicationId;

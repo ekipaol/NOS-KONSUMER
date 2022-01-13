@@ -246,6 +246,16 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         //kalau ditolak, maka di memonya ditambah reason code didepannya
         if(namaAktifitas.equalsIgnoreCase("tolak")){
             req.setMemo("Batal Karena "+binding.bottomSheet.etReasonCode.getText().toString()+" : "+binding.bottomSheet.extendedCatatan.getText().toString());
+            req.setJenisPutusan("Aplikasi Dibatalkan");
+        }
+        else if(namaAktifitas.equalsIgnoreCase("setuju")){
+            req.setJenisPutusan("Aplikasi Dilanjutkan");
+        }
+        else if(namaAktifitas.equalsIgnoreCase("kembalikan")){
+            req.setJenisPutusan("Aplikasi Dikembalikan");
+        }
+        else{
+            req.setJenisPutusan("-");
         }
 
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);

@@ -37,7 +37,17 @@ public class DataMemo {
     @SerializedName("ModifiedDate")
     @Expose
     private String modifiedDate;
+    @SerializedName("JenisPutusan")
+    @Expose
+    private String JenisPutusan;
 
+    public String getJenisPutusan() {
+        return JenisPutusan;
+    }
+
+    public void setJenisPutusan(String jenisPutusan) {
+        JenisPutusan = jenisPutusan;
+    }
 
     public Long getId() {
         return id;

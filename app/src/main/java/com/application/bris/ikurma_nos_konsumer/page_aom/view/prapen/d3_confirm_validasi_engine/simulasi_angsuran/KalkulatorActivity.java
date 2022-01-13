@@ -135,8 +135,11 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         else if(statusId.equalsIgnoreCase("d.5")){
             call = apiClientAdapter.getApiInterface().inqKalkulatorMarketingD5(req);
         }
+        else if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().inqKalkulatorD6(req);
+        }
 
-        //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D4 D5, DIAMBIL DARI D3 DLU
+        //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D3 D5, DIAMBIL DARI D3 DLU
         else{
             call = apiClientAdapter.getApiInterface().inquiryKalkulatorMarketing(req);
         }
@@ -376,12 +379,15 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         else    if(statusId.equalsIgnoreCase("d.5")){
             call = apiClientAdapter.getApiInterface().updateKalkulatorMarketingD5(req);
         }
+        else    if(statusId.equalsIgnoreCase("d.6")){
+            call = apiClientAdapter.getApiInterface().updateKalkulatorD6(req);
+        }
 
         //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D4 D5, DIAMBIL DARI D3 DLU
         else{
             call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
         }
-        call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
+//        call = apiClientAdapter.getApiInterface().updateKalkulatorMarketing(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override
             public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
