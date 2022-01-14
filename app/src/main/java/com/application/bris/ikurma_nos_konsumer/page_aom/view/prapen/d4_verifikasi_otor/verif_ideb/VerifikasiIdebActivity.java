@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityVerifIdebBinding;
@@ -26,6 +27,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelectRecycler;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac.VerifikasiRacActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
@@ -276,6 +278,13 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
             }
         });
 
+        binding.btnDownloadIdeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadIdeb();
+            }
+        });
+
     }
 
     @Override
@@ -320,5 +329,44 @@ public class VerifikasiIdebActivity extends AppCompatActivity implements Generic
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         binding.btTampilCatatan.setVisibility(View.GONE);
+    }
+
+    private void downloadIdeb(){
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        //pantekan no aplikasi
+//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
+        req.setApplicationId(idAplikasi);
+        req.setUID(String.valueOf(appPreferences.getUid()));
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().downloadIdeb(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<UploadImage>() {}.getType();
+                        UploadImage dataPdf=gson.fromJson(listDataString, type);
+
+                        if(dataPdf!=null){
+                            AppUtil.convertBase64ToFileAutoOpen(VerifikasiIdebActivity.this,dataPdf.getImg(),"verinIdebPdf");
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(VerifikasiIdebActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(VerifikasiIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
     }
 }

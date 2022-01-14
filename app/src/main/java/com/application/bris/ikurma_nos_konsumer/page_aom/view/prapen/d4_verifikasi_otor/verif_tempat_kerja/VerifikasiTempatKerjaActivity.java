@@ -73,6 +73,8 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         setContentView(view);
         backgroundStatusBar();
         disableEditText();
+        defaultViewCondition();
+
 
         //disable all edittexts and button
         AppUtil.disableEditTexts(binding.getRoot());
@@ -136,8 +138,11 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanGaji());
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanTunjangan());
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getTotalPendapatan());
+
+        //ktp sudah pake logical doc
         if (dataVerifikasiTempatKerja.getKTPNasabah() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+        AppUtil.loadImageWithFileNameCheck(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),dataVerifikasiTempatKerja.getKTPNasabah().getImg(),binding.ivKtpNasabah);
         if (dataVerifikasiTempatKerja.getKTPPasangan() != null)
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
         if (dataVerifikasiTempatKerja.getSKPensiun() != null)
@@ -369,6 +374,20 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etKesimpulanPensesuaianVerifikasi.setFocusable(false);
         binding.etNamaInstansiLngp.setFocusable(false);
         binding.etRateLngp.setFocusable(false);
+    }
+
+    private void defaultViewCondition() {
+        binding.btnKtpNasabah.setVisibility(View.GONE);
+        binding.btnKtpPasangan.setVisibility(View.GONE);
+        binding.btnFormApplikasi.setVisibility(View.GONE);
+        binding.btnAset.setVisibility(View.GONE);
+        binding.btnSkPengangkatan.setVisibility(View.GONE);
+        binding.btnSkPensiun.setVisibility(View.GONE);
+        binding.btnSkTerakhir.setVisibility(View.GONE);
+        binding.btnIdCard.setVisibility(View.GONE);
+        binding.btnSuratRekomendasiInstansi.setVisibility(View.GONE);
+        binding.btnUploadDokumen.setVisibility(View.GONE);
+
     }
 
     private void allOnclick() {

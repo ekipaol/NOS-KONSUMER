@@ -155,6 +155,20 @@
                 android:layout_marginTop="-60dp">
 
                 <Button
+                    android:id="@+id/btn_download_ideb"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:layout_marginLeft="10dp"
+                    android:text="Download IDEB"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textAllCaps="true"
+                    android:background="@drawable/shapeborderprimary"
+                    />
+
+                <Button
                     android:id="@+id/btn_simpan_verif_ideb"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
