@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/colorWhite">
-    <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
-    <include android:id="@+id/loading" layout="@layout/loading" />
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/toolbar_nosearch"
+        layout="@layout/toolbar_nosearch" />
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading" />
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
         android:layout_marginTop="50dp"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/colorWhite"
+                android:orientation="vertical"
                 android:paddingTop="10dp">
-                <!--Sisa Pendapatan Gaji Aktif-->
+
+                <!--Status Payroll-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_status_payroll"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Status Payroll"
@@ -46,136 +56,25 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_status_payroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
                         android:text=" "
                         android:textAlignment="textEnd"
-                        app:prefix=""
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Sisa Pendapatan Gaji Aktif-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_sisa_pendapatan_gaji_aktif"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_segmen"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Sisa Pendapatan Gaji Aktif"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_sisa_pendapatan_gaji_aktif"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Sisa Pendapatan Manfaat Pensiun-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_sisa_pendapatan_manfaat_pensiun"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_segmen"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Sisa Pendapatan Manfaat Pensiun"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_sisa_pendapatan_manfaat_pensiun"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Total Pendapatan Gaji Aktif-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_total_pendapatan_gaji_aktif"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_segmen"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Total Pendapatan Gaji Aktif"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_total_pendapatan_gaji_aktif"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
-
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Total Pendapatan Manfaat Pensiun-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_total_pendapatan_manfaat_pensiun"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
-                    app:iconSignifier="@drawable/ic_segmen"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Total Pendapatan Manfaat Pensiun"
-                    app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_total_pendapatan_manfaat_pensiun"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        app:prefix="" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <!--Total Angsuran Pembiayaan Eksisting DBR-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_total_angs_pemb_eks_notlunas_dbr"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Total Angsuran Pembiayaan Eksisting DBR"
@@ -186,24 +85,25 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_total_angs_pemb_eks_notlunas_dbr"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <!--Total Angsuran Pembiayaan Eksisting DSR-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_total_angs_pemb_eks_notlunas_dsr"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Total Angsuran Pembiayaan Eksisting DSR"
@@ -214,27 +114,109 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_total_angs_pemb_eks_notlunas_dsr"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Gaji Aktif Digunakan-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_gaji_aktif_digunakan"
+                <!--Title Sisa Pendapatan-->
+                <TextView
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingHorizontal="20dp"
+                    android:paddingBottom="10dp"
+                    android:text="Sisa Pendapatan yang dapat digunakan sebagai angsuran"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <!--Aktif-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_sisa_pendapatan_gaji_aktif"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Gaji Aktif Digunakan"
+                    app:labelText="Aktif"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_sisa_pendapatan_gaji_aktif"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Masa Pensiun-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_sisa_pendapatan_manfaat_pensiun"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Masa Pensiun"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_sisa_pendapatan_manfaat_pensiun"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <!--Title Sisa DSR/DBR-->
+                <TextView
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Sisa DSR/DBR"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <!--Aktif-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_gaji_aktif_digunakan"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_segmen"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Aktif"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -242,27 +224,27 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_gaji_aktif_digunakan"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        app:suffix="%"
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Manfaat Pensiun Digunakan-->
+                <!--Masa Pensiun -->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_manfaat_pensiun_digunakan"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Manfaat Pensiun Digunakan"
+                    app:labelText="Masa Pensiun"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -270,27 +252,40 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_manfaat_pensiun_digunakan"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        app:suffix="%"
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Sisa Gaji Aktif-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_sisa_gaji_aktif"
+                <!--Title DSR/DBR yang telah digunakan-->
+                <TextView
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="DSR/DBR yang telah digunakan"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <!--Aktif-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_sisa_gaji_aktif"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Sisa Gaji Aktif"
+                    app:labelText="Aktif"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -298,27 +293,27 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_sisa_gaji_aktif"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        app:suffix="%"
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Sisa Manfaat Pensiun-->
+                <!--Masa Pensiun-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_sisa_manfaat_pensiun"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Sisa Manfaat Pensiun"
+                    app:labelText="Masa Pensiun"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -326,27 +321,40 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_sisa_manfaat_pensiun"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        app:suffix="%"
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd"
+                        app:suffix="%" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Maksimal Angsuran Bulanan Gaji Aktif-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_maksimal_angsuran_bulanan_gaji_aktif"
+                <!--Title Maksimal Angsuran-->
+                <TextView
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Maksimal Angsuran"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <!--Aktif-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_maksimal_angsuran_bulanan_gaji_aktif"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Maksimal Angsuran Bulanan Gaji Aktif"
+                    app:labelText="Aktif"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -354,27 +362,27 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_maksimal_angsuran_bulanan_gaji_aktif"
-                        android:text="0"
-                        android:textAlignment="textEnd"
-                        
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text="0"
+                        android:textAlignment="textEnd" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Maksimal Angsuran Manfaat Pensiun-->
+                <!--Masa Pensiun-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_maksimal_angsuran_manfaat_pensiun"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Maksimal Angsuran Manfaat Pensiun"
+                    app:labelText="Masa Pensiun"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -382,27 +390,41 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_maksimal_angsuran_manfaat_pensiun"
-                        android:text=" "
-                        android:textAlignment="textEnd"
-                        app:prefix=""
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text=" "
+                        android:textAlignment="textEnd"
+                        app:prefix="" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Ketentuan Gaji Aktif-->
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_ketentuan_gaji_aktif"
+                <!--Title DSR/DBR Sesuai Ketentuan-->
+                <TextView
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+
+                    android:paddingBottom="10dp"
+                    android:text="DSR/DBR Sesuai Ketentuan"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
+                <!--Aktif-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_ketentuan_gaji_aktif"
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Ketentuan Gaji Aktif"
+                    app:labelText="Aktif"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -410,27 +432,27 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_ketentuan_gaji_aktif"
-                        android:text=" "
-                        android:textAlignment="textEnd"
-                        app:prefix=""
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text=" "
+                        android:textAlignment="textEnd"
+                        app:prefix="" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
-                <!--Ketentuan Manfaat Pensiun-->
+                <!--Masa Pensiun-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_ketentuan_manfaat_pensiun"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
-                    app:labelText="Ketentuan Manfaat Pensiun"
+                    app:labelText="Masa Pensiun"
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
@@ -438,24 +460,37 @@
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_ketentuan_manfaat_pensiun"
-                        android:text=" "
-                        android:textAlignment="textEnd"
-                        app:prefix=""
-                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:maxLength="50" />
+                        android:inputType="numberDecimal"
+                        android:maxLength="50"
+                        android:text=" "
+                        android:textAlignment="textEnd"
+                        app:prefix="" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <!--Title-->
+                <TextView
+                    style="@style/JakartaSansBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/muli_b"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text=" "
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
                 <!-- Catatan Hasil Verifikasi 1-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_catatan_verifikasi"
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:layout_marginTop="10dp"
                     app:iconSignifier="@drawable/ic_segmen"
                     app:isResponsiveIconColor="true"
                     app:labelText="Catatan Hasil Verifikasi"
@@ -474,20 +509,22 @@
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Title Upload Dokumen 1-->
                 <TextView
+                    style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Upload Dokumen"
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:textAlignment="center"
                     android:fontFamily="@font/muli_b"
-                    android:paddingBottom="10dp"/>
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Upload Dokumen"
+                    android:textAlignment="center"
+                    android:textSize="16sp" />
                 <!--Upload dokumen 1-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:id="@+id/rl_dokumen1"
                         android:layout_width="match_parent"
@@ -495,6 +532,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:padding="10dp">
+
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="200dp">
@@ -505,13 +543,13 @@
                                 android:layout_height="0dp"
                                 android:scaleType="center"
                                 android:src="@mipmap/ico_img_for_upload"
-                                app:riv_border_width="1dip"
-                                app:riv_border_color="#f1efef"
-                                app:riv_corner_radius="8dip"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
 
                             <ImageView
                                 android:id="@+id/btn_dokumen1"

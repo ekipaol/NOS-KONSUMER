@@ -71,12 +71,10 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                                 listDataString = response.body().getData().toString();
                                 DPDSR = gson.fromJson(listDataString, MparseTotalKualitasPembiayaan.class);
                                 try {
-                                    binding.etSisaPendapatanGajiAktif.setText(String.valueOf(DPDSR.getSisaPendapatanGajiAktif()));
-                                    binding.etSisaPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getSisaPendapatanManfaatPensiun()));
-                                    binding.etTotalPendapatanGajiAktif.setText(String.valueOf(DPDSR.getTotalPendapatanGajiAktif()));
-                                    binding.etTotalPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getTotalPendapatanManfaatPensiun()));
-                                    binding.etTotalAngsPembEksNotlunasDbr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDBR()));
-                                    binding.etTotalAngsPembEksNotlunasDsr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDSR()));
+                                    binding.etSisaPendapatanGajiAktif.setText(String.valueOf(DPDSR.getSisaPendapatanGajiAktif().setScale(2)));
+                                    binding.etSisaPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getSisaPendapatanManfaatPensiun().setScale(2)));
+                                    binding.etTotalAngsPembEksNotlunasDbr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDBR().setScale(2)));
+                                    binding.etTotalAngsPembEksNotlunasDsr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDSR().setScale(2)));
                                     binding.etGajiAktifDigunakan.setText(DPDSR.getGajiAktifDigunakan());
                                     binding.etManfaatPensiunDigunakan.setText(DPDSR.getManfaatPensiunDigunakan());
                                     binding.etSisaGajiAktif.setText(DPDSR.getSisaGajiAktif());
@@ -172,8 +170,6 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         binding.etSisaPendapatanGajiAktif.setFocusable(false);
         binding.etCatatanVerifikasi.setFocusable(false);
         binding.etSisaPendapatanManfaatPensiun.setFocusable(false);
-        binding.etTotalPendapatanGajiAktif.setFocusable(false);
-        binding.etTotalPendapatanManfaatPensiun.setFocusable(false);
         binding.etTotalAngsPembEksNotlunasDbr.setFocusable(false);
         binding.etTotalAngsPembEksNotlunasDsr.setFocusable(false);
         binding.etGajiAktifDigunakan.setFocusable(false);
@@ -190,10 +186,10 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     private void numberText() {
         binding.etSisaPendapatanGajiAktif.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaPendapatanGajiAktif));
         binding.etSisaPendapatanManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etSisaPendapatanManfaatPensiun));
-        binding.etTotalPendapatanGajiAktif.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanGajiAktif));
-        binding.etTotalPendapatanManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatanManfaatPensiun));
         binding.etTotalAngsPembEksNotlunasDbr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalAngsPembEksNotlunasDbr));
         binding.etTotalAngsPembEksNotlunasDsr.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalAngsPembEksNotlunasDsr));
+        binding.etMaksimalAngsuranManfaatPensiun.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaksimalAngsuranManfaatPensiun));
+        binding.etMaksimalAngsuranBulananGajiAktif.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etMaksimalAngsuranBulananGajiAktif));
     }
 
     public void customToolbar() {
