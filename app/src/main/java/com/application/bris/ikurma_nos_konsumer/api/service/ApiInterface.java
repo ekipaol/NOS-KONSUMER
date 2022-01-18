@@ -776,6 +776,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.listAplikasiMarketing)
     Call<ParseResponseArr> listAplikasiMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.listAplikasiPemutus)
+    Call<ParseResponseArr> listAplikasiPemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
     @POST(UriApi.prapen.inquiryDedupe)
     Call<ParseResponseArr> inquiryDedupe(@Body ReqDedupe ReqDedupe);
 

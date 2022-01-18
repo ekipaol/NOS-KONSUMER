@@ -10,6 +10,17 @@ public class ReqUidIdAplikasi {
     @SerializedName("ApplicationId")
     @Expose
     private long ApplicationId;
+    @SerializedName("Role")
+    @Expose
+    private long Role;
+
+    public long getRole() {
+        return Role;
+    }
+
+    public void setRole(long role) {
+        Role = role;
+    }
 
     public String getUID() {
         return UID;

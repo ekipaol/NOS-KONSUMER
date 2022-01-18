@@ -145,7 +145,15 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
 //        req.setUID("");
         req.setUID(String.valueOf(appPreferences.getUid()));
 
-        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
+        Call<ParseResponseArr> call;
+
+        if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
+            call = apiClientAdapter.getApiInterface().listAplikasiPemutus(req);
+        }
+        else{
+            call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
+        }
+
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override
             public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {

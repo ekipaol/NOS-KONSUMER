@@ -1205,6 +1205,18 @@ public class AppUtil {
                 .into(imageView);
     }
 
+    public static boolean checkIsPemutus(int fidRole){
+        //76 BM
+        //130 AM
+        //159 ACFM
+        if(fidRole==76||fidRole==130||fidRole==159){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
 
     public static void convertBase64ToFileWithOnClick(Context context, String base64String, ImageView imageView, String namaPdf) {
         File dwldsPath = new File(context.getExternalCacheDir() + "/" + namaPdf);

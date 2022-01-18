@@ -237,7 +237,16 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         req.setUID(String.valueOf(appPreferences.getUid()));
 
-        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
+        Call<ParseResponseArr> call;
+
+        if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
+            call = apiClientAdapter.getApiInterface().listAplikasiPemutus(req);
+        }
+        else{
+            call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
+        }
+
+        
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override
             public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {

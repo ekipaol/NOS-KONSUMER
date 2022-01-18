@@ -202,7 +202,7 @@
                     android:fontFamily="@font/muli_b"
                     android:paddingLeft="10dp"
                     android:paddingBottom="10dp"
-                    android:text="Sisa DSR/DBR"
+                    android:text="DSR/DBR yang telah digunakan"
                     android:textAlignment="center"
                     android:textSize="16sp" />
                 <!--Aktif-->
@@ -262,7 +262,7 @@
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <!--Title DSR/DBR yang telah digunakan-->
+                <!--Title Sisa DSR DBR yang telah digunakan-->
                 <TextView
                     style="@style/JakartaSansBold"
                     android:layout_width="match_parent"
@@ -271,7 +271,7 @@
                     android:fontFamily="@font/muli_b"
                     android:paddingLeft="10dp"
                     android:paddingBottom="10dp"
-                    android:text="DSR/DBR yang telah digunakan"
+                    android:text="Sisa DSR/DBR"
                     android:textAlignment="center"
                     android:textSize="16sp" />
                 <!--Aktif-->

@@ -69,48 +69,48 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
     private void onClicks(int currentPosition,@NonNull VerifikasiHutangAdapter.MenuViewHolder holder){
 
         //VERIFIKASI FASILITAS
-        holder.tfVerifikasiFasilitas.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-        holder.tfVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-
-        holder.etVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
-            }
-        });
-
-        //HASIL VERIFIKASI
-
-        holder.tfHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
-            }
-        });
-
-        holder.tfHasilVerifikasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
-            }
-        });
-
-        holder.ethasilverifikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
-            }
-        });
+//        holder.tfVerifikasiFasilitas.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//        holder.tfVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//
+//        holder.etVerifikasiFasilitas.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfVerifikasiFasilitas.getLabelText());
+//            }
+//        });
+//
+//        //HASIL VERIFIKASI
+//
+//        holder.tfHasilVerifikasi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
+//
+//        holder.tfHasilVerifikasi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
+//
+//        holder.ethasilverifikasi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dropdownRecyclerListener.onDropdownRecyclerClick(currentPosition,holder.tfHasilVerifikasi.getLabelText());
+//            }
+//        });
 
     }
 
