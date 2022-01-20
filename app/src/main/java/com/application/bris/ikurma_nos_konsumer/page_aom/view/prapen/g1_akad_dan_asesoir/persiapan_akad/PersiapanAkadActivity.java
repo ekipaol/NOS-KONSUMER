@@ -5,22 +5,22 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityPersiapanAkadBinding;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_dsr_dbr.Activity_DSR_DBR_Nasabah;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.R;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PersiapanAkadActivity extends AppCompatActivity implements View.OnClickListener {
+
     ActivityPersiapanAkadBinding binding;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -32,9 +32,34 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
         appPreferences = new AppPreferences(this);
         binding = ActivityPersiapanAkadBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+        showDownloaded();
         onclickSelectDialog();
         setContentView(view);
         AppUtil.toolbarRegular(this, "Dokumen Persiapan Akad");
+    }
+
+    private void showDownloaded() {
+        if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("mmq")) {
+            binding.akadmmq.setVisibility(View.VISIBLE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("ijarah")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.VISIBLE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("murabahah")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.VISIBLE);
+            binding.akadrahn.setVisibility(View.GONE);
+        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("rahn")) {
+            binding.akadmmq.setVisibility(View.GONE);
+            binding.akadijarah.setVisibility(View.GONE);
+            binding.akadmurabahah.setVisibility(View.GONE);
+            binding.akadrahn.setVisibility(View.VISIBLE);
+        }
     }
 
     private void onclickSelectDialog() {
@@ -65,6 +90,7 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
 
     @SuppressLint("NonConstantResourceId")
     @Override
+
     public void onClick(View v) {
         ReqDownloadFile req = new ReqDownloadFile();
         switch (v.getId()) {
@@ -189,4 +215,5 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
+
 }
