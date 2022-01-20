@@ -54,11 +54,11 @@ public class Menu {
 
     public static void SubmenuD3(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_hasil_canvasing,context.getString(R.string.submenu_detil_aplikasi_d3_canvassing)));
-        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d3_kalkulator)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jaminan_document,context.getString(R.string.submenu_detil_aplikasi_d3_jaminan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_pendapatan,context.getString(R.string.submenu_detil_aplikasi_d3_data_pendapatan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_d3_ideb)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d3_data_hutang)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d3_kalkulator)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d3_memo)));
 
     }

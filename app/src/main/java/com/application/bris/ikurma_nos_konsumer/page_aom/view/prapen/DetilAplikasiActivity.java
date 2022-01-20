@@ -757,8 +757,11 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
     @Override
     public void success(boolean val) {
-        if(val)
-            finish();
+        if(val){
+            Intent intent = new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        }
     }
 
     @Override
