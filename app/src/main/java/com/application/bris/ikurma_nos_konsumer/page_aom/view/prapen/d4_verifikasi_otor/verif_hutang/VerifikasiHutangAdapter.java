@@ -49,6 +49,7 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
         //NEVER, IT GONNA F UP YOUR DATA ORDER
         holder.etVerifikasiFasilitas.setFocusable(false);
         holder.ethasilverifikasi.setFocusable(false);
+        holder.etAngsuranVerifikator.setFocusable(false);
         holder.ethasilverifikasi.setText(data.get(position).getHasilVerifikasi());
         holder.etVerifikasiFasilitas.setText(data.get(position).getHasilVerifikasi());
         holder.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiUtang());

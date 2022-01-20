@@ -491,6 +491,10 @@ public class UriApi {
         // G3
         public static final String UploadDokumenUmum = "NOS_PRAPEN_Services/rest/G3/UploadDokumenUmum";
         public static final String InqDokumenUpload = "NOS_PRAPEN_Services/rest/G3/InqDokumenUpload";
+        public static final String lanjutG3 = "NOS_PRAPEN_Services/rest/G3/UpdateLanjutUpdateLanjutkeFOU";
+        public static final String kembalikanG3 = "NOS_PRAPEN_Services/rest/G3/UpdateBackKeDownloadDok";
+        public static final String batalG3 = "NOS_PRAPEN_Services/rest/G3/UpdateBatalPembiayaan";
+
 
 
     }

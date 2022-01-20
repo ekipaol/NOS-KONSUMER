@@ -938,6 +938,15 @@ public interface ApiInterface {
     @POST(UriApi.prapen.kembalikanG1)
     Call<ParseResponse> kembalikanG1(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.lanjutG3)
+    Call<ParseResponse> lanjutG3(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.batalG3)
+    Call<ParseResponse> batalG3(@Body ReqBatalAplikasi ReqBatalAplikasi);
+
+    @POST(UriApi.prapen.kembalikanG3)
+    Call<ParseResponse> kembalikanG3(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
     @POST(UriApi.prapen.inqueryDataPendapatan)
     Call<ParseResponseAgunan> inqueryDataPendapatan(@Body ReqInquery ReqInquery);
 
