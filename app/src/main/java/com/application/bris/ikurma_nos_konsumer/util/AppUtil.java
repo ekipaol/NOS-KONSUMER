@@ -1358,13 +1358,13 @@ public class AppUtil {
                 try {
                     context.startActivity(intent);
                 } catch (ActivityNotFoundException e) {
-                    Toast.makeText(context, "Anda belum memiliki aplikasi untuk buka PDF", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Anda belum memiliki aplikasi untuk buka Document", Toast.LENGTH_LONG).show();
                 }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(context, "Terjadi Kesalahan Ketika Download PDF", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Terjadi Kesalahan Ketika Download Document", Toast.LENGTH_LONG).show();
         }
 
     }

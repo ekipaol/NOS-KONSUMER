@@ -148,17 +148,17 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             binding.akadijarah.setVisibility(View.GONE);
             binding.akadmurabahah.setVisibility(View.GONE);
             binding.akadrahn.setVisibility(View.GONE);
-        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("ijarah")) {
+        } else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("ijarah")) {
             binding.akadmmq.setVisibility(View.GONE);
             binding.akadijarah.setVisibility(View.VISIBLE);
             binding.akadmurabahah.setVisibility(View.GONE);
             binding.akadrahn.setVisibility(View.GONE);
-        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("murabahah")) {
+        } else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("murabahah")) {
             binding.akadmmq.setVisibility(View.GONE);
             binding.akadijarah.setVisibility(View.GONE);
             binding.akadmurabahah.setVisibility(View.VISIBLE);
             binding.akadrahn.setVisibility(View.GONE);
-        }else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("rahn")) {
+        } else if (Objects.requireNonNull(getIntent().getStringExtra("akad")).equalsIgnoreCase("rahn")) {
             binding.akadmmq.setVisibility(View.GONE);
             binding.akadijarah.setVisibility(View.GONE);
             binding.akadmurabahah.setVisibility(View.GONE);
@@ -180,6 +180,16 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
                     if (response.body().getStatus().equalsIgnoreCase("00") && response.body().getData() != null) {
                         Gson gson = new Gson();
+
+
+                        if (response.body().getData().get("AsuransiKhusus") != null) {
+                            if (response.body().getData().get("AsuransiKhusus").getAsString().equalsIgnoreCase("FALSE")) {
+                                binding.llcovernote.setVisibility(View.GONE);
+                            } else {
+                                binding.llcovernote.setVisibility(View.VISIBLE);
+                            }
+                        }
+
                         if (response.body().getData().get("Form_Mutas_Kantor_Bayar") != null) {
                             String SSFormMutasiKantorBayar = response.body().getData().get("Form_Mutas_Kantor_Bayar").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar = gson.fromJson(SSFormMutasiKantorBayar, ReqDocument.class);
@@ -196,6 +206,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                             binding.pvFormMutasiKantorBayar.setVisibility(View.VISIBLE);
                         }
+
                         if (response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen") != null) {
                             String SSFormBayarTaspen = response.body().getData().get("Form_Mutasi_Kantor_Bayar_Taspen").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar_Taspen = gson.fromJson(SSFormBayarTaspen, ReqDocument.class);
@@ -1401,7 +1412,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             case R.id.btn_send:
                 Validate();
                 sendData();
-            default:break;
+            default:
+                break;
         }
     }
 
@@ -1510,7 +1522,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 } else if (clicker.equalsIgnoreCase("skpenangakatan")) {
                     openCamera(Intskpenangakatan, "skpenangakatan");
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
-                    openCamera(Intskpenangakatan, "skterakhir");
+                    openCamera(Intskterakhir, "skterakhir");
                 }
                 // Asuransi Khusus
                 if (clicker.equalsIgnoreCase("covernoteasuransi")) {
@@ -1603,7 +1615,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 } else if (clicker.equalsIgnoreCase("skpenangakatan")) {
                     openGalery(Intskpenangakatan);
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
-                    openGalery(Intskpenangakatan);
+                    openGalery(Intskterakhir);
                 }
                 // Asuransi Khusus
                 if (clicker.equalsIgnoreCase("covernoteasuransi")) {
@@ -1696,7 +1708,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 } else if (clicker.equalsIgnoreCase("skpenangakatan")) {
                     openFile(Intskpenangakatan);
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
-                    openFile(Intskpenangakatan);
+                    openFile(Intskterakhir);
                 }
                 // Asuransi Khusus
                 if (clicker.equalsIgnoreCase("covernoteasuransi")) {
@@ -2629,10 +2641,10 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
 
     @Override
-    public void success(boolean val)  {
+    public void success(boolean val) {
         finish();
     }
-    
+
     @Override
     public void confirm(boolean val) {
 

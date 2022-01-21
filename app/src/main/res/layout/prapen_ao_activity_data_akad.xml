@@ -1,11 +1,16 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/toolbar_nosearch" layout="@layout/toolbar_nosearch"/>
-    <include android:id="@+id/loading" layout="@layout/loading" />
+    <include
+        android:id="@+id/toolbar_nosearch"
+        layout="@layout/toolbar_nosearch" />
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,8 +18,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
             android:layout_marginTop="@dimen/toolbar_height_default"
+            android:background="@color/colorWhite"
             android:orientation="vertical"
             android:paddingTop="20dp">
 
@@ -29,12 +34,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/muli_b"
-                    android:textStyle="bold"
                     android:paddingLeft="10dp"
                     android:paddingBottom="10dp"
                     android:text="Pilihan Akad "
-                    android:textSize="16sp" />
-
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -45,11 +49,11 @@
                     android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_postcode"
                     app:isResponsiveIconColor="true"
                     app:labelText="Akad Pembiayaan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -64,12 +68,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_b"
-                    android:textStyle="bold"
                     android:layout_marginTop="15dp"
+                    android:fontFamily="@font/muli_b"
                     android:paddingLeft="10dp"
                     android:text="Tanggal Penandatanganan Akad "
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_rencana_penandatanganan_akad"
@@ -78,12 +82,12 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    app:alwaysShowHint="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
                     app:labelText="Rencana Penandatanganan Akad"
-                    app:alwaysShowHint="true"
                     app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -103,12 +107,12 @@
                     android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
+                    app:alwaysShowHint="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:iconSignifier="@drawable/ic_address"
                     app:isResponsiveIconColor="true"
                     app:labelText="Bulan Angsuran Pertama"
-                    app:alwaysShowHint="true"
                     app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -121,79 +125,85 @@
                         android:inputType="text" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/ll_akad_nikah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_b"
-                    android:textStyle="bold"
-                    android:layout_marginTop="15dp"
-                    android:paddingLeft="10dp"
-                    android:text="Akta Pernikahan"
-                    android:textSize="16sp" />
+                    android:orientation="vertical">
 
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_nomor_akta_nikah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_address"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Nomor Akta Nikah"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_nomor_akta_nikah"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:text="Akta Pernikahan"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
-                    android:id="@+id/tf_tanggal_akta_nikah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    app:iconSignifier="@drawable/ic_address"
-                    app:isResponsiveIconColor="true"
-                    app:labelText="Tanggal Akta Nikah"
-                    app:alwaysShowHint="true"
-                    app:panelBackgroundColor="@color/colorBgEdittext"
-                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
-                    app:primaryColor="@color/colorPrimary"
-                    app:secondaryColor="@color/colorPrimary"
-                    app:useDenseSpacing="true">
-
-                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
-                        android:id="@+id/et_tanggal_akta_nikah"
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nomor_akta_nikah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Pilih Tanggal"
-                        android:inputType="text" />
-                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_address"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Nomor Akta Nikah"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nomor_akta_nikah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_tanggal_akta_nikah"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:alwaysShowHint="true"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        app:iconSignifier="@drawable/ic_address"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Tanggal Akta Nikah"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_tanggal_akta_nikah"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Pilih Tanggal"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_akad_wakalah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_b"
-                        android:textStyle="bold"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/muli_b"
                         android:paddingLeft="10dp"
                         android:text="Akad Wakalah"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                         android:id="@+id/tf_nama_dan_jenis_barang_akad"
@@ -302,29 +312,28 @@
                             android:id="@+id/et_harga_perolehan_barang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:prefix="Rp."
-                            android:inputType="text" />
+                            android:inputType="text"
+                            app:prefix="Rp." />
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-            </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_akad_mmq"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_b"
-                        android:textStyle="bold"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/muli_b"
                         android:paddingLeft="10dp"
                         android:text="Laporan Penilaian Aset MMQ"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                         android:id="@+id/tf_tanggal_penilaian"
@@ -333,12 +342,12 @@
                         android:layout_marginTop="10dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        app:alwaysShowHint="true"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                         app:iconSignifier="@drawable/ic_address"
                         app:isResponsiveIconColor="true"
                         app:labelText="Tanggal Penilaian"
-                        app:alwaysShowHint="true"
                         app:panelBackgroundColor="@color/colorBgEdittext"
-                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
                         app:useDenseSpacing="true">
@@ -402,12 +411,12 @@
                         android:layout_marginTop="10dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        app:alwaysShowHint="true"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                         app:iconSignifier="@drawable/ic_address"
                         app:isResponsiveIconColor="true"
                         app:labelText="Kepemilikan Aset"
-                        app:alwaysShowHint="true"
                         app:panelBackgroundColor="@color/colorBgEdittext"
-                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
                         app:useDenseSpacing="true">
@@ -425,18 +434,17 @@
                         android:id="@+id/ll_aset_tanah"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_b"
-                            android:textStyle="bold"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/muli_b"
                             android:paddingLeft="10dp"
                             android:text="Aset Tanah"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                             android:id="@+id/tf_jenis_dokumen_tanah"
@@ -445,12 +453,12 @@
                             android:layout_marginTop="10dp"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
+                            app:alwaysShowHint="true"
+                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
                             app:labelText="Jenis Dokumen"
-                            app:alwaysShowHint="true"
                             app:panelBackgroundColor="@color/colorBgEdittext"
-                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
                             app:useDenseSpacing="true">
@@ -526,8 +534,8 @@
                                 android:id="@+id/et_luas_tanah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="m2"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                app:suffix="m2" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -549,8 +557,8 @@
                                 android:id="@+id/et_harga_tanah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:prefix="Rp."
-                                android:inputType="numberDecimal" />
+                                android:inputType="numberDecimal"
+                                app:prefix="Rp." />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -642,7 +650,6 @@
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-
                     </LinearLayout>
 
                     <!--                DATA TEMPAT TINGGAL -->
@@ -650,18 +657,17 @@
                         android:id="@+id/ll_aset_tempat_tinggal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_b"
-                            android:textStyle="bold"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/muli_b"
                             android:paddingLeft="10dp"
                             android:text="Aset Tempat Tinggal"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                             android:id="@+id/tf_jenis_dokumen_tempat_tinggal"
@@ -670,12 +676,12 @@
                             android:layout_marginTop="10dp"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
+                            app:alwaysShowHint="true"
+                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
                             app:labelText="Jenis Dokumen Tempat Tinggal"
-                            app:alwaysShowHint="true"
                             app:panelBackgroundColor="@color/colorBgEdittext"
-                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
                             app:useDenseSpacing="true">
@@ -773,8 +779,8 @@
                                 android:id="@+id/et_luas_tanah_tempat_tinggal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="m2"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                app:suffix="m2" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -796,8 +802,8 @@
                                 android:id="@+id/et_harga_tanah_tempat_tinggal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:prefix="Rp."
-                                android:inputType="numberDecimal" />
+                                android:inputType="numberDecimal"
+                                app:prefix="Rp." />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -841,8 +847,8 @@
                                 android:id="@+id/et_luas_bangunan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:suffix="m2"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                app:suffix="m2" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -864,8 +870,8 @@
                                 android:id="@+id/et_harga_bangunan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:prefix="Rp."
-                                android:inputType="numberDecimal" />
+                                android:inputType="numberDecimal"
+                                app:prefix="Rp." />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -889,7 +895,6 @@
                                 android:layout_height="wrap_content"
                                 android:inputType="number" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
 
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -959,7 +964,6 @@
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-
                     </LinearLayout>
 
                     <!--                DATA KENDARAAN -->
@@ -967,18 +971,17 @@
                         android:id="@+id/ll_aset_kendaraan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_b"
-                            android:textStyle="bold"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/muli_b"
                             android:paddingLeft="10dp"
                             android:text="Aset Kendaraan"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                             android:id="@+id/tf_jenis_kendaraan"
@@ -987,12 +990,12 @@
                             android:layout_marginTop="10dp"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
+                            app:alwaysShowHint="true"
+                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
                             app:labelText="Jenis Kendaraan"
-                            app:alwaysShowHint="true"
                             app:panelBackgroundColor="@color/colorBgEdittext"
-                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
                             app:useDenseSpacing="true">
@@ -1012,12 +1015,12 @@
                             android:layout_marginTop="10dp"
                             android:paddingLeft="20dp"
                             android:paddingRight="20dp"
+                            app:alwaysShowHint="true"
+                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:iconSignifier="@drawable/ic_address"
                             app:isResponsiveIconColor="true"
                             app:labelText="Dokumen Kepemilikan"
-                            app:alwaysShowHint="true"
                             app:panelBackgroundColor="@color/colorBgEdittext"
-                            app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                             app:primaryColor="@color/colorPrimary"
                             app:secondaryColor="@color/colorPrimary"
                             app:useDenseSpacing="true">
@@ -1159,8 +1162,8 @@
                                 android:id="@+id/et_tahun_pembuatan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:maxLength="4"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                android:maxLength="4" />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -1226,10 +1229,9 @@
                                 android:id="@+id/et_harga_kendaraan"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:prefix="Rp."
-                                android:inputType="numberDecimal" />
+                                android:inputType="numberDecimal"
+                                app:prefix="Rp." />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
-
 
 
                     </LinearLayout>
@@ -1239,18 +1241,17 @@
                         android:id="@+id/ll_aset_lainnya"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_b"
-                            android:textStyle="bold"
                             android:layout_marginTop="15dp"
+                            android:fontFamily="@font/muli_b"
                             android:paddingLeft="10dp"
                             android:text="Aset Lainnya"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                             android:id="@+id/tf_jenis_aset"
@@ -1382,14 +1383,12 @@
                                 android:id="@+id/et_nilai_aset_lainnya"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:prefix="Rp."
-                                android:inputType="numberDecimal" />
+                                android:inputType="numberDecimal"
+                                app:prefix="Rp." />
                         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
 
-
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -1428,13 +1427,13 @@
                                 android:layout_height="0dp"
                                 android:scaleType="center"
                                 android:src="@mipmap/ico_img_for_upload"
-                                app:riv_border_width="1dip"
-                                app:riv_border_color="#f1efef"
-                                app:riv_corner_radius="8dip"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
 
                             <ImageView
                                 android:id="@+id/btn_foto_aset"
@@ -1454,24 +1453,22 @@
                 </LinearLayout>
 
 
-
                 <!--                CATATAN PEMUTUS -->
                 <LinearLayout
                     android:id="@+id/ll_catatan_pemutus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_b"
-                        android:textStyle="bold"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/muli_b"
                         android:paddingLeft="10dp"
                         android:text="Catatan Pemutus"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                         android:id="@+id/tf_catatan_pemutus_1"
@@ -1502,13 +1499,13 @@
                         android:layout_marginTop="10dp"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
+                        android:visibility="gone"
                         app:iconSignifier="@drawable/ic_address"
                         app:isResponsiveIconColor="true"
                         app:labelText="Catatan Pemutus 2"
                         app:panelBackgroundColor="@color/colorDisableEdit"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
-                        android:visibility="gone"
                         app:useDenseSpacing="true">
 
                         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
@@ -1524,36 +1521,33 @@
 
                 <Button
                     android:id="@+id/btn_simpan_data_akad"
+                    style="@style/Bordered.Button.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:text="Simpan"
+                    android:layout_marginRight="20dp"
                     android:padding="8dp"
-                    style="@style/Bordered.Button.Custom"
-                    />
+                    android:text="Simpan" />
 
 
                 <Button
                     android:id="@+id/btn_useless"
+                    style="@style/Bordered.Button.Custom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:visibility="invisible"
-                    android:text="not used"
+                    android:layout_marginRight="20dp"
                     android:padding="8dp"
-                    style="@style/Bordered.Button.Custom"
-                    />
+                    android:text="not used"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>

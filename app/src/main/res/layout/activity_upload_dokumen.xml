@@ -195,73 +195,84 @@
                             android:src="@drawable/ic_search_white_24dp" />
                     </LinearLayout>
                 </LinearLayout>
-                <!--Upload Dokumen Asuransi Khusus-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorBackgroundCore"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Upload Dokumen Asuransi Khusus"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
 
                 <!--Foto Covernote Asuransi-->
                 <LinearLayout
+                    android:id="@+id/llcovernote"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:paddingHorizontal="10dp">
+                    <!--Upload Dokumen Asuransi Khusus-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorBackgroundCore"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Upload Dokumen Asuransi Khusus"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
+                    <!--Foto Covernote Asuransi-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Foto CoverNote Asuransi -->
-                        <RelativeLayout
-                            android:id="@+id/d_foto_covernote_asuransi"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
 
-                            <TextView
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Foto CoverNote Asuransi -->
+                            <RelativeLayout
+                                android:id="@+id/d_foto_covernote_asuransi"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Foto Covernote Asuransi"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Foto CoverNote Asuransi-->
-                        <ImageView
-                            android:id="@+id/btn_foto_covernote_asuransi"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Foto CoverNote Asuransi-->
-                        <ImageView
-                            android:id="@+id/pv_foto_covernote_asuransi"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
+                                android:layout_height="60dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Foto Covernote Asuransi"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Foto CoverNote Asuransi-->
+                            <ImageView
+                                android:id="@+id/btn_foto_covernote_asuransi"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Foto CoverNote Asuransi-->
+                            <ImageView
+                                android:id="@+id/pv_foto_covernote_asuransi"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
                     </LinearLayout>
+
                 </LinearLayout>
+
                 <!--Title Dokumen Produk-->
                 <TextView
                     android:layout_width="match_parent"
@@ -849,604 +860,607 @@
 
                     </LinearLayout>
                 </LinearLayout>
-            <LinearLayout
-                android:id="@+id/akadijarah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <!--Title Dokumen Ijarah-->
-                <TextView
+
+                <LinearLayout
+                    android:id="@+id/akadijarah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorBackgroundCore"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Dokumen Ijarah"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:orientation="vertical">
+                    <!--Title Dokumen Ijarah-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorBackgroundCore"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Dokumen Ijarah"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
-                <!--Dokumen Ijarah-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp">
-
-                    <!--Purchase Order Ijarah-->
+                    <!--Dokumen Ijarah-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Purchase Order Ijarah-->
-                        <RelativeLayout
-                            android:id="@+id/d_po_Ijarah"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
+
+                        <!--Purchase Order Ijarah-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Purchase Order"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Surat Tanda Terima Barang-->
-                        <ImageView
-                            android:id="@+id/btn_po_Ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Surat Tanda Terima Barang-->
-                        <ImageView
-                            android:id="@+id/pv_po_Ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--Akad Wakalah-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Akad Wakalah-->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_wakalah_Ijarah"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad Wakalah"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad Wakalah-->
-                        <ImageView
-                            android:id="@+id/btn_akad_wakalah_Ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Akad Wakalah-->
-                        <ImageView
-                            android:id="@+id/pv_akad_wakalah_Ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--Akad Ijarah-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Akad Ijarah-->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_ijarah"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad Ijarah"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad Ijarah-->
-                        <ImageView
-                            android:id="@+id/btn_akad_ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Akad Ijarah-->
-                        <ImageView
-                            android:id="@+id/pv_akad_ijarah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--Jadwal Angsuran Ujrah (Lampiran)-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Jadwal Angsuran Ujrah (Lampiran)-->
-                        <RelativeLayout
-                            android:id="@+id/d_angsuran_ujrah"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Jadwal Angsuran Ujrah (Lampiran)"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Jadwal Angsuran Ujrah (Lampiran)-->
-                        <ImageView
-                            android:id="@+id/btn_angsuran_ujrah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Jadwal Angsuran Ujrah (Lampiran)-->
-                        <ImageView
-                            android:id="@+id/pv_angsuran_ujrah"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/akadmmq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <!--Title Dokumen MMQ-->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorBackgroundCore"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Dokumen MMQ"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
-
-                <!--Dokumen MMQ-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp">
-
-                    <!--Laporan Penilaian Aset MMQ -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Laporan Penilaian Aset MMQ -->
-                        <RelativeLayout
-                            android:id="@+id/d_asset_mmq"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Laporan Penilaian Aset MMQ "
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Laporan Penilaian Aset MMQ -->
-                        <ImageView
-                            android:id="@+id/btn_asset_mmq"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Laporan Penilaian Aset MMQ -->
-                        <ImageView
-                            android:id="@+id/pv_asset_mmq"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--Akad MMQ -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Akad MMQ -->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_mmq"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad MMQ"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad MMQ -->
-                        <ImageView
-                            android:id="@+id/btn_akad_mmq"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Download Akad MMQ -->
-                        <ImageView
-                            android:id="@+id/pv_akad_mmq"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--LAMPIRAN JADWAL PENGAMBILALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
-                        <RelativeLayout
-                            android:id="@+id/d_jadwal_pengambilalihan"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Lampiran jadwal pengambil alihan hishah BANK atas obyek akad oleh nasabah serta biaya sewa/ujrah atas obyek akad"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
-                        <ImageView
-                            android:id="@+id/btn_jadwal_pengambilalihan"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
-                        <ImageView
-                            android:id="@+id/pv_jadwal_pengambilalihan"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
+                            android:orientation="horizontal">
+                            <!--Title Purchase Order Ijarah-->
+                            <RelativeLayout
+                                android:id="@+id/d_po_Ijarah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Purchase Order"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Surat Tanda Terima Barang-->
+                            <ImageView
+                                android:id="@+id/btn_po_Ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Surat Tanda Terima Barang-->
+                            <ImageView
+                                android:id="@+id/pv_po_Ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Akad Wakalah-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
-
-                    <!--Surat Pernyataan & Kuasa Aset MMQ Sendiri-->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
-                        <RelativeLayout
-                            android:id="@+id/d_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:orientation="horizontal">
+                            <!--Title Akad Wakalah-->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_wakalah_Ijarah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Surat Pernyataan dan Kuasa Aset MMQ Sendiri"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
-                        <ImageView
-                            android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
-                        <ImageView
-                            android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
-                        <RelativeLayout
-                            android:id="@+id/d_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad Wakalah"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad Wakalah-->
+                            <ImageView
+                                android:id="@+id/btn_akad_wakalah_Ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Akad Wakalah-->
+                            <ImageView
+                                android:id="@+id/pv_akad_wakalah_Ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Akad Ijarah-->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Akad Ijarah-->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_ijarah"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
-                        <ImageView
-                            android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
-                        <ImageView
-                            android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad Ijarah"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad Ijarah-->
+                            <ImageView
+                                android:id="@+id/btn_akad_ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Akad Ijarah-->
+                            <ImageView
+                                android:id="@+id/pv_akad_ijarah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Jadwal Angsuran Ujrah (Lampiran)-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Jadwal Angsuran Ujrah (Lampiran)-->
+                            <RelativeLayout
+                                android:id="@+id/d_angsuran_ujrah"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Jadwal Angsuran Ujrah (Lampiran)"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Jadwal Angsuran Ujrah (Lampiran)-->
+                            <ImageView
+                                android:id="@+id/btn_angsuran_ujrah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Jadwal Angsuran Ujrah (Lampiran)-->
+                            <ImageView
+                                android:id="@+id/pv_angsuran_ujrah"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/akadrahn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <!--Title Dokumen Rahn-->
-                <TextView
+
+                <LinearLayout
+                    android:id="@+id/akadmmq"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorBackgroundCore"
-                    android:fontFamily="@font/muli_b"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Dokumen Rahn"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:orientation="vertical">
+                    <!--Title Dokumen MMQ-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorBackgroundCore"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Dokumen MMQ"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
 
-                <!--Dokumen Rahn-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="10dp">
-
-                    <!--Akad Rahn -->
+                    <!--Dokumen MMQ-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Akad Rahn -->
-                        <RelativeLayout
-                            android:id="@+id/d_akad_rahn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
 
-                            <TextView
+                        <!--Laporan Penilaian Aset MMQ -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Laporan Penilaian Aset MMQ -->
+                            <RelativeLayout
+                                android:id="@+id/d_asset_mmq"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Akad Rahn"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Akad Rahn -->
-                        <ImageView
-                            android:id="@+id/btn_akad_rahn"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--preview Akad Rahn -->
-                        <ImageView
-                            android:id="@+id/pv_akad_rahn"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
-                    <!--Jadwal Angsuran Rahn -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal">
-                        <!--Title Jadwal Angsuran Rahn -->
-                        <RelativeLayout
-                            android:id="@+id/d_jadwal_angsuran_rahn"
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Laporan Penilaian Aset MMQ "
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Laporan Penilaian Aset MMQ -->
+                            <ImageView
+                                android:id="@+id/btn_asset_mmq"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Laporan Penilaian Aset MMQ -->
+                            <ImageView
+                                android:id="@+id/pv_asset_mmq"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Akad MMQ -->
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:padding="0dp">
-
-                            <TextView
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Akad MMQ -->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_mmq"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_b"
-                                android:paddingLeft="10dp"
-                                android:paddingBottom="10dp"
-                                android:text="Jadwal Angsuran Rahn"
-                                android:textAlignment="textStart"
-                                android:textSize="16sp" />
-                        </RelativeLayout>
-                        <!--Download Jadwal Angsuran Rahn -->
-                        <ImageView
-                            android:id="@+id/btn_jadwal_angsuran_rahn"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginRight="0dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/photo_rounded_blue"
-                            android:padding="8dp"
-                            android:src="@mipmap/ico_upload" />
-                        <!--Preview Jadwal Angsuran Rahn -->
-                        <ImageView
-                            android:id="@+id/pv_jadwal_angsuran_rahn"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginBottom="0dp"
-                            android:background="@drawable/blue_button_background"
-                            android:padding="8dp"
-                            android:src="@drawable/ic_search_white_24dp" />
-                    </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
 
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad MMQ"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad MMQ -->
+                            <ImageView
+                                android:id="@+id/btn_akad_mmq"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Download Akad MMQ -->
+                            <ImageView
+                                android:id="@+id/pv_akad_mmq"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--LAMPIRAN JADWAL PENGAMBILALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
+                            <RelativeLayout
+                                android:id="@+id/d_jadwal_pengambilalihan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Lampiran jadwal pengambil alihan hishah BANK atas obyek akad oleh nasabah serta biaya sewa/ujrah atas obyek akad"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
+                            <ImageView
+                                android:id="@+id/btn_jadwal_pengambilalihan"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview LAMPIRAN JADWAL PENGAMBIL ALIHAN HISHSHAH BANK ATAS OBYEK AKAD OLEH NASABAH SERTA BIAYA SEWA/UJRAH ATAS OBYEK AKAD -->
+                            <ImageView
+                                android:id="@+id/pv_jadwal_pengambilalihan"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Surat Pernyataan & Kuasa Aset MMQ Sendiri-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
+                            <RelativeLayout
+                                android:id="@+id/d_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Surat Pernyataan dan Kuasa Aset MMQ Sendiri"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
+                            <ImageView
+                                android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Surat Pernyataan dan Kuasa Aset MMQ Sendiri-->
+                            <ImageView
+                                android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
+                            <RelativeLayout
+                                android:id="@+id/d_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
+                            <ImageView
+                                android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Surat Pernyataan dan Kuasa Aset MMQ atau Pihak Ketiga-->
+                            <ImageView
+                                android:id="@+id/pv_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/akadrahn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!--Title Dokumen Rahn-->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorBackgroundCore"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Dokumen Rahn"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+
+                    <!--Dokumen Rahn-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp">
+
+                        <!--Akad Rahn -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Akad Rahn -->
+                            <RelativeLayout
+                                android:id="@+id/d_akad_rahn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Akad Rahn"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Akad Rahn -->
+                            <ImageView
+                                android:id="@+id/btn_akad_rahn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--preview Akad Rahn -->
+                            <ImageView
+                                android:id="@+id/pv_akad_rahn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                        <!--Jadwal Angsuran Rahn -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal">
+                            <!--Title Jadwal Angsuran Rahn -->
+                            <RelativeLayout
+                                android:id="@+id/d_jadwal_angsuran_rahn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="0dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/muli_b"
+                                    android:paddingLeft="10dp"
+                                    android:paddingBottom="10dp"
+                                    android:text="Jadwal Angsuran Rahn"
+                                    android:textAlignment="textStart"
+                                    android:textSize="16sp" />
+                            </RelativeLayout>
+                            <!--Download Jadwal Angsuran Rahn -->
+                            <ImageView
+                                android:id="@+id/btn_jadwal_angsuran_rahn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/photo_rounded_blue"
+                                android:padding="8dp"
+                                android:src="@mipmap/ico_upload" />
+                            <!--Preview Jadwal Angsuran Rahn -->
+                            <ImageView
+                                android:id="@+id/pv_jadwal_angsuran_rahn"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@drawable/blue_button_background"
+                                android:padding="8dp"
+                                android:src="@drawable/ic_search_white_24dp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
                 <!--Title Formulir Permintaan Pembiayaan-->
                 <TextView
                     android:layout_width="match_parent"

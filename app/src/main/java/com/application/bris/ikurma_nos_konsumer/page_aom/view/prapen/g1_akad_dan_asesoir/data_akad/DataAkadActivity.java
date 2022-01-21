@@ -232,6 +232,17 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                         Type typeAset = new TypeToken<UploadImage>() {}.getType();
 
                         try{
+                           if(response.body().getData().get("StatusPernikahan").getAsBoolean()){
+                               binding.llAkadNikah.setVisibility(View.VISIBLE);
+                           }else{
+                               binding.llAkadNikah.setVisibility(View.GONE);
+                           }
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        try{
                             String listDataStringKendaraan = response.body().getData().get("MMQAsetKendaraan").toString();
                             dataMmqKendaraan =  gson.fromJson(listDataStringKendaraan, typeKendaraan);
                         }
@@ -332,6 +343,18 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
                         Gson gson = new Gson();
                         Type type = new TypeToken<DataMurabahah>() {}.getType();
+
+                        try{
+                            if(response.body().getData().get("StatusPernikahan").getAsBoolean()){
+                                binding.llAkadNikah.setVisibility(View.VISIBLE);
+                            }else{
+                                binding.llAkadNikah.setVisibility(View.GONE);
+                            }
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
                         try{
                             String listDataString = response.body().getData().get("MRBHIJRHAset").toString();
                             dataMurabahah =  gson.fromJson(listDataString, type);
@@ -766,9 +789,10 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                 adaFieldBelumDiisi=false;
                 validateField(binding.etRencanaPenandatangananAkad,binding.tfRencanaPenandatangananAkad);
                 validateField(binding.etBulanAngsuranPertama,binding.tfBulanAngsuranPertama);
-                validateField(binding.etNomorAktaNikah,binding.tfNomorAktaNikah);
-                validateField(binding.etTanggalAktaNikah,binding.tfTanggalAktaNikah);
-
+                if (binding.llAkadNikah.getVisibility() == View.VISIBLE) {
+                    validateField(binding.etNomorAktaNikah, binding.tfNomorAktaNikah);
+                    validateField(binding.etTanggalAktaNikah, binding.tfTanggalAktaNikah);
+                }
                 //validasi murabahah
                 if(akad.equalsIgnoreCase("murabahah")){
                     validateField(binding.etNamaDanJenisBarangAkad,binding.tfNamaDanJenisBarangAkad);
@@ -842,6 +866,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             default:break;
         }
     }
+
     private void endIconOnClick(){
         binding.tfRencanaPenandatangananAkad.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
