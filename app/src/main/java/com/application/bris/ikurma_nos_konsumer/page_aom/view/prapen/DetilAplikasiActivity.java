@@ -457,6 +457,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Intent it = new Intent(this, PersiapanAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("akad",dataDetailAplikasi.getAkad());
+            it.putExtra("namaNasabah",dataDetailAplikasi.getNama());
             startActivity(it);
         }
 

@@ -37,6 +37,7 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
         onclickSelectDialog();
         setContentView(view);
         AppUtil.toolbarRegular(this, "Dokumen Persiapan Akad");
+       ;
     }
 
     private void showDownloaded() {
@@ -102,93 +103,93 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
             case R.id.btn_sk:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenSK_" + appPreferences.getNama() + ".docx", apiClientAdapter.getApiInterface().DownloadTandaTerimaSK(req));
+                downloadFile("dokumenSK_" +  getIntent().getStringExtra("namaNasabah") + ".docx", apiClientAdapter.getApiInterface().DownloadTandaTerimaSK(req));
                 break;
             case R.id.btn_akad_ijarah:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenAkadIjarah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadAkadIjarah(req));
+                downloadFile("dokumenAkadIjarah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadAkadIjarah(req));
                 break;
             case R.id.btn_sup:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenSUP_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadSUP(req));
+                downloadFile("dokumenSUP_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadSUP(req));
                 break;
             case R.id.btn_akad_mmq:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenAkadMMQ_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadAkadMMQ(req));
+                downloadFile("dokumenAkadMMQ_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadAkadMMQ(req));
                 break;
             case R.id.btn_akad_murabahah:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenAkadMurabahah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadAkadMurabahah(req));
+                downloadFile("dokumenAkadMurabahah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadAkadMurabahah(req));
                 break;
             case R.id.btn_akad_rahn:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenAkadRahn_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadAkadRahn(req));
+                downloadFile("dokumenAkadRahn_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadAkadRahn(req));
                 break;
             case R.id.btn_mutasi:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenFormMutasi_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadFormMutasi(req));
+                downloadFile("dokumenFormMutasi_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadFormMutasi(req));
                 break;
             case R.id.btn_kuasa:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenLampiranSuratKuasa_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadLampiranSuratKuasa(req));
+                downloadFile("dokumenLampiranSuratKuasa_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadLampiranSuratKuasa(req));
                 break;
             case R.id.btn_pernyataan:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenLampiranSuratPernyataan_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadLampiranSuratPernyataan(req));
+                downloadFile("dokumenLampiranSuratPernyataan_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadLampiranSuratPernyataan(req));
                 break;
             case R.id.btn_akad_wakalah:
             case R.id.btn_akad_wakalah_Ijarah:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenakadwakalah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadWakalah(req));
+                downloadFile("dokumenakadwakalah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadWakalah(req));
                 break;
             case R.id.btn_po:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenPurchaseMurabahah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadPurchaseMurabahah(req));
+                downloadFile("dokumenPurchaseMurabahah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadPurchaseMurabahah(req));
                 break;
             case R.id.btn_po_Ijarah:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenPurchaseIjarah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadPurchaseIjarah(req));
+                downloadFile("dokumenPurchaseIjarah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadPurchaseIjarah(req));
                 break;
             case R.id.btn_jadwal_angsuran:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenLampiranAngsMur_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadLampiranAngsMur(req));
+                downloadFile("dokumenLampiranAngsMur_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadLampiranAngsMur(req));
                 break;
             case R.id.btn_angsuran_ujrah:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenJadwalAngsuranUjrah_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadJadwalAngsuranUjrah(req));
+                downloadFile("dokumenJadwalAngsuranUjrah_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadJadwalAngsuranUjrah(req));
                 break;
             case R.id.btn_jadwal_angsuran_rahn:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenJadwalAngsuranRahn_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadJdwlAngsRahn(req));
+                downloadFile("dokumenJadwalAngsuranRahn_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadJdwlAngsRahn(req));
                 break;
             case R.id.btn_jadwal_pengambilalihan:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenJadwalPengambilAlihan_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadJadwalPengambilAlihan(req));
+                downloadFile("dokumenJadwalPengambilAlihan_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadJadwalPengambilAlihan(req));
                 break;
             case R.id.btn_asset_mmq:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenLaporanPenilaianAset_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadLaporanPenilaianAset(req));
+                downloadFile("dokumenLaporanPenilaianAset_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadLaporanPenilaianAset(req));
                 break;
             case R.id.btn_terima_barang:
                 req.setUid(String.valueOf(appPreferences.getUid()));
                 req.setApplicationId(Long.parseLong(getIntent().getStringExtra("idAplikasi")));
-                downloadFile("dokumenSuratTandaTerima_"+appPreferences.getNama()+".docx", apiClientAdapter.getApiInterface().DownloadSuratTandaTerima(req));
+                downloadFile("dokumenSuratTandaTerima_"+ getIntent().getStringExtra("namaNasabah")+".docx", apiClientAdapter.getApiInterface().DownloadSuratTandaTerima(req));
                 break;
         }
     }
