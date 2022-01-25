@@ -272,8 +272,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:orientation="horizontal">
                             <!--Title Purchase Order-->
                             <RelativeLayout
                                 android:id="@+id/d_po"
@@ -310,8 +309,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:orientation="horizontal">
                             <!--Title Akad Wakalah-->
                             <RelativeLayout
                                 android:id="@+id/d_akad_wakalah"
@@ -423,8 +421,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:orientation="horizontal">
                             <!--Title Surat Tanda Terima Barang-->
                             <RelativeLayout
                                 android:id="@+id/d_terima_barang"
@@ -490,8 +487,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:orientation="horizontal">
                             <!--Title Purchase Order Ijarah-->
                             <RelativeLayout
                                 android:id="@+id/d_po_Ijarah"
@@ -511,7 +507,7 @@
                                     android:textAlignment="textStart"
                                     android:textSize="16sp" />
                             </RelativeLayout>
-                            <!--Download Surat Tanda Terima Barang-->
+                            <!--Download Purchase Order Ijarah-->
                             <ImageView
                                 android:id="@+id/btn_po_Ijarah"
                                 android:layout_width="45dp"
@@ -528,8 +524,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:orientation="horizontal">
                             <!--Title Akad Wakalah-->
                             <RelativeLayout
                                 android:id="@+id/d_akad_wakalah_Ijarah"
@@ -604,7 +599,8 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            >
                             <!--Title Jadwal Angsuran Ujrah (Lampiran)-->
                             <RelativeLayout
                                 android:id="@+id/d_angsuran_ujrah"

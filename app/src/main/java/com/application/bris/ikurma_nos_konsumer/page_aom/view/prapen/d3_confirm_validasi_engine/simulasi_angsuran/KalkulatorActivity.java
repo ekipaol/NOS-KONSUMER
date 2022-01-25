@@ -305,6 +305,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
 
     @SuppressLint("NonConstantResourceId")
     @Override
+
     public void onClick(View view) {
         switch (view.getId()) {
 
@@ -434,22 +435,22 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         MparseResponseSimulasiInqCal scal = new MparseResponseSimulasiInqCal();
         scal.setTerm(Integer.parseInt(binding.etJangkaWaktu.getText().toString()));
-        scal.setPv(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString()))));
+        scal.setPv(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPlafondYangDibutuhkan.getText().toString())));
         scal.setPricingPrapen(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPraPensiun.getText().toString())));
         scal.setPricingPensiun(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPricingPensiun.getText().toString())));
-        scal.setBatasAtasAngsuranPrapen(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etMaxAngsuran.getText().toString()))));
+        scal.setBatasAtasAngsuranPrapen(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etMaxAngsuran.getText().toString())));
         MparseResponseSimulasiBiayaBiaya sbiaya = new MparseResponseSimulasiBiayaBiaya();
         sbiaya.setAsuransiPenjaminId(id);
         sbiaya.setNamaAsuransi(binding.etPilihanAsuransiPenjaminan.getText().toString());
-        sbiaya.setBiayaAsuransiPenjamin(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString()))));
+        sbiaya.setBiayaAsuransiPenjamin(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransi.getText().toString())));
         sbiaya.setTreatementBiayaAsuransiPenjamin(binding.etTreatmentBiayaAsuransi.getText().toString());
-        sbiaya.setBiayaAsuransiKhusus(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransiKhusus.getText().toString()))));
+        sbiaya.setBiayaAsuransiKhusus(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAsuransiKhusus.getText().toString())));
         sbiaya.setTreatmentBiayaAsuransiKhusus(binding.etTreatmentBiayaAsuransiKhusus.getText().toString());
-        sbiaya.setBiayaAdministrasi(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAdministrasi.getText().toString()))));
+        sbiaya.setBiayaAdministrasi(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayaAdministrasi.getText().toString())));
         sbiaya.setTreatementBiayaAdministrasi(binding.etTreatmentBiayaAdministrasi.getText().toString());
-        sbiaya.setBiayaPenalti(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayapenaltiKhususTakeover.getText().toString()))));
+        sbiaya.setBiayaPenalti(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayapenaltiKhususTakeover.getText().toString())));
         sbiaya.setTreatmentBiayaPenalti(binding.etTreatmentBiayaPenalti.getText().toString());
-        sbiaya.setBiayaMaterai(BigDecimal.valueOf(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayamaterai.getText().toString()))));
+        sbiaya.setBiayaMaterai(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayamaterai.getText().toString())));
         sbiaya.setTreatmentBiayaMaterai(binding.etTreatmentBiayaMaterai.getText().toString());
         ReqHitungKalkulator req = new ReqHitungKalkulator();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
