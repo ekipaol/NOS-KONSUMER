@@ -230,4 +230,10 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
 }

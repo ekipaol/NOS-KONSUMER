@@ -214,12 +214,16 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
         binding.etPerkiraanAngsuranBulanan.setText(dataIdeb.getPerkiraanAngsuranBulanan());
         binding.etTreatmentPembiayaan.setText(dataIdeb.getTreatmentPembiayaan());
 
+        if(!namaFileIntent.isEmpty()){
             if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("pdf")){
                 AppUtil.setLoadPdf(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
             }
-        else if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("png")){
+            else if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("png")){
                 AppUtil.setImageGlide(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+            }
         }
+
+
 
     }
 
@@ -279,6 +283,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
             case "Take Photo":
                 tipeFile="png";
                 openCamera(1,namaDokumen);
+                break;
             case "Pick Photo":
                 tipeFile="png";
                 openGalery(1);

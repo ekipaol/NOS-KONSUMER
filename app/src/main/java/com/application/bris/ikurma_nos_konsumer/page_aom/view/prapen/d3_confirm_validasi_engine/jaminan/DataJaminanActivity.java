@@ -893,58 +893,65 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
             } catch (Exception e) {
                 e.printStackTrace();
-                iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
-                if (clicker.equalsIgnoreCase("fotoktp")) {
-                    Uri uriPdf = data.getData();
-                    val_ktp = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanKTP.setImg(val_ktp);
-                    DataJaminanKTP.setFileName("ktp.pdf");
-                } else if (clicker.equalsIgnoreCase("ktppasangan")) {
-                    Uri uriPdf = data.getData();
-                    val_ktppasangan = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanKTPPasangan.setImg(val_ktppasangan);
-                    DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
-                } else if (clicker.equalsIgnoreCase("npwp")) {
-                    Uri uriPdf = data.getData();
-                    val_npwp = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanNPWP.setImg(val_npwp);
-                    DataJaminanNPWP.setFileName("npwp.pdf");
-                } else if (clicker.equalsIgnoreCase("assetakad")) {
-                    Uri uriPdf = data.getData();
-                    val_assetakad = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanAsetAkad.setImg(val_assetakad);
-                    DataJaminanAsetAkad.setFileName("assetakad.pdf");
-                } else if (clicker.equalsIgnoreCase("formaplikasi")) {
-                    Uri uriPdf = data.getData();
-                    val_formaplikasi = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanFormAplikasi.setImg(val_formaplikasi);
-                    DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
-                } else if (clicker.equalsIgnoreCase("skpensiun")) {
-                    Uri uriPdf = data.getData();
-                    val_skpensiun = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanSKPensiun.setImg(val_skpensiun);
-                    DataJaminanSKPensiun.setFileName("skpensiun.pdf");
-                } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
-                    Uri uriPdf = data.getData();
-                    val_skpengangkatan = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanSKPengangkatan.setImg(val_skpengangkatan);
-                    DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
-                } else if (clicker.equalsIgnoreCase("skterakhir")) {
-                    Uri uriPdf = data.getData();
-                    val_skterakhir = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanSKTerakhir.setImg(val_skterakhir);
-                    DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
-                } else if (clicker.equalsIgnoreCase("datainstansi")) {
-                    Uri uriPdf = data.getData();
-                    val_datainstansi = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanSuratRekomendasiInstansi.setImg(val_datainstansi);
-                    DataJaminanSuratRekomendasiInstansi.setFileName("datainstansi.pdf");
-                } else if (clicker.equalsIgnoreCase("idcard")) {
-                    Uri uriPdf = data.getData();
-                    val_datainstansi = AppUtil.encodeFileToBase64(this, uriPdf);
-                    DataJaminanIDCard.setImg(val_datainstansi);
-                    DataJaminanIDCard.setFileName("idcard.pdf");
+                try{
+                    iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
+                    if (clicker.equalsIgnoreCase("fotoktp")) {
+                        Uri uriPdf = data.getData();
+                        val_ktp = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanKTP.setImg(val_ktp);
+                        DataJaminanKTP.setFileName("ktp.pdf");
+                    } else if (clicker.equalsIgnoreCase("ktppasangan")) {
+                        Uri uriPdf = data.getData();
+                        val_ktppasangan = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanKTPPasangan.setImg(val_ktppasangan);
+                        DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
+                    } else if (clicker.equalsIgnoreCase("npwp")) {
+                        Uri uriPdf = data.getData();
+                        val_npwp = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanNPWP.setImg(val_npwp);
+                        DataJaminanNPWP.setFileName("npwp.pdf");
+                    } else if (clicker.equalsIgnoreCase("assetakad")) {
+                        Uri uriPdf = data.getData();
+                        val_assetakad = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanAsetAkad.setImg(val_assetakad);
+                        DataJaminanAsetAkad.setFileName("assetakad.pdf");
+                    } else if (clicker.equalsIgnoreCase("formaplikasi")) {
+                        Uri uriPdf = data.getData();
+                        val_formaplikasi = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanFormAplikasi.setImg(val_formaplikasi);
+                        DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
+                    } else if (clicker.equalsIgnoreCase("skpensiun")) {
+                        Uri uriPdf = data.getData();
+                        val_skpensiun = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanSKPensiun.setImg(val_skpensiun);
+                        DataJaminanSKPensiun.setFileName("skpensiun.pdf");
+                    } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
+                        Uri uriPdf = data.getData();
+                        val_skpengangkatan = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanSKPengangkatan.setImg(val_skpengangkatan);
+                        DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
+                    } else if (clicker.equalsIgnoreCase("skterakhir")) {
+                        Uri uriPdf = data.getData();
+                        val_skterakhir = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanSKTerakhir.setImg(val_skterakhir);
+                        DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
+                    } else if (clicker.equalsIgnoreCase("datainstansi")) {
+                        Uri uriPdf = data.getData();
+                        val_datainstansi = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanSuratRekomendasiInstansi.setImg(val_datainstansi);
+                        DataJaminanSuratRekomendasiInstansi.setFileName("datainstansi.pdf");
+                    } else if (clicker.equalsIgnoreCase("idcard")) {
+                        Uri uriPdf = data.getData();
+                        val_datainstansi = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanIDCard.setImg(val_datainstansi);
+                        DataJaminanIDCard.setFileName("idcard.pdf");
+                    }
                 }
+                catch (NullPointerException e2){
+                    iv.setImageDrawable(getResources().getDrawable(R.drawable.banner_placeholder));
+                    e2.printStackTrace();
+                }
+
 
             }
         }

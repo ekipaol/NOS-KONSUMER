@@ -58,6 +58,17 @@ public class DataPejabat {
     @SerializedName("Kota_Penandatanganan_Laporan")
     @Expose
     private String kotaPenandatangananLaporan;
+    @SerializedName("Cabang")
+    @Expose
+    private String cabang;
+
+    public String getCabang() {
+        return cabang;
+    }
+
+    public void setCabang(String cabang) {
+        this.cabang = cabang;
+    }
 
     public String getNamaPejabatPenandatangan() {
         return namaPejabatPenandatangan;

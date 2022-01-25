@@ -161,193 +161,13 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                             DPSlipTunjanganP3 = gson.fromJson(SSlipTunjanganP3, ReqDocument.class);
                         }
 
-                        // Set Data
-                        try {
-                            binding.etAkseptasiPendaptan.setText(dp.getAkseptasiPendapatan());
+                        if(dp.getAkseptasiPendapatan()!=null){
+                            setData(response);
+                        }
+                        else{
                             binding.etPendapatanPensiun.setText(String.valueOf(dp.getSimulasiPendapatanSaatPen()));
-                            binding.etPeriodeGajiP1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP1(), "yyyy-MM-dd", "MM-yyyy"));
-                            binding.etTglTunjanganP1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP1(), "yyyy-MM-dd", "MM-yyyy"));
-                            pDatep1 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP1(), "yyyy-MM-dd", "dd-MM-yyyy");
-                            binding.etGajiBersihP1.setText(String.valueOf(dp.getTotalGajiBersihP1()));
-                            binding.etTunjanganP1.setText(String.valueOf(dp.getTotalTunjanganBersihP1()));
-
-                            if (response.body().getData().get("DokumenPendapatanSlipGajiP2") != null) {
-                                binding.etPeriodeGajiP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP2(), "yyyy-MM-dd", "MM-yyyy"));
-                                binding.etPeriodeGajiP3.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP3(), "yyyy-MM-dd", "MM-yyyy"));
-                                binding.etTglTunjanganP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP2(), "yyyy-MM-dd", "MM-yyyy"));
-                                binding.etTglTunjanganP3.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP3(), "yyyy-MM-dd", "MM-yyyy"));
-                                pDatep2 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP2(), "yyyy-MM-dd", "dd-MM-yyyy");
-                                pDatep3 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP3(), "yyyy-MM-dd", "dd-MM-yyyy");
-                                binding.etGajiBersihP2.setText(String.valueOf(dp.getTotalGajiBersihP2()));
-                                binding.etGajiBersihP3.setText(String.valueOf(dp.getTotalGajiBersihP3()));
-                                binding.etTunjanganP2.setText(String.valueOf(dp.getTotalTunjanganBersihP2()));
-                                binding.etTunjanganP3.setText(String.valueOf(dp.getTotalTunjanganBersihP3()));
-                            }
-
-                            binding.etVerfikasiGajiTunjangan.setText(dp.getCerminanGajiDanTunjD3());
-                            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
-                                binding.etVerfikasiRekening.setText("Ya");
-                            } else {
-                                binding.etVerfikasiRekening.setText("Tidak");
-                            }
-                            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
-                                binding.tfNorekTunjangan.setVisibility(View.GONE);
-                                binding.tfNamaBankTunjangan.setVisibility(View.GONE);
-                                binding.tfTotalKredit2.setVisibility(View.GONE);
-                                binding.tfTotalDebit2.setVisibility(View.GONE);
-                                binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
-                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
-                                binding.norekTunjangan.setVisibility(View.GONE);
-                            } else if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("false")) {
-                                binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
-                                binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
-                                binding.tfTotalKredit2.setVisibility(View.VISIBLE);
-                                binding.tfTotalDebit2.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
-                                binding.norekTunjangan.setVisibility(View.VISIBLE);
-                            }
-                            if (dp.getAkseptasiPendapatan().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
-                                binding.tfGajiBersihP2.setVisibility(View.VISIBLE);
-                                binding.rlSlipgajiP2.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeGajiP2.setVisibility(View.VISIBLE);
-                                binding.tfTunjanganP2.setVisibility(View.VISIBLE);
-                                binding.tfTglTunjanganP2.setVisibility(View.VISIBLE);
-                                binding.rlSliptunjanganP2.setVisibility(View.VISIBLE);
-                                binding.tp2.setVisibility(View.VISIBLE);
-                                binding.tpg2.setVisibility(View.VISIBLE);
-                                binding.tpt2.setVisibility(View.VISIBLE);
-                                binding.tfGajiBersihP3.setVisibility(View.VISIBLE);
-                                binding.rlSlipgajiP3.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeGajiP3.setVisibility(View.VISIBLE);
-                                binding.tfTunjanganP3.setVisibility(View.VISIBLE);
-                                binding.tfTglTunjanganP3.setVisibility(View.VISIBLE);
-                                binding.rlSliptunjanganP3.setVisibility(View.VISIBLE);
-                                binding.tp3.setVisibility(View.VISIBLE);
-                                binding.tpg3.setVisibility(View.VISIBLE);
-                                binding.tpt3.setVisibility(View.VISIBLE);
-                            } else if (dp.getAkseptasiPendapatan().equalsIgnoreCase("Hanya Manfaat Pensiun")) {
-                                binding.tfGajiBersihP2.setVisibility(View.GONE);
-                                binding.rlSlipgajiP2.setVisibility(View.GONE);
-                                binding.tfPeriodeGajiP2.setVisibility(View.GONE);
-                                binding.tfTunjanganP2.setVisibility(View.GONE);
-                                binding.tfTglTunjanganP2.setVisibility(View.GONE);
-                                binding.rlSliptunjanganP2.setVisibility(View.GONE);
-                                binding.tp2.setVisibility(View.GONE);
-                                binding.tpg2.setVisibility(View.GONE);
-                                binding.tpt2.setVisibility(View.GONE);
-                                binding.tfGajiBersihP3.setVisibility(View.GONE);
-                                binding.rlSlipgajiP3.setVisibility(View.GONE);
-                                binding.tfPeriodeGajiP3.setVisibility(View.GONE);
-                                binding.tfTunjanganP3.setVisibility(View.GONE);
-                                binding.tfTglTunjanganP3.setVisibility(View.GONE);
-                                binding.rlSliptunjanganP3.setVisibility(View.GONE);
-                                binding.tp3.setVisibility(View.GONE);
-                                binding.tpg3.setVisibility(View.GONE);
-                                binding.tpt3.setVisibility(View.GONE);
-                            }
-
-                            binding.etNorekGaji.setText(dp.getNomorRekBankGaji());
-                            binding.etNamaBankGaji.setText(dp.getNamaBankGaji());
-                            binding.etPeriodeAwalWaktu1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateFromGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etPeriodeAkhirWaktu1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateToGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTotalKredit1.setText(String.valueOf(dp.getTotalKreditGaji()));
-                            binding.etTotalDebit1.setText(String.valueOf(dp.getTotalDebitGaji()));
-
-                            binding.etNorekTunjangan.setText(dp.getNoRekeningTunjangan());
-                            binding.etNamaBankTunjangan.setText(dp.getNamaBankTunjangan());
-                            binding.etPeriodeAwalWaktu2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateFromTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etPeriodeAkhirWaktu2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateToTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTotalDebit2.setText(String.valueOf(dp.getTotalDebitTunjangan()));
-                            binding.etTotalKredit2.setText(String.valueOf(dp.getTotalKreditTunjangan()));
-
-                        } catch (Exception e) {
-                            AppUtil.logSecure("error setdata", e.getMessage());
                         }
-                        //Set Image Rekening Koran
-                        try {
 
-                            DokumenPendapatanKoranBank.setImg(DPKoran.getImg());
-
-                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                            if (DPKoran.getFileName().substring(DPKoran.getFileName().length() - 3, DPKoran.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                DokumenPendapatanKoranBank.setFileName("koran.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPKoran.getImg(), binding.ivRekeningKoran1, DPKoran.getFileName());
-                            } else {
-                                DokumenPendapatanKoranBank.setFileName("koran.png");
-                                AppUtil.convertBase64ToImage(DPKoran.getImg(), binding.ivRekeningKoran1);
-                            }
-
-                        } catch (Exception e) {
-                            AppUtil.logSecure("error setdata", e.getMessage());
-                        }
-                        //Set Image Slip Gaji P1
-                        try {
-                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-                            DokumenPendapatanSlipGajiP1.setImg(DPSlipGajiP1.getImg());
-                            DokumenPendapatanSlipTunjanganP1.setImg(DPSlipTunjanganP1.getImg());
-
-                            if (DPSlipGajiP1.getFileName().substring(DPSlipGajiP1.getFileName().length() - 3, DPSlipGajiP1.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP1.getImg(), binding.ivSlipgajiP1, DPSlipGajiP1.getFileName());
-                            } else {
-                                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.png");
-                                AppUtil.convertBase64ToImage(DPSlipGajiP1.getImg(), binding.ivSlipgajiP1);
-                            }
-                            if (DPSlipTunjanganP1.getFileName().substring(DPSlipTunjanganP1.getFileName().length() - 3, DPSlipTunjanganP1.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
-                                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1, DPSlipTunjanganP1.getFileName());
-                            } else {
-                                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.png");
-                                AppUtil.convertBase64ToImage(DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1);
-                            }
-                        } catch (Exception e) {
-                            AppUtil.logSecure("error setdata", e.getMessage());
-                        }
-                        if (response.body().getData().get("DokumenPendapatanSlipGajiP2") != null) {
-                            //Set Image Slip Gaji P2
-                            try {
-                                DokumenPendapatanSlipGajiP2.setImg(DPSlipGajiP2.getImg());
-                                DokumenPendapatanSlipTunjanganP2.setImg(DPSlipTunjanganP2.getImg());
-                                if (DPSlipGajiP2.getFileName().substring(DPSlipGajiP2.getFileName().length() - 3, DPSlipGajiP2.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.png");
-                                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP2.getImg(), binding.ivSlipgajiP2, DPSlipGajiP2.getFileName());
-                                } else {
-                                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
-                                    AppUtil.convertBase64ToImage(DPSlipGajiP2.getImg(), binding.ivSlipgajiP2);
-                                }
-                                if (DPSlipTunjanganP2.getFileName().substring(DPSlipTunjanganP2.getFileName().length() - 3, DPSlipTunjanganP2.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
-                                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2, DPSlipTunjanganP2.getFileName());
-                                } else {
-                                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.png");
-                                    AppUtil.convertBase64ToImage(DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2);
-                                }
-                            } catch (Exception e) {
-                                AppUtil.logSecure("error setdata", e.getMessage());
-                            }
-                            //Set Image Slip Gaji P3
-                            try {
-                                DokumenPendapatanSlipGajiP3.setImg(DPSlipGajiP3.getImg());
-                                DokumenPendapatanSlipTunjanganP3.setImg(DPSlipGajiP3.getImg());
-                                if (DPSlipGajiP3.getFileName().substring(DPSlipGajiP3.getFileName().length() - 3, DPSlipGajiP3.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                    DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.pdf");
-                                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP3.getImg(), binding.ivSlipgajiP3, DPSlipGajiP3.getFileName());
-                                } else {
-                                    DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.png");
-                                    AppUtil.convertBase64ToImage(DPSlipGajiP3.getImg(), binding.ivSlipgajiP3);
-                                }
-                                if (DPSlipTunjanganP3.getFileName().substring(DPSlipTunjanganP3.getFileName().length() - 3, DPSlipTunjanganP3.getFileName().length()).equalsIgnoreCase("pdf")) {
-                                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
-                                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3, DPSlipTunjanganP3.getFileName());
-                                } else {
-                                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.png");
-                                    AppUtil.convertBase64ToImage(DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3);
-                                }
-                            } catch (Exception e) {
-                                AppUtil.logSecure("error setdata", e.getMessage());
-                            }
-                        }
                     } else {
                         AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
@@ -364,6 +184,196 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                 AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
+    }
+
+    private void setData(Response<ParseResponseAgunan> response){
+        // Set Data
+        try {
+            binding.etAkseptasiPendaptan.setText(dp.getAkseptasiPendapatan());
+            binding.etPendapatanPensiun.setText(String.valueOf(dp.getSimulasiPendapatanSaatPen()));
+            binding.etPeriodeGajiP1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP1(), "yyyy-MM-dd", "MM-yyyy"));
+            binding.etTglTunjanganP1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP1(), "yyyy-MM-dd", "MM-yyyy"));
+            pDatep1 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP1(), "yyyy-MM-dd", "dd-MM-yyyy");
+            binding.etGajiBersihP1.setText(String.valueOf(dp.getTotalGajiBersihP1()));
+            binding.etTunjanganP1.setText(String.valueOf(dp.getTotalTunjanganBersihP1()));
+
+            if (response.body().getData().get("DokumenPendapatanSlipGajiP2") != null) {
+                binding.etPeriodeGajiP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP2(), "yyyy-MM-dd", "MM-yyyy"));
+                binding.etPeriodeGajiP3.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP3(), "yyyy-MM-dd", "MM-yyyy"));
+                binding.etTglTunjanganP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP2(), "yyyy-MM-dd", "MM-yyyy"));
+                binding.etTglTunjanganP3.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP3(), "yyyy-MM-dd", "MM-yyyy"));
+                pDatep2 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP2(), "yyyy-MM-dd", "dd-MM-yyyy");
+                pDatep3 = AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP3(), "yyyy-MM-dd", "dd-MM-yyyy");
+                binding.etGajiBersihP2.setText(String.valueOf(dp.getTotalGajiBersihP2()));
+                binding.etGajiBersihP3.setText(String.valueOf(dp.getTotalGajiBersihP3()));
+                binding.etTunjanganP2.setText(String.valueOf(dp.getTotalTunjanganBersihP2()));
+                binding.etTunjanganP3.setText(String.valueOf(dp.getTotalTunjanganBersihP3()));
+            }
+
+            binding.etVerfikasiGajiTunjangan.setText(dp.getCerminanGajiDanTunjD3());
+            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+                binding.etVerfikasiRekening.setText("Ya");
+            } else {
+                binding.etVerfikasiRekening.setText("Tidak");
+            }
+            if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+                binding.tfNorekTunjangan.setVisibility(View.GONE);
+                binding.tfNamaBankTunjangan.setVisibility(View.GONE);
+                binding.tfTotalKredit2.setVisibility(View.GONE);
+                binding.tfTotalDebit2.setVisibility(View.GONE);
+                binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
+                binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
+                binding.norekTunjangan.setVisibility(View.GONE);
+            } else if (response.body().getData().get("CheckNorek").getAsString().equalsIgnoreCase("false")) {
+                binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
+                binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
+                binding.tfTotalKredit2.setVisibility(View.VISIBLE);
+                binding.tfTotalDebit2.setVisibility(View.VISIBLE);
+                binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
+                binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
+                binding.norekTunjangan.setVisibility(View.VISIBLE);
+            }
+            if (dp.getAkseptasiPendapatan().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+                binding.tfGajiBersihP2.setVisibility(View.VISIBLE);
+                binding.rlSlipgajiP2.setVisibility(View.VISIBLE);
+                binding.tfPeriodeGajiP2.setVisibility(View.VISIBLE);
+                binding.tfTunjanganP2.setVisibility(View.VISIBLE);
+                binding.tfTglTunjanganP2.setVisibility(View.VISIBLE);
+                binding.rlSliptunjanganP2.setVisibility(View.VISIBLE);
+                binding.tp2.setVisibility(View.VISIBLE);
+                binding.tpg2.setVisibility(View.VISIBLE);
+                binding.tpt2.setVisibility(View.VISIBLE);
+                binding.tfGajiBersihP3.setVisibility(View.VISIBLE);
+                binding.rlSlipgajiP3.setVisibility(View.VISIBLE);
+                binding.tfPeriodeGajiP3.setVisibility(View.VISIBLE);
+                binding.tfTunjanganP3.setVisibility(View.VISIBLE);
+                binding.tfTglTunjanganP3.setVisibility(View.VISIBLE);
+                binding.rlSliptunjanganP3.setVisibility(View.VISIBLE);
+                binding.tp3.setVisibility(View.VISIBLE);
+                binding.tpg3.setVisibility(View.VISIBLE);
+                binding.tpt3.setVisibility(View.VISIBLE);
+            } else if (dp.getAkseptasiPendapatan().equalsIgnoreCase("Hanya Manfaat Pensiun")) {
+                binding.tfGajiBersihP2.setVisibility(View.GONE);
+                binding.rlSlipgajiP2.setVisibility(View.GONE);
+                binding.tfPeriodeGajiP2.setVisibility(View.GONE);
+                binding.tfTunjanganP2.setVisibility(View.GONE);
+                binding.tfTglTunjanganP2.setVisibility(View.GONE);
+                binding.rlSliptunjanganP2.setVisibility(View.GONE);
+                binding.tp2.setVisibility(View.GONE);
+                binding.tpg2.setVisibility(View.GONE);
+                binding.tpt2.setVisibility(View.GONE);
+                binding.tfGajiBersihP3.setVisibility(View.GONE);
+                binding.rlSlipgajiP3.setVisibility(View.GONE);
+                binding.tfPeriodeGajiP3.setVisibility(View.GONE);
+                binding.tfTunjanganP3.setVisibility(View.GONE);
+                binding.tfTglTunjanganP3.setVisibility(View.GONE);
+                binding.rlSliptunjanganP3.setVisibility(View.GONE);
+                binding.tp3.setVisibility(View.GONE);
+                binding.tpg3.setVisibility(View.GONE);
+                binding.tpt3.setVisibility(View.GONE);
+            }
+
+            binding.etNorekGaji.setText(dp.getNomorRekBankGaji());
+            binding.etNamaBankGaji.setText(dp.getNamaBankGaji());
+            binding.etPeriodeAwalWaktu1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateFromGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
+            binding.etPeriodeAkhirWaktu1.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateToGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
+            binding.etTotalKredit1.setText(String.valueOf(dp.getTotalKreditGaji()));
+            binding.etTotalDebit1.setText(String.valueOf(dp.getTotalDebitGaji()));
+
+            binding.etNorekTunjangan.setText(dp.getNoRekeningTunjangan());
+            binding.etNamaBankTunjangan.setText(dp.getNamaBankTunjangan());
+            binding.etPeriodeAwalWaktu2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateFromTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+            binding.etPeriodeAkhirWaktu2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeDateToTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+            binding.etTotalDebit2.setText(String.valueOf(dp.getTotalDebitTunjangan()));
+            binding.etTotalKredit2.setText(String.valueOf(dp.getTotalKreditTunjangan()));
+
+        } catch (Exception e) {
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+        //Set Image Rekening Koran
+        try {
+
+            DokumenPendapatanKoranBank.setImg(DPKoran.getImg());
+
+            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+            if (DPKoran.getFileName().substring(DPKoran.getFileName().length() - 3, DPKoran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                DokumenPendapatanKoranBank.setFileName("koran.pdf");
+                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPKoran.getImg(), binding.ivRekeningKoran1, DPKoran.getFileName());
+            } else {
+                DokumenPendapatanKoranBank.setFileName("koran.png");
+                AppUtil.convertBase64ToImage(DPKoran.getImg(), binding.ivRekeningKoran1);
+            }
+
+        } catch (Exception e) {
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+        //Set Image Slip Gaji P1
+        try {
+            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+            DokumenPendapatanSlipGajiP1.setImg(DPSlipGajiP1.getImg());
+            DokumenPendapatanSlipTunjanganP1.setImg(DPSlipTunjanganP1.getImg());
+
+            if (DPSlipGajiP1.getFileName().substring(DPSlipGajiP1.getFileName().length() - 3, DPSlipGajiP1.getFileName().length()).equalsIgnoreCase("pdf")) {
+                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
+                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP1.getImg(), binding.ivSlipgajiP1, DPSlipGajiP1.getFileName());
+            } else {
+                DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.png");
+                AppUtil.convertBase64ToImage(DPSlipGajiP1.getImg(), binding.ivSlipgajiP1);
+            }
+            if (DPSlipTunjanganP1.getFileName().substring(DPSlipTunjanganP1.getFileName().length() - 3, DPSlipTunjanganP1.getFileName().length()).equalsIgnoreCase("pdf")) {
+                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
+                AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1, DPSlipTunjanganP1.getFileName());
+            } else {
+                DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.png");
+                AppUtil.convertBase64ToImage(DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1);
+            }
+        } catch (Exception e) {
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+        if (response.body().getData().get("DokumenPendapatanSlipGajiP2") != null) {
+            //Set Image Slip Gaji P2
+            try {
+                DokumenPendapatanSlipGajiP2.setImg(DPSlipGajiP2.getImg());
+                DokumenPendapatanSlipTunjanganP2.setImg(DPSlipTunjanganP2.getImg());
+                if (DPSlipGajiP2.getFileName().substring(DPSlipGajiP2.getFileName().length() - 3, DPSlipGajiP2.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.png");
+                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP2.getImg(), binding.ivSlipgajiP2, DPSlipGajiP2.getFileName());
+                } else {
+                    DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
+                    AppUtil.convertBase64ToImage(DPSlipGajiP2.getImg(), binding.ivSlipgajiP2);
+                }
+                if (DPSlipTunjanganP2.getFileName().substring(DPSlipTunjanganP2.getFileName().length() - 3, DPSlipTunjanganP2.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
+                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2, DPSlipTunjanganP2.getFileName());
+                } else {
+                    DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.png");
+                    AppUtil.convertBase64ToImage(DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2);
+                }
+            } catch (Exception e) {
+                AppUtil.logSecure("error setdata", e.getMessage());
+            }
+            //Set Image Slip Gaji P3
+            try {
+                DokumenPendapatanSlipGajiP3.setImg(DPSlipGajiP3.getImg());
+                DokumenPendapatanSlipTunjanganP3.setImg(DPSlipGajiP3.getImg());
+                if (DPSlipGajiP3.getFileName().substring(DPSlipGajiP3.getFileName().length() - 3, DPSlipGajiP3.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.pdf");
+                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipGajiP3.getImg(), binding.ivSlipgajiP3, DPSlipGajiP3.getFileName());
+                } else {
+                    DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.png");
+                    AppUtil.convertBase64ToImage(DPSlipGajiP3.getImg(), binding.ivSlipgajiP3);
+                }
+                if (DPSlipTunjanganP3.getFileName().substring(DPSlipTunjanganP3.getFileName().length() - 3, DPSlipTunjanganP3.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
+                    AppUtil.convertBase64ToFileWithOnClick(ActivityDokumenPendapatan.this, DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3, DPSlipTunjanganP3.getFileName());
+                } else {
+                    DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.png");
+                    AppUtil.convertBase64ToImage(DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3);
+                }
+            } catch (Exception e) {
+                AppUtil.logSecure("error setdata", e.getMessage());
+            }
+        }
     }
 
     private boolean validateData() {
