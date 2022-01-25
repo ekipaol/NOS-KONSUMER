@@ -56,6 +56,7 @@
                     android:paddingHorizontal="10dp">
 
                     <LinearLayout
+                        android:id="@+id/ll_sk_pensiun"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"

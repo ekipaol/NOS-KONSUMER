@@ -190,6 +190,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             }
                         }
 
+                        if (response.body().getData().get("TipeProduk") != null) {
+                            if (response.body().getData().get("TipeProduk").getAsString().equalsIgnoreCase("Pra Pensiun 2 Tahun")) {
+                                binding.llSkPensiun.setVisibility(View.VISIBLE);
+                            } else {
+                                binding.llSkPensiun.setVisibility(View.GONE);
+                            }
+                        }
+
                         if (response.body().getData().get("Form_Mutas_Kantor_Bayar") != null) {
                             String SSFormMutasiKantorBayar = response.body().getData().get("Form_Mutas_Kantor_Bayar").getAsJsonObject().toString();
                             Form_Mutasi_Kantor_Bayar = gson.fromJson(SSFormMutasiKantorBayar, ReqDocument.class);
