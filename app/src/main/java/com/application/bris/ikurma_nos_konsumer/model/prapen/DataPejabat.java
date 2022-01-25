@@ -61,6 +61,39 @@ public class DataPejabat {
     @SerializedName("Cabang")
     @Expose
     private String cabang;
+    @SerializedName("Alamat")
+    @Expose
+    private String alamatCabang;
+    @SerializedName("Telp")
+    @Expose
+    private String telpCabang;
+    @SerializedName("Fax")
+    @Expose
+    private String faxCabang;
+
+    public String getAlamatCabang() {
+        return alamatCabang;
+    }
+
+    public void setAlamatCabang(String alamatCabang) {
+        this.alamatCabang = alamatCabang;
+    }
+
+    public String getTelpCabang() {
+        return telpCabang;
+    }
+
+    public void setTelpCabang(String telpCabang) {
+        this.telpCabang = telpCabang;
+    }
+
+    public String getFaxCabang() {
+        return faxCabang;
+    }
+
+    public void setFaxCabang(String faxCabang) {
+        this.faxCabang = faxCabang;
+    }
 
     public String getCabang() {
         return cabang;

@@ -222,7 +222,7 @@
                         android:id="@+id/et_nama_cabang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="textMultiLine" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -244,7 +244,7 @@
                         android:id="@+id/et_alamat_cabang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:inputType="textMultiLine" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes

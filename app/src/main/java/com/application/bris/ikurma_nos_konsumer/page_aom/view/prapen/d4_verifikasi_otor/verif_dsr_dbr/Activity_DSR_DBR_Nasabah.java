@@ -73,8 +73,13 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                                 try {
                                     binding.etSisaPendapatanGajiAktif.setText(String.valueOf(DPDSR.getSisaPendapatanGajiAktif().setScale(2)));
                                     binding.etSisaPendapatanManfaatPensiun.setText(String.valueOf(DPDSR.getSisaPendapatanManfaatPensiun().setScale(2)));
-                                    binding.etTotalAngsPembEksNotlunasDbr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDBR().setScale(2)));
-                                    binding.etTotalAngsPembEksNotlunasDsr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDSR().setScale(2)));
+
+                                    if(DPDSR.getTotalAngsPembEksNotLunasDBR()!=null){
+                                        binding.etTotalAngsPembEksNotlunasDbr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDBR().setScale(2)));
+                                    }
+                                    if(DPDSR.getTotalAngsPembEksNotLunasDSR()!=null){
+                                        binding.etTotalAngsPembEksNotlunasDsr.setText(String.valueOf(DPDSR.getTotalAngsPembEksNotLunasDSR().setScale(2)));
+                                    }
                                     binding.etGajiAktifDigunakan.setText(DPDSR.getGajiAktifDigunakan());
                                     binding.etManfaatPensiunDigunakan.setText(DPDSR.getManfaatPensiunDigunakan());
                                     binding.etSisaGajiAktif.setText(DPDSR.getSisaGajiAktif());
@@ -167,6 +172,7 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
     }
 
     private void disableText() {
+        binding.etStatusPayroll.setFocusable(false);
         binding.etSisaPendapatanGajiAktif.setFocusable(false);
         binding.etCatatanVerifikasi.setFocusable(false);
         binding.etSisaPendapatanManfaatPensiun.setFocusable(false);
@@ -198,15 +204,11 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CustomDialog.DialogBackpress(Activity_DSR_DBR_Nasabah.this);
+              finish();
             }
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        CustomDialog.DialogBackpress(Activity_DSR_DBR_Nasabah.this);
-    }
 
     @Override
     public void onClick(View view) {

@@ -72,9 +72,25 @@ public class KesimpulanVerifikasi extends AppCompatActivity implements View.OnCl
     }
 
     private void setData() {
-//        binding.etHasilRekomendasiScoring.setText(dataVerifikasiKesimpulan.get);
-        binding.etMaksimalAngsuranBulanan.setText(dataVerifikasiKesimpulan.getMaksimalAngsuranBulanan());
-        binding.etMaksimalAngsuranManfaatPensiun.setText(dataVerifikasiKesimpulan.getMaksimalAngsuranBulananManfaatPensiun());
+        Double maksimalAngsuranBulanan;
+        Double maksimalAngsuranBulananManfaatPensiun;
+        try{
+            maksimalAngsuranBulanan=Double.parseDouble(dataVerifikasiKesimpulan.getMaksimalAngsuranBulanan());
+        }
+        catch (NullPointerException e){
+            maksimalAngsuranBulanan=0d;
+        }
+
+        try{
+            maksimalAngsuranBulananManfaatPensiun=Double.parseDouble(dataVerifikasiKesimpulan.getMaksimalAngsuranBulananManfaatPensiun());
+        }
+        catch (NullPointerException e){
+            maksimalAngsuranBulananManfaatPensiun=0d;
+        }
+
+
+        binding.etMaksimalAngsuranBulanan.setText(String.format("%.2f",maksimalAngsuranBulanan));
+        binding.etMaksimalAngsuranManfaatPensiun.setText(String.format("%.2f",maksimalAngsuranBulananManfaatPensiun));
         if (Integer.parseInt(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) >= 12) {
             Double kk = Double.parseDouble(dataVerifikasiKesimpulan.getMaksimalJangkaWaktu()) / 12;
             BigDecimal tahunK = new BigDecimal(kk).setScale(0, RoundingMode.HALF_DOWN);

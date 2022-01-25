@@ -144,6 +144,9 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
                 validateField(binding.etNomorRekeningBsi,binding.tfNomorRekeningBsi);
                 validateField(binding.etAtasNamaRekening,binding.tfAtasNamaRekening);
                 validateField(binding.etNomorCif,binding.tfNomorCif);
+                validateField(binding.etAlamatCabang,binding.tfAlamatCabang);
+                validateField(binding.etNamaCabang,binding.tfNamaCabang);
+                validateField(binding.etTeleponCabang,binding.tfTeleponCabang);
 
                 if(!adaFieldBelumDiisi){
                     sendDataPejabat();
@@ -297,6 +300,10 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
         dataPejabatSend.setNoRekeningBSI(binding.etNomorRekeningBsi.getText().toString());
         dataPejabatSend.setAtasNamaRekening(binding.etAtasNamaRekening.getText().toString());
         dataPejabatSend.setNomorCIF(binding.etNomorCif.getText().toString());
+        dataPejabatSend.setCabang(binding.etNamaCabang.getText().toString());
+        dataPejabatSend.setTelpCabang(binding.etTeleponCabang.getText().toString());
+        dataPejabatSend.setAlamatCabang(binding.etAlamatCabang.getText().toString());
+        dataPejabatSend.setFaxCabang(binding.etFaksimiliCabang.getText().toString());
 
         reqDataPejabat.setApplicationId(idAplikasi);
         reqDataPejabat.setUID(Integer.toString(appPreferences.getUid()));
@@ -391,6 +398,10 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
             binding.etNomorRekeningBsi.setText(dataPejabat.getNoRekeningBSI());
             binding.etAtasNamaRekening.setText(dataPejabat.getAtasNamaRekening());
             binding.etNomorCif.setText(dataPejabat.getNomorCIF());
+            binding.etNamaCabang.setText(dataPejabat.getCabang());
+            binding.etAlamatCabang.setText(dataPejabat.getAlamatCabang());
+            binding.etTeleponCabang.setText(dataPejabat.getTelpCabang());
+            binding.etFaksimiliCabang.setText(dataPejabat.getFaxCabang());
         }
         catch (Exception e){
             e.printStackTrace();

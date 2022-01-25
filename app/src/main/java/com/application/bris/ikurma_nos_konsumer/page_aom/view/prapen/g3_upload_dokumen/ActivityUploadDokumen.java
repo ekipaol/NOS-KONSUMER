@@ -330,10 +330,11 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     skterakhir = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskterakhir), 0, AppUtil.decodeImageTobase64(valskterakhir).length);
                                     FNskterakhir = "skterakhir.png";
                                 }
+                                binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            binding.pvFotoSkTerakhir.setVisibility(View.VISIBLE);
+
                         }
 
                         if (response.body().getData().get("Ijarah_Akad_Ijarah") != null) {

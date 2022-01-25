@@ -353,7 +353,7 @@ public class AppUtil {
 
         datePickerDialog = new DatePickerDialog(context, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+//        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         datePickerDialog.show();
     }
 

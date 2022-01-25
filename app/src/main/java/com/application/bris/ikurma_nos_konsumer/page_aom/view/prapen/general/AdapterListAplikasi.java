@@ -144,7 +144,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
                 } else {
                     List<DataListAplikasi> filteredList = new ArrayList<>();
                     for (DataListAplikasi row : data){
-                        if((row.getNama()!=null)&&(row.getNama().toLowerCase().contains(charString.toLowerCase())) || row.getApplicationNo().toLowerCase().contains(charString.toLowerCase())||row.getStatusAplikasi().toLowerCase().contains(charString.toLowerCase())){
+                        if((row.getNama()!=null)&&(row.getNama().toLowerCase().contains(charString.toLowerCase())) || row.getApplicationNo().toLowerCase().contains(charString.toLowerCase())||row.getStatusAplikasi().toLowerCase().contains(charString.toLowerCase())||row.getStatusAplikasiId().toLowerCase().contains(charString.toLowerCase())){
                             filteredList.add(row);
                         }
                     }

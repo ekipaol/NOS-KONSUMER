@@ -66,7 +66,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomDialog.DialogBackpressSaved(HasilCanvasingActivity.this);
+                finish();
             }
         });
 
@@ -171,7 +171,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
 
     @Override
     public void onBackPressed() {
-        CustomDialog.DialogBackpressSaved(this);
+     finish();
 
     }
 

@@ -618,7 +618,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         binding.etNamaDanJenisBarangAkad.setText(dataMurabahah.getNamaBarang());
         binding.etLokasi.setText(dataMurabahah.getLokasi());
         binding.etPemasok.setText(dataMurabahah.getPemasok());
-        binding.etHargaPerolehanBarang.setText(Double.toString(dataMurabahah.getHargaBarang()));
+        binding.etHargaPerolehanBarang.setText(String.format("%.2f",dataMurabahah.getHargaBarang()));
     }
 
     private void setDataMmqKendaraan(){
@@ -856,11 +856,12 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                             validateField(binding.etNilaiAsetLainnya,binding.tfNilaiAsetLainnya);
                         }
                     }
-                }
-                if(!adaFieldBelumDiisi){
-                    sendDataMmq();
+                    if(!adaFieldBelumDiisi){
+                        sendDataMmq();
 
+                    }
                 }
+
                 break;
 
             default:break;
