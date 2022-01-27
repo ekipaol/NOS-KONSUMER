@@ -550,8 +550,8 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
         if (binding.etVerfikasiRekening.getText().toString().equalsIgnoreCase("Tidak")) {
             doc.setNoRekeningTunjangan(binding.etNorekTunjangan.getText().toString());
             doc.setNamaBankTunjangan(binding.etNamaBankTunjangan.getText().toString());
-            doc.setPeriodeDateFromTunjangan(binding.etPeriodeAwalWaktu2.getText().toString());
-            doc.setPeriodeDateToTunjangan(binding.etPeriodeAkhirWaktu2.getText().toString());
+            doc.setPeriodeDateFromTunjangan(AppUtil.parseTanggalGeneral(binding.etPeriodeAwalWaktu2.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
+            doc.setPeriodeDateToTunjangan(AppUtil.parseTanggalGeneral(binding.etPeriodeAkhirWaktu2.getText().toString(), "dd-MM-yyyy", "yyyy-MM-dd"));
             doc.setTotalDebitTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalDebit2.getText().toString())));
             doc.setTotalKreditTunjangan(Long.parseLong(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalKredit2.getText().toString())));
         } else {
