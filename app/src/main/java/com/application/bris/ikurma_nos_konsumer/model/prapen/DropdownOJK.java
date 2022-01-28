@@ -8,9 +8,19 @@ public class DropdownOJK extends MsektorEkonomi {
     private String name;
     @SerializedName("Description")
     private String Description;
+    @SerializedName("Kode")
+    private String Kode;
 
     public DropdownOJK(String sektorEkonomiText, String sektorEkonomiSID, String sektorEkonomiLBU) {
         super(sektorEkonomiText, sektorEkonomiSID, sektorEkonomiLBU);
+    }
+
+    public String getKode() {
+        return Kode;
+    }
+
+    public void setKode(String kode) {
+        Kode = kode;
     }
 
     public String getDescription() {

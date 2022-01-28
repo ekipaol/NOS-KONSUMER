@@ -62,7 +62,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     JaminandanDokumen doc = new JaminandanDokumen();
     private DatePickerDialog dpSK;
     private Calendar calLahir;
-    public static int idAplikasi;
+    public static Long idAplikasi;
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
     ReqDocument  JDJaminanKTP,JDJaminanKTPPasangan, JDJaminanNPWP, JDJaminanFormAplikasi, JDJaminanAsetAKAD, JDJaminanSKPensiun, JDJaminanSKPengangkatan, JDJaminanSKTerakhir, JDJaminanSuratRekomendasiInstansi, JDJaminanIDCard;
     ReqDocument DataJaminanKTP = new ReqDocument(), DataJaminanKTPPasangan = new ReqDocument(),
@@ -91,6 +91,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
+
+        if(getIntent().hasExtra("idAplikasi")){
+            idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        }
 
         onclickSelectDialog();
         setContentView(view);
@@ -418,7 +422,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                             }
                             else{
                                 dataFlag=new FlagAplikasiPojo();
-                                dataFlag.setIdAplikasi(Long.valueOf(idAplikasi));
+                                dataFlag.setIdAplikasi(idAplikasi);
                                 dataFlag.setFlagD3Jaminan(true);
                                 realm.insertOrUpdate(dataFlag);
                             }

@@ -164,9 +164,6 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         String listDataString = response.body().getData().get("DataInquiryIDEB").toString();
                         String listDataLunasString = response.body().getData().get("DataInquiryIDEBLunas").toString();
-
-
-
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<DataIdeb>>() {
                         }.getType();

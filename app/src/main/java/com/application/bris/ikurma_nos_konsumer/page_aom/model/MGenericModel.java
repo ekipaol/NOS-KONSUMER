@@ -12,6 +12,7 @@ public class MGenericModel {
     @SerializedName("Nama")
     private String NAMA;
 
+
     public MGenericModel(String ID, String DESC) {
         this.ID = ID;
         this.DESC = DESC;

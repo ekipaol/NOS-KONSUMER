@@ -33,6 +33,50 @@ public class UpdateDataOjkBi {
     @SerializedName("Kode_Sektor_Ekonomi")
     @Expose
     private String kodeSektorEkonomi;
+    @SerializedName("Deskripsi_Bidang_Usaha_Tempat_Kerja")
+    @Expose
+    private String deskripsiBidangUsahaTempatKerja;
+    @SerializedName("Deskripsi_Pekerjaan")
+    @Expose
+    private String deskripsiPekerjaan;
+    @SerializedName("Deskripsi_Sektor_Ekonomi")
+    @Expose
+    private String deskripsiSektorEkonomi;
+    @SerializedName("Deskripsi_Jenis_Penggunaan")
+    @Expose
+    private String deskripsiJenisPenggunaan;
+
+    public String getDeskripsiBidangUsahaTempatKerja() {
+        return deskripsiBidangUsahaTempatKerja;
+    }
+
+    public void setDeskripsiBidangUsahaTempatKerja(String deskripsiBidangUsahaTempatKerja) {
+        this.deskripsiBidangUsahaTempatKerja = deskripsiBidangUsahaTempatKerja;
+    }
+
+    public String getDeskripsiPekerjaan() {
+        return deskripsiPekerjaan;
+    }
+
+    public void setDeskripsiPekerjaan(String deskripsiPekerjaan) {
+        this.deskripsiPekerjaan = deskripsiPekerjaan;
+    }
+
+    public String getDeskripsiSektorEkonomi() {
+        return deskripsiSektorEkonomi;
+    }
+
+    public void setDeskripsiSektorEkonomi(String deskripsiSektorEkonomi) {
+        this.deskripsiSektorEkonomi = deskripsiSektorEkonomi;
+    }
+
+    public String getDeskripsiJenisPenggunaan() {
+        return deskripsiJenisPenggunaan;
+    }
+
+    public void setDeskripsiJenisPenggunaan(String deskripsiJenisPenggunaan) {
+        this.deskripsiJenisPenggunaan = deskripsiJenisPenggunaan;
+    }
 
     public Integer getId() {
         return id;

@@ -206,6 +206,34 @@
 
                 <!--Input Pilihan Asuransi Pinjaman-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_manfaat_asuransi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:labelText="Manfaat Asuransi"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true"
+                    tools:ignore="DuplicateIds">
+                    <!--Treatment Biaya Materai-->
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_manfaat_asuransi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih"
+                        tools:ignore="DuplicateIds" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+                <!--Input Pilihan Asuransi Pinjaman-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_biayaasuransi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

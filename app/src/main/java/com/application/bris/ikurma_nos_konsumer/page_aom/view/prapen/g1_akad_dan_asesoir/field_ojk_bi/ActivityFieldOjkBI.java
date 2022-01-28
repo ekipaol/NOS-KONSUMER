@@ -54,6 +54,7 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
     private AppPreferences appPreferences;
     public static int idAplikasi;
     private boolean adaFieldBelumDiisi = false;
+    String valKodePekerjaan,valKodeBidangUsaha,valKodeSektorEkonomi,valKodeJenisPenggunaan;
 
 
     @Override
@@ -99,13 +100,18 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
         try {
 
             binding.etPendidikanTerakhir.setText(dataOjk.getPendidikanTerakhir());
-            binding.etKodePekerjaan.setText(dataOjk.getKodePekerjaan());
-            binding.etKodeBidangUsahaTempatKerja.setText(dataOjk.getKodeBidangUsahaTempatKer());
+            binding.etKodePekerjaan.setText(dataOjk.getDeskripsiPekerjaan());
+            binding.etKodeBidangUsahaTempatKerja.setText(dataOjk.getDeskripsiBidangUsahaTempatKerja());
             binding.etJumlahTanggunganNasabah.setText(dataOjk.getJumlahTanggunanNasabah());
             binding.etAlamatTempatKerja.setText(dataOjk.getAlamatTempatBekerja());
             binding.etPendidikanTerakhir.setText(dataOjk.getPendidikanTerakhir());
-            binding.etKodeJenisPenggunaan.setText(dataOjk.getKodeJenisPenggunaan());
-            binding.etKodeSektorEkonomi.setText(dataOjk.getKodeSektorEkonomi());
+            binding.etKodeJenisPenggunaan.setText(dataOjk.getDeskripsiJenisPenggunaan());
+            binding.etKodeSektorEkonomi.setText(dataOjk.getDeskripsiSektorEkonomi());
+
+            valKodePekerjaan=dataOjk.getKodePekerjaan();
+            valKodeBidangUsaha=dataOjk.getKodeBidangUsahaTempatKer();
+            valKodeSektorEkonomi=dataOjk.getKodeSektorEkonomi();
+            valKodeJenisPenggunaan=dataOjk.getKodeJenisPenggunaan();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,7 +177,7 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
                         List<DropdownGlobalPrapen> dropdownTemp = gson.fromJson(listDataString, type);
                         dataDropdownKodePekerjaan.clear();
                         for (int i = 0; i < dropdownTemp.size(); i++) {
-                            dataDropdownKodePekerjaan.add(new MGenericModel(dropdownTemp.get(i).getName(), dropdownTemp.get(i).getName()));
+                            dataDropdownKodePekerjaan.add(new MGenericModel(dropdownTemp.get(i).getKode(), dropdownTemp.get(i).getName()));
                         }
                     }
                 }
@@ -192,13 +198,18 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
         AppPreferences appPreferences = new AppPreferences(this);
         req.setUID(String.valueOf(appPreferences.getUid()));
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        req.setKodeBidangUsahaTempatKer(binding.etKodeBidangUsahaTempatKerja.getText().toString());
+        req.setKodeBidangUsahaTempatKer(valKodeBidangUsaha);
         req.setJumlahTanggunanNasabah(binding.etJumlahTanggunganNasabah.getText().toString());
-        req.setKodeJenisPenggunaan(binding.etKodeJenisPenggunaan.getText().toString());
-        req.setKodeSektorEkonomi(binding.etKodeSektorEkonomi.getText().toString());
+        req.setKodeJenisPenggunaan(valKodeJenisPenggunaan);
+        req.setKodeSektorEkonomi(valKodeSektorEkonomi);
         req.setPendidikanTerakhir(binding.etPendidikanTerakhir.getText().toString());
-        req.setKodePekerjaan(binding.etKodePekerjaan.getText().toString());
+        req.setKodePekerjaan(valKodePekerjaan);
+        req.setDeskripsiJenisPenggunaan(binding.etKodeJenisPenggunaan.getText().toString());
+        req.setDeskripsiSektorEkonomi(binding.etKodeSektorEkonomi.getText().toString());
+        req.setDeskripsiBidangUsahaTempatKerja(binding.etKodeBidangUsahaTempatKerja.getText().toString());
+        req.setDeskripsiPekerjaan(binding.etKodePekerjaan.getText().toString());
         req.setAlamatTempatBekerja(binding.etAlamatTempatKerja.getText().toString());
+
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateDataOjkBi(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
@@ -297,8 +308,10 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
             binding.etPendidikanTerakhir.setText(data.getDESC());
         } else if (title.equalsIgnoreCase(binding.tfKodePekerjaan.getLabelText())) {
             binding.etKodePekerjaan.setText(data.getDESC());
+            valKodePekerjaan=data.getID();
         } else if (title.equalsIgnoreCase(binding.tfKodeJenisPenggunaan.getLabelText())) {
             binding.etKodeJenisPenggunaan.setText(data.getDESC());
+            valKodeJenisPenggunaan=data.getID();
         }
     }
 
@@ -324,12 +337,14 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
     @Override
     public void onSectorSelect(DropdownOJK data) {
         binding.etKodeSektorEkonomi.setText(data.getName());
+        valKodeSektorEkonomi=data.getKode();
     }
 
     //Dropdown Bidang Usaha Tempat Kerja
     @Override
     public void onBidangUsahaSelect(DropdownOJK data) {
         binding.etKodeBidangUsahaTempatKerja.setText(data.getName());
+        valKodeBidangUsaha=data.getKode();
     }
 
 
@@ -344,10 +359,11 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
         dataDropdownGraduate.add(new MGenericModel("7", "S1"));
         dataDropdownGraduate.add(new MGenericModel("8", "S2"));
         dataDropdownGraduate.add(new MGenericModel("9", "S3"));
+
         //dropdown Jenis Penggunaan
         dataDropdownJepen.add(new MGenericModel("3", "Konsumtif"));
-        dataDropdownJepen.add(new MGenericModel("1", "Produktif ( modal kerja )"));
-        dataDropdownJepen.add(new MGenericModel("2", "Produktif ( investasi )"));
+        dataDropdownJepen.add(new MGenericModel("1", "Produktif ( Modal Kerja )"));
+        dataDropdownJepen.add(new MGenericModel("2", "Produktif ( Investasi )"));
 
     }
 

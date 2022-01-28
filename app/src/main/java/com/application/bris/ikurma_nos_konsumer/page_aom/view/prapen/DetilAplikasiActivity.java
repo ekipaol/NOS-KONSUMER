@@ -466,6 +466,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Intent it = new Intent(this, ActivityUploadDokumen.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("akad",dataDetailAplikasi.getAkad());
+            it.putExtra("produk",dataDetailAplikasi.getTypeProduk());
             startActivity(it);
         }
         //MEMO
@@ -760,7 +761,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
     public void success(boolean val) {
         if(val){
             Intent intent = new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }

@@ -31,7 +31,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateU
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.databinding.ActivityUploadDokumenBinding;
+import com.application.bris.ikurma_nos_konsumer.databinding.UploadDokumenActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
@@ -53,10 +53,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityUploadDokumen extends AppCompatActivity implements CameraListener, View.OnClickListener, ConfirmListener {
-    ActivityUploadDokumenBinding binding;
+     UploadDokumenActivityBinding binding;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private long idAplikasi;
+    private String produk;
 
     Integer addImg = 0;
     Bitmap dokumenA, dokumenB, dokumenC, dokumenD, dokumenE;
@@ -121,11 +122,17 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityUploadDokumenBinding.inflate(getLayoutInflater());
+        binding = UploadDokumenActivityBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        if(getIntent().hasExtra("produk")){
+            produk=getIntent().getStringExtra("produk");
+        }
+        else{
+            produk="";
+        }
         hideUploadDokumen();
         hidePreviewButton();
         setContentView(view);
@@ -324,7 +331,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             Foto_SK_Terakhir = gson.fromJson(SSSTerakhir, ReqDocument.class);
                             valskterakhir = Foto_SK_Terakhir.getImg();
                             try {
-                                if (FNskterakhir.substring(FNskterakhir.length() - 3, FNskterakhir.length()).equalsIgnoreCase("pdf")) {
+                                if (Foto_SK_Terakhir.getFileName().substring(Foto_SK_Terakhir.getFileName().length() - 3, Foto_SK_Terakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
                                     FNskterakhir = "skterakhir.pdf";
                                 } else {
                                     skterakhir = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valskterakhir), 0, AppUtil.decodeImageTobase64(valskterakhir).length);
@@ -893,6 +900,11 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         binding.btnUploadDokumen3.setVisibility(View.GONE);
         binding.btnUploadDokumen4.setVisibility(View.GONE);
         binding.btnUploadDokumen5.setVisibility(View.GONE);
+
+
+        //di hide dlu katanya
+        binding.llLampiranMurabahah.setVisibility(View.GONE);
+
     }
 
     private void onclickSelectDialog() {

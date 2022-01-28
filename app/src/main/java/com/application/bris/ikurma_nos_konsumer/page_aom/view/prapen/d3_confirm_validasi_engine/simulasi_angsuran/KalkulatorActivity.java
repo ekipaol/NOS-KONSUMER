@@ -45,7 +45,7 @@ import retrofit2.Response;
 
 public class KalkulatorActivity extends AppCompatActivity implements GenericListenerOnSelect, View.OnClickListener, ConfirmListener {
     private ActivityKalkulatorSimulasiAngsuranBinding binding;
-    List<MGenericModel> dataDropdownKalkulator = new ArrayList<>(), dataAsuransi = new ArrayList<>();
+    List<MGenericModel> dataDropdownKalkulator = new ArrayList<>(), dataAsuransi = new ArrayList<>(),dataDropdownManfaatAsuransi = new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     MparseResponseSimulasiInqCal DPSimulasi;
@@ -200,6 +200,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
 //                                binding.etBiayamaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaMaterai()));
                             if (DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai() != null)
                                 binding.etTreatmentBiayaMaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai()));
+                            if (DPSimulasiBiayaBiaya.getManfaatAsuransi() != null)
+                                binding.etManfaatAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getManfaatAsuransi()));
                         }
                         if (response.body().getData().get("DataPembiayaan") != null) {
                             SSDataPembiayaan = response.body().getData().get("DataPembiayaan").getAsJsonObject().toString();
@@ -270,6 +272,13 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                 DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
             }
         });
+
+        binding.tfManfaatAsuransi.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfManfaatAsuransi.getLabelText(), dataDropdownManfaatAsuransi, KalkulatorActivity.this);
+            }
+        });
     }
 
 
@@ -279,6 +288,9 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         dataDropdownKalkulator.add(new MGenericModel("Atribusi", "Atribusi"));
         dataDropdownKalkulator.add(new MGenericModel("Potong Pencairan", "Potong Pencairan"));
         dataDropdownKalkulator.add(new MGenericModel("Tidak Digunakan", "Tidak Digunakan"));
+
+        dataDropdownManfaatAsuransi.add(new MGenericModel("Jiwa", "Jiwa"));
+        dataDropdownManfaatAsuransi.add(new MGenericModel("Jiwa dan Penjaminan", "Jiwa dan Penjaminan"));
 
 
     }
@@ -295,7 +307,10 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
             binding.etTreatmentBiayaPenalti.setText(data.getDESC());
         } else if (title.equalsIgnoreCase(binding.tfTreatmentBiayaMaterai.getLabelText())) {
             binding.etTreatmentBiayaMaterai.setText(data.getDESC());
+        } else if (title.equalsIgnoreCase(binding.tfManfaatAsuransi.getLabelText())) {
+            binding.etManfaatAsuransi.setText(data.getDESC());
         }
+
         if (title.equalsIgnoreCase(binding.tfPilihanasuransipenjaminan.getLabelText())) {
             binding.etPilihanAsuransiPenjaminan.setText(data.getDESC());
             id = Long.parseLong(data.getID());
@@ -339,6 +354,12 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                 DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfTreatmentBiayaMaterai.getLabelText(), dataDropdownKalkulator, KalkulatorActivity.this);
                 break;
 
+            //manfaat asuransi
+            case R.id.et_manfaat_asuransi:
+            case R.id.tf_manfaat_asuransi:
+                DialogGenericDataFromService.display(getSupportFragmentManager(), binding.tfManfaatAsuransi.getLabelText(), dataDropdownManfaatAsuransi, KalkulatorActivity.this);
+                break;
+
             //Button Send
             case R.id.btn_send:
             case R.id.ll_btn_send:
@@ -366,6 +387,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         ReqHitungKalkulator req = new ReqHitungKalkulator();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
         req.setUid(String.valueOf(appPreferences.getUid()));
+        DPSimulasiBiayaBiaya.setManfaatAsuransi(binding.etManfaatAsuransi.getText().toString());
         req.setSimulasiBiayaBiaya(DPSimulasiBiayaBiaya);
         req.setSimulasiAngsuranCalc(DPSimulasi);
         req.setDataPembiayaan(DPDataPembiayaan);
@@ -569,6 +591,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         binding.etBiayaAdministrasi.setFocusable(false);
         binding.etBiayaFlagging.setFocusable(false);
         binding.etBiayaMitraFronting.setFocusable(false);
+        binding.etManfaatAsuransi.setFocusable(false);
 
     }
 
@@ -585,6 +608,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
 //        binding.etTreatmentBiayaMaterai.setOnClickListener(this);
         binding.tfPilihanasuransipenjaminan.setOnClickListener(this);
         binding.etPilihanAsuransiPenjaminan.setOnClickListener(this);
+        binding.tfManfaatAsuransi.setOnClickListener(this);
+        binding.etManfaatAsuransi.setOnClickListener(this);
         binding.btnHitung.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
         binding.llBtnHitung.setOnClickListener(this);

@@ -276,6 +276,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         }
         if(title.equalsIgnoreCase(binding.tfJenisTipeProduk.getLabelText())){
             binding.etJenisTipeProduk.setText(data.getDESC());
+            binding.etProgram.setText("");
             loadDropdownProgram();
         }
         if(title.equalsIgnoreCase(binding.tfSegmen.getLabelText())){
