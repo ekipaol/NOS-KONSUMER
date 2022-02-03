@@ -182,7 +182,11 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
                     }
                     else{
                         AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                        Log.d("WOYYYYY", "BANGGGGGGKEE");
                     }
+                }
+                else{
+                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi Kesalahan");
                 }
             }
 

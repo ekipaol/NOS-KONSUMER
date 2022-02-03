@@ -432,7 +432,11 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                     }
                     else{
                         AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                        Log.d("WOYYYYY", "BANGGGGGGKEE");
                     }
+                }
+                else{
+                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
                 }
             }
 

@@ -71,6 +71,17 @@ public class hotprospek {
     public hotprospek() {
     }
 
+    public hotprospek(String status,String nama) {
+        this.status_aplikasi=status;
+        this.nama_debitur_1=nama;
+    }
+
+    public hotprospek(String status,String nama,String tanggal_entry) {
+        this.status_aplikasi=status;
+        this.nama_debitur_1=nama;
+        this.tanggal_entry=tanggal_entry;
+    }
+
     public hotprospek(int fid_cif_las, int id_st_aplikasi, String kode_produk, int plafond_induk, String klasifikasi_kredit, String status_aplikasi, String nama_produk, int id_aplikasi, String tanggal_entry, int fid_photo, int jw, String nama_debitur_1, int flag_data_lengkap, int flag_agunan, int flag_prescreening, int flag_lkn, int flag_scoring, int id_tujuan, String nama_tujuan, int flag_data_pembiayaan, int flag_dokumen, int flag_rpc, String nOAKAD, int flag_finansial) {
         this.fid_cif_las = fid_cif_las;
         this.id_st_aplikasi = id_st_aplikasi;

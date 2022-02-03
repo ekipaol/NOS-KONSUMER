@@ -1,10 +1,17 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek;
 
+import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -17,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
@@ -33,7 +41,10 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -55,6 +66,9 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
     @BindView(R.id.ll_emptydata)
     LinearLayout ll_emptydata;
 
+    @BindView(R.id.tv_total_hasanah)
+    TextView tv_total_hasanah;
+
     private SearchView searchView;
     List<hotprospek> dataHotprospek;
     HotprospekAdapater adapaterHotprospek;
@@ -68,8 +82,12 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ao_activity_hotprospek);
         main();
-        initializeHotprospek();
-        sm_placeholder.startShimmer();
+
+        if(checkPermission()){
+            initializeHotprospek();
+        }
+
+//        sm_placeholder.startShimmer();
         backgroundStatusBar();
     }
 
@@ -127,32 +145,49 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
         appPreferences = new AppPreferences(this);
         ButterKnife.bind(this);
         setSupportActionBar(tb_regular);
-        AppUtil.toolbarRegular(this, "Daftar Hotprospek Multi");
+        AppUtil.toolbarRegular(this, "Hasanah Card");
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setDistanceToTriggerSync(220);
     }
 
     public void initializeHotprospek(){
-        listHotprospek req = new listHotprospek();
-        req.setUid(String.valueOf(appPreferences.getUid()));
-        req.setKodeSkk(appPreferences.getKodeKantor());
-        req.setNamaNasabah("");
-        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().listHotprospek(req);
-        call.enqueue(new Callback<ParseResponseArr>() {
-            @Override
-            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
-                sm_placeholder.stopShimmer();
-                sm_placeholder.setVisibility(View.GONE);
-                rv_listhotprospek.setVisibility(View.VISIBLE);
 
-                try {
-                    if(response.isSuccessful()){
-                        if(response.body().getStatus().equalsIgnoreCase("00")){
-                            String listDataString = response.body().getData().toString();
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<List<hotprospek>>() {}.getType();
+        dataHotprospek = new ArrayList<>();
+        hotprospek datahp1=new hotprospek();
 
-                            dataHotprospek = gson.fromJson(listDataString, type);
+        Uri uriSms = Uri.parse("content://sms/inbox");
+        Cursor cursor = getContentResolver().query(uriSms, new String[]{"_id", "address", "date", "body"},null,null,null);
+
+        cursor.moveToFirst();
+        Long nilaiHasanah=0l;
+        while  (cursor.moveToNext())
+        {
+            String address = cursor.getString(1);
+            String date = cursor.getString(2);
+            String body = cursor.getString(3);
+            String hasanahTemp="";
+
+            String[] spliitedBody=body.split(" ");
+
+            for (int i = 0; i <spliitedBody.length ; i++) {
+                if(spliitedBody[i].equalsIgnoreCase("IDR")){
+                    nilaiHasanah=nilaiHasanah+Long.parseLong(spliitedBody[i+1].replace(".",""));
+                    hasanahTemp=spliitedBody[i+1].replace(".","");
+                    break;
+                }
+            }
+
+            if(address.equalsIgnoreCase("BNI")){
+                dataHotprospek.add(new hotprospek(address,body,date));
+            }
+
+        }
+
+        tv_total_hasanah.setText(AppUtil.parseRupiah(Long.toString(nilaiHasanah)));
+
+
+
+
 
                             if (dataHotprospek.size() > 0){
                                 ll_emptydata.setVisibility(View.GONE);
@@ -164,26 +199,7 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
                             else {
                                 ll_emptydata.setVisibility(View.VISIBLE);
                             }
-                        }
-                        else{
-                            AppUtil.notiferror(HotprospekActivity.this, findViewById(android.R.id.content), response.body().getMessage());
-                        }
-                    }
-                    else{
-                        Error error = ParseResponseError.confirmEror(response.errorBody());
-                        AppUtil.notiferror(HotprospekActivity.this, findViewById(android.R.id.content), error.getMessage());
-                    }
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
 
-            @Override
-            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
-                AppUtil.notiferror(HotprospekActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
-            }
-        });
     }
 
     private void searchHotprospek(){
@@ -217,9 +233,9 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
     public void onRefresh() {
         swipeRefreshLayout.setRefreshing(false);
         rv_listhotprospek.setVisibility(View.GONE);
-        initializeHotprospek();
+//        initializeHotprospek();
         sm_placeholder.setVisibility(View.VISIBLE);
-        sm_placeholder.startShimmer();
+//        sm_placeholder.startShimmer();
 //        HotprospekActivity.this.recreate();
     }
 
@@ -228,5 +244,20 @@ public class HotprospekActivity extends AppCompatActivity implements SwipeRefres
         Intent it = new Intent(this, HotprospekDetailActivity.class);
         it.putExtra("idAplikasi", id);
         startActivity(it);
+    }
+
+    private boolean checkPermission() {
+        int readSms = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_SMS);
+        List<String> listPermissionNeeded = new ArrayList<>();
+
+
+        if(readSms != PackageManager.PERMISSION_GRANTED){
+            listPermissionNeeded.add(Manifest.permission.READ_SMS);
+        }
+        if (!listPermissionNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionNeeded.toArray(new String[listPermissionNeeded.size()]), 1);
+            return false;
+        }
+        return true;
     }
 }

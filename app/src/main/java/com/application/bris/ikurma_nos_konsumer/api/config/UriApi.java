@@ -287,10 +287,10 @@ public class UriApi {
 
     public class foto{
         public static final String urlFile = "TestAPI/rest/TestAPI/GetFile";
-        public static final String urlFileDirect = "TestAPI/rest/TestAPI/GetFileDoc?FileId=";
+        public static final String urlFileDirect = "NOS_PRAPEN_Services/rest/LogicalDoc/GetFileDoc?FileId=";
         public static final String urlPhotoProfil = "generic/getImageProfile/";
 //        public static final String urlPhotoProfil = "generic/getImageProfile/";
-        public static final String uploadFile = "TestAPI/rest/TestAPI/CreateFile";
+        public static final String uploadFile = "NOS_PRAPEN_Services/rest/LogicalDoc/CreateFile";
 
 
     }

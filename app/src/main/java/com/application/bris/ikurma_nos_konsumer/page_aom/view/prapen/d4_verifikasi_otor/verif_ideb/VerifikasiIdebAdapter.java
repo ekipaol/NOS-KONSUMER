@@ -51,8 +51,8 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         holder.etHasilVerifikasiFasilitas.setFocusable(false);
         holder.etHasilVerifikasi.setFocusable(false);
         holder.etAngsuranBulanan.setFocusable(false);
-        holder.etHasilVerifikasi.setText(data.get(position).getTreatmentPembiayaan());
-        holder.etHasilVerifikasiFasilitas.setText(data.get(position).getTreatmentFasilitas());
+        holder.etHasilVerifikasi.setText(data.get(position).getTreatmentFasilitas());
+        holder.etHasilVerifikasiFasilitas.setText(data.get(position).getTreatmentPembiayaan());
         holder.tvNamaLembagaKeuangan.setText(data.get(position).getNamaLembagaKeuangan());
         holder.tvKualitasPembiayaan.setText(data.get(position).getKualitasPembiayaan());
         holder.tvBakiDebet.setText(AppUtil.parseRupiah(data.get(position).getBakiDebetTerakhir()));

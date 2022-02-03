@@ -7,6 +7,9 @@
     android:layout_height="match_parent">
 
     <include layout="@layout/toolbar_regular" />
+
+
+
     <include layout="@layout/ao_content_hotprospek"/>
 
         <com.facebook.shimmer.ShimmerFrameLayout
@@ -16,6 +19,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/toolbar_height_default"
             android:orientation="vertical"
+            android:visibility="gone"
             app:shimmer_duration="800">
 
             <LinearLayout

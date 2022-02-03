@@ -51,7 +51,7 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
         holder.ethasilverifikasi.setFocusable(false);
         holder.etAngsuranVerifikator.setFocusable(false);
         holder.ethasilverifikasi.setText(data.get(position).getHasilVerifikasi());
-        holder.etVerifikasiFasilitas.setText(data.get(position).getHasilVerifikasi());
+        holder.etVerifikasiFasilitas.setText(data.get(position).getTreatmentPembiayaan());
         holder.tvNamaPemberiHutang.setText(data.get(position).getNamaPemberiUtang());
         holder.tvAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranBulanan()));
         holder.tvNominalPinjaman.setText(AppUtil.parseRupiah(data.get(position).getNominalPinjaman()));

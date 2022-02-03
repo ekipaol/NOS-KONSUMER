@@ -637,7 +637,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                     Realm realm=Realm.getDefaultInstance();
                     FlagAplikasiPojo dataFlag= realm.where(FlagAplikasiPojo.class).equalTo("idAplikasi", idAplikasi).findFirst();
                     if(dataFlag!=null){
-                        if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Kewajiban()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
+                        if(dataFlag.getFlagD3Kalkulator()&&dataFlag.getFlagD3Ideb()&&dataFlag.getFlagD3Pendapatan()&&dataFlag.getFlagD3Jaminan()&&dataFlag.getFlagD3Pendapatan()){
                             if(binding.bottomSheet.extendedCatatan.getText().toString().isEmpty()){
                                 AppUtil.notiferror(MemoActivity.this, findViewById(android.R.id.content), "Harap isi catatan terlebih dahulu");
                             }

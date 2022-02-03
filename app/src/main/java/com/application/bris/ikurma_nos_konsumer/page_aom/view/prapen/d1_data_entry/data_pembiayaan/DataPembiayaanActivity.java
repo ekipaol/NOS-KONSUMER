@@ -635,6 +635,9 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         realm.insertOrUpdate(dataFlagNew);
                         realm.close();
                     }
+                    else{
+                        AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
                 }
             }
 
