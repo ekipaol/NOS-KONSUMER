@@ -101,6 +101,14 @@ public class DataVerifikasiTempatKerja {
     @SerializedName("Aset")
     @Expose
     private UploadImage Aset;
+    @SerializedName("IsMarried")
+    @Expose
+    private String IsMarried;
+    @SerializedName("IsPensiun")
+    @Expose
+    private String IsPensiun;
+
+
 
     public String getNamaInstansiTaspen() {
         return NamaInstansiTaspen;
@@ -355,5 +363,21 @@ public class DataVerifikasiTempatKerja {
 
     public void setSKTerakhir(UploadImage SKTerakhir) {
         this.SKTerakhir = SKTerakhir;
+    }
+
+    public String getIsMarried() {
+        return IsMarried;
+    }
+
+    public void setIsMarried(String isMarried) {
+        IsMarried = isMarried;
+    }
+
+    public String getIsPensiun() {
+        return IsPensiun;
+    }
+
+    public void setIsPensiun(String isPensiun) {
+        IsPensiun = isPensiun;
     }
 }

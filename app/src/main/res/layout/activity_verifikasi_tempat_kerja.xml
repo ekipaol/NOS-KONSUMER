@@ -477,6 +477,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_ktp_pasangan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -695,6 +696,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_sk_pensiun"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

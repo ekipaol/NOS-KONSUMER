@@ -142,7 +142,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         //ktp sudah pake logical doc
         if (dataVerifikasiTempatKerja.getKTPNasabah() != null)
 //            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
-        AppUtil.loadImageWithFileNameCheck(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(),dataVerifikasiTempatKerja.getKTPNasabah().getImg(),binding.ivKtpNasabah);
+            AppUtil.loadImageWithFileNameCheck(VerifikasiTempatKerjaActivity.this, dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), dataVerifikasiTempatKerja.getKTPNasabah().getImg(), binding.ivKtpNasabah);
         if (dataVerifikasiTempatKerja.getKTPPasangan() != null)
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
         if (dataVerifikasiTempatKerja.getSKPensiun() != null)
@@ -173,7 +173,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansi());
         binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getIsLNGP());
 
-        if(binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("tidak")){
+        if (binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("tidak")) {
             binding.tfInputLngp.setVisibility(View.GONE);
             binding.tfNamaInstansiLngp.setVisibility(View.GONE);
             binding.tfRateLngp.setVisibility(View.GONE);
@@ -181,10 +181,9 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
         binding.etInputLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNoLNGP());
         binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiLNGP());
-        try{
+        try {
             binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
@@ -193,64 +192,68 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanTunjangan());
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTotalPendapatan());
 
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
-        }
-        catch (NullPointerException e){
-          e.printStackTrace();
-        }
-        try{
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+        if (dataVerifikasiTempatKerja.getIsMarried() != null) {
+            if (dataVerifikasiTempatKerja.getIsMarried().equalsIgnoreCase("False")) {
+                binding.rlKtpPasangan.setVisibility(View.GONE);
+                binding.tvKtpPasangan.setVisibility(View.GONE);
+            } else {
+                try {
+                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        catch (NullPointerException e){
-            e.printStackTrace();
+        if (dataVerifikasiTempatKerja.getIsPensiun() != null) {
+            if (dataVerifikasiTempatKerja.getIsPensiun().equalsIgnoreCase("False")) {
+                binding.rlSkPensiun.setVisibility(View.GONE);
+                binding.tvSkPensiun.setVisibility(View.GONE);
+            } else {
+                try {
+                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        try{
+        try {
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
-        }
-        catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
 
@@ -291,6 +294,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                         Gson gson = new Gson();
                         Type type = new TypeToken<DataVerifikasiTempatKerja>() {
                         }.getType();
+
                         dataVerifikasiTempatKerja = gson.fromJson(listDataString, type);
                         if (dataVerifikasiTempatKerja != null && dataVerifikasiTempatKerja.getTempatKerja() == null) {
                             setDataFirstTime();
