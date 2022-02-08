@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ActivityUploadDokumen extends AppCompatActivity implements CameraListener, View.OnClickListener, ConfirmListener {
-     UploadDokumenActivityBinding binding;
+    UploadDokumenActivityBinding binding;
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private long idAplikasi;
@@ -127,11 +128,10 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
-        if(getIntent().hasExtra("produk")){
-            produk=getIntent().getStringExtra("produk");
-        }
-        else{
-            produk="";
+        if (getIntent().hasExtra("produk")) {
+            produk = getIntent().getStringExtra("produk");
+        } else {
+            produk = "";
         }
         hideUploadDokumen();
         hidePreviewButton();
@@ -693,6 +693,14 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             Type type = new TypeToken<List<ReqDocumentUmum>>() {
                             }.getType();
                             DokumenUmum = gson.fromJson(SSDokumen_Umum, type);
+                            addImg = DokumenUmum.size() - 1;
+                            if (DokumenUmum.size() == 1){
+                                binding.llDeleteDokumen.setVisibility(View.GONE);
+                                binding.btnDeleteDokumen.setVisibility(View.GONE);
+                            }else if (DokumenUmum.size() == 5){
+                                binding.btnTambahanDokumen.setVisibility(View.GONE);
+                                binding.llTambahanDokumen.setVisibility(View.GONE);
+                            }
                             for (int i = 0; i < DokumenUmum.size(); i++) {
                                 if (i == 0) {
                                     valDokumenA = DokumenUmum.get(i).getImg();
@@ -710,7 +718,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     try {
                                         valDokumenA = DokumenUmum.get(i).getImg();
                                         if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
-                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenA, binding.ivUploadDokumen1, "dokumenA.pdf");
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenA, binding.ivUploadDokumen1, DokumenUmum.get(i).getNamaDokumen()+".pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenA, binding.ivUploadDokumen1);
                                             dokumenA = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenA), 0, AppUtil.decodeImageTobase64(valDokumenA).length);
@@ -732,8 +740,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen2.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen2.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen2.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
-                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenB, binding.ivUploadDokumen2, "dokumenB.pdf");
+                                        if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenB, binding.ivUploadDokumen2, DokumenUmum.get(i).getNamaDokumen()+".pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenB, binding.ivUploadDokumen2);
                                             dokumenB = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenB), 0, AppUtil.decodeImageTobase64(valDokumenB).length);
@@ -755,8 +763,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen3.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen3.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen3.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
-                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenC, binding.ivUploadDokumen3, "dokumenC.pdf");
+                                        if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenC, binding.ivUploadDokumen3, DokumenUmum.get(i).getNamaDokumen()+".pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenC, binding.ivUploadDokumen3);
                                             dokumenC = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenC), 0, AppUtil.decodeImageTobase64(valDokumenC).length);
@@ -778,8 +786,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen4.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen4.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen4.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
-                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenD, binding.ivUploadDokumen4, "dokumenD.pdf");
+                                        if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenD, binding.ivUploadDokumen4, DokumenUmum.get(i).getNamaDokumen()+".pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenD, binding.ivUploadDokumen4);
                                             dokumenD = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenD), 0, AppUtil.decodeImageTobase64(valDokumenD).length);
@@ -801,8 +809,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                         binding.etKeteranganDokumen5.setVisibility(View.VISIBLE);
                                         binding.ivUploadDokumen5.setVisibility(View.VISIBLE);
                                         binding.btnUploadDokumen5.setVisibility(View.VISIBLE);
-                                        if (DokumenUmum.get(i).getNamaDokumen().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
-                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenE, binding.ivUploadDokumen5, "dokumenE.pdf");
+                                        if (DokumenUmum.get(i).getFilename().substring(DokumenUmum.get(i).getFilename().length() - 3, DokumenUmum.get(i).getFilename().length()).equalsIgnoreCase("pdf")) {
+                                            AppUtil.convertBase64ToFileWithOnClick(ActivityUploadDokumen.this, valDokumenE, binding.ivUploadDokumen5, DokumenUmum.get(i).getNamaDokumen()+".pdf");
                                         } else {
                                             AppUtil.convertBase64ToImage(valDokumenE, binding.ivUploadDokumen5);
                                             dokumenE = BitmapFactory.decodeByteArray(AppUtil.decodeImageTobase64(valDokumenE), 0, AppUtil.decodeImageTobase64(valDokumenE).length);
@@ -981,6 +989,12 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
         binding.btnUploadDokumen4.setOnClickListener(this);
         binding.btnUploadDokumen5.setOnClickListener(this);
 
+        binding.ivUploadDokumen1.setOnClickListener(this);
+        binding.ivUploadDokumen2.setOnClickListener(this);
+        binding.ivUploadDokumen3.setOnClickListener(this);
+        binding.ivUploadDokumen4.setOnClickListener(this);
+        binding.ivUploadDokumen5.setOnClickListener(this);
+
         binding.etNamaDokumen1.setOnClickListener(this);
         binding.etNamaDokumen2.setOnClickListener(this);
         binding.etNamaDokumen3.setOnClickListener(this);
@@ -994,6 +1008,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
         binding.llTambahanDokumen.setOnClickListener(this);
         binding.btnTambahanDokumen.setOnClickListener(this);
+        binding.llDeleteDokumen.setOnClickListener(this);
+        binding.btnDeleteDokumen.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
         binding.llBtnSend.setOnClickListener(this);
 
@@ -1394,6 +1410,8 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.etKeteranganDokumen2.setVisibility(View.VISIBLE);
                     binding.ivUploadDokumen2.setVisibility(View.VISIBLE);
                     binding.btnUploadDokumen2.setVisibility(View.VISIBLE);
+                    binding.btnDeleteDokumen.setVisibility(View.VISIBLE);
+                    binding.llDeleteDokumen.setVisibility(View.VISIBLE);
                 } else if (addImg == 2) {
                     binding.cvUploadDokumen3.setVisibility(View.VISIBLE);
                     binding.tvUploadDokumen3.setVisibility(View.VISIBLE);
@@ -1426,6 +1444,103 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.btnUploadDokumen5.setVisibility(View.VISIBLE);
                     binding.btnTambahanDokumen.setVisibility(View.GONE);
                     binding.llTambahanDokumen.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.ll_delete_dokumen:
+            case R.id.btn_delete_dokumen:
+                addImg -= 1;
+                AppUtil.logSecure("LogInt", addImg.toString());
+                Drawable res = getDrawable(R.mipmap.ico_img_for_upload);
+                if (addImg == 3) {
+                    if (DokumenUmum.size() == 5) {
+                        DokumenUmum.remove(4);
+                        binding.etNamaDokumen5.setText("");
+                        binding.etKeteranganDokumen5.setText("");
+                        binding.ivUploadDokumen5.setImageDrawable(res);
+                    }else{
+                        binding.etNamaDokumen5.setText("");
+                        binding.etKeteranganDokumen5.setText("");
+                        binding.ivUploadDokumen5.setImageDrawable(res);
+                    }
+                    binding.cvUploadDokumen5.setVisibility(View.GONE);
+                    binding.tvUploadDokumen5.setVisibility(View.GONE);
+                    binding.tfNamaDokumen5.setVisibility(View.GONE);
+                    binding.tfKeteranganDokumen5.setVisibility(View.GONE);
+                    binding.tfUploadDokumen5.setVisibility(View.GONE);
+                    binding.etNamaDokumen5.setVisibility(View.GONE);
+                    binding.etKeteranganDokumen5.setVisibility(View.GONE);
+                    binding.ivUploadDokumen5.setVisibility(View.GONE);
+                    binding.btnUploadDokumen5.setVisibility(View.GONE);
+                    binding.ivUploadDokumen5.setOnClickListener(this);
+                    binding.btnTambahanDokumen.setVisibility(View.GONE);
+                    binding.llTambahanDokumen.setVisibility(View.GONE);
+                    binding.btnTambahanDokumen.setVisibility(View.VISIBLE);
+                    binding.llTambahanDokumen.setVisibility(View.VISIBLE);
+                } else if (addImg == 2) {
+                    if (DokumenUmum.size() == 4) {
+                        DokumenUmum.remove(3);
+                        binding.etNamaDokumen4.setText("");
+                        binding.etKeteranganDokumen4.setText("");
+                        binding.ivUploadDokumen4.setImageDrawable(res);
+                    }else{
+                        binding.etNamaDokumen4.setText("");
+                        binding.etKeteranganDokumen4.setText("");
+                        binding.ivUploadDokumen4.setImageDrawable(res);
+                    }
+                    binding.cvUploadDokumen4.setVisibility(View.GONE);
+                    binding.tvUploadDokumen4.setVisibility(View.GONE);
+                    binding.tfNamaDokumen4.setVisibility(View.GONE);
+                    binding.tfKeteranganDokumen4.setVisibility(View.GONE);
+                    binding.tfUploadDokumen4.setVisibility(View.GONE);
+                    binding.etNamaDokumen4.setVisibility(View.GONE);
+                    binding.etKeteranganDokumen4.setVisibility(View.GONE);
+                    binding.ivUploadDokumen4.setVisibility(View.GONE);
+                    binding.btnUploadDokumen4.setVisibility(View.GONE);
+                    binding.ivUploadDokumen4.setOnClickListener(this);
+                } else if (addImg == 1) {
+                    if (DokumenUmum.size() == 3) {
+                        DokumenUmum.remove(2);
+                        binding.etNamaDokumen3.setText("");
+                        binding.etKeteranganDokumen3.setText("");
+                        binding.ivUploadDokumen3.setImageDrawable(res);
+                    }else{
+                        binding.etNamaDokumen3.setText("");
+                        binding.etKeteranganDokumen3.setText("");
+                        binding.ivUploadDokumen3.setImageDrawable(res);
+                    }
+                    binding.cvUploadDokumen3.setVisibility(View.GONE);
+                    binding.tvUploadDokumen3.setVisibility(View.GONE);
+                    binding.tfNamaDokumen3.setVisibility(View.GONE);
+                    binding.tfKeteranganDokumen3.setVisibility(View.GONE);
+                    binding.tfUploadDokumen3.setVisibility(View.GONE);
+                    binding.etNamaDokumen3.setVisibility(View.GONE);
+                    binding.etKeteranganDokumen3.setVisibility(View.GONE);
+                    binding.ivUploadDokumen3.setVisibility(View.GONE);
+                    binding.btnUploadDokumen3.setVisibility(View.GONE);
+                    binding.ivUploadDokumen3.setOnClickListener(this);
+                } else {
+                    if (DokumenUmum.size() == 2) {
+                        DokumenUmum.remove(1);
+                        binding.etNamaDokumen2.setText("");
+                        binding.etKeteranganDokumen2.setText("");
+                        binding.ivUploadDokumen2.setImageDrawable(res);
+                    }else{
+                        binding.etNamaDokumen2.setText("");
+                        binding.etKeteranganDokumen2.setText("");
+                        binding.ivUploadDokumen2.setImageDrawable(res);
+                    }
+                    binding.cvUploadDokumen2.setVisibility(View.GONE);
+                    binding.tvUploadDokumen2.setVisibility(View.GONE);
+                    binding.tfNamaDokumen2.setVisibility(View.GONE);
+                    binding.tfKeteranganDokumen2.setVisibility(View.GONE);
+                    binding.tfUploadDokumen2.setVisibility(View.GONE);
+                    binding.etNamaDokumen2.setVisibility(View.GONE);
+                    binding.etKeteranganDokumen2.setVisibility(View.GONE);
+                    binding.ivUploadDokumen2.setVisibility(View.GONE);
+                    binding.btnUploadDokumen2.setVisibility(View.GONE);
+                    binding.ivUploadDokumen2.setOnClickListener(this);
+                    binding.btnDeleteDokumen.setVisibility(View.GONE);
+                    binding.llDeleteDokumen.setVisibility(View.GONE);
                 }
                 break;
             case R.id.btn_cek_lngp:

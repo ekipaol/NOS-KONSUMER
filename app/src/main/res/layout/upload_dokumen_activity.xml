@@ -342,6 +342,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="10dp"
@@ -602,6 +603,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -626,6 +628,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal">
+
                             <RelativeLayout
                                 android:id="@+id/d_po"
                                 android:layout_width="match_parent"
@@ -762,7 +765,7 @@
 
 
                         <LinearLayout
-                           android:id="@+id/ll_lampiran_murabahah"
+                            android:id="@+id/ll_lampiran_murabahah"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
@@ -843,6 +846,7 @@
                                 android:background="@drawable/photo_rounded_blue"
                                 android:padding="8dp"
                                 android:src="@mipmap/ico_upload" />
+
                             <ImageView
                                 android:id="@+id/pv_terima_barang"
                                 android:layout_width="45dp"
@@ -862,6 +866,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1264,7 +1269,7 @@
                             </RelativeLayout>
 
                             <ImageView
-                                            android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
+                                android:id="@+id/btn_surat_pernyataan_dan_kuasa_aset_mmq_sendiri"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
                                 android:layout_marginRight="0dp"
@@ -2297,28 +2302,53 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-
                 <LinearLayout
-                    android:id="@+id/ll_tambahan_dokumen"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:layout_marginLeft="6dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@color/colorWhite">
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btn_tambahan_dokumen"
-                        style="@style/Bordered.Button.Custom"
+                    <LinearLayout
+                        android:id="@+id/ll_tambahan_dokumen"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:padding="8dp"
-                        android:text="tambah dokumen" />
+                        android:layout_height="48dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorWhite">
+
+                        <Button
+                            android:id="@+id/btn_tambahan_dokumen"
+                            style="@style/Bordered.Button.Custom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:padding="8dp"
+                            android:text="tambah dokumen" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_delete_dokumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorWhite">
+
+                        <Button
+                            android:id="@+id/btn_delete_dokumen"
+                            style="@style/Bordered.Button.Custom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:padding="8dp"
+                            android:text="Delete dokumen" />
+
+                    </LinearLayout>
                 </LinearLayout>
-
-
 
                 <LinearLayout
                     android:id="@+id/ll_btn_send"
