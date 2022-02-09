@@ -69,7 +69,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     private Calendar calLahir;
     public static Long idAplikasi;
     private String fileNameKtp = "", tipeFile;
-    private String idFileKtp = "0";
+    private String idFileKtp = "";
     private boolean sudahUpload = false;
 
     private String valDokKtp = "0";
@@ -1061,7 +1061,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
                     if (uploadCode == UPLOAD_DATAKTP) {
                         idFileKtp = response.body().getId();
+                        DataJaminanKTP.setImg(idFileKtp);
                     }
+
+
                     AppUtil.notifsuccess(DataJaminanActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
 //                    sudahUpload=true;
                 } else {
