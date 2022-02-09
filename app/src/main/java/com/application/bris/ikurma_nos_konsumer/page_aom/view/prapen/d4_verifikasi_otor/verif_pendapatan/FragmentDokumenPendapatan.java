@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -28,6 +29,8 @@ import com.stepstone.stepper.VerificationError;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import retrofit2.Response;
 
 public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValueListener, View.OnClickListener {
 
@@ -59,13 +62,12 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
         hideItem();
         disabledText();
         numberText();
-        initialize();
+        setData(dataPendapatan);
         return view;
     }
 
-    private void initialize(){
+    private void setData(JsonObject response){
         String SSlipGajiP2 = "", SSlipGajiP3 = "", SSlipTunjanganP2 = "", SSlipTunjanganP3 = "", SSKoran = "", SSlipGajiP1 = "", SSlipTunjanganP1 = "";
-        String listDataString = dataPendapatan.get("DokumenPendapatan").getAsJsonObject().toString();
         if (dataPendapatan.get("DokumenPendapatanKoranBank") != null) {
             SSKoran = dataPendapatan.get("DokumenPendapatanKoranBank").toString();
         }
@@ -73,7 +75,6 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
             SSlipGajiP1 = dataPendapatan.get("DokumenPendapatanSlipGajiP1").toString();
             SSlipTunjanganP1 = dataPendapatan.get("DokumenPendapatanSlipTunjanganP1").toString();
         }
-
         if (dataPendapatan.get("DokumenPendapatanSlipGajiP2") != null) {
             SSlipGajiP2 = dataPendapatan.get("DokumenPendapatanSlipGajiP2").toString();
             SSlipGajiP3 = dataPendapatan.get("DokumenPendapatanSlipGajiP3").toString();
@@ -82,7 +83,9 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
         }
 
         Gson gson = new Gson();
+        String listDataString = dataPendapatan.get("DokumenPendapatan").getAsJsonObject().toString();
         dp = gson.fromJson(listDataString, DokumenPendapatan.class);
+
         if (dataPendapatan.get("DokumenPendapatanKoranBank") != null) {
             DPKoran = gson.fromJson(SSKoran, ReqDocument.class);
         }
@@ -107,7 +110,7 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
             binding.etGajiBersihP1.setText(String.valueOf(dp.getTotalGajiBersihP1()));
             binding.etTunjanganP1.setText(String.valueOf(dp.getTotalTunjanganBersihP1()));
 
-            if (dataPendapatan.get("DokumenPendapatanSlipGajiP2") != null) {
+            if (response.get("DokumenPendapatanSlipGajiP2") != null) {
                 binding.etPeriodeGajiP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP2(), "yyyy-MM-dd", "MM-yyyy"));
                 binding.etPeriodeGajiP3.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeGajiP3(), "yyyy-MM-dd", "MM-yyyy"));
                 binding.etTglTunjanganP2.setText(AppUtil.parseTanggalGeneral(dp.getPeriodeTunjanganP2(), "yyyy-MM-dd", "MM-yyyy"));
@@ -121,12 +124,12 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
             }
 
             binding.etVerfikasiGajiTunjangan.setText(dp.getCerminanGajiDanTunjD3());
-            if (dataPendapatan.get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+            if (dp.getNomorRekBankGaji().equalsIgnoreCase(dp.getNoRekeningTunjangan())) {
                 binding.etVerfikasiRekening.setText("Ya");
             } else {
                 binding.etVerfikasiRekening.setText("Tidak");
             }
-            if (dataPendapatan.get("CheckNorek").getAsString().equalsIgnoreCase("true")) {
+            if (dp.getNomorRekBankGaji().equalsIgnoreCase(dp.getNoRekeningTunjangan())) {
                 binding.tfNorekTunjangan.setVisibility(View.GONE);
                 binding.tfNamaBankTunjangan.setVisibility(View.GONE);
                 binding.tfTotalKredit2.setVisibility(View.GONE);
@@ -134,7 +137,7 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
                 binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
                 binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
                 binding.norekTunjangan.setVisibility(View.GONE);
-            } else if (dataPendapatan.get("CheckNorek").getAsString().equalsIgnoreCase("false")) {
+            } else {
                 binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
                 binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
                 binding.tfTotalKredit2.setVisibility(View.VISIBLE);
@@ -240,7 +243,7 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
         } catch (Exception e) {
             AppUtil.logSecure("error setdata", e.getMessage());
         }
-        if (dataPendapatan.get("DokumenPendapatanSlipGajiP2") != null) {
+        if (response.get("DokumenPendapatanSlipGajiP2") != null) {
             //Set Image Slip Gaji P2
             try {
                 DokumenPendapatanSlipGajiP2.setImg(DPSlipGajiP2.getImg());
