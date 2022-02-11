@@ -248,6 +248,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             style="@style/JakartaSansBold"
+                            android:letterSpacing="0.017"
                             />
 
                         <ImageView

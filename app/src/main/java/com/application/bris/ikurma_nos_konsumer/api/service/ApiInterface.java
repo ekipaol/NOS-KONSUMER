@@ -111,6 +111,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasi
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungKalkulator;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeBookingCabang;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqProgram;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
@@ -898,6 +899,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.batalD1)
     Call<ParseResponse> batalD1(@Body ReqBatalAplikasi ReqBatalAplikasi);
+
+    @POST(UriApi.prapen.inquiryDataCabang)
+    Call<ParseResponse> inquiryDataCabang(@Body ReqKodeBookingCabang ReqKodeBookingCabang);
 
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);

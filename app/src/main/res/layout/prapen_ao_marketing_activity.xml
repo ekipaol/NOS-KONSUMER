@@ -224,7 +224,7 @@
                     android:gravity="center"
                     android:text="Cek Data Cabang"
                     android:textAllCaps="false"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:textColor="@color/colorPrimary" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
@@ -238,7 +238,7 @@
                     app:isResponsiveIconColor="true"
                     app:labelText="Nama Cabang Pembukuan"
                     app:panelBackgroundColor="@color/colorDisableEdit"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
                     app:useDenseSpacing="true">
@@ -262,7 +262,7 @@
                     app:panelBackgroundColor="@color/colorDisableEdit"
                     app:primaryColor="@color/colorPrimary"
                     app:secondaryColor="@color/colorPrimary"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:useDenseSpacing="true">
 
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText

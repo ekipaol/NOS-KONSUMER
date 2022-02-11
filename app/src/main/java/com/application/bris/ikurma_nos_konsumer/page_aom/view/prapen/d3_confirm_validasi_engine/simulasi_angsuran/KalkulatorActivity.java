@@ -289,9 +289,10 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         dataDropdownKalkulator.add(new MGenericModel("Potong Pencairan", "Potong Pencairan"));
         dataDropdownKalkulator.add(new MGenericModel("Tidak Digunakan", "Tidak Digunakan"));
 
-        dataDropdownManfaatAsuransi.add(new MGenericModel("Jiwa", "Jiwa"));
-        dataDropdownManfaatAsuransi.add(new MGenericModel("Jiwa dan Penjaminan", "Jiwa dan Penjaminan"));
-
+        dataDropdownManfaatAsuransi.add(new MGenericModel("ASURANSIJIWA", "Asuransi Jiwa"));
+        dataDropdownManfaatAsuransi.add(new MGenericModel("ASURANSI WANPRESTASI+PHK", "Jiwa dan Penjaminan"));
+        dataDropdownManfaatAsuransi.add(new MGenericModel("ASURANSIJIWA DAN WANPRESTASI", "Asuransi Jiwa dan Wanprestasi"));
+        dataDropdownManfaatAsuransi.add(new MGenericModel("ASURANSI JIWA DAN WANPRESTASI+PHK", "Asuransi Jiwa dan Wanprestasi+PHK"));
 
     }
 

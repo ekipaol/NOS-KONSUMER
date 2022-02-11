@@ -216,10 +216,22 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
 
         if(!namaFileIntent.isEmpty()){
             if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("pdf")){
-                AppUtil.setLoadPdf(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+                try{
+                    AppUtil.setLoadPdf(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+                }
+                catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+
             }
             else if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("png")){
-                AppUtil.setImageGlide(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+                try{
+                    AppUtil.setImageGlide(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+                }
+                catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+
             }
         }
 

@@ -18,12 +18,14 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeBookingCabang;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateDataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoMarketingActivityBinding;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCabang;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
@@ -132,8 +134,8 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
             case R.id.btn_simpan_data_marketing:
                 adaFieldBelumDiisi=false;
                 validateField(binding.etSumberAplikasi,binding.tfSumberAplikasi);
-                validateField(binding.etKodeAo,binding.tfKodeAo);
-                validateField(binding.etKodeCabangPembukuan,binding.tfKodeCabangPembukuan);
+                validateField(binding.etNamaAo,binding.tfNamaAo);
+                validateField(binding.etNamaCabangPembukuan,binding.tfNamaCabangPembukuan);
                 if(binding.etSumberAplikasi.toString().equalsIgnoreCase("Mitra fronting")){
                     validateField(binding.etMitraFronting,binding.tfMitraFronting);
                     validateField(binding.etKodeAoMitraFronting,binding.tfKodeAoMitraFronting);
@@ -151,8 +153,12 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                }
                 break;
             case R.id.btn_cek_data_cabang:
-                binding.etNamaCabangReferal.setText("Nama Cabang");
-                binding.etNamaCabangPembukuan.setText("Nama Cabang Pembukuan");
+                if(binding.etKodeCabangPembukuan.getText().toString().isEmpty()){
+                    AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content),"Harap Isi Kode Cabang");
+                }
+                else {
+                    inquiryCabang();
+                }
                 break;
 
             default:break;
@@ -194,6 +200,8 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
 
     private void defaultViewCondition(){
         binding.etKodeCabangPembukuan.setText(appPreferences.getKodeKantor());
+        binding.tfNamaCabangReferal.setVisibility(View.GONE);
+        binding.tfNamaCabangPembukuan.setVisibility(View.GONE);
     }
 
     @Override
@@ -337,7 +345,7 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String namaAo = response.body().getData().get("nama").toString();
+                        String namaAo = response.body().getData().get("nama").toString().replace("\"","");
                      if(namaAo!=null&&!namaAo.isEmpty()){
                          binding.etNamaAo.setText(namaAo);
                      }
@@ -377,7 +385,8 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String namaAo = response.body().getData().get("nama").toString();
+                        String namaAo = response.body().getData().get("nama").toString().replace("\"","");
+
                         if(namaAo!=null&&!namaAo.isEmpty()){
                             binding.etNamaAoReferal.setText(namaAo);
                         }
@@ -396,6 +405,91 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                 Log.d("LOG D", t.getMessage());
             }
         });
+    }
+
+    public void inquiryCabang() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+        ReqKodeBookingCabang req=new ReqKodeBookingCabang();
+        req.setKodeBookingCabang(binding.etKodeCabangPembukuan.getText().toString());
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryDataCabang(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        AppUtil.notifsuccess(DataMarketingActivity.this, findViewById(android.R.id.content), "Cabang Ditemukan");
+                        binding.tfNamaCabangPembukuan.setVisibility(View.VISIBLE);
+                        String dataCabangString = response.body().getData().toString();
+                        DataCabang dataCabang=new Gson().fromJson(dataCabangString,DataCabang.class);
+                        if(dataCabang!=null&&!dataCabang.getNamaCabang().isEmpty()){
+                            binding.etNamaCabangPembukuan.setText(dataCabang.getNamaCabang());
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+
+        if(!binding.etKodeCabangReferal.getText().toString().isEmpty()){
+            inquiryCabangReferal();
+        }
+        else{
+            binding.etNamaCabangReferal.setText("");
+        }
+
+    }
+
+    public void inquiryCabangReferal() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+        ReqKodeBookingCabang req=new ReqKodeBookingCabang();
+        req.setKodeBookingCabang(binding.etKodeCabangReferal.getText().toString());
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryDataCabang(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        AppUtil.notifsuccess(DataMarketingActivity.this, findViewById(android.R.id.content), "Cabang Referal Ditemukan");
+                        binding.tfNamaCabangReferal.setVisibility(View.VISIBLE);
+                        String dataCabangString = response.body().getData().toString();
+                        DataCabang dataCabang=new Gson().fromJson(dataCabangString,DataCabang.class);
+                        if(dataCabang!=null&&!dataCabang.getNamaCabang().isEmpty()){
+                            binding.etNamaCabangReferal.setText(dataCabang.getNamaCabang());
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+            }
+        });
+
     }
 
     public void sendDataMarketing(){

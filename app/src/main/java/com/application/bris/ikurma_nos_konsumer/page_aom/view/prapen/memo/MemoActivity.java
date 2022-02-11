@@ -139,7 +139,8 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
         }
 
         if(statusId.equalsIgnoreCase("d.6")){
-            binding.bottomSheet.btSetuju.setText("Persetujuan");
+            binding.bottomSheet.btSetuju.setText("Setuju");
+            binding.bottomSheet.btTolak.setText("Tolak");
         }
 
 
@@ -648,7 +649,7 @@ public class MemoActivity extends AppCompatActivity implements GenericListenerOn
                             else{
                                 SweetAlertDialog dialog=new SweetAlertDialog(MemoActivity.this,SweetAlertDialog.WARNING_TYPE);
                                 dialog.setTitleText("Konfirmasi");
-                                dialog.setContentText("Apakah anda yakin ingin melanjutkan persetujuan pembiayaan?\n\n");
+                                dialog.setContentText("Apakah anda yakin ingin menyetujui pembiayaan?\n\n");
                                 dialog.setConfirmText("Ya");
                                 dialog.setCanceledOnTouchOutside(false);
                                 dialog.setCancelText("Batal");

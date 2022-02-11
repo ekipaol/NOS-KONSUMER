@@ -752,6 +752,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             binding.etVerfikasiRekening.setText(data.getDESC());
         }
         if (data.getDESC().equalsIgnoreCase("Pendapatan Saat Aktif dan Manfaat Pensiun")) {
+            binding.etPeriodeGajiP1.setText("");
             binding.tfGajiBersihP2.setVisibility(View.VISIBLE);
             binding.rlSlipgajiP2.setVisibility(View.VISIBLE);
             binding.tfPeriodeGajiP2.setVisibility(View.VISIBLE);
@@ -772,6 +773,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             binding.tpt3.setVisibility(View.VISIBLE);
             binding.etAkseptasiPendaptan.setText(data.getDESC());
         } else if (data.getDESC().equalsIgnoreCase("Hanya Manfaat Pensiun")) {
+            binding.etPeriodeGajiP1.setText("");
             binding.tfGajiBersihP2.setVisibility(View.GONE);
             binding.rlSlipgajiP2.setVisibility(View.GONE);
             binding.tfPeriodeGajiP2.setVisibility(View.GONE);
