@@ -39,6 +39,7 @@ import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataJaminanBinding;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSBottomCamera;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
@@ -565,7 +566,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.iv_form_applikasi:
             case R.id.btn_form_applikasi:
-                BSUploadFile.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                BSBottomCamera.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "formaplikasi";
                 break;
             case R.id.iv_idcard:
