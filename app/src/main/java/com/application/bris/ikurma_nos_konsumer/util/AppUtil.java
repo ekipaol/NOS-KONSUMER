@@ -953,6 +953,7 @@ public class AppUtil {
 
         }
         catch (Exception e){
+            e.printStackTrace();
             logSecure("error setdata",e.getMessage());
         }
     }

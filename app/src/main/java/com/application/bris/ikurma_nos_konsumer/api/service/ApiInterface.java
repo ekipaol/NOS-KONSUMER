@@ -10,6 +10,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseDataDukca
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseDataInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseGmapsV3;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseSaldo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.ReqFollowUpFlpp;
@@ -1118,5 +1119,8 @@ public interface ApiInterface {
 
     @GET(UriApi.foto.urlFile)
     Call<ParseResponse> getFile(@Query(value = "FileId", encoded = true) String fileId);
+
+    @GET(UriApi.foto.urlFileDirectJson)
+    Call<ParseResponseLogicalDoc> getFileJson(@Query(value = "FileId", encoded = true) String fileId);
 }
 
