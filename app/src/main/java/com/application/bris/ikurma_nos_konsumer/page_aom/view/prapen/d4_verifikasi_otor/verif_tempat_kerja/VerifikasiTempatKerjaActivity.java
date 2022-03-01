@@ -1,6 +1,7 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_tempat_kerja;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import androidx.core.content.FileProvider;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
@@ -31,6 +33,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -157,6 +160,8 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
         if (dataVerifikasiTempatKerja.getFormAplikasi() != null)
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+        if (dataVerifikasiTempatKerja.getFormAplikasi2() != null)
+            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi2().getFile_Name(), binding.ivFormAplikasi2, dataVerifikasiTempatKerja.getFormAplikasi2().getImg());
         if (dataVerifikasiTempatKerja.getAset() != null)
             checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
 
@@ -193,7 +198,14 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etTotalPendapatan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTotalPendapatan());
 
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+
+            //legacy
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getKTPNasabah().getImg(),binding.ivKtpNasabah,dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name());
+
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -203,7 +215,10 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                 binding.tvKtpPasangan.setVisibility(View.GONE);
             } else {
                 try {
-                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+//                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+
+                    //logical doc
+                    checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getKTPPasangan().getImg(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name());
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
@@ -215,44 +230,77 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                 binding.tvSkPensiun.setVisibility(View.GONE);
             } else {
                 try {
-                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+//                    checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+
+                    //logical doc
+                    checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKPensiun().getImg(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getFile_Name());
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
             }
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKPengangkatan().getImg(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKTerakhir().getImg(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getIDCard().getImg(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getFormAplikasi().getImg(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        try {
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getFormAplikasi2().getImg(),binding.ivFormAplikasi2,dataVerifikasiTempatKerja.getFormAplikasi2().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getAset().getImg(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
         try {
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name(), binding.ivUploadDokumen, dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg(),binding.ivUploadDokumen,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -389,6 +437,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.btnSkPensiun.setVisibility(View.GONE);
         binding.btnSkTerakhir.setVisibility(View.GONE);
         binding.btnIdCard.setVisibility(View.GONE);
+        binding.btnFormAplikasi2.setVisibility(View.GONE);
         binding.btnSuratRekomendasiInstansi.setVisibility(View.GONE);
         binding.btnUploadDokumen.setVisibility(View.GONE);
 
@@ -513,5 +562,48 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 //       }else if (title.equalsIgnoreCase(binding.btnSend.getLabelText())) {
 //          binding.btnSend.setText(data.getDESC());
         }
+    }
+
+    private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
+
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+            loadFileJson(idDok,imageView);
+        }
+        else{
+            AppUtil.setImageGlide(context,idDok,imageView);
+        }
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(VerifikasiTempatKerjaActivity.this);
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(VerifikasiTempatKerjaActivity.this,response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(VerifikasiTempatKerjaActivity.this,findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(VerifikasiTempatKerjaActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(VerifikasiTempatKerjaActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+                t.printStackTrace();
+            }
+        });
+
     }
 }

@@ -11,6 +11,7 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
 
+
 public class UnsafeOkHttpClient {
     public static OkHttpClient getUnsafeOkHttpClient() {
         try {

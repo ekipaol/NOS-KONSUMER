@@ -1025,6 +1025,12 @@ public interface ApiInterface {
     @POST(UriApi.prapen.updateKalkulatorD6)
     Call<ParseResponseAgunan> updateKalkulatorD6(@Body ReqHitungKalkulator ReqHitungKalkulator);
 
+    @POST(UriApi.prapen.inqKalkulatorG1)
+    Call<ParseResponseAgunan> inqKalkulatorG1(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.updateKalkulatorG1)
+    Call<ParseResponseAgunan> updateKalkulatorG1(@Body ReqHitungKalkulator ReqHitungKalkulator);
+
     @POST(UriApi.prapen.UpdateKalkulatorVerifikator)
     Call<ParseResponseAgunan> updateKalkulatorVerifikator(@Body ReqHitungKalkulator ReqHitungKalkulator);
 

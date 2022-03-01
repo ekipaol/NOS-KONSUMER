@@ -75,23 +75,22 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     private DatePickerDialog dpSK;
     private Calendar calLahir;
     public static Long idAplikasi;
-    private String fileNameKtp = "",fileNameKtpPasangan = "",fileNameNpwp = "",fileNameFormAplikasi = "",fileNameAsetAkad = "",fileNameSkPengangkatan = "",fileNameSkTerakhir = "",fileNameSuratRekomendasi = "",fileNameIdCard = "",fileNameSkPensiun="", tipeFile;
-    private String idFileKtp = "",idFileKtpPasangan = "",idFileNpwp = "",idFileFormAplikasi= "",idFileAsetAkad = "",idFileSkPengangkatan = "",idFileSkTerakhir = "",idFileSuratRekomendasi = "",idFileSuratRekomendasiInstansi = "",idFileSkPensiun="",idFileIdCard = "";
+    private String fileNameKtp = "",fileNameKtpPasangan = "",fileNameNpwp = "",fileNameFormAplikasi = "",fileNameAsetAkad = "",fileNameSkPengangkatan = "",fileNameSkTerakhir = "",fileNameSuratRekomendasi = "",fileNameIdCard = "",fileNameSkPensiun="",fileNameFormAplikasi2="", tipeFile;
+    private String idFileKtp = "",idFileKtpPasangan = "",idFileNpwp = "",idFileFormAplikasi= "",idFileAsetAkad = "",idFileSkPengangkatan = "",idFileSkTerakhir = "",idFileSuratRekomendasiInstansi = "",idFileSkPensiun="",idFileIdCard = "",idFileFormAplikasi2="";
     private boolean sudahUpload = false;
 
-    private String valDokKtp = "0";
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-    ReqDocument JDJaminanKTP, JDJaminanKTPPasangan, JDJaminanNPWP, JDJaminanFormAplikasi, JDJaminanAsetAKAD, JDJaminanSKPensiun, JDJaminanSKPengangkatan, JDJaminanSKTerakhir, JDJaminanSuratRekomendasiInstansi, JDJaminanIDCard;
+    ReqDocument JDJaminanKTP, JDJaminanKTPPasangan, JDJaminanNPWP, JDJaminanFormAplikasi, JDJaminanAsetAKAD, JDJaminanSKPensiun, JDJaminanSKPengangkatan, JDJaminanSKTerakhir, JDJaminanSuratRekomendasiInstansi, JDJaminanIDCard,JDFormAplikasi2;
     ReqDocument DataJaminanKTP = new ReqDocument(), DataJaminanKTPPasangan = new ReqDocument(),
             DataJaminanNPWP = new ReqDocument(), DataJaminanFormAplikasi = new ReqDocument(),
             DataJaminanAsetAkad = new ReqDocument(), DataJaminanSKPensiun = new ReqDocument(),
             DataJaminanSKPengangkatan = new ReqDocument(), DataJaminanSKTerakhir = new ReqDocument(),
-            DataJaminanSuratRekomendasiInstansi = new ReqDocument(), DataJaminanIDCard = new ReqDocument();
+            DataJaminanSuratRekomendasiInstansi = new ReqDocument(), DataJaminanIDCard = new ReqDocument(),
+            DataJaminanFormAplikasi2 = new ReqDocument();
 
-    private String val_ktp = "", val_ktppasangan = "", val_npwp = "", val_assetakad = "", val_formaplikasi = "", val_skpensiun = "", val_skpengangkatan = "", val_skterakhir = "", val_datainstansi = "", val_idCard = "";
-    private Uri uri_fotoktp, uri_ktppasangan, uri_npwp, uri_assetakad, uri_formaplikasi, uri_skpensiun, uri_skpengangkatan, uri_skterakhir, uri_datainstansi, uri_idcard;
-    private Bitmap bitmap_fotoktp, bitmap_ktppasangan, bitmap_npwp, bitmap_assetakad, bitmap_formaplikasi, bitmap_skpensiun, bitmap_skpengangkatan, bitmap_skterakhir, bitmap_datainstansi, bitmap_idcard;
-    private final int UPLOAD_DATAKTP = 1, UPLOAD_KTPPASANGAN = 2, UPLOAD_NPWP = 3, UPLOAD_ASSETAKAD = 4, UPLOAD_FORMAPLIKASI = 5, UPLOAD_SKPENSIUN = 6, UPLOAD_SKPENGANGKATAN = 7, UPLOAD_SKTERAKHIR = 8, UPLOAD_DATAINSTASI = 9, UPLOAD_IDCARD = 10;
+    private String val_ktp = "", val_ktppasangan = "", val_npwp = "", val_assetakad = "", val_formaplikasi = "", val_skpensiun = "", val_skpengangkatan = "", val_skterakhir = "", val_datainstansi = "", val_idCard = "",val_formAplikasi2;
+    private Bitmap bitmap_fotoktp, bitmap_ktppasangan, bitmap_npwp, bitmap_assetakad, bitmap_formaplikasi, bitmap_skpensiun, bitmap_skpengangkatan, bitmap_skterakhir, bitmap_datainstansi, bitmap_idcard,bitmap_formAplikasi2;
+    private final int UPLOAD_DATAKTP = 1, UPLOAD_KTPPASANGAN = 2, UPLOAD_NPWP = 3, UPLOAD_ASSETAKAD = 4, UPLOAD_FORMAPLIKASI = 5, UPLOAD_SKPENSIUN = 6, UPLOAD_SKPENGANGKATAN = 7, UPLOAD_SKTERAKHIR = 8, UPLOAD_DATAINSTASI = 9, UPLOAD_IDCARD = 10,UPLOAD_FORMAPLIKASI2 = 11;
     String clicker;
 
     private ApiClientAdapter apiClientAdapter;
@@ -144,6 +143,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         String SSJaminanSkTerakhir = response.body().getData().get("DataJaminanSKTerakhir").getAsJsonArray().get(0).toString();
                         String SSJaminanSuratInstansi = response.body().getData().get("DataJaminanSuratRekomendasiInstansi").getAsJsonArray().get(0).toString();
                         String SSJaminanIdCard = response.body().getData().get("DataJaminanIDcard").getAsJsonArray().get(0).toString();
+                        String SSJaminanFormAplikasi2 = response.body().getData().get("DataJaminanFormAplikasi2").getAsJsonArray().get(0).toString();
 
                         String SSJaminanKtpPasangan;
                         try{
@@ -177,6 +177,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         JDJaminanSuratRekomendasiInstansi = gson.fromJson(SSJaminanSuratInstansi, ReqDocument.class);
                         JDJaminanIDCard = gson.fromJson(SSJaminanIdCard, ReqDocument.class);
                         JDJaminanSKPensiun = gson.fromJson(SSJaminanSkPensiun, ReqDocument.class);
+                        JDFormAplikasi2 = gson.fromJson(SSJaminanFormAplikasi2, ReqDocument.class);
 
 
                         try {
@@ -454,6 +455,18 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             AppUtil.logSecure("error setdata", e.getMessage());
         }
 
+        //Set Image Form Aplikasi 2
+        try {
+//            AppUtil.loadImageWithFileNameCheck(DataJaminanActivity.this,JDJaminanFormAplikasi.getFileName(),JDJaminanFormAplikasi.getImg(),binding.ivFormApplikasi);
+            checkFileTypeThenSet(DataJaminanActivity.this,JDFormAplikasi2.getImg(),binding.ivFormAplikasi2,JDFormAplikasi2.getFileName());
+            DataJaminanFormAplikasi2.setImg(JDFormAplikasi2.getImg());
+            DataJaminanFormAplikasi2.setFileName(JDFormAplikasi2.getFileName());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+
         //Set Image ASET AKAD
         try {
 //            AppUtil.loadImageWithFileNameCheck(DataJaminanActivity.this,JDJaminanAsetAKAD.getFileName(),JDJaminanAsetAKAD.getImg(),binding.ivAssetAkad);
@@ -566,6 +579,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         req.setDataJaminanSKTerakhir(DataJaminanSKTerakhir);
         req.setDataJaminanSuratRekomendasiInstansi(DataJaminanSuratRekomendasiInstansi);
         req.setDataJaminanIDCard(DataJaminanIDCard);
+        req.setDataJaminanIDCard(DataJaminanIDCard);
+        req.setDataJaminanFormAplikasi2(DataJaminanFormAplikasi2);
 
         Call<ParseResponseReturn> call = apiClientAdapter.getApiInterface().UpdateJaminandanDokumen(req);
         call.enqueue(new Callback<ParseResponseReturn>() {
@@ -657,6 +672,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         binding.ivSkPensiun.setOnClickListener(this);
         binding.ivSkTerakhir.setOnClickListener(this);
         binding.ivSuratInstansi.setOnClickListener(this);
+        binding.ivFormAplikasi2.setOnClickListener(this);
         binding.btnKtpNasabah.setOnClickListener(this);
         binding.btnAssetAkad.setOnClickListener(this);
         binding.btnFormApplikasi.setOnClickListener(this);
@@ -667,6 +683,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         binding.btnSkPensiun.setOnClickListener(this);
         binding.btnSkTerakhir.setOnClickListener(this);
         binding.btnSuratInstansi.setOnClickListener(this);
+        binding.btnFormAplikasi2.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
         binding.llBtnSend.setOnClickListener(this);
 
@@ -701,6 +718,11 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_form_applikasi:
                 BSBottomCamera.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
                 clicker = "formaplikasi";
+                break;
+            case R.id.iv_form_aplikasi_2:
+            case R.id.btn_form_aplikasi_2:
+                BSBottomCamera.displayWithTitle(DataJaminanActivity.this.getSupportFragmentManager(), this, "");
+                clicker = "formaplikasi2";
                 break;
             case R.id.iv_idcard:
             case R.id.btn_idcard:
@@ -850,6 +872,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     openCamera(UPLOAD_ASSETAKAD, "assetakad");
                 } else if (clicker.equalsIgnoreCase("formaplikasi")) {
                     openCamera(UPLOAD_FORMAPLIKASI, "formaplikasi");
+                } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
+                    openCamera(UPLOAD_FORMAPLIKASI2, "formaplikasi2");
                 } else if (clicker.equalsIgnoreCase("skpensiun")) {
                     openCamera(UPLOAD_SKPENSIUN, "skpensiun");
                 } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
@@ -875,6 +899,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     openGalery(UPLOAD_ASSETAKAD);
                 } else if (clicker.equalsIgnoreCase("formaplikasi")) {
                     openGalery(UPLOAD_FORMAPLIKASI);
+                } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
+                    openGalery(UPLOAD_FORMAPLIKASI2);
                 } else if (clicker.equalsIgnoreCase("skpensiun")) {
                     openGalery(UPLOAD_SKPENSIUN);
                 } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
@@ -899,6 +925,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     openFile(UPLOAD_ASSETAKAD);
                 } else if (clicker.equalsIgnoreCase("formaplikasi")) {
                     openFile(UPLOAD_FORMAPLIKASI);
+                } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
+                    openFile(UPLOAD_FORMAPLIKASI2);
                 } else if (clicker.equalsIgnoreCase("skpensiun")) {
                     openFile(UPLOAD_SKPENSIUN);
                 } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
@@ -1023,7 +1051,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 //        }
 //    }
 
-    //logical doc masih setengah
+    //logical doc
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
@@ -1045,27 +1073,31 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                 break;
             case UPLOAD_DATAINSTASI:
                 setDataImage(binding.ivSuratInstansi,data,"dokSuratInstansiD3",UPLOAD_DATAINSTASI);
-                checkFileTypeThenUpload(idFileSuratRekomendasiInstansi,"_suratInstansiD3",binding.ivSuratInstansi,val_datainstansi,UPLOAD_DATAINSTASI);
+                checkFileTypeThenUpload(fileNameSuratRekomendasi,"_suratInstansiD3",binding.ivSuratInstansi,val_datainstansi,UPLOAD_DATAINSTASI);
                 break;
             case UPLOAD_FORMAPLIKASI:
                 setDataImage(binding.ivFormApplikasi,data,"dokFormAplikasiD3",UPLOAD_FORMAPLIKASI);
-                checkFileTypeThenUpload(idFileFormAplikasi,"_formAplikasiD3",binding.ivFormApplikasi,val_formaplikasi,UPLOAD_FORMAPLIKASI);
+                checkFileTypeThenUpload(fileNameFormAplikasi,"_formAplikasiD3",binding.ivFormApplikasi,val_formaplikasi,UPLOAD_FORMAPLIKASI);
+                break;
+            case UPLOAD_FORMAPLIKASI2:
+                setDataImage(binding.ivFormAplikasi2,data,"dokFormAplikasi2D3",UPLOAD_FORMAPLIKASI2);
+                checkFileTypeThenUpload(fileNameFormAplikasi2,"_formAplikasi2D3",binding.ivFormAplikasi2,val_formAplikasi2,UPLOAD_FORMAPLIKASI2);
                 break;
             case UPLOAD_NPWP:
                 setDataImage(binding.ivNpwp,data,"doknpwpD3",UPLOAD_NPWP);
-                checkFileTypeThenUpload(idFileNpwp,"_npwpD3",binding.ivNpwp,val_npwp,UPLOAD_NPWP);
+                checkFileTypeThenUpload(fileNameNpwp,"_npwpD3",binding.ivNpwp,val_npwp,UPLOAD_NPWP);
                 break;
             case UPLOAD_SKPENSIUN:
                 setDataImage(binding.ivSkPensiun,data,"dokSkPensiunD3",UPLOAD_SKPENSIUN);
-                checkFileTypeThenUpload(idFileSkPensiun,"_skPensiunD3",binding.ivSkPensiun,val_skpensiun,UPLOAD_SKPENSIUN);
+                checkFileTypeThenUpload(fileNameSkPensiun,"_skPensiunD3",binding.ivSkPensiun,val_skpensiun,UPLOAD_SKPENSIUN);
                 break;
             case UPLOAD_SKPENGANGKATAN:
                 setDataImage(binding.ivSkPengangkatan,data,"dokSkPengangkatanD3",UPLOAD_SKPENGANGKATAN);
-                checkFileTypeThenUpload(idFileSkPengangkatan,"_skPengangkatanD3",binding.ivSkPengangkatan,val_skpengangkatan,UPLOAD_SKPENGANGKATAN);
+                checkFileTypeThenUpload(fileNameSkPengangkatan,"_skPengangkatanD3",binding.ivSkPengangkatan,val_skpengangkatan,UPLOAD_SKPENGANGKATAN);
                 break;
             case UPLOAD_SKTERAKHIR:
                 setDataImage(binding.ivSkTerakhir,data,"dokSkTerakhirD3",UPLOAD_SKTERAKHIR);
-                checkFileTypeThenUpload(idFileSkTerakhir,"_skTerakhirD3",binding.ivSkTerakhir,val_skterakhir,UPLOAD_SKTERAKHIR);
+                checkFileTypeThenUpload(fileNameSkTerakhir,"_skTerakhirD3",binding.ivSkTerakhir,val_skterakhir,UPLOAD_SKTERAKHIR);
                 break;
 
         }
@@ -1108,6 +1140,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     bitmap_formaplikasi = bitmap;
                     DataJaminanFormAplikasi.setImg(AppUtil.encodeImageTobase64(bitmap));
                     DataJaminanFormAplikasi.setFileName("formaplikasi.png");
+                } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
+                    bitmap_formAplikasi2 = bitmap;
+                    DataJaminanFormAplikasi2.setImg(AppUtil.encodeImageTobase64(bitmap));
+                    DataJaminanFormAplikasi2.setFileName("formaplikasi2.png");
                 } else if (clicker.equalsIgnoreCase("skpensiun")) {
                     bitmap_skpensiun = bitmap;
                     DataJaminanSKPensiun.setImg(AppUtil.encodeImageTobase64(bitmap));
@@ -1159,6 +1195,11 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         val_formaplikasi = AppUtil.encodeFileToBase64(this, uriPdf);
                         DataJaminanFormAplikasi.setImg(val_formaplikasi);
                         DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
+                    } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
+                        Uri uriPdf = data.getData();
+                        val_formAplikasi2 = AppUtil.encodeFileToBase64(this, uriPdf);
+                        DataJaminanFormAplikasi2.setImg(val_formAplikasi2);
+                        DataJaminanFormAplikasi2.setFileName("formaplikasi2.pdf");
                     } else if (clicker.equalsIgnoreCase("skpensiun")) {
                         Uri uriPdf = data.getData();
                         val_skpensiun = AppUtil.encodeFileToBase64(this, uriPdf);
@@ -1231,6 +1272,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                     else if(KODE_UPLOAD==UPLOAD_FORMAPLIKASI){
                         Uri uriPdf = data.getData();
                         val_formaplikasi= AppUtil.encodeFileToBase64(DataJaminanActivity.this,uriPdf);
+                    }
+                    else if(KODE_UPLOAD==UPLOAD_FORMAPLIKASI2){
+                        Uri uriPdf = data.getData();
+                        val_formAplikasi2= AppUtil.encodeFileToBase64(DataJaminanActivity.this,uriPdf);
                     }
                     else if(KODE_UPLOAD==UPLOAD_ASSETAKAD
                     ){
@@ -1317,6 +1362,11 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         idFileFormAplikasi = response.body().getId();
                         DataJaminanFormAplikasi.setImg(idFileFormAplikasi);
                         DataJaminanFormAplikasi.setFileName(fileName);
+                    }
+                    else if (uploadCode == UPLOAD_FORMAPLIKASI2) {
+                        idFileFormAplikasi2 = response.body().getId();
+                        DataJaminanFormAplikasi2.setImg(idFileFormAplikasi2);
+                        DataJaminanFormAplikasi2.setFileName(fileName);
                     }
                     else if (uploadCode == UPLOAD_ASSETAKAD) {
                         idFileAsetAkad = response.body().getId();

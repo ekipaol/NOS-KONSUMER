@@ -447,6 +447,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("idAplikasi",idAplikasi);
             startActivity(it);
         }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_kalkulator))){
+            Intent it = new Intent(this, KalkulatorActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
+            startActivity(it);
+        }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_akad))){
             Intent it = new Intent(this, DataAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);

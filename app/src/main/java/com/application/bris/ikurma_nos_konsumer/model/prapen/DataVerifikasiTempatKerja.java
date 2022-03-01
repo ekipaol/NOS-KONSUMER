@@ -77,6 +77,9 @@ public class DataVerifikasiTempatKerja {
     @SerializedName("FormAplikasi")
     @Expose
     private UploadImage FormAplikasi;
+    @SerializedName("FormAplikasi2")
+    @Expose
+    private UploadImage FormAplikasi2;
     @SerializedName("IDCard")
     @Expose
     private UploadImage IDCard;
@@ -108,7 +111,13 @@ public class DataVerifikasiTempatKerja {
     @Expose
     private String IsPensiun;
 
+    public UploadImage getFormAplikasi2() {
+        return FormAplikasi2;
+    }
 
+    public void setFormAplikasi2(UploadImage formAplikasi2) {
+        FormAplikasi2 = formAplikasi2;
+    }
 
     public String getNamaInstansiTaspen() {
         return NamaInstansiTaspen;

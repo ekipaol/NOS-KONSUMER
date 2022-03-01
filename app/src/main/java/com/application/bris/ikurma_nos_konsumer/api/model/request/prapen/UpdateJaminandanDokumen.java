@@ -60,6 +60,18 @@ public class UpdateJaminandanDokumen {
         @Expose
         private ReqDocument DataJaminanIDCard;
 
+    @SerializedName("DataJaminanFormAplikasi2")
+    @Expose
+    private ReqDocument DataJaminanFormAplikasi2;
+
+    public ReqDocument getDataJaminanFormAplikasi2() {
+        return DataJaminanFormAplikasi2;
+    }
+
+    public void setDataJaminanFormAplikasi2(ReqDocument dataJaminanFormAplikasi2) {
+        DataJaminanFormAplikasi2 = dataJaminanFormAplikasi2;
+    }
+
     public UpdateJaminandanDokumen() {
     }
 

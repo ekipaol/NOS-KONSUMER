@@ -138,6 +138,9 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         else if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().inqKalkulatorD6(req);
         }
+        else if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().inqKalkulatorG1(req);
+        }
 
         //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D3 D5, DIAMBIL DARI D3 DLU
         else{
@@ -405,6 +408,9 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         }
         else    if(statusId.equalsIgnoreCase("d.6")){
             call = apiClientAdapter.getApiInterface().updateKalkulatorD6(req);
+        }
+        else    if(statusId.equalsIgnoreCase("g.1")){
+            call = apiClientAdapter.getApiInterface().updateKalkulatorG1(req);
         }
 
         //UNTUK SEMENTARA  KALO STATUSNYA DILUAR D4 D5, DIAMBIL DARI D3 DLU

@@ -457,6 +457,8 @@ public class UriApi {
         public static final String lanjutG1 = "NOS_PRAPEN_Services/rest/G1/UpdateLanjutkeUploadDok";
         public static final String kembalikanG1 = "NOS_PRAPEN_Services/rest/G1/UpdateBackkePemutus";
         public static final String batalG1 = "NOS_PRAPEN_Services/rest/G1/UpdateBatalPembiayaan";
+        public static final String updateKalkulatorG1 = "NOS_PRAPEN_Services/rest/D6/UpdateKalkulatorG1";
+        public static final String inqKalkulatorG1 = "NOS_PRAPEN_Services/rest/D6/InqKalkulatordanBiayaG1";
 
 
 
