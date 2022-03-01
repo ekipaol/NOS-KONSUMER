@@ -2967,32 +2967,35 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 clicker = "fotoakad";
                 BSUploadFile.displayWithTitle(ActivityUploadDokumen.this.getSupportFragmentManager(), this, "");
                 break;
+
+
+
             // Dokumen Jaminan
             case R.id.pv_foto_sk_pensiun:
-                if (FNskpensiun.substring(FNskpensiun.length() - 3, FNskpensiun.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpensiun, FNskpensiun);
+                if (Foto_SK_Pensiun.getFileName().substring(Foto_SK_Pensiun.getFileName().length() - 3, Foto_SK_Pensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpensiun, Foto_SK_Pensiun.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skpensiun);
                 }
                 break;
             case R.id.pv_foto_sk_pengangkatan:
-                if (FNskpengangkatan.substring(FNskpengangkatan.length() - 3, FNskpengangkatan.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpengangkatan, FNskpengangkatan);
+                if (Foto_SK_Pengangkatan.getFileName().substring(Foto_SK_Pengangkatan.getFileName().length() - 3, Foto_SK_Pengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskpengangkatan, Foto_SK_Pengangkatan.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skpengangkatan);
                 }
                 break;
             case R.id.pv_foto_sk_terakhir:
-                if (FNskterakhir.substring(FNskterakhir.length() - 3, FNskterakhir.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskterakhir, FNskterakhir);
+                if (Foto_SK_Terakhir.getFileName().substring(Foto_SK_Terakhir.getFileName().length() - 3, Foto_SK_Terakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valskterakhir, Foto_SK_Terakhir.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", skterakhir);
                 }
                 break;
             // Asuransi Khusus
             case R.id.pv_foto_covernote_asuransi:
-                if (FNcovernoteasuransi.substring(FNcovernoteasuransi.length() - 3, FNcovernoteasuransi.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valcovernoteasuransi, FNcovernoteasuransi);
+                if (Foto_Covernote_Asuransi.getFileName().substring(Foto_Covernote_Asuransi.getFileName().length() - 3, Foto_Covernote_Asuransi.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valcovernoteasuransi, Foto_Covernote_Asuransi.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", covernoteasuransi);
                 }
@@ -3000,36 +3003,36 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             //Dokumen Produk
 
             case R.id.pv_sk:
-                if (FNsk.substring(FNsk.length() - 3, FNsk.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsk, FNsk);
+                if (Tanda_Terima_Dokumen_SK.getFileName().substring(Tanda_Terima_Dokumen_SK.getFileName().length() - 3, Tanda_Terima_Dokumen_SK.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsk, Tanda_Terima_Dokumen_SK.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", sk);
                 }
                 break;
             case R.id.pv_mutasi:
-                if (FNmutasi.substring(FNmutasi.length() - 3, FNmutasi.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmutasi, FNmutasi);
+                if (Form_Mutasi_Kantor_Bayar_Taspen.getFileName().substring(Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length() - 3, Form_Mutasi_Kantor_Bayar_Taspen.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmutasi, Form_Mutasi_Kantor_Bayar_Taspen.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", mutasi);
                 }
                 break;
             case R.id.pv_kuasa:
-                if (FNkuasa.substring(FNkuasa.length() - 3, FNkuasa.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkuasa, FNkuasa);
+                if (Surat_Kuasa_Pernyataan_Flagging.getFileName().substring(Surat_Kuasa_Pernyataan_Flagging.getFileName().length() - 3, Surat_Kuasa_Pernyataan_Flagging.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkuasa, Surat_Kuasa_Pernyataan_Flagging.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", kuasa);
                 }
                 break;
             case R.id.pv_pernyataan:
-                if (FNpernyataan.substring(FNpernyataan.length() - 3, FNpernyataan.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpernyataan, FNpernyataan);
+                if (Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().substring(Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length() - 3, Surat_Pernyataan_Kuasa_Pembiayaan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpernyataan, Surat_Pernyataan_Kuasa_Pembiayaan.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pernyataan);
                 }
                 break;
             case R.id.pv_sup:
-                if (FNsup.substring(FNsup.length() - 3, FNsup.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsup, FNsup);
+                if (SUP.getFileName().substring(SUP.getFileName().length() - 3, SUP.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valsup, SUP.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", sup);
                 }
@@ -3037,44 +3040,44 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
             // Tanda Tangan Akad
             case R.id.pv_foto_proses_penandatanganan_akad:
-                if (FNttdakad.substring(FNttdakad.length() - 3, FNttdakad.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valttdakad, FNttdakad);
+                if (Foto_Proses_Penandatanganan_Akad.getFileName().substring(Foto_Proses_Penandatanganan_Akad.getFileName().length() - 3, Foto_Proses_Penandatanganan_Akad.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valttdakad, Foto_Proses_Penandatanganan_Akad.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", ttdakad);
                 }
                 break;
             // Dokumen Murabahah
             case R.id.pv_po:
-                if (FNpo.substring(FNpo.length() - 3, FNpo.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpo, FNpo);
+                if (Murabahah_Purchase_Order.getFileName().substring(Murabahah_Purchase_Order.getFileName().length() - 3, Murabahah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpo, Murabahah_Purchase_Order.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", po);
                 }
                 break;
             case R.id.pv_akad_wakalah:
-                if (FNwakalah.substring(FNwakalah.length() - 3, FNwakalah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalah, FNwakalah);
+                if (Murabahah_Akad_Wakalah.getFileName().substring(Murabahah_Akad_Wakalah.getFileName().length() - 3, Murabahah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalah, Murabahah_Akad_Wakalah.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", wakalah);
                 }
                 break;
             case R.id.pv_akad_murabahah:
-                if (FNmurabahah.substring(FNmurabahah.length() - 3, FNmurabahah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmurabahah, FNmurabahah);
+                if (Murabahah_Akad_Murabahah.getFileName().substring(Murabahah_Akad_Murabahah.getFileName().length() - 3, Murabahah_Akad_Murabahah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valmurabahah, Murabahah_Akad_Murabahah.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", murabahah);
                 }
                 break;
             case R.id.pv_jadwal_angsuran:
-                if (FNjadwalangsuran.substring(FNjadwalangsuran.length() - 3, FNjadwalangsuran.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalangsuran, FNjadwalangsuran);
+                if (Murabahah_Lampiran_Jadwal_Angsuran.getFileName().substring(Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Murabahah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalangsuran, Murabahah_Lampiran_Jadwal_Angsuran.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", jadwalangsuran);
                 }
                 break;
             case R.id.pv_terima_barang:
-                if (FNterimabarang.substring(FNterimabarang.length() - 3, FNterimabarang.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valterimabarang, FNterimabarang);
+                if (Murabahah_Surat_Tanda_Terima_Barang.getFileName().substring(Murabahah_Surat_Tanda_Terima_Barang.getFileName().length() - 3, Murabahah_Surat_Tanda_Terima_Barang.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valterimabarang, Murabahah_Surat_Tanda_Terima_Barang.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", terimabarang);
                 }
@@ -3082,65 +3085,65 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             // Dokumen Ijarah
 
             case R.id.pv_po_Ijarah:
-                if (FNpoijarah.substring(FNpoijarah.length() - 3, FNpoijarah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpoijarah, FNpoijarah);
+                if (Ijarah_Purchase_Order.getFileName().substring(Ijarah_Purchase_Order.getFileName().length() - 3, Ijarah_Purchase_Order.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpoijarah, Ijarah_Purchase_Order.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", poijarah);
                 }
                 break;
             case R.id.pv_akad_wakalah_Ijarah:
-                if (FNwakalahijarah.substring(FNwakalahijarah.length() - 3, FNwakalahijarah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalahijarah, FNwakalahijarah);
+                if (Ijarah_Akad_Wakalah.getFileName().substring(Ijarah_Akad_Wakalah.getFileName().length() - 3, Ijarah_Akad_Wakalah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valwakalahijarah, Ijarah_Akad_Wakalah.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", wakalahijarah);
                 }
                 break;
             case R.id.pv_akad_ijarah:
-                if (FNijarah.substring(FNijarah.length() - 3, FNijarah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valijarah, FNijarah);
+                if (Ijarah_Akad_Ijarah.getFileName().substring(Ijarah_Akad_Ijarah.getFileName().length() - 3, Ijarah_Akad_Ijarah.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valijarah, Ijarah_Akad_Ijarah.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", ijarah);
                 }
                 break;
             case R.id.pv_angsuran_ujrah:
-                if (FNangsuranujrah.substring(FNangsuranujrah.length() - 3, FNangsuranujrah.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranujrah, FNangsuranujrah);
+                if (Ijarah_Lampiran_Jadwal_Angsuran.getFileName().substring(Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Ijarah_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranujrah, Ijarah_Lampiran_Jadwal_Angsuran.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", angsuranujrah);
                 }
                 break;
             // Dokumen MMQ
             case R.id.pv_asset_mmq:
-                if (FNassetmmq.substring(FNassetmmq.length() - 3, FNassetmmq.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valassetmmq, FNassetmmq);
+                if (MMQ_Laporan_Penilaian_Aset.getFileName().substring(MMQ_Laporan_Penilaian_Aset.getFileName().length() - 3, MMQ_Laporan_Penilaian_Aset.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valassetmmq, MMQ_Laporan_Penilaian_Aset.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", assetmmq);
                 }
                 break;
             case R.id.pv_akad_mmq:
-                if (FNakadmmq.substring(FNakadmmq.length() - 3, FNakadmmq.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadmmq, FNakadmmq);
+                if (MMQ_Akad_MMQ.getFileName().substring(MMQ_Akad_MMQ.getFileName().length() - 3, MMQ_Akad_MMQ.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadmmq, MMQ_Akad_MMQ.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", akadmmq);
                 }
                 break;
             case R.id.pv_jadwal_pengambilalihan:
-                if (FNjadwalpengambilan.substring(FNjadwalpengambilan.length() - 3, FNjadwalpengambilan.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalpengambilan, FNjadwalpengambilan);
+                if (MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().substring(MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length() - 3, MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valjadwalpengambilan, MMQ_Lampiran_Jadwal_Pengambil_Alihan.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", jadwalpengambilan);
                 }
                 break;
             case R.id.pv_surat_pernyataan_dan_kuasa_aset_mmq_sendiri:
-                if (FNpihak1.substring(FNpihak1.length() - 3, FNpihak1.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak1, FNpihak1);
+                if (MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak1, MMQ_Surat_Pernyataan_Kuasa_Aset_Sendiri.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pihak1);
                 }
                 break;
             case R.id.pv_surat_pernyataan_dan_kuasa_aset_mmq_pihak_ketiga:
-                if (FNpihak3.substring(FNpihak3.length() - 3, FNpihak3.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak3, FNpihak3);
+                if (MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().substring(MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length() - 3, MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valpihak3, MMQ_Surat_Pernyataan_Kuasa_Aset_Ketiga.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", pihak3);
                 }
@@ -3148,15 +3151,15 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             // Dokumen Rahn
 
             case R.id.pv_akad_rahn:
-                if (FNakadrahn.substring(FNakadrahn.length() - 3, FNakadrahn.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadrahn, FNakadrahn);
+                if (Rahn_Akad_Rahn.getFileName().substring(Rahn_Akad_Rahn.getFileName().length() - 3, Rahn_Akad_Rahn.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valakadrahn, Rahn_Akad_Rahn.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", akadrahn);
                 }
                 break;
             case R.id.pv_jadwal_angsuran_rahn:
-                if (FNangsuranrahn.substring(FNangsuranrahn.length() - 3, FNangsuranrahn.length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranrahn, FNangsuranrahn);
+                if (Rahn_Lampiran_Jadwal_Angsuran.getFileName().substring(Rahn_Lampiran_Jadwal_Angsuran.getFileName().length() - 3, Rahn_Lampiran_Jadwal_Angsuran.getFileName().length()).equalsIgnoreCase("pdf")) {
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valangsuranrahn, Rahn_Lampiran_Jadwal_Angsuran.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", angsuranrahn);
                 }
@@ -3165,7 +3168,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             // FORM PEMBIAYAAN
             case R.id.pv_form_mutasi_kantor_bayar:
                 if (Form_Mutasi_Kantor_Bayar.getFileName().substring(Form_Mutasi_Kantor_Bayar.getFileName().length() - 3, Form_Mutasi_Kantor_Bayar.getFileName().length()).equalsIgnoreCase("pdf")) {
-                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkantorbayar, FNkantorbayar);
+                    AppUtil.convertBase64ToFileAutoOpen(ActivityUploadDokumen.this, valkantorbayar, Form_Mutasi_Kantor_Bayar.getFileName());
                 } else {
                     DialogPreviewPhoto.display(getSupportFragmentManager(), "Preview Image", kantorbayar);
                 }
