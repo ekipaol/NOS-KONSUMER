@@ -56,7 +56,7 @@ public class AdapterListAplikasi extends RecyclerView.Adapter<AdapterListAplikas
         holder.tvNoAplikasi.setText(datas.getApplicationNo());
         holder.tvIdAplikasi.setText("ID Aplikasi : "+datas.getApplicationId());
         holder.tvPlafon.setText(AppUtil.parseRupiah(datas.getPlafond()));
-        holder.tvTanggal.setText(AppUtil.parseTanggalGeneral("Tgl Input : "+datas.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
+        holder.tvTanggal.setText("Tgl Input : "+AppUtil.parseTanggalGeneral(datas.getCreateDate(),"yyyyMMdd","dd-MM-yyyy"));
 //        AppUtil.convertBase64ToImage(datas.getImg(),holder.ivFoto);
 
         if(datas.getJangkaWaktu().equalsIgnoreCase("0")){

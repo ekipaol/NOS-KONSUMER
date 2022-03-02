@@ -5,12 +5,12 @@
     <string name="title_user">User</string>
 
 
-    <string name="dialog_perms_msg">Apakah anda mengizinkan i-Kurma mengakses?</string>
-    <string name="dialog_need_permission">Untuk menggunakan i-Kurma harus mengaktifkan beberapa permission yang dibutuhkan. Apakah anda ingin ke menu Pengaturan?</string>
+    <string name="dialog_perms_msg">Apakah anda mengizinkan aplikasi mengakses?</string>
+    <string name="dialog_need_permission">Untuk menggunakan aplikasi, anda harus mengaktifkan beberapa permission yang dibutuhkan. Apakah anda ingin ke menu Pengaturan?</string>
 
     <string name="turn_on_flashlight">Turn on Flashlight</string>
     <string name="notif_qr">Login ke Appel dan Scan Kode QR mu</string>
-    <string name="notif_update">Hore i-Kurma Konsumer ada versi terbaru nih, ayo update sekarang</string>
+    <string name="notif_update">Hore aplikasi ada versi terbaru nih, ayo update sekarang</string>
 
     <!--    PRAPEN NOS -->
     <!--    D1-->
