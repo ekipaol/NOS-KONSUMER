@@ -1,22 +1,32 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_rac;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenItemDataVerifRacBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.DropdownRecyclerListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiRac;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
+import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdapter.MenuViewHolder> {
     private List<DataVerifikasiRac> data;
@@ -52,6 +62,14 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
 //        holder.tv_ketentuan.setText(data.get(position).getKetentuan());
         holder.tv_hasil.setText(data.get(position).getValue());
 
+        try{
+            checkFileTypeThenSet(context,data.get(position).getImg(),holder.iv_dokumen,data.get(position).getFileName(),holder);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 //        onClicks(position);
 
 
@@ -86,7 +104,51 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
                 Toast.makeText(context, "clicking upload", Toast.LENGTH_SHORT).show();
             }
         });
+        
+        
 
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView,VerifikasiRacAdapter.MenuViewHolder holder) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(context);
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(context,response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(context,holder.et_catatan.findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(context,holder.et_catatan.findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                AppUtil.notiferror(context,holder.et_catatan.findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+                t.printStackTrace();
+            }
+        });
+
+    }
+
+    private void checkFileTypeThenSet(Context context,String idDok,ImageView imageView,String fileName,VerifikasiRacAdapter.MenuViewHolder holder){
+
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+            loadFileJson(idDok,imageView,holder);
+        }
+        else{
+            AppUtil.setImageGlide(context,idDok,imageView);
+        }
     }
 
     public void setItems(List<DataVerifikasiRac> dataVerif) {
@@ -103,6 +165,7 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
     public class MenuViewHolder extends RecyclerView.ViewHolder {
         TextView tv_nama_rac,tv_hasil_engine,tv_ketentuan,tv_hasil;
         EditText et_hasil_cek_verif,et_catatan;
+        ImageView iv_dokumen;
 
         public MenuViewHolder(View itemView) {
             super(itemView);
@@ -112,6 +175,7 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
             et_catatan=binding.etCatatan;
             tv_ketentuan=binding.tvKetentuan;
             tv_hasil=binding.tvHasil;
+            iv_dokumen=binding.ivDokumen;
 
             //disable text
             et_catatan.setFocusable(false);

@@ -37,7 +37,28 @@ public class DataVerifikasiFitur {
     @SerializedName("Modified_Date")
     @Expose
     private String modifiedDate;
+    @SerializedName("Img")
+    @Expose
+    private String img;
+    @SerializedName("File_Name")
+    @Expose
+    private String fileName;
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public Long getId() {
         return id;

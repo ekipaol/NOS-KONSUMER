@@ -61,6 +61,8 @@ public class VerifikasiHutangAdapter extends RecyclerView.Adapter<VerifikasiHuta
         holder.etAngsuranVerifikator.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranVerifikator));
         holder.etAngsuranVerifikator.setText(data.get(position).getAngsuranBulanan());
 
+
+
         onClicks(position,holder);
 
 

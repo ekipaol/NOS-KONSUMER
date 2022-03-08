@@ -84,8 +84,8 @@ public class Activity_DSR_DBR_Nasabah extends AppCompatActivity implements View.
                                     binding.etManfaatPensiunDigunakan.setText(DPDSR.getManfaatPensiunDigunakan());
                                     binding.etSisaGajiAktif.setText(DPDSR.getSisaGajiAktif());
                                     binding.etSisaManfaatPensiun.setText(DPDSR.getSisaManfaatPensiun());
-                                    binding.etMaksimalAngsuranBulananGajiAktif.setText(DPDSR.getMaksimalAngsuranBulananGajiAktif());
-                                    binding.etMaksimalAngsuranManfaatPensiun.setText(DPDSR.getMaksimalAngsuranManfaatPensiun());
+                                    binding.etMaksimalAngsuranBulananGajiAktif.setText(String.valueOf(new BigDecimal(DPDSR.getMaksimalAngsuranBulananGajiAktif()).setScale(2,BigDecimal.ROUND_CEILING)));
+                                    binding.etMaksimalAngsuranManfaatPensiun.setText(String.valueOf(new BigDecimal(DPDSR.getMaksimalAngsuranManfaatPensiun()).setScale(2,BigDecimal.ROUND_CEILING)));
                                     binding.etKetentuanGajiAktif.setText(DPDSR.getKetentuanGajiAktif());
                                     binding.etKetentuanManfaatPensiun.setText(DPDSR.getKetentuanManfaatPensiun());
                                     binding.etCatatanVerifikasi.setText(DPDSR.getCatatanVerifikasi());

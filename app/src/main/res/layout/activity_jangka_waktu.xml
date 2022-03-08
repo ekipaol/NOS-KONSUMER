@@ -29,6 +29,17 @@
                 android:orientation="vertical"
                 android:paddingTop="20dp">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Usia Nasabah Perhitungan Engine"
+                    android:textSize="16sp" />
+
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_umur_nasabah_taspen"
                     android:layout_width="match_parent"
@@ -100,6 +111,17 @@
                     android:background="@color/colorWhite"
                     android:orientation="vertical"
                     android:paddingTop="20dp"></LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Ketentuan Produk / Program"
+                    android:textSize="16sp" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_jangka_waktu_pembiayaan_maksimal_difitur_produk"
@@ -173,6 +195,17 @@
                     android:paddingTop="20dp">
 
                 </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="Maksimal Tenor / Jangka Waktu Nasabah "
+                    android:textSize="16sp" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_maksimal_jangka_waktu_pembiayaan_nasabah"

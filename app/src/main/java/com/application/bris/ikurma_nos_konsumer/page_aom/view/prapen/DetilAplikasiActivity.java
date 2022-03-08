@@ -538,17 +538,20 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
         //d4
          if(statusId.equalsIgnoreCase(getString(R.string.id_d4_verifikasi_otor))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
         }
 
          else if(statusId.equalsIgnoreCase(getString(R.string.id_d4_otor))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
              dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
              dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
          }
 
         //d5
         else if(statusId.equalsIgnoreCase(getString(R.string.id_d5_confirm_verifikasi))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
@@ -556,6 +559,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
         //d6
         else if(statusId.equalsIgnoreCase(getString(R.string.id_d6_menunggu_putusan))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
@@ -563,17 +567,18 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
         //g1
         else if(statusId.equalsIgnoreCase(getString(R.string.id_g1_asesoir_dan_akad))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
             dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
             dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.d6_menunggu_putusan)));
             dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g1_asesoir_dan_akad)));
 
-            //delete below when prod
              dataDropdownFlow.add(new MGenericModel("4",getString(R.string.g3_upload_dokumen)));
         }
          //g3
          else if(statusId.equalsIgnoreCase(getString(R.string.id_g3_upload_dokumen))){
+             dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d1_data_entry)));
              dataDropdownFlow.add(new MGenericModel("1",getString(R.string.d3_confirm_validasi_engine)));
              dataDropdownFlow.add(new MGenericModel("2",getString(R.string.d4_verifikasi_otor)));
              dataDropdownFlow.add(new MGenericModel("3",getString(R.string.d5_confirm_verifikasi)));

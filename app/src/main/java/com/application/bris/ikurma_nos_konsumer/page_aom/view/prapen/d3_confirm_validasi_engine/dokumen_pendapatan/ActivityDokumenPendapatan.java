@@ -143,18 +143,39 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
                         String SSlipGajiP2 = "", SSlipGajiP3 = "", SSlipTunjanganP2 = "", SSlipTunjanganP3 = "", SSKoran = "", SSlipGajiP1 = "", SSlipTunjanganP1 = "";
                         String listDataString = response.body().getData().get("DokumenPendapatan").getAsJsonObject().toString();
                         if (response.body().getData().get("DokumenPendapatanKoranBank") != null) {
-                            SSKoran = response.body().getData().get("DokumenPendapatanKoranBank").toString();
+
+                            try{
+                                SSKoran = response.body().getData().get("DokumenPendapatanKoranBank").toString();
+                            }
+                            catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+
                         }
                         if (response.body().getData().get("DokumenPendapatanSlipGajiP1") != null) {
-                            SSlipGajiP1 = response.body().getData().get("DokumenPendapatanSlipGajiP1").toString();
-                            SSlipTunjanganP1 = response.body().getData().get("DokumenPendapatanSlipTunjanganP1").toString();
+
+                            try{
+                                SSlipGajiP1 = response.body().getData().get("DokumenPendapatanSlipGajiP1").toString();
+                                SSlipTunjanganP1 = response.body().getData().get("DokumenPendapatanSlipTunjanganP1").toString();
+                            }
+                            catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+
                         }
 
                         if (response.body().getData().get("DokumenPendapatanSlipGajiP2") != null) {
-                            SSlipGajiP2 = response.body().getData().get("DokumenPendapatanSlipGajiP2").toString();
-                            SSlipGajiP3 = response.body().getData().get("DokumenPendapatanSlipGajiP3").toString();
-                            SSlipTunjanganP2 = response.body().getData().get("DokumenPendapatanSlipTunjanganP2").toString();
-                            SSlipTunjanganP3 = response.body().getData().get("DokumenPendapatanSlipTunjanganP3").toString();
+
+                            try{
+                                SSlipGajiP2 = response.body().getData().get("DokumenPendapatanSlipGajiP2").toString();
+                                SSlipGajiP3 = response.body().getData().get("DokumenPendapatanSlipGajiP3").toString();
+                                SSlipTunjanganP2 = response.body().getData().get("DokumenPendapatanSlipTunjanganP2").toString();
+                                SSlipTunjanganP3 = response.body().getData().get("DokumenPendapatanSlipTunjanganP3").toString();
+                            }
+                            catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+
                         }
 
                         Gson gson = new Gson();

@@ -1231,6 +1231,7 @@ public class AppUtil {
                 os.close();
 
                 imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override

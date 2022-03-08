@@ -60,9 +60,11 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         holder.tvTreatmentPembiayaanEksisting.setText(data.get(position).getTreatmentPembiayaan());
         holder.tvStatus.setText(data.get(position).getStatusIdeb());
         holder.tvJenisKredit.setText(data.get(position).getJenisKredit());
-        holder.etAngsuranBulanan.setText(AppUtil.parseRupiah(data.get(position).getAngsuranVerifikasi()));
 
         holder.etAngsuranBulanan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etAngsuranBulanan));
+        holder.etAngsuranBulanan.setText((data.get(position).getAngsuranVerifikasi()));
+
+
         onClicks(position,holder);
 
         try{
