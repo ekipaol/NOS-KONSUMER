@@ -90,9 +90,9 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
             if (dp.getNomorRekeningTercerminD4() != null)
                 binding.etNorekTercermin.setText(dp.getNomorRekeningTercerminD4());
             if (dp.getHasilVerifikasiGajiD4() != null)
-                binding.etVerifikasiGaji.setText(dp.getHasilVerifikasiGajiD4());
+                binding.etVerifikasiGaji.setText(String.valueOf(new BigDecimal(dp.getHasilVerifikasiGajiD4()).setScale(2,BigDecimal.ROUND_CEILING)));
             if (dp.getHasilVerifikasiTunjanganD4() != null)
-                binding.etVerifikasiTunjangan.setText(dp.getHasilVerifikasiTunjanganD4());
+                binding.etVerifikasiTunjangan.setText(String.valueOf(new BigDecimal(dp.getHasilVerifikasiTunjanganD4()).setScale(2,BigDecimal.ROUND_CEILING)));
             if (dp.getPerhitPendapatanSaatPensD4() != null)
                 binding.etTotalPendapatanPensiun.setText(dp.getPerhitPendapatanSaatPensD4());
             if (dp.getCerminanGajiDanTunjD4() != null)
