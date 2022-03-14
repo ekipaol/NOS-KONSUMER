@@ -193,7 +193,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 
 
 
-//        loadProfil();
+        loadProfil();
         loadData();
         initializeMenu();
 //        initializePipelineHome();
@@ -209,6 +209,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         //di hide dulu di on resume karena berat bro
 
         loadProfil();
+        loadData();
 //        loadDataTop();
 //        initializeMenu();
 //        initializePipelineHome();
@@ -517,10 +518,11 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         rv_pipeline.setVisibility(View.GONE);
         checkCollapse();
         loadProfil();
+        loadData();
 //        loadData();
 //        initializeMenu();
-        initializePipelineHome();
-        initializeHotprospekHome();
+//        initializePipelineHome();
+//        initializeHotprospekHome();
 
 //        swipeRefreshLayout.setOnRefreshListener(this);
 

@@ -4610,23 +4610,23 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                 // Dokumen Tambahan
                 case IntDokumenA:
                     SetDataImage(binding.ivUploadDokumen1, imageReturnedIntent, "dokumenA", IntDokumenA);
-                    checkFileTypeThenUpload(nameDokumenA, "_" + binding.etNamaDokumen1, binding.ivUploadDokumen1, valDokumenA, IntDokumenA);
+                    checkFileTypeThenUpload(nameDokumenA, "_" + binding.etNamaDokumen1.getText().toString(), binding.ivUploadDokumen1, valDokumenA, IntDokumenA);
                     break;
                 case IntDokumenB:
                     SetDataImage(binding.ivUploadDokumen2, imageReturnedIntent, "dokumenB", IntDokumenB);
-                    checkFileTypeThenUpload(nameDokumenB, "_" + binding.etNamaDokumen2, binding.ivUploadDokumen2, valDokumenB, IntDokumenB);
+                    checkFileTypeThenUpload(nameDokumenB, "_" + binding.etNamaDokumen2.getText().toString(), binding.ivUploadDokumen2, valDokumenB, IntDokumenB);
                     break;
                 case IntDokumenC:
                     SetDataImage(binding.ivUploadDokumen3, imageReturnedIntent, "dokumenC", IntDokumenC);
-                    checkFileTypeThenUpload(nameDokumenC, "_" + binding.etNamaDokumen3, binding.ivUploadDokumen3, valDokumenC, IntDokumenC);
+                    checkFileTypeThenUpload(nameDokumenC, "_" + binding.etNamaDokumen3.getText().toString(), binding.ivUploadDokumen3, valDokumenC, IntDokumenC);
                     break;
                 case IntDokumenD:
                     SetDataImage(binding.ivUploadDokumen4, imageReturnedIntent, "dokumenD", IntDokumenD);
-                    checkFileTypeThenUpload(nameDokumenD, "_" + binding.etNamaDokumen4, binding.ivUploadDokumen4, valDokumenD, IntDokumenD);
+                    checkFileTypeThenUpload(nameDokumenD, "_" + binding.etNamaDokumen4.getText().toString(), binding.ivUploadDokumen4, valDokumenD, IntDokumenD);
                     break;
                 case IntDokumenE:
                     SetDataImage(binding.ivUploadDokumen5, imageReturnedIntent, "dokumenE", IntDokumenE);
-                    checkFileTypeThenUpload(nameDokumenE, "_" + binding.etNamaDokumen5, binding.ivUploadDokumen5, valDokumenE, IntDokumenE);
+                    checkFileTypeThenUpload(nameDokumenE, "_" + binding.etNamaDokumen5.getText().toString(), binding.ivUploadDokumen5, valDokumenE, IntDokumenE);
                     break;
 
                 // Dokumen Jaminan
@@ -5010,7 +5010,6 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
 
                         } else if (clicker.equalsIgnoreCase("fotoakad")) {
                             valfotoakad = AppUtil.encodeFileToBase64(this, uriPdf);
-
                         }
 
                         // Dokumen Tambahan
@@ -5224,7 +5223,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                         idfotoakad = response.body().getId();
                         Foto_Bukti_Otentikasi_Nasabah.setFileName(fileName);
                         Foto_Bukti_Otentikasi_Nasabah.setImg(idfotoakad);
-                        binding.pvFormMutasiKantorBayar.setVisibility(View.VISIBLE);
+                        binding.pvFotoScreenCaptureBuktiOtentikasiNasabahSaatAkad.setVisibility(View.VISIBLE);
                     }
 
                     // Dokumen Tambahan
@@ -5239,7 +5238,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                             DokumenUmum.add(0, doc);
                         } else {
                             DokumenUmum.get(0).setFilename(fileName);
-                            DokumenUmum.get(0).setImg(valDokumenA);
+                            DokumenUmum.get(0).setImg(idDokumenA);
                             DokumenUmum.get(0).setKeteranganDokumen(binding.etKeteranganDokumen1.getText().toString());
                             DokumenUmum.get(0).setNamaDokumen(binding.etNamaDokumen1.getText().toString());
                         }
@@ -5257,7 +5256,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 DokumenUmum.add(1, doc);
                             } else {
                                 DokumenUmum.get(1).setFilename("dokumenB.png");
-                                DokumenUmum.get(1).setImg(valDokumenB);
+                                DokumenUmum.get(1).setImg(idDokumenB);
                                 DokumenUmum.get(1).setKeteranganDokumen(binding.etKeteranganDokumen2.getText().toString());
                                 DokumenUmum.get(1).setNamaDokumen(binding.etNamaDokumen2.getText().toString());
                             }
@@ -5276,7 +5275,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 DokumenUmum.add(2, doc);
                             } else {
                                 DokumenUmum.get(2).setFilename("dokumenC.png");
-                                DokumenUmum.get(2).setImg(valDokumenC);
+                                DokumenUmum.get(2).setImg(idDokumenC);
                                 DokumenUmum.get(2).setKeteranganDokumen(binding.etKeteranganDokumen3.getText().toString());
                                 DokumenUmum.get(2).setNamaDokumen(binding.etNamaDokumen3.getText().toString());
                             }
@@ -5295,7 +5294,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 DokumenUmum.add(3, doc);
                             } else {
                                 DokumenUmum.get(3).setFilename("dokumenD.png");
-                                DokumenUmum.get(3).setImg(valDokumenD);
+                                DokumenUmum.get(3).setImg(idDokumenD);
                                 DokumenUmum.get(3).setKeteranganDokumen(binding.etKeteranganDokumen4.getText().toString());
                                 DokumenUmum.get(3).setNamaDokumen(binding.etNamaDokumen4.getText().toString());
                             }
@@ -5314,7 +5313,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                 DokumenUmum.add(4, doc);
                             } else {
                                 DokumenUmum.get(4).setFilename("dokumenE.png");
-                                DokumenUmum.get(4).setImg(valDokumenE);
+                                DokumenUmum.get(4).setImg(idDokumenE);
                                 DokumenUmum.get(4).setKeteranganDokumen(binding.etKeteranganDokumen5.getText().toString());
                                 DokumenUmum.get(4).setNamaDokumen(binding.etNamaDokumen5.getText().toString());
                             }

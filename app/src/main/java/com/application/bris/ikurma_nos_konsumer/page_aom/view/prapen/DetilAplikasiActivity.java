@@ -668,7 +668,9 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
                                 @Override
                                 public void onClick(SweetAlertDialog sweetAlertDialog) {
                                     dialog.dismissWithAnimation();
-                                    finish();
+                                    Intent intent = new Intent(DetilAplikasiActivity.this, ListAplikasiActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
                                 }
                             });
                         }
