@@ -863,27 +863,27 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             case "Take Photo":
                 tipeFile = "png";
                 if (clicker.equalsIgnoreCase("fotoktp")) {
-                    openCamera(UPLOAD_DATAKTP, "fotoktp");
+                    openCamera(UPLOAD_DATAKTP, "dokktpD3");
                 } else if (clicker.equalsIgnoreCase("ktppasangan")) {
-                    openCamera(UPLOAD_KTPPASANGAN, "ktppasangan");
+                    openCamera(UPLOAD_KTPPASANGAN, "dokktpPasanganD3");
                 } else if (clicker.equalsIgnoreCase("npwp")) {
-                    openCamera(UPLOAD_NPWP, "npwp");
+                    openCamera(UPLOAD_NPWP, "doknpwpD3");
                 } else if (clicker.equalsIgnoreCase("assetakad")) {
-                    openCamera(UPLOAD_ASSETAKAD, "assetakad");
+                    openCamera(UPLOAD_ASSETAKAD, "dokAsetAkadD3");
                 } else if (clicker.equalsIgnoreCase("formaplikasi")) {
-                    openCamera(UPLOAD_FORMAPLIKASI, "formaplikasi");
+                    openCamera(UPLOAD_FORMAPLIKASI, "dokFormAplikasiD3");
                 } else if (clicker.equalsIgnoreCase("formaplikasi2")) {
-                    openCamera(UPLOAD_FORMAPLIKASI2, "formaplikasi2");
+                    openCamera(UPLOAD_FORMAPLIKASI2, "dokFormAplikasi2D3");
                 } else if (clicker.equalsIgnoreCase("skpensiun")) {
-                    openCamera(UPLOAD_SKPENSIUN, "skpensiun");
+                    openCamera(UPLOAD_SKPENSIUN, "dokSkPensiunD3");
                 } else if (clicker.equalsIgnoreCase("skpengangkatan")) {
-                    openCamera(UPLOAD_SKPENGANGKATAN, "skpengangkatan");
+                    openCamera(UPLOAD_SKPENGANGKATAN, "dokSkPengangkatanD3");
                 } else if (clicker.equalsIgnoreCase("skterakhir")) {
-                    openCamera(UPLOAD_SKTERAKHIR, "skterakhir");
+                    openCamera(UPLOAD_SKTERAKHIR, "dokSkTerakhirD3");
                 } else if (clicker.equalsIgnoreCase("datainstansi")) {
-                    openCamera(UPLOAD_DATAINSTASI, "datainstansi");
+                    openCamera(UPLOAD_DATAINSTASI, "dokSuratInstansiD3");
                 } else if (clicker.equalsIgnoreCase("idcard")) {
-                    openCamera(UPLOAD_IDCARD, "idcard");
+                    openCamera(UPLOAD_IDCARD, "dokIDCardD3");
                 }
                 break;
 
@@ -967,7 +967,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
-                    MY_CAMERA_REQUEST_CODE);
+                    100);
         } else {
             Uri outputFileUri = getCaptureImageOutputUri(namaFoto);
             Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -987,10 +987,10 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
 
     private Uri getCaptureImageOutputUri(String namaFoto) {
         Uri outputFileUri = null;
-        File getImage = this.getExternalCacheDir();
+        File getImage = getExternalCacheDir();
         if (getImage != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                outputFileUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), namaFoto + ".png"));
+                outputFileUri = FileProvider.getUriForFile(DataJaminanActivity.this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), namaFoto + ".png"));
             } else {
                 outputFileUri = Uri.fromFile(new File(getImage.getPath(), namaFoto + ".png"));
             }

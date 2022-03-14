@@ -49,6 +49,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.EditIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -1189,19 +1190,19 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             case "Take Photo":
                 tipeFile = "png";
                 if (clicker.equalsIgnoreCase("koran")) {
-                    openCamera(UPLOAD_KORAN, "koran");
+                    openCamera(UPLOAD_KORAN, "dokKoranD3");
                 } else if (clicker.equalsIgnoreCase("slipgaji1")) {
-                    openCamera(UPLOAD_SLIPGAJI1, "slipgaji1");
+                    openCamera(UPLOAD_SLIPGAJI1, "dokSlipGajiP1D3");
                 } else if (clicker.equalsIgnoreCase("slipgaji2")) {
-                    openCamera(UPLOAD_SLIPGAJI2, "slipgaji2");
+                    openCamera(UPLOAD_SLIPGAJI2, "dokGajiP2D3");
                 } else if (clicker.equalsIgnoreCase("slipgaji3")) {
-                    openCamera(UPLOAD_SLIPGAJI3, "slipgaji3");
+                    openCamera(UPLOAD_SLIPGAJI3, "dokGajiP3D3");
                 } else if (clicker.equalsIgnoreCase("tunjangan1")) {
-                    openCamera(UPLOAD_SLIPTUNJANGAN1, "tunjangan1");
+                    openCamera(UPLOAD_SLIPTUNJANGAN1, "dokTunjanganP1D3");
                 } else if (clicker.equalsIgnoreCase("tunjangan2")) {
-                    openCamera(UPLOAD_SLIPTUNJANGAN2, "tunjangan2");
+                    openCamera(UPLOAD_SLIPTUNJANGAN2, "dokTunjanganP2D3");
                 } else if (clicker.equalsIgnoreCase("tunjangan3")) {
-                    openCamera(UPLOAD_SLIPTUNJANGAN3, "tunjangan3");
+                    openCamera(UPLOAD_SLIPTUNJANGAN3, "dokTunjanganP3D3");
                 }
                 break;
             case "Pick Photo":
@@ -1276,6 +1277,8 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
             startActivityForResult(captureIntent, cameraCode);
         }
+
+
     }
 
     private void directOpenCamera(int cameraCode, String namaFoto) {

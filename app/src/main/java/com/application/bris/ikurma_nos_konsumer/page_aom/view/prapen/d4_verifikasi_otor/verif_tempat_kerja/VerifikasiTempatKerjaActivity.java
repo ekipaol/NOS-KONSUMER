@@ -147,27 +147,70 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 //            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
             AppUtil.loadImageWithFileNameCheck(VerifikasiTempatKerjaActivity.this, dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), dataVerifikasiTempatKerja.getKTPNasabah().getImg(), binding.ivKtpNasabah);
         if (dataVerifikasiTempatKerja.getKTPPasangan() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name(), binding.ivKtpPasangan, dataVerifikasiTempatKerja.getKTPPasangan().getImg());
+
+            //logdoc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getKTPPasangan().getImg(),binding.ivKtpPasangan,dataVerifikasiTempatKerja.getKTPPasangan().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getSKPensiun() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPensiun().getFile_Name(), binding.ivSkPensiun, dataVerifikasiTempatKerja.getSKPensiun().getImg());
+
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKPensiun().getImg(),binding.ivSkPensiun,dataVerifikasiTempatKerja.getSKPensiun().getFile_Name());
+
+
         if (dataVerifikasiTempatKerja.getSKPengangkatan() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name(), binding.ivSkPengangkatan, dataVerifikasiTempatKerja.getSKPengangkatan().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKPengangkatan().getImg(),binding.ivSkPengangkatan,dataVerifikasiTempatKerja.getSKPengangkatan().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getSKTerakhir() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name(), binding.ivSkTerakhir, dataVerifikasiTempatKerja.getSKTerakhir().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getSKTerakhir().getImg(),binding.ivSkTerakhir,dataVerifikasiTempatKerja.getSKTerakhir().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getIDCard() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getIDCard().getFile_Name(), binding.ivIdCard, dataVerifikasiTempatKerja.getIDCard().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getIDCard().getImg(),binding.ivIdCard,dataVerifikasiTempatKerja.getIDCard().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name(), binding.ivSuratRekomendasiInstansi, dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getImg(),binding.ivSuratRekomendasiInstansi,dataVerifikasiTempatKerja.getTempatKerjaFotoSuratRekomendasiInstansi().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getFormAplikasi() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name(), binding.ivFormApplikasi, dataVerifikasiTempatKerja.getFormAplikasi().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getFormAplikasi().getImg(),binding.ivFormApplikasi,dataVerifikasiTempatKerja.getFormAplikasi().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getFormAplikasi2() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi2().getFile_Name(), binding.ivFormAplikasi2, dataVerifikasiTempatKerja.getFormAplikasi2().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getFormAplikasi2().getFile_Name(), binding.ivFormAplikasi2, dataVerifikasiTempatKerja.getFormAplikasi2().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getFormAplikasi2().getImg(),binding.ivFormAplikasi2,dataVerifikasiTempatKerja.getFormAplikasi2().getFile_Name());
+
         if (dataVerifikasiTempatKerja.getAset() != null)
-            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getAset().getImg(),binding.ivAset,dataVerifikasiTempatKerja.getAset().getFile_Name());
+
+        if (dataVerifikasiTempatKerja.getTempatKerjaDokumen() != null)
+//            checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getAset().getFile_Name(), binding.ivAset, dataVerifikasiTempatKerja.getAset().getImg());
+
+            //logical doc
+            checkFileTypeThenSet(VerifikasiTempatKerjaActivity.this,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getImg(),binding.ivUploadDokumen,dataVerifikasiTempatKerja.getTempatKerjaDokumen().getFile_Name());
 
     }
 
-    private void setDataAfterUpdate() {
+    private void  setDataAfterUpdate() {
 
         binding.etNamaInstansi2.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiTaspen());
         binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiSPAN());
@@ -567,10 +610,24 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
 
         if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
-            loadFileJson(idDok,imageView);
+
+            if(idDok.length()<10){
+                loadFileJson(idDok,imageView);
+            }
+            else{
+                checkImgOrPdfThenSetData(dataVerifikasiTempatKerja.getKTPNasabah().getFile_Name(), binding.ivKtpNasabah, dataVerifikasiTempatKerja.getKTPNasabah().getImg());
+            }
+
         }
         else{
-            AppUtil.setImageGlide(context,idDok,imageView);
+            if(idDok.length()<10){
+                AppUtil.setImageGlide(context,idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToImage(idDok,imageView);
+
+            }
+
         }
     }
 

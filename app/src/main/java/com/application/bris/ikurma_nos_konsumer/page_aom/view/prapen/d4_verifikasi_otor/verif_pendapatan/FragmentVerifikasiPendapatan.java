@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,15 +28,18 @@ import androidx.fragment.app.Fragment;
 
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseDataUpdateVerifikasi;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.databinding.FragmentVerifikasiPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan.ActivityDokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -48,6 +53,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FragmentVerifikasiPendapatan extends Fragment implements Step, GenericListenerOnSelect, View.OnClickListener, CameraListener {
     private FragmentVerifikasiPendapatanBinding binding;
@@ -112,10 +121,26 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
                 FileHasilVerifPensiun.setImg(FileHasilVerifPensiun.getImg());
                 if (FileHasilVerifPensiun.getFileName().substring(FileHasilVerifPensiun.getFileName().length() - 3, FileHasilVerifPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
                     FileHasilVerifPensiun.setFileName("FileHasilVerifPensiun.png");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifPensiun.getImg(), binding.ivDokumen2, FileHasilVerifPensiun.getFileName());
+
+                    if(FileHasilVerifPensiun.getImg().length()<10){
+                        loadFileJson(FileHasilVerifPensiun.getImg(),binding.ivDokumen2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifPensiun.getImg(), binding.ivDokumen2, FileHasilVerifPensiun.getFileName());
+                    }
+
+
+
                 } else {
                     FileHasilVerifPensiun.setFileName("FileHasilVerifTotal.pdf");
-                    AppUtil.convertBase64ToImage(FileHasilVerifPensiun.getImg(), binding.ivDokumen2);
+
+
+                    if(FileHasilVerifPensiun.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),FileHasilVerifPensiun.getImg(),binding.ivDokumen2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(FileHasilVerifPensiun.getImg(), binding.ivDokumen2);
+                    }
                 }
             } catch (Exception e) {
                 AppUtil.logSecure("error setdata", e.getMessage());
@@ -124,17 +149,32 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
         }
         if (data.get("FileHasilVerifTotal") != null) {
             String listDataString = data.get("FileHasilVerifTotal").getAsJsonObject().toString();
-            FileHasilVerifPensiun = gson.fromJson(listDataString, ReqDocument.class);
+            FileHasilVerifTotal = gson.fromJson(listDataString, ReqDocument.class);
 
             //Set Image Slip Gaji P2
             try {
                 FileHasilVerifTotal.setImg(FileHasilVerifTotal.getImg());
                 if (FileHasilVerifTotal.getFileName().substring(FileHasilVerifTotal.getFileName().length() - 3, FileHasilVerifTotal.getFileName().length()).equalsIgnoreCase("pdf")) {
                     FileHasilVerifTotal.setFileName("FileHasilVerifTotal.png");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifTotal.getImg(), binding.ivDokumen1, FileHasilVerifTotal.getFileName());
+
+                    if(FileHasilVerifTotal.getImg().length()<10){
+                        loadFileJson(FileHasilVerifTotal.getImg(),binding.ivDokumen1);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), FileHasilVerifTotal.getImg(), binding.ivDokumen1, FileHasilVerifTotal.getFileName());
+                    }
+
                 } else {
                     FileHasilVerifTotal.setFileName("FileHasilVerifTotal.pdf");
-                    AppUtil.convertBase64ToImage(FileHasilVerifTotal.getImg(), binding.ivDokumen1);
+
+                    if(FileHasilVerifTotal.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),FileHasilVerifTotal.getImg(),binding.ivDokumen1);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(FileHasilVerifTotal.getImg(), binding.ivDokumen1);
+                    }
+
+
                 }
             } catch (Exception e) {
                 AppUtil.logSecure("error setdata", e.getMessage());
@@ -379,6 +419,37 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
         return outputFileUri;
     }
 
+    public void loadFileJson(String idFoto, ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(getContext());
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(),response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+                t.printStackTrace();
+            }
+        });
+
+    }
+
     @Nullable
     @Override
     public VerificationError verifyStep() {
@@ -394,4 +465,6 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
     public void onError(@NonNull VerificationError verificationError) {
 
     }
+    
+    
 }

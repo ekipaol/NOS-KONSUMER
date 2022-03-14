@@ -801,6 +801,7 @@ public class AppUtil {
                 .asBitmap()
                 .load(url_photo)
                 .placeholder(R.drawable.banner_placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

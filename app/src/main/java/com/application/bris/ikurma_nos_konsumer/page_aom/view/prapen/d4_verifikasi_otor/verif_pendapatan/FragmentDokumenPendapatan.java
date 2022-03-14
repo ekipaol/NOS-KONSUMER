@@ -3,15 +3,18 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifik
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DokumenPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -30,6 +33,8 @@ import com.stepstone.stepper.VerificationError;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValueListener, View.OnClickListener {
@@ -211,10 +216,24 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
             //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
             if (DPKoran.getFileName().substring(DPKoran.getFileName().length() - 3, DPKoran.getFileName().length()).equalsIgnoreCase("pdf")) {
                 DokumenPendapatanKoranBank.setFileName("koran.pdf");
-                AppUtil.convertBase64ToFileWithOnClick(getContext(), DPKoran.getImg(), binding.ivRekeningKoran1, DPKoran.getFileName());
+
+                if(DPKoran.getImg().length()<10){
+                    loadFileJson(DPKoran.getImg(),binding.ivRekeningKoran1);
+                }
+                else{
+                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPKoran.getImg(), binding.ivRekeningKoran1, DPKoran.getFileName());
+                }
+
             } else {
                 DokumenPendapatanKoranBank.setFileName("koran.png");
                 AppUtil.convertBase64ToImage(DPKoran.getImg(), binding.ivRekeningKoran1);
+
+                if(DPKoran.getImg().length()<10){
+                    AppUtil.setImageGlide(getContext(),DPKoran.getImg(),binding.ivRekeningKoran1);
+                }
+                else{
+                    AppUtil.convertBase64ToImage(DPKoran.getImg(), binding.ivRekeningKoran1);
+                }
             }
 
         } catch (Exception e) {
@@ -228,17 +247,45 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
 
             if (DPSlipGajiP1.getFileName().substring(DPSlipGajiP1.getFileName().length() - 3, DPSlipGajiP1.getFileName().length()).equalsIgnoreCase("pdf")) {
                 DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.pdf");
-                AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP1.getImg(), binding.ivSlipgajiP1, DPSlipGajiP1.getFileName());
+
+                if(DPSlipGajiP1.getImg().length()<10){
+                    loadFileJson(DPSlipGajiP1.getImg(),binding.ivSlipgajiP1);
+                }
+                else{
+                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP1.getImg(), binding.ivSlipgajiP1, DPSlipGajiP1.getFileName());
+                }
+
             } else {
                 DokumenPendapatanSlipGajiP1.setFileName("slipgaji1.png");
-                AppUtil.convertBase64ToImage(DPSlipGajiP1.getImg(), binding.ivSlipgajiP1);
+
+                if(DPSlipGajiP1.getImg().length()<10){
+                    AppUtil.setImageGlide(getContext(),DPSlipGajiP1.getImg(),binding.ivSlipgajiP1);
+                }
+                else{
+                    AppUtil.convertBase64ToImage(DPSlipGajiP1.getImg(), binding.ivSlipgajiP1);
+                }
+
             }
             if (DPSlipTunjanganP1.getFileName().substring(DPSlipTunjanganP1.getFileName().length() - 3, DPSlipTunjanganP1.getFileName().length()).equalsIgnoreCase("pdf")) {
                 DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.pdf");
-                AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1, DPSlipTunjanganP1.getFileName());
+
+                if(DPSlipTunjanganP1.getImg().length()<10){
+                    loadFileJson(DPSlipTunjanganP1.getImg(),binding.ivSliptunjanganP1);
+                }
+                else{
+                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1, DPSlipTunjanganP1.getFileName());
+                }
+
             } else {
                 DokumenPendapatanSlipTunjanganP1.setFileName("tunjangan1.png");
-                AppUtil.convertBase64ToImage(DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1);
+
+                if(DPSlipTunjanganP1.getImg().length()<10){
+                    AppUtil.setImageGlide(getContext(),DPSlipTunjanganP1.getImg(),binding.ivSliptunjanganP1);
+                }
+                else{
+                    AppUtil.convertBase64ToImage(DPSlipTunjanganP1.getImg(), binding.ivSliptunjanganP1);
+                }
+
             }
         } catch (Exception e) {
             AppUtil.logSecure("error setdata", e.getMessage());
@@ -250,17 +297,44 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
                 DokumenPendapatanSlipTunjanganP2.setImg(DPSlipTunjanganP2.getImg());
                 if (DPSlipGajiP2.getFileName().substring(DPSlipGajiP2.getFileName().length() - 3, DPSlipGajiP2.getFileName().length()).equalsIgnoreCase("pdf")) {
                     DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.png");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP2.getImg(), binding.ivSlipgajiP2, DPSlipGajiP2.getFileName());
+
+                    if(DPSlipGajiP2.getImg().length()<10){
+                        loadFileJson(DPSlipGajiP2.getImg(),binding.ivSlipgajiP2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP2.getImg(), binding.ivSlipgajiP2, DPSlipGajiP2.getFileName());
+                    }
+
                 } else {
                     DokumenPendapatanSlipGajiP2.setFileName("slipgaji2.pdf");
-                    AppUtil.convertBase64ToImage(DPSlipGajiP2.getImg(), binding.ivSlipgajiP2);
+
+                    if(DPSlipGajiP2.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),DPSlipGajiP2.getImg(),binding.ivSlipgajiP2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(DPSlipGajiP2.getImg(), binding.ivSlipgajiP2);
+                    }
                 }
                 if (DPSlipTunjanganP2.getFileName().substring(DPSlipTunjanganP2.getFileName().length() - 3, DPSlipTunjanganP2.getFileName().length()).equalsIgnoreCase("pdf")) {
                     DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.pdf");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2, DPSlipTunjanganP2.getFileName());
+
+                    if(DPSlipTunjanganP2.getImg().length()<10){
+                        loadFileJson(DPSlipTunjanganP2.getImg(),binding.ivSliptunjanganP2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2, DPSlipTunjanganP2.getFileName());
+                    }
+
                 } else {
                     DokumenPendapatanSlipTunjanganP2.setFileName("tunjangan2.png");
-                    AppUtil.convertBase64ToImage(DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2);
+
+                    if(DPSlipTunjanganP2.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),DPSlipTunjanganP2.getImg(),binding.ivSliptunjanganP2);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(DPSlipTunjanganP2.getImg(), binding.ivSliptunjanganP2);
+                    }
+
                 }
             } catch (Exception e) {
                 AppUtil.logSecure("error setdata", e.getMessage());
@@ -271,17 +345,42 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
                 DokumenPendapatanSlipTunjanganP3.setImg(DPSlipGajiP3.getImg());
                 if (DPSlipGajiP3.getFileName().substring(DPSlipGajiP3.getFileName().length() - 3, DPSlipGajiP3.getFileName().length()).equalsIgnoreCase("pdf")) {
                     DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.pdf");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP3.getImg(), binding.ivSlipgajiP3, DPSlipGajiP3.getFileName());
+
+                    if(DPSlipGajiP3.getImg().length()<10){
+                        loadFileJson(DPSlipGajiP3.getImg(),binding.ivSlipgajiP3);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipGajiP3.getImg(), binding.ivSlipgajiP3, DPSlipGajiP3.getFileName());
+                    }
+
                 } else {
                     DokumenPendapatanSlipGajiP3.setFileName("tunjangan3.png");
-                    AppUtil.convertBase64ToImage(DPSlipGajiP3.getImg(), binding.ivSlipgajiP3);
+                    if(DPSlipGajiP3.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),DPSlipGajiP3.getImg(),binding.ivSlipgajiP3);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(DPSlipGajiP3.getImg(), binding.ivSlipgajiP3);
+                    }
+
                 }
                 if (DPSlipTunjanganP3.getFileName().substring(DPSlipTunjanganP3.getFileName().length() - 3, DPSlipTunjanganP3.getFileName().length()).equalsIgnoreCase("pdf")) {
                     DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.pdf");
-                    AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3, DPSlipTunjanganP3.getFileName());
+
+                    if(DPSlipTunjanganP3.getImg().length()<10){
+                        loadFileJson(DPSlipTunjanganP3.getImg(),binding.ivSliptunjanganP3);
+                    }
+                    else{
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(), DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3, DPSlipTunjanganP3.getFileName());
+                    }
                 } else {
                     DokumenPendapatanSlipTunjanganP3.setFileName("tunjangan3.png");
-                    AppUtil.convertBase64ToImage(DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3);
+
+                    if(DPSlipTunjanganP3.getImg().length()<10){
+                        AppUtil.setImageGlide(getContext(),DPSlipTunjanganP3.getImg(),binding.ivSliptunjanganP3);
+                    }
+                    else{
+                        AppUtil.convertBase64ToImage(DPSlipTunjanganP3.getImg(), binding.ivSliptunjanganP3);
+                    }
                 }
             } catch (Exception e) {
                 AppUtil.logSecure("error setdata", e.getMessage());
@@ -346,6 +445,37 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
         binding.btnSliptunjanganP1.setVisibility(View.GONE);
         binding.btnSliptunjanganP2.setVisibility(View.GONE);
         binding.btnSliptunjanganP3.setVisibility(View.GONE);
+    }
+
+    public void loadFileJson(String idFoto, ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(getContext());
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(),response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+                t.printStackTrace();
+            }
+        });
+
     }
 
     @Override
