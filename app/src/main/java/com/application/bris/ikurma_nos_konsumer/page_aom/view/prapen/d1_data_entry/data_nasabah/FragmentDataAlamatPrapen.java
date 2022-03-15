@@ -45,6 +45,7 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
     private ApiClientAdapter apiClientAdapter;
     private PrapenAoFragmentDataAlamatBinding binding;
 
+
     public FragmentDataAlamatPrapen() {
     }
     
@@ -68,8 +69,10 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
         if(dataNasabah!=null){
             setData();
         }
-//        if (approved.equalsIgnoreCase("no")) {
-//        }
+
+        if(!dataNasabah.getStatusId().equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
 
 
 //        setData();
@@ -263,6 +266,11 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
 
 
         }
+    }
+
+    private void noInputMode(){
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
     }
 
 

@@ -89,6 +89,7 @@ import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
@@ -208,12 +209,11 @@ public class AppUtil {
                 if (view instanceof Button) {
                     ((Button) view).setVisibility(View.GONE);
 
-                } else if (view instanceof TextFieldBoxes) {
+                } else if (view instanceof Button) {
 //    ((TextFieldBoxes) view).setEnabled(false);
 //    ((TextFieldBoxes) view).setClickable(false);
-                    ((TextFieldBoxes) view).setOnClickListener(null);
+                    ((Button) view).setOnClickListener(null);
 //    ((TextFieldBoxes) view).getEndIconImageButton(false);
-                    ((TextFieldBoxes) view).removeEndIcon();
 
 
                 }
@@ -221,6 +221,28 @@ public class AppUtil {
 
             }
         }
+
+    }
+
+    public static String hashSha256(String text){
+
+        try{
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            digest.reset();
+
+            byte[] byteData = digest.digest(text.getBytes(StandardCharsets.UTF_8));
+            StringBuffer sb = new StringBuffer();
+
+            for (int i = 0; i < byteData.length; i++){
+                sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            return sb.toString();
+        }
+        catch(NoSuchAlgorithmException e){
+            logSecure("ALGO EXEPTION","no such algorithm");
+            return "";
+        }
+
 
     }
 

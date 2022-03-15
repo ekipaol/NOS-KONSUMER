@@ -66,6 +66,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
     private List<MGenericModel> dropdownProgram=new ArrayList<>();
     private List<MGenericModel> dropdownAkad=new ArrayList<>();
     private boolean adaFieldBelumDiisi =false;
+    private String statusId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,14 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             loadData();
         }
 
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
+        }
+
+
+
+
+
         //biar keyboard gak nongol di awal activity kalau ada edittext
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -91,6 +100,10 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         disableEditTexts();
         isiDropdown();
         allOnChange();
+
+        if(!statusId.equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
 
         //urutan eksekusi API dropdown, tipe produk -> segmen -> jenis pembiayaan -> tujuan pembiayaan -> program, dimulai dari tipe produk dulu, isi API urutan seterusnya ada di masing masing method loadDropdown
         loadDropdownTipeProduk();
@@ -660,6 +673,11 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
 
     private void allOnChange(){
 //        binding.etPriceDitawarkan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPriceDitawarkan));
+    }
+
+    private void noInputMode(){
+        AppUtil.disableButtons(binding.getRoot());
+        AppUtil.disableEditTexts(binding.getRoot());
     }
 
     @Override

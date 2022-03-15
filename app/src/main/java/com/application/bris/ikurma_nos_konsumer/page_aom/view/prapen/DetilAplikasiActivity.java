@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
@@ -289,77 +290,97 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_nasabah))){
             Intent it = new Intent(this, DataNasabahPrapenActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_dedupe))){
             Intent it = new Intent(this, DataDedupeActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_marketing))){
             Intent it = new Intent(this, DataMarketingActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan))){
             Intent it = new Intent(this, DataPembiayaanActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_lanjut))){
             binding.loading.setVisibility(View.GONE);
-            final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
-            dialog.setTitleText("Konfirmasi?");
-            dialog.setContentText("Anda Akan Melanjutkan Aplikasi Ke Tahap Selanjutnya?\n");
-            dialog.setConfirmText("Ya");
-            dialog.setCancelText("Tidak");
-            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                @Override
-                public void onClick(SweetAlertDialog sweetAlertDialog) {
+            if(statusId.equalsIgnoreCase("d.1")){
+                final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
+                dialog.setTitleText("Konfirmasi?");
+                dialog.setContentText("Anda Akan Melanjutkan Aplikasi Ke Tahap Selanjutnya?\n");
+                dialog.setConfirmText("Ya");
+                dialog.setCancelText("Tidak");
+                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                  sendDataLanjutHotprospek(dialog);
+                        sendDataLanjutHotprospek(dialog);
 
 
-                }
-            });
-            dialog.show();
+                    }
+                });
+                dialog.show();
+            }
+            else{
+                AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Aplikasi Sedang Tidak Berada di Tahap Data Entry");
+            }
+
         }
 
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_batal))){
             binding.loading.setVisibility(View.GONE);
-            final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
-            dialog.setTitleText("Konfirmasi?");
-            dialog.setContentText("Anda Akan Membatalkan Aplikasi?\n");
-            dialog.setConfirmText("Ya");
-            dialog.setCancelText("Tidak");
-            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                @Override
-                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                    batalPembiayaan(dialog);
-                }
-            });
-            dialog.show();
+            if(statusId.equalsIgnoreCase("d.1")){
+                final SweetAlertDialog dialog=new SweetAlertDialog(DetilAplikasiActivity.this,SweetAlertDialog.WARNING_TYPE);
+                dialog.setTitleText("Konfirmasi?");
+                dialog.setContentText("Anda Akan Membatalkan Aplikasi?\n");
+                dialog.setConfirmText("Ya");
+                dialog.setCancelText("Tidak");
+                dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        batalPembiayaan(dialog);
+                    }
+                });
+                dialog.show();
+            }
+            else{
+                AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Aplikasi Sedang Tidak Berada di Tahap Data Entry");
+            }
+
         }
 
         //FLOW D3
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_hutang))){
             Intent it = new Intent(this, DataHutangActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_ideb))){
             Intent it = new Intent(this, DataIdebActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_jaminan))){
             Intent it = new Intent(this, DataJaminanActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_pendapatan))){
             Intent it = new Intent(this, ActivityDokumenPendapatan.class);
             it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_kalkulator))){

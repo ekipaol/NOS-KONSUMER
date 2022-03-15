@@ -104,12 +104,12 @@
         <!-- android:value="@integer/google_play_services_version" /> -->
         <activity android:name=".view.corelayout.splashscreen.SplashScreen">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
 
 
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".view.corelayout.login.LoginActivity"
@@ -143,11 +143,11 @@
         <activity android:name=".view.corelayout.activation.WelcomeActivity" />
         <activity android:name=".view.corelayout.activation.ScanActivity" />
         <activity android:name=".view.corelayout.login.LoginActivity2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikActivity" />
         <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikEditActivity" />

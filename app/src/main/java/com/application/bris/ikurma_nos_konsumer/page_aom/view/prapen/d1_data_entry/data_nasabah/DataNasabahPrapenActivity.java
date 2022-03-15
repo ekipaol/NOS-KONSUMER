@@ -2,6 +2,7 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_en
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,8 @@ import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.datalengkap.OnNavigationBarListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.DetilAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
@@ -53,6 +56,7 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
     private int startingStepPosition;
     public static Long idAplikasi;
     DataNasabahPrapen dataRealm;
+    private String statusId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,10 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
 
         if(getIntent().hasExtra("idAplikasi")){
             idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        }
+
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
         }
 
         backgroundStatusBar();
@@ -128,15 +136,19 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
                             dataNasabah.setImgIdeb(dataFotoIdeb.getImg());
                             dataNasabah.setFile_Name_Ideb(dataFotoIdeb.getFile_Name());
 
+                            dataNasabah.setStatusId(statusId);
+
 
                             //pengecekan kalo di db masih kosong data lengkapnya, maka ambil dari realm
                             //di cek dari agama aja, soalnya mandatori kan ya, jadi kalo agama kosong, berarti dari DB belom pernah save data
                             dataRealm = realm.where(DataNasabahPrapen.class).equalTo("applicationId", idAplikasi).findFirst();
 
+
                             try {
 
                                 if((dataNasabah.getAlamat()==null ||dataNasabah.getAlamat().isEmpty())&&dataRealm!=null){
 
+                                    dataRealm.setStatusId(statusId);
 //                                    setDataFromRealm();
                                     binding.stepperlayout.setAdapter(new DataNasabahStepAdapter(getSupportFragmentManager(), DataNasabahPrapenActivity.this, dataRealm,dataInstansi), startingStepPosition );
                                     binding.stepperlayout.setListener(DataNasabahPrapenActivity.this);
@@ -219,6 +231,7 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
                             try{
                                 String dataInstansiString = response.body().getData().get(0).toString();
                                 dataInstansi = gson.fromJson(dataInstansiString, DataInstansiDapen.class);
+                                dataInstansi.setStatusId(statusId);
                             }
                             catch (Exception e){
                             AppUtil.logSecure("error load instansi",e.getMessage());
@@ -494,7 +507,18 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
 //        Intent intent=new Intent(DataNasabahPrapenActivity.this,DataMarketingActivity.class);
 //        startActivity(intent);
 //        finish();
-        sendDataNasabah();
+
+
+        if(statusId.equalsIgnoreCase("d.1")){
+            sendDataNasabah();
+        }
+        else{
+//            Intent intent = new Intent(DataNasabahPrapenActivity.this, DetilAplikasiActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
+
+            finish();
+        }
     }
 
     @Override

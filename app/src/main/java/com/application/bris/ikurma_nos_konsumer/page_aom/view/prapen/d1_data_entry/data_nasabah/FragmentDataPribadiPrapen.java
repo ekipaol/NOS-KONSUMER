@@ -153,6 +153,10 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             setData();
         }
 
+        if(!dataNasabah.getStatusId().equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
+
         npwpFormattingTextChange(binding.etNpwp);
 
 
@@ -748,6 +752,14 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
     private void defaulViewSettings(){
         binding.llPasangan.setVisibility(View.GONE);
+    }
+
+    private void noInputMode(){
+        AppUtil.disableEditTexts(binding.getRoot());
+
+        binding.btnUploadPersetujuanIdeb.setVisibility(View.GONE);
+        binding.btnUploadFotoKtp.setVisibility(View.GONE);
+
     }
 
 

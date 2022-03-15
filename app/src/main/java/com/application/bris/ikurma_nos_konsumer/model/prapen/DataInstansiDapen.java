@@ -87,6 +87,17 @@ public class DataInstansiDapen extends RealmObject {
     @Expose
     private String tanggalInputRekening;
 
+    private String statusId;
+
+
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
+    }
+
     public Long getApplicationId() {
         return applicationId;
     }

@@ -79,89 +79,49 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
         appPreferences = new AppPreferences(this);
         apiClientAdapter = new ApiClientAdapter(this, 0, 30, TimeUnit.SECONDS);
         ButterKnife.bind(this);
-        Log.d("firebaseid",   "device id : "+getDeviceId());
-
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            AppUtil.logSecure("firebaseid_failed", task.getException().getMessage());
-
-                            //comment ini jika naik prod
-//                            updateFirebaseId();
-//                            registerBrisnotif();
-                            return;
-
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-                        firebaseToken=token;
-
-                        if (firebaseToken != null&&!firebaseToken.isEmpty()) {
-                            updateFirebaseId();
-                            registerBrisnotif();
-                        }
-
-                        // Log and toast
-                        Log.d("firebaseid", token);
-//                        Toast.makeText(SplashScreen.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
 
         try {
             packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
         tv_version.setText("Version "+packageInfo.versionName);
 
 
 
 
         if(checkPermission()) {
-
-
             //check root
             if(deviceIsRooted()){
                 dialogRoot();
                 new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                       finish();
-                                    }
-                                }, 5000);
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                }, 5000);
             }
             else{
-                if(BuildConfig.IS_PRODUCTION==false){
-                    Bundle mbundle = new Bundle();
-                    mbundle.putString("type", "bdwelcome");
-                    RouteApp router = new RouteApp(SplashScreen.this);
-                    router.openActivityWithDataAndClearAllPrevious(LoginActivity2.class, mbundle);
-                    Toast.makeText(this, "SKIP HALAMAN AKTIVASI", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    checkAvailableUpdate();
-                }
+
+//                    checkAvailableUpdate();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        gotoNextActivity();
+                    }
+                }, 1000);
+
             }
 
 
 
         }
 
-        tv_version.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent=new Intent(SplashScreen.this, DataLengkapActivity.class);
-                startActivity(intent);
-                return true;
-            }
-        });
     }
 
     private void checkAvailableUpdate() {
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().checkUpdate(new Checkupdate("BRISI_KONSUMER"));
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().checkUpdate(new Checkupdate("NOS_GADAI"));
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
@@ -172,15 +132,6 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
                             int installedVersionNameInt=Integer.parseInt(packageInfo.versionName.replace(".",""));
                             int responseVersionInt=Integer.parseInt(response.body().getData().get("versionName").getAsString().replace(".",""));
 
-                            //metode lama, kalau versinya baru, tetap keluar error
-//                            if (response.body().getData().get("versionName").getAsString().equalsIgnoreCase(installedVersionName)){
-//                                new Handler().postDelayed(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        gotoNextActivity();
-//                                    }
-//                                }, 1000);
-//                            }
                             if(installedVersionNameInt>=responseVersionInt){
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
@@ -270,12 +221,8 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
 
     private void gotoNextActivity() {
         RouteApp router = new RouteApp(SplashScreen.this);
-        if (appPreferences.getIsActivated().equalsIgnoreCase("1")){
-            router.openActivityAndClearAllPrevious(LoginActivity.class);
-        }
-        else {
-            router.openActivityAndClearAllPrevious(WelcomeActivity.class);
-        }
+        router.openActivityAndClearAllPrevious(LoginActivity2.class);
+
     }
 
     @Override
@@ -298,21 +245,21 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
                         }
                         else{
                             if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE) ||
-                                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
-                            showDialogOK(getResources().getString(R.string.dialog_perms_msg),
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        switch (which) {
-                                            case DialogInterface.BUTTON_POSITIVE:
-                                                checkPermission();
-                                                break;
-                                            case DialogInterface.BUTTON_NEGATIVE:
-                                                finish();
-                                                break;
-                                        }
-                                    }
-                                });
+                                    ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                                showDialogOK(getResources().getString(R.string.dialog_perms_msg),
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                switch (which) {
+                                                    case DialogInterface.BUTTON_POSITIVE:
+                                                        checkPermission();
+                                                        break;
+                                                    case DialogInterface.BUTTON_NEGATIVE:
+                                                        finish();
+                                                        break;
+                                                }
+                                            }
+                                        });
                             }
                             else {
                                 confirmAgain(getResources().getString(R.string.dialog_need_permission));
@@ -370,115 +317,6 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
 
     }
 
-    private void updateFirebaseId() {
-        ReqFirebase req = new ReqFirebase();
-        req.setAppID("BRISI_KONSUMER");
-        req.setDeviceID(getDeviceId());
-        req.setFirebaseMessagingID(firebaseToken);
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateFirebase(req);
-        call.enqueue(new Callback<ParseResponse>() {
-            @Override
-            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
-                try {
-                    if (response.isSuccessful()) {
-
-                        if (response.body().getStatus().equalsIgnoreCase("00")) {
-                            Log.d("firebaseid",   FirebaseMessaging.getInstance().getToken().toString());
-
-
-                        }
-                    } else {
-//                        Error error = ParseResponseError.confirmEror(response.errorBody());
-//                        AppUtil.showToastShort(SplashScreen.this, "Terjadi Kesalahan");
-
-                    }
-                } catch (Exception e) {
-                    AppUtil.showToastShort(SplashScreen.this, e.getMessage());
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            gotoNextActivity();
-//                        }
-//                    }, 1000);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ParseResponse> call, Throwable t) {
-                AppUtil.showToastShort(SplashScreen.this, getString(R.string.txt_connection_failure));
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        gotoNextActivity();
-//                    }
-//                }, 1000);
-            }
-        });
-    }
-
-    private void registerBrisnotif() {
-        ReqRegisterBrisnotif req = new ReqRegisterBrisnotif();
-        req.setAppclient("ikurma");
-
-        //pantekan device id
-//        req.setIdentifier("8609269d342fd10dikurmapemrakarsa2");
-        //real device id
-        req.setIdentifier(getDeviceId()+"ikurmapemrakarsa");
-
-        //pantekan token brisnotif
-//        req.setToken("fiyiC9soSwCq_n6lMgQEYn:APA91bFIBtyamO5PevqNwva-kiXr1fgycgP_J20dUViGXvy4nUmHNI4XCconie4BiqRAPeRuEgKG_f6IrGe61jelRvc88SdPD2imeB_zVPp0AQ5foKayDnHBQ01BexG3APrr3XHObgaA");
-//
-//        Toast.makeText(this, "ada pantekan token notifkasi di splash screen", Toast.LENGTH_SHORT).show();
-
-        //real token firebase
-        req.setToken(firebaseToken);
-
-        //Dalvik/2.1.0 (Linux; U; Android 6.0; Redmi Note 4X MIUI/V10.2.1.0.MBFMIXM), v3.0.7
-        req.setAgent("i-Kurma Konsumer/" + packageInfo.versionName + " (Android " + getAndroidVersion() + ";" + getDeviceName() + ")");
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().brisnotifRegister(req);
-        call.enqueue(new Callback<ParseResponse>() {
-            @Override
-            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
-                try {
-                    if (response.isSuccessful()) {
-
-                        if (response.body().getStatus().equalsIgnoreCase("00")) {
-                            Log.d("firebaseid", FirebaseInstanceId.getInstance().getToken());
-                            Log.d("firebaseid", "device id: "+ getDeviceId());
-                            Log.d("firebaseid", "sukses register brisnotif");
-
-                        } else {
-                            Log.d("firebaseid", FirebaseInstanceId.getInstance().getToken());
-                            Log.d("firebaseid", "gagal brisnotif register");
-                        }
-                    } else {
-//                        Error error = ParseResponseError.confirmEror(response.errorBody());
-//                        AppUtil.showToastShort(SplashScreen.this, "Terjadi Kesalahan");
-
-                    }
-                } catch (Exception e) {
-                    AppUtil.showToastShort(SplashScreen.this, e.getMessage());
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            gotoNextActivity();
-//                        }
-//                    }, 1000);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ParseResponse> call, Throwable t) {
-//                AppUtil.showToastShort(SplashScreen.this, getString(R.string.txt_connection_failure));
-//                new Handler().postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        gotoNextActivity();
-//                    }
-//                }, 1000);
-            }
-        });
-    }
 
     private String getAndroidVersion() {
         Field[] fields = Build.VERSION_CODES.class.getFields();
@@ -528,7 +366,12 @@ public class SplashScreen extends AppCompatActivity implements ConfirmListener{
     private boolean deviceIsRooted(){
         RootBeer rootBeer = new RootBeer(SplashScreen.this);
         if (rootBeer.isRooted()) {
-            return true;
+            if(BuildConfig.ROOT_DETECTION){
+                return true;
+            }
+            else{
+                return false;
+            }
         } else {
             return false;
 

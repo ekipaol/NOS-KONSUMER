@@ -51,6 +51,7 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
     private String idAplikasi="0";
     private boolean nikChange=false;
     List<MGenericModel> dataDropdownFlow=new ArrayList<>();
+    private String statusId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,11 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
             idAplikasi=getIntent().getStringExtra("idAplikasi");
         }
 
+
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
+        }
+
         //pantekan status untuk testing
         customToolbar();
         backgroundStatusBar();
@@ -72,6 +78,10 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
         initialize();
         onClicks();
         defaultViewCondition();
+
+        if(!statusId.equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
 
 
     }
@@ -333,6 +343,9 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
         binding.rvListDedupe.setVisibility(View.GONE);
     }
 
+    private void noInputMode(){
+        binding.btnLanjutDedupe.setVisibility(View.GONE);
+    }
     @Override
     public void success(boolean val) {
         finish();

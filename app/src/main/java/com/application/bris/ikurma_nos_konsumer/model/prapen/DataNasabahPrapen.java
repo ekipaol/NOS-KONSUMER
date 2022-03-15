@@ -105,6 +105,7 @@ public class DataNasabahPrapen extends RealmObject {
     @SerializedName("File_Name_Ideb")
     @Expose
     private String File_Name_Ideb;
+    private String statusId;
 
 //    @SerializedName("DataDukcapilIMG2")
 //    @Expose
@@ -117,6 +118,15 @@ public class DataNasabahPrapen extends RealmObject {
 //    public void setDataDukcapilIMG(UploadImage dataDukcapilIMG) {
 //        DataDukcapilIMG = dataDukcapilIMG;
 //    }
+
+
+    public String getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(String statusId) {
+        this.statusId = statusId;
+    }
 
     public String getImgIdeb() {
         return ImgIdeb;

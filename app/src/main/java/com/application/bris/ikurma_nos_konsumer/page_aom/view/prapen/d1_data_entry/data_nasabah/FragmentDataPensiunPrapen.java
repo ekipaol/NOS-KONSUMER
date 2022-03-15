@@ -97,6 +97,11 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             setData();
         }
 
+
+        if(!dataInstansi.getStatusId().equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
+
 //        setData();
 
         return view;
@@ -857,6 +862,11 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 Log.d("LOG D", t.getMessage());
             }
         });
+    }
+
+    private void noInputMode(){
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
     }
 
 

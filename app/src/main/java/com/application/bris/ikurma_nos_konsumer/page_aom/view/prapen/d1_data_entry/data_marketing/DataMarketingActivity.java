@@ -64,6 +64,7 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
     private Long idAplikasi;
     private DataMarketing dataMarketing;
     private boolean adaFieldBelumDiisi;
+    private String statusId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,11 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         apiClientAdapter=new ApiClientAdapter(this);
         appPreferences=new AppPreferences(this);
         idAplikasi=Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
+        }
+
         backgroundStatusBar();
         AppUtil.toolbarRegular(this, "Data Marketing");
 
@@ -83,6 +89,10 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
         disableEditTexts();
         defaultViewCondition();
         loadData();
+
+        if(!statusId.equalsIgnoreCase("d.1")){
+            noInputMode();
+        }
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -551,6 +561,11 @@ public class DataMarketingActivity extends AppCompatActivity implements View.OnC
                 AppUtil.notiferror(DataMarketingActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
+    }
+
+    private void noInputMode(){
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
     }
 
     @Override

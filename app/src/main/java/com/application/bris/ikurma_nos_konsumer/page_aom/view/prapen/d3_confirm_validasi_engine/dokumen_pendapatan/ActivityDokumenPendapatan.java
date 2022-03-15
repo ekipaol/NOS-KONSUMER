@@ -1606,10 +1606,24 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
     private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
 
         if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
-            loadFileJson(idDok,imageView);
+
+            if(idDok.length()<10){
+                loadFileJson(idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToFileWithOnClick(context,idDok,imageView,fileName);
+            }
+
         }
         else{
-            AppUtil.setImageGlide(context,idDok,imageView);
+
+            if(idDok.length()<10){
+                AppUtil.setImageGlide(context,idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToImage(idDok,imageView);
+            }
+
         }
     }
 

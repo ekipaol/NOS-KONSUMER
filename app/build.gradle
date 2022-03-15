@@ -10,11 +10,12 @@ android {
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 19
-        versionName "1.5.1"
+        versionName "1.0.0"
         multiDexEnabled true
         buildConfigField("Boolean", "IS_PRODUCTION", "false")
         buildConfigField ("Boolean","IS_BD", "true")
         buildConfigField ("Boolean","SHOW_LOG", "true")
+        buildConfigField ("Boolean","ROOT_DETECTION", "true")
         buildConfigField ("String","SECRET_KEY", toJavaCodeString(SECRET_KEY))
         buildConfigField ("String","DEVELOPER_KEY",toJavaCodeString(DEVELOPER_KEY))
         buildConfigField ("String","MAGIC_CRYPT_KEY",toJavaCodeString(MAGIC_CRYPT_KEY))
