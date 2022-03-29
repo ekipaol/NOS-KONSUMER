@@ -38,6 +38,8 @@ import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptH
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.LazyHeaders;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -119,6 +121,8 @@ public class AppUtil {
     public static MagicCrypt magicCrypt = new MagicCrypt();
     private Snackbar snackbar;
     public static String idFoto="0";
+
+    private static AppPreferences appPreferences;
 
     public static void showToastShort(Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
@@ -777,23 +781,33 @@ public class AppUtil {
 
     public static void setImageGlide(Context context,int fidPhoto,ImageView iv_foto){
         MagicCryptHelper encryptor=new MagicCryptHelper();
-        AppPreferences appPreferences=new AppPreferences(context);
+        appPreferences=new AppPreferences(context);
 
         String imageUrlToEncode= encryptor.encrypt(Integer.toString(appPreferences.getUid())+"_"+fidPhoto);
 
         String url_photo = null;
+        GlideUrl urlGlide=null;
         try {
 //            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhotoSecure + URLEncoder.encode(imageUrlToEncode, StandardCharsets.UTF_8.toString());
             url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + fidPhoto;
+
+            urlGlide = new GlideUrl(url_photo, new LazyHeaders.Builder()
+                    .addHeader("Authorization", "Bearer "+appPreferences.getToken())
+                    .build());
+
+//            logSecure("whatisdat","Bearer "+appPreferences.getToken());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
         Glide
 
                 .with(context)
                 .asBitmap()
-                .load(url_photo)
+                .load(urlGlide)
+//                .load(url_photo)
                 .placeholder(R.drawable.banner_placeholder)
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -801,27 +815,53 @@ public class AppUtil {
                         iv_foto.setImageBitmap(resource);
                     }
                 });
+
+        iv_foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    DialogPreviewPhoto.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", ((BitmapDrawable)iv_foto.getDrawable()).getBitmap());
+                }
+                catch (ClassCastException e){
+                    DialogPreviewPhoto.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", (((RoundedDrawable)iv_foto.getDrawable()).getSourceBitmap()));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     public static void setImageGlide(Context context,String fidPhoto,ImageView iv_foto){
         MagicCryptHelper encryptor=new MagicCryptHelper();
-        AppPreferences appPreferences=new AppPreferences(context);
+
+         appPreferences=new AppPreferences(context);
 
         String imageUrlToEncode= encryptor.encrypt(Integer.toString(appPreferences.getUid())+"_"+fidPhoto);
 
         String url_photo = null;
+
+        GlideUrl urlGlide=null;
         try {
 //            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhotoSecure + URLEncoder.encode(imageUrlToEncode, StandardCharsets.UTF_8.toString());
             url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + fidPhoto;
+
+            urlGlide = new GlideUrl(url_photo, new LazyHeaders.Builder()
+                    .addHeader("Authorization", "Bearer "+appPreferences.getToken())
+                    .build());
+
+            logSecure("whatisdat","Bearer "+appPreferences.getToken());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
         Glide
 
                 .with(context)
                 .asBitmap()
-                .load(url_photo)
+                .load(urlGlide)
                 .placeholder(R.drawable.banner_placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(new SimpleTarget<Bitmap>() {

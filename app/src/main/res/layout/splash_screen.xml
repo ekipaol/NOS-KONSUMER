@@ -21,7 +21,7 @@
             android:layout_height="350dp"
             android:layout_centerHorizontal="true"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo_nos_konsumer_small" />
+            android:src="@drawable/nos_konsumer_logo_new_placeholder" />
 
     </RelativeLayout>
 

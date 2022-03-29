@@ -134,7 +134,7 @@ public class AppPreferences {
     }
 
     public String getToken (){
-        return sharedPref.getString(Constants.Login.TOKEN, "token");
+        return AppUtil.decrypt(sharedPref.getString(Constants.Login.TOKEN, "token"));
     }
 
 

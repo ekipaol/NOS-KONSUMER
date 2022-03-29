@@ -24,9 +24,9 @@
 
 #uncomment ini untuk disable obfuscate
 
--keep class * {
-     public private *;
- }
+#-keep class * {
+#     public private *;
+# }
 
  -keep class cn.pedant.SweetAlert.Rotate3dAnimation {
     public <init>(...);

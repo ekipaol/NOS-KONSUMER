@@ -14,7 +14,7 @@ android {
         multiDexEnabled true
         buildConfigField("Boolean", "IS_PRODUCTION", "false")
         buildConfigField ("Boolean","IS_BD", "true")
-        buildConfigField ("Boolean","SHOW_LOG", "true")
+        buildConfigField ("Boolean","SHOW_LOG", "false")
         buildConfigField ("Boolean","ROOT_DETECTION", "true")
         buildConfigField ("String","SECRET_KEY", toJavaCodeString(SECRET_KEY))
         buildConfigField ("String","DEVELOPER_KEY",toJavaCodeString(DEVELOPER_KEY))
@@ -44,9 +44,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
-            shrinkResources false
-            minifyEnabled false
-            useProguard false
+            shrinkResources true
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
