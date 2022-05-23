@@ -453,7 +453,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(EditIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 

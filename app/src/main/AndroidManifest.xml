@@ -14,15 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:allowBackup">
-        <activity android:name=".page_aom.view.prapen.general.ListAplikasiActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.master_instansi.InputMasterInstansiActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.general.ListAplikasiActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.TambahHutangVerifikatorActivity" />
         <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.field_ojk_bi.ActivityFieldOjkBI" />
         <activity android:name=".page_aom.view.prapen.g3_upload_dokumen.ActivityUploadDokumen" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_jangka_waktu.ActivityJangkaWaktuPembiayaan" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_kesimpulan.KesimpulanVerifikasi" />
         <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.data_akad.DataAkadActivity" />
-        <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad.PersiapanAkadActivity" />
-<!--        <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.kalkulator_akad.KalkulatorAkadActivity" />-->
+        <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.persiapan_akad.PersiapanAkadActivity" /> <!-- <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.kalkulator_akad.KalkulatorAkadActivity" /> -->
         <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.data_asesoir.AsesoirActivity" />
         <activity android:name=".page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_dsr_dbr.Activity_DSR_DBR_Nasabah" />
@@ -42,11 +42,11 @@
         <activity android:name=".page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity" />
         <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.TambahDataHutangActivity" />
         <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity" />
-        <activity android:name=".page_aom.view.prapen.DetilAplikasiActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.DetilAplikasiActivity" />
         <activity android:name=".page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity" />
-        <activity android:name=".page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".page_aom.view.flpp.InputUlangFlppActivity" />
         <activity android:name=".page_aom.view.hotprospek.kelengkapandokumen.kpr.KonsumerKprFlppKelengkapanDokumenActivity" />
         <activity android:name=".page_aom.view.flpp.DetailKonfirmasiFlppActivity" />
@@ -103,13 +103,11 @@
         <!-- android:name="com.google.android.gms.version" -->
         <!-- android:value="@integer/google_play_services_version" /> -->
         <activity android:name=".view.corelayout.splashscreen.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.corelayout.login.LoginActivity"
@@ -143,11 +141,13 @@
         <activity android:name=".view.corelayout.activation.WelcomeActivity" />
         <activity android:name=".view.corelayout.activation.ScanActivity" />
         <activity android:name=".view.corelayout.login.LoginActivity2">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikActivity" />
         <activity android:name=".page_aom.view.hotprospek.prescreening.remaksslik.RemaksSlikEditActivity" />
@@ -191,8 +191,8 @@
     <uses-permission android:name="android.permission.ACCESS_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
+
+    <uses-permission android:name="android.permission.READ_SMS" />
 
 </manifest>

@@ -171,7 +171,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
                         dataIdeb =  gson.fromJson(listDataString, type);
                         List<DataIdeb> dataIdebLunas = gson.fromJson(listDataLunasString, type);
 
-                        if(dataIdeb.size()==0){
+                        if(dataIdeb.size()==0&&dataIdebLunas.size()==0){
                             binding.llEmptydata.setVisibility(View.VISIBLE);
                         }
 
@@ -200,7 +200,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -239,7 +239,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -293,7 +293,7 @@ public class DataIdebActivity extends AppCompatActivity implements GenericListen
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

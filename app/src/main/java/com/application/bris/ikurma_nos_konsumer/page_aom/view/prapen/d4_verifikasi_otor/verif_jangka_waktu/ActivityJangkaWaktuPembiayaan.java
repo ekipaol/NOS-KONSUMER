@@ -152,7 +152,7 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityJangkaWaktuPembiayaan.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

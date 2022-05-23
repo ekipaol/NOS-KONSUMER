@@ -153,7 +153,7 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityFieldOjkBI.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -187,7 +187,7 @@ public class ActivityFieldOjkBI extends AppCompatActivity implements View.OnClic
             public void onFailure(Call<ParseResponseArr> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityFieldOjkBI.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

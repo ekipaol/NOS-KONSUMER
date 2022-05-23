@@ -144,6 +144,7 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
         //pantekan uid
 //        req.setUID("");
         req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setRole((appPreferences.getFidRole()));
 
         Call<ParseResponseArr> call;
 
@@ -191,7 +192,6 @@ public class ListAplikasiActivity extends AppCompatActivity implements SwipeRefr
             public void onFailure(Call<ParseResponseArr> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ListAplikasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
             }
         });
     }

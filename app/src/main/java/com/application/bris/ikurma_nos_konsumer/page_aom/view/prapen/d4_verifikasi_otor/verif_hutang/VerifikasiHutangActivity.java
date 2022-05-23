@@ -240,7 +240,7 @@ public class VerifikasiHutangActivity extends AppCompatActivity implements Gener
             public void onFailure(Call<ParseResponseArr> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(VerifikasiHutangActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

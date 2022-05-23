@@ -443,7 +443,7 @@ public class FragmentVerifikasiPendapatan extends Fragment implements Step, Gene
             @Override
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

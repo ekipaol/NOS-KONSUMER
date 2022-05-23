@@ -405,7 +405,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -657,7 +657,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(VerifikasiTempatKerjaActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

@@ -197,7 +197,7 @@ public class FragmentDataAlamatPrapen extends Fragment implements Step, KeyValue
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingDukcapil.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

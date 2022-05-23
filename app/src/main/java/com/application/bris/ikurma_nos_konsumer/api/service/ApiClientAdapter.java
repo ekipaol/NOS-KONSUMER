@@ -330,7 +330,16 @@ public class ApiClientAdapter {
                         //hanya request json aja yang pakai signature
                         //request non json sperti upload foto gak perlu signature
                         if(subtype.contains("json")){
-                            String signature="token=Bearer "+appPreferences.getToken()+"&body="+bodyToString(requestBody);
+                            String signature;
+                            try{
+                                 signature="token=Bearer "+appPreferences.getToken()+"&body="+bodyToString(requestBody);
+                            }
+                            catch (RuntimeException e){
+                                e.printStackTrace();
+                                appPreferences.setToken(AppUtil.encrypt("Dummy Token"));
+                                 signature="token=Bearer "+appPreferences.getToken()+"&body="+bodyToString(requestBody);
+                            }
+
                             AppUtil.logSecure("xsign",signature);
                             request = chain.request().newBuilder()
                                     .addHeader("Authorization", "Bearer "+appPreferences.getToken())

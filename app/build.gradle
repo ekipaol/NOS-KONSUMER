@@ -10,11 +10,11 @@ android {
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 19
-        versionName "1.0.0"
+        versionName "1.0.4"
         multiDexEnabled true
         buildConfigField("Boolean", "IS_PRODUCTION", "false")
         buildConfigField ("Boolean","IS_BD", "true")
-        buildConfigField ("Boolean","SHOW_LOG", "false")
+        buildConfigField ("Boolean","SHOW_LOG", "true")
         buildConfigField ("Boolean","ROOT_DETECTION", "true")
         buildConfigField ("String","SECRET_KEY", toJavaCodeString(SECRET_KEY))
         buildConfigField ("String","DEVELOPER_KEY",toJavaCodeString(DEVELOPER_KEY))
@@ -44,9 +44,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug{
-            shrinkResources true
-            minifyEnabled true
-            useProguard true
+            shrinkResources false
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

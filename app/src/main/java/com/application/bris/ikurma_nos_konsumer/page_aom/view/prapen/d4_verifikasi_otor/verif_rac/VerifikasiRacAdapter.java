@@ -134,7 +134,7 @@ public class VerifikasiRacAdapter extends RecyclerView.Adapter<VerifikasiRacAdap
             @Override
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 AppUtil.notiferror(context,holder.et_catatan.findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

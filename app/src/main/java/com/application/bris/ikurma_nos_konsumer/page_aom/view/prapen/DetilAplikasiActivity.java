@@ -243,10 +243,10 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Menu.SubmenuD3(this, menu);
             demoVisibility(true);
         }
-        else if(namaMenu.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
-            Menu.SubmenuD4(this, menu);
-            demoVisibility(true);
-        }
+//        else if(namaMenu.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
+//            Menu.SubmenuD4(this, menu);
+//            demoVisibility(true);
+//        }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d5_confirm_verifikasi))){
             Menu.SubmenuD5(this, menu);
             demoVisibility(true);
@@ -648,7 +648,6 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
                 public void onFailure(Call<ParseResponse> call, Throwable t) {
                     binding.loadingAll.progressbarLoading.setVisibility(View.GONE);
                     AppUtil.notiferror(DetilAplikasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                    Log.d("LOG D", t.getMessage());
                 }
             });
         }

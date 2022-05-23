@@ -471,7 +471,7 @@ public class FragmentDokumenPendapatan extends Fragment implements Step, KeyValu
             @Override
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

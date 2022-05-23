@@ -448,7 +448,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingDukcapil.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -988,7 +988,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 
@@ -1015,7 +1015,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

@@ -30,6 +30,7 @@ import com.application.bris.ikurma_nos_konsumer.model.general.dataLogin;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputMasterInstansiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.Constants;
 import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
@@ -80,7 +81,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        apiClientAdapter = new ApiClientAdapter(this,"http://10.0.116.37:8054/");
+        apiClientAdapter = new ApiClientAdapter(this,"http://10.0.116.37:8051/");
         appPreferences = new AppPreferences(this);
         appPreferences.setNama(AppUtil.encrypt("Developer"));
         backgroundStatusBar();
@@ -101,7 +102,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
             iv_avatarlogin.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Intent intent=new Intent(LoginActivity2.this, HotprospekActivity.class);
+                    Intent intent=new Intent(LoginActivity2.this, InputMasterInstansiActivity.class);
                     startActivity(intent);
                     return false;
                 }
@@ -218,7 +219,7 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
         loading.setVisibility(View.VISIBLE);
         MagicCryptHelper encryptor=new MagicCryptHelper();
         login req = new login(et_username.getText().toString().trim(), encryptor.encrypt("12345678"), getDeviceId(), "NOS_KONSUMER");
-//        req.setPassword(encryptor.encrypt(et_password.getText().toString()));
+        req.setPassword(encryptor.encrypt(et_password.getText().toString()));
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().login2(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override

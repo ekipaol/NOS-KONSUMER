@@ -237,6 +237,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         //real data
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setRole(appPreferences.getFidRole());
 
         Call<ParseResponseArr> call;
 
@@ -365,6 +366,7 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
 //            Intent it = new Intent(getContext(), KonsumerKMGPipelineActivity.class);
 //            startActivity(it);
             Intent intent=new Intent(getContext(), DataPembiayaanActivity.class);
+            intent.putExtra("statusId","d.1");
             startActivity(intent);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.menu_aplikasi))){

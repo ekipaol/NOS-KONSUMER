@@ -481,6 +481,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         sbiaya.setTreatmentBiayaPenalti(binding.etTreatmentBiayaPenalti.getText().toString());
         sbiaya.setBiayaMaterai(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etBiayamaterai.getText().toString())));
         sbiaya.setTreatmentBiayaMaterai(binding.etTreatmentBiayaMaterai.getText().toString());
+        sbiaya.setManfaatAsuransi(binding.etManfaatAsuransi.getText().toString());
         ReqHitungKalkulator req = new ReqHitungKalkulator();
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
         req.setUid(String.valueOf(appPreferences.getUid()));

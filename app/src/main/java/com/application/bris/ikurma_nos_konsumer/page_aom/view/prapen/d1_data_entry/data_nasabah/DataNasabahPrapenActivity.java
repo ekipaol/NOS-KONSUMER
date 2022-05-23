@@ -235,7 +235,11 @@ public class DataNasabahPrapenActivity extends AppCompatActivity implements Step
                             }
                             catch (Exception e){
                             AppUtil.logSecure("error load instansi",e.getMessage());
+                                dataInstansi=new DataInstansiDapen();
+                                dataInstansi.setStatusId(statusId);
                             }
+
+
 
                             loadDataNasabah();
                         }

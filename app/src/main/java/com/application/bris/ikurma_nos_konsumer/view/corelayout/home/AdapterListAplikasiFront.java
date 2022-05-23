@@ -10,11 +10,13 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ItemListAplikasiPrapenBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.ItemListAplikasiPrapenFrontBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
@@ -29,6 +31,7 @@ public class AdapterListAplikasiFront extends RecyclerView.Adapter<AdapterListAp
     private List<DataListAplikasi> datafiltered;
     private Context context;
     private ItemListAplikasiPrapenFrontBinding binding;
+    AppPreferences appPreferences;
 
     public AdapterListAplikasiFront(Context context,List< DataListAplikasi> mdata) {
         this.context = context;
@@ -42,6 +45,7 @@ public class AdapterListAplikasiFront extends RecyclerView.Adapter<AdapterListAp
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         binding= ItemListAplikasiPrapenFrontBinding.inflate(layoutInflater,parent,false);
         View view = binding.getRoot();
+        appPreferences=new AppPreferences(context);
         return new AdapterListAplikasiFront.MenuViewHolder(view);
     }
 
@@ -77,14 +81,43 @@ public class AdapterListAplikasiFront extends RecyclerView.Adapter<AdapterListAp
 //                    Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
 //                }
 //                else{
-                Intent intent=new Intent(context, DetilAplikasiActivity.class);
-                intent.putExtra("idAplikasi",datas.getApplicationId());
-                intent.putExtra("nama",datas.getNama());
-                intent.putExtra("plafond",datas.getPlafond());
-                intent.putExtra("noAplikasi",datas.getApplicationNo());
-                intent.putExtra("status",datas.getStatusAplikasi());
-                intent.putExtra("statusId",datas.getStatusAplikasiId());
-                context.startActivity(intent);
+
+                if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
+                    if(datas.getStatusAplikasiId().equalsIgnoreCase("d.6")){
+                        Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                        intent.putExtra("idAplikasi",datas.getApplicationId());
+                        intent.putExtra("nama",datas.getNama());
+                        intent.putExtra("plafond",datas.getPlafond());
+                        intent.putExtra("noAplikasi",datas.getApplicationNo());
+                        intent.putExtra("status",datas.getStatusAplikasi());
+                        intent.putExtra("statusId",datas.getStatusAplikasiId());
+                        context.startActivity(intent);
+                    }
+
+                }
+                else{
+                    if(datas.getStatusAplikasiId().equalsIgnoreCase("d.6")){
+                        Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                        intent.putExtra("idAplikasi",datas.getApplicationId());
+                        intent.putExtra("nama",datas.getNama());
+                        intent.putExtra("plafond",datas.getPlafond());
+                        intent.putExtra("noAplikasi",datas.getApplicationNo());
+                        intent.putExtra("status",datas.getStatusAplikasi());
+                        intent.putExtra("statusId",datas.getStatusAplikasiId());
+                        context.startActivity(intent);
+                    }
+                }
+//                Intent intent=new Intent(context, DetilAplikasiActivity.class);
+//                intent.putExtra("idAplikasi",datas.getApplicationId());
+//                intent.putExtra("nama",datas.getNama());
+//                intent.putExtra("plafond",datas.getPlafond());
+//                intent.putExtra("noAplikasi",datas.getApplicationNo());
+//                intent.putExtra("status",datas.getStatusAplikasi());
+//                intent.putExtra("statusId",datas.getStatusAplikasiId());
+//                context.startActivity(intent);
 //                }
 
 
@@ -101,14 +134,43 @@ public class AdapterListAplikasiFront extends RecyclerView.Adapter<AdapterListAp
 //                    Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
 //                }
 //                else{
-                Intent intent=new Intent(context, DetilAplikasiActivity.class);
-                intent.putExtra("idAplikasi",datas.getApplicationId());
-                intent.putExtra("nama",datas.getNama());
-                intent.putExtra("plafond",datas.getPlafond());
-                intent.putExtra("noAplikasi",datas.getApplicationNo());
-                intent.putExtra("status",datas.getStatusAplikasi());
-                intent.putExtra("statusId",datas.getStatusAplikasiId());
-                context.startActivity(intent);
+
+                if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
+                    if(datas.getStatusAplikasiId().equalsIgnoreCase("d.6")){
+                        Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                        intent.putExtra("idAplikasi",datas.getApplicationId());
+                        intent.putExtra("nama",datas.getNama());
+                        intent.putExtra("plafond",datas.getPlafond());
+                        intent.putExtra("noAplikasi",datas.getApplicationNo());
+                        intent.putExtra("status",datas.getStatusAplikasi());
+                        intent.putExtra("statusId",datas.getStatusAplikasiId());
+                        context.startActivity(intent);
+                    }
+
+                }
+                else{
+                    if(datas.getStatusAplikasiId().equalsIgnoreCase("d.6")){
+                        Toast.makeText(context, "Tidak dapat mengubah aplikasi dengan status : "+datas.getStatusAplikasi(), Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Intent intent=new Intent(context, DetilAplikasiActivity.class);
+                        intent.putExtra("idAplikasi",datas.getApplicationId());
+                        intent.putExtra("nama",datas.getNama());
+                        intent.putExtra("plafond",datas.getPlafond());
+                        intent.putExtra("noAplikasi",datas.getApplicationNo());
+                        intent.putExtra("status",datas.getStatusAplikasi());
+                        intent.putExtra("statusId",datas.getStatusAplikasiId());
+                        context.startActivity(intent);
+                    }
+                }
+//                Intent intent=new Intent(context, DetilAplikasiActivity.class);
+//                intent.putExtra("idAplikasi",datas.getApplicationId());
+//                intent.putExtra("nama",datas.getNama());
+//                intent.putExtra("plafond",datas.getPlafond());
+//                intent.putExtra("noAplikasi",datas.getApplicationNo());
+//                intent.putExtra("status",datas.getStatusAplikasi());
+//                intent.putExtra("statusId",datas.getStatusAplikasiId());
+//                context.startActivity(intent);
 //                }
             }
         });

@@ -1584,7 +1584,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityDokumenPendapatan.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 
@@ -1653,7 +1653,7 @@ public class ActivityDokumenPendapatan extends AppCompatActivity implements Gene
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityDokumenPendapatan.this,findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
                 t.printStackTrace();
             }
         });

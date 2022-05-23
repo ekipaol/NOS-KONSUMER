@@ -80,6 +80,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     private boolean sudahUpload = false;
 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
     ReqDocument JDJaminanKTP, JDJaminanKTPPasangan, JDJaminanNPWP, JDJaminanFormAplikasi, JDJaminanAsetAKAD, JDJaminanSKPensiun, JDJaminanSKPengangkatan, JDJaminanSKTerakhir, JDJaminanSuratRekomendasiInstansi, JDJaminanIDCard,JDFormAplikasi2;
     ReqDocument DataJaminanKTP = new ReqDocument(), DataJaminanKTPPasangan = new ReqDocument(),
             DataJaminanNPWP = new ReqDocument(), DataJaminanFormAplikasi = new ReqDocument(),
@@ -1409,7 +1410,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 
@@ -1478,7 +1479,6 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataJaminanActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
                 t.printStackTrace();
             }
         });

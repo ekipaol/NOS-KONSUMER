@@ -921,7 +921,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -970,7 +970,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1020,7 +1020,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1070,7 +1070,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1121,7 +1121,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1172,7 +1172,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1222,7 +1222,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1272,7 +1272,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1322,7 +1322,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1373,7 +1373,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1424,7 +1424,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1474,7 +1474,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1524,7 +1524,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1574,7 +1574,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1624,7 +1624,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1675,7 +1675,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1725,7 +1725,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1775,7 +1775,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1825,7 +1825,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1876,7 +1876,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1926,7 +1926,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -1976,7 +1976,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2026,7 +2026,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2076,7 +2076,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2127,7 +2127,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2177,7 +2177,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2228,7 +2228,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2278,7 +2278,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                     public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                         binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                         AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                        Log.d("LOG D", t.getMessage());
+                                        
                                         t.printStackTrace();
                                     }
                                 });
@@ -2354,7 +2354,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                                 public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                                     AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                                    Log.d("LOG D", t.getMessage());
+                                                    
                                                     t.printStackTrace();
                                                 }
                                             });
@@ -2416,7 +2416,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                                 public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                                     AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                                    Log.d("LOG D", t.getMessage());
+                                                    
                                                     t.printStackTrace();
                                                 }
                                             });
@@ -2478,7 +2478,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                                 public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                                     AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                                    Log.d("LOG D", t.getMessage());
+                                                    
                                                     t.printStackTrace();
                                                 }
                                             });
@@ -2540,7 +2540,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                                 public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                                     AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                                    Log.d("LOG D", t.getMessage());
+                                                    
                                                     t.printStackTrace();
                                                 }
                                             });
@@ -2602,7 +2602,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                                                 public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                                                     binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                                                     AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                                                    Log.d("LOG D", t.getMessage());
+                                                    
                                                     t.printStackTrace();
                                                 }
                                             });
@@ -5330,7 +5330,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(ActivityUploadDokumen.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 

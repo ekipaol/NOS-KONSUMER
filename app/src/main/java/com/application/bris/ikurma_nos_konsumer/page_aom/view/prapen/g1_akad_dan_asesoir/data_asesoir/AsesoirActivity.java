@@ -240,7 +240,7 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(AsesoirActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
 
@@ -281,7 +281,7 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
             public void onFailure(Call<ParseResponseArr> call, Throwable t) {
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(AsesoirActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }
@@ -380,7 +380,7 @@ public class AsesoirActivity extends AppCompatActivity implements GenericListene
             public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loadingRekening.setVisibility(View.GONE);
                 AppUtil.notiferror(AsesoirActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

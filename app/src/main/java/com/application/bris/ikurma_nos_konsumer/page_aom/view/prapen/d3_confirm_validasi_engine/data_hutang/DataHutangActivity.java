@@ -194,7 +194,7 @@ public class DataHutangActivity extends AppCompatActivity implements  GenericLis
             public void onFailure(Call<ParseResponseArr> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataHutangActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
-                Log.d("LOG D", t.getMessage());
+                
             }
         });
     }

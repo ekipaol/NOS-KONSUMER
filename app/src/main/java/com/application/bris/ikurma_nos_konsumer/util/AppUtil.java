@@ -342,7 +342,7 @@ public class AppUtil {
         Calendar calendar;
         DatePickerDialog datePickerDialog;
         calendar = Calendar.getInstance();
-        DatePickerDialog.OnDateSetListener ls_tanggalLahirPasangan = new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener datepickerDialog = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -354,7 +354,7 @@ public class AppUtil {
             }
         };
 
-        datePickerDialog = new DatePickerDialog(context, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calendar.get(Calendar.YEAR),
+        datePickerDialog = new DatePickerDialog(context, R.style.AppTheme_TimePickerTheme, datepickerDialog, calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 //        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         datePickerDialog.show();
