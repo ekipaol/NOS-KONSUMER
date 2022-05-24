@@ -30,6 +30,7 @@ import com.application.bris.ikurma_nos_konsumer.model.general.dataLogin;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputLkpKoordinasiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputMasterInstansiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.Constants;
@@ -102,7 +103,8 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
             iv_avatarlogin.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Intent intent=new Intent(LoginActivity2.this, InputMasterInstansiActivity.class);
+//                    Intent intent=new Intent(LoginActivity2.this, InputMasterInstansiActivity.class);
+                    Intent intent=new Intent(LoginActivity2.this, InputLkpKoordinasiActivity.class);
                     startActivity(intent);
                     return false;
                 }

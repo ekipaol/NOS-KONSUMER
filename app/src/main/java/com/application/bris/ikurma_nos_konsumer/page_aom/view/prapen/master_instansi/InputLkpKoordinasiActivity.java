@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -38,6 +37,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInqu
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityInputInstansiBinding;
+import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityInputLkpKoordinasiBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSBottomCamera;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
@@ -67,13 +67,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
-public class InputMasterInstansiActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, ConfirmListener, GenericListenerOnSelect {
-    private PrapenAoActivityInputInstansiBinding binding;
+public class InputLkpKoordinasiActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, ConfirmListener {
+    private PrapenAoActivityInputLkpKoordinasiBinding binding;
     List<JaminandanDokumen> jd;
 
-    private String fileNamePks = "",fileNameLain1 = "",fileNameLain2 = "",fileNameLkp = "", tipeFile;
-    private String idFilePks = "",idFileLain1 = "",idFileLain2 = "",idFileLkp= "";
-    private boolean rekeningBerubah=false;
+    private String fileNameLkp = "", tipeFile;
+    private String idFileLkp= "";
 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
@@ -85,10 +84,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             DataJaminanSuratRekomendasiInstansi = new ReqDocument(), DataJaminanIDCard = new ReqDocument(),
             DataJaminanFormAplikasi2 = new ReqDocument();
 
-    private List<MGenericModel> dropdownInstansiInduk=new ArrayList<>(),dropdownTipePembayaran=new ArrayList<>(),dropdownJenisInstansi=new ArrayList<>(),dropdownPks=new ArrayList<>(),dropdownRuangLingkup=new ArrayList<>(),dropdownUnitBisnis=new ArrayList<>(),dropdownPerpanjangOtomatis=new ArrayList<>(),dropdownStatusPks=new ArrayList<>(),dropdownJasaPengelolaan=new ArrayList<>();
 
-    private String val_pks = "", val_lain_1 = "", val_lain_2 = "", val_lkp = "";
-    private final int UPLOAD_PKS = 1, UPLOAD_LAIN_1 = 2, UPLOAD_LAIN_2 = 3, UPLOAD_LKP = 4;
+    private String val_lkp = "";
+    private final int  UPLOAD_LKP = 4;
     int idUpload=0;
     boolean dialogOpened=false;
     boolean errorUpload=false;
@@ -101,7 +99,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = PrapenAoActivityInputInstansiBinding.inflate(getLayoutInflater());
+        binding = PrapenAoActivityInputLkpKoordinasiBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
 
         apiClientAdapter = new ApiClientAdapter(this);
@@ -113,8 +111,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         backgroundStatusBar();
         isiDropdown();
         otherViewChanges();
-        //        initdata();
-        AppUtil.toolbarRegular(this, "Input Instansi");
+        //initdata();
+        AppUtil.toolbarRegular(this, "Input LKP Koordinasi");
 
     }
 
@@ -367,19 +365,19 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 //                        }
 
                     } else {
-                        AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                        AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
                 } else {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
                     Error error = ParseResponseError.confirmEror(response.errorBody());
-                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), error.getMessage());
+                    AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), error.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+                AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
     }
@@ -387,43 +385,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     private void setDataDokumen(Response<ParseResponseAgunan> response){
 
         //BELUM ADA APInya buat dapet ID
-        //Set Image PKS
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivFotoPks,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
-        }
-
-        //Set Image dokumen lain 1
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivDokumenTambahan1,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
-        }
-
-        //Set Image dokumen lain 2
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivDokumenTambahan2,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
-        }
-
         //Set Image LKP
         try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivFotoLkp,JDJaminanKTP.getFileName());
+//            checkFileTypeThenSet(InputLkpKoordinasiActivity.this,JDJaminanKTP.getImg(),binding.ivFotoLkp,JDJaminanKTP.getFileName());
 //            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
 //            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
 
@@ -436,25 +400,10 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
 
     private void disableText() {
-        binding.etKantorCabang.setFocusable(false);
-        binding.etAreaCabang.setFocusable(false);
-        binding.etRegional.setFocusable(false);
-        binding.etCifCabang.setFocusable(false);
-        binding.etIdMasterInstansi.setFocusable(false);
-        binding.etInstansiInduk.setFocusable(false);
-        binding.etTipePembayaran.setFocusable(false);
-        binding.etJenisInstansi.setFocusable(false);
-        binding.etMemilikiPks.setFocusable(false);
-        binding.etRuangLingkupPks.setFocusable(false);
-        binding.etUnitBisnisPengusul.setFocusable(false);
-        binding.etTanggalMulaiPks.setFocusable(false);
-        binding.etTanggalAkhirPks.setFocusable(false);
-        binding.etJangkaWaktuPks.setFocusable(false);
-        binding.etPerpanjangPksOtomatis.setFocusable(false);
-        binding.etStatusPks.setFocusable(false);
-        binding.etJasaPengelolaan.setFocusable(false);
-        binding.etTanggalLkpUtama.setFocusable(false);
-        binding.etTanggalLkpUtamaKadaluarsa .setFocusable(false);
+        binding.etTanggalLkp.setFocusable(false);
+        binding.etTanggalLkpKadaluarsa.setFocusable(false);
+        binding.etNamaCabang.setFocusable(false);
+        binding.etKodeCabang.setFocusable(false);
 
     }
 
@@ -466,182 +415,37 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     }
 
     private void onclickSelectDialog() {
-        binding.tfInstansiInduk.setOnClickListener(this);
-        binding.etInstansiInduk.setOnClickListener(this);
-        binding.tfTipePembayaran.setOnClickListener(this);
-        binding.etTipePembayaran.setOnClickListener(this);
-        binding.tfJenisInstansi.setOnClickListener(this);
-        binding.etJenisInstansi.setOnClickListener(this);
-        binding.tfMemilikiPks.setOnClickListener(this);
-        binding.etMemilikiPks.setOnClickListener(this);
-        binding.tfRuangLingkupPks.setOnClickListener(this);
-        binding.etRuangLingkupPks.setOnClickListener(this);
-        binding.tfUnitBisnisPengusul.setOnClickListener(this);
-        binding.etUnitBisnisPengusul.setOnClickListener(this);
-        binding.tfInstansiInduk.setOnClickListener(this);
-        binding.etInstansiInduk.setOnClickListener(this);
-        binding.tfPerpanjangPks.setOnClickListener(this);
-        binding.etPerpanjangPksOtomatis.setOnClickListener(this);
-        binding.tfStatusPks.setOnClickListener(this);
-        binding.etStatusPks.setOnClickListener(this);
-        binding.tfJasaPengelolaan.setOnClickListener(this);
-        binding.etJasaPengelolaan.setOnClickListener(this);
-        binding.btnCekEscrow.setOnClickListener(this);
-        binding.btnSimpanDataInstansi.setOnClickListener(this);
-
-        binding.tfTanggalMulaiPks.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalMulaiPks));
-        binding.etTanggalMulaiPks.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalMulaiPks));
-        binding.tfTanggalAkhirPks.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalAkhirPks));
-        binding.etTanggalAkhirPks.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalAkhirPks));
-        binding.tfTanggalLkpUtama.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalLkpUtama));
-        binding.etTanggalLkpUtama.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalLkpUtama));
-        binding.tfTanggalLkpUtamaKadaluarsa.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalLkpUtamaKadaluarsa));
-        binding.etTanggalLkpUtamaKadaluarsa.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputMasterInstansiActivity.this,binding.etTanggalLkpUtamaKadaluarsa));
-
-        binding.ivFotoPks.setOnClickListener(this);
-        binding.ivDokumenTambahan1.setOnClickListener(this);
-        binding.ivDokumenTambahan2.setOnClickListener(this);
-        binding.ivFotoLkp.setOnClickListener(this);
-        binding.btnFotoPks.setOnClickListener(this);
-        binding.btnDokumenTambahan1.setOnClickListener(this);
-        binding.btnDokumenTambahan2.setOnClickListener(this);
         binding.btnFotoLkp.setOnClickListener(this);
+        binding.btnSimpanDataLkp.setOnClickListener(this);
 
-        easyEndIconDropdownClick(binding.tfInstansiInduk,dropdownInstansiInduk);
-        easyEndIconDropdownClick(binding.tfTipePembayaran,dropdownTipePembayaran);
-        easyEndIconDropdownClick(binding.tfJenisInstansi,dropdownJenisInstansi);
-        easyEndIconDropdownClick(binding.tfMemilikiPks,dropdownPks);
-        easyEndIconDropdownClick(binding.tfRuangLingkupPks,dropdownRuangLingkup);
-        easyEndIconDropdownClick(binding.tfUnitBisnisPengusul,dropdownUnitBisnis);
-        easyEndIconDropdownClick(binding.tfPerpanjangPks,dropdownPerpanjangOtomatis);
-        easyEndIconDropdownClick(binding.tfStatusPks,dropdownStatusPks);
+        binding.tfTanggalLkp.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputLkpKoordinasiActivity.this,binding.etTanggalLkp));
+        binding.tfTanggalLkp.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputLkpKoordinasiActivity.this,binding.etTanggalLkp));
+
+
+        binding.tfTanggalLkpKadaluarsa.getEndIconImageButton().setOnClickListener(v -> AppUtil.genericCalendarDialog(InputLkpKoordinasiActivity.this,binding.etTanggalLkpKadaluarsa));
+        binding.tfTanggalLkpKadaluarsa.setOnClickListener(v -> AppUtil.genericCalendarDialog(InputLkpKoordinasiActivity.this,binding.etTanggalLkpKadaluarsa));
+
     }
 
-    private void easyEndIconDropdownClick(TextFieldBoxes textFieldBoxes,List<MGenericModel> dropdown){
-        textFieldBoxes.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogGenericDataFromService.display(getSupportFragmentManager(),textFieldBoxes.getLabelText(),dropdown,InputMasterInstansiActivity.this);
-            }
-        });
-    }
 
     @SuppressLint("NonConstantResourceId")
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_foto_pks:
-                BSUploadFile.displayWithTitle(InputMasterInstansiActivity.this.getSupportFragmentManager(), this, "");
-                idUpload = UPLOAD_PKS;
-                break;
-            case R.id.btn_dokumen_tambahan_1:
-                BSUploadFile.displayWithTitle(InputMasterInstansiActivity.this.getSupportFragmentManager(), this, "");
-                idUpload = UPLOAD_LAIN_1;
-                break;
-            case R.id.btn_dokumen_tambahan_2:
-                BSUploadFile.displayWithTitle(InputMasterInstansiActivity.this.getSupportFragmentManager(), this, "");
-                idUpload = UPLOAD_LAIN_2;
-                break;
             case R.id.btn_foto_lkp:
-                BSUploadFile.displayWithTitle(InputMasterInstansiActivity.this.getSupportFragmentManager(), this, "");
+                BSUploadFile.displayWithTitle(InputLkpKoordinasiActivity.this.getSupportFragmentManager(), this, "");
                 idUpload = UPLOAD_LKP;
                 break;
-            case R.id.tf_instansi_induk:
-            case R.id.et_instansi_induk:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfInstansiInduk.getLabelText(),dropdownInstansiInduk,this);
-                break;
-            case R.id.tf_tipe_pembayaran:
-            case R.id.et_tipe_pembayaran:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfTipePembayaran.getLabelText(),dropdownTipePembayaran,this);
-                break;
-            case R.id.tf_jenis_instansi:
-            case R.id.et_jenis_instansi:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJenisInstansi.getLabelText(),dropdownJenisInstansi,this);
-                break;
-            case R.id.tf_memiliki_pks:
-            case R.id.et_memiliki_pks:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfMemilikiPks.getLabelText(),dropdownPks,this);
-                break;
-            case R.id.tf_ruang_lingkup_pks:
-            case R.id.et_ruang_lingkup_pks:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfRuangLingkupPks.getLabelText(),dropdownRuangLingkup,this);
-                break;
-            case R.id.tf_unit_bisnis_pengusul:
-            case R.id.et_unit_bisnis_pengusul:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfUnitBisnisPengusul.getLabelText(),dropdownUnitBisnis,this);
-                break;
-            case R.id.tf_perpanjang_pks:
-            case R.id.et_perpanjang_pks_otomatis:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfPerpanjangPks.getLabelText(),dropdownPerpanjangOtomatis,this);
-                break;
-            case R.id.tf_status_pks:
-            case R.id.et_status_pks:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfStatusPks.getLabelText(),dropdownStatusPks,this);
-                break;
-            case R.id.tf_jasa_pengelolaan:
-            case R.id.et_jasa_pengelolaan:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJasaPengelolaan.getLabelText(),dropdownJasaPengelolaan,this);
-                break;
-            case R.id.btn_simpan_data_instansi:
-                if(rekeningBerubah){
-                    binding.tfNomorEscrow.setError("Harap Cek Rekening",true);
-                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Harap cek nomor rekening dahulu");
-                }
-                else{
+            case R.id.btn_simpan_data_lkp:
                     validasi();
-                }
-
                 break;
-            case R.id.btn_cek_escrow:
-                if(binding.etNomorEscrow.getText().toString().isEmpty()){
-                    binding.tfNomorEscrow.setError("Harap isi rekening",true);
-                }
-                else{
-                    Toast.makeText(this, "Pura pura konek API", Toast.LENGTH_SHORT).show();
-                    binding.etKantorCabang.setText("Kantor Cabang 1");
-                    binding.etAreaCabang.setText("Area 1");
-                    binding.etRegional.setText("Regional 1");
-                    binding.etCifCabang.setText("0000000000");
-                    binding.etIdMasterInstansi.setText("67888099000");
-                    rekeningBerubah=false;
-                    break;
-                }
 
         }
     }
 
     private void validasi() {
         lolosValidasi =true;
-        easyValidateField(binding.etNamaInstansi,binding.tfNamaInstansi);
-        easyValidateField(binding.etNomorEscrow,binding.tfNomorEscrow);
-        easyValidateField(binding.etNamaInstansi,binding.tfNamaInstansi);
-        easyValidateField(binding.etKantorCabang,binding.tfKantorCabang);
-        easyValidateField(binding.etAreaCabang,binding.tfAreaCabang);
-        easyValidateField(binding.etRegional,binding.tfRegional);
-        easyValidateField(binding.etCifCabang,binding.tfCifCabang);
-        easyValidateField(binding.etIdMasterInstansi,binding.tfIdMasterInstansi);
-        easyValidateField(binding.etInstansiInduk,binding.tfInstansiInduk);
-        easyValidateField(binding.etTipePembayaran,binding.tfTipePembayaran);
-        easyValidateField(binding.etJenisInstansi,binding.tfJenisInstansi);
-        easyValidateField(binding.etTahunBerdiri,binding.tfTahunBerdiri);
-        easyValidateField(binding.etMemilikiPks,binding.tfMemilikiPks);
-
-        if(binding.etMemilikiPks.getText().toString().equalsIgnoreCase("ya")){
-            easyValidateField(binding.etRuangLingkupPks,binding.tfRuangLingkupPks);
-            easyValidateField(binding.etUnitBisnisPengusul,binding.tfUnitBisnisPengusul);
-            easyValidateField(binding.etNomorPks,binding.tfNomorPks);
-            easyValidateField(binding.etTanggalMulaiPks,binding.tfTanggalAkhirPks);
-            easyValidateField(binding.etJangkaWaktuPks,binding.tfJangkaWaktuPks);
-            easyValidateField(binding.etPerpanjangPksOtomatis,binding.tfPerpanjangPks);
-            easyValidateField(binding.etStatusPks,binding.tfStatusPks);
-        }
-
-        easyValidateField(binding.etAlamatKorespondensi,binding.tfAlamatKorespondensi);
-        easyValidateField(binding.etKeyPerson,binding.tfKeyPerson);
-        easyValidateField(binding.etTeleponKeyPerson,binding.tfTeleponKeyPerson);
-        easyValidateField(binding.etTeleponInstansi,binding.tfTeleponInstansi);
-        easyValidateField(binding.etJasaPengelolaan,binding.tfJasaPengelolaan);
-        easyValidateField(binding.etTanggalLkpUtama,binding.tfTanggalLkpUtama);
-        easyValidateField(binding.etTanggalLkpUtamaKadaluarsa,binding.tfTanggalLkpUtamaKadaluarsa);
+        easyValidateField(binding.etTanggalLkpKadaluarsa,binding.tfTanggalLkpKadaluarsa);
+        easyValidateField(binding.etTanggalLkp,binding.tfTanggalLkp);
         if(lolosValidasi){
             //do send data
             Toast.makeText(this, "Nit not lolos validasi dan pura pura nyimpen", Toast.LENGTH_SHORT).show();
@@ -651,148 +455,25 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     private void easyValidateField(EditText editText, TextFieldBoxes textFieldBoxes){
         if(editText.getText().toString().trim().isEmpty() || editText.getText().toString().trim().equalsIgnoreCase(" ")){
             textFieldBoxes.setError(textFieldBoxes.getLabelText() + " " + getString(R.string.title_validate_field), true);
-            AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), textFieldBoxes.getLabelText() + " " + getString(R.string.title_validate_field));
+            AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), textFieldBoxes.getLabelText() + " " + getString(R.string.title_validate_field));
             lolosValidasi =false;
         }
 
     }
 
     private void isiDropdown(){
-        dropdownInstansiInduk.add(new MGenericModel("1","Instansi 1"));
-        dropdownInstansiInduk.add(new MGenericModel("2","Instansi 2"));
-
-        dropdownTipePembayaran.add(new MGenericModel("1","Payroll"));
-        dropdownTipePembayaran.add(new MGenericModel("2","Non Payroll"));
-
-        dropdownJenisInstansi.add(new MGenericModel("1","SKPP"));
-        dropdownJenisInstansi.add(new MGenericModel("2","SKPD"));
-        dropdownJenisInstansi.add(new MGenericModel("3","TNI/POLRI"));
-        dropdownJenisInstansi.add(new MGenericModel("4","Lembaga Negara"));
-        dropdownJenisInstansi.add(new MGenericModel("5","BUMN Group"));
-        dropdownJenisInstansi.add(new MGenericModel("6","Wholesale & SME Group"));
-        dropdownJenisInstansi.add(new MGenericModel("7","BUMD"));
-        dropdownJenisInstansi.add(new MGenericModel("8","Perusahaan Swasta"));
-        dropdownJenisInstansi.add(new MGenericModel("9","Yayasan"));
-        dropdownJenisInstansi.add(new MGenericModel("10","Rumah Sakit"));
-
-        dropdownPks.add(new MGenericModel("1","Ya"));
-        dropdownPks.add(new MGenericModel("2","Tidak"));
-
-        dropdownUnitBisnis.add(new MGenericModel("1","Cabang 1"));
-        dropdownUnitBisnis.add(new MGenericModel("2","Cabang 2"));
-
-        dropdownRuangLingkup.add(new MGenericModel("1","PKS Pusat"));
-        dropdownRuangLingkup.add(new MGenericModel("2","PKS Lokal Area"));
-        dropdownRuangLingkup.add(new MGenericModel("3","PKS Lokal Branch"));
-
-        dropdownPerpanjangOtomatis.add(new MGenericModel("1","Otomatis"));
-        dropdownPerpanjangOtomatis.add(new MGenericModel("2","Perpanjangan Manual"));
-
-        dropdownStatusPks.add(new MGenericModel("1","Baru"));
-        dropdownStatusPks.add(new MGenericModel("2","Perpanjangan"));
-
-        dropdownJasaPengelolaan.add(new MGenericModel("1","Ya"));
-        dropdownJasaPengelolaan.add(new MGenericModel("2","Tidak"));
-
+     //takde dropdown gess
     }
 
     private void otherViewChanges(){
-        //di hide dlu soalnya agak repot buat nyari time differencenya
-        binding.tfJangkaWaktuPks.setVisibility(View.GONE);
+        try{
+            binding.etNamaCabang.setText(appPreferences.getNamaKantor());
+            binding.etKodeCabang.setText(appPreferences.getKodeCabang());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
-        binding.etNomorEscrow.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                rekeningBerubah=true;
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        binding.etTanggalMulaiPks.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                SimpleDateFormat tanggalMulai=new SimpleDateFormat("dd-MM-yyyy");
-                SimpleDateFormat tanggalAkhir=new SimpleDateFormat("dd-MM-yyyy");
-                try{
-                    Date tanggalAwalDate=tanggalMulai.parse(binding.etTanggalMulaiPks.getText().toString());
-                    Date tanggalAkhirDate=tanggalAkhir.parse(binding.etTanggalMulaiPks.getText().toString());
-
-                    Calendar startCalendar = new GregorianCalendar();
-                    startCalendar.setTime(tanggalAwalDate);
-                    Calendar endCalendar = new GregorianCalendar();
-                    endCalendar.setTime(tanggalAkhirDate);
-
-                    int diffMonth = endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
-
-                    binding.etJangkaWaktuPks.setText(Integer.toString(diffMonth)+ " Bulan");
-
-                }
-                catch (ParseException e){
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        binding.etTanggalAkhirPks.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                SimpleDateFormat tanggalMulai=new SimpleDateFormat("dd-MM-yyyy");
-                SimpleDateFormat tanggalAkhir=new SimpleDateFormat("dd-MM-yyyy");
-                try{
-                    Date tanggalAwalDate=tanggalMulai.parse(binding.etTanggalMulaiPks.getText().toString());
-                    Date tanggalAkhirDate=tanggalAkhir.parse(binding.etTanggalMulaiPks.getText().toString());
-
-                    Calendar startCalendar = new GregorianCalendar();
-                    startCalendar.setTime(tanggalAwalDate);
-                    Calendar endCalendar = new GregorianCalendar();
-                    endCalendar.setTime(tanggalAkhirDate);
-
-                    int diffMonth = endCalendar.get(Calendar.MONTH) - startCalendar.get(Calendar.MONTH);
-                    String bulan = String.valueOf(diffMonth).concat(" Bulan");
-
-                    binding.etJangkaWaktuPks.setText(bulan);
-                    AppUtil.logSecure("jangkrik",bulan);
-
-                }
-                catch (ParseException e){
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
     }
 
     //UPLOAD FILE METHODS
@@ -820,10 +501,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     @Override
     public void onSelectMenuCamera(String idMenu) {
         dialogOpened=true;
-        easySelectCameraMenu(idMenu,UPLOAD_PKS,"dokPks");
-        easySelectCameraMenu(idMenu,UPLOAD_LAIN_1,"dokLain1");
-        easySelectCameraMenu(idMenu,UPLOAD_LAIN_2,"dokLain2");
-        easySelectCameraMenu(idMenu,UPLOAD_LKP,"dokLkp");
+        easySelectCameraMenu(idMenu,UPLOAD_LKP,"dokLkpKoordinasi");
     }
 
     private void openCamera(int cameraCode, String namaFoto) {
@@ -869,7 +547,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         File getImage = getExternalCacheDir();
         if (getImage != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                outputFileUri = FileProvider.getUriForFile(InputMasterInstansiActivity.this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), namaFoto + ".png"));
+                outputFileUri = FileProvider.getUriForFile(InputLkpKoordinasiActivity.this, BuildConfig.APPLICATION_ID + ".provider", new File(getImage.getPath(), namaFoto + ".png"));
             } else {
                 outputFileUri = Uri.fromFile(new File(getImage.getPath(), namaFoto + ".png"));
             }
@@ -935,21 +613,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         super.onActivityResult(requestCode, resultCode, data);
         errorUpload=false;
         switch (requestCode) {
-            case UPLOAD_PKS:
-                setDataImage(binding.ivFotoPks,data,"dokPks",UPLOAD_PKS);
-                checkFileTypeThenUpload(fileNamePks,"_pks",binding.ivFotoPks,val_pks,UPLOAD_PKS);
-                break;
-            case UPLOAD_LAIN_1:
-                setDataImage(binding.ivDokumenTambahan1,data,"dokLain1",UPLOAD_LAIN_1);
-                checkFileTypeThenUpload(fileNameLain1,"_dokLain1",binding.ivDokumenTambahan1,val_lain_1,UPLOAD_LAIN_1);
-                break;
-            case UPLOAD_LAIN_2:
-                setDataImage(binding.ivDokumenTambahan2,data,"dokLain2",UPLOAD_LAIN_2);
-                checkFileTypeThenUpload(fileNameLain2,"_dokLain2",binding.ivDokumenTambahan2,val_lain_2,UPLOAD_LAIN_2);
-                break;
             case UPLOAD_LKP:
-                setDataImage(binding.ivFotoLkp,data,"dokLkp",UPLOAD_LKP);
-                checkFileTypeThenUpload(fileNameLkp,"_dokLkp",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
+                setDataImage(binding.ivFotoLkp,data,"dokLkpKoordinasi",UPLOAD_LKP);
+                checkFileTypeThenUpload(fileNameLkp,"_dokLkpKoordinasi",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
                 break;
         }
     }
@@ -973,44 +639,20 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 iv.setImageBitmap(bitmap);
 
                 //BELUM LENGKAP DI BAGIAN OBJEK DATA, KARENA API BELOM ADA GAIS
-                if (idUpload==UPLOAD_PKS) {
-//                    DataJaminanKTP.setImg(idFileKtp);
-//                    DataJaminanKTP.setFileName("dokpks.png");
-                } else if (idUpload==UPLOAD_LAIN_1) {
-//                    DataJaminanKTPPasangan.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanKTPPasangan.setFileName("doklain1.png");
-                } else if (idUpload==UPLOAD_LAIN_2) {
-//                    DataJaminanNPWP.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanNPWP.setFileName("doklain2.png");
-                } else if (idUpload==UPLOAD_LKP) {
-//                    DataJaminanAsetAkad.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanAsetAkad.setFileName("lkp.png");
+                if (idUpload==UPLOAD_LKP) {
+//                    DataJaminanKTP.setImg(idFileLkp);
+//                    DataJaminanKTP.setFileName("dokLkpKoordinasi.png");
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
                 try {
                     iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
-                    if (idUpload==UPLOAD_PKS) {
-                        Uri uriPdf = data.getData();
-                        val_pks = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanKTP.setImg(idFilePks);
-//                        DataJaminanKTP.setFileName("pks.pdf");
-                    } else if (idUpload==UPLOAD_LAIN_1) {
-                        Uri uriPdf = data.getData();
-                        val_lain_1 = AppUtil.encodeFileToBase64(this, uriPdf);
-                        DataJaminanKTPPasangan.setImg(val_lain_1);
-                        DataJaminanKTPPasangan.setFileName("doklain1.pdf");
-                    } else if (idUpload==UPLOAD_LAIN_2) {
-                        Uri uriPdf = data.getData();
-                        val_lain_2 = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanNPWP.setImg(val_lain_2);
-//                        DataJaminanNPWP.setFileName("doklain2.pdf");
-                    } else if (idUpload==UPLOAD_LKP) {
+                    if (idUpload==UPLOAD_LKP) {
                         Uri uriPdf = data.getData();
                         val_lkp = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanAsetAkad.setImg(val_lkp);
-//                        DataJaminanAsetAkad.setFileName("doklkp.pdf");
+//                        DataJaminanKTP.setImg(idFilePks);
+//                        DataJaminanKTP.setFileName("pks.pdf");
                     }
                 } catch (NullPointerException e2) {
                     iv.setImageDrawable(getResources().getDrawable(R.drawable.banner_placeholder));
@@ -1030,9 +672,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             uri = getPickImageResultUri(data, namaFoto);
             try {
 
-                bitmap = MediaStore.Images.Media.getBitmap(InputMasterInstansiActivity.this.getContentResolver(), uri);
+                bitmap = MediaStore.Images.Media.getBitmap(InputLkpKoordinasiActivity.this.getContentResolver(), uri);
                 bitmap = AppUtil.getResizedBitmap(bitmap, 1024);
-                bitmap = AppUtil.rotateImageIfRequired(InputMasterInstansiActivity.this, bitmap, uri);
+                bitmap = AppUtil.rotateImageIfRequired(InputLkpKoordinasiActivity.this, bitmap, uri);
                 iv.setImageBitmap(bitmap);
 
 
@@ -1042,22 +684,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 try{
                     iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
 
-                    if(KODE_UPLOAD==UPLOAD_PKS){
+                    if(KODE_UPLOAD==UPLOAD_LKP){
                         Uri uriPdf = data.getData();
-                        val_pks= AppUtil.encodeFileToBase64(InputMasterInstansiActivity.this,uriPdf);
-
-                    }
-                    else if(KODE_UPLOAD==UPLOAD_LAIN_1){
-                        Uri uriPdf = data.getData();
-                        val_lain_1= AppUtil.encodeFileToBase64(InputMasterInstansiActivity.this,uriPdf);
-                    }
-                    else if(KODE_UPLOAD==UPLOAD_LAIN_2){
-                        Uri uriPdf = data.getData();
-                        val_lain_2= AppUtil.encodeFileToBase64(InputMasterInstansiActivity.this,uriPdf);
-                    }
-                    else if(KODE_UPLOAD==UPLOAD_LKP){
-                        Uri uriPdf = data.getData();
-                        val_lkp= AppUtil.encodeFileToBase64(InputMasterInstansiActivity.this,uriPdf);
+                        val_lkp= AppUtil.encodeFileToBase64(InputLkpKoordinasiActivity.this,uriPdf);
                     }
                 }
                 catch (Exception e2){
@@ -1101,37 +730,22 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
 
-                    if (uploadCode == UPLOAD_PKS) {
-                        idFilePks = response.body().getId();
-//                        DataJaminanKTP.setImg(idFilePks);
-//                        DataJaminanKTP.setFileName(fileName);
-                    }
-                    else if (uploadCode == UPLOAD_LAIN_1) {
-                        idFileLain1 = response.body().getId();
-//                        DataJaminanKTPPasangan.setImg(idFileLain1);
-//                        DataJaminanKTPPasangan.setFileName(fileName);
-                    }
-                    else if (uploadCode == UPLOAD_LAIN_2) {
-                        idFileLain2 = response.body().getId();
-//                        DataJaminanNPWP.setImg(idFileLain2);
-//                        DataJaminanNPWP.setFileName(fileName);
-                    }
-                    else if (uploadCode == UPLOAD_LKP) {
+                  if (uploadCode == UPLOAD_LKP) {
                         idFileLkp = response.body().getId();
 //                        DataJaminanFormAplikasi.setImg(idFileLkp);
 //                        DataJaminanFormAplikasi.setFileName(fileName);
                     }
 
-                    AppUtil.notifsuccess(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
+                    AppUtil.notifsuccess(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
                 } else {
-                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                    AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
                 }
             }
 
             @Override
             public void onFailure(Call<ParseResponseFile> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                AppUtil.notiferror(InputLkpKoordinasiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
             }
         });
 
@@ -1180,7 +794,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     }
 
     public void loadFileJson(String idFoto,ImageView imageView) {
-        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(InputMasterInstansiActivity.this);
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(InputLkpKoordinasiActivity.this);
         Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
         call.enqueue(new Callback<ParseResponseLogicalDoc>() {
             @Override
@@ -1188,56 +802,27 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 //                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getBinaryData()!=null){
-                        AppUtil.convertBase64ToFileWithOnClick(InputMasterInstansiActivity.this,response.body().getBinaryData(),imageView,response.body().getFileName());
+                        AppUtil.convertBase64ToFileWithOnClick(InputLkpKoordinasiActivity.this,response.body().getBinaryData(),imageView,response.body().getFileName());
                     }
                     else{
-                        AppUtil.notiferror(InputMasterInstansiActivity.this,findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                        AppUtil.notiferror(InputLkpKoordinasiActivity.this,findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
                     }
                 }
                 else{
-                    AppUtil.notiferror(InputMasterInstansiActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                    AppUtil.notiferror(InputLkpKoordinasiActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
                 }
             }
 
             @Override
             public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
-                AppUtil.notiferror(InputMasterInstansiActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
-                
+                AppUtil.notiferror(InputLkpKoordinasiActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+
                 t.printStackTrace();
             }
         });
 
     }
 
-    @Override
-    public void onSelect(String title, MGenericModel data) {
-        if(title.equalsIgnoreCase(binding.tfInstansiInduk.getLabelText())){
-            binding.etInstansiInduk.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfTipePembayaran.getLabelText())){
-            binding.etTipePembayaran.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfJenisInstansi.getLabelText())){
-            binding.etJenisInstansi.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfMemilikiPks.getLabelText())){
-            binding.etMemilikiPks.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfRuangLingkupPks.getLabelText())){
-            binding.etRuangLingkupPks.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfUnitBisnisPengusul.getLabelText())){
-            binding.etUnitBisnisPengusul.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfPerpanjangPks.getLabelText())){
-            binding.etPerpanjangPksOtomatis.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfStatusPks.getLabelText())){
-            binding.etStatusPks.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfJasaPengelolaan.getLabelText())){
-            binding.etJasaPengelolaan.setText(data.getDESC());
-        }
-    }
+
 }

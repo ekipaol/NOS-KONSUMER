@@ -37,7 +37,7 @@ public class PersiapanAkadActivity extends AppCompatActivity implements View.OnC
         onclickSelectDialog();
         setContentView(view);
         AppUtil.toolbarRegular(this, "Dokumen Persiapan Akad");
-       ;
+
     }
 
     private void showDownloaded() {

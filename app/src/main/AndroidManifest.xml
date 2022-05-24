@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:allowBackup">
-        <activity android:name=".page_aom.view.prapen.master_instansi.InputMasterInstansiActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.master_instansi.InputLkpKoordinasiActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.master_instansi.InputMasterInstansiActivity" />
         <activity android:name=".page_aom.view.prapen.general.ListAplikasiActivity" />
         <activity android:name=".page_aom.view.prapen.d4_verifikasi_otor.verif_hutang.TambahHutangVerifikatorActivity" />
         <activity android:name=".page_aom.view.prapen.g1_akad_dan_asesoir.field_ojk_bi.ActivityFieldOjkBI" />
