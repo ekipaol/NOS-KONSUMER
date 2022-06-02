@@ -963,6 +963,41 @@
                     android:textStyle="bold"
                     android:textAlignment="center" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/muli_b"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="List LKP dan LNGP"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/btn_lihat_lkp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:text="Lihat LKP"/>
+
+                    <Button
+                        android:id="@+id/btn_lihat_lngp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="10dp"
+                        style="@style/Widget.AppCompat.Button.Colored"
+                        android:text="Lihat LNGP"/>
+
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/btn_simpan_data_instansi"
                     android:layout_width="match_parent"

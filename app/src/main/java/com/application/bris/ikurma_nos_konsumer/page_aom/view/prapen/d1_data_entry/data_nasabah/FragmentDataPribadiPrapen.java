@@ -33,7 +33,9 @@ import androidx.fragment.app.Fragment;
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
@@ -47,6 +49,8 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataDukcapilPasangan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputMasterInstansiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.makeramen.roundedimageview.RoundedDrawable;
 import com.stepstone.stepper.Step;
@@ -71,8 +75,10 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
     private Calendar calLahir;
     private Calendar calTerbitKtp;
     private Calendar calExpiredNik;
+    private String tipeFile="";
 
     boolean nikPasanganBerubah=false;
+    boolean errorUpload=false;
 
     private DatePickerDialog dpTanggalLahirPasangan;
     private DatePickerDialog dpTanggalLahir;
@@ -194,38 +200,115 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
         AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ktp(),dataNasabah.getImgKtp(),binding.imgFotoKtp);
         AppUtil.loadImageWithFileNameCheck(getContext(),dataNasabah.getFile_Name_Ideb(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
 
+        //Set Image KTP
+        try {
+//            AppUtil.loadImageWithFileNameCheck(DataJaminanActivity.this,JDJaminanKTP.getFileName(),JDJaminanKTP.getImg(),binding.ivKtpNasabah);
+            checkFileTypeThenSet(getContext(),dataNasabah.getImgKtp(),binding.imgFotoKtp,dataNasabah.getFile_Name_Ktp());
+            idFileKtp=dataNasabah.getImgKtp();
+            fileNameKtp=dataNasabah.getFile_Name_Ktp();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+
+        //Set Image IDEB
+        try {
+//            AppUtil.loadImageWithFileNameCheck(DataJaminanActivity.this,JDJaminanKTP.getFileName(),JDJaminanKTP.getImg(),binding.ivKtpNasabah);
+            checkFileTypeThenSet(getContext(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb,dataNasabah.getFile_Name_Ideb());
+            idFileIdeb=dataNasabah.getImgIdeb();
+            fileNameIdeb=dataNasabah.getFile_Name_Ideb();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            AppUtil.logSecure("error setdata", e.getMessage());
+        }
+
         idFileIdeb=dataNasabah.getImgIdeb();
         idFileKtp=dataNasabah.getImgKtp();
         fileNameIdeb=dataNasabah.getFile_Name_Ideb();
         fileNameKtp=dataNasabah.getFile_Name_Ktp();
 
-
-        //legacy
-//        try{
-//            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//
-//            if(dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()).equalsIgnoreCase("pdf")){
-//                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ktp().substring(dataNasabah.getFile_Name_Ktp().length()-3,dataNasabah.getFile_Name_Ktp().length()));
-//
-//                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgKtp(),binding.imgFotoKtp,dataNasabah.getFile_Name_Ktp());
-//            }
-//            else{
-//                AppUtil.convertBase64ToImage(dataNasabah.getImgKtp(),binding.imgFotoKtp);
-//            }
-//
-//            if(dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()).equalsIgnoreCase("pdf")){
-//                AppUtil.logSecure("ekstensi cek",dataNasabah.getFile_Name_Ideb().substring(dataNasabah.getFile_Name_Ideb().length()-3,dataNasabah.getFile_Name_Ideb().length()));
-//
-//                AppUtil.convertBase64ToFileWithOnClick(getContext(),dataNasabah.getImgIdeb(),binding.imgFotoIdeb,dataNasabah.getFile_Name_Ideb());
-//            }
-//            else{
-//                AppUtil.convertBase64ToImage(dataNasabah.getImgIdeb(),binding.imgFotoIdeb);
-//            }
-//        }
-//        catch (Exception e){
-//            AppUtil.logSecure("error setdata",e.getMessage());
-//        }
     }
+
+    private void checkFileTypeThenUpload(String filename, String fileNameDoc, ImageView imageView,String val_base64, int uploadCode){
+        if(!errorUpload){
+            if (tipeFile.equalsIgnoreCase("pdf")) {
+                filename =fileNameDoc+".pdf";
+                uploadFile(val_base64, filename, uploadCode);
+            } else {
+                imageView.invalidate();
+                RoundedDrawable drawableDoc = (RoundedDrawable) imageView.getDrawable();
+                Bitmap bitmapDoc = drawableDoc.getSourceBitmap();
+                filename =fileNameDoc+".png";
+                uploadFile(AppUtil.encodeImageTobase64(bitmapDoc), filename, uploadCode);
+            }
+        }
+
+    }
+
+    private void checkFileTypeThenSet(Context context,String idDok,ImageView imageView,String fileName){
+
+        try{
+
+//        AppUtil.logSecure("iddok",idDok);
+            if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+
+                if(idDok.length()<10){
+                    loadFileJson(idDok,imageView);
+                }
+                else{
+                    AppUtil.convertBase64ToFileWithOnClick(context,idDok,imageView,fileName);
+                }
+
+            }
+            else{
+
+                if(idDok.length()<10){
+                    AppUtil.setImageGlide(context,idDok,imageView);
+                }
+                else{
+                    AppUtil.convertBase64ToImage(idDok,imageView);
+                }
+
+            }
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(getContext());
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(getContext(),response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+                }
+                else{
+                    AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(),getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+
+                t.printStackTrace();
+            }
+        });
+
+    }
+
 
 
 
@@ -819,6 +902,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
     public void onSelectMenuCamera(String idMenu) {
         switch(idMenu){
             case "Take Photo":
+                tipeFile="png";
                 if (idUpload==UPLOAD_IDEB) {
                     tipeFileIdeb="png";
                     openCamera(UPLOAD_IDEB, namaFotoIdeb);
@@ -828,6 +912,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                 }
                 break;
             case "Pick Photo":
+                tipeFile="png";
                 if (idUpload==UPLOAD_IDEB) {
                     openGalery(UPLOAD_IDEB);
                     tipeFileIdeb="png";
@@ -837,6 +922,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                 }
                 break;
             case "Pick File":
+                tipeFile="pdf";
                 if (idUpload==UPLOAD_IDEB) {
                     openFile(UPLOAD_IDEB);
                     tipeFileIdeb="pdf";
@@ -853,48 +939,16 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        errorUpload=false;
         switch (requestCode) {
             case UPLOAD_KTP:
                 setDataImage(binding.imgFotoKtp, data, namaFotoKtp,UPLOAD_KTP);
-
-                binding.imgFotoKtp.invalidate();
-                RoundedDrawable drawableKtp = (RoundedDrawable) binding.imgFotoKtp.getDrawable();
-                Bitmap bitmapKtp = drawableKtp.getSourceBitmap();
-
-                if(tipeFileKtp.equalsIgnoreCase("png")){
-                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.png";
-                    uploadFile(AppUtil.encodeImageTobase64(bitmapKtp),fileNameKtp+"_ktp.png",UPLOAD_KTP);
-                }
-                else if(tipeFileKtp.equalsIgnoreCase("pdf")){
-                    fileNameKtp=(DataNasabahPrapenActivity.idAplikasi)+"_ktp.pdf";
-                    uploadFile(valBase64PdfKtp,fileNameKtp,UPLOAD_KTP);
-                }
-                else{
-                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
-                }
+                checkFileTypeThenUpload(fileNameKtp,dataNasabah.getApplicationId()+"_ktp",binding.imgFotoKtp,valBase64PdfKtp,UPLOAD_KTP);
 
                 break;
             case UPLOAD_IDEB:
                 setDataImage(binding.imgFotoIdeb, data, namaFotoIdeb,UPLOAD_IDEB);
-
-
-                binding.imgFotoIdeb.invalidate();
-                RoundedDrawable drawableIdeb = (RoundedDrawable) binding.imgFotoIdeb.getDrawable();
-                Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-
-                if(tipeFileIdeb.equalsIgnoreCase("png")){
-                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.png";
-                    uploadFile(AppUtil.encodeImageTobase64(bitmapIdeb),fileNameIdeb,UPLOAD_IDEB);
-                }
-                else if(tipeFileIdeb.equalsIgnoreCase("pdf")){
-                    fileNameIdeb=(DataNasabahPrapenActivity.idAplikasi)+"_ideb.pdf";
-                    uploadFile(valBase64PdfIdeb,fileNameIdeb,UPLOAD_IDEB);
-                }
-                else{
-                    Toast.makeText(getContext(), "Tipe file tidak dikenali", Toast.LENGTH_SHORT).show();
-                }
-                break;
-
+                checkFileTypeThenUpload(fileNameIdeb,dataNasabah.getApplicationId()+"_ideb",binding.imgFotoIdeb,valBase64PdfIdeb,UPLOAD_IDEB);
         }
     }
 
@@ -948,6 +1002,7 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
             }
             catch (FileNotFoundException e2){
                 e2.printStackTrace();
+                errorUpload=true;
             }
             catch (Exception e3){
                 e3.printStackTrace();
@@ -973,10 +1028,16 @@ public class FragmentDataPribadiPrapen extends Fragment implements Step, KeyValu
                 if (response.isSuccessful()) {
                     if(uploadCode==UPLOAD_IDEB){
                         idFileIdeb=response.body().getId();
+                        fileNameIdeb=fileName;
+                        checkFileTypeThenSet(getContext(),idFileIdeb,binding.imgFotoIdeb,tipeFile);
                     }
                     else if(idUpload==UPLOAD_KTP){
                         idFileKtp=response.body().getId();
+                        fileNameKtp=fileName;
+                        checkFileTypeThenSet(getContext(),idFileKtp,binding.imgFotoKtp,tipeFile);
                     }
+
+
                     AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content), "Upload Berhasil");
                 }
                 else{

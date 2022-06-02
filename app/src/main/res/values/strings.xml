@@ -117,6 +117,8 @@
     <!--String Menu PRAPEN-->
     <string name="menu_input">Input</string>
     <string name="menu_aplikasi">Aplikasi</string>
+    <string name="menu_instansi">Instansi</string>
+    <string name="menu_monitoring">Monitoring</string>
 
     <!--String Sub Menu Hotprospek-->
     <string name="submenu_hotprospek_prescreening">Prescreening</string>

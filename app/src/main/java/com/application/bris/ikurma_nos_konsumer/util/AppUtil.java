@@ -30,6 +30,7 @@ import com.application.bris.ikurma_nos_konsumer.database.pojo.PesanDashboardPojo
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataMarketing;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhotoFromIdLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.kelengkapandokumen.KelengkapanDokumenActivity;
@@ -693,6 +694,8 @@ public class AppUtil {
 
     public static void setLoadPdf(Context context, int idPdf, ImageView imageView) {
         imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
         String url_pdf = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + idPdf;
         Uri external = Uri.parse(url_pdf);
         Intent intentPdf;
@@ -728,8 +731,47 @@ public class AppUtil {
 
     }
 
+
+
     public static void setLoadPdf(Context context, String idPdf, ImageView imageView) {
         imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        String url_pdf = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + idPdf;
+        Uri external = Uri.parse(url_pdf);
+        Intent intentPdf;
+        intentPdf = new Intent(Intent.ACTION_VIEW);
+        intentPdf.setDataAndType(external, "application/pdf");
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    context.startActivity(intentPdf);
+                } catch (ActivityNotFoundException e) {
+                    // No application to view, ask to download one
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Aplikasi PDF Tidak Ditemukan");
+                    builder.setMessage("Download Dari Playstore?");
+                    builder.setPositiveButton("Ya",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                                    marketIntent
+                                            .setData(Uri
+                                                    .parse("market://details?id=com.adobe.reader"));
+                                    context.startActivity(marketIntent);
+                                }
+                            });
+                    builder.setNegativeButton("Tidak", null);
+                    builder.create().show();
+                }
+            }
+        });
+
+    }
+
+    public static void setLoadPdfClickOnly(Context context, String idPdf, ImageView imageView) {
         String url_pdf = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + idPdf;
         Uri external = Uri.parse(url_pdf);
         Intent intentPdf;
@@ -808,6 +850,7 @@ public class AppUtil {
                 .asBitmap()
                 .load(urlGlide)
 //                .load(url_photo)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .placeholder(R.drawable.banner_placeholder)
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
@@ -879,6 +922,64 @@ public class AppUtil {
                 }
                 catch (ClassCastException e){
                     DialogPreviewPhoto.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", (((RoundedDrawable)iv_foto.getDrawable()).getSourceBitmap()));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
+    public static void setImageGlideNoOnclick(Context context,String fidPhoto,ImageView iv_foto){
+        MagicCryptHelper encryptor=new MagicCryptHelper();
+
+        appPreferences=new AppPreferences(context);
+
+        String imageUrlToEncode= encryptor.encrypt(Integer.toString(appPreferences.getUid())+"_"+fidPhoto);
+
+        String url_photo = null;
+
+        GlideUrl urlGlide=null;
+        try {
+//            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlPhotoSecure + URLEncoder.encode(imageUrlToEncode, StandardCharsets.UTF_8.toString());
+            url_photo = UriApi.Baseurl.URL + UriApi.foto.urlFileDirect + fidPhoto;
+
+            urlGlide = new GlideUrl(url_photo, new LazyHeaders.Builder()
+                    .addHeader("Authorization", "Bearer "+appPreferences.getToken())
+                    .build());
+
+            logSecure("whatisdat","Bearer "+appPreferences.getToken());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        Glide
+
+                .with(context)
+                .asBitmap()
+                .load(urlGlide)
+                .placeholder(R.drawable.banner_placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                        iv_foto.setImageBitmap(resource);
+                    }
+                });
+    }
+
+    public static void setImageGlideClickOnly(Context context,String fidPhoto,ImageView iv_foto){
+
+        iv_foto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    DialogPreviewPhotoFromIdLogicalDoc.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", fidPhoto);
+                }
+                catch (ClassCastException e){
+                    DialogPreviewPhotoFromIdLogicalDoc.display(((AppCompatActivity) iv_foto.getContext()).getSupportFragmentManager(), "Preview Foto", fidPhoto);
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -1012,6 +1113,24 @@ public class AppUtil {
             }
             else{
                 AppUtil.setImageGlide(context,idFoto,imageView);
+            }
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            logSecure("error setdata",e.getMessage());
+        }
+    }
+
+    public static void openDocumentWithFileNameCheck(Context context,String filename,String idFoto,ImageView imageView){
+        try{
+            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
+
+            if(filename.substring(filename.length()-3,filename.length()).equalsIgnoreCase("pdf")){
+                AppUtil.setLoadPdfClickOnly(context,idFoto,imageView);
+            }
+            else{
+                AppUtil.setImageGlideClickOnly(context,idFoto,imageView);
             }
 
         }
@@ -1323,6 +1442,40 @@ public class AppUtil {
 
     }
 
+    public static void convertBase64ToFileDirect(Context context, String base64String, ImageView imageView, String namaPdf) {
+        File dwldsPath = new File(context.getExternalCacheDir() + "/" + namaPdf);
+        try {
+            if (base64String != null) {
+                byte[] pdfAsBytes = Base64.decode(base64String, 0);
+                FileOutputStream os;
+                os = new FileOutputStream(dwldsPath, false);
+                os.write(pdfAsBytes);
+                os.flush();
+                os.close();
+
+                        Uri path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", dwldsPath);
+
+                        Intent target = new Intent(Intent.ACTION_VIEW);
+                        target.setDataAndType(path, "application/pdf");
+                        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                        target.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                        Intent intent = Intent.createChooser(target, "Open File");
+                        try {
+                            context.startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            // Instruct the user to install a PDF reader here, or something
+                        }
+                    }
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void convertBinaryToImage(String binaryString, ImageView imageView) {
         byte[] imageAsBytes = binaryString.getBytes();
         imageView.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
@@ -1342,6 +1495,7 @@ public class AppUtil {
                 os.close();
 
                 imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_pdf_hd));
+                imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override

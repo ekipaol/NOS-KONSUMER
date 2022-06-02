@@ -1,6 +1,7 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_ideb;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
+import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenItemVerifikasiHutangBinding;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenItemVerifikasiIdebBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.DropdownRecyclerListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiHutang;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataVerifikasiIdeb;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_fitur.VerifikasiFiturAdapter;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
 public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAdapter.MenuViewHolder> {
@@ -68,17 +75,24 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
         onClicks(position,holder);
 
         try{
-            if(data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
-                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivDokumen,data.get(position).getDokumen().getFile_Name());
-            }
-            else{
-                AppUtil.convertBase64ToImage(data.get(position).getDokumen().getImg(),holder.ivDokumen);
-            }
-
+            checkFileTypeThenSet(context,data.get(position).getDokumen().getImg(),holder.ivDokumen,data.get(position).getDokumen().getFile_Name(),holder);
         }
         catch (Exception e){
             e.printStackTrace();
         }
+
+//        try{
+//            if(data.get(position).getDokumen().getFile_Name().substring(data.get(position).getDokumen().getFile_Name().length()-3,data.get(position).getDokumen().getFile_Name().length()).equalsIgnoreCase("pdf")){
+//                AppUtil.convertBase64ToFileWithOnClick(context,data.get(position).getDokumen().getImg(),holder.ivDokumen,data.get(position).getDokumen().getFile_Name());
+//            }
+//            else{
+//                AppUtil.convertBase64ToImage(data.get(position).getDokumen().getImg(),holder.ivDokumen);
+//            }
+//
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
 
 
 
@@ -132,6 +146,48 @@ public class VerifikasiIdebAdapter extends RecyclerView.Adapter<VerifikasiIdebAd
 //        });
 
 
+    }
+
+    public void loadFileJson(String idFoto, ImageView imageView, VerifikasiIdebAdapter.MenuViewHolder holder) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(context);
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(context,response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(context,holder.etAngsuranBulanan.findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(context,holder.etAngsuranBulanan.findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                AppUtil.notiferror(context,holder.etAngsuranBulanan.findViewById(android.R.id.content), "Terjadi kesalahan");
+                Log.d("LOG D", t.getMessage());
+                t.printStackTrace();
+            }
+        });
+
+    }
+
+    private void checkFileTypeThenSet(Context context,String idDok,ImageView imageView,String fileName,VerifikasiIdebAdapter.MenuViewHolder holder){
+
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+            loadFileJson(idDok,imageView,holder);
+        }
+        else{
+            AppUtil.setImageGlide(context,idDok,imageView);
+        }
     }
 
 

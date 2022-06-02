@@ -72,6 +72,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     private ActivityDataJaminanBinding binding;
     List<JaminandanDokumen> jd;
     JaminandanDokumen doc = new JaminandanDokumen();
+    boolean errorUpload=false;
     private DatePickerDialog dpSK;
     private Calendar calLahir;
     public static Long idAplikasi;
@@ -1055,6 +1056,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     //logical doc
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        errorUpload=false;
         switch (requestCode) {
             case UPLOAD_DATAKTP:
                 setDataImage(binding.ivKtpNasabah,data,"dokktpD3",UPLOAD_DATAKTP);
@@ -1310,6 +1312,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             }
             catch (FileNotFoundException e2){
                 e2.printStackTrace();
+                errorUpload=true;
             }
             catch (Exception e3){
                 e3.printStackTrace();
@@ -1348,56 +1351,67 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
                         idFileKtp = response.body().getId();
                         DataJaminanKTP.setImg(idFileKtp);
                         DataJaminanKTP.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileKtp,binding.ivKtpNasabah,fileName);
                     }
                     else if (uploadCode == UPLOAD_KTPPASANGAN) {
                         idFileKtpPasangan = response.body().getId();
                         DataJaminanKTPPasangan.setImg(idFileKtpPasangan);
                         DataJaminanKTPPasangan.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileKtpPasangan,binding.ivKtpPasangan,fileName);
                     }
                     else if (uploadCode == UPLOAD_NPWP) {
                         idFileNpwp = response.body().getId();
                         DataJaminanNPWP.setImg(idFileNpwp);
                         DataJaminanNPWP.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileNpwp,binding.ivNpwp,fileName);
                     }
                     else if (uploadCode == UPLOAD_FORMAPLIKASI) {
                         idFileFormAplikasi = response.body().getId();
                         DataJaminanFormAplikasi.setImg(idFileFormAplikasi);
                         DataJaminanFormAplikasi.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileFormAplikasi,binding.ivFormApplikasi,fileName);
                     }
                     else if (uploadCode == UPLOAD_FORMAPLIKASI2) {
                         idFileFormAplikasi2 = response.body().getId();
                         DataJaminanFormAplikasi2.setImg(idFileFormAplikasi2);
                         DataJaminanFormAplikasi2.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileFormAplikasi2,binding.ivFormAplikasi2,fileName);
                     }
                     else if (uploadCode == UPLOAD_ASSETAKAD) {
                         idFileAsetAkad = response.body().getId();
                         DataJaminanAsetAkad.setImg(idFileAsetAkad);
                         DataJaminanAsetAkad.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileAsetAkad,binding.ivAssetAkad,fileName);
                     }
                     else if (uploadCode == UPLOAD_SKPENGANGKATAN) {
                         idFileSkPengangkatan = response.body().getId();
                         DataJaminanSKPengangkatan.setImg(idFileSkPengangkatan);
                         DataJaminanSKPengangkatan.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileSkPengangkatan,binding.ivSkPengangkatan,fileName);
                     }
                     else if (uploadCode == UPLOAD_SKPENSIUN) {
                         idFileSkPensiun = response.body().getId();
                         DataJaminanSKPensiun.setImg(idFileSkPensiun);
                         DataJaminanSKPensiun.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileSkPensiun,binding.ivSkPensiun,fileName);
                     }
                     else if (uploadCode == UPLOAD_SKTERAKHIR) {
                         idFileSkTerakhir = response.body().getId();
                         DataJaminanSKTerakhir.setImg(idFileSkTerakhir);
                         DataJaminanSKTerakhir.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileSkTerakhir,binding.ivSkTerakhir,fileName);
                     }
                     else if (uploadCode == UPLOAD_DATAINSTASI) {
                         idFileSuratRekomendasiInstansi = response.body().getId();
                         DataJaminanSuratRekomendasiInstansi.setImg(idFileSuratRekomendasiInstansi);
                         DataJaminanSuratRekomendasiInstansi.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileSuratRekomendasiInstansi,binding.ivSuratInstansi,fileName);
                     }
                     else if (uploadCode == UPLOAD_IDCARD) {
                         idFileIdCard = response.body().getId();
                         DataJaminanIDCard.setImg(idFileIdCard);
                         DataJaminanIDCard.setFileName(fileName);
+                        checkFileTypeThenSet(DataJaminanActivity.this,idFileIdCard,binding.ivIdcard,fileName);
                     }
                     AppUtil.notifsuccess(DataJaminanActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
 //                    sudahUpload=true;
@@ -1417,16 +1431,19 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void checkFileTypeThenUpload(String filename, String fileNameDoc, ImageView imageView,String val_base64, int uploadCode){
-        if (tipeFile.equalsIgnoreCase("pdf")) {
-            filename = idAplikasi + fileNameDoc+".pdf";
-            uploadFile(val_base64, filename, uploadCode);
-        } else {
-            imageView.invalidate();
-            RoundedDrawable drawableDoc = (RoundedDrawable) imageView.getDrawable();
-            Bitmap bitmapDoc = drawableDoc.getSourceBitmap();
-            filename = idAplikasi + fileNameDoc+".png";
-            uploadFile(AppUtil.encodeImageTobase64(bitmapDoc), filename, uploadCode);
+        if(!errorUpload){
+            if (tipeFile.equalsIgnoreCase("pdf")) {
+                filename = idAplikasi + fileNameDoc+".pdf";
+                uploadFile(val_base64, filename, uploadCode);
+            } else {
+                imageView.invalidate();
+                RoundedDrawable drawableDoc = (RoundedDrawable) imageView.getDrawable();
+                Bitmap bitmapDoc = drawableDoc.getSourceBitmap();
+                filename = idAplikasi + fileNameDoc+".png";
+                uploadFile(AppUtil.encodeImageTobase64(bitmapDoc), filename, uploadCode);
+            }
         }
+
     }
 
     private void checkFileTypeThenSet(Context context,String idDok,ImageView imageView,String fileName){

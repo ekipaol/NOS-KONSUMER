@@ -10,13 +10,15 @@ public class UriApi {
 
     public static class Baseurl{
 //        public static final String URLDEV = "http://10.1.25.55:8080/MobileBRISIAPI-EKI/webresources/"; //DEV
-//        public static final String URLDEV = "https://10.0.116.105/"; //DEV BSI
-        public static final String URLDEV = "http://10.0.116.37:8051/nos-prapen/"; //middletier
+        public static final String URLDEV = "https://10.0.116.105/"; //DEV BSI
+//        public static final String URLDEV = "http://10.0.116.37:8051/nos-prapen/"; //middletier
 //        public static final String URLDEV = "https://10.0.116.109/"; //QA BSI
         public static final String URLPROD = "https://intel.brisyariah.co.id:55056/MobileBRISIAPI/webresources/"; //PROD
 //        public static final String URLPROD = "https://intel.brisyariah.co.id:55056/MobileBRISIAPI-EKI/webresources/"; //PROD EKI
 
         public static String URL = (BuildConfig.IS_PRODUCTION) ? URLPROD : URLDEV ; //ENV BASED URI SELECTOR
+
+        public static String URLFOTO = "https://10.0.116.105/" ;
 
         public static final String URL_MAPS = "https://api.opencagedata.com/";
     }
@@ -289,6 +291,7 @@ public class UriApi {
     public class foto{
         public static final String urlFile = "TestAPI/rest/TestAPI/GetFile";
         public static final String urlFileDirect = "NOS_PRAPEN_Services/rest/LogicalDoc/GetFileDoc?FileId=";
+//        public static final String urlFileDirect = "TestAPI/rest/TestAPI/GetFileDoc?FileId=";
         public static final String urlFileDirectJson = "NOS_PRAPEN_Services/rest/LogicalDoc/GetFileDocAsJson";
         public static final String urlPhotoProfil = "generic/getImageProfile/";
 //        public static final String urlPhotoProfil = "generic/getImageProfile/";
@@ -473,6 +476,9 @@ public class UriApi {
         public static final String inqListAsusransi = "NOS_PRAPEN_Services/rest/Picklist/ListAsusransi";
         public static final String listAplikasiMarketing = "NOS_PRAPEN_Services/rest/APIUmum/ListDataAplikasiMarketing";
         public static final String listAplikasiPemutus = "NOS_PRAPEN_Services/rest/APIUmum/ListDataAplikasiD6Pemutus";
+        public static final String cariInstansi = "NOS_PRAPEN_Services/rest/APIUmum/CariInstansi";
+
+
 
 
 

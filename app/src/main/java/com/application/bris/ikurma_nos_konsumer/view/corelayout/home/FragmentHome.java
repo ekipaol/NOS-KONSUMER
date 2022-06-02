@@ -15,6 +15,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.appraisal.Appraisa
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.feedback.FeedbackActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.general.ListAplikasiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.ListInstansiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_monitoring.monitoring_pencairan.MonitoringPencairanActivity;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.login.LoginActivity2;
 import com.application.bris.ikurma_nos_konsumer.view.corelayout.menu.MenuFlppActivity;
@@ -371,6 +372,11 @@ public class FragmentHome extends Fragment implements SwipeRefreshLayout.OnRefre
         }
         else if (menu.equalsIgnoreCase(getString(R.string.menu_aplikasi))){
             Intent it = new Intent(getContext(), ListAplikasiActivity.class);
+            startActivity(it);
+
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.menu_instansi))){
+            Intent it = new Intent(getContext(), ListInstansiActivity.class);
             startActivity(it);
 
         }

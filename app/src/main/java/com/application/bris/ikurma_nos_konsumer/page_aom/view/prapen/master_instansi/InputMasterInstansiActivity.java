@@ -114,7 +114,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         isiDropdown();
         otherViewChanges();
         //        initdata();
-        AppUtil.toolbarRegular(this, "Input Instansi");
+        AppUtil.toolbarRegular(this, "Detil Instansi");
 
     }
 
@@ -506,6 +506,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         binding.btnDokumenTambahan1.setOnClickListener(this);
         binding.btnDokumenTambahan2.setOnClickListener(this);
         binding.btnFotoLkp.setOnClickListener(this);
+        binding.btnLihatLkp.setOnClickListener(this);
+        binding.btnLihatLngp.setOnClickListener(this);
 
         easyEndIconDropdownClick(binding.tfInstansiInduk,dropdownInstansiInduk);
         easyEndIconDropdownClick(binding.tfTipePembayaran,dropdownTipePembayaran);
@@ -580,6 +582,14 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             case R.id.tf_jasa_pengelolaan:
             case R.id.et_jasa_pengelolaan:
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJasaPengelolaan.getLabelText(),dropdownJasaPengelolaan,this);
+                break;
+            case R.id.btn_lihat_lkp:
+               Intent intent=new Intent(InputMasterInstansiActivity.this,ListLkpKoordinasiActivity.class);
+               startActivity(intent);
+                break;
+            case R.id.btn_lihat_lngp:
+                Intent intent2=new Intent(InputMasterInstansiActivity.this,ListLngpActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.btn_simpan_data_instansi:
                 if(rekeningBerubah){

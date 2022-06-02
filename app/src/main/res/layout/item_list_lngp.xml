@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    android:paddingBottom="4dp"
+    app:cardElevation="3dp">
+    <LinearLayout
+        android:id="@+id/ll_lngp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_nomor_lngp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LNGP109012009901290"
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:textSize="25sp"
+            style="@style/JakartaSansBold"
+            android:textColor="@color/colorBlackHeader" />
+
+
+        <TextView
+            android:id="@+id/tv_nama_instansi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kementrian Agama Jakarta"
+            android:textStyle="bold"
+            android:layout_marginTop="11dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            style="@style/JakartaSansRegular"
+            android:textColor="@color/colorBlackHeader" />
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

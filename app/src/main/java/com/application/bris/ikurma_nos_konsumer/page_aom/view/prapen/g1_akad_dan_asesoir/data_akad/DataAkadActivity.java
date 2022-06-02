@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -25,6 +26,9 @@ import android.widget.Toast;
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
@@ -46,10 +50,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.FragmentDataPribadiPrapen;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_tempat_kerja.VerifikasiTempatKerjaActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -57,6 +58,7 @@ import com.google.gson.reflect.TypeToken;
 import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -91,6 +93,12 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     DecimalFormat format = new DecimalFormat("#00,000,000.00");
     DecimalFormat formatLuas = new DecimalFormat("#00,0");
 
+    private String tipeFile;
+    private boolean errorUpload=false;
+    private String idFileKendaraan="",idFileTanah="",idFileTempatTinggal="",idFileLainnya="",idFileAset="";
+    private String namaFileKendaraan="",namaFileTanah="",namaFileTempatTinggal="",namaFileLainnya="",namaFileAset="";
+    private int UPLOAD_KENDARAAN=1,UPLOAD_TANAH=2,UPLOAD_TEMPAT_TINGGAL=3,UPLOAD_LAINNYA=4,UPLOAD_ASET=5;
+    private String valKendaraan="",valTanah="",valTempatTinggal="",valLainnya="",valAset="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -274,7 +282,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                         try{
                             String listDataAset = response.body().getData().get("FotoAset").toString();
                             dataAset =  gson.fromJson(listDataAset, typeAset);
-                            AppUtil.convertBase64ToImage(dataAset.getImg(),binding.ivFotoAset);
+                            checkFileTypeThenSet(DataAkadActivity.this,dataAset.getImg(),binding.ivFotoAset,dataAset.getFile_Name());
                         }
                         catch (Exception e){
                             e.printStackTrace();
@@ -529,7 +537,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             dataMmqTempatTinggal.setAlamat(binding.etAlamatTempatTinggal.getText().toString());
             dataMmqTempatTinggal.setLuasAsetTanah(Double.parseDouble(binding.etLuasTanahTempatTinggal.getText().toString()));
             dataMmqTempatTinggal.setHargaAsetTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etHargaTanahTempatTinggal.getText().toString())));
-            dataMmqTempatTinggal.setTotalNilaiTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalNilaiTanah.getText().toString())));
+            dataMmqTempatTinggal.setTotalNilaiTanah(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalNilaiTanahTempatTinggal.getText().toString())));
             dataMmqTempatTinggal.setLuasAsetBangunan(Double.parseDouble(binding.etLuasBangunan.getText().toString()));
             dataMmqTempatTinggal.setHargaAsetBangunan(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etHargaBangunan.getText().toString())));
             dataMmqTempatTinggal.setTotalNilaiBangunan(Double.parseDouble(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTotalNilaiBangunan.getText().toString())));
@@ -562,17 +570,9 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
         //data foto
 
-        if(tipeFileAset.equalsIgnoreCase("pdf")){
-            reqAset.setImg(valBase64PdfAset);
-            reqAset.setFile_Name(String.valueOf(idAplikasi)+"_aset.pdf");
-        }
-        else{
-            RoundedDrawable drawableAset = (RoundedDrawable) binding.ivFotoAset.getDrawable();
-            Bitmap bitmapAset = drawableAset.getSourceBitmap();
-            reqAset.setImg(AppUtil.encodeImageTobase64(bitmapAset));
-            reqAset.setFile_Name(String.valueOf(idAplikasi)+"_aset.png");
-        }
 
+        reqAset.setImg(idFileAset);
+        reqAset.setFile_Name(namaFileAset);
 
 
         reqData.setDokumenAset(reqAset);
@@ -1226,6 +1226,135 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         });
     }
 
+    public void uploadFile(String base64, String fileName, int uploadCode) {
+        ApiClientAdapter apiClientAdapter = new ApiClientAdapter(this);
+        //  dataUser = getListUser();
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        ReqUploadFile req = new ReqUploadFile();
+        //pantekan uid
+        req.setFolderId(AppUtil.getIdFolderLogicalDoc());
+        req.setLanguage("en");
+        req.setFileB64(base64);
+        req.setFileName(fileName);
+        Call<ParseResponseFile> call = apiClientAdapter.getApiInterface().uploadFileLogicalDoc(req);
+        call.enqueue(new Callback<ParseResponseFile>() {
+            @Override
+            public void onResponse(Call<ParseResponseFile> call, Response<ParseResponseFile> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+
+                    idFileAset=response.body().getId();
+                    namaFileAset=fileName;
+                    dataAset.setImg(idFileAset);
+                    dataAset.setFile_Name(fileName);
+                    checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
+//
+//                    if (uploadCode == UPLOAD_KENDARAAN) {
+//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
+//                    }
+//                    else if (uploadCode == UPLOAD_TANAH) {
+//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
+//                    }
+//                    else if (uploadCode == UPLOAD_TEMPAT_TINGGAL) {
+//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
+//                    }
+//                    else if (uploadCode == UPLOAD_LAINNYA) {
+//                        idFileLainnya = response.body().getId();
+//                        namaFileLainnya=fileName;
+//                        dataAset.setImg(idFileLainnya);
+//                        dataAset.setFile_Name(fileName);
+//                        checkFileTypeThenSet(DataAkadActivity.this,idFileLainnya,binding.ivFotoAset,fileName);
+//                    }
+                    AppUtil.notifsuccess(DataAkadActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
+//                    sudahUpload=true;
+                } else {
+                    AppUtil.notiferror(DataAkadActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseFile> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataAkadActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+
+            }
+        });
+
+    }
+
+
+    private void checkFileTypeThenUpload(String filename, String fileNameDoc, ImageView imageView,String val_base64, int uploadCode){
+        if(!errorUpload){
+            if (tipeFile.equalsIgnoreCase("pdf")) {
+                filename =fileNameDoc+".pdf";
+                uploadFile(val_base64, filename, uploadCode);
+            } else {
+                imageView.invalidate();
+                RoundedDrawable drawableDoc = (RoundedDrawable) imageView.getDrawable();
+                Bitmap bitmapDoc = drawableDoc.getSourceBitmap();
+                filename = idAplikasi + fileNameDoc+".png";
+                uploadFile(AppUtil.encodeImageTobase64(bitmapDoc), filename, uploadCode);
+            }
+        }
+
+    }
+
+    private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
+
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+
+            if(idDok.length()<10){
+                loadFileJson(idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToFileWithOnClick(context,idDok,imageView,fileName);
+            }
+
+        }
+        else{
+
+            if(idDok.length()<10){
+                AppUtil.setImageGlide(context,idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToImage(idDok,imageView);
+            }
+
+        }
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(DataAkadActivity.this);
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(DataAkadActivity.this,response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(DataAkadActivity.this,findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(DataAkadActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataAkadActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                t.printStackTrace();
+            }
+        });
+
+    }
+
     //UPLOAD FILE METHODS
 
 
@@ -1280,14 +1409,17 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     public void onSelectMenuCamera(String idMenu) {
         switch(idMenu){
             case "Take Photo":
-                    tipeFileAset="png";
-                    openCamera("dokumenaset");
+                tipeFile="png";
+                tipeFileAset="png";
+                openCamera("dokumenaset");
                 break;
             case "Pick Photo":
-                    openGalery();
+                tipeFile="png";
                 tipeFileAset="png";
+                openGalery();
                 break;
             case "Pick File":
+                tipeFile="pdf";
                     openFile();
                 break;
         }
@@ -1296,9 +1428,9 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-                setDataImage(binding.ivFotoAset, data, "dokumenaset");
-
+        errorUpload=false;
+        setDataImage(binding.ivFotoAset, data, "dokumenaset");
+        checkFileTypeThenUpload(namaFileAset,idAplikasi+"_aset",binding.ivFotoAset,valAset,UPLOAD_ASET);
 
     }
 
@@ -1315,18 +1447,25 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                 iv.setImageBitmap(bitmap);
 
 
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 e.printStackTrace();
 
                 try{
                     iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
-                        Uri uriPdf = data.getData();
-                        valBase64PdfAset= AppUtil.encodeFileToBase64(DataAkadActivity.this,uriPdf);
+                    iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                    Uri uriPdf=data.getData();
+                    valAset=AppUtil.encodeFileToBase64(DataAkadActivity.this,uriPdf);
                 }
                 catch (Exception e2){
                     e2.printStackTrace();
                 }
-
+            }
+            catch (FileNotFoundException e2){
+                e2.printStackTrace();
+                errorUpload=true;
+            }
+            catch (Exception e3){
+                e3.printStackTrace();
             }
         }
     }

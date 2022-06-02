@@ -21,6 +21,8 @@ public class Menu {
     public static void mainMenuAO(Context context, List<ListViewMenu> menu) {
         menu.add(new ListViewMenu(R.drawable.ic_menu_putusan_vector, context.getString(R.string.menu_input), 0, 0, 0, 0));
         menu.add(new ListViewMenu(R.drawable.ic_menu_list_aplikasi_vector, context.getString(R.string.menu_aplikasi), 0, 0, 0, 0));
+        menu.add(new ListViewMenu(R.drawable.ic_instansi, context.getString(R.string.menu_instansi), 0, 0, 0, 0));
+        menu.add(new ListViewMenu(R.drawable.ic_menu_monitoring_vector, context.getString(R.string.menu_monitoring), 0, 0, 0, 0));
         menu.add(new ListViewMenu(R.drawable.ic_logout_front, "Logout", 0,0,0, 0));
     }
 

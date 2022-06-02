@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateIdebOjk;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -42,9 +44,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataIdeb;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.FragmentDataPribadiPrapen;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.makeramen.roundedimageview.RoundedDrawable;
@@ -68,6 +68,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
     private  boolean uploadFoto=false;
     private String idFile,fileName;
     private String namaFileIntent;
+    private boolean errorUpload=false;
 
 
     //dokumen variabel
@@ -215,24 +216,29 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
         binding.etTreatmentPembiayaan.setText(dataIdeb.getTreatmentPembiayaan());
 
         if(!namaFileIntent.isEmpty()){
-            if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("pdf")){
-                try{
-                    AppUtil.setLoadPdf(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
-                }
-                catch (NumberFormatException e){
-                    e.printStackTrace();
-                }
+            checkFileTypeThenSet(EditIdebActivity.this,getIntent().getStringExtra("idDokumen"),binding.ivFotoDokumen,namaFileIntent);
+            idFile=getIntent().getStringExtra("idDokumen");
+            namaDokumen=namaFileIntent;
+//            if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("pdf")){
+//                try{
+//                    AppUtil.setLoadPdf(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+//
+//                }
+//                catch (NumberFormatException e){
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//            else if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("png")){
+//                try{
+//                    AppUtil.setImageGlide(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
+//                }
+//                catch (NumberFormatException e){
+//                    e.printStackTrace();
+//                }
 
-            }
-            else if(namaFileIntent.substring(namaFileIntent.length()-3,namaFileIntent.length()).equalsIgnoreCase("png")){
-                try{
-                    AppUtil.setImageGlide(EditIdebActivity.this,Integer.parseInt(getIntent().getStringExtra("idDokumen")),binding.ivFotoDokumen);
-                }
-                catch (NumberFormatException e){
-                    e.printStackTrace();
-                }
+//            }
 
-            }
         }
 
 
@@ -301,8 +307,8 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
                 openGalery(1);
                 break;
             case "Pick File":
-                openFile(1);
                 tipeFile="pdf";
+                openFile(1);
                 break;
         }
 
@@ -320,18 +326,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         setDataImage(binding.ivFotoDokumen, data, namaDokumen);
-        if(tipeFile.equalsIgnoreCase("pdf")){
-            fileName=idAplikasi+"_ideb_"+dataIdeb.getIdDokumen() +".pdf";
-            uploadFile(valBase64Pdf,fileName);
-        }
-        else{
-            binding.ivFotoDokumen.invalidate();
-            RoundedDrawable drawableIdeb = (RoundedDrawable) binding.ivFotoDokumen.getDrawable();
-            Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-            fileName=idAplikasi+"_ideb_"+dataIdeb.getIdDokumen() +".png";
-            uploadFile(AppUtil.encodeImageTobase64(bitmapIdeb),fileName);
-        }
-//        uploadFoto=true;
+        checkFileTypeThenUpload(fileName,"_idebD3",binding.ivFotoDokumen,valBase64Pdf);
 
     }
 
@@ -387,7 +382,7 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
 
             //logical doc
             req.setImg(idFile);
-            req.setFileName(fileName);
+            req.setFileName(namaDokumen);
         }
         binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateIdebOjk(req);
@@ -440,6 +435,8 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
                 if (response.isSuccessful()) {
 
                         idFile=response.body().getId();
+                        namaDokumen=fileName;
+                    checkFileTypeThenSet(EditIdebActivity.this,idFile,binding.ivFotoDokumen,tipeFile);
 
                     AppUtil.notifsuccess(EditIdebActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
                     uploadFoto=true;
@@ -454,6 +451,78 @@ public class EditIdebActivity extends AppCompatActivity implements View.OnClickL
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(EditIdebActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
                 
+            }
+        });
+
+    }
+
+    private void checkFileTypeThenUpload(String filename, String fileNameDoc, ImageView imageView,String val_base64){
+        if(!errorUpload){
+            if (tipeFile.equalsIgnoreCase("pdf")) {
+                filename = idAplikasi + fileNameDoc+".pdf";
+                uploadFile(val_base64, filename);
+            } else {
+                imageView.invalidate();
+                RoundedDrawable drawableDoc = (RoundedDrawable) imageView.getDrawable();
+                Bitmap bitmapDoc = drawableDoc.getSourceBitmap();
+                filename = idAplikasi + fileNameDoc+".png";
+                uploadFile(AppUtil.encodeImageTobase64(bitmapDoc), filename);
+            }
+        }
+
+    }
+
+    private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
+
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+
+            if(idDok.length()<10){
+                loadFileJson(idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToFileWithOnClick(context,idDok,imageView,fileName);
+            }
+
+        }
+        else{
+
+            if(idDok.length()<10){
+                AppUtil.setImageGlide(context,idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToImage(idDok,imageView);
+            }
+
+        }
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView) {
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(EditIdebActivity.this);
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileWithOnClick(EditIdebActivity.this,response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        AppUtil.notiferror(EditIdebActivity.this,findViewById(android.R.id.content), "Data PDF Tidak Didapatkan");
+                    }
+
+
+                }
+                else{
+                    AppUtil.notiferror(EditIdebActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(EditIdebActivity.this,findViewById(android.R.id.content), "Terjadi kesalahan");
+                t.printStackTrace();
             }
         });
 

@@ -105,6 +105,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataSea
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBatalAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqCariInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPejabat;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
@@ -780,6 +781,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.listAplikasiPemutus)
     Call<ParseResponseArr> listAplikasiPemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
+    @POST(UriApi.prapen.cariInstansi)
+    Call<ParseResponseArr> cariInstansi(@Body ReqCariInstansi ReqCariInstansi);
 
     @POST(UriApi.prapen.inquiryDedupe)
     Call<ParseResponseArr> inquiryDedupe(@Body ReqDedupe ReqDedupe);

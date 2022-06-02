@@ -32,6 +32,8 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.hotprospek.HotprospekActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputLkpKoordinasiActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputMasterInstansiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.ListInstansiActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.ListLkpKoordinasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.Constants;
 import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
@@ -103,8 +105,8 @@ public class LoginActivity2 extends AppCompatActivity implements View.OnClickLis
             iv_avatarlogin.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-//                    Intent intent=new Intent(LoginActivity2.this, InputMasterInstansiActivity.class);
-                    Intent intent=new Intent(LoginActivity2.this, InputLkpKoordinasiActivity.class);
+                    Intent intent=new Intent(LoginActivity2.this, ListInstansiActivity.class);
+//                    Intent intent=new Intent(LoginActivity2.this, ListLkpKoordinasiActivity.class);
                     startActivity(intent);
                     return false;
                 }

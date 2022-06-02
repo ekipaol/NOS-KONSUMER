@@ -229,6 +229,8 @@ public class DialogListSektorEkonomi extends DialogFragment implements View.OnCl
 
     }
 
+
+    //search awal tanpa keyword
     public void intilize(){
         loading.setVisibility(View.VISIBLE);
         DataSearchOjk req = new DataSearchOjk();
