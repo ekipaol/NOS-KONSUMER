@@ -101,6 +101,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPribadiLainya;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataSearchOjk;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAkadAsesoir;
@@ -208,9 +209,8 @@ public interface ApiInterface {
     @POST(UriApi.ceknasabah.cekNasabah)
     Call<ParseResponse> cekNasabah(@Body cekNasabah cekNasabah);
 
-    @Multipart
-    @POST(UriApi.pipeline.uploadFoto)
-    Call<ParseResponse> uploadFileLogicalDoc(@Part MultipartBody.Part file);
+    @POST(UriApi.foto.uploadFile)
+    Call<ParseResponseFile> uploadFileLogicalDoc(@Body ReqUploadFile ReqUploadFile);
 
     @POST(UriApi.pipeline.sendDataPipeline)
     Call<ParseResponse> sendDataPipeline(@Body inputPipeline inputPipeline);
@@ -1112,6 +1112,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.dropdownKodePekerjaan)
     Call<ParseResponseArr> dropdownKodePekerjaan(@Body EmptyRequest EmptyRequest);
 
+    @POST(UriApi.prapen.dropdownStatusKepemilikan)
+    Call<ParseResponseArr> dropdownstatusKepemilikan(@Body EmptyRequest EmptyRequest);
+
     @POST(UriApi.prapen.dropdownBidangUsahaTempatKerja)
     Call<ParseResponseArr> dropdownBidangUsahaTempatKerja(@Body DataSearchOjk dataSearchOjk);
 
@@ -1121,8 +1124,12 @@ public interface ApiInterface {
     @POST(UriApi.prapen.InqDokumenUpload)
     Call<ParseResponse> InqDokumenUpload(@Body ReqInquery ReqInquery);
 
-    @POST(UriApi.foto.uploadFile)
-    Call<ParseResponseFile> uploadFileLogicalDoc(@Body ReqUploadFile ReqUploadFile);
+
+    @POST(UriApi.prapen.InquiryDokDataPribadiLainnya)
+    Call<DataPribadiLainya> InquiryDokDataPribadiLainnya(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.UpdateDokDataPribadiLainnya)
+    Call<ParseResponse> UpdateDokDataPribadiLainnya(@Body DataPribadiLainya DataPribadiLainya);
 
 //    @GET(UriApi.foto.urlFile)
 //    Call<ParseResponse> getFile(@Body EmptyRequest EmptyRequest);

@@ -44,7 +44,7 @@ public class UriApi {
 
         public static final String listPipeline = "generic/mikro/pipeline/listPipeline";
         public static final String inquiryPipeline = "generic/mikro/pipelinek/inquirePipeline";
-        public static final String uploadFoto = "generic/uploadImage";
+        public static final String uploadFoto = "NOS_PRAPEN_Services/rest/LogicalDoc/CreateFile\n";
         public static final String sendDataPipeline = "generic/mikro/pipeline/updatePipeline";
         public static final String pipelineToHotprospek = "generic/mikro/pipeline/kirimHotProspek";
         public static final String rejectPipeline = "generic/mikro/pipeline/tolak";
@@ -400,6 +400,8 @@ public class UriApi {
         public static final String InquiryHasilCanvasing = "NOS_PRAPEN_Services/rest/D3/InquiryHasilCanvasingD3";
         public static final String UpdateJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/UpdateJaminandanDokumen";
         public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
+        public static final String InquiryDokDataPribadiLainnya = "NOS_PRAPEN_Services/rest/D3/InquiryDokDataPribadiLainnya";
+        public static final String UpdateDokDataPribadiLainnya = "NOS_PRAPEN_Services/rest/D3/UpdateDokDataPribadiLainnya";
 
 
         public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";
@@ -455,6 +457,7 @@ public class UriApi {
         public static final String dropdownPejabat = "NOS_PRAPEN_Services/rest/G1/InqListPejabatAkad";
         public static final String dropdownSektorEkonomi = "NOS_PRAPEN_Services/rest/Picklist/SektorEkonomi";
         public static final String dropdownKodePekerjaan = "NOS_PRAPEN_Services/rest/Picklist/KodePekerjaan";
+        public static final String dropdownStatusKepemilikan = "NOS_PRAPEN_Services/rest/Picklist/StatusKepemilikan";
         public static final String dropdownBidangUsahaTempatKerja = "NOS_PRAPEN_Services/rest/Picklist/BidangUsahaTempatKerja";
         public static final String inquiryOjkBi = "NOS_PRAPEN_Services/rest/G1/InqOJKBI";
         public static final String updateDataOjkBi = "NOS_PRAPEN_Services/rest/G1/UpdateOJKBI";

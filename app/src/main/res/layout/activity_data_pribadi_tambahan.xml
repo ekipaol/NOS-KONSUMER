@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/toolbar_nosearch"
+        layout="@layout/toolbar_nosearch" />
+
+    <include
+        android:id="@+id/loading_layout"
+        layout="@layout/loading" />
+
+    <ScrollView
+        android:layout_marginTop="50dp"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Resume RAC-->
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_jumlah_tanggungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_person_black_24dp"
+                app:isResponsiveIconColor="true"
+                app:labelText="Jumlah Tanggungan"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_jumlah_tanggungan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789."
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    app:suffix="Org"
+                    tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_status_kepemilikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                app:iconSignifier="@drawable/ic_rupiah"
+                app:isResponsiveIconColor="true"
+                app:labelText="Status Kepemilikan Tempat Tinggal Domisili"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true"
+                tools:ignore="DuplicateIds">
+                <!--Treatment Biaya Materai-->
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_status_kepemilikan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_lama_tinggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_city"
+                app:isResponsiveIconColor="true"
+                app:labelText="Lama tempat domisili"
+                app:panelBackgroundColor="@color/colorBgEdittext"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_lama_tinggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    app:suffix="Tahun"
+                    tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                android:id="@+id/tf_lama_nasabah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:iconSignifier="@drawable/ic_date"
+                app:isResponsiveIconColor="true"
+                app:labelText="Lama menjadi nasabah Bank"
+                app:panelBackgroundColor="@color/colorDisableEdit"
+                app:primaryColor="@color/colorPrimary"
+                app:secondaryColor="@color/colorPrimary"
+                app:useDenseSpacing="true">
+
+                <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                    android:id="@+id/et_lama_nasabah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="0123456789"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    app:suffix="Tahun"
+                    tools:ignore="DuplicateIds" />
+            </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen A"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen A"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen A"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen A"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen1"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen1"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen B"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen B"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen B"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen B"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen2"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen2"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen C"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen C"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen C"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen C"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen3"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen3"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen D"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen D"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen D"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen D"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen4"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen4"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen E"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen E"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen E"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen E"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen5"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen5"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"></LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_upload_dokumen6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                app:cardBackgroundColor="@color/colorWhite"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/tv_upload_dokumen6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorBackgroundGrey1"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Upload Dokumen F"
+                        android:textColor="@color/colorBlackHeader"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tf_nama_dokumen6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="8dp"
+                        android:text="Nama Dokumen F"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_nama_dokumen6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Nama Dokumen"
+                        android:inputType="text"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tf_keterangan_dokumen6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="8dp"
+                        android:text="Keterangan Dokumen F"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_keterangan_dokumen6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/shapegrey"
+                        android:hint="Keterangan Dokumen"
+                        android:inputType="textMultiLine"
+                        android:padding="8dp"
+                        android:textColor="#000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@color/placholderBg" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tf_upload_dokumen6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/muli_b"
+                            android:paddingLeft="10dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:text="Upload Dokumen F"
+                            android:textSize="16sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.4">
+
+                            <com.makeramen.roundedimageview.RoundedImageView
+                                android:id="@+id/iv_upload_dokumen6"
+                                android:layout_width="70dp"
+                                android:layout_height="90dp"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/ico_img_for_upload"
+                                app:riv_border_color="#f1efef"
+                                app:riv_border_width="1dip"
+                                app:riv_corner_radius="8dip" />
+
+                            <ImageView
+                                android:id="@+id/btn_upload_dokumen6"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignParentBottom="true"
+                                android:background="@drawable/button_reject"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_photo_camera_primary_24dp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_tambahan_dokumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite">
+
+                    <Button
+                        android:id="@+id/btn_tambahan_dokumen"
+                        style="@style/Bordered.Button.Custom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:padding="8dp"
+                        android:text="tambah dokumen" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_delete_dokumen"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite">
+
+                    <Button
+                        android:id="@+id/btn_delete_dokumen"
+                        style="@style/Bordered.Button.Custom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:padding="8dp"
+                        android:text="Delete dokumen" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_btn_send"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:id="@+id/btn_send"
+                    style="@style/Bordered.Button.Custom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:background="@drawable/button_primary"
+                    android:padding="8dp"
+                    android:text="Selanjutnya"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
