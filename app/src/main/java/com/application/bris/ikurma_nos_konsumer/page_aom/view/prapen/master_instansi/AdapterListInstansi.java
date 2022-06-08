@@ -2,39 +2,23 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_ins
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.bris.ikurma_nos_konsumer.R;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
-import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ItemListInstansiBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.ItemListLkpKoordinasiBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListInstansi;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataLkpKoordinasi;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhotoFromIdLogicalDoc;
-import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstansi.MenuViewHolder>  {
     private List<DataListInstansi> data;
@@ -64,9 +48,11 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
         final DataListInstansi datas = datafiltered.get(position);
 
         holder.tvNamaInstansi.setText(datas.getNamaInstansi());
-        holder.tvKodeInstansi.setText(datas.getKodeInstansi());
+        holder.tvKodeInstansi.setText(datas.getKodeInstansiInduk());
         holder.tvStatusInstansi.setText(datas.getStatusInstansi());
-        holder.tvJenisInstansi.setText(datas.getJenisInstansi());
+//        holder.tvJenisInstansi.setText(datas.getJenisInstansi());
+        holder.tvEscrow.setText(datas.getEscrow());
+        holder.tvCabangAsal.setText(datas.getCabangAsal());
 
 
         if(datas.getStatusInstansi().equalsIgnoreCase("aktif")){
@@ -82,6 +68,7 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,InputMasterInstansiActivity.class);
+                intent.putExtra("idInstansi",(datas.getIdInstansi()));
                 context.startActivity(intent);
 
             }
@@ -91,6 +78,7 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context,InputMasterInstansiActivity.class);
+                intent.putExtra("idInstansi",(datas.getIdInstansi()));
                 context.startActivity(intent);
             }
         });
@@ -99,6 +87,7 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(context,InputMasterInstansiActivity.class);
+                intent.putExtra("idInstansi",(datas.getIdInstansi()));
                 context.startActivity(intent);
             }
         });
@@ -119,7 +108,7 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvNamaInstansi,tvKodeInstansi,tvStatusInstansi,tvJenisInstansi;
+        TextView tvNamaInstansi,tvKodeInstansi,tvStatusInstansi,tvJenisInstansi,tvEscrow,tvCabangAsal;
         CardView cvData;
         ImageView btLihatInstansi;
         LinearLayout llLihatInstansi;
@@ -128,12 +117,15 @@ public class AdapterListInstansi extends RecyclerView.Adapter<AdapterListInstans
             super(itemView);
 
             tvNamaInstansi=binding.tvNamaInstansi;
-            tvKodeInstansi=binding.tvKodeInstansi;
+            tvKodeInstansi=binding.tvInstansiInduk;
             tvStatusInstansi=binding.tvStatusInstansi;
             tvJenisInstansi=binding.tvJenisInstansi;
+            tvEscrow=binding.tvRekEscrow;
+            tvCabangAsal=binding.tvAsalCabang;
             cvData=binding.cvDataInstansi;
             btLihatInstansi=binding.btnLihatInstansi;
             llLihatInstansi=binding.llLihatInstansi;
+
         }
 
     }

@@ -4,18 +4,51 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DataListInstansi {
-    @SerializedName("namaInstansi")
+    @SerializedName("Id")
+    @Expose
+    private String idInstansi;
+    @SerializedName("Nama")
     @Expose
     private String namaInstansi;
     @SerializedName("jenisInstansi")
     @Expose
     private String jenisInstansi;
-    @SerializedName("statusInstansi")
+    @SerializedName("Status")
     @Expose
     private String statusInstansi;
-    @SerializedName("kodeInstansi")
+    @SerializedName("Kode_Instansi_Induk")
     @Expose
-    private String kodeInstansi;
+    private String kodeInstansiInduk;
+    @SerializedName("Escrow")
+    @Expose
+    private String escrow;
+    @SerializedName("Cabang")
+    @Expose
+    private String cabangAsal;
+
+    public String getIdInstansi() {
+        return idInstansi;
+    }
+
+    public void setIdInstansi(String idInstansi) {
+        this.idInstansi = idInstansi;
+    }
+
+    public String getEscrow() {
+        return escrow;
+    }
+
+    public void setEscrow(String escrow) {
+        this.escrow = escrow;
+    }
+
+    public String getCabangAsal() {
+        return cabangAsal;
+    }
+
+    public void setCabangAsal(String cabangAsal) {
+        this.cabangAsal = cabangAsal;
+    }
 
     public String getNamaInstansi() {
         return namaInstansi;
@@ -41,11 +74,11 @@ public class DataListInstansi {
         this.statusInstansi = statusInstansi;
     }
 
-    public String getKodeInstansi() {
-        return kodeInstansi;
+    public String getKodeInstansiInduk() {
+        return kodeInstansiInduk;
     }
 
-    public void setKodeInstansi(String kodeInstansi) {
-        this.kodeInstansi = kodeInstansi;
+    public void setKodeInstansiInduk(String kodeInstansiInduk) {
+        this.kodeInstansiInduk = kodeInstansiInduk;
     }
 }

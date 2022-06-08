@@ -13,6 +13,60 @@ public class DataCIfRekening {
     @SerializedName("Nama")
     private String Nama;
 
+    @SerializedName("NamaSPAN")
+    private String namaSpan;
+
+    @SerializedName("NoRekeningSPAN")
+    private String rekeningSpan;
+
+    @SerializedName("GajiSPAN")
+    private String gajiSpan;
+
+    @SerializedName("TunjanganSPAN")
+    private String tunjanganSpan;
+
+    @SerializedName("KeteranganSPAN")
+    private String keteranganSpan;
+
+    public String getNamaSpan() {
+        return namaSpan;
+    }
+
+    public void setNamaSpan(String namaSpan) {
+        this.namaSpan = namaSpan;
+    }
+
+    public String getRekeningSpan() {
+        return rekeningSpan;
+    }
+
+    public void setRekeningSpan(String rekeningSpan) {
+        this.rekeningSpan = rekeningSpan;
+    }
+
+    public String getGajiSpan() {
+        return gajiSpan;
+    }
+
+    public void setGajiSpan(String gajiSpan) {
+        this.gajiSpan = gajiSpan;
+    }
+
+    public String getTunjanganSpan() {
+        return tunjanganSpan;
+    }
+
+    public void setTunjanganSpan(String tunjanganSpan) {
+        this.tunjanganSpan = tunjanganSpan;
+    }
+
+    public String getKeteranganSpan() {
+        return keteranganSpan;
+    }
+
+    public void setKeteranganSpan(String keteranganSpan) {
+        this.keteranganSpan = keteranganSpan;
+    }
 
     public String getNama() {
         return Nama;

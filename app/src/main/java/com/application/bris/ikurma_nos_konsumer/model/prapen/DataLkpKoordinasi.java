@@ -4,22 +4,22 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class DataLkpKoordinasi {
-    @SerializedName("namaCabang")
+    @SerializedName("Nama_Cabang")
     @Expose
     private String namaCabang;
-    @SerializedName("kodeCabang")
+    @SerializedName("Kode_Cabang")
     @Expose
     private String kodeCabang;
-    @SerializedName("tanggalLkp")
+    @SerializedName("Tanggal_LKP")
     @Expose
     private String tanggalLkp;
-    @SerializedName("tanggalKadaluarsa")
+    @SerializedName("Tanggal_LKP_Kadaluarsa")
     @Expose
     private String tanggalKadaluarsa;
-    @SerializedName("idDokumen")
+    @SerializedName("Img")
     @Expose
     private String idDokumen;
-    @SerializedName("fileName")
+    @SerializedName("Filename")
     @Expose
     private String fileName;
 

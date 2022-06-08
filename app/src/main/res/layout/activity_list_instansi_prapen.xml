@@ -39,7 +39,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_keyword_24dp"
-                    android:tint="@color/colorBlueband"
+                    android:tint="@color/colorPrimary"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center_vertical"/>
@@ -65,16 +65,27 @@
                     android:padding="12dp"/>
             </LinearLayout>
 
-            <ImageView
+<!--            <ImageView-->
+<!--                android:id="@+id/bt_cari"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:src="@drawable/ic_search_black_24dp"-->
+<!--                android:tint="@color/colorPrimary"-->
+<!--                android:layout_below="@+id/ll_keyword"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:elevation="5dp"/>-->
+            
+            <Button
                 android:id="@+id/bt_cari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_search_black_24dp"
-                android:tint="@color/colorBlueband"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_below="@+id/ll_keyword"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:elevation="5dp"/>
+                android:text="Cari"
+                style="@style/Bordered.Button.Custom"/>
 
             <View
                 android:id="@+id/divider_search"

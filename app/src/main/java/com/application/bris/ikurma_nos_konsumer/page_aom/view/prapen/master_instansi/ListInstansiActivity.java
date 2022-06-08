@@ -16,13 +16,11 @@ import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqCariInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityListInstansiPrapenBinding;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListAplikasi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListInstansi;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataLkpKoordinasi;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -99,7 +97,13 @@ public class ListInstansiActivity extends AppCompatActivity {
         binding.btCari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               loadDataDummy();
+//                if(binding.etKeyword.getText().toString().isEmpty()){
+//                    AppUtil.notiferror(ListInstansiActivity.this, findViewById(android.R.id.content), "Harap isi keyword pencairan");
+//                }
+//                else{
+                    loadData();
+//                }
+
             }
         });
 
@@ -128,24 +132,17 @@ public class ListInstansiActivity extends AppCompatActivity {
 
 
     public void loadData() {
-        //  dataUser = getListUser();
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        ReqCariInstansi req=new ReqCariInstansi();
         AppPreferences appPreferences=new AppPreferences(ListInstansiActivity.this);
 
         //pantekan uid
 //        req.setUID("");
-        req.setUID(String.valueOf(appPreferences.getUid()));
-        req.setRole((appPreferences.getFidRole()));
+        req.setKeyword(binding.etKeyword.getText().toString());
 
         Call<ParseResponseArr> call;
 
-        if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
-            call = apiClientAdapter.getApiInterface().listAplikasiPemutus(req);
-        }
-        else{
-            call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
-        }
+        call = apiClientAdapter.getApiInterface().cariInstansi(req);
 
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override
@@ -156,7 +153,7 @@ public class ListInstansiActivity extends AppCompatActivity {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         String listDataString = response.body().getData().toString();
                         Gson gson = new Gson();
-                        Type type = new TypeToken<List<DataListAplikasi>>() {
+                        Type type = new TypeToken<List<DataListInstansi>>() {
                         }.getType();
 
                         dataListInstansi = gson.fromJson(listDataString, type);
@@ -193,17 +190,17 @@ public class ListInstansiActivity extends AppCompatActivity {
         DataListInstansi dataDummy3=new DataListInstansi();
 
         dataDummy1.setNamaInstansi("PT Mundur Maju");
-        dataDummy1.setKodeInstansi("XPP100");
+        dataDummy1.setKodeInstansiInduk("XPP100");
         dataDummy1.setJenisInstansi("ASN SKPP");
         dataDummy1.setStatusInstansi("Aktif");
 
         dataDummy2.setNamaInstansi("PT Tak Mau Maju");
-        dataDummy2.setKodeInstansi("LPP91");
+        dataDummy2.setKodeInstansiInduk("LPP91");
         dataDummy2.setJenisInstansi("ASN SKPD");
         dataDummy2.setStatusInstansi("Aktif");
 
         dataDummy3.setNamaInstansi("PT Selalu Mundur");
-        dataDummy3.setKodeInstansi("HOPP01");
+        dataDummy3.setKodeInstansiInduk("HOPP01");
         dataDummy3.setJenisInstansi("ASN SKPP");
         dataDummy3.setStatusInstansi("Tidak Aktif");
 

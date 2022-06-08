@@ -109,6 +109,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqBata
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqCariInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPejabat;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDetilInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungAkseptasiPendapatan;
@@ -141,6 +142,7 @@ import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.LknPojo;
 import com.application.bris.ikurma_nos_konsumer.model.hotprospek.KonsumerKprFlppInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.HapusDataHutang;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.InputLkpKoordinasi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.UpdateDataHutang;
 
@@ -791,6 +793,15 @@ public interface ApiInterface {
     @POST(UriApi.prapen.cariInstansi)
     Call<ParseResponseArr> cariInstansi(@Body ReqCariInstansi ReqCariInstansi);
 
+    @POST(UriApi.prapen.inquiryInstansi)
+    Call<ParseResponse> inquiryInstansi(@Body ReqDetilInstansi ReqDetilInstansi);
+
+    @POST(UriApi.prapen.inquirylkp)
+    Call<ParseResponseArr> inquirylkp(@Body ReqDetilInstansi ReqDetilInstansi);
+
+    @POST(UriApi.prapen.updateLkpKoordinasi)
+    Call<ParseResponse> updateLkpKoordinasi(@Body InputLkpKoordinasi InputLkpKoordinasi);
+
     @POST(UriApi.prapen.inquiryDedupe)
     Call<ParseResponseAgunan> inquiryDedupe(@Body ReqDedupe ReqDedupe);
 
@@ -817,6 +828,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.dropdownMitraFronting)
     Call<ParseResponseArr> dropdownMitraFronting(@Body EmptyRequest EmptyRequest);
+
+    @POST(UriApi.prapen.dropdownJenisAset)
+    Call<ParseResponseArr> dropdownJenisAset(@Body EmptyRequest EmptyRequest);
 
     @POST(UriApi.prapen.dropdownPejabat)
     Call<ParseResponseArr> dropdownPejabat(@Body EmptyRequest EmptyRequest);

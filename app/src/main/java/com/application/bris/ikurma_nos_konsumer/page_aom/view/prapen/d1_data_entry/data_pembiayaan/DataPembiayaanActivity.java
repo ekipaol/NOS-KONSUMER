@@ -63,10 +63,12 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
     private List<MGenericModel> dropdownSegmen=new ArrayList<>();
     private List<MGenericModel> dropdownJenisPembiayaan=new ArrayList<>();
     private List<MGenericModel> dropdownTujuanPembiayaan=new ArrayList<>();
+    private List<MGenericModel> dropdownJenisAset=new ArrayList<>();
     private List<MGenericModel> dropdownProgram=new ArrayList<>();
     private List<MGenericModel> dropdownAkad=new ArrayList<>();
     private boolean adaFieldBelumDiisi =false;
     private String statusId="";
+    private String valJenisAset="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +83,6 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         AppUtil.toolbarRegular(this, "Data Pembiayaan");
         if(getIntent().hasExtra("idAplikasi")){
             idAplikasi=getIntent().getStringExtra("idAplikasi");
-            loadData();
         }
 
         if(getIntent().hasExtra("statusId")){
@@ -105,7 +106,8 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             noInputMode();
         }
 
-        //urutan eksekusi API dropdown, tipe produk -> segmen -> jenis pembiayaan -> tujuan pembiayaan -> program, dimulai dari tipe produk dulu, isi API urutan seterusnya ada di masing masing method loadDropdown
+        //urutan eksekusi API dropdown, tipe produk -> segmen -> jenis pembiayaan -> tujuan pembiayaan -> program-> jenis aset, dimulai dari tipe produk dulu, isi API urutan seterusnya ada di masing masing method loadDropdown
+        //Load data dilakukan setelah inquiry dropdown terakhir (jenis aset)
         loadDropdownTipeProduk();
 
         binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +135,8 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         endIconOnClick();
         binding.etMemilikiAset.setOnClickListener(this);
         binding.tfMemilikiAset.setOnClickListener(this);
+        binding.etJenisAset.setOnClickListener(this);
+        binding.tfJenisAset.setOnClickListener(this);
         binding.etJenisTipeProduk.setOnClickListener(this);
         binding.tfJenisTipeProduk.setOnClickListener(this);
         binding.etSegmen.setOnClickListener(this);
@@ -159,6 +163,10 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             case R.id.et_memiliki_aset:
             case R.id.tf_memiliki_aset:
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfMemilikiAset.getLabelText(), dataDropdownMemilikiAset, DataPembiayaanActivity.this);
+                break;
+            case R.id.et_jenis_aset:
+            case R.id.tf_jenis_aset:
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJenisAset.getLabelText(), dropdownJenisAset, DataPembiayaanActivity.this);
                 break;
             case R.id.et_jenis_tipe_produk:
             case R.id.tf_jenis_tipe_produk:
@@ -209,6 +217,10 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                 validateField(binding.etPriceDitawarkan,binding.tfPriceDitawarkan);
                 validateField(binding.etAkadPembiayaan,binding.tfAkadPembiayaan);
 
+                if(binding.etMemilikiAset.getText().toString().equalsIgnoreCase("ya")){
+                    validateField(binding.etJenisAset,binding.tfJenisAset);
+                }
+
                 if(!adaFieldBelumDiisi){
                     updateData();
                 }
@@ -222,6 +234,12 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             @Override
             public void onClick(View view) {
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfMemilikiAset.getLabelText(), dataDropdownMemilikiAset, DataPembiayaanActivity.this);
+            }
+        });
+        binding.tfJenisAset.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJenisAset.getLabelText(), dropdownJenisAset, DataPembiayaanActivity.this);
             }
         });
         binding.tfJenisTipeProduk.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
@@ -278,6 +296,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.etProgram.setFocusable(false);
         binding.etTujuanPembiayaan.setFocusable(false);
         binding.etAkadPembiayaan.setFocusable(false);
+        binding.etJenisAset.setFocusable(false);
 
 
     }
@@ -308,11 +327,15 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
             binding.etAkadPembiayaan.setText(data.getDESC());
             binding.tvInfo.setText("Syarat Akad : "+data.getID());
         }
+        if(title.equalsIgnoreCase(binding.tfJenisAset.getLabelText())){
+            binding.etJenisAset.setText(data.getDESC());
+            valJenisAset=data.getID();
+        }
 
     }
 
     private void isiDropdown(){
-        dataDropdownMemilikiAset.add(new MGenericModel("Iya","Iya"));
+        dataDropdownMemilikiAset.add(new MGenericModel("Ya","Ya"));
         dataDropdownMemilikiAset.add(new MGenericModel("Tidak","Tidak"));
 
 
@@ -329,6 +352,24 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.etAkadPembiayaan.setText(dataPembiayaan.getPilihanAkad());
         binding.tvInfo.setText(dataPembiayaan.getSyaratUmumAkad());
         binding.etPricingPensiun.setText(String.valueOf(dataPembiayaan.getPensiunPrice()));
+
+        try{
+            if(dataPembiayaan.getIdJenisAset()!=null){
+                for (int i = 0; i <dropdownJenisAset.size() ; i++) {
+                    if(Long.toString(dataPembiayaan.getIdJenisAset()).equalsIgnoreCase(dropdownJenisAset.get(i).getID())){
+                        AppUtil.logSecure("watermelon",Long.toString(dataPembiayaan.getIdJenisAset()));
+                        binding.etJenisAset.setText(dropdownJenisAset.get(i).getDESC());
+                        valJenisAset=dropdownJenisAset.get(i).getID();
+                        break;
+                    }
+                }
+            }
+
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
     }
 
     public void loadDropdownTipeProduk() {
@@ -459,7 +500,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                         for (int i = 0; i <dropdownTemp.size(); i++) {
                             dropdownTujuanPembiayaan.add(new MGenericModel(dropdownTemp.get(i).getName(),dropdownTemp.get(i).getName()));
                         }
-//                        loadDropdownProgram();
+                        loadDropdownJenisAset();
 
                     }
                 }
@@ -469,6 +510,41 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
                 binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
                 
+            }
+        });
+    }
+
+    public void loadDropdownJenisAset() {
+        //  dataUser = getListUser();
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownJenisAset(EmptyRequest.INSTANCE);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DropdownGlobalPrapen>>() {
+                        }.getType();
+                        List<DropdownGlobalPrapen> dropdownTemp= gson.fromJson(listDataString, type);
+                        dropdownJenisAset.clear();
+                        for (int i = 0; i <dropdownTemp.size(); i++) {
+                            dropdownJenisAset.add(new MGenericModel(dropdownTemp.get(i).getKode(),dropdownTemp.get(i).getName()));
+                        }
+
+                        loadData();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(DataPembiayaanActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+
             }
         });
     }
@@ -611,6 +687,10 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         req.setOfferingPrice(Double.parseDouble(binding.etPriceDitawarkan.getText().toString()));
         req.setPilihanAkad(binding.etAkadPembiayaan.getText().toString());
         req.setPensiunPrice(Double.parseDouble(binding.etPricingPensiun.getText().toString()));
+
+        if(binding.etMemilikiAset.getText().toString().equalsIgnoreCase("Ya")){
+            req.setIdJenisAset(Long.parseLong(valJenisAset));
+        }
 
 
         //ambil dari data login nanti

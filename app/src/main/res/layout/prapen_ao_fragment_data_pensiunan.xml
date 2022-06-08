@@ -375,6 +375,31 @@
                     android:textSize="16sp" />
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nasabah_vvip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_postcode"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nasabah VVIP"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nasabah_vvip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tidak"
+                        android:inputType="text" />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_nasabah_bsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -447,6 +472,30 @@
                         android:inputType="number" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama_rekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nama Di Rekening"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_rekening"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
                 <LinearLayout
                     android:id="@+id/ll_cek_payroll"
                     android:layout_width="match_parent"
@@ -464,7 +513,7 @@
                         android:progressDrawable="@drawable/custom_progressbar"/>
                     <Button
                         android:id="@+id/btn_cek_payroll"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom"
                         android:layout_weight="1"
@@ -473,13 +522,13 @@
                         android:background="@drawable/shapeborderprimary"
                         android:elevation="5dp"
                         android:gravity="center"
-                        android:text="Cek Payroll"
+                        android:text="Cek Rekening"
                         android:textAllCaps="false"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/tv_hasil_cek_payroll"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginLeft="20dp"
@@ -488,6 +537,9 @@
                         android:inputType="textMultiLine"
                         android:maxLines="2"
                         />
+
+
+
                 </LinearLayout>
 
 <!--                <TextView-->
@@ -500,6 +552,128 @@
 <!--                    android:paddingBottom="10dp"-->
 <!--                    android:text="Kondisi Pensiunan / Nasabah untuk Asuransi"-->
 <!--                    android:textSize="16sp" />-->
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_keterangan_span"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Keterangan SPAN"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_keterangan_span"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_nama_span"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nama SPAN"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_nama_span"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_rekening_span"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Rekening SPAN"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_rekening_span"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_gaji_span"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nominal Gaji SPAN"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_gaji_span"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:prefix="Rp."
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_tunjangan_span"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="5dp"
+                    app:iconSignifier="@drawable/ic_cardidentity"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Nominal Tunjangan SPAN"
+                    app:panelBackgroundColor="@color/colorDisableEdit"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_tunjangan_span"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:prefix="Rp."
+                        android:inputType="text"
+                        />
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_dapat_bergerak"

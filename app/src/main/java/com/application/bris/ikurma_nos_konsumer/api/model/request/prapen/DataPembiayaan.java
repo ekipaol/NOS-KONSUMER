@@ -46,7 +46,18 @@ public class DataPembiayaan {
     @SerializedName("Pensiun_Price")
     @Expose
     private Double pensiunPrice;
+    @SerializedName("AssetPembiayaanId")
+    @Expose
+    private Long idJenisAset;
 
+
+    public Long getIdJenisAset() {
+        return idJenisAset;
+    }
+
+    public void setIdJenisAset(Long idJenisAset) {
+        this.idJenisAset = idJenisAset;
+    }
 
     public Double getPensiunPrice() {
         return pensiunPrice;

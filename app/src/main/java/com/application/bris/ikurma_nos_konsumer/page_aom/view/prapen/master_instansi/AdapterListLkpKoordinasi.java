@@ -66,9 +66,8 @@ public class AdapterListLkpKoordinasi extends RecyclerView.Adapter<AdapterListLk
 
         holder.tvNamaCabang.setText(datas.getNamaCabang());
         holder.tvKodeCabang.setText(datas.getKodeCabang());
-        holder.tvTanggalKadaluarsa.setText(datas.getTanggalKadaluarsa());
-        holder.tvTanggalLkp.setText(datas.getTanggalLkp());
-
+        holder.tvTanggalKadaluarsa.setText(AppUtil.parseTanggalGeneral(datas.getTanggalKadaluarsa(),"ddMMyyyy","dd-MM-yyyy"));
+        holder.tvTanggalLkp.setText(AppUtil.parseTanggalGeneral(datas.getTanggalLkp(),"ddMMyyyy","dd-MM-yyyy"));
         holder.llLihatDokumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,9 +92,6 @@ public class AdapterListLkpKoordinasi extends RecyclerView.Adapter<AdapterListLk
     }
 
     private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
-        Log.d("lontongBakar",fileName);
-        Log.d("lontongBakar",idDok);
-
         if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
 
             if(idDok.length()<10){

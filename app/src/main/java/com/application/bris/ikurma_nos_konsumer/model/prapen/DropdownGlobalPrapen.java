@@ -7,7 +7,7 @@ public class DropdownGlobalPrapen {
     private String name;
     @SerializedName("Description")
     private String Description;
-    @SerializedName("Kode")
+    @SerializedName("Id")
     private String Kode;
 
     public String getKode() {

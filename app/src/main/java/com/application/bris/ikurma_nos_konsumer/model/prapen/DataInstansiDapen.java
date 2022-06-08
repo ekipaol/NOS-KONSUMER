@@ -87,8 +87,79 @@ public class DataInstansiDapen extends RealmObject {
     @Expose
     private String tanggalInputRekening;
 
+    @SerializedName("Is_Nasabah_VVIP")
+    @Expose
+    private boolean isVvip;
+
+    @SerializedName("Keterangan_SPAN")
+    @Expose
+    private String keteranganSpan;
+
+    @SerializedName("Nama_Nasabah_SPAN")
+    @Expose
+    private String namaSpan;
+
+    @SerializedName("No_Rekening_SPAN")
+    @Expose
+    private String rekeningSpan;
+
+    @SerializedName("Gaji_SPAN")
+    @Expose
+    private String gajiSpan;
+
+    @SerializedName("Tunjangan_SPAN")
+    @Expose
+    private String tunjanganSpan;
+
     private String statusId;
 
+    public boolean isVvip() {
+        return isVvip;
+    }
+
+    public void setVvip(boolean vvip) {
+        isVvip = vvip;
+    }
+
+    public String getKeteranganSpan() {
+        return keteranganSpan;
+    }
+
+    public void setKeteranganSpan(String keteranganSpan) {
+        this.keteranganSpan = keteranganSpan;
+    }
+
+    public String getNamaSpan() {
+        return namaSpan;
+    }
+
+    public void setNamaSpan(String namaSpan) {
+        this.namaSpan = namaSpan;
+    }
+
+    public String getRekeningSpan() {
+        return rekeningSpan;
+    }
+
+    public void setRekeningSpan(String rekeningSpan) {
+        this.rekeningSpan = rekeningSpan;
+    }
+
+    public String getGajiSpan() {
+        return gajiSpan;
+    }
+
+    public void setGajiSpan(String gajiSpan) {
+        this.gajiSpan = gajiSpan;
+    }
+
+    public String getTunjanganSpan() {
+        return tunjanganSpan;
+    }
+
+    public void setTunjanganSpan(String tunjanganSpan) {
+        this.tunjanganSpan = tunjanganSpan;
+    }
 
     public String getStatusId() {
         return statusId;

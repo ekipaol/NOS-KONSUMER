@@ -27,12 +27,15 @@ import android.widget.Toast;
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataDetilInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.JaminandanDokumen;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDetilInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
@@ -74,16 +77,9 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     private String fileNamePks = "",fileNameLain1 = "",fileNameLain2 = "",fileNameLkp = "", tipeFile;
     private String idFilePks = "",idFileLain1 = "",idFileLain2 = "",idFileLkp= "";
     private boolean rekeningBerubah=false;
+    private Long idInstansi=0l;
 
     public static SimpleDateFormat dateClient = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-
-    ReqDocument JDJaminanKTP, JDJaminanKTPPasangan, JDJaminanNPWP, JDJaminanFormAplikasi, JDJaminanAsetAKAD, JDJaminanSKPensiun, JDJaminanSKPengangkatan, JDJaminanSKTerakhir, JDJaminanSuratRekomendasiInstansi, JDJaminanIDCard,JDFormAplikasi2;
-    ReqDocument DataJaminanKTP = new ReqDocument(), DataJaminanKTPPasangan = new ReqDocument(),
-            DataJaminanNPWP = new ReqDocument(), DataJaminanFormAplikasi = new ReqDocument(),
-            DataJaminanAsetAkad = new ReqDocument(), DataJaminanSKPensiun = new ReqDocument(),
-            DataJaminanSKPengangkatan = new ReqDocument(), DataJaminanSKTerakhir = new ReqDocument(),
-            DataJaminanSuratRekomendasiInstansi = new ReqDocument(), DataJaminanIDCard = new ReqDocument(),
-            DataJaminanFormAplikasi2 = new ReqDocument();
 
     private List<MGenericModel> dropdownInstansiInduk=new ArrayList<>(),dropdownTipePembayaran=new ArrayList<>(),dropdownJenisInstansi=new ArrayList<>(),dropdownPks=new ArrayList<>(),dropdownRuangLingkup=new ArrayList<>(),dropdownUnitBisnis=new ArrayList<>(),dropdownPerpanjangOtomatis=new ArrayList<>(),dropdownStatusPks=new ArrayList<>(),dropdownJasaPengelolaan=new ArrayList<>();
 
@@ -93,6 +89,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     boolean dialogOpened=false;
     boolean errorUpload=false;
     private  boolean lolosValidasi =true;
+    private DataDetilInstansi dataInstansi;
 
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -107,264 +104,40 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
 
+        if(getIntent().hasExtra("idInstansi")){
+            idInstansi=Long.parseLong(getIntent().getStringExtra("idInstansi"));
+        }
+
         onclickSelectDialog();
         setContentView(view);
         disableText();
         backgroundStatusBar();
         isiDropdown();
         otherViewChanges();
-        //        initdata();
+        loadData();
         AppUtil.toolbarRegular(this, "Detil Instansi");
 
     }
 
-    private void initdata() {
+    private void loadData() {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        ReqInquery req = new ReqInquery();
-        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
-        Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().InqueryJaminandanDokumen(req);
-        call.enqueue(new Callback<ParseResponseAgunan>() {
+        ReqDetilInstansi req = new ReqDetilInstansi();
+        req.setIdInstansi(idInstansi);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryInstansi(req);
+        call.enqueue(new Callback<ParseResponse>() {
             @Override
-            public void onResponse(Call<ParseResponseAgunan> call, Response<ParseResponseAgunan> response) {
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
                 if (response.isSuccessful()) {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
-                    Gson gson = new Gson();
 
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-
-
-                        String listDataString = response.body().getData().get("DataJaminan").toString();
-                        String SSJaminanKtp = response.body().getData().get("DataJaminanKTP").getAsJsonArray().get(0).toString();
-                        String SSJaminanNPWP = response.body().getData().get("DataJaminanNPWP").getAsJsonArray().get(0).toString();
-                        String SSJaminanFormApp = response.body().getData().get("DataJaminanFormAplikasi").getAsJsonArray().get(0).toString();
-                        String SSjaminanAsetAkad = response.body().getData().get("DataJaminanAsetAkad").getAsJsonArray().get(0).toString();
-                        String SSJaminanSkPengangkatan = response.body().getData().get("DataJaminanSKPengangkatan").getAsJsonArray().get(0).toString();
-                        String SSJaminanSkTerakhir = response.body().getData().get("DataJaminanSKTerakhir").getAsJsonArray().get(0).toString();
-                        String SSJaminanSuratInstansi = response.body().getData().get("DataJaminanSuratRekomendasiInstansi").getAsJsonArray().get(0).toString();
-                        String SSJaminanIdCard = response.body().getData().get("DataJaminanIDcard").getAsJsonArray().get(0).toString();
-                        String SSJaminanFormAplikasi2 = response.body().getData().get("DataJaminanFormAplikasi2").getAsJsonArray().get(0).toString();
-
-                        String SSJaminanKtpPasangan;
-                        try{
-                            SSJaminanKtpPasangan = response.body().getData().get("DataJaminanKTPPasangan").getAsJsonArray().get(0).toString();
-                        }
-                        catch (IndexOutOfBoundsException e){
-                            e.printStackTrace();
-                            SSJaminanKtpPasangan = "";
-                        }
-
-                        String SSJaminanSkPensiun;
-                        try{
-                            SSJaminanSkPensiun = response.body().getData().get("DataJaminanSKPensiun").getAsJsonArray().get(0).toString();
-                        }
-                        catch (IndexOutOfBoundsException e){
-                            e.printStackTrace();
-                            SSJaminanSkPensiun = "";
-                        }
-
-
-                        Type type = new TypeToken<List<JaminandanDokumen>>() {
+                        Gson gson = new Gson();
+                        String listDataString = response.body().getData().get("Data_Instansi").toString();
+                        Type type = new TypeToken<DataDetilInstansi>() {
                         }.getType();
-                        jd = gson.fromJson(listDataString, type);
-                        JDJaminanKTP = gson.fromJson(SSJaminanKtp, ReqDocument.class);
-                        JDJaminanNPWP = gson.fromJson(SSJaminanNPWP, ReqDocument.class);
-                        JDJaminanAsetAKAD = gson.fromJson(SSjaminanAsetAkad, ReqDocument.class);
-                        JDJaminanFormAplikasi = gson.fromJson(SSJaminanFormApp, ReqDocument.class);
-                        JDJaminanKTPPasangan = gson.fromJson(SSJaminanKtpPasangan, ReqDocument.class);
-                        JDJaminanSKPengangkatan = gson.fromJson(SSJaminanSkPengangkatan, ReqDocument.class);
-                        JDJaminanSKTerakhir = gson.fromJson(SSJaminanSkTerakhir, ReqDocument.class);
-                        JDJaminanSuratRekomendasiInstansi = gson.fromJson(SSJaminanSuratInstansi, ReqDocument.class);
-                        JDJaminanIDCard = gson.fromJson(SSJaminanIdCard, ReqDocument.class);
-                        JDJaminanSKPensiun = gson.fromJson(SSJaminanSkPensiun, ReqDocument.class);
-                        JDFormAplikasi2 = gson.fromJson(SSJaminanFormAplikasi2, ReqDocument.class);
 
-
-                        try {
-
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            AppUtil.logSecure("error setdata", e.getMessage());
-                        }
-
-                        //LOGICAL DOC
-
-                        setDataDokumen(response);
-
-
-                        //legacy UPLOAD
-
-                        //Set Image KTP Pasangan
-//                        if (response.body().getData().get("IsMarried") != null) {
-//                            if (response.body().getData().get("IsMarried").getAsString().equalsIgnoreCase("False")) {
-//                                binding.rlKtpPasangan.setVisibility(View.GONE);
-//                                binding.tvKtpPasangan.setVisibility(View.GONE);
-//                            } else {
-//                                try {
-//                                    DataJaminanKTPPasangan.setImg(JDJaminanKTPPasangan.getImg());
-//                                    //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                                    if (JDJaminanKTPPasangan.getFileName().substring(JDJaminanKTPPasangan.getFileName().length() - 3, JDJaminanKTPPasangan.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                        DataJaminanKTPPasangan.setFileName("ktppasangan.pdf");
-//                                        AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan, JDJaminanKTPPasangan.getFileName());
-//                                    } else {
-//                                        DataJaminanKTPPasangan.setFileName("ktppasangan.png");
-//                                        AppUtil.convertBase64ToImage(JDJaminanKTPPasangan.getImg(), binding.ivKtpPasangan);
-//                                    }
-//
-//                                } catch (Exception e) {
-//                                    AppUtil.logSecure("error setdata", e.getMessage());
-//                                }
-//                            }
-//                        }
-
-                        //Set Image NPWP
-//                        try {
-//
-//                            DataJaminanNPWP.setImg(JDJaminanNPWP.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanNPWP.getFileName().substring(JDJaminanNPWP.getFileName().length() - 3, JDJaminanNPWP.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanNPWP.setFileName("npwp.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanNPWP.getImg(), binding.ivNpwp, JDJaminanNPWP.getFileName());
-//                            } else {
-//                                DataJaminanNPWP.setFileName("npwp.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanNPWP.getImg(), binding.ivNpwp);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//                        //Set Image Asset Akad
-//                        try {
-//
-//                            DataJaminanAsetAkad.setImg(JDJaminanAsetAKAD.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanAsetAKAD.getFileName().substring(JDJaminanAsetAKAD.getFileName().length() - 3, JDJaminanAsetAKAD.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanAsetAkad.setFileName("assetakad.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad, JDJaminanAsetAKAD.getFileName());
-//                            } else {
-//                                DataJaminanAsetAkad.setFileName("assetakad.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanAsetAKAD.getImg(), binding.ivAssetAkad);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//                        //Set Image Form Aplikasi
-//                        try {
-//
-//                            DataJaminanFormAplikasi.setImg(JDJaminanFormAplikasi.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanFormAplikasi.getFileName().substring(JDJaminanFormAplikasi.getFileName().length() - 3, JDJaminanFormAplikasi.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanFormAplikasi.setFileName("formaplikasi.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi, JDJaminanFormAplikasi.getFileName());
-//                            } else {
-//                                DataJaminanFormAplikasi.setFileName("formaplikasi.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanFormAplikasi.getImg(), binding.ivFormApplikasi);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//
-//                        //Set Image Sk Pensiun
-//                        if (response.body().getData().get("IsPensiun") != null) {
-//                            if (response.body().getData().get("IsPensiun").getAsString().equalsIgnoreCase("False")) {
-//                                binding.rlSkPensiun.setVisibility(View.GONE);
-//                                binding.tvSkPensiun.setVisibility(View.GONE);
-//                            }else{
-//                                String SSJaminanSkPensiun = response.body().getData().get("DataJaminanSKPensiun").getAsJsonArray().get(0).toString();
-//                                JDJaminanSKPensiun = gson.fromJson(SSJaminanSkPensiun, ReqDocument.class);
-//                                try {
-//                                    DataJaminanSKPensiun.setImg(JDJaminanSKPensiun.getImg());
-//
-//                                    //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                                    if (JDJaminanSKPensiun.getFileName().substring(JDJaminanSKPensiun.getFileName().length() - 3, JDJaminanSKPensiun.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                        DataJaminanSKPensiun.setFileName("skpensiun.pdf");
-//                                        AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKPensiun.getImg(), binding.ivSkPensiun, JDJaminanSKPensiun.getFileName());
-//                                    } else {
-//                                        DataJaminanSKPensiun.setFileName("skpensiun.png");
-//                                        AppUtil.convertBase64ToImage(JDJaminanSKPensiun.getImg(), binding.ivSkPensiun);
-//                                    }
-//
-//                                } catch (Exception e) {
-//                                    AppUtil.logSecure("error setdata", e.getMessage());
-//                                }
-//                            }
-//                        }
-//
-//                        //Set Image Sk Pengangkatan
-//                        try {
-//
-//                            DataJaminanSKPengangkatan.setImg(JDJaminanSKPengangkatan.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanSKPengangkatan.getFileName().substring(JDJaminanSKPengangkatan.getFileName().length() - 3, JDJaminanSKPengangkatan.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanSKPengangkatan.setFileName("skpengangkatan.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan, JDJaminanSKPengangkatan.getFileName());
-//                            } else {
-//                                DataJaminanSKPengangkatan.setFileName("skpengangkatan.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanSKPengangkatan.getImg(), binding.ivSkPengangkatan);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//
-//                        //Set Image Sk Terakhir
-//                        try {
-//
-//                            DataJaminanSKTerakhir.setImg(JDJaminanSKTerakhir.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanSKTerakhir.getFileName().substring(JDJaminanSKTerakhir.getFileName().length() - 3, JDJaminanSKTerakhir.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanSKTerakhir.setFileName("skterakhir.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir, JDJaminanSKTerakhir.getFileName());
-//                            } else {
-//                                DataJaminanSKTerakhir.setFileName("skterakhir.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanSKTerakhir.getImg(), binding.ivSkTerakhir);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//
-//                        //Set Image Surat Instansi
-//                        try {
-//
-//                            DataJaminanSuratRekomendasiInstansi.setImg(JDJaminanSuratRekomendasiInstansi.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanSuratRekomendasiInstansi.getFileName().substring(JDJaminanSuratRekomendasiInstansi.getFileName().length() - 3, JDJaminanSuratRekomendasiInstansi.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi, JDJaminanSuratRekomendasiInstansi.getFileName());
-//                            } else {
-//                                DataJaminanSuratRekomendasiInstansi.setFileName("suratinstansi.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanSuratRekomendasiInstansi.getImg(), binding.ivSuratInstansi);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
-//                        //Set Image Id Card
-//                        try {
-//
-//                            DataJaminanIDCard.setImg(JDJaminanIDCard.getImg());
-//
-//                            //kalau file name ada tulisan PDF, maka convert base 64 ke pdf biar bisa di klik
-//                            if (JDJaminanIDCard.getFileName().substring(JDJaminanIDCard.getFileName().length() - 3, JDJaminanIDCard.getFileName().length()).equalsIgnoreCase("pdf")) {
-//                                DataJaminanIDCard.setFileName("idcard.pdf");
-//                                AppUtil.convertBase64ToFileWithOnClick(DataJaminanActivity.this, JDJaminanIDCard.getImg(), binding.ivIdcard, JDJaminanIDCard.getFileName());
-//                            } else {
-//                                DataJaminanIDCard.setFileName("idcard.png");
-//                                AppUtil.convertBase64ToImage(JDJaminanIDCard.getImg(), binding.ivIdcard);
-//                            }
-//
-//                        } catch (Exception e) {
-//                            AppUtil.logSecure("error setdata", e.getMessage());
-//                        }
+                        dataInstansi=gson.fromJson(listDataString,type);
+                        setData();
 
                     } else {
                         AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
@@ -377,62 +150,78 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             }
 
             @Override
-            public void onFailure(Call<ParseResponseAgunan> call, Throwable t) {
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
                 binding.loading.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
     }
 
-    private void setDataDokumen(Response<ParseResponseAgunan> response){
+    private void setData(){
+        binding.etNamaInstansi.setText(dataInstansi.getNamaInstansi());
+        binding.etNomorEscrow.setText(dataInstansi.getEscrow());
+        binding.etKantorCabang.setText(dataInstansi.getBranchOffice());
+        binding.etAreaCabang.setText(dataInstansi.getAreaOffice());
+        binding.etRegional.setText(dataInstansi.getRegional());
+        binding.etCifCabang.setText(dataInstansi.getCif());
+        binding.etIdMasterInstansi.setText(dataInstansi.getiDMasterInstansi());
+        binding.etInstansiInduk.setText(dataInstansi.getInstansiInduk());
+        binding.etTipePembayaran.setText(dataInstansi.getTipePembayaran());
+        binding.etJenisInstansi.setText(dataInstansi.getTipeProduk());
+        binding.etTahunBerdiri.setText(dataInstansi.getTahunBerdiri());
+        binding.etMemilikiPks.setText(dataInstansi.getPks());
+        binding.etRuangLingkupPks.setText(dataInstansi.getRuangLingkupPKS());
+        binding.etUnitBisnisPengusul.setText(dataInstansi.getUnitBisnisPengusulPKS());
+        binding.etNomorPks.setText(dataInstansi.getNoPKS());
 
-        //BELUM ADA APInya buat dapet ID
-        //Set Image PKS
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivFotoPks,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
 
-        } catch (Exception e) {
+        try{
+            if(dataInstansi.getPerpanjanganOtomatisPKS()){
+                binding.etPerpanjangPksOtomatis.setText("Otomatis");
+            }
+            else{
+                binding.etPerpanjangPksOtomatis.setText("Perpanjangan Manual");
+            }
+        }
+        catch (NullPointerException e){
             e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
         }
 
-        //Set Image dokumen lain 1
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivDokumenTambahan1,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
 
+        binding.etStatusPks.setText(dataInstansi.getStatusPKS());
+        binding.etAlamatKorespondensi.setText(dataInstansi.getAlamatKorespondensi());
+        binding.etKeyPerson.setText(dataInstansi.getKeyPerson());
+        binding.etTeleponKeyPerson.setText(dataInstansi.getTeleponKeyPerson());
+        binding.etTeleponInstansi.setText(dataInstansi.getNoTelpInstansi());
+        binding.etJasaPengelolaan.setText(dataInstansi.getJasaPengolahan());
+
+        try{
+            binding.etTanggalLkpUtama.setText(AppUtil.parseTanggalGeneral(dataInstansi.getDataLkpUtama().getTanggalLKP(),"ddMMyyyy","dd-MM-yyyy"));
+            binding.etTanggalLkpUtamaKadaluarsa.setText(AppUtil.parseTanggalGeneral(dataInstansi.getDataLkpUtama().getTanggalLKPKadaluarsa(),"ddMMyyyy","dd-MM-yyyy"));
+            binding.etTanggalMulaiPks.setText(AppUtil.parseTanggalGeneral(dataInstansi.getMulaiPKS(),"ddMMyyyy","dd-MM-yyyy"));
+            binding.etTanggalAkhirPks.setText(AppUtil.parseTanggalGeneral(dataInstansi.getAkhirPKS(),"ddMMyyyy","dd-MM-yyyy"));
         }
-        catch (Exception e) {
+        catch (NullPointerException e){
             e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
         }
 
-        //Set Image dokumen lain 2
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivDokumenTambahan2,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
+        try{
+            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getImgPKSInduk(),binding.ivFotoPks,dataInstansi.getFilenamePksInduk());
+            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDokumenLainnya().get(0).getImg(),binding.ivDokumenTambahan1,dataInstansi.getDokumenLainnya().get(0).getFile_Name());
+            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDokumenLainnya().get(1).getImg(),binding.ivDokumenTambahan2,dataInstansi.getDokumenLainnya().get(1).getFile_Name());
+            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDataLkpUtama().getImg(),binding.ivFotoLkp,dataInstansi.getDataLkpUtama().getFilename());
 
-        } catch (Exception e) {
+            idFileLain1=dataInstansi.getDokumenLainnya().get(0).getImg();
+            idFileLain2=dataInstansi.getDokumenLainnya().get(1).getImg();
+            idFileLkp=dataInstansi.getDataLkpUtama().getImg();
+            idFilePks=dataInstansi.getImgPKSInduk();
+
+        }
+        catch (NullPointerException e){
             e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
         }
-
-        //Set Image LKP
-        try {
-//            checkFileTypeThenSet(InputMasterInstansiActivity.this,JDJaminanKTP.getImg(),binding.ivFotoLkp,JDJaminanKTP.getFileName());
-//            DataJaminanKTP.setImg(JDJaminanKTP.getImg());
-//            DataJaminanKTP.setFileName(JDJaminanKTP.getFileName());
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            AppUtil.logSecure("error setdata", e.getMessage());
-        }
-
     }
+
 
 
     private void disableText() {
@@ -585,6 +374,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 break;
             case R.id.btn_lihat_lkp:
                Intent intent=new Intent(InputMasterInstansiActivity.this,ListLkpKoordinasiActivity.class);
+               intent.putExtra("idInstansi",idInstansi);
                startActivity(intent);
                 break;
             case R.id.btn_lihat_lngp:
@@ -971,66 +761,6 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             isCamera = action != null && action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
         }
         return isCamera ? getCaptureImageOutputUri(namaFoto) : data.getData();
-    }
-
-    private void setDataImage(Uri uri, Bitmap bitmap, ImageView iv, Intent data, String namaFoto) {
-        if (getPickImageResultUri(data, namaFoto) != null) {
-            uri = getPickImageResultUri(data, namaFoto);
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                bitmap = AppUtil.getResizedBitmap(bitmap, 1024);
-                bitmap = AppUtil.rotateImageIfRequired(this, bitmap, uri);
-                iv.setImageBitmap(bitmap);
-
-                //BELUM LENGKAP DI BAGIAN OBJEK DATA, KARENA API BELOM ADA GAIS
-                if (idUpload==UPLOAD_PKS) {
-//                    DataJaminanKTP.setImg(idFileKtp);
-//                    DataJaminanKTP.setFileName("dokpks.png");
-                } else if (idUpload==UPLOAD_LAIN_1) {
-//                    DataJaminanKTPPasangan.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanKTPPasangan.setFileName("doklain1.png");
-                } else if (idUpload==UPLOAD_LAIN_2) {
-//                    DataJaminanNPWP.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanNPWP.setFileName("doklain2.png");
-                } else if (idUpload==UPLOAD_LKP) {
-//                    DataJaminanAsetAkad.setImg(AppUtil.encodeImageTobase64(bitmap));
-//                    DataJaminanAsetAkad.setFileName("lkp.png");
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                try {
-                    iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
-                    if (idUpload==UPLOAD_PKS) {
-                        Uri uriPdf = data.getData();
-                        val_pks = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanKTP.setImg(idFilePks);
-//                        DataJaminanKTP.setFileName("pks.pdf");
-                    } else if (idUpload==UPLOAD_LAIN_1) {
-                        Uri uriPdf = data.getData();
-                        val_lain_1 = AppUtil.encodeFileToBase64(this, uriPdf);
-                        DataJaminanKTPPasangan.setImg(val_lain_1);
-                        DataJaminanKTPPasangan.setFileName("doklain1.pdf");
-                    } else if (idUpload==UPLOAD_LAIN_2) {
-                        Uri uriPdf = data.getData();
-                        val_lain_2 = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanNPWP.setImg(val_lain_2);
-//                        DataJaminanNPWP.setFileName("doklain2.pdf");
-                    } else if (idUpload==UPLOAD_LKP) {
-                        Uri uriPdf = data.getData();
-                        val_lkp = AppUtil.encodeFileToBase64(this, uriPdf);
-//                        DataJaminanAsetAkad.setImg(val_lkp);
-//                        DataJaminanAsetAkad.setFileName("doklkp.pdf");
-                    }
-                } catch (NullPointerException e2) {
-                    iv.setImageDrawable(getResources().getDrawable(R.drawable.banner_placeholder));
-                    e2.printStackTrace();
-                }
-
-
-            }
-        }
-
     }
 
     private void setDataImage(ImageView iv, Intent data, String namaFoto,int KODE_UPLOAD) {

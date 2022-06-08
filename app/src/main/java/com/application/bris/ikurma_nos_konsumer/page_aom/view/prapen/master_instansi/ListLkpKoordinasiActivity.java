@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDetilInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
@@ -47,6 +48,7 @@ public class ListLkpKoordinasiActivity extends AppCompatActivity implements Swip
     AdapterListLkpKoordinasi AdapterAplikasi;
     ApiClientAdapter apiClientAdapter;
     ActivityListLkpKoordinasiPrapenBinding binding;
+    private Long idInstansi=0l;
 
 
     @Override
@@ -54,6 +56,10 @@ public class ListLkpKoordinasiActivity extends AppCompatActivity implements Swip
         super.onCreate(savedInstanceState);
         binding= ActivityListLkpKoordinasiPrapenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        if(getIntent().hasExtra("idInstansi")){
+            idInstansi=getIntent().getLongExtra("idInstansi",0);
+        }
         main();
         backgroundStatusBar();
         allOnClick();
@@ -125,6 +131,7 @@ public class ListLkpKoordinasiActivity extends AppCompatActivity implements Swip
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ListLkpKoordinasiActivity.this,InputLkpKoordinasiActivity.class);
+                intent.putExtra("idInstansi",idInstansi);
                 startActivity(intent);
             }
         });
@@ -140,30 +147,23 @@ public class ListLkpKoordinasiActivity extends AppCompatActivity implements Swip
         binding.refresh.setOnRefreshListener(this);
         binding.refresh.setDistanceToTriggerSync(220);
 
-//        loadData();
-        loadDataDummy();
+        loadData();
+//        loadDataDummy();
     }
 
 
     public void loadData() {
         //  dataUser = getListUser();
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
-        AppPreferences appPreferences=new AppPreferences(ListLkpKoordinasiActivity.this);
+        ReqDetilInstansi req=new ReqDetilInstansi();
 
         //pantekan uid
 //        req.setUID("");
-        req.setUID(String.valueOf(appPreferences.getUid()));
-        req.setRole((appPreferences.getFidRole()));
+        req.setIdInstansi(idInstansi);
 
         Call<ParseResponseArr> call;
 
-        if(AppUtil.checkIsPemutus(appPreferences.getFidRole())){
-            call = apiClientAdapter.getApiInterface().listAplikasiPemutus(req);
-        }
-        else{
-            call = apiClientAdapter.getApiInterface().listAplikasiMarketing(req);
-        }
+        call = apiClientAdapter.getApiInterface().inquirylkp(req);
 
         call.enqueue(new Callback<ParseResponseArr>() {
             @Override
@@ -172,12 +172,20 @@ public class ListLkpKoordinasiActivity extends AppCompatActivity implements Swip
                 binding.rvListLkp.setVisibility(View.VISIBLE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String listDataString = response.body().getData().toString();
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<List<DataListAplikasi>>() {
-                        }.getType();
 
-                        dataListLkp = gson.fromJson(listDataString, type);
+
+                        try{
+                            String listDataString = response.body().getData().toString();
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<List<DataLkpKoordinasi>>() {
+                            }.getType();
+                            dataListLkp = gson.fromJson(listDataString, type);
+                        }
+                        catch (NullPointerException e){
+                            e.printStackTrace();
+                            dataListLkp=new ArrayList<>();
+                        }
+
                         AdapterAplikasi = new AdapterListLkpKoordinasi(ListLkpKoordinasiActivity.this, dataListLkp);
                         binding.rvListLkp.setLayoutManager(new LinearLayoutManager(ListLkpKoordinasiActivity.this));
                         binding.rvListLkp.setItemAnimator(new DefaultItemAnimator());

@@ -66,6 +66,8 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private boolean valDapatBergerak=false,valDalamPengawasan=false,valMemilikiRiwayat=false,valSerumahDenganKeluarga=false,valMemilikiUsahaSampingan=false,valMemperolehKiriman =false,valMenggunakanLngp =false,valNasabahBsi =false;
     private String val_cif="";
     private boolean adaFieldBelumDiisi=false;
+    private boolean rekeningBerubah=false;
+    private boolean valVvip=false;
 
     private List<MGenericModel> dropdownLembagaPengelolaPensiun=new ArrayList<>();
     private List<MGenericModel> dropdownTreatmentRekening=new ArrayList<>();
@@ -147,6 +149,31 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             binding.etNomorRekening.setText(dataInstansi.getNomorRekening());
             binding.etNominalKiriman.setText(dataInstansi.getNominalPerBulan());
             binding.etCatatanMemo.setText(dataInstansi.getCatatan());
+
+            binding.etKeteranganSpan.setText(dataInstansi.getKeteranganSpan());
+            if(dataInstansi.getKeteranganSpan().equalsIgnoreCase("Ditemukan")){
+                binding.tfNamaSpan.setVisibility(View.VISIBLE);
+                binding.tfRekeningSpan.setVisibility(View.VISIBLE);
+                binding.tfGajiSpan.setVisibility(View.VISIBLE);
+                binding.tfTunjanganSpan.setVisibility(View.VISIBLE);
+
+                binding.etNamaSpan.setText(dataInstansi.getNamaSpan());
+                binding.etGajiSpan.setText(dataInstansi.getGajiSpan());
+                binding.etRekeningSpan.setText(dataInstansi.getRekeningSpan());
+                binding.etTunjanganSpan.setText(dataInstansi.getTunjanganSpan());
+            }
+
+            if(dataInstansi.isVvip()){
+                valVvip=true;
+                binding.etNasabahVvip.setText("Ya");
+            }
+            else{
+                valVvip=false;
+                binding.etNasabahVvip.setText("Tidak");
+            }
+
+
+
             val_cif=dataInstansi.getNoCIF();
 
             if(dataInstansi.getDapatBergerakAktifitas()){
@@ -245,6 +272,9 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etKirimanRutin.setOnClickListener(this);
         binding.tfKirimanRutin.setOnClickListener(this);
 
+        binding.etNasabahVvip.setOnClickListener(this);
+        binding.tfNasabahVvip.setOnClickListener(this);
+
         binding.btnCekLngp.setOnClickListener(this);
         binding.btnCekPayroll.setOnClickListener(this);
 
@@ -291,9 +321,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 //        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
 //        validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
 
-//        if(!adaFieldBelumDiisi){
+    if(!rekeningBerubah){
             setPojoData();
-//        }
+        }
+    else{
+        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Harap Cek Rekening Terlebih Dahulu");
+    }
 
         return null;
 //        }
@@ -343,6 +376,17 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         copyRealm.setMemilikiUsaha(valMemilikiUsahaSampingan);
         copyRealm.setKirimanRutin(valMemperolehKiriman);
         copyRealm.setNoCIF(val_cif);
+        copyRealm.setVvip(valVvip);
+        copyRealm.setKeteranganSpan(binding.etKeteranganSpan.getText().toString());
+
+        if(binding.etKeteranganSpan.getText().toString().equalsIgnoreCase("Ditemukan")){
+            copyRealm.setNamaSpan(binding.etNamaSpan.getText().toString());
+            copyRealm.setRekeningSpan(binding.etRekeningSpan.getText().toString());
+            copyRealm.setGajiSpan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etGajiSpan.getText().toString()));
+            copyRealm.setTunjanganSpan(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etTunjanganSpan.getText().toString()));
+        }
+
+
 
         realm.insertOrUpdate(copyRealm);
 
@@ -392,6 +436,16 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         }
         else if (title.equalsIgnoreCase(binding.tfNasabahBsi.getLabelText())){
             binding.etNasabahBsi.setText(data.getName());
+        }
+        else if (title.equalsIgnoreCase(binding.tfNasabahVvip.getLabelText())){
+            binding.etNasabahVvip.setText(data.getName());
+
+            if(data.getName().equalsIgnoreCase("ya")){
+                valVvip=true;
+            }
+            else{
+                valVvip=false;
+            }
         }
         else if (title.equalsIgnoreCase(binding.tfDapatBergerak.getLabelText())){
             binding.etDapatBergerak.setText(data.getName());
@@ -464,6 +518,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 openDialogYaTidak(binding.tfMenggunakanLngp.getLabelText());
                 break;
 
+            //NASABAH VVIP
+            case R.id.et_nasabah_vvip:
+            case R.id.tf_nasabah_vvip:
+                openDialogYaTidak(binding.tfNasabahVvip.getLabelText());
+                break;
+
             //NASABAH BSI
             case R.id.et_nasabah_bsi:
             case R.id.tf_nasabah_bsi:
@@ -524,6 +584,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 }
                 break;
             case R.id.btn_cek_payroll:
+                rekeningBerubah=false;
                 if(binding.etNomorRekening.getText().toString().isEmpty()){
                     AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content),"Harap isi no rekening");
                 }
@@ -548,6 +609,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etTotalPendapatan.setFocusable(false);
         binding.etRateLngp.setFocusable(false);
         binding.etNamaInstansiLngp.setFocusable(false);
+        binding.etNamaRekening.setFocusable(false);
+        binding.etNamaSpan.setFocusable(false);
+        binding.etKeteranganSpan.setFocusable(false);
+        binding.etRekeningSpan.setFocusable(false);
+        binding.etGajiSpan.setFocusable(false);
+        binding.etTunjanganSpan.setFocusable(false);
+        binding.etNasabahVvip.setFocusable(false);
     }
 
     private void endIconOnClick(){
@@ -555,6 +623,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             @Override
             public void onClick(View view) {
                 openDialogYaTidak(binding.tfMenggunakanLngp.getLabelText());
+            }
+        });
+
+        binding.tfNasabahVvip.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialogYaTidak(binding.tfNasabahVvip.getLabelText());
             }
         });
 
@@ -628,10 +703,35 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
         binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
         binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
+        binding.etGajiSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiSpan));
+        binding.etTunjanganSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTunjanganSpan));
         binding.tfInputLngp.setVisibility(View.GONE);
         binding.btnCekLngp.setVisibility(View.GONE);
         binding.tfNamaInstansiLngp.setVisibility(View.GONE);
         binding.tfRateLngp.setVisibility(View.GONE);
+
+        binding.tfNamaSpan.setVisibility(View.GONE);
+        binding.tfRekeningSpan.setVisibility(View.GONE);
+        binding.tfGajiSpan.setVisibility(View.GONE);
+        binding.tfTunjanganSpan.setVisibility(View.GONE);
+
+        binding.etNomorRekening.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                rekeningBerubah=true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
 
         binding.etPerkiraanTunjangan.addTextChangedListener(new TextWatcher() {
             @Override
@@ -785,13 +885,37 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
                         if(dataCIfRekening.getCIF()!=null&&!dataCIfRekening.getCIF().isEmpty()){
                             binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
-                            binding.tvHasilCekPayroll.setText("Rekening Ditemukan atas nama : "+dataCIfRekening.getNama());
+                            binding.tvHasilCekPayroll.setText("Rekening Ditemukan");
                             binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.main_green_color));
                             val_cif=dataCIfRekening.getCIF();
+
+                            binding.etNamaRekening.setText(dataCIfRekening.getNama());
+                            binding.etKeteranganSpan.setText(dataCIfRekening.getKeteranganSpan());
+
+                            if(dataCIfRekening.getKeteranganSpan().equalsIgnoreCase("Ditemukan")){
+                                binding.tfNamaSpan.setVisibility(View.VISIBLE);
+                                binding.tfRekeningSpan.setVisibility(View.VISIBLE);
+                                binding.tfGajiSpan.setVisibility(View.VISIBLE);
+                                binding.tfTunjanganSpan.setVisibility(View.VISIBLE);
+
+                                binding.etNamaSpan.setText(dataCIfRekening.getNamaSpan());
+                                binding.etRekeningSpan.setText(dataCIfRekening.getRekeningSpan());
+                                binding.etGajiSpan.setText(dataCIfRekening.getGajiSpan());
+                                binding.etTunjanganSpan.setText(dataCIfRekening.getTunjanganSpan());
+                            }
+
+                            else{
+                                binding.tfNamaSpan.setVisibility(View.GONE);
+                                binding.tfRekeningSpan.setVisibility(View.GONE);
+                                binding.tfGajiSpan.setVisibility(View.GONE);
+                                binding.tfTunjanganSpan.setVisibility(View.GONE);
+                            }
+
 
                         }
                         else{
                             binding.tvHasilCekPayroll.setVisibility(View.VISIBLE);
+                            binding.tfNamaRekening.setVisibility(View.GONE);
                             binding.tvHasilCekPayroll.setText("Rekening Tidak Ditemukan");
                             binding.tvHasilCekPayroll.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
                         }

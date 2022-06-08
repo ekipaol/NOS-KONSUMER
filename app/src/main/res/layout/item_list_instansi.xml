@@ -41,6 +41,7 @@
                 android:id="@+id/tv_status_instansi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginRight="0dp"
                 android:layout_marginLeft="80dp"
                 android:padding="2dp"
@@ -59,23 +60,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
+            android:paddingTop="5dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:text="Jenis Instansi"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:id="@+id/tv_jenis_instansi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="{Jenis Instansi}"
+                android:layout_weight="1"
+                android:text="Rek Escrow"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_rek_escrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{escrow}"
                 android:gravity="end"
                 android:textSize="13sp"
                 android:textColor="@color/colorBlackHeader"
@@ -101,7 +102,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/tv_kode_instansi"
+                android:id="@+id/tv_instansi_induk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="{Kode Instansi}"
@@ -112,6 +113,68 @@
                 android:layout_weight="1"
                 android:textStyle="bold"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Jenis Instansi"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_jenis_instansi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Jenis Instansi}"
+                android:gravity="end"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cabang Pembuat"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_asal_cabang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="{Cabang}"
+                android:gravity="end"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
 
 
         <LinearLayout
@@ -128,7 +191,7 @@
             android:id="@+id/ll_lihat_instansi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/roundblue"
+            android:background="@drawable/roundprimary"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="5dp"
