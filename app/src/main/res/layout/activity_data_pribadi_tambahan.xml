@@ -49,9 +49,8 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789."
                     android:inputType="numberDecimal"
-                    android:maxLength="5"
                     android:text="0"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     app:suffix="Org"
                     tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -102,9 +101,8 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
                     android:inputType="numberDecimal"
-                    android:maxLength="5"
                     android:text="0"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     app:suffix="Tahun"
                     tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -130,9 +128,8 @@
                     android:layout_height="wrap_content"
                     android:digits="0123456789"
                     android:inputType="numberDecimal"
-                    android:maxLength="5"
                     android:text="0"
-                    android:textAlignment="textEnd"
+                    android:textAlignment="textStart"
                     app:suffix="Tahun"
                     tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>

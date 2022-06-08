@@ -196,7 +196,10 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
                         // Dokumen Tambahan
                         if (response.body().getReqDataPribadiLainya().getUploadDokumenTambahan() != null) {
                             DokumenUmum = response.body().getReqDataPribadiLainya().getUploadDokumenTambahan();
-                            addImg = DokumenUmum.size() - 1;
+                            if (DokumenUmum.size() != 0)
+                                addImg = DokumenUmum.size() - 1;
+                            else
+                                binding.llDeleteDokumen.setVisibility(View.GONE);
                             if (DokumenUmum.size() == 1) {
                                 binding.llDeleteDokumen.setVisibility(View.GONE);
                                 binding.btnDeleteDokumen.setVisibility(View.GONE);
@@ -415,46 +418,45 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
             case R.id.iv_upload_dokumen2:
                 clicker = "dokumenB";
                 if (String.valueOf(binding.etNamaDokumen2.getText()) != "")
-                BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
+                    BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
                 else
                     AppUtil.notiferror(this, findViewById(android.R.id.content), "Isi Nama File Terlebih dahulu");
                 break;
             case R.id.btn_upload_dokumen3:
             case R.id.iv_upload_dokumen3:
                 clicker = "dokumenC";
-                 if (String.valueOf(binding.etNamaDokumen3.getText()) != "")
-                BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
+                if (String.valueOf(binding.etNamaDokumen3.getText()) != "")
+                    BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
                 else
                     AppUtil.notiferror(this, findViewById(android.R.id.content), "Isi Nama File Terlebih dahulu");
                 break;
             case R.id.btn_upload_dokumen4:
             case R.id.iv_upload_dokumen4:
                 clicker = "dokumenD";
-                 if (String.valueOf(binding.etNamaDokumen4.getText()) != "")
-                BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
+                if (String.valueOf(binding.etNamaDokumen4.getText()) != "")
+                    BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
                 else
                     AppUtil.notiferror(this, findViewById(android.R.id.content), "Isi Nama File Terlebih dahulu");
                 break;
             case R.id.btn_upload_dokumen5:
             case R.id.iv_upload_dokumen5:
                 clicker = "dokumenE";
-                 if (String.valueOf(binding.etNamaDokumen5.getText()) != "")
-                BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
+                if (String.valueOf(binding.etNamaDokumen5.getText()) != "")
+                    BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
                 else
                     AppUtil.notiferror(this, findViewById(android.R.id.content), "Isi Nama File Terlebih dahulu");
                 break;
             case R.id.btn_upload_dokumen6:
             case R.id.iv_upload_dokumen6:
                 clicker = "dokumenF";
-                 if (String.valueOf(binding.etNamaDokumen6.getText()) != "")
-                BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
+                if (String.valueOf(binding.etNamaDokumen6.getText()) != "")
+                    BSUploadFile.displayWithTitle(ActivityDokumenTambahan.this.getSupportFragmentManager(), this, "");
                 else
                     AppUtil.notiferror(this, findViewById(android.R.id.content), "Isi Nama File Terlebih dahulu");
                 break;
             case R.id.ll_tambahan_dokumen:
             case R.id.btn_tambahan_dokumen:
                 addImg += 1;
-                AppUtil.logSecure("LogInt", addImg.toString());
                 if (addImg == 1) {
                     binding.cvUploadDokumen2.setVisibility(View.VISIBLE);
                     binding.llDeleteDokumen.setVisibility(View.VISIBLE);
@@ -464,7 +466,7 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
                     binding.cvUploadDokumen4.setVisibility(View.VISIBLE);
                 } else if (addImg == 4) {
                     binding.cvUploadDokumen5.setVisibility(View.VISIBLE);
-                } else {
+                } else if (addImg == 5) {
                     binding.cvUploadDokumen6.setVisibility(View.VISIBLE);
                     binding.btnTambahanDokumen.setVisibility(View.GONE);
                     binding.llTambahanDokumen.setVisibility(View.GONE);
@@ -473,7 +475,6 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
             case R.id.ll_delete_dokumen:
             case R.id.btn_delete_dokumen:
                 addImg -= 1;
-                AppUtil.logSecure("LogInt", addImg.toString());
                 Drawable res = getDrawable(R.mipmap.ico_img_for_upload);
                 if (addImg == 4) {
                     if (DokumenUmum.size() == 6) {
