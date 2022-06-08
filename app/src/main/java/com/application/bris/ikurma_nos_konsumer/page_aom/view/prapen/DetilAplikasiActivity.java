@@ -39,6 +39,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_ent
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah.DataNasabahPrapenActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_ideb.DataIdebActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_pendapatan.ActivityDokumenPendapatan;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_tambahan.ActivityDokumenTambahan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.simulasi_angsuran.KalkulatorActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.verif_dsr_dbr.Activity_DSR_DBR_Nasabah;
@@ -379,6 +380,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_pendapatan))){
             Intent it = new Intent(this, ActivityDokumenPendapatan.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_tambahan))){
+            Intent it = new Intent(this, ActivityDokumenTambahan.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("statusId",statusId);
             startActivity(it);
