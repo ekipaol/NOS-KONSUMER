@@ -361,6 +361,7 @@ public class UriApi {
         public static final String dropdownLembagaPengelolaPensiun = "NOS_PRAPEN_Services/rest/Picklist/LembagaPengelolaPensiun";
         public static final String dropdownTreatmentRekening = "NOS_PRAPEN_Services/rest/Picklist/Treatment";
         public static final String dropdownMitraFronting  = "NOS_PRAPEN_Services/rest/Picklist/MitraFronting";
+        public static final String dropdownKomponenPendapatan  = "NOS_PRAPEN_Services/rest/Picklist/KomponenPendapatan";
 
         //D1
         public static final String cekHasilRekomendasiAkad = "NOS_PRAPEN_Services/rest/D1/InquiryHasilRekomendasiAkad";
@@ -402,6 +403,8 @@ public class UriApi {
         public static final String InquiryJaminandanDokumen = "NOS_PRAPEN_Services/rest/D3/InquiryJaminandanDokumen";
         public static final String InquiryDokDataPribadiLainnya = "NOS_PRAPEN_Services/rest/D3/InquiryDokDataPribadiLainnya";
         public static final String UpdateDokDataPribadiLainnya = "NOS_PRAPEN_Services/rest/D3/UpdateDokDataPribadiLainnya";
+        public static final String InquiryAkseptasiPendapatanMarketing = "NOS_PRAPEN_Services/rest/D3/InquiryAkseptasiPendapatanMarketing";
+        public static final String UpdateAkseptasiPendapatanMarketing = "NOS_PRAPEN_Services/rest/D3/UpdateAkseptasiPendapatanMarketing";
 
 
         public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";
@@ -480,6 +483,7 @@ public class UriApi {
         public static final String listAplikasiMarketing = "NOS_PRAPEN_Services/rest/APIUmum/ListDataAplikasiMarketing";
         public static final String listAplikasiPemutus = "NOS_PRAPEN_Services/rest/APIUmum/ListDataAplikasiD6Pemutus";
         public static final String cariInstansi = "NOS_PRAPEN_Services/rest/APIUmum/CariInstansi";
+        public static final String ListMonitoringPencairanMarketing = "NOS_PRAPEN_Services/rest/APIUmum/ListMonitoringPencairanMarketing";
 
 
 

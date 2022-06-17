@@ -131,6 +131,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateJ
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateMemo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
+import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparsePicklist;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.ParseResponseReturn;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanKendaraanPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.AgunanTanahBangunanPojo;
@@ -779,6 +780,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.listAplikasiMarketing)
     Call<ParseResponseArr> listAplikasiMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.ListMonitoringPencairanMarketing)
+    Call<ParseResponseArr> ListMonitoringPencairanMarketing(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
     @POST(UriApi.prapen.listAplikasiPemutus)
     Call<ParseResponseArr> listAplikasiPemutus(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
@@ -1039,7 +1043,6 @@ public interface ApiInterface {
     Call<ParseResponseAgunan> updateKalkulatorVerifikator(@Body ReqHitungKalkulator ReqHitungKalkulator);
 
 
-
     @POST(UriApi.prapen.inqListAsusransi)
     Call<MParseArray> inqListAsusransi(@Body EmptyRequest EmptyRequest);
 
@@ -1131,8 +1134,18 @@ public interface ApiInterface {
     @POST(UriApi.prapen.UpdateDokDataPribadiLainnya)
     Call<ParseResponse> UpdateDokDataPribadiLainnya(@Body DataPribadiLainya DataPribadiLainya);
 
+    @POST(UriApi.prapen.InquiryAkseptasiPendapatanMarketing)
+    Call<DataPribadiLainya> InquiryAkseptasiPendapatanMarketing(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.UpdateAkseptasiPendapatanMarketing)
+    Call<ParseResponse> UpdateAkseptasiPendapatanMarketing(@Body DataPribadiLainya DataPribadiLainya);
+
 //    @GET(UriApi.foto.urlFile)
 //    Call<ParseResponse> getFile(@Body EmptyRequest EmptyRequest);
+
+
+    @POST(UriApi.prapen.dropdownKomponenPendapatan)
+    Call<MparsePicklist> dropdownKomponenPendapatan(@Body EmptyRequest EmptyRequest);
 
     @GET(UriApi.foto.urlFile)
     Call<ParseResponse> getFile(@Query(value = "FileId", encoded = true) String fileId);
