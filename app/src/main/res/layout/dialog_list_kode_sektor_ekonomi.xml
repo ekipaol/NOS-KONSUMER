@@ -88,13 +88,26 @@
                 android:layout_marginBottom="10dp"
                 android:layout_below="@+id/iv_cari"/>
 
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="Search Here"
+                android:iconifiedByDefault="false"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:queryBackground="@color/colorBackgroundTransparent"
+                android:background="@drawable/forminput_cardwhite"
+                android:layout_below="@+id/divider_search"
+                android:visibility="visible"/>
+
             <include layout="@layout/loading"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_list_sek_ekonomi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/divider_search">
+                android:layout_below="@+id/searchView">
 
             </androidx.recyclerview.widget.RecyclerView>
 

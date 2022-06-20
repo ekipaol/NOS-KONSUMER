@@ -396,6 +396,13 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("statusId",statusId);
             startActivity(it);
         }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad))){
+            Intent it = new Intent(this, DataAkadActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("akad",dataDetailAplikasi.getAkad());
+            it.putExtra("statusId",statusId);
+            startActivity(it);
+        }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_canvassing))){
             Intent it = new Intent(this, HasilCanvasingActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
@@ -485,6 +492,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Intent it = new Intent(this, DataAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("akad",dataDetailAplikasi.getAkad());
+            it.putExtra("statusId",statusId);
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_g1_dokumen_persiapan_akad))){

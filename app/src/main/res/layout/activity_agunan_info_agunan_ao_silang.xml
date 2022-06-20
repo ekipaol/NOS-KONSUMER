@@ -11,7 +11,6 @@
         android:layout_marginTop="@dimen/toolbar_height_default"
         android:scrollbars="none">
 
-
         <LinearLayout
             android:id="@+id/ll_content"
             android:layout_width="match_parent"
@@ -23,11 +22,6 @@
             android:orientation="vertical"
             android:visibility="visible"
             android:background="@color/colorWhite">
-
-
-
-
-
 
 
 
@@ -453,14 +447,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-
-
         </LinearLayout>
-
-
-
-
     </ScrollView>
     <include layout="@layout/toolbar_nosearch"></include>
     <include layout="@layout/loading"></include>

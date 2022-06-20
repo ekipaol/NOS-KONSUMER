@@ -14,9 +14,12 @@ public class UriApi {
 //        public static final String URLDEV = "http://10.0.116.37:8051/nos-prapen/"; //middletier
 //        public static final String URLDEV = "https://10.0.116.109/"; //QA BSI
         public static final String URLPROD = "https://intel.brisyariah.co.id:55056/MobileBRISIAPI/webresources/"; //PROD
+        public static final String URLKURMADEV = "http://10.0.116.37:8051/"; //middletier
+        public static final String URLKURMAPROD = "http://10.0.116.37:8051/"; //middletier
 //        public static final String URLPROD = "https://intel.brisyariah.co.id:55056/MobileBRISIAPI-EKI/webresources/"; //PROD EKI
 
         public static String URL = (BuildConfig.IS_PRODUCTION) ? URLPROD : URLDEV ; //ENV BASED URI SELECTOR
+        public static String URLIKURMA = (BuildConfig.IS_PRODUCTION) ? URLKURMAPROD : URLKURMADEV ; //ENV BASED URI SELECTOR
 
         public static String URLFOTO = "https://10.0.116.105/" ;
 
@@ -351,6 +354,11 @@ public class UriApi {
 
     public class prapen{
 
+        public static final String getAreaByKodeRegion = "user-service/mapping-regions";
+        public static final String getBranchByKodeArea = "user-service/mapping_area";
+        public static final String getDetailBranch = "user-service/branches/{branch_id}";
+        public static final String getListBranch = "user-service/branches";
+
         // PickList
         public static final String dropdownTipeProduk = "NOS_PRAPEN_Services/rest/Picklist/TipeProduk";
         public static final String dropdownSegmen = "NOS_PRAPEN_Services/rest/Picklist/Segmen";
@@ -363,6 +371,9 @@ public class UriApi {
         public static final String dropdownMitraFronting  = "NOS_PRAPEN_Services/rest/Picklist/MitraFronting";
         public static final String dropdownKomponenPendapatan  = "NOS_PRAPEN_Services/rest/Picklist/KomponenPendapatan";
         public static final String dropdownJenisAset  = "NOS_PRAPEN_Services/rest/Picklist/JenisAssetPembiayaan";
+        public static final String dropdownInstansiInduk  = "NOS_PRAPEN_Services/rest/Picklist/InstansiInduk";
+
+
 
 
 
@@ -378,6 +389,7 @@ public class UriApi {
         public static final String inquiryDataInstansiDapen = "NOS_PRAPEN_Services/rest/D1/InquiryInstansidanDapen";
         public static final String validasiPayroll = "NOS_PRAPEN_Services/rest/D1/ValidasiNoRekPayroll";
         public static final String validasiLngp = "NOS_PRAPEN_Services/rest/D1/ValidasiLNGP";
+        public static final String cekLngp = "NOS_PRAPEN_Services/rest/D1/CheckLNGP";
         public static final String validasiDukcapil = "NOS_PRAPEN_Services/rest/D1/ValidasiDataDukcapil";
         public static final String inquiryNamaKodeAo = "NOS_PRAPEN_Services/rest/D1/InquiryNamaKodeAO";
         public static final String updateDataMarketing = "NOS_PRAPEN_Services/rest/D1/UpdateMitraMarketing";
@@ -385,6 +397,7 @@ public class UriApi {
         public static final String lanjutHotprospek = "NOS_PRAPEN_Services/rest/D1/UpdatelanjutHotProspek";
         public static final String batalD1 = "NOS_PRAPEN_Services/rest/D1/UpdateBatalPembiayaan";
         public static final String inquiryDataCabang = "NOS_PRAPEN_Services/rest/D1/InqCheckDataCabang";
+        public static final String getLkp = "NOS_PRAPEN_Services/rest/D1/GetLKP";
 
 
 
@@ -490,6 +503,11 @@ public class UriApi {
         public static final String inquiryInstansi = "NOS_PRAPEN_Services/rest/APIUmum/InquiryInstansi";
         public static final String inquirylkp = "NOS_PRAPEN_Services/rest/APIUmum/InquiryLKP_Koordinasi";
         public static final String updateLkpKoordinasi = "NOS_PRAPEN_Services/rest/APIUmum/UpdateLKP_Koordinasi";
+        public static final String updateInstansi = "NOS_PRAPEN_Services/rest/APIUmum/UpdateInstansi";
+        public static final String inquiryDataRekening = "NOS_PRAPEN_Services/rest/APIUmum/InquiryDataRekening";
+        public static final String inquiryListLngp = "NOS_PRAPEN_Services/rest/APIUmum/InquiryLNGP";
+        public static final String inquiryListLngpByEscrow = "NOS_PRAPEN_Services/rest/APIUmum/GetLNGPListByEscrow";
+        public static final String updateLngpInstansi = "NOS_PRAPEN_Services/rest/APIUmum/UpdateLNGP";
         public static final String ListMonitoringPencairanMarketing = "NOS_PRAPEN_Services/rest/APIUmum/ListMonitoringPencairanMarketing";
 
 

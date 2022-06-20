@@ -2,17 +2,14 @@ package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g3_upload_
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -46,19 +43,14 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
-import com.application.bris.ikurma_nos_konsumer.util.service_encrypt.MagicCryptHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -3355,7 +3347,7 @@ public class ActivityUploadDokumen extends AppCompatActivity implements CameraLi
                     binding.llDeleteDokumen.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.btn_cek_lngp:
+            case R.id.btn_cek_escrow:
             case R.id.ll_btn_send:
             case R.id.btn_send:
                 Validate();

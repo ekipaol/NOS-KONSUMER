@@ -383,7 +383,7 @@ public class InputLkpKoordinasiActivity extends AppCompatActivity implements Vie
         switch (requestCode) {
             case UPLOAD_LKP:
                 setDataImage(binding.ivFotoLkp,data,"dokLkpKoordinasi",UPLOAD_LKP);
-                checkFileTypeThenUpload(fileNameLkp,"_dokLkpKoordinasi",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
+                checkFileTypeThenUpload(fileNameLkp,Long.toString(idInstansi)+"_"+appPreferences.getKodeCabang()+"_dokLkpKoordinasi",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
                 break;
         }
     }

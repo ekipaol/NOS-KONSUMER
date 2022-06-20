@@ -127,7 +127,7 @@
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
                     <Button
-                        android:id="@+id/btn_cek_lngp"
+                        android:id="@+id/btn_cek_escrow"
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_gravity="bottom"

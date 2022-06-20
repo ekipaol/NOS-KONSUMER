@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/sv_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite"
-    android:fitsSystemWindows="true"
-    android:scrollbars="none">
+    >
+    <include android:id="@+id/loading_layout" layout="@layout/loading" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:fitsSystemWindows="true"
+        android:scrollbars="none">
 
 
         <LinearLayout
@@ -16,7 +21,7 @@
             android:background="@color/colorWhite"
             android:orientation="vertical"
             android:paddingTop="20dp">
-            <include android:id="@+id/loading_layout" layout="@layout/loading" />
+
 
 
             <LinearLayout
@@ -166,11 +171,59 @@
 
 
 
+
                 <LinearLayout
                     android:id="@+id/ll_lngp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_escrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        app:iconSignifier="@drawable/ic_address"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Escrow"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_escrow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <ProgressBar
+                        android:id="@+id/loadingLngp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone"
+                        android:progressDrawable="@drawable/custom_progressbar"/>
+
+                    <Button
+                        android:id="@+id/btn_cek_escrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapeborderprimary"
+                        android:elevation="5dp"
+                        android:gravity="center"
+                        android:text="Cek Escrow"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary" />
 
                     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                         android:id="@+id/tf_input_lngp"
@@ -184,42 +237,22 @@
                         app:isResponsiveIconColor="true"
                         app:labelText="Input LNGP"
                         app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
                         app:primaryColor="@color/colorPrimary"
                         app:secondaryColor="@color/colorPrimary"
+                        app:alwaysShowHint="true"
                         app:useDenseSpacing="true">
 
                         <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                             android:id="@+id/et_input_lngp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Pilih"
                             android:inputType="text"
                             />
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
-                    <ProgressBar
-                        android:id="@+id/loadingLngp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:visibility="gone"
-                        android:progressDrawable="@drawable/custom_progressbar"/>
 
-                    <Button
-                        android:id="@+id/btn_cek_lngp"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:layout_gravity="bottom"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shapeborderprimary"
-                        android:elevation="5dp"
-                        android:gravity="center"
-                        android:text="Cek LNGP"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorPrimary" />
 
                     <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                         android:id="@+id/tf_nama_instansi_lngp"
@@ -268,6 +301,74 @@
                             android:inputType="text"
                             />
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_tanggal_expired"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="Tanggal Expired"
+                        app:panelBackgroundColor="@color/colorDisableEdit"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_tanggal_expired"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_lkp_digunakan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="5dp"
+                        app:iconSignifier="@drawable/ic_district"
+                        app:isResponsiveIconColor="true"
+                        app:labelText="LKP yang Digunakan"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:endIcon="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        app:primaryColor="@color/colorPrimary"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:alwaysShowHint="true"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_lkp_digunakan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Pilih"
+                            android:inputType="text"
+                            />
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <Button
+                        android:id="@+id/btn_lihat_lkp"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shapeborderprimary"
+                        android:elevation="5dp"
+                        android:gravity="center"
+                        android:text="Lihat LKP"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary" />
 
 
                 </LinearLayout>
@@ -542,16 +643,16 @@
 
                 </LinearLayout>
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/muli_r"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:paddingLeft="10dp"-->
-<!--                    android:paddingBottom="10dp"-->
-<!--                    android:text="Kondisi Pensiunan / Nasabah untuk Asuransi"-->
-<!--                    android:textSize="16sp" />-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:fontFamily="@font/muli_r"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:layout_marginTop="15dp"-->
+                <!--                    android:paddingLeft="10dp"-->
+                <!--                    android:paddingBottom="10dp"-->
+                <!--                    android:text="Kondisi Pensiunan / Nasabah untuk Asuransi"-->
+                <!--                    android:textSize="16sp" />-->
 
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_keterangan_span"
@@ -888,4 +989,6 @@
 
 
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

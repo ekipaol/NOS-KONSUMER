@@ -100,6 +100,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inqui
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.inquiryTujuan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.listPipeline;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.pipeline.processRejectPipeline;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataDetilInstansi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPembiayaan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPribadiLainya;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataSearchOjk;
@@ -118,6 +119,8 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInqu
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeBookingCabang;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanjutHotprospek;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqListLngp;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLkpD1;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqProgram;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 //import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
@@ -142,8 +145,10 @@ import com.application.bris.ikurma_nos_konsumer.database.pojo.DataLengkapPojo;
 import com.application.bris.ikurma_nos_konsumer.database.pojo.LknPojo;
 import com.application.bris.ikurma_nos_konsumer.model.hotprospek.KonsumerKprFlppInputKelengkapanDokumen;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.HapusDataHutang;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.InputInstansi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.InputLkpKoordinasi;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateDataMarketing;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.ReqUpdateLngp;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.UpdateDataHutang;
 
 import okhttp3.MultipartBody;
@@ -752,8 +757,19 @@ public interface ApiInterface {
     @POST(UriApi.flpp.sendDataPipelineKprFlpp)
     Call<ParseResponse> sendDataPipelineKprFlpp(@Body KonsumerKPRInputPipeline inputPipeline);
 
+    @GET(UriApi.prapen.getAreaByKodeRegion)
+    Call<ParseResponse> getAreaByKodeRegion (@Query(value="fid_region", encoded=true) String fidRegion,@Query(value="limit", encoded=true) String limit);
 
-    //GADAI
+    @GET(UriApi.prapen.getBranchByKodeArea)
+    Call<ParseResponse> getBranchByKodeArea (@Query(value="fid_area", encoded=true) String fidArea,@Query(value="limit", encoded=true) String limit);
+
+    @GET(UriApi.prapen.getListBranch)
+    Call<ParseResponse> getListBranch (@Query(value="branch_levels", encoded=true) String branchLevel,@Query(value="limit", encoded=true) String limit,@Query(value="branch_name", encoded=true) String keyword);
+
+    @GET(UriApi.prapen.getDetailBranch)
+    Call<ParseResponse> getDetailBranch(@Path(value = "branch_id", encoded = true) String branchId);
+
+    //PRAPEN
     @POST(UriApi.prapen.dropdownTipeProduk)
     Call<ParseResponseArr> dropdownTipeProduk(@Body EmptyRequest EmptyRequest);
 
@@ -802,6 +818,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.updateLkpKoordinasi)
     Call<ParseResponse> updateLkpKoordinasi(@Body InputLkpKoordinasi InputLkpKoordinasi);
 
+    @POST(UriApi.prapen.updateInstansi)
+    Call<ParseResponse> updateInstansi(@Body InputInstansi InputInstansi);
+
     @POST(UriApi.prapen.inquiryDedupe)
     Call<ParseResponseAgunan> inquiryDedupe(@Body ReqDedupe ReqDedupe);
 
@@ -832,14 +851,32 @@ public interface ApiInterface {
     @POST(UriApi.prapen.dropdownJenisAset)
     Call<ParseResponseArr> dropdownJenisAset(@Body EmptyRequest EmptyRequest);
 
+    @POST(UriApi.prapen.dropdownInstansiInduk)
+    Call<ParseResponseArr> dropdownInstansiInduk(@Body EmptyRequest EmptyRequest);
+
     @POST(UriApi.prapen.dropdownPejabat)
     Call<ParseResponseArr> dropdownPejabat(@Body EmptyRequest EmptyRequest);
 
     @POST(UriApi.prapen.validasiPayroll)
     Call<ParseResponse> validasiPayroll(@Body ReqAcctNumber ReqAcctNumber);
 
+    @POST(UriApi.prapen.inquiryDataRekening)
+    Call<ParseResponse> inquiryDataRekening(@Body ReqAcctNumber ReqAcctNumber);
+
+    @POST(UriApi.prapen.inquiryListLngp)
+    Call<ParseResponseArr> inquiryListLngp(@Body ReqListLngp ReqListLngp);
+
+    @POST(UriApi.prapen.updateLngpInstansi)
+    Call<ParseResponse> updateLngpInstansi(@Body ReqUpdateLngp ReqUpdateLngp);
+
+    @POST(UriApi.prapen.inquiryListLngpByEscrow)
+    Call<ParseResponseArr> inquiryListLngpByEscrow(@Body ReqListLngp ReqListLngp);
+
     @POST(UriApi.prapen.validasiLngp)
     Call<ParseResponse> validasiLngp(@Body ReqValidasiLngp ReqValidasiLngp);
+
+    @POST(UriApi.prapen.cekLngp)
+    Call<ParseResponse> cekLngp(@Body ReqValidasiLngp ReqValidasiLngp);
 
     @POST(UriApi.prapen.inquiryDetailAplikasi)
     Call<ParseResponse> inquiryDetailAplikasi(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
@@ -927,6 +964,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.inquiryDataCabang)
     Call<ParseResponse> inquiryDataCabang(@Body ReqKodeBookingCabang ReqKodeBookingCabang);
+
+    @POST(UriApi.prapen.getLkp)
+    Call<ParseResponse> getLkp(@Body ReqLkpD1 ReqLkpD1);
 
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);

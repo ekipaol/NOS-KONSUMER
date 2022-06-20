@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -28,26 +27,39 @@ import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseError;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUploadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataDetilInstansi;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataLkpUtama;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.JaminandanDokumen;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDetilInstansi;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityInputInstansiBinding;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSBottomCamera;
+import com.application.bris.ikurma_nos_konsumer.model.ikurma_branch.DataBranchIkurma;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInquiryRekening;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.InputInstansi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogListBranch;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogListSektorEkonomi;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ListBranchListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.field_ojk_bi.ActivityFieldOjkBI;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -70,7 +82,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import studio.carbonylgroup.textfieldboxes.TextFieldBoxes;
 
-public class InputMasterInstansiActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, ConfirmListener, GenericListenerOnSelect {
+public class InputMasterInstansiActivity extends AppCompatActivity implements View.OnClickListener, CameraListener, ConfirmListener, GenericListenerOnSelect, ListBranchListener {
     private PrapenAoActivityInputInstansiBinding binding;
     List<JaminandanDokumen> jd;
 
@@ -83,13 +95,16 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
     private List<MGenericModel> dropdownInstansiInduk=new ArrayList<>(),dropdownTipePembayaran=new ArrayList<>(),dropdownJenisInstansi=new ArrayList<>(),dropdownPks=new ArrayList<>(),dropdownRuangLingkup=new ArrayList<>(),dropdownUnitBisnis=new ArrayList<>(),dropdownPerpanjangOtomatis=new ArrayList<>(),dropdownStatusPks=new ArrayList<>(),dropdownJasaPengelolaan=new ArrayList<>();
 
-    private String val_pks = "", val_lain_1 = "", val_lain_2 = "", val_lkp = "";
+    private String val_pks = "", val_lain_1 = "", val_lain_2 = "", val_lkp = "",val_branch_office_code="";
+    private long val_instansi_induk=0l;
     private final int UPLOAD_PKS = 1, UPLOAD_LAIN_1 = 2, UPLOAD_LAIN_2 = 3, UPLOAD_LKP = 4;
     int idUpload=0;
     boolean dialogOpened=false;
     boolean errorUpload=false;
     private  boolean lolosValidasi =true;
     private DataDetilInstansi dataInstansi;
+    private DataLkpUtama dataLkpUtama;
+    private List<UploadImage> dataDokumenLainnya;
 
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
@@ -108,13 +123,15 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             idInstansi=Long.parseLong(getIntent().getStringExtra("idInstansi"));
         }
 
+
         onclickSelectDialog();
         setContentView(view);
         disableText();
         backgroundStatusBar();
         isiDropdown();
         otherViewChanges();
-        loadData();
+//        loadData();
+        loadDropdownInstansiInduk();
         AppUtil.toolbarRegular(this, "Detil Instansi");
 
     }
@@ -133,11 +150,16 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
                         Gson gson = new Gson();
                         String listDataString = response.body().getData().get("Data_Instansi").toString();
-                        Type type = new TypeToken<DataDetilInstansi>() {
-                        }.getType();
-
+                        String listDataLkpString = response.body().getData().get("Data_LKP_Utama").toString();
+                        String listDataDokumenString = response.body().getData().get("Data_Instansi_Dokumen_Lainnya").toString();
+                        Type type = new TypeToken<DataDetilInstansi>() {}.getType();
+                        Type typeLkp = new TypeToken<DataLkpUtama>() {}.getType();
+                        Type typeDokumen = new TypeToken<List<UploadImage>>() {}.getType();
                         dataInstansi=gson.fromJson(listDataString,type);
+                        dataLkpUtama=gson.fromJson(listDataLkpString,typeLkp);
+                        dataDokumenLainnya=gson.fromJson(listDataDokumenString,typeDokumen);
                         setData();
+
 
                     } else {
                         AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
@@ -155,17 +177,41 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
             }
         });
+
+
     }
 
     private void setData(){
+        if(!dataInstansi.getIdCabangInputter().equalsIgnoreCase("0")&&!dataInstansi.getIdCabangInputter().equalsIgnoreCase(appPreferences.getKodeCabang())){
+            noInputMode();
+        }
+
         binding.etNamaInstansi.setText(dataInstansi.getNamaInstansi());
         binding.etNomorEscrow.setText(dataInstansi.getEscrow());
-        binding.etKantorCabang.setText(dataInstansi.getBranchOffice());
-        binding.etAreaCabang.setText(dataInstansi.getAreaOffice());
-        binding.etRegional.setText(dataInstansi.getRegional());
+
+        if(dataInstansi.getBranchOffice()!=null&&!dataInstansi.getBranchOffice().isEmpty()){
+            binding.tfKantorCabang.setVisibility(View.VISIBLE);
+            binding.etKantorCabang.setText(dataInstansi.getBranchOffice());
+        }
+         if(dataInstansi.getAreaOffice()!=null&&!dataInstansi.getAreaOffice().isEmpty()){
+           binding.tfAreaCabang.setVisibility(View.VISIBLE);
+            binding.etAreaCabang.setText(dataInstansi.getAreaOffice());
+
+        }
+         if(dataInstansi.getRegional()!=null&&!dataInstansi.getRegional().isEmpty()){
+          binding.tfRegional.setVisibility(View.VISIBLE);
+            binding.etRegional.setText(dataInstansi.getRegional());
+        }
+
         binding.etCifCabang.setText(dataInstansi.getCif());
         binding.etIdMasterInstansi.setText(dataInstansi.getiDMasterInstansi());
-        binding.etInstansiInduk.setText(dataInstansi.getInstansiInduk());
+
+        for (int i = 0; i <dropdownInstansiInduk.size() ; i++) {
+            if(dropdownInstansiInduk.get(i).getID().equalsIgnoreCase(Long.toString(dataInstansi.getInstansiInduk()))){
+                binding.etInstansiInduk.setText(dropdownInstansiInduk.get(i).getDESC());
+                val_instansi_induk=dataInstansi.getInstansiInduk();
+            }
+        }
         binding.etTipePembayaran.setText(dataInstansi.getTipePembayaran());
         binding.etJenisInstansi.setText(dataInstansi.getTipeProduk());
         binding.etTahunBerdiri.setText(dataInstansi.getTahunBerdiri());
@@ -187,6 +233,18 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             e.printStackTrace();
         }
 
+        try{
+            if(dataInstansi.isStatusAktifInstansi()){
+                binding.swStatusAktif.setChecked(true);
+            }
+            else{
+                binding.swStatusAktif.setChecked(false);
+            }
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
 
         binding.etStatusPks.setText(dataInstansi.getStatusPKS());
         binding.etAlamatKorespondensi.setText(dataInstansi.getAlamatKorespondensi());
@@ -196,8 +254,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         binding.etJasaPengelolaan.setText(dataInstansi.getJasaPengolahan());
 
         try{
-            binding.etTanggalLkpUtama.setText(AppUtil.parseTanggalGeneral(dataInstansi.getDataLkpUtama().getTanggalLKP(),"ddMMyyyy","dd-MM-yyyy"));
-            binding.etTanggalLkpUtamaKadaluarsa.setText(AppUtil.parseTanggalGeneral(dataInstansi.getDataLkpUtama().getTanggalLKPKadaluarsa(),"ddMMyyyy","dd-MM-yyyy"));
+            binding.etTanggalLkpUtama.setText(AppUtil.parseTanggalGeneral(dataLkpUtama.getTanggalLKP(),"ddMMyyyy","dd-MM-yyyy"));
+            binding.etTanggalLkpUtamaKadaluarsa.setText(AppUtil.parseTanggalGeneral(dataLkpUtama.getTanggalLKPKadaluarsa(),"ddMMyyyy","dd-MM-yyyy"));
             binding.etTanggalMulaiPks.setText(AppUtil.parseTanggalGeneral(dataInstansi.getMulaiPKS(),"ddMMyyyy","dd-MM-yyyy"));
             binding.etTanggalAkhirPks.setText(AppUtil.parseTanggalGeneral(dataInstansi.getAkhirPKS(),"ddMMyyyy","dd-MM-yyyy"));
         }
@@ -207,19 +265,176 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
         try{
             checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getImgPKSInduk(),binding.ivFotoPks,dataInstansi.getFilenamePksInduk());
-            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDokumenLainnya().get(0).getImg(),binding.ivDokumenTambahan1,dataInstansi.getDokumenLainnya().get(0).getFile_Name());
-            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDokumenLainnya().get(1).getImg(),binding.ivDokumenTambahan2,dataInstansi.getDokumenLainnya().get(1).getFile_Name());
-            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getDataLkpUtama().getImg(),binding.ivFotoLkp,dataInstansi.getDataLkpUtama().getFilename());
 
-            idFileLain1=dataInstansi.getDokumenLainnya().get(0).getImg();
-            idFileLain2=dataInstansi.getDokumenLainnya().get(1).getImg();
-            idFileLkp=dataInstansi.getDataLkpUtama().getImg();
+            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataLkpUtama.getImg(),binding.ivFotoLkp,dataLkpUtama.getFilename());
+
+            idFileLkp=dataLkpUtama.getImg();
             idFilePks=dataInstansi.getImgPKSInduk();
+            fileNameLkp=dataLkpUtama.getFilename();
+            fileNamePks=dataInstansi.getFilenamePksInduk();
 
+            try{
+                checkFileTypeThenSet(InputMasterInstansiActivity.this,dataDokumenLainnya.get(0).getImg(),binding.ivDokumenTambahan1,dataDokumenLainnya.get(0).getFile_Name());
+                idFileLain1=dataDokumenLainnya.get(0).getImg();
+                fileNameLain1=dataDokumenLainnya.get(0).getFile_Name();
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
+            }
+
+            try{
+                checkFileTypeThenSet(InputMasterInstansiActivity.this,dataDokumenLainnya.get(1).getImg(),binding.ivDokumenTambahan2,dataDokumenLainnya.get(1).getFile_Name());
+                idFileLain2=dataDokumenLainnya.get(1).getImg();
+                fileNameLain2=dataDokumenLainnya.get(1).getFile_Name();
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
+            }
         }
         catch (NullPointerException e){
             e.printStackTrace();
         }
+    }
+
+    public void loadDropdownInstansiInduk() {
+        //  dataUser = getListUser();
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().dropdownInstansiInduk(EmptyRequest.INSTANCE);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DropdownGlobalPrapen>>() {
+                        }.getType();
+                        List<DropdownGlobalPrapen> dropdownTemp= gson.fromJson(listDataString, type);
+
+                        dropdownInstansiInduk.clear();
+                        for (int i = 0; i <dropdownTemp.size(); i++) {
+                            dropdownInstansiInduk.add(new MGenericModel(dropdownTemp.get(i).getKode(),dropdownTemp.get(i).getName()));
+                        }
+
+                        loadData();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Terjadi kesalahan");
+
+            }
+        });
+    }
+
+    private void sendData() {
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        InputInstansi req = new InputInstansi();
+        DataLkpUtama dataLkpUtama=new DataLkpUtama();
+        List<UploadImage> dataDokumenLain=new ArrayList<>();
+        DataDetilInstansi dataDetilInstansi=new DataDetilInstansi();
+
+        //DATA INSTANSI
+        dataDetilInstansi.setIdInstansi(idInstansi);
+        dataDetilInstansi.setNamaInstansi(binding.etNamaInstansi.getText().toString());
+        dataDetilInstansi.setEscrow(binding.etNomorEscrow.getText().toString());
+        dataDetilInstansi.setBranchOfficeCode(val_branch_office_code);
+//        dataDetilInstansi.setAreaOffice(binding.etAreaCabang.getText().toString());
+//        dataDetilInstansi.setRegional(binding.etRegional.getText().toString());
+        dataDetilInstansi.setCif(binding.etCifCabang.getText().toString());
+//        dataDetilInstansi.setiDMasterInstansi(binding.etIdMasterInstansi.getText().toString());
+        //notes instansi induk ini ngirim ID apa nama nih
+        dataDetilInstansi.setInstansiInduk(val_instansi_induk);
+        dataDetilInstansi.setTipePembayaran(binding.etTipePembayaran.getText().toString());
+        dataDetilInstansi.setTipeProduk(binding.etJenisInstansi.getText().toString());
+        dataDetilInstansi.setTahunBerdiri(binding.etTahunBerdiri.getText().toString());
+        dataDetilInstansi.setPks(binding.etMemilikiPks.getText().toString());
+        dataDetilInstansi.setRuangLingkupPKS(binding.etRuangLingkupPks.getText().toString());
+        dataDetilInstansi.setUnitBisnisPengusulPKS(binding.etUnitBisnisPengusul.getText().toString());
+        dataDetilInstansi.setNoPKS(binding.etNomorPks.getText().toString());
+        dataDetilInstansi.setMulaiPKS(AppUtil.parseTanggalGeneral(binding.etTanggalMulaiPks.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+        dataDetilInstansi.setAkhirPKS(AppUtil.parseTanggalGeneral(binding.etTanggalAkhirPks.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+
+        if(binding.etPerpanjangPksOtomatis.getText().toString().equalsIgnoreCase("otomatis")){
+            dataDetilInstansi.setPerpanjanganOtomatisPKS(true);
+        }
+        else{
+            dataDetilInstansi.setPerpanjanganOtomatisPKS(false);
+        }
+
+        dataDetilInstansi.setImgPKSInduk(idFilePks);
+        dataDetilInstansi.setFilenamePksInduk(fileNamePks);
+        dataDetilInstansi.setStatusPKS(binding.etStatusPks.getText().toString());
+        dataDetilInstansi.setAlamatKorespondensi(binding.etAlamatKorespondensi.getText().toString());
+        dataDetilInstansi.setKeyPerson(binding.etKeyPerson.getText().toString());
+        dataDetilInstansi.setTeleponKeyPerson(binding.etTeleponKeyPerson.getText().toString());
+        dataDetilInstansi.setNoTelpInstansi(binding.etTeleponInstansi.getText().toString());
+        dataDetilInstansi.setJasaPengolahan(binding.etJasaPengelolaan.getText().toString());
+
+        if(binding.swStatusAktif.isChecked()){
+            dataDetilInstansi.setStatusAktifInstansi(true);
+        }
+        else{
+            dataDetilInstansi.setStatusAktifInstansi(false);
+        }
+
+        //LKP utama
+        dataLkpUtama.setTanggalLKP(AppUtil.parseTanggalGeneral(binding.etTanggalLkpUtama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+        dataLkpUtama.setTanggalLKPKadaluarsa(AppUtil.parseTanggalGeneral(binding.etTanggalLkpUtamaKadaluarsa.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+        dataLkpUtama.setImg(idFileLkp);
+        dataLkpUtama.setFilename(fileNameLkp);
+
+        //DOKUMEN LAINNYA
+        UploadImage dokumen1=new UploadImage();
+        UploadImage dokumen2=new UploadImage();
+
+        dokumen1.setImg(idFileLain1);
+        dokumen1.setFile_Name(fileNameLain1);
+        dokumen2.setImg(idFileLain2);
+        dokumen2.setFile_Name(fileNameLain2);
+
+        dataDokumenLain.add(dokumen1);
+        dataDokumenLain.add(dokumen2);
+
+        req.setUid(Integer.toString(appPreferences.getUid()));
+        req.setDataLkpUtama(dataLkpUtama);
+        req.setDataInstansi(dataDetilInstansi);
+        req.setDokumenLain(dataDokumenLain);
+
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().updateInstansi(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                if (response.isSuccessful()) {
+                    binding.loading.progressbarLoading.setVisibility(View.GONE);
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        CustomDialog.DialogSuccess(InputMasterInstansiActivity.this, "Success!", "Update Data Instansi Sukses", InputMasterInstansiActivity.this);
+
+
+                    } else {
+                        AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                } else {
+                    binding.loading.progressbarLoading.setVisibility(View.GONE);
+                    Error error = ParseResponseError.confirmEror(response.errorBody());
+                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), error.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
+            }
+        });
     }
 
 
@@ -247,6 +462,25 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
     }
 
+    private void noInputMode() {
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
+        binding.btnSimpanDataInstansi.setVisibility(View.GONE);
+        binding.btnCekEscrow.setVisibility(View.GONE);
+        binding.btnFotoLkp.setVisibility(View.GONE);
+        binding.btnDokumenTambahan2.setVisibility(View.GONE);
+        binding.btnDokumenTambahan1.setVisibility(View.GONE);
+        binding.btnFotoPks.setVisibility(View.GONE);
+        //khusus 2 button dibawah harus di enable lagi click listenernya, karna bisa di klik
+
+        binding.btnLihatLngp.setVisibility(View.VISIBLE);
+        binding.btnLihatLkp.setVisibility(View.VISIBLE);
+        binding.btnLihatLkp.setOnClickListener(this);
+        binding.btnLihatLngp.setOnClickListener(this);
+
+
+    }
+
     private void backgroundStatusBar() {
         Window window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -255,6 +489,13 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     }
 
     private void onclickSelectDialog() {
+        binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog.DialogBackpress(InputMasterInstansiActivity.this);
+            }
+        });
+
         binding.tfInstansiInduk.setOnClickListener(this);
         binding.etInstansiInduk.setOnClickListener(this);
         binding.tfTipePembayaran.setOnClickListener(this);
@@ -303,9 +544,17 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         easyEndIconDropdownClick(binding.tfJenisInstansi,dropdownJenisInstansi);
         easyEndIconDropdownClick(binding.tfMemilikiPks,dropdownPks);
         easyEndIconDropdownClick(binding.tfRuangLingkupPks,dropdownRuangLingkup);
-        easyEndIconDropdownClick(binding.tfUnitBisnisPengusul,dropdownUnitBisnis);
         easyEndIconDropdownClick(binding.tfPerpanjangPks,dropdownPerpanjangOtomatis);
         easyEndIconDropdownClick(binding.tfStatusPks,dropdownStatusPks);
+
+        binding.tfUnitBisnisPengusul.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogListBranch.display(getSupportFragmentManager(), InputMasterInstansiActivity.this);
+            }
+        });
+
+
     }
 
     private void easyEndIconDropdownClick(TextFieldBoxes textFieldBoxes,List<MGenericModel> dropdown){
@@ -358,7 +607,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 break;
             case R.id.tf_unit_bisnis_pengusul:
             case R.id.et_unit_bisnis_pengusul:
-                DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfUnitBisnisPengusul.getLabelText(),dropdownUnitBisnis,this);
+                DialogListBranch.display(getSupportFragmentManager(), InputMasterInstansiActivity.this);
                 break;
             case R.id.tf_perpanjang_pks:
             case R.id.et_perpanjang_pks_otomatis:
@@ -378,9 +627,18 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                startActivity(intent);
                 break;
             case R.id.btn_lihat_lngp:
-                Intent intent2=new Intent(InputMasterInstansiActivity.this,ListLngpActivity.class);
-                startActivity(intent2);
+                if(rekeningBerubah){
+                    binding.tfNomorEscrow.setError("Harap Cek Rekening",true);
+                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Harap cek nomor rekening dahulu sebelum mengakses halaman LNGP");
+                }
+                else{
+                    Intent intent2=new Intent(InputMasterInstansiActivity.this,ListLngpActivity.class);
+                    intent2.putExtra("idInstansi",idInstansi);
+                    intent2.putExtra("escrow",binding.etNomorEscrow.getText().toString());
+                    startActivity(intent2);
+                }
                 break;
+
             case R.id.btn_simpan_data_instansi:
                 if(rekeningBerubah){
                     binding.tfNomorEscrow.setError("Harap Cek Rekening",true);
@@ -396,13 +654,15 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                     binding.tfNomorEscrow.setError("Harap isi rekening",true);
                 }
                 else{
-                    Toast.makeText(this, "Pura pura konek API", Toast.LENGTH_SHORT).show();
-                    binding.etKantorCabang.setText("Kantor Cabang 1");
-                    binding.etAreaCabang.setText("Area 1");
-                    binding.etRegional.setText("Regional 1");
-                    binding.etCifCabang.setText("0000000000");
-                    binding.etIdMasterInstansi.setText("67888099000");
-                    rekeningBerubah=false;
+//                    Toast.makeText(this, "Pura pura konek API", Toast.LENGTH_SHORT).show();
+//                    binding.etKantorCabang.setText("Kantor Cabang 1");
+//                    binding.etAreaCabang.setText("Area 1");
+//                    binding.etRegional.setText("Regional 1");
+//                    binding.etCifCabang.setText("0000000000");
+//                    binding.etIdMasterInstansi.setText("67888099000");
+//                    rekeningBerubah=false;
+                    cekRekening();
+
                     break;
                 }
 
@@ -414,11 +674,11 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         easyValidateField(binding.etNamaInstansi,binding.tfNamaInstansi);
         easyValidateField(binding.etNomorEscrow,binding.tfNomorEscrow);
         easyValidateField(binding.etNamaInstansi,binding.tfNamaInstansi);
-        easyValidateField(binding.etKantorCabang,binding.tfKantorCabang);
-        easyValidateField(binding.etAreaCabang,binding.tfAreaCabang);
-        easyValidateField(binding.etRegional,binding.tfRegional);
-        easyValidateField(binding.etCifCabang,binding.tfCifCabang);
-        easyValidateField(binding.etIdMasterInstansi,binding.tfIdMasterInstansi);
+//        easyValidateField(binding.etKantorCabang,binding.tfKantorCabang);
+//        easyValidateField(binding.etAreaCabang,binding.tfAreaCabang);
+//        easyValidateField(binding.etRegional,binding.tfRegional);
+//        easyValidateField(binding.etCifCabang,binding.tfCifCabang);
+//        easyValidateField(binding.etIdMasterInstansi,binding.tfIdMasterInstansi);
         easyValidateField(binding.etInstansiInduk,binding.tfInstansiInduk);
         easyValidateField(binding.etTipePembayaran,binding.tfTipePembayaran);
         easyValidateField(binding.etJenisInstansi,binding.tfJenisInstansi);
@@ -444,7 +704,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         easyValidateField(binding.etTanggalLkpUtamaKadaluarsa,binding.tfTanggalLkpUtamaKadaluarsa);
         if(lolosValidasi){
             //do send data
-            Toast.makeText(this, "Nit not lolos validasi dan pura pura nyimpen", Toast.LENGTH_SHORT).show();
+            sendData();
+//            Toast.makeText(this, "Nit not lolos validasi dan pura pura nyimpen", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -458,8 +719,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     }
 
     private void isiDropdown(){
-        dropdownInstansiInduk.add(new MGenericModel("1","Instansi 1"));
-        dropdownInstansiInduk.add(new MGenericModel("2","Instansi 2"));
+//        dropdownInstansiInduk.add(new MGenericModel("1","Instansi 1"));
+//        dropdownInstansiInduk.add(new MGenericModel("2","Instansi 2"));
 
         dropdownTipePembayaran.add(new MGenericModel("1","Payroll"));
         dropdownTipePembayaran.add(new MGenericModel("2","Non Payroll"));
@@ -497,6 +758,11 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     }
 
     private void otherViewChanges(){
+        binding.tvHasilCekRekening.setVisibility(View.GONE);
+        binding.tfKantorCabang.setVisibility(View.GONE);
+        binding.tfAreaCabang.setVisibility(View.GONE);
+        binding.tfRegional.setVisibility(View.GONE);
+
         //di hide dlu soalnya agak repot buat nyari time differencenya
         binding.tfJangkaWaktuPks.setVisibility(View.GONE);
 
@@ -620,10 +886,22 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
     @Override
     public void onSelectMenuCamera(String idMenu) {
         dialogOpened=true;
-        easySelectCameraMenu(idMenu,UPLOAD_PKS,"dokPks");
-        easySelectCameraMenu(idMenu,UPLOAD_LAIN_1,"dokLain1");
-        easySelectCameraMenu(idMenu,UPLOAD_LAIN_2,"dokLain2");
-        easySelectCameraMenu(idMenu,UPLOAD_LKP,"dokLkp");
+        if(idUpload==UPLOAD_PKS){
+            easySelectCameraMenu(idMenu,UPLOAD_PKS,"dokPks");
+        }
+        else if(idUpload==UPLOAD_LAIN_1){
+            easySelectCameraMenu(idMenu,UPLOAD_LAIN_1,"dokLain1");
+        }
+        else if(idUpload==UPLOAD_LAIN_2){
+            easySelectCameraMenu(idMenu,UPLOAD_LAIN_2,"dokLain2");
+        }
+        else if(idUpload==UPLOAD_LKP){
+            easySelectCameraMenu(idMenu,UPLOAD_LKP,"dokLkp");
+        }
+
+
+
+
     }
 
     private void openCamera(int cameraCode, String namaFoto) {
@@ -676,60 +954,6 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         }
         return outputFileUri;
     }
-
-
-    //legacy upload
-//    public void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-//        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-//        switch (requestCode) {
-//            case UPLOAD_DATAKTP:
-//                //legacy
-////                setDataImage(uri_fotoktp, bitmap_fotoktp, binding.ivKtpNasabah, imageReturnedIntent, "fotoktp");
-//
-//                //logicaldoc
-//                setDataImage(uri_fotoktp, bitmap_fotoktp, binding.ivKtpNasabah, imageReturnedIntent, "fotoktp");
-//                if (tipeFile.equalsIgnoreCase("pdf")) {
-//                    fileNameKtp = idAplikasi + "_ktpD3.pdf";
-//                    uploadFile(val_ktp, fileNameKtp, UPLOAD_DATAKTP);
-//                } else {
-//                    binding.ivKtpNasabah.invalidate();
-//                    RoundedDrawable drawableIdeb = (RoundedDrawable) binding.ivKtpNasabah.getDrawable();
-//                    Bitmap bitmapIdeb = drawableIdeb.getSourceBitmap();
-//                    fileNameKtp = idAplikasi + "_ktpD3.png";
-//                    uploadFile(AppUtil.encodeImageTobase64(bitmapIdeb), fileNameKtp, UPLOAD_DATAKTP);
-//                }
-//                break;
-//            case UPLOAD_IDCARD:
-//                setDataImage(uri_idcard, bitmap_idcard, binding.ivIdcard, imageReturnedIntent, "idcard");
-//                break;
-//            case UPLOAD_KTPPASANGAN:
-//                setDataImage(uri_ktppasangan, bitmap_ktppasangan, binding.ivKtpPasangan, imageReturnedIntent, "ktppasangan");
-//                break;
-//            case UPLOAD_ASSETAKAD:
-//                setDataImage(uri_assetakad, bitmap_assetakad, binding.ivAssetAkad, imageReturnedIntent, "assetakad");
-//                break;
-//            case UPLOAD_DATAINSTASI:
-//                setDataImage(uri_datainstansi, bitmap_datainstansi, binding.ivSuratInstansi, imageReturnedIntent, "datainstansi");
-//                break;
-//            case UPLOAD_FORMAPLIKASI:
-//                setDataImage(uri_formaplikasi, bitmap_formaplikasi, binding.ivFormApplikasi, imageReturnedIntent, "formaplikasi");
-//                break;
-//            case UPLOAD_NPWP:
-//                setDataImage(uri_npwp, bitmap_npwp, binding.ivNpwp, imageReturnedIntent, "npwp");
-//                break;
-//            case UPLOAD_SKPENSIUN:
-//                setDataImage(uri_skpensiun, bitmap_skpensiun, binding.ivSkPensiun, imageReturnedIntent, "skpensiun");
-//                break;
-//            case UPLOAD_SKPENGANGKATAN:
-//                setDataImage(uri_skpengangkatan, bitmap_skpengangkatan, binding.ivSkPengangkatan, imageReturnedIntent, "skpengangkatan");
-//                break;
-//            case UPLOAD_SKTERAKHIR:
-//                setDataImage(uri_skterakhir, bitmap_skterakhir, binding.ivSkTerakhir, imageReturnedIntent, "skterakhir");
-//                break;
-//
-//        }
-//    }
-
     //logical doc
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -737,19 +961,19 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         switch (requestCode) {
             case UPLOAD_PKS:
                 setDataImage(binding.ivFotoPks,data,"dokPks",UPLOAD_PKS);
-                checkFileTypeThenUpload(fileNamePks,"_pks",binding.ivFotoPks,val_pks,UPLOAD_PKS);
+                checkFileTypeThenUpload(fileNamePks,binding.etNomorEscrow.getText().toString()+"_"+appPreferences.getKodeCabang()+"_pks",binding.ivFotoPks,val_pks,UPLOAD_PKS);
                 break;
             case UPLOAD_LAIN_1:
                 setDataImage(binding.ivDokumenTambahan1,data,"dokLain1",UPLOAD_LAIN_1);
-                checkFileTypeThenUpload(fileNameLain1,"_dokLain1",binding.ivDokumenTambahan1,val_lain_1,UPLOAD_LAIN_1);
+                checkFileTypeThenUpload(fileNameLain1,binding.etNomorEscrow.getText().toString()+"_"+appPreferences.getKodeCabang()+"_dokLain1",binding.ivDokumenTambahan1,val_lain_1,UPLOAD_LAIN_1);
                 break;
             case UPLOAD_LAIN_2:
                 setDataImage(binding.ivDokumenTambahan2,data,"dokLain2",UPLOAD_LAIN_2);
-                checkFileTypeThenUpload(fileNameLain2,"_dokLain2",binding.ivDokumenTambahan2,val_lain_2,UPLOAD_LAIN_2);
+                checkFileTypeThenUpload(fileNameLain2,binding.etNomorEscrow.getText().toString()+"_"+appPreferences.getKodeCabang()+"_dokLain2",binding.ivDokumenTambahan2,val_lain_2,UPLOAD_LAIN_2);
                 break;
             case UPLOAD_LKP:
                 setDataImage(binding.ivFotoLkp,data,"dokLkp",UPLOAD_LKP);
-                checkFileTypeThenUpload(fileNameLkp,"_dokLkp",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
+                checkFileTypeThenUpload(fileNameLkp,binding.etNomorEscrow.getText().toString()+"_"+appPreferences.getKodeCabang()+"_dokLkpUtama",binding.ivFotoLkp,val_lkp,UPLOAD_LKP);
                 break;
         }
     }
@@ -781,6 +1005,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
                 try{
                     iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_pdf_hd));
+                    iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
                     if(KODE_UPLOAD==UPLOAD_PKS){
                         Uri uriPdf = data.getData();
@@ -824,6 +1049,70 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
     }
 
+    public void cekRekening() {
+        //  dataUser = getListUser();
+        binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
+        //pantekan no aplikasi dan aktifitas
+        ReqAcctNumber req=new ReqAcctNumber();
+        req.setAccountNo(binding.etNomorEscrow.getText().toString());
+
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryDataRekening(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString="{}";
+                        try{
+                            listDataString = response.body().getData().toString();
+                        }
+                        catch (NullPointerException e){
+                            e.printStackTrace();
+                        }
+
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<DataInquiryRekening>() {
+                        }.getType();
+                        DataInquiryRekening dataCIfRekening =  gson.fromJson(listDataString, type);
+
+                        if(dataCIfRekening.getCompdisp()!=null&&!dataCIfRekening.getCompdisp().isEmpty()){
+
+                          val_branch_office_code=dataCIfRekening.getCocode();
+
+                            binding.tvHasilCekRekening.setVisibility(View.VISIBLE);
+                            binding.tvHasilCekRekening.setText("Rekening Ditemukan : "+dataCIfRekening.getAccounttitle1());
+                            binding.tvHasilCekRekening.setTextColor(getResources().getColor(R.color.main_green_color));
+
+                            //posisi rekening yang bener disini
+                            rekeningBerubah=false;
+                        }
+                        else{
+                            binding.tvHasilCekRekening.setVisibility(View.VISIBLE);
+                            binding.tvHasilCekRekening.setText("Rekening Tidak Ditemukan");
+                            binding.tvHasilCekRekening.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
+                        }
+                    }
+                    else{
+                        AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), response.body().getMessage());
+                        binding.tvHasilCekRekening.setVisibility(View.VISIBLE);
+                        binding.tvHasilCekRekening.setText("Rekening Tidak Ditemukan");
+                        binding.tvHasilCekRekening.setTextColor(getResources().getColor(R.color.red_btn_bg_color));
+                    }
+                    //posisi variabel ini diatas ya, kalo disini buat dev aja
+                    rekeningBerubah=false;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loading.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Terjadi Kesalahan");
+
+            }
+        });
+    }
+
     public void uploadFile(String base64, String fileName, int uploadCode) {
         ApiClientAdapter apiClientAdapter = new ApiClientAdapter(this);
         //  dataUser = getListUser();
@@ -843,23 +1132,23 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
                     if (uploadCode == UPLOAD_PKS) {
                         idFilePks = response.body().getId();
-//                        DataJaminanKTP.setImg(idFilePks);
-//                        DataJaminanKTP.setFileName(fileName);
+                        fileNamePks=fileName;
+                        checkFileTypeThenSet(InputMasterInstansiActivity.this,idFilePks,binding.ivFotoPks,tipeFile);
                     }
                     else if (uploadCode == UPLOAD_LAIN_1) {
                         idFileLain1 = response.body().getId();
-//                        DataJaminanKTPPasangan.setImg(idFileLain1);
-//                        DataJaminanKTPPasangan.setFileName(fileName);
+                        fileNameLain1=fileName;
+                        checkFileTypeThenSet(InputMasterInstansiActivity.this,idFileLain1,binding.ivDokumenTambahan1,tipeFile);
                     }
                     else if (uploadCode == UPLOAD_LAIN_2) {
                         idFileLain2 = response.body().getId();
-//                        DataJaminanNPWP.setImg(idFileLain2);
-//                        DataJaminanNPWP.setFileName(fileName);
+                        fileNameLain2=fileName;
+                        checkFileTypeThenSet(InputMasterInstansiActivity.this,idFileLain2,binding.ivDokumenTambahan2,tipeFile);
                     }
                     else if (uploadCode == UPLOAD_LKP) {
                         idFileLkp = response.body().getId();
-//                        DataJaminanFormAplikasi.setImg(idFileLkp);
-//                        DataJaminanFormAplikasi.setFileName(fileName);
+                        fileNameLkp=fileName;
+                        checkFileTypeThenSet(InputMasterInstansiActivity.this,idFileLkp,binding.ivFotoLkp,tipeFile);
                     }
 
                     AppUtil.notifsuccess(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
@@ -979,5 +1268,20 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         else if(title.equalsIgnoreCase(binding.tfJasaPengelolaan.getLabelText())){
             binding.etJasaPengelolaan.setText(data.getDESC());
         }
+        else if(title.equalsIgnoreCase(binding.tfInstansiInduk.getLabelText())){
+            binding.etInstansiInduk.setText(data.getDESC());
+            val_instansi_induk=Long.parseLong(data.getID());
+        }
+    }
+
+    @Override
+    public void onBranchSelect(DataBranchIkurma data) {
+        binding.etUnitBisnisPengusul.setText(data.getBranch_name());
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        CustomDialog.DialogBackpress(InputMasterInstansiActivity.this);
     }
 }

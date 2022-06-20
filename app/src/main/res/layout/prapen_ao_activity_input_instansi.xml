@@ -26,6 +26,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -36,12 +38,32 @@
                     android:text="Data Instansi "
                     android:textSize="16sp" />
 
+                <LinearLayout
+                    android:id="@+id/ll_status_aktif"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+                    <Switch
+                        android:id="@+id/sw_status_aktif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:switchMinWidth="56dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="16dp"
+                        android:text="Instansi Aktif"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/muli_b"
+                        android:textColor="@color/colorBlackHeader"/>
+                </LinearLayout>
+
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_nama_instansi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -64,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -78,7 +100,7 @@
                     <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                         android:id="@+id/et_nomor_escrow"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:inputType="number" />
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 
@@ -94,12 +116,26 @@
                     android:text="Cek Rekening"
                     />
 
+                <TextView
+                    android:id="@+id/tv_hasil_cek_rekening"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/muli_r"
+                    android:text="Rekening Ditemukan : A/N Alex"
+                    android:textAlignment="center"
+                    android:inputType="textMultiLine"
+                    android:maxLines="2"
+                    />
+
+
+
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_kantor_cabang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -122,7 +158,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -145,7 +180,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -168,7 +202,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -191,7 +224,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -214,7 +246,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -240,7 +271,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -266,7 +296,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -292,7 +321,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -330,7 +358,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -356,7 +383,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -382,7 +408,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -408,7 +433,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -433,7 +457,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_date"
@@ -459,7 +482,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -485,7 +507,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -508,7 +529,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -585,7 +605,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -622,7 +641,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -645,7 +663,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -669,7 +686,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -692,7 +708,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -715,7 +730,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_postcode"
@@ -868,7 +882,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_date"
@@ -894,7 +907,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     app:iconSignifier="@drawable/ic_date"

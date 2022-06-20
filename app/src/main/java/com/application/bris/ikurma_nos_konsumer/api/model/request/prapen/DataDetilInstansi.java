@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class DataDetilInstansi {
+    @SerializedName("Id")
+    @Expose
+    private Long idInstansi;
     @SerializedName("Nama_Instansi")
     @Expose
     private String namaInstansi;
@@ -15,6 +18,9 @@ public class DataDetilInstansi {
     @SerializedName("Branch_Office")
     @Expose
     private String branchOffice;
+    @SerializedName("Branch_Office_Code")
+    @Expose
+    private String branchOfficeCode;
     @SerializedName("Area_Office")
     @Expose
     private String areaOffice;
@@ -29,7 +35,7 @@ public class DataDetilInstansi {
     private String iDMasterInstansi;
     @SerializedName("Instansi_Induk")
     @Expose
-    private String instansiInduk;
+    private long instansiInduk;
     @SerializedName("Tipe_Pembayaran")
     @Expose
     private String tipePembayaran;
@@ -90,12 +96,51 @@ public class DataDetilInstansi {
     @SerializedName("Jasa_Pengolahan")
     @Expose
     private String jasaPengolahan;
+    @SerializedName("ID_Cabang_Inputter")
+    @Expose
+    private String idCabangInputter;
+
+    @SerializedName("Is_Active")
+    @Expose
+    private boolean statusAktifInstansi;
     @SerializedName("Data_LKP_Utama")
     @Expose
     private DataLkpUtama dataLkpUtama;
     @SerializedName("Data_Instansi_Dokumen_Lainnya")
     @Expose
     private List<UploadImage> dokumenLainnya;
+
+    public String getIdCabangInputter() {
+        return idCabangInputter;
+    }
+
+    public void setIdCabangInputter(String idCabangInputter) {
+        this.idCabangInputter = idCabangInputter;
+    }
+
+    public String getBranchOfficeCode() {
+        return branchOfficeCode;
+    }
+
+    public void setBranchOfficeCode(String branchOfficeCode) {
+        this.branchOfficeCode = branchOfficeCode;
+    }
+
+    public boolean isStatusAktifInstansi() {
+        return statusAktifInstansi;
+    }
+
+    public void setStatusAktifInstansi(boolean statusAktifInstansi) {
+        this.statusAktifInstansi = statusAktifInstansi;
+    }
+
+    public Long getIdInstansi() {
+        return idInstansi;
+    }
+
+    public void setIdInstansi(Long idInstansi) {
+        this.idInstansi = idInstansi;
+    }
 
     public String getFilenamePksInduk() {
         return filenamePksInduk;
@@ -161,11 +206,11 @@ public class DataDetilInstansi {
         this.iDMasterInstansi = iDMasterInstansi;
     }
 
-    public String getInstansiInduk() {
+    public long getInstansiInduk() {
         return instansiInduk;
     }
 
-    public void setInstansiInduk(String instansiInduk) {
+    public void setInstansiInduk(long instansiInduk) {
         this.instansiInduk = instansiInduk;
     }
 

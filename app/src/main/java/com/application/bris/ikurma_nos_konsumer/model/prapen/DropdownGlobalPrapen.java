@@ -10,6 +10,11 @@ public class DropdownGlobalPrapen {
     @SerializedName("Id")
     private String Kode;
 
+    public DropdownGlobalPrapen(String ID, String DESC) {
+        this.Kode = ID;
+        this.name = DESC;
+    }
+
     public String getKode() {
         return Kode;
     }

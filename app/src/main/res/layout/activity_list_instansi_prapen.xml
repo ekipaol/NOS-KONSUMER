@@ -145,7 +145,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add_white_24dp"
-        android:backgroundTint="#72C4FA"
+        android:backgroundTint="@color/colorPrimary"
         app:layout_anchorGravity="top|end"
         app:borderWidth="0dp"/>
 

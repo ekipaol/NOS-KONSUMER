@@ -10,7 +10,7 @@ public class DataLkpUtama {
     @SerializedName("Tanggal_LKP_Kadaluarsa")
     @Expose
     private String tanggalLKPKadaluarsa;
-    @SerializedName("Filename")
+    @SerializedName("File_Name")
     @Expose
     private String filename;
     @SerializedName("Img")

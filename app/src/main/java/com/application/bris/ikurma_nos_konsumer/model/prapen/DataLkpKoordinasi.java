@@ -19,7 +19,7 @@ public class DataLkpKoordinasi {
     @SerializedName("Img")
     @Expose
     private String idDokumen;
-    @SerializedName("Filename")
+    @SerializedName("File_Name")
     @Expose
     private String fileName;
 

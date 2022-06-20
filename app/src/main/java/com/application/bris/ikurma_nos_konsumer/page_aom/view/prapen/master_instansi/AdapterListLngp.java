@@ -53,7 +53,7 @@ public class AdapterListLngp extends RecyclerView.Adapter<AdapterListLngp.MenuVi
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(context, "Dor! Kamu Tertembak", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Klik tombol refresh di pojok kanan untuk menambah/update LNGP otomatis dari core banking", Toast.LENGTH_SHORT).show();
             }
         });
     }

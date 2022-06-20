@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -33,7 +32,6 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.jaminan.DataJaminanActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -126,7 +124,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.btnUploadDokumen.setOnClickListener(this);
         binding.ivUploadDokumen.setOnClickListener(this);
 
-        binding.btnCekLngp.setOnClickListener(this);
+        binding.btnCekEscrow.setOnClickListener(this);
         binding.btnSend.setOnClickListener(this);
 
     }
@@ -412,7 +410,7 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_cek_lngp:
+            case R.id.btn_cek_escrow:
             case R.id.btn_send:
                 break;
 
@@ -591,14 +589,14 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
             binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
             binding.tfRateLngp.setVisibility(View.VISIBLE);
             binding.tfInputLngp.setVisibility(View.VISIBLE);
-            binding.btnCekLngp.setVisibility(View.VISIBLE);
+            binding.btnCekEscrow.setVisibility(View.VISIBLE);
 
         } else if (data.getDESC().equalsIgnoreCase("Tidak")) {
             {
                 binding.tfNamaInstansiLngp.setVisibility(View.GONE);
                 binding.tfRateLngp.setVisibility(View.GONE);
                 binding.tfInputLngp.setVisibility(View.GONE);
-                binding.btnCekLngp.setVisibility(View.GONE);
+                binding.btnCekEscrow.setVisibility(View.GONE);
             }
 //        }else if (title.equalsIgnoreCase(binding.btnCekLngp.getLabelText())) {
 //            binding.btnCekLngp.setText(data.getDESC());

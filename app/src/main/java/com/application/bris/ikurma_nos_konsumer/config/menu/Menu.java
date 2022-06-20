@@ -61,6 +61,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_d3_ideb)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d3_data_hutang)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d3_data_tambahan)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d3_kalkulator)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d3_memo)));
 
@@ -91,6 +92,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d5_hutang_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d5_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d5_jangka_waktu)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d5_verifikasi)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d5_kalkulator_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_memo,context.getString(R.string.submenu_detil_aplikasi_d5_memo)));
@@ -106,6 +108,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d6_hutang_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d6_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d6_jangka_waktu)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_kalkulator,context.getString(R.string.submenu_detil_aplikasi_d6_kalkulator_pemutus)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_verifikasi)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_memo)));

@@ -46,6 +46,7 @@ public class ApiClientAdapter {
     private static Retrofit retrofit;
     private ApiInterface apiInterface;
     private String baseurl = UriApi.Baseurl.URL;
+    private String baseurlkurma = UriApi.Baseurl.URLIKURMA;
     private static final GsonConverterFactory gson = GsonConverterFactory.create(new Gson());
     private long timeout = 90;
     private TimeUnit timeUnit = TimeUnit.SECONDS;
@@ -76,6 +77,17 @@ public class ApiClientAdapter {
     public ApiClientAdapter(Context context, int id, long timeoutReq, TimeUnit timeUnitReq){
         this.context = context;
         buildConnection(baseurl, id,  timeoutReq, timeUnitReq);
+    }
+
+    public ApiClientAdapter(Context context, boolean isNembakIkurma){
+        this.context = context;
+        if(isNembakIkurma){
+            buildConnection(baseurlkurma, id, timeout, timeUnit);
+        }
+        else{
+            buildConnection(baseurl, id, timeout, timeUnit);
+        }
+
     }
 
 

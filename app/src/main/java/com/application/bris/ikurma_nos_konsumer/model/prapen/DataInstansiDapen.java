@@ -111,6 +111,78 @@ public class DataInstansiDapen extends RealmObject {
     @Expose
     private String tunjanganSpan;
 
+    @SerializedName("Escrow")
+    @Expose
+    private String escrow;
+
+    @SerializedName("Margin_Bank")
+    @Expose
+    private String marginBank;
+
+    @SerializedName("Tanggal_Expired")
+    @Expose
+    private String tanggalExpiredLngp;
+
+    @SerializedName("LKP_Digunakan")
+    @Expose
+    private String jenisLkp;
+
+    @SerializedName("LKP_Filename")
+    @Expose
+    private String lkpFileName;
+
+    @SerializedName("LKP_Img")
+    @Expose
+    private String lkpImg;
+
+    public String getLkpFileName() {
+        return lkpFileName;
+    }
+
+    public void setLkpFileName(String lkpFileName) {
+        this.lkpFileName = lkpFileName;
+    }
+
+    public String getLkpImg() {
+        return lkpImg;
+    }
+
+    public void setLkpImg(String lkpImg) {
+        this.lkpImg = lkpImg;
+    }
+
+    public String getJenisLkp() {
+        return jenisLkp;
+    }
+
+    public void setJenisLkp(String jenisLkp) {
+        this.jenisLkp = jenisLkp;
+    }
+
+    public String getEscrow() {
+        return escrow;
+    }
+
+    public void setEscrow(String escrow) {
+        this.escrow = escrow;
+    }
+
+    public String getMarginBank() {
+        return marginBank;
+    }
+
+    public void setMarginBank(String marginBank) {
+        this.marginBank = marginBank;
+    }
+
+    public String getTanggalExpiredLngp() {
+        return tanggalExpiredLngp;
+    }
+
+    public void setTanggalExpiredLngp(String tanggalExpiredLngp) {
+        this.tanggalExpiredLngp = tanggalExpiredLngp;
+    }
+
     private String statusId;
 
     public boolean isVvip() {

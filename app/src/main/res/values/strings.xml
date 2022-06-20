@@ -29,6 +29,7 @@
     <string name="submenu_detil_aplikasi_d3_data_pendapatan">Data Pendapatan</string>
     <string name="submenu_detil_aplikasi_d3_ideb">IDEB</string>
     <string name="submenu_detil_aplikasi_d3_data_hutang">Kewajiban Lainnya</string>
+    <string name="submenu_detil_aplikasi_d3_data_objek_akad">Data Objek Akad</string>
     <string name="submenu_detil_aplikasi_d3_data_tambahan">Data Tambahan</string>
     <string name="submenu_detil_aplikasi_d3_memo">Memo</string>
 

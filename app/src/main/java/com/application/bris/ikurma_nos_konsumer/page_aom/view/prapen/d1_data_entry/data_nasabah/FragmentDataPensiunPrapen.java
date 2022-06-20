@@ -1,40 +1,45 @@
 package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_nasabah;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.application.bris.ikurma_nos_konsumer.R;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
+import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.EmptyRequest;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqAcctNumber;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqListLngp;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLkpD1;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoFragmentDataPensiunanBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataCIfRekening;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataInstansiDapen;
-import com.application.bris.ikurma_nos_konsumer.model.prapen.DataNasabahPrapen;
+import com.application.bris.ikurma_nos_konsumer.model.prapen.DataListLngp;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DropdownGlobalPrapen;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogKeyValue;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhotoFromIdLogicalDoc;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.KeyValueListener;
-import com.application.bris.ikurma_nos_konsumer.page_aom.model.DataLengkap;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.keyvalue;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
-import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.g1_akad_dan_asesoir.data_akad.DataAkadActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -66,11 +71,17 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private boolean valDapatBergerak=false,valDalamPengawasan=false,valMemilikiRiwayat=false,valSerumahDenganKeluarga=false,valMemilikiUsahaSampingan=false,valMemperolehKiriman =false,valMenggunakanLngp =false,valNasabahBsi =false;
     private String val_cif="";
     private boolean adaFieldBelumDiisi=false;
-    private boolean rekeningBerubah=false;
+    public boolean rekeningBerubah=false;
+    private boolean escrowBerubah=false;
     private boolean valVvip=false;
+    private UploadImage dokumenLkp=new UploadImage();
+    private ImageView containerImageview;
+
 
     private List<MGenericModel> dropdownLembagaPengelolaPensiun=new ArrayList<>();
     private List<MGenericModel> dropdownTreatmentRekening=new ArrayList<>();
+    private List<MGenericModel> dropdownLngp=new ArrayList<>();
+    private List<MGenericModel> dropdownJenisLkp=new ArrayList<>();
 
     public FragmentDataPensiunPrapen() {
     }
@@ -89,10 +100,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         apiClientAdapter = new ApiClientAdapter(getContext());
         appPreferences=new AppPreferences(getContext());
 
+        containerImageview=new ImageView(getContext());
+
         //view settings
         allOnClicks();
         disableEditTexts();
-        defaulViewSettings();
+        defaultViewSettings();
+        isiDropdown();
         loadDropdownLembagaPengelolaPensiun();
 
         if(dataInstansi!=null){
@@ -121,23 +135,43 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             binding.etMenggunakanLngp.setText(dataInstansi.getIsLNGP());
             if(dataInstansi.getIsLNGP().equalsIgnoreCase("ya")){
                 binding.tfInputLngp.setVisibility(View.VISIBLE);
-                binding.btnCekLngp.setVisibility(View.VISIBLE);
+                binding.btnCekEscrow.setVisibility(View.VISIBLE);
                 binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
                 binding.tfRateLngp.setVisibility(View.VISIBLE);
+
+                binding.etInputLngp.setText(dataInstansi.getNoLNGP());
+                binding.etRateLngp.setText(Double.toString(dataInstansi.getRateLNGP()));
+                binding.etEscrow.setText(dataInstansi.getEscrow());
+                binding.etLkpDigunakan.setText(dataInstansi.getJenisLkp());
+                dokumenLkp.setImg(dataInstansi.getLkpImg());
+                dokumenLkp.setFile_Name(dataInstansi.getLkpFileName());
+
+                try{
+                    binding.tfTanggalExpired.setVisibility(View.VISIBLE);
+                    binding.etTanggalExpired.setText(AppUtil.parseTanggalGeneral(dataInstansi.getTanggalExpiredLngp(),"yyyy-MM-dd","dd-MM-yyyy"));
+                    binding.btnLihatLkp.setVisibility(View.VISIBLE);
+                    binding.btnLihatLkp.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            checkFileTypeThenSet(getContext(),dokumenLkp.getImg(),containerImageview,dokumenLkp.getFile_Name());
+                        }
+                    });
+                }
+                catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+                if(binding.etRateLngp.getText().toString().equalsIgnoreCase("null")){
+                    binding.etRateLngp.setText("0");
+                }
             }
             else{
                 binding.tfInputLngp.setVisibility(View.GONE);
-                binding.btnCekLngp.setVisibility(View.GONE);
+                binding.btnCekEscrow.setVisibility(View.GONE);
                 binding.tfNamaInstansiLngp.setVisibility(View.GONE);
                 binding.tfRateLngp.setVisibility(View.GONE);
             }
 
-            binding.etInputLngp.setText(dataInstansi.getNoLNGP());
-            binding.etRateLngp.setText(String.valueOf(dataInstansi.getRateLNGP()));
 
-            if(binding.etRateLngp.getText().toString().equalsIgnoreCase("null")){
-                binding.etRateLngp.setText("0");
-            }
 
             binding.etNamaInstansiLngp.setText(dataInstansi.getNamaInstansiLNGP());
             binding.etNamaInstansi.setText(dataInstansi.getNamaInstansi());
@@ -240,6 +274,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         }
         catch (Exception e){
             AppUtil.logSecure("error setdata",e.getMessage());
+            e.printStackTrace();
         }
 
     }
@@ -250,6 +285,12 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
         binding.etNasabahBsi.setOnClickListener(this);
         binding.tfNasabahBsi.setOnClickListener(this);
+
+        binding.etLkpDigunakan.setOnClickListener(this);
+        binding.tfLkpDigunakan.setOnClickListener(this);
+
+        binding.etInputLngp.setOnClickListener(this);
+        binding.tfInputLngp.setOnClickListener(this);
 
         binding.etDapatBergerak.setOnClickListener(this);
         binding.tfDapatBergerak.setOnClickListener(this);
@@ -275,18 +316,15 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etNasabahVvip.setOnClickListener(this);
         binding.tfNasabahVvip.setOnClickListener(this);
 
-        binding.btnCekLngp.setOnClickListener(this);
+        binding.btnCekEscrow.setOnClickListener(this);
         binding.btnCekPayroll.setOnClickListener(this);
-
+        binding.btnLihatLkp.setOnClickListener(this);
 
         binding.etTreatmentRekeningPendapatan.setOnClickListener(this);
         binding.tfTreatmentRekeningPendapatan.setOnClickListener(this);
 
         binding.etLembagaPengelolaPensiun.setOnClickListener(this);
         binding.tfLembagaPengelolaPensiun.setOnClickListener(this);
-
-
-
 
     }
 
@@ -323,12 +361,14 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
     if(!rekeningBerubah){
             setPojoData();
+        return null;
         }
     else{
-        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Harap Cek Rekening Terlebih Dahulu");
+//        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Harap Cek Rekening Terlebih Dahulu");
+        return new VerificationError("Cek rekening terlebih dahulu");
     }
 
-        return null;
+
 //        }
     }
 
@@ -358,6 +398,11 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             copyRealm.setRateLNGP(Double.parseDouble(binding.etRateLngp.getText().toString()));
             copyRealm.setNoLNGP(binding.etInputLngp.getText().toString());
             copyRealm.setNamaInstansiLNGP(binding.etNamaInstansiLngp.getText().toString());
+            copyRealm.setEscrow(binding.etEscrow.getText().toString());
+            copyRealm.setJenisLkp(binding.etLkpDigunakan.getText().toString());
+            copyRealm.setLkpImg(dokumenLkp.getImg());
+            copyRealm.setLkpFileName(dokumenLkp.getFile_Name());
+            copyRealm.setTanggalExpiredLngp(AppUtil.parseTanggalGeneral(binding.etTanggalExpired.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
         }
         copyRealm.setKotaTempatBekerja(binding.etKotaTempatBekerja.getText().toString());
         copyRealm.setPerkiraanGaji(NumberTextWatcherCanNolForThousand.trimCommaOfString(binding.etPerkiraanGaji.getText().toString()));
@@ -420,14 +465,16 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         if (title.equalsIgnoreCase(binding.tfMenggunakanLngp.getLabelText())){
             binding.etMenggunakanLngp.setText(data.getName());
             if(data.getName().equalsIgnoreCase("ya")){
+                binding.llLngp.setVisibility(View.VISIBLE);
                 binding.tfInputLngp.setVisibility(View.VISIBLE);
-                binding.btnCekLngp.setVisibility(View.VISIBLE);
+                binding.btnCekEscrow.setVisibility(View.VISIBLE);
                 binding.tfNamaInstansiLngp.setVisibility(View.VISIBLE);
                 binding.tfRateLngp.setVisibility(View.VISIBLE);
             }
             else{
+                binding.llLngp.setVisibility(View.GONE);
                 binding.tfInputLngp.setVisibility(View.GONE);
-                binding.btnCekLngp.setVisibility(View.GONE);
+                binding.btnCekEscrow.setVisibility(View.GONE);
                 binding.tfNamaInstansiLngp.setVisibility(View.GONE);
                 binding.tfRateLngp.setVisibility(View.GONE);
             }
@@ -570,17 +617,28 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             case R.id.tf_lembaga_pengelola_pensiun:
                 DialogGenericDataFromService.display(getFragmentManager(),binding.tfLembagaPengelolaPensiun.getLabelText(),dropdownLembagaPengelolaPensiun,FragmentDataPensiunPrapen.this);
                 break;
+            //lngp
+            case R.id.tf_input_lngp:
+            case R.id.et_input_lngp:
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfInputLngp.getLabelText(),dropdownLngp,FragmentDataPensiunPrapen.this);
+                break;
+            //LKP
+            case R.id.tf_lkp_digunakan:
+            case R.id.et_lkp_digunakan:
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfLkpDigunakan.getLabelText(),dropdownJenisLkp,FragmentDataPensiunPrapen.this);
+                break;
             //TREATMENT REKENING
             case R.id.et_treatment_rekening_pendapatan:
             case R.id.tf_treatment_rekening_pendapatan:
                 DialogGenericDataFromService.display(getFragmentManager(),binding.tfTreatmentRekeningPendapatan.getLabelText(),dropdownTreatmentRekening,FragmentDataPensiunPrapen.this);
                 break;
-            case R.id.btn_cek_lngp:
-                if(binding.etInputLngp.getText().toString().isEmpty()){
-                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content),"Harap isi no LNGP dahulu");
+            case R.id.btn_cek_escrow:
+                escrowBerubah=false;
+                if(binding.etEscrow.getText().toString().isEmpty()){
+                    AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content),"Harap isi rekening escrow terlebih dahulu");
                 }
                 else{
-                    validasiLngp();
+                    getListLngpByEscrow();
                 }
                 break;
             case R.id.btn_cek_payroll:
@@ -598,6 +656,9 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
     private void disableEditTexts(){
         binding.etMenggunakanLngp.setFocusable(false);
         binding.etLembagaPengelolaPensiun.setFocusable(false);
+        binding.etInputLngp.setFocusable(false);
+        binding.etTanggalExpired.setFocusable(false);
+        binding.etLkpDigunakan.setFocusable(false);
         binding.etNasabahBsi.setFocusable(false);
         binding.etTreatmentRekeningPendapatan.setFocusable(false);
         binding.etDapatBergerak.setFocusable(false);
@@ -682,6 +743,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             }
         });
 
+        binding.tfLkpDigunakan.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfLkpDigunakan.getLabelText(),dropdownJenisLkp,FragmentDataPensiunPrapen.this);
+            }
+        });
+
         binding.tfTreatmentRekeningPendapatan.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -695,9 +763,16 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                 DialogGenericDataFromService.display(getFragmentManager(),binding.tfLembagaPengelolaPensiun.getLabelText(),dropdownLembagaPengelolaPensiun,FragmentDataPensiunPrapen.this);
             }
         });
+
+        binding.tfInputLngp.getEndIconImageButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogGenericDataFromService.display(getFragmentManager(),binding.tfInputLngp.getLabelText(),dropdownLngp,FragmentDataPensiunPrapen.this);
+            }
+        });
     }
 
-    private void defaulViewSettings(){
+    private void defaultViewSettings(){
         binding.tvHasilCekPayroll.setVisibility(View.GONE);
         binding.etNominalKiriman.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalKiriman));
         binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
@@ -706,9 +781,13 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         binding.etGajiSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etGajiSpan));
         binding.etTunjanganSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTunjanganSpan));
         binding.tfInputLngp.setVisibility(View.GONE);
-        binding.btnCekLngp.setVisibility(View.GONE);
+        binding.btnCekEscrow.setVisibility(View.GONE);
         binding.tfNamaInstansiLngp.setVisibility(View.GONE);
         binding.tfRateLngp.setVisibility(View.GONE);
+
+        binding.tfTanggalExpired.setVisibility(View.GONE);
+        binding.tfRateLngp.setVisibility(View.GONE);
+        binding.btnLihatLkp.setVisibility(View.GONE);
 
         binding.tfNamaSpan.setVisibility(View.GONE);
         binding.tfRekeningSpan.setVisibility(View.GONE);
@@ -724,6 +803,23 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 rekeningBerubah=true;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        binding.etEscrow.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                escrowBerubah=true;
             }
 
             @Override
@@ -938,24 +1034,81 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         });
     }
 
+    public void getListLngpByEscrow() {
+        binding.loadingLngp.setVisibility(View.VISIBLE);
+        ReqListLngp req=new ReqListLngp();
+        req.setEscrow(binding.etEscrow.getText().toString());
+
+        Call<ParseResponseArr> call = apiClientAdapter.getApiInterface().inquiryListLngp(req);
+        call.enqueue(new Callback<ParseResponseArr>() {
+            @Override
+            public void onResponse(Call<ParseResponseArr> call, Response<ParseResponseArr> response) {
+                binding.loadingLngp.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = response.body().getData().toString();
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<DataListLngp>>() {
+                        }.getType();
+
+                        List<DataListLngp> dataListLngp = gson.fromJson(listDataString, type);
+
+                        dropdownLngp.clear();
+
+                        if(dataListLngp.size()>0){
+                            for (int i = 0; i <dataListLngp.size() ; i++) {
+                                dropdownLngp.add(new MGenericModel(dataListLngp.get(i).getNoLngp(),dataListLngp.get(i).getNamaInstansi()));
+                            }
+                            binding.etInputLngp.setText("");
+                            binding.etNamaInstansiLngp.setText("");
+                            binding.etRateLngp.setText("");
+                            binding.etTanggalExpired.setText("");
+                            AppUtil.notifsuccess(getContext(), getActivity().findViewById(android.R.id.content), "Silahkan pilih LNGP");
+                        }
+                        else{
+                            binding.etInputLngp.setText("");
+                            binding.etNamaInstansiLngp.setText("");
+                            binding.etRateLngp.setText("");
+                            binding.etTanggalExpired.setText("");
+                            AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Data LNGP tidak ditemukan");
+
+                        }
+
+
+
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseArr> call, Throwable t) {
+                binding.loadingLngp.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+            }
+        });
+    }
+
     public void validasiLngp() {
         //  dataUser = getListUser();
-        binding.loadingLngp.setVisibility(View.VISIBLE);
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
         ReqValidasiLngp req=new ReqValidasiLngp();
         req.setApplicationid(DataNasabahPrapenActivity.idAplikasi);
         req.setUid(Integer.toString(appPreferences.getUid()));
         req.setNoLngp(binding.etInputLngp.getText().toString());
 
-        Call<ParseResponse> call = apiClientAdapter.getApiInterface().validasiLngp(req);
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().cekLngp(req);
         call.enqueue(new Callback<ParseResponse>() {
             @Override
             public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
-                binding.loadingLngp.setVisibility(View.GONE);
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
 
                         try{
-                            String instansiLngpString = response.body().getData().get("Instansi_LNGP").toString().replace("\"","");
+                            String instansiLngpString = response.body().getData().get("Nama_Instansi").toString().replace("\"","");
                             binding.etNamaInstansiLngp.setText(instansiLngpString);
                         }
 
@@ -963,8 +1116,14 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
                             e.printStackTrace();
                         }
 
-                        String rateLngpString = response.body().getData().get("Rate_LNGP").toString().replace("\"","");
+                        String rateLngpString = response.body().getData().get("Rate").toString().replace("\"","");
+                        binding.tfRateLngp.setVisibility(View.VISIBLE);
+                        binding.tfTanggalExpired.setVisibility(View.VISIBLE);
                         binding.etRateLngp.setText(rateLngpString);
+
+                        String expiredLngp = response.body().getData().get("Tanggal_Expired").toString().replace("\"","");
+                        binding.etTanggalExpired.setText(AppUtil.parseTanggalGeneral(expiredLngp,"ddMMyyyy","dd-MM-yyyy"));
+
 
                     }
                     else if(response.body().getStatus().equalsIgnoreCase("01")){
@@ -981,7 +1140,7 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 
             @Override
             public void onFailure(Call<ParseResponse> call, Throwable t) {
-                binding.loadingLngp.setVisibility(View.GONE);
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
                 AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
                 
             }
@@ -993,6 +1152,134 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         AppUtil.disableButtons(binding.getRoot());
     }
 
+    private void isiDropdown(){
+        dropdownJenisLkp.add(new MGenericModel("LKP Induk","LKP Induk"));
+        dropdownJenisLkp.add(new MGenericModel("LKP Koordinasi","LKP Koordinasi"));
+    }
+
+    private void checkFileTypeThenSet(Context context, String idDok, ImageView imageView, String fileName){
+        if(fileName.substring(fileName.length()-3,fileName.length()).equalsIgnoreCase("pdf")){
+
+            if(idDok.length()<10){
+                loadFileJson(idDok,imageView);
+            }
+            else{
+                AppUtil.convertBase64ToFileDirect(context,idDok,imageView,fileName);
+            }
+
+        }
+        else{
+
+            if(idDok.length()<10){
+                try{
+                    DialogPreviewPhotoFromIdLogicalDoc.display(((AppCompatActivity) imageView.getContext()).getSupportFragmentManager(), "Preview Foto", idDok);
+                }
+                catch (ClassCastException e){
+                    DialogPreviewPhotoFromIdLogicalDoc.display(((AppCompatActivity) imageView.getContext()).getSupportFragmentManager(), "Preview Foto", idDok);
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            else{
+                // TODO: 24/05/22
+                //belum bisa handle kalau base 64 gaisss
+//                AppUtil.convertBase64ToImage(idDok,imageView);
+            }
+
+        }
+    }
+
+    public void getLkp() {
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+
+        ReqLkpD1 req=new ReqLkpD1();
+        req.setEscrow(binding.etEscrow.getText().toString());
+        req.setJenisLkp(binding.etLkpDigunakan.getText().toString());
+        req.setKodeCabang(appPreferences.getKodeCabang());
+        Call<ParseResponse> call = apiClientAdapter.getApiInterface().getLkp(req);
+        call.enqueue(new Callback<ParseResponse>() {
+            @Override
+            public void onResponse(Call<ParseResponse> call, Response<ParseResponse> response) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    if (response.body().getStatus().equalsIgnoreCase("00")) {
+                        String listDataString = "{}";
+                        try{
+                           listDataString = response.body().getData().toString();
+                        }
+                        catch (NullPointerException e){
+                            e.printStackTrace();
+                        }
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<UploadImage>() {}.getType();
+                       dokumenLkp= gson.fromJson(listDataString, type);
+
+                       if(dokumenLkp.getImg()!=null){
+                           binding.btnLihatLkp.setVisibility(View.VISIBLE);
+
+                           binding.btnLihatLkp.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View view) {
+                                   checkFileTypeThenSet(getContext(),dokumenLkp.getImg(),containerImageview,dokumenLkp.getFile_Name());
+                               }
+                           });
+                       }
+                       else{
+                           AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), binding.etLkpDigunakan.getText().toString()+" Tidak Ditemukan,");
+                           binding.btnLihatLkp.setVisibility(View.GONE);
+                       }
+
+
+
+                    }
+                    else{
+                        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), response.body().getMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponse> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Terjadi kesalahan");
+
+            }
+        });
+    }
+
+    public void loadFileJson(String idFoto,ImageView imageView) {
+        binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
+        ApiClientAdapter apiClientAdapter=new ApiClientAdapter(getContext());
+        Call<ParseResponseLogicalDoc> call = apiClientAdapter.getApiInterface().getFileJson(idFoto);
+        call.enqueue(new Callback<ParseResponseLogicalDoc>() {
+            @Override
+            public void onResponse(Call<ParseResponseLogicalDoc> call, Response<ParseResponseLogicalDoc> response) {
+//                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                    if (response.body().getBinaryData()!=null){
+                        AppUtil.convertBase64ToFileDirect(getContext(),response.body().getBinaryData(),imageView,response.body().getFileName());
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Data PDF Tidak Didapatkan", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else{
+                    Toast.makeText(getContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ParseResponseLogicalDoc> call, Throwable t) {
+                binding.loadingLayout.progressbarLoading.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+
+                t.printStackTrace();
+            }
+        });
+
+    }
 
     @Override
     public void onSelect(String title, MGenericModel data) {
@@ -1001,6 +1288,15 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
         }
         else if(title.equalsIgnoreCase(binding.tfTreatmentRekeningPendapatan.getLabelText())){
             binding.etTreatmentRekeningPendapatan.setText(data.getDESC());
+        }
+        else if(title.equalsIgnoreCase(binding.tfInputLngp.getLabelText())){
+            binding.etInputLngp.setText(data.getID());
+            binding.etNamaInstansiLngp.setText(data.getDESC());
+            validasiLngp();
+        }
+        else if(title.equalsIgnoreCase(binding.tfLkpDigunakan.getLabelText())){
+            binding.etLkpDigunakan.setText(data.getDESC());
+            getLkp();
         }
     }
 }

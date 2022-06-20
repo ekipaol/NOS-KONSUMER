@@ -17,7 +17,6 @@ import android.view.Window;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -25,7 +24,6 @@ import androidx.core.content.FileProvider;
 
 import com.application.bris.ikurma_nos_konsumer.BuildConfig;
 import com.application.bris.ikurma_nos_konsumer.R;
-import com.application.bris.ikurma_nos_konsumer.api.config.UriApi;
 import com.application.bris.ikurma_nos_konsumer.api.model.Error;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseArr;
@@ -37,38 +35,24 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUpload
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPribadiExt;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.DataPribadiLainya;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDataPribadiLainya;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocumentUmum;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumenTambahan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateUploadDokumen;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumen;
-import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadDokumenTambahan;
-import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MParseArray;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDataPribadiTambahanBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.UploadDokumenActivityBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogPreviewPhoto;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -546,7 +530,7 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
                     binding.llDeleteDokumen.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.btn_cek_lngp:
+            case R.id.btn_cek_escrow:
             case R.id.ll_btn_send:
             case R.id.btn_send:
                 sendData();

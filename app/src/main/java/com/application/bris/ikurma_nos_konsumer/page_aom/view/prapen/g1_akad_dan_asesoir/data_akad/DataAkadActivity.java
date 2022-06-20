@@ -79,7 +79,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     private DataMmqTempatTinggal dataMmqTempatTinggal;
     private DataMmqLainnya dataMmqLainnya;
     private DataMurabahah dataMurabahah;
-    private UploadImage dataAset;
+    private UploadImage dataAset=new UploadImage();
     private List<MGenericModel> dataDropdownAset=new ArrayList<>();
     private List<MGenericModel> dataDropdownDokumenTanah=new ArrayList<>();
     private List<MGenericModel> dataDropdownDokumenTempatTinggal=new ArrayList<>();
@@ -90,15 +90,17 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     private boolean adaFieldBelumDiisi=false;
     private String tipeFileAset="";
     private String valBase64PdfAset="";
+    private String statusId="";
     DecimalFormat format = new DecimalFormat("#00,000,000.00");
     DecimalFormat formatLuas = new DecimalFormat("#00,0");
 
     private String tipeFile;
     private boolean errorUpload=false;
-    private String idFileKendaraan="",idFileTanah="",idFileTempatTinggal="",idFileLainnya="",idFileAset="";
-    private String namaFileKendaraan="",namaFileTanah="",namaFileTempatTinggal="",namaFileLainnya="",namaFileAset="";
-    private int UPLOAD_KENDARAAN=1,UPLOAD_TANAH=2,UPLOAD_TEMPAT_TINGGAL=3,UPLOAD_LAINNYA=4,UPLOAD_ASET=5;
-    private String valKendaraan="",valTanah="",valTempatTinggal="",valLainnya="",valAset="";
+    private String idFileAset="";
+    private String namaFileAset="";
+    private int UPLOAD_ASET=5;
+    private String valAset="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,12 +119,21 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 //        akad="mmq";
         akad=getIntent().getStringExtra("akad");
 
+        if(getIntent().hasExtra("statusId")){
+            statusId=getIntent().getStringExtra("statusId");
+        }
+
         allOnTextChanged();
         setData();
         allOnClicks();
         disableEditTexts();
         isiDropdown();
         defaultViewCondition();
+
+        if(!statusId.equalsIgnoreCase("d.3")&&!statusId.equalsIgnoreCase("g.1")){
+            //DISABLE ALL FIELD
+            disableAllField();
+        }
 
         if(akad.equalsIgnoreCase("mmq")){
             loadDataMmq();
@@ -351,6 +362,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
                         Gson gson = new Gson();
                         Type type = new TypeToken<DataMurabahah>() {}.getType();
+                        Type typeAset = new TypeToken<UploadImage>() {}.getType();
 
                         try{
                             if(response.body().getData().get("StatusPernikahan").getAsBoolean()){
@@ -366,6 +378,15 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                         try{
                             String listDataString = response.body().getData().get("MRBHIJRHAset").toString();
                             dataMurabahah =  gson.fromJson(listDataString, type);
+                        }
+                        catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        try{
+                            String listDataAset = response.body().getData().get("FotoAset").toString();
+                            dataAset =  gson.fromJson(listDataAset, typeAset);
+                            checkFileTypeThenSet(DataAkadActivity.this,dataAset.getImg(),binding.ivFotoAset,dataAset.getFile_Name());
                         }
                         catch (Exception e){
                             e.printStackTrace();
@@ -420,8 +441,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         req.setUID(Integer.toString(appPreferences.getUid()));
 
         //data
-        data.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
-        data.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+        if(statusId.equalsIgnoreCase("g.1")){
+            data.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            data.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+        }
+
         data.setTanggalAktaNikah(AppUtil.parseTanggalGeneral(binding.etTanggalAktaNikah.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
         data.setNoAktaNikah(binding.etNomorAktaNikah.getText().toString());
         data.setNamaBarang(binding.etNamaDanJenisBarangAkad.getText().toString());
@@ -432,6 +456,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
         //setdata
         reqData.setMurabahah(data);
+        reqData.setDokumenAset(dataAset);
         req.setData(reqData);
 
 
@@ -477,8 +502,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
         //setdata
         if(binding.etKepemilikanAset.getText().toString().equalsIgnoreCase("kendaraan")){
-            dataMmqKendaraan.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
-            dataMmqKendaraan.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            if(statusId.equalsIgnoreCase("g.1")){
+                dataMmqKendaraan.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+                dataMmqKendaraan.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            }
+
             dataMmqKendaraan.setTanggalAktaNikah(AppUtil.parseTanggalGeneral(binding.etTanggalAktaNikah.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
             dataMmqKendaraan.setNoAktaNikah(binding.etNomorAktaNikah.getText().toString());
             dataMmqKendaraan.setTanggalPenilaian(AppUtil.parseTanggalGeneral(binding.etTanggalPenilaian.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
@@ -501,8 +529,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             reqData.setMmqKendaraan(dataMmqKendaraan);
         }
         else if(binding.etKepemilikanAset.getText().toString().equalsIgnoreCase("tanah")){
-            dataMmqTanah.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
-            dataMmqTanah.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            if(statusId.equalsIgnoreCase("g.1")){
+                dataMmqTanah.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+                dataMmqTanah.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            }
+
             dataMmqTanah.setTanggalAktaNikah(AppUtil.parseTanggalGeneral(binding.etTanggalAktaNikah.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
             dataMmqTanah.setNoAktaNikah(binding.etNomorAktaNikah.getText().toString());
             dataMmqTanah.setTanggalPenilaian(AppUtil.parseTanggalGeneral(binding.etTanggalPenilaian.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
@@ -522,8 +553,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             reqData.setMmqTanah(dataMmqTanah);
         }
         else if(binding.etKepemilikanAset.getText().toString().equalsIgnoreCase("tempat tinggal")){
-            dataMmqTempatTinggal.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
-            dataMmqTempatTinggal.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            if(statusId.equalsIgnoreCase("g.1")){
+                dataMmqTempatTinggal.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+                dataMmqTempatTinggal.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            }
+
             dataMmqTempatTinggal.setTanggalAktaNikah(AppUtil.parseTanggalGeneral(binding.etTanggalAktaNikah.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
             dataMmqTempatTinggal.setNoAktaNikah(binding.etNomorAktaNikah.getText().toString());
             dataMmqTempatTinggal.setTanggalPenilaian(AppUtil.parseTanggalGeneral(binding.etTanggalPenilaian.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
@@ -549,8 +583,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
 
         }
         else if(binding.etKepemilikanAset.getText().toString().equalsIgnoreCase("lainnya")){
-            dataMmqLainnya.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
-            dataMmqLainnya.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            if(statusId.equalsIgnoreCase("g.1")){
+                dataMmqLainnya.setRencanaTandaTanganAkad(AppUtil.parseTanggalGeneral(binding.etRencanaPenandatangananAkad.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+                dataMmqLainnya.setBulanAngsuranPertama(AppUtil.parseTanggalGeneral("01-"+binding.etBulanAngsuranPertama.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
+            }
+
             dataMmqLainnya.setTanggalAktaNikah(AppUtil.parseTanggalGeneral(binding.etTanggalAktaNikah.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
             dataMmqLainnya.setNoAktaNikah(binding.etNomorAktaNikah.getText().toString());
             dataMmqLainnya.setTanggalPenilaian(AppUtil.parseTanggalGeneral(binding.etTanggalPenilaian.getText().toString(),"dd-MM-yyyy","yyyy-MM-dd"));
@@ -787,8 +824,11 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                     break;
             case R.id.btn_simpan_data_akad:
                 adaFieldBelumDiisi=false;
-                validateField(binding.etRencanaPenandatangananAkad,binding.tfRencanaPenandatangananAkad);
-                validateField(binding.etBulanAngsuranPertama,binding.tfBulanAngsuranPertama);
+                if(statusId.equalsIgnoreCase("g.1")){
+                    validateField(binding.etRencanaPenandatangananAkad,binding.tfRencanaPenandatangananAkad);
+                    validateField(binding.etBulanAngsuranPertama,binding.tfBulanAngsuranPertama);
+                }
+
                 if (binding.llAkadNikah.getVisibility() == View.VISIBLE) {
                     validateField(binding.etNomorAktaNikah, binding.tfNomorAktaNikah);
                     validateField(binding.etTanggalAktaNikah, binding.tfTanggalAktaNikah);
@@ -961,8 +1001,8 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
         if(akad.equalsIgnoreCase("murabahah")||akad.equalsIgnoreCase("ijarah")){
             binding.llAkadMmq.setVisibility(View.GONE);
             binding.llAkadWakalah.setVisibility(View.VISIBLE);
-            binding.llFotoAset.setVisibility(View.GONE);
-            binding.tvFotoAset.setVisibility(View.GONE);
+            binding.llFotoAset.setVisibility(View.VISIBLE);
+            binding.tvFotoAset.setVisibility(View.VISIBLE);
         }
         else if(akad.equalsIgnoreCase("MMQ")){
             binding.llAkadMmq.setVisibility(View.VISIBLE);
@@ -974,10 +1014,16 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             binding.tvFotoAset.setVisibility(View.VISIBLE);
             binding.llFotoAset.setVisibility(View.VISIBLE);
         }
+
+        if(!statusId.equalsIgnoreCase("g.1")){
+            binding.tfTanggalPenilaian.setVisibility(View.GONE);
+            binding.tfNamaPenilai.setVisibility(View.GONE);
+            binding.tfKotaPenandatangananLaporan.setVisibility(View.GONE);
+            binding.tvTanggalPenandatanganan.setVisibility(View.GONE);
+            binding.tfRencanaPenandatangananAkad.setVisibility(View.GONE);
+            binding.tfBulanAngsuranPertama.setVisibility(View.GONE);
+        }
     }
-
-
-
 
     @Override
     public void onSelect(String title, MGenericModel data) {
@@ -1027,6 +1073,23 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
             adaFieldBelumDiisi=true;
             AppUtil.notiferror(DataAkadActivity.this, findViewById(android.R.id.content), "Harap Isi "+textFieldBoxes.getLabelText());
         }
+    }
+
+    private void disableAllField(){
+        AppUtil.disableEditTexts(binding.getRoot());
+        binding.btnFotoAset.setVisibility(View.GONE);
+        binding.btnSimpanDataAkad.setVisibility(View.GONE);
+        binding.btnUseless.setVisibility(View.GONE);
+
+        binding.tfBulanAngsuranPertama.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfTanggalAktaNikah.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfTanggalPenilaian.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfKepemilikanAset.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfJenisDokumenTempatTinggal.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfJenisDokumenTanah.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfJenisKendaraan.getEndIconImageButton().setVisibility(View.GONE);
+        binding.tfDokumenKepemilikanKendaraan.getEndIconImageButton().setVisibility(View.GONE);
+
     }
 
     private void allOnTextChanged(){
@@ -1248,23 +1311,7 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                     dataAset.setImg(idFileAset);
                     dataAset.setFile_Name(fileName);
                     checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
-//
-//                    if (uploadCode == UPLOAD_KENDARAAN) {
-//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
-//                    }
-//                    else if (uploadCode == UPLOAD_TANAH) {
-//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
-//                    }
-//                    else if (uploadCode == UPLOAD_TEMPAT_TINGGAL) {
-//                        checkFileTypeThenSet(DataAkadActivity.this,idFileAset,binding.ivFotoAset,fileName);
-//                    }
-//                    else if (uploadCode == UPLOAD_LAINNYA) {
-//                        idFileLainnya = response.body().getId();
-//                        namaFileLainnya=fileName;
-//                        dataAset.setImg(idFileLainnya);
-//                        dataAset.setFile_Name(fileName);
-//                        checkFileTypeThenSet(DataAkadActivity.this,idFileLainnya,binding.ivFotoAset,fileName);
-//                    }
+
                     AppUtil.notifsuccess(DataAkadActivity.this, findViewById(android.R.id.content), "Upload Berhasil");
 //                    sudahUpload=true;
                 } else {
@@ -1356,7 +1403,6 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
     }
 
     //UPLOAD FILE METHODS
-
 
     private void openCamera(String namaFoto) {
         if (ContextCompat.checkSelfPermission(DataAkadActivity.this, Manifest.permission.CAMERA)
