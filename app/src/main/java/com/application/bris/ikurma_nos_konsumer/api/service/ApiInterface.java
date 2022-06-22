@@ -111,6 +111,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqData
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDownloadFile;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHasilRekomendasiAkad;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungAkseptasiPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungKalkulator;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqKodeAo;
@@ -119,6 +120,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqLanj
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqProgram;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 //import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUploadDokumen;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUpdateAkseptasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiDukcapil;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqValidasiLngp;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SimpanIdebOjk;
@@ -790,7 +792,7 @@ public interface ApiInterface {
     Call<ParseResponseArr> cariInstansi(@Body ReqCariInstansi ReqCariInstansi);
 
     @POST(UriApi.prapen.inquiryDedupe)
-    Call<ParseResponseArr> inquiryDedupe(@Body ReqDedupe ReqDedupe);
+    Call<ParseResponseAgunan> inquiryDedupe(@Body ReqDedupe ReqDedupe);
 
     @POST(UriApi.prapen.updateDedupe)
     Call<ParseResponse> updateDedupe(@Body ReqDedupe ReqDedupe);
@@ -1135,10 +1137,13 @@ public interface ApiInterface {
     Call<ParseResponse> UpdateDokDataPribadiLainnya(@Body DataPribadiLainya DataPribadiLainya);
 
     @POST(UriApi.prapen.InquiryAkseptasiPendapatanMarketing)
-    Call<DataPribadiLainya> InquiryAkseptasiPendapatanMarketing(@Body ReqInquery ReqInquery);
+    Call<ParseResponse> InquiryAkseptasiPendapatanMarketing(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.HitungAkseptasiPendapatan)
+    Call<ParseResponse> HitungAkseptasiPendapatan(@Body ReqHitungAkseptasiPendapatan ReqHitungAkseptasiPendapatan);
 
     @POST(UriApi.prapen.UpdateAkseptasiPendapatanMarketing)
-    Call<ParseResponse> UpdateAkseptasiPendapatanMarketing(@Body DataPribadiLainya DataPribadiLainya);
+    Call<ParseResponse> UpdateAkseptasiPendapatanMarketing(@Body ReqUpdateAkseptasi ReqUpdateAkseptasi);
 
 //    @GET(UriApi.foto.urlFile)
 //    Call<ParseResponse> getFile(@Body EmptyRequest EmptyRequest);

@@ -13,6 +13,9 @@ public class Picklist {
     @SerializedName("Name")
     @Expose
     private String Name;
+    @SerializedName("NilaiAkseptasi")
+    @Expose
+    private Float Nilai;
 
     public Long getId() {
         return Id;
@@ -36,5 +39,13 @@ public class Picklist {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    public Float getNilai() {
+        return Nilai;
+    }
+
+    public void setNilai(Float nilaiAkseptasi) {
+        Nilai = nilaiAkseptasi;
     }
 }

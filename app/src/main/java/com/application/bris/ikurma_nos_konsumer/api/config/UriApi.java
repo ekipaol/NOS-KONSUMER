@@ -367,7 +367,7 @@ public class UriApi {
         public static final String cekHasilRekomendasiAkad = "NOS_PRAPEN_Services/rest/D1/InquiryHasilRekomendasiAkad";
         public static final String updateDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/UpdateDataPembiayaan";
         public static final String inquiryDataPembiayaan = "NOS_PRAPEN_Services/rest/D1/InquiryDataPembiayaan";
-        public static final String inquiryDedupe = "NOS_PRAPEN_Services/rest/D1/InquiryCheckDedupe";
+        public static final String inquiryDedupe = "NOS_PRAPEN_Services/rest/D1/InquiryDedupe";
         public static final String updateDedupe = "NOS_PRAPEN_Services/rest/D1/UpdateCheckDedupe";
         public static final String updateDataNasabah = "NOS_PRAPEN_Services/rest/D1/UpdateDataDukcapil";
         public static final String inquiryDataNasabah = "NOS_PRAPEN_Services/rest/D1/InquiryDukcapilPribadiPasangan";
@@ -405,6 +405,7 @@ public class UriApi {
         public static final String UpdateDokDataPribadiLainnya = "NOS_PRAPEN_Services/rest/D3/UpdateDokDataPribadiLainnya";
         public static final String InquiryAkseptasiPendapatanMarketing = "NOS_PRAPEN_Services/rest/D3/InquiryAkseptasiPendapatanMarketing";
         public static final String UpdateAkseptasiPendapatanMarketing = "NOS_PRAPEN_Services/rest/D3/UpdateAkseptasiPendapatanMarketing";
+        public static final String HitungAkseptasiPendapatan = "NOS_PRAPEN_Services/rest/D3/HitungAkseptasiPendapatan";
 
 
         public static final String HitungBiayadanAngsuran = "NOS_PRAPEN_Services/rest/D3/HitungBiayadanAngsuran";

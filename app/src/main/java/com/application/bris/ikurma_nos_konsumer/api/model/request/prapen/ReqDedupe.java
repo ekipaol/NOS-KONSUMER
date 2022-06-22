@@ -6,13 +6,15 @@ public class ReqDedupe {
     @SerializedName("NIK")
     private String NIK;
     @SerializedName("ApplicationId")
-    private String ApplicationId;
+    private Long ApplicationId;
+    @SerializedName("UID")
+    private String UID;
 
-    public String getApplicationId() {
+    public Long getApplicationId() {
         return ApplicationId;
     }
 
-    public void setApplicationId(String applicationId) {
+    public void setApplicationId(Long applicationId) {
         ApplicationId = applicationId;
     }
 
@@ -22,5 +24,13 @@ public class ReqDedupe {
 
     public void setNIK(String NIK) {
         this.NIK = NIK;
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 }
