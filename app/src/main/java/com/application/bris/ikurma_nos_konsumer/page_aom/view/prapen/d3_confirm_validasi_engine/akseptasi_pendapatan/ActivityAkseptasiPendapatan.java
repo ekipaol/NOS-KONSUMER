@@ -104,6 +104,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         if (getIntent().hasExtra("idAplikasi")) {
             idAplikasi = getIntent().getStringExtra("idAplikasi");
         }
+//        idAplikasi = "131";
         backgroundStatusBar();
         onclickSelectDialog();
         isidropdown();
@@ -161,7 +162,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
     }
 
     private void initdata() {
-//        idAplikasi = "131";
+
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(idAplikasi));
@@ -193,7 +194,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                             binding.etPendapatanSaatPensiun.setText(String.valueOf(mparsePendapatanTunjangan.getManfaatPensiun().setScale(2, RoundingMode.HALF_EVEN)));
                             binding.etTotalPendapatanUntukAngsuran.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Maksimal_Angsuran().setScale(2, RoundingMode.HALF_EVEN)));
                             binding.etTotalPendapatanSetelahAkseptasi.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().setScale(2, RoundingMode.HALF_EVEN)));
-                            if (!mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().equals(new BigDecimal("0"))){
+                            if (!mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().equals(new BigDecimal("0"))) {
                                 hitung = 1;
                             }
                         }
@@ -546,11 +547,11 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     if (response.body() != null) {
                         assert response.body().getData() != null;
                         if (response.body().getData().get("MaksimalAngsuran") != null) {
-                            binding.etTotalPendapatanUntukAngsuran.setText(response.body().getData().get("MaksimalAngsuran").getAsString());
+                            binding.etTotalPendapatanUntukAngsuran.setText(String.valueOf(response.body().getData().get("MaksimalAngsuran").getAsBigDecimal().setScale(2,RoundingMode.HALF_EVEN)));
 
                         }
                         if (response.body().getData().get("Totalakseptasi") != null) {
-                            binding.etTotalPendapatanSetelahAkseptasi.setText(response.body().getData().get("Totalakseptasi").getAsString());
+                            binding.etTotalPendapatanSetelahAkseptasi.setText(String.valueOf(response.body().getData().get("Totalakseptasi").getAsBigDecimal().setScale(2,RoundingMode.HALF_EVEN)));
 
                         }
                     } else {
@@ -573,7 +574,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
     }
 
     private void sendData() {
-        if (hitung == 0) {
+        if (hitung != 0) {
             binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
             MparseDataGajiTunjangan doc = new MparseDataGajiTunjangan();
             doc.setNama_Bank_Gaji(binding.etNamaBankGaji.getText().toString());
@@ -636,7 +637,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     AppUtil.notiferror(ActivityAkseptasiPendapatan.this, findViewById(android.R.id.content), getString(R.string.txt_connection_failure));
                 }
             });
-        }else{
+        } else {
             AppUtil.notiferror(ActivityAkseptasiPendapatan.this, findViewById(android.R.id.content), "Klik Button Hitung Terlebih Dahulu");
         }
     }
@@ -846,6 +847,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                 Uri uriPdf = data.getData();
                 binding.ivDokumenPendapatan.setImageDrawable(getDrawable(R.drawable.ic_pdf_hd));
                 Valdokumen = AppUtil.encodeFileToBase64(this, uriPdf);
+                AppUtil.convertBase64ToFileWithOnClick(this, Valdokumen, binding.ivDokumenPendapatan, namaFoto);
             } catch (Exception e2) {
                 e2.printStackTrace();
             }
