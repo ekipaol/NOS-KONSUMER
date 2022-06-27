@@ -258,6 +258,28 @@
                         app:prefix="Rp. " />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                <!--Status-->
+                <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                    android:id="@+id/tf_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:iconSignifier="@drawable/ic_district"
+                    app:isResponsiveIconColor="true"
+                    app:labelText="Status"
+                    app:panelBackgroundColor="@color/colorBgEdittext"
+                    app:primaryColor="@color/colorPrimary"
+                    app:secondaryColor="@color/colorPrimary"
+                    app:useDenseSpacing="true">
+                    <!--Status-->
+                    <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                        android:id="@+id/et_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
                 <!--Biaya Asuransi-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_treatment_biaya_asuransi"
@@ -285,6 +307,8 @@
                         tools:ignore="DuplicateIds" />
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
                 <!--Treatment Biaya Asuransi-->
                 <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                     android:id="@+id/tf_biaya_asuransi_khusus"
@@ -586,7 +610,6 @@
                                 android:text="Rp. 0"
                                 android:textColor="@color/colorBlackHeader"
                                 android:textSize="14sp"
-                                app:prefix="Rp. "
                                 tools:ignore="TouchTargetSizeCheck" />
                             android:layout_weight="1"/>
                         </LinearLayout>
@@ -620,7 +643,6 @@
                                 android:text="Rp. 0"
                                 android:textColor="@color/colorBlackHeader"
                                 android:textSize="14sp"
-                                app:prefix="Rp. "
                                 tools:ignore="DuplicateIds,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
                         </LinearLayout>
 

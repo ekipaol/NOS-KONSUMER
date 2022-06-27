@@ -115,9 +115,7 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqUidIdAplikasi req=new ReqUidIdAplikasi();
         req.setApplicationId(idAplikasi);
-        //pantekan no aplikasi
-//        Toast.makeText(this, "ada pantekan id aplikasi", Toast.LENGTH_SHORT).show();
-//        req.setApplicationId(4);
+         req.setUID(Integer.toString(appPreferences.getUid()));
 
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().inquiryJangkaWaktu(req);
         call.enqueue(new Callback<ParseResponse>() {
@@ -135,8 +133,6 @@ public class ActivityJangkaWaktuPembiayaan extends AppCompatActivity implements 
                         if(dataJangkaWaktu!=null){
                             setData();
                         }
-
-
                     }
                     else if (response.body().getStatus().equalsIgnoreCase("01")) {
                         AppUtil.notiferror(ActivityJangkaWaktuPembiayaan.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");

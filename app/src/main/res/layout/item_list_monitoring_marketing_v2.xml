@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_data_lkp_koordinasi"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:layout_marginTop="15dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="3dp">
+    <include android:id="@+id/loading" layout="@layout/loading"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackgroundGrey1"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Nama Nasabah"
+            android:textColor="@color/colorBlackHeader"
+            style="@style/JakartaSansBold"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="ID Aplikasi : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_id_aplikasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{ID aplikasi}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Nomor Aplikasi : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_nomor_aplikasi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Nomor Aplikasi}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Produk : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_produk"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Produk}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Nama File Pencairan : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_nama_file"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Nama File}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:text="Sequence Pencairan : "
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_sequence"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Sequence}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Status Pembentukan Blokir : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_status_blokir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Status Blokir}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Keterangan Blokir : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_keterangan_blokir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Keterangan Blokir}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Status Pembentukan LD : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_status_ld"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Status Pembentukan LD}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Keterangan Pencairan :"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_keterangan_LD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Keterangan LD}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:text="Nomor LD : "
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_nomor_ld"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="{Nomor LD}"
+                android:gravity="start"
+                android:textSize="11sp"
+                android:textColor="@color/colorBlackHeader"
+                android:fontFamily="@font/plus_jakarta_sans_regular"
+                android:layout_weight="1"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_lihat_dokumen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundprimary"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_lihat_covernote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/plus_jakarta_sans_regular"
+                    android:text="Lihat Cover Note Asuransi"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="@id/btn_lihat_cover_note"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/btn_lihat_cover_note"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="right"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -46,6 +46,17 @@ public class MparseResponseSimulasiBiayaBiaya {
     @SerializedName("ManfaatAsuransi")
     @Expose
     private String ManfaatAsuransi;
+    @SerializedName("KeteranganManfaatAsuransi")
+    @Expose
+    private String keteranganManfaatAsuransi;
+
+    public String getKeteranganManfaatAsuransi() {
+        return keteranganManfaatAsuransi;
+    }
+
+    public void setKeteranganManfaatAsuransi(String keteranganManfaatAsuransi) {
+        this.keteranganManfaatAsuransi = keteranganManfaatAsuransi;
+    }
 
     public String getManfaatAsuransi() {
         return ManfaatAsuransi;

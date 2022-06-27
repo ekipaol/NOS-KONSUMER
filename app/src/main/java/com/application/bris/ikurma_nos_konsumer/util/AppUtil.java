@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.media.FaceDetector;
 import android.media.Image;
@@ -612,12 +613,27 @@ public class AppUtil {
         View view = snackbar.getView();
         view.setBackgroundColor(ContextCompat.getColor(mcontex, R.color.colorWhite));
         TextView txtv = (TextView) view.findViewById(com.google.android.material.R.id.snackbar_text);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            txtv.setCompoundDrawablesRelativeWithIntrinsicBounds(ContextCompat.getDrawable(mcontex, R.drawable.ic_success), null, null, null);
-        }
+        txtv.setCompoundDrawablesRelativeWithIntrinsicBounds(ContextCompat.getDrawable(mcontex, R.drawable.ic_success), null, null, null);
+
         txtv.setCompoundDrawablePadding(30);
         txtv.setMaxLines(5);
         txtv.setTextColor(ContextCompat.getColor(mcontex, R.color.colorGreenSuccess));
+        txtv.setGravity(Gravity.CENTER_HORIZONTAL);
+
+        return snackbar;
+    }
+
+    public static Snackbar notifWithButtonCustomLengthAndImage(Context mcontex, View root, String snackTitle, int length, int drawable) {
+        Snackbar snackbar = Snackbar.make(root, snackTitle, length);
+        snackbar.show();
+        View view = snackbar.getView();
+        view.setBackgroundColor(ContextCompat.getColor(mcontex, R.color.colorWhite));
+        TextView txtv = (TextView) view.findViewById(com.google.android.material.R.id.snackbar_text);
+        txtv.setCompoundDrawablesRelativeWithIntrinsicBounds(ContextCompat.getDrawable(mcontex, drawable), null, null, null);
+
+        txtv.setCompoundDrawablePadding(30);
+        txtv.setMaxLines(5);
+        txtv.setTextColor(ContextCompat.getColor(mcontex, R.color.colorBlue));
         txtv.setGravity(Gravity.CENTER_HORIZONTAL);
 
         return snackbar;

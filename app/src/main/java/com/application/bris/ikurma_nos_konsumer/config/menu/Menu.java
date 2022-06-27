@@ -47,6 +47,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d1_data_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d1_data_dedupe)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d1_data_nasabah)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d1_bsi_bisa)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_marketing,context.getString(R.string.submenu_detil_aplikasi_d1_data_marketing)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_checked,context.getString(R.string.submenu_detil_aplikasi_d1_lanjut)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_reject,context.getString(R.string.submenu_detil_aplikasi_d1_batal)));
@@ -75,6 +76,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_pendapatan,context.getString(R.string.submenu_detil_aplikasi_d4_pendapatan_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_d4_ideb_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d4_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d3_data_tambahan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d4_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d4_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d4_verifikasi)));
@@ -90,6 +92,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_pendapatan,context.getString(R.string.submenu_detil_aplikasi_d5_pendapatan_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_d5_ideb_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d5_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d3_data_tambahan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d5_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d5_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad)));
@@ -106,6 +109,7 @@ public class Menu {
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_pendapatan,context.getString(R.string.submenu_detil_aplikasi_d6_pendapatan_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_ideb,context.getString(R.string.submenu_detil_aplikasi_d6_ideb_verin)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_data_hutang,context.getString(R.string.submenu_detil_aplikasi_d6_hutang_verin)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_history_nasabah,context.getString(R.string.submenu_detil_aplikasi_d3_data_tambahan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_pembiayaan,context.getString(R.string.submenu_detil_aplikasi_d6_kualitas_pembiayaan)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_jangka_waktu,context.getString(R.string.submenu_detil_aplikasi_d6_jangka_waktu)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_assesoir,context.getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad)));

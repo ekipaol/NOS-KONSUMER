@@ -75,17 +75,23 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         backgroundStatusBar();
         disableEditText();
         defaultViewCondition();
+        noInputMode();
 
-
-        //disable all edittexts and button
-        AppUtil.disableEditTexts(binding.getRoot());
-        AppUtil.disableButtons(binding.getRoot());
         binding.etPerkiraanGaji.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanGaji));
         binding.etPerkiraanTunjangan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etPerkiraanTunjangan));
         binding.etTotalPendapatan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etTotalPendapatan));
+        binding.etNominalGajiSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalGajiSpan));
+        binding.etNominalTunjanganSpan.addTextChangedListener(new NumberTextWatcherCanNolForThousand(binding.etNominalTunjanganSpan));
 
         loadData();
         AppUtil.toolbarRegular(this, "Verifikasi Tempat Kerja");
+    }
+
+
+    private void noInputMode(){
+        //disable all edittexts and button
+        AppUtil.disableEditTexts(binding.getRoot());
+        AppUtil.disableButtons(binding.getRoot());
     }
 
 
@@ -132,9 +138,29 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     private void setDataFirstTime() {
         binding.etNamaInstansi.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansi());
         binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getIsLNGP());
-        binding.etInputLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNoLNGP());
-        binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansiLNGP());
-        binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getInstansiDapen().getRateLNGP()));
+        if(dataVerifikasiTempatKerja.getInstansiDapen().getIsLNGP().equalsIgnoreCase("tidak")){
+            binding.llLngp.setVisibility(View.GONE);
+        }
+        else{
+            binding.etInputLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNoLNGP());
+            binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansiLNGP());
+            binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getInstansiDapen().getRateLNGP()));
+            binding.etNomorEscrow.setText(dataVerifikasiTempatKerja.getInstansiDapen().getEscrow());
+            binding.etTanggalExpired.setText(AppUtil.parseTanggalGeneral(dataVerifikasiTempatKerja.getInstansiDapen().getTanggalExpiredLngp(),"yyyy-MM-dd","dd-MM-yyyy"));
+        }
+
+
+        if(dataVerifikasiTempatKerja.getInstansiDapen().getNamaNasabahSpan()!=null&&!dataVerifikasiTempatKerja.getInstansiDapen().getNamaNasabahSpan().isEmpty()){
+            binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaInstansiSPAN());
+            binding.etNamaSpan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getNamaNasabahSpan());
+            binding.etRekeningSpan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getRekeningSpan());
+            binding.etNominalGajiSpan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getGajiSpan());
+            binding.etNominalTunjanganSpan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getTunjanganSpan());
+        }
+        else{
+            binding.llResumeSpan.setVisibility(View.GONE);
+        }
+
         binding.etKotaTempatBekerja.setText(dataVerifikasiTempatKerja.getInstansiDapen().getKotaTempatBekerja());
         binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanGaji());
         binding.etPerkiraanTunjangan.setText(dataVerifikasiTempatKerja.getInstansiDapen().getPerkiraanTunjangan());
@@ -211,7 +237,6 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     private void  setDataAfterUpdate() {
 
         binding.etNamaInstansi2.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiTaspen());
-        binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiSPAN());
         binding.etKesimpulanPensesuaianVerifikasi.setText(dataVerifikasiTempatKerja.getTempatKerja().getKesimpulan());
         binding.etCatatanhasilverifikasi.setText(dataVerifikasiTempatKerja.getTempatKerja().getHasilVerifikasi());
 
@@ -220,18 +245,31 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
         binding.etMenggunakanLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getIsLNGP());
 
         if (binding.etMenggunakanLngp.getText().toString().equalsIgnoreCase("tidak")) {
-            binding.tfInputLngp.setVisibility(View.GONE);
-            binding.tfNamaInstansiLngp.setVisibility(View.GONE);
-            binding.tfRateLngp.setVisibility(View.GONE);
+            binding.llLngp.setVisibility(View.GONE);
+        }
+        else{
+            binding.etNomorEscrow.setText(dataVerifikasiTempatKerja.getTempatKerja().getEscrow());
+            binding.etTanggalExpired.setText(AppUtil.parseTanggalGeneral(dataVerifikasiTempatKerja.getTempatKerja().getTanggalExpiredLngp(),"yyyy-MM-dd","dd-MM-yyyy"));
+            binding.etInputLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNoLNGP());
+            binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiLNGP());
+            try {
+                binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
         }
 
-        binding.etInputLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNoLNGP());
-        binding.etNamaInstansiLngp.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiLNGP());
-        try {
-            binding.etRateLngp.setText(Double.toString(dataVerifikasiTempatKerja.getTempatKerja().getRateLNGP()));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
+        if(dataVerifikasiTempatKerja.getTempatKerja().getNamaNasabahSpan()!=null&&!dataVerifikasiTempatKerja.getTempatKerja().getNamaNasabahSpan().isEmpty()){
+            binding.etNamaInstansi3.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaInstansiSPAN());
+            binding.etNamaSpan.setText(dataVerifikasiTempatKerja.getTempatKerja().getNamaNasabahSpan());
+            binding.etRekeningSpan.setText(dataVerifikasiTempatKerja.getTempatKerja().getRekeningSpan());
+            binding.etNominalGajiSpan.setText(dataVerifikasiTempatKerja.getTempatKerja().getGajiSpan());
+            binding.etNominalTunjanganSpan.setText(dataVerifikasiTempatKerja.getTempatKerja().getTunjanganSpan());
         }
+        else{
+            binding.llResumeSpan.setVisibility(View.GONE);
+        }
+
 
         binding.etKotaTempatBekerja.setText(dataVerifikasiTempatKerja.getTempatKerja().getKotaTempatBekerja());
         binding.etPerkiraanGaji.setText(dataVerifikasiTempatKerja.getTempatKerja().getPerkiraanGaji());
@@ -388,7 +426,8 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
                         if (dataVerifikasiTempatKerja != null && dataVerifikasiTempatKerja.getTempatKerja() == null) {
                             setDataFirstTime();
                         } else {
-                            setDataAfterUpdate();
+//                            setDataAfterUpdate();
+                            setDataFirstTime(); //coba kita ambil dlu 22nya dari parameter instansi dapen ya, soalnya ini isinya lengkap
                         }
                     } else if (response.body().getStatus().equalsIgnoreCase("01")) {
                         AppUtil.notiferror(VerifikasiTempatKerjaActivity.this, findViewById(android.R.id.content), "Data Belum Pernah Disimpan Sebellumnya, Silahkan Diisi");

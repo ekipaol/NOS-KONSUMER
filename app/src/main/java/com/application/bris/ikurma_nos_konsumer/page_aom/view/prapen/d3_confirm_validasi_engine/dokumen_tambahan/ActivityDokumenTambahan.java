@@ -99,26 +99,43 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
         isidropdown();
         disabledEdit();
         endIconClick();
-        AppUtil.toolbarRegular(this, "Upload Dokumen");
+        AppUtil.toolbarRegular(this, "Data Tambahan");
 
-        binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomDialog.DialogBackpress(ActivityDokumenTambahan.this);
-            }
-        });
 
-        if (statusId.equalsIgnoreCase("g.3")) {
-            binding.btnTambahanDokumen.setVisibility(View.GONE);
-            binding.btnDeleteDokumen.setVisibility(View.GONE);
-            binding.btnSend.setVisibility(View.GONE);
-            binding.btnUploadDokumen1.setVisibility(View.GONE);
-            binding.btnUploadDokumen2.setVisibility(View.GONE);
-            binding.btnUploadDokumen3.setVisibility(View.GONE);
-            binding.btnUploadDokumen4.setVisibility(View.GONE);
-            binding.btnUploadDokumen5.setVisibility(View.GONE);
-            binding.btnUploadDokumen6.setVisibility(View.GONE);
+
+
+        //tombol kita disable semua di flow selain d3
+        if (!statusId.equalsIgnoreCase("d.3")) {
+            noInputMode();
+            binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CustomDialog.DialogBackpress(ActivityDokumenTambahan.this);
+                }
+            });
         }
+        else{
+            binding.toolbarNosearch.btnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   ActivityDokumenTambahan.super.onBackPressed();
+                }
+            });
+        }
+    }
+
+    private void noInputMode(){
+        binding.btnTambahanDokumen.setVisibility(View.GONE);
+        binding.btnDeleteDokumen.setVisibility(View.GONE);
+        binding.btnSend.setVisibility(View.GONE);
+        binding.btnUploadDokumen1.setVisibility(View.GONE);
+        binding.btnUploadDokumen2.setVisibility(View.GONE);
+        binding.btnUploadDokumen3.setVisibility(View.GONE);
+        binding.btnUploadDokumen4.setVisibility(View.GONE);
+        binding.btnUploadDokumen5.setVisibility(View.GONE);
+        binding.btnUploadDokumen6.setVisibility(View.GONE);
+        AppUtil.disableButtons(binding.getRoot());
+        AppUtil.disableEditTexts(binding.getRoot());
     }
 
     private void endIconClick() {
@@ -314,6 +331,10 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
+                                }
+                                //tombol kita disable semua di flow selain d3
+                                if (!statusId.equalsIgnoreCase("d.3")) {
+                                    noInputMode();
                                 }
                             }
                         }
@@ -596,7 +617,13 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
 
     @Override
     public void onBackPressed() {
-        CustomDialog.DialogBackpress(ActivityDokumenTambahan.this);
+        if(statusId.equalsIgnoreCase("d.3")){
+            CustomDialog.DialogBackpress(ActivityDokumenTambahan.this);
+        }
+        else{
+            super.onBackPressed();
+        }
+
     }
 
     @Override

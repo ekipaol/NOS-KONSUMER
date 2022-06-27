@@ -111,6 +111,73 @@ public class DataVerifikasiTempatKerja {
     @Expose
     private String IsPensiun;
 
+    @SerializedName("Tanggal_Expired_LNGP")
+    @Expose
+    private String tanggalExpiredLngp;
+    @SerializedName("Escrow")
+    @Expose
+    private String escrow;
+    @SerializedName("Nama_Nasabah_SPAN")
+    @Expose
+    private String namaNasabahSpan;
+    @SerializedName("Gaji_SPAN")
+    @Expose
+    private String gajiSpan;
+    @SerializedName("Tunjangan_SPAN")
+    @Expose
+    private String tunjanganSpan;
+    @SerializedName("No_Rekening_SPAN")
+    @Expose
+    private String rekeningSpan;
+
+    public String getTanggalExpiredLngp() {
+        return tanggalExpiredLngp;
+    }
+
+    public void setTanggalExpiredLngp(String tanggalExpiredLngp) {
+        this.tanggalExpiredLngp = tanggalExpiredLngp;
+    }
+
+    public String getEscrow() {
+        return escrow;
+    }
+
+    public void setEscrow(String escrow) {
+        this.escrow = escrow;
+    }
+
+    public String getNamaNasabahSpan() {
+        return namaNasabahSpan;
+    }
+
+    public void setNamaNasabahSpan(String namaNasabahSpan) {
+        this.namaNasabahSpan = namaNasabahSpan;
+    }
+
+    public String getGajiSpan() {
+        return gajiSpan;
+    }
+
+    public void setGajiSpan(String gajiSpan) {
+        this.gajiSpan = gajiSpan;
+    }
+
+    public String getTunjanganSpan() {
+        return tunjanganSpan;
+    }
+
+    public void setTunjanganSpan(String tunjanganSpan) {
+        this.tunjanganSpan = tunjanganSpan;
+    }
+
+    public String getRekeningSpan() {
+        return rekeningSpan;
+    }
+
+    public void setRekeningSpan(String rekeningSpan) {
+        this.rekeningSpan = rekeningSpan;
+    }
+
     public UploadImage getFormAplikasi2() {
         return FormAplikasi2;
     }

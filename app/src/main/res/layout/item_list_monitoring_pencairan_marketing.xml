@@ -75,7 +75,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -106,7 +106,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -137,7 +137,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -168,7 +168,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -195,51 +195,12 @@
 
             </TableRow>
 
-            <TableRow
-                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="1dp"
-                
-                android:background="#FFFFFF">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="3dp"
-                    android:text="Covernote Asuransi"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="3dp"
-                    android:text=":"
-                    android:textSize="12dp" />
-
-                <LinearLayout
-                    android:id="@+id/ll_btn_covernote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:background="@color/colorWhite">
-
-                    <Button
-                        android:id="@+id/btn_covernote"
-                        style="@style/Bordered.Button.Custom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingHorizontal="8dp"
-                        android:text="Lihat Covernote"
-                        android:textSize="12dp" />
-
-                </LinearLayout>
-
-            </TableRow>
 
             <TableRow
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -261,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="3dp"
-                    android:text="{Status pembentukan Blokir}"
+                    android:text="{jalan jalan ke bekasi mampir sebentar ke makam mbah surip, jangan jangan kamu saksi, kalau aku yang paling arip}"
                     android:textSize="12dp" />
 
             </TableRow>
@@ -270,7 +231,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -302,7 +263,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -333,7 +294,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -364,7 +325,7 @@
                  android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
-                
+
                 android:background="#FFFFFF">
 
                 <TextView
@@ -399,6 +360,54 @@
 
             </TableRow>
 
+            <LinearLayout
+                android:id="@+id/ll_lihat_dokumen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundprimary"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
+                        android:text="Lihat Dokumen Cover Note Asuransi"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorWhite"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="@id/btn_lihat_dokumen"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <ImageView
+                        android:id="@+id/btn_lihat_dokumen"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:paddingTop="5dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
         </TableLayout>
 
 
@@ -411,6 +420,8 @@
             android:padding="8dp">
 
         </LinearLayout>
+
+
 
     </RelativeLayout>
 

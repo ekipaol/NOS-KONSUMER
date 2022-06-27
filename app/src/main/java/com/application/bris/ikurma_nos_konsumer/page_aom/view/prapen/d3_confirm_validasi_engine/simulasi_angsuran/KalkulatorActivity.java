@@ -185,6 +185,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                             }
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin() != null)
                                 binding.etBiayaAsuransi.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaAsuransiPenjamin().setScale(2)));
+                            if (DPSimulasiBiayaBiaya.getKeteranganManfaatAsuransi() != null)
+                                binding.etStatus.setText(DPSimulasiBiayaBiaya.getKeteranganManfaatAsuransi());
                             if (DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin() != null)
                                 binding.etTreatmentBiayaAsuransi.setText(DPSimulasiBiayaBiaya.getTreatementBiayaAsuransiPenjamin());
                             if (DPSimulasiBiayaBiaya.getBiayaAsuransiKhusus() != null)
@@ -392,6 +394,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
         req.setUid(String.valueOf(appPreferences.getUid()));
         DPSimulasiBiayaBiaya.setManfaatAsuransi(binding.etManfaatAsuransi.getText().toString());
+        DPSimulasiBiayaBiaya.setKeteranganManfaatAsuransi(binding.etStatus.getText().toString());
         req.setSimulasiBiayaBiaya(DPSimulasiBiayaBiaya);
         req.setSimulasiAngsuranCalc(DPSimulasi);
         req.setDataPembiayaan(DPDataPembiayaan);
@@ -546,6 +549,8 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
                                 binding.etBiayapenaltiKhususTakeover.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaPenalti()));
                             if (DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti() != null)
                                 binding.etTreatmentBiayaPenalti.setText(DPSimulasiBiayaBiaya.getTreatmentBiayaPenalti());
+                            if (DPSimulasiBiayaBiaya.getKeteranganManfaatAsuransi() != null)
+                                binding.etStatus.setText(DPSimulasiBiayaBiaya.getKeteranganManfaatAsuransi());
 //                            if (DPSimulasiBiayaBiaya.getBiayaMaterai() != null)
 //                                binding.etBiayamaterai.setText(String.valueOf(DPSimulasiBiayaBiaya.getBiayaMaterai()));
                             if (DPSimulasiBiayaBiaya.getTreatmentBiayaMaterai() != null)

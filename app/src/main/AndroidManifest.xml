@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:allowBackup">
-        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_tambahan.ActivityDokumenTambahan"/>
-        <activity android:name=".page_aom.view.prapen.master_instansi.ListLngpActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.d1_data_entry.bsi_bisa.BsiBisaActivity"></activity>
+        <activity android:name=".page_aom.view.prapen.dashboard.ListMonitoringPencairanMarketing.ActivityListMonitoringPencairanMarketing" />
+        <activity android:name=".page_aom.view.prapen.d3_confirm_validasi_engine.dokumen_tambahan.ActivityDokumenTambahan" />
+        <activity android:name=".page_aom.view.prapen.master_instansi.ListLngpActivity" />
         <activity android:name=".page_aom.view.prapen.master_instansi.ListInstansiActivity" />
         <activity android:name=".page_aom.view.prapen.master_instansi.ListLkpKoordinasiActivity" />
         <activity android:name=".page_aom.view.prapen.master_instansi.InputLkpKoordinasiActivity" />

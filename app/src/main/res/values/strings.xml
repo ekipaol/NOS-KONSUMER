@@ -16,6 +16,7 @@
     <!--    D1-->
     <string name="submenu_detil_aplikasi_d1_data_pembiayaan">Data Pembiayaan</string>
     <string name="submenu_detil_aplikasi_d1_data_nasabah">Data Nasabah</string>
+    <string name="submenu_detil_aplikasi_d1_bsi_bisa">BSI Bisa</string>
     <string name="submenu_detil_aplikasi_d1_data_marketing">Data Marketing</string>
     <string name="submenu_detil_aplikasi_d1_data_dedupe">Data DEDUPE</string>
     <string name="submenu_detil_aplikasi_d1_memo">Memo</string>

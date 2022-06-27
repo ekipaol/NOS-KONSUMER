@@ -911,6 +911,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.inquiryDataHutang)
     Call<ParseResponseArr> inquiryDataHutang(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
+    @POST(UriApi.prapen.downloadCoverNoteAsuransi)
+    Call<ParseResponse> downloadCoverNoteAsuransi(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
+
     @POST(UriApi.prapen.updateDataHutang)
     Call<ParseResponse> updateDataHutang(@Body UpdateDataHutang UpdateDataHutang);
 
@@ -967,6 +970,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.getLkp)
     Call<ParseResponse> getLkp(@Body ReqLkpD1 ReqLkpD1);
+
+    @POST(UriApi.prapen.getBsiBisa)
+    Call<ParseResponse> getBsiBisa(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
     @POST(UriApi.prapen.kembalikanPembiayaanVerifikator)
     Call<ParseResponse> kembalikanPembiayaanVerifikator(@Body ReqUidIdAplikasi ReqUidIdAplikasi);

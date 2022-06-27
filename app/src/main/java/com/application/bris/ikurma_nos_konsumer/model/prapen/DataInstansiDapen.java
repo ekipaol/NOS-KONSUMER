@@ -135,6 +135,18 @@ public class DataInstansiDapen extends RealmObject {
     @Expose
     private String lkpImg;
 
+    @SerializedName("No_Telp_Perusahaan")
+    @Expose
+    private String noTelpInstansi;
+
+    public String getNoTelpInstansi() {
+        return noTelpInstansi;
+    }
+
+    public void setNoTelpInstansi(String noTelpInstansi) {
+        this.noTelpInstansi = noTelpInstansi;
+    }
+
     public String getLkpFileName() {
         return lkpFileName;
     }

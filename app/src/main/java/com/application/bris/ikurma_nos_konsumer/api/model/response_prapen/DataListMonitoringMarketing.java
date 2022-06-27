@@ -35,6 +35,17 @@ public class DataListMonitoringMarketing {
     @SerializedName("NoLD")
     @Expose
     private String noLD;
+    @SerializedName("NamaNasabah")
+    @Expose
+    private String nama;
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
 
     public Long getApplicationId() {
         return applicationId;

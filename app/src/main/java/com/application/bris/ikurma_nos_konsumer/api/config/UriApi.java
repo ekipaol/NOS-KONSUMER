@@ -398,6 +398,7 @@ public class UriApi {
         public static final String batalD1 = "NOS_PRAPEN_Services/rest/D1/UpdateBatalPembiayaan";
         public static final String inquiryDataCabang = "NOS_PRAPEN_Services/rest/D1/InqCheckDataCabang";
         public static final String getLkp = "NOS_PRAPEN_Services/rest/D1/GetLKP";
+        public static final String getBsiBisa = "NOS_PRAPEN_Services/rest/D1/InqBsiBisa";
 
 
 
@@ -541,6 +542,8 @@ public class UriApi {
         public static final String kembalikanG3 = "NOS_PRAPEN_Services/rest/G3/UpdateBackKeDownloadDok";
         public static final String batalG3 = "NOS_PRAPEN_Services/rest/G3/UpdateBatalPembiayaan";
 
+        //G4
+        public static final String downloadCoverNoteAsuransi = "NOS_PRAPEN_Services/rest/G4/DownloadCovernoteAsuransi";
 
 
     }

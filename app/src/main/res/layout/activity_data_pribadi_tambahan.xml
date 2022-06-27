@@ -70,13 +70,14 @@
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true"
+                app:alwaysShowHint="true"
                 tools:ignore="DuplicateIds">
                 <!--Treatment Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_status_kepemilikan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih"
+                    android:hint="Pilih"
                     tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 

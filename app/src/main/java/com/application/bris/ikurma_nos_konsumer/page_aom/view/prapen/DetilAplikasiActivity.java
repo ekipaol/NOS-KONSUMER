@@ -31,6 +31,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListene
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.bsi_bisa.BsiBisaActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.canvasing.HasilCanvasingActivity;
@@ -244,10 +245,10 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             Menu.SubmenuD3(this, menu);
             demoVisibility(true);
         }
-//        else if(namaMenu.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
-//            Menu.SubmenuD4(this, menu);
-//            demoVisibility(true);
-//        }
+        else if(namaMenu.equalsIgnoreCase(getString(R.string.d4_verifikasi_otor))){
+            Menu.SubmenuD4(this, menu);
+            demoVisibility(true);
+        }
         else if(namaMenu.equalsIgnoreCase(getString(R.string.d5_confirm_verifikasi))){
             Menu.SubmenuD5(this, menu);
             demoVisibility(true);
@@ -290,6 +291,12 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
         //FLOW D1
         if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_data_nasabah))){
             Intent it = new Intent(this, DataNasabahPrapenActivity.class);
+            it.putExtra("idAplikasi",idAplikasi);
+            it.putExtra("statusId",statusId);
+            startActivity(it);
+        }
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d1_bsi_bisa))){
+            Intent it = new Intent(this, BsiBisaActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("statusId",statusId);
             startActivity(it);
@@ -384,7 +391,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("statusId",statusId);
             startActivity(it);
         }
-        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_tambahan))){
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_tambahan))){ //ini dipake juga di d4-d6
             Intent it = new Intent(this, ActivityDokumenTambahan.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("statusId",statusId);
@@ -396,7 +403,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             it.putExtra("statusId",statusId);
             startActivity(it);
         }
-        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad))){
+        else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_objek_akad))){//ini dipake juga di d4-d6
             Intent it = new Intent(this, DataAkadActivity.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("akad",dataDetailAplikasi.getAkad());
