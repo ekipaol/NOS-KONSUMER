@@ -3,49 +3,72 @@ package com.application.bris.ikurma_nos_konsumer.api.model.request.prapen;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
+
 public class SubAkseptasiPendapatan {
-    @SerializedName("Nama_Komponen_Pendapatan")
-    @Expose
-    private String Nama_Komponen_Pendapatan;
-    @SerializedName("Input_Nominal")
-    @Expose
-    private Long Input_Nominal;
-    @SerializedName("Setelah_Akseptasi")
-    @Expose
-    private Long Setelah_Akseptasi;
-    @SerializedName("Treatment_Pendapatan")
-    @Expose
-    private String Treatment_Pendapatan;
+    @SerializedName("PendapatanTunjanganId")
+    private Long PendapatanTunjanganId;
 
-    public String getNama_Komponen_Pendapatan() {
-        return Nama_Komponen_Pendapatan;
+    @SerializedName("PendapatanId")
+    private Long PendapatanId;
+
+    @SerializedName("Keterangan")
+    private String Keterangan;
+
+    @SerializedName("Pendapatan_Tercermin")
+    private BigDecimal Pendapatan_Tercermin;
+
+    @SerializedName("NilaiSetelahAkseptasi")
+    private BigDecimal NilaiSetelahAkseptasi;
+
+    @SerializedName("Status_Payroll")
+    private String Status_Payroll;
+
+    public Long getPendapatanTunjanganId() {
+        return PendapatanTunjanganId;
     }
 
-    public void setNama_Komponen_Pendapatan(String nama_Komponen_Pendapatan) {
-        Nama_Komponen_Pendapatan = nama_Komponen_Pendapatan;
+    public void setPendapatanTunjanganId(Long pendapatanTunjanganId) {
+        PendapatanTunjanganId = pendapatanTunjanganId;
     }
 
-    public Long getInput_Nominal() {
-        return Input_Nominal;
+    public Long getPendapatanId() {
+        return PendapatanId;
     }
 
-    public void setInput_Nominal(Long input_Nominal) {
-        Input_Nominal = input_Nominal;
+    public void setPendapatanId(Long pendapatanId) {
+        PendapatanId = pendapatanId;
     }
 
-    public Long getSetelah_Akseptasi() {
-        return Setelah_Akseptasi;
+    public String getKeterangan() {
+        return Keterangan;
     }
 
-    public void setSetelah_Akseptasi(Long setelah_Akseptasi) {
-        Setelah_Akseptasi = setelah_Akseptasi;
+    public void setKeterangan(String keterangan) {
+        Keterangan = keterangan;
     }
 
-    public String getTreatment_Pendapatan() {
-        return Treatment_Pendapatan;
+    public BigDecimal getPendapatan_Tercermin() {
+        return Pendapatan_Tercermin;
     }
 
-    public void setTreatment_Pendapatan(String treatment_Pendapatan) {
-        Treatment_Pendapatan = treatment_Pendapatan;
+    public void setPendapatan_Tercermin(BigDecimal pendapatan_Tercermin) {
+        Pendapatan_Tercermin = pendapatan_Tercermin;
+    }
+
+    public BigDecimal getNilaiSetelahAkseptasi() {
+        return NilaiSetelahAkseptasi;
+    }
+
+    public void setNilaiSetelahAkseptasi(BigDecimal nilaiSetelahAkseptasi) {
+        NilaiSetelahAkseptasi = nilaiSetelahAkseptasi;
+    }
+
+    public String getStatus_Payroll() {
+        return Status_Payroll;
+    }
+
+    public void setStatus_Payroll(String status_Payroll) {
+        Status_Payroll = status_Payroll;
     }
 }

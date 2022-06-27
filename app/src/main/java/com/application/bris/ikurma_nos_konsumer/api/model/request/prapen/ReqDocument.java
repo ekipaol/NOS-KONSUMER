@@ -11,6 +11,9 @@ public class ReqDocument {
     @SerializedName("File_Name")
     @Expose
     private String FileName;
+    @SerializedName("Tanggal_Dokumen")
+    @Expose
+    private String Tanggal_Dokumen;
 
     public String getImg() {
         return Img;
@@ -26,5 +29,13 @@ public class ReqDocument {
 
     public void setFileName(String fileName) {
         FileName = fileName;
+    }
+
+    public String getTanggal_Dokumen() {
+        return Tanggal_Dokumen;
+    }
+
+    public void setTanggal_Dokumen(String tanggal_Dokumen) {
+        Tanggal_Dokumen = tanggal_Dokumen;
     }
 }

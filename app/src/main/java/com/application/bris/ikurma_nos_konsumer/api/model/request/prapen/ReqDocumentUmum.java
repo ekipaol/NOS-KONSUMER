@@ -18,6 +18,17 @@ public class ReqDocumentUmum {
     @Expose
     private String img;
 
+    public ReqDocumentUmum(String namaDokumen, String keteranganDokumen, String filename, String img) {
+        this.namaDokumen = namaDokumen;
+        this.keteranganDokumen = keteranganDokumen;
+        this.filename = filename;
+        this.img = img;
+    }
+
+    public ReqDocumentUmum() {
+
+    }
+
     public String getNamaDokumen() {
         return namaDokumen;
     }
