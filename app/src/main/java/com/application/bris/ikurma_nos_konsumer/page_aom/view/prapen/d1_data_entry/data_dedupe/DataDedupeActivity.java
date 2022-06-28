@@ -126,7 +126,7 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                         data4 = response.body().getData().get("SIFO").getAsJsonArray();
 
                         //        Set Data
-                        binding.tvDatecheck.setText(response.body().getData().get("DateCheck").getAsString());
+                        binding.tvDatecheck.setText(response.body().getData().get("DateCheckDedupe").getAsString());
                         binding.tvWriteOff.setText(response.body().getData().get("IsWO").getAsBoolean() ? "Iya" : "Tidak");
 
                         //        Height Seting

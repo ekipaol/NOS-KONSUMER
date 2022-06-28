@@ -104,6 +104,12 @@ public class DataVerifikasiTempatKerja {
     @SerializedName("Aset")
     @Expose
     private UploadImage Aset;
+    @SerializedName("PKS")
+    @Expose
+    private UploadImage pks;
+    @SerializedName("LKP")
+    @Expose
+    private UploadImage lkp;
     @SerializedName("IsMarried")
     @Expose
     private String IsMarried;
@@ -129,6 +135,22 @@ public class DataVerifikasiTempatKerja {
     @SerializedName("No_Rekening_SPAN")
     @Expose
     private String rekeningSpan;
+
+    public UploadImage getLkp() {
+        return lkp;
+    }
+
+    public void setLkp(UploadImage lkp) {
+        this.lkp = lkp;
+    }
+
+    public UploadImage getPks() {
+        return pks;
+    }
+
+    public void setPks(UploadImage pks) {
+        this.pks = pks;
+    }
 
     public String getTanggalExpiredLngp() {
         return tanggalExpiredLngp;

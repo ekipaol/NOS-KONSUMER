@@ -1210,7 +1210,7 @@ public interface ApiInterface {
 
 
     @POST(UriApi.prapen.dropdownKomponenPendapatan)
-    Call<MparsePicklist> dropdownKomponenPendapatan(@Body EmptyRequest EmptyRequest);
+    Call<MparsePicklist> dropdownKomponenPendapatan(@Body ReqUidIdAplikasi ReqUidIdAplikasi);
 
     @GET(UriApi.foto.urlFile)
     Call<ParseResponse> getFile(@Query(value = "FileId", encoded = true) String fileId);

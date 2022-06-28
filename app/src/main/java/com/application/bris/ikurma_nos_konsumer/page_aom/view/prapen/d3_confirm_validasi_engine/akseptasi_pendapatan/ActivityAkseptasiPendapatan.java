@@ -40,6 +40,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.request.foto.ReqUpload
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDocument;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqHitungAkseptasiPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqInquery;
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUidIdAplikasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqUpdateAkseptasi;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.SubAkseptasiPendapatan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UpdateAkseptasiPendapatan;
@@ -50,10 +51,13 @@ import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityAkseptasiPendapatanBinding;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.BSUploadFile;
+import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.DialogGenericDataFromService;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.CameraListener;
+import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.MGenericModel;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.master_instansi.InputLkpKoordinasiActivity;
 import com.application.bris.ikurma_nos_konsumer.util.AppUtil;
 import com.application.bris.ikurma_nos_konsumer.util.NumberTextWatcherCanNolForThousand;
 import com.google.gson.Gson;
@@ -72,7 +76,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ActivityAkseptasiPendapatan extends AppCompatActivity implements View.OnClickListener, AkseptasiPendapatanAdapter.CallbackInterface, GenericListenerOnSelect, CameraListener {
+public class ActivityAkseptasiPendapatan extends AppCompatActivity implements View.OnClickListener, AkseptasiPendapatanAdapter.CallbackInterface, GenericListenerOnSelect, CameraListener , ConfirmListener {
 
     AkseptasiPendapatanAdapter akseptasiPendapatanAdapter;
     ActivityAkseptasiPendapatanBinding binding;
@@ -207,12 +211,6 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                             // Init List
                             list = data1.size();
 
-                            //Resize List
-                            SwipeRefreshLayout layout = binding.refresh;
-                            ViewGroup.LayoutParams params = layout.getLayoutParams();
-                            params.height = (data1.size()-1) * 1020;
-//                            params.height = data1.size();
-                            layout.setLayoutParams(params);
 
                             //List Data Akseptasi Pendapatan
                             binding.rvListPendapatan.setVisibility(View.VISIBLE);
@@ -223,6 +221,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                             binding.rvListPendapatan.setAdapter(akseptasiPendapatanAdapter);
                             binding.refresh.setRefreshing(false);
                             binding.refresh.setEnabled(false);
+                            resizeList();
                         } else {
                             datakosong();
                         }
@@ -312,11 +311,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         new1.setStatus_Payroll("Pilih Nama Komponen Pendapatan");
         data1.add(new1);
 
-        //Resize List
-        SwipeRefreshLayout layout = binding.refresh;
-        ViewGroup.LayoutParams params = layout.getLayoutParams();
-        params.height = (data1.size()-1) * 1020;
-        layout.setLayoutParams(params);
+        resizeList();
 
         //List Data Akseptasi Pendapatan
         binding.rvListPendapatan.setVisibility(View.VISIBLE);
@@ -329,6 +324,25 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         binding.refresh.setEnabled(false);
 
         binding.tambahanDokumen.setVisibility(View.GONE);
+    }
+    
+    private void resizeList(){
+        //Resize List
+        SwipeRefreshLayout layout = binding.refresh;
+        ViewGroup.LayoutParams params = layout.getLayoutParams();
+        if(data1.size()==1){
+            params.height =1020;
+            AppUtil.logSecure("ukuranlist",String.valueOf(data1.size()));
+        }
+        else if(data1.size()>=3){
+            params.height =2040;
+        }
+        else{
+            params.height = (data1.size()-1) * 1020;
+            AppUtil.logSecure("ukuranlist",String.valueOf(data1.size()));
+        }
+        layout.setLayoutParams(params);
+        binding.rvListPendapatan.smoothScrollToPosition(binding.rvListPendapatan.getAdapter().getItemCount() - 1);
     }
 
     private void isidropdown() {
@@ -349,9 +363,10 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         gajitunjangan.add(new MGenericModel("2", "Tidak"));
 
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
-        EmptyRequest emptyRequest = new EmptyRequest();
+        ReqUidIdAplikasi req=new ReqUidIdAplikasi();
+        req.setApplicationId(Long.parseLong(idAplikasi));
         //Inq PickList
-        Call<MparsePicklist> calli = apiClientAdapter.getApiInterface().dropdownKomponenPendapatan(emptyRequest);
+        Call<MparsePicklist> calli = apiClientAdapter.getApiInterface().dropdownKomponenPendapatan(req);
         calli.enqueue(new Callback<MparsePicklist>() {
             @Override
             public void onResponse(@NonNull Call<MparsePicklist> call, @NonNull Response<MparsePicklist> response) {
@@ -485,12 +500,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     new1.setKeterangan("Pilih Treatment Pendapatan");
                     new1.setStatus_Payroll("Pilih Nama Komponen Pendapatan");
                     data1.add(new1);
-
-                    //Resize List
-                    SwipeRefreshLayout layout = binding.refresh;
-                    ViewGroup.LayoutParams params = layout.getLayoutParams();
-                    params.height = (data1.size()-1) * 1020;
-                    layout.setLayoutParams(params);
+                    resizeList();
 
                     //List Data Akseptasi Pendapatan
                     binding.rvListPendapatan.setVisibility(View.VISIBLE);
@@ -513,11 +523,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     if (list.equals(1)) {
                         binding.llDeleteDokumen.setVisibility(View.GONE);
                     }
-                    //Resize List
-                    SwipeRefreshLayout layout = binding.refresh;
-                    ViewGroup.LayoutParams params = layout.getLayoutParams();
-                    params.height = (data1.size()-1) * 1020;
-                    layout.setLayoutParams(params);
+                    resizeList();
 
                     //List Data Akseptasi Pendapatan
                     binding.rvListPendapatan.setVisibility(View.VISIBLE);
@@ -622,8 +628,10 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     if (response.isSuccessful()) {
                         binding.loading.progressbarLoading.setVisibility(View.GONE);
                         assert response.body() != null;
-                        if (response.body().getMessage().equals("Success")) {
-                            finish();
+                        if (response.body().getStatus().equalsIgnoreCase("00")) {
+                            CustomDialog.DialogSuccess(ActivityAkseptasiPendapatan.this, "Success!", "Simpan Data Pendapatan Sukses", ActivityAkseptasiPendapatan.this);
+
+
                         } else {
                             AppUtil.notiferror(ActivityAkseptasiPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
                         }
@@ -907,6 +915,16 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                 t.printStackTrace();
             }
         });
+
+    }
+
+    @Override
+    public void success(boolean val) {
+        finish();
+    }
+
+    @Override
+    public void confirm(boolean val) {
 
     }
 }

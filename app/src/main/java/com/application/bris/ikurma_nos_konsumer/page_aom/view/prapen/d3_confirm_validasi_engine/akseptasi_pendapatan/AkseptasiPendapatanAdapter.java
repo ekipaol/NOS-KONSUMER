@@ -81,6 +81,7 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
         for (MGenericModel d : komponen) {
             if (d.getDESC().equals(datas.getKeterangan()))
                 holder.etparam.setText(String.valueOf(d.getNilai()));
+                holder.etpersenAkseptasi.setText(String.valueOf(new BigDecimal(d.getNilai()).multiply(new BigDecimal(100)).setScale(0,RoundingMode.HALF_EVEN)));
         }
         holder.etinputnominal.setText(String.valueOf(datas.getPendapatan_Tercermin().setScale(0,RoundingMode.HALF_EVEN)));
         holder.tvTitle.setText("Komponen Akseptasi " + title.get(position));
@@ -97,6 +98,7 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
         holder.etpilihanakseptasipendapatan.setFocusable(false);
         holder.etsetelahakseptasi.setFocusable(false);
         holder.tfsetelahakseptasi.setFocusable(false);
+        holder.etpersenAkseptasi.setFocusable(false);
     }
 
 
@@ -219,12 +221,13 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
             this.data.get(posisi).setPendapatanTunjanganId(Long.parseLong(data.getNAMA()));
             this.data.get(posisi).setPendapatanId(Long.parseLong(data.getID()));
             holderdata.etparam.setText(String.valueOf(data.getNilai()));
+            holderdata.etpersenAkseptasi.setText(String.valueOf(new BigDecimal(data.getNilai()).multiply(new BigDecimal(100)).setScale(0,RoundingMode.HALF_EVEN)));
             holderdata.etpilihanakseptasipendapatan.setText(data.getDESC());
         }
     }
 
     public class MenuViewHolder extends RecyclerView.ViewHolder {
-        ExtendedEditText etpilihanakseptasipendapatan, etinputnominal, etsetelahakseptasi, ettreatmentpendapatan, etparam;
+        ExtendedEditText etpilihanakseptasipendapatan, etinputnominal, etsetelahakseptasi, ettreatmentpendapatan, etparam,etpersenAkseptasi;
         TextFieldBoxes tfpilihanakseptasipendapatan, tftreatmentpendapatan,tfsetelahakseptasi;
         TextView tvTitle;
 
@@ -239,6 +242,8 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
             tftreatmentpendapatan = binding.tfTreatmentPendapatan;
             tvTitle = binding.tvTitle;
             etparam = binding.etParameter;
+            etpersenAkseptasi=binding.etPersentaseAkseptasi;
+
         }
     }
 }

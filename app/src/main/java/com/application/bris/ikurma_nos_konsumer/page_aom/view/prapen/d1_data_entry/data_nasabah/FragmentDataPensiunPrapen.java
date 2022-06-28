@@ -360,16 +360,19 @@ public class FragmentDataPensiunPrapen extends Fragment implements Step, KeyValu
 //        validateField(binding.etKirimanRutin,binding.tfKirimanRutin);
 //        validateField(binding.etCatatanMemo,binding.tfCatatanMemo);
 
-    if(!rekeningBerubah){
-            setPojoData();
-        return null;
+        if(!dataInstansi.getStatusId().equalsIgnoreCase("d.1")){
+            return null;
         }
-    else{
+        else{
+            if(!rekeningBerubah){
+                setPojoData();
+                return null;
+            }
+            else{
 //        AppUtil.notiferror(getContext(), getActivity().findViewById(android.R.id.content), "Harap Cek Rekening Terlebih Dahulu");
-        return new VerificationError("Cek rekening terlebih dahulu");
-    }
-
-
+                return new VerificationError("Cek rekening terlebih dahulu");
+            }
+        }
 //        }
     }
 

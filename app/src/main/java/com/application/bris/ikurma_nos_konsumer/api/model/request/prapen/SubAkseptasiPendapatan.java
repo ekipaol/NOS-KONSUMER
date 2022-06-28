@@ -21,8 +21,19 @@ public class SubAkseptasiPendapatan {
     @SerializedName("NilaiSetelahAkseptasi")
     private BigDecimal NilaiSetelahAkseptasi;
 
+
     @SerializedName("Status_Payroll")
     private String Status_Payroll;
+
+    private String persentaseAkseptasi;
+
+    public String getPersentaseAkseptasi() {
+        return persentaseAkseptasi;
+    }
+
+    public void setPersentaseAkseptasi(String persentaseAkseptasi) {
+        this.persentaseAkseptasi = persentaseAkseptasi;
+    }
 
     public Long getPendapatanTunjanganId() {
         return PendapatanTunjanganId;
