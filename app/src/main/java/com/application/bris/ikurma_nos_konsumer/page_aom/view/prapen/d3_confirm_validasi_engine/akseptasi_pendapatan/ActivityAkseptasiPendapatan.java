@@ -204,10 +204,13 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                             }.getType();
                             data1 = gson.fromJson(rDetail, typeDetail);
 
+                            // Init List
+                            list = data1.size();
+
                             //Resize List
                             SwipeRefreshLayout layout = binding.refresh;
                             ViewGroup.LayoutParams params = layout.getLayoutParams();
-                            params.height = data1.size() * 1020;
+                            params.height = data1.size() * 1010;
                             layout.setLayoutParams(params);
 
                             //List Data Akseptasi Pendapatan
@@ -311,7 +314,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         //Resize List
         SwipeRefreshLayout layout = binding.refresh;
         ViewGroup.LayoutParams params = layout.getLayoutParams();
-        params.height = data1.size() * 1020;
+        params.height = data1.size() * 1010;
         layout.setLayoutParams(params);
 
         //List Data Akseptasi Pendapatan
