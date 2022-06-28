@@ -678,7 +678,7 @@
                     android:layout_weight="6"
                     android:background="@drawable/button_primary"
                     android:padding="8dp"
-                    android:text="Selanjutnya"
+                    android:text="Simpan"
                     android:textColor="@color/colorWhite" />
             </LinearLayout>
 

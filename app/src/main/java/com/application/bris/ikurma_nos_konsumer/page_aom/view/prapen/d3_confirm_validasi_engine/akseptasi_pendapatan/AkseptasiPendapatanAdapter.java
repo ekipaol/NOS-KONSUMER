@@ -74,7 +74,7 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
         final SubAkseptasiPendapatan datas = data.get(position);
         holder.etinputnominal.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etinputnominal));
         holder.etsetelahakseptasi.addTextChangedListener(new NumberTextWatcherCanNolForThousand(holder.etsetelahakseptasi));
-        List<String> title = Arrays.asList(context.getResources().getStringArray(R.array.alphabetically));
+        List<String> title = Arrays.asList(context.getResources().getStringArray(R.array.urutan_nama_dokumen));
         holder.ettreatmentpendapatan.setText(datas.getStatus_Payroll());
         holder.etsetelahakseptasi.setText(String.valueOf(datas.getNilaiSetelahAkseptasi().setScale(2,RoundingMode.HALF_EVEN)));
         holder.etpilihanakseptasipendapatan.setText(datas.getKeterangan());

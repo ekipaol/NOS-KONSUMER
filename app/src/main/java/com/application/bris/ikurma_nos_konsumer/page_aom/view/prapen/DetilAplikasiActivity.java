@@ -34,6 +34,7 @@ import com.application.bris.ikurma_nos_konsumer.page_aom.model.hotprospek;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.bsi_bisa.BsiBisaActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_dedupe.DataDedupeActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_pembiayaan.DataPembiayaanActivity;
+import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.akseptasi_pendapatan.ActivityAkseptasiPendapatan;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.canvasing.HasilCanvasingActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_hutang.DataHutangActivity;
 import com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d1_data_entry.data_marketing.DataMarketingActivity;
@@ -386,7 +387,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
             startActivity(it);
         }
         else if (menu.equalsIgnoreCase(getString(R.string.submenu_detil_aplikasi_d3_data_pendapatan))){
-            Intent it = new Intent(this, ActivityDokumenPendapatan.class);
+            Intent it = new Intent(this, ActivityAkseptasiPendapatan.class);
             it.putExtra("idAplikasi",idAplikasi);
             it.putExtra("statusId",statusId);
             startActivity(it);

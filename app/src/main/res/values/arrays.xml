@@ -19,6 +19,28 @@
         <item>Marketable</item>
     </string-array>
 
+    <string-array name="urutan_nama_dokumen">
+        <item>Dokumen 1</item>
+        <item>Dokumen 2</item>
+        <item>Dokumen 3</item>
+        <item>Dokumen 4</item>
+        <item>Dokumen 5</item>
+        <item>Dokumen 6</item>
+        <item>Dokumen 7</item>
+        <item>Dokumen 8</item>
+    </string-array>
+
+    <string-array name="urutan_nama_pendapatan">
+        <item>Pendapatan 1</item>
+        <item>Pendapatan 2</item>
+        <item>Pendapatan 3</item>
+        <item>Pendapatan 4</item>
+        <item>Pendapatan 5</item>
+        <item>Pendapatan 6</item>
+        <item>Pendapatan 7</item>
+        <item>Pendapatan 8</item>
+    </string-array>
+
     <string-array name="sesuai_tidak_sesuai">
         <item>Sesuai</item>
         <item>Tidak Sesuai</item>
