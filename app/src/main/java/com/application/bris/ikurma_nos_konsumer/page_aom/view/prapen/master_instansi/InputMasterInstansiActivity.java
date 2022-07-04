@@ -215,24 +215,54 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         binding.etTipePembayaran.setText(dataInstansi.getTipePembayaran());
         binding.etJenisInstansi.setText(dataInstansi.getTipeProduk());
         binding.etTahunBerdiri.setText(dataInstansi.getTahunBerdiri());
+
         binding.etMemilikiPks.setText(dataInstansi.getPks());
-        binding.etRuangLingkupPks.setText(dataInstansi.getRuangLingkupPKS());
-        binding.etUnitBisnisPengusul.setText(dataInstansi.getUnitBisnisPengusulPKS());
-        binding.etNomorPks.setText(dataInstansi.getNoPKS());
-
-
-        try{
-            if(dataInstansi.getPerpanjanganOtomatisPKS()){
-                binding.etPerpanjangPksOtomatis.setText("Otomatis");
-            }
-            else{
-                binding.etPerpanjangPksOtomatis.setText("Perpanjangan Manual");
-            }
+        if(dataInstansi.getPks().equalsIgnoreCase("tidak")){
+            binding.tfRuangLingkupPks.setVisibility(View.GONE);
+            binding.tfUnitBisnisPengusul.setVisibility(View.GONE);
+            binding.tfNomorPks.setVisibility(View.GONE);
+            binding.tfTanggalAkhirPks.setVisibility(View.GONE);
+            binding.tfTanggalMulaiPks.setVisibility(View.GONE);
+            binding.tfPerpanjangPks.setVisibility(View.GONE);
+            binding.rlDokumenPks.setVisibility(View.GONE);
+            binding.tfStatusPks.setVisibility(View.GONE);
         }
-        catch (NullPointerException e){
-            e.printStackTrace();
-        }
+        else{
+            binding.tfRuangLingkupPks.setVisibility(View.VISIBLE);
+            binding.tfUnitBisnisPengusul.setVisibility(View.VISIBLE);
+            binding.tfNomorPks.setVisibility(View.VISIBLE);
+            binding.tfTanggalAkhirPks.setVisibility(View.VISIBLE);
+            binding.tfTanggalMulaiPks.setVisibility(View.VISIBLE);
+            binding.tfPerpanjangPks.setVisibility(View.VISIBLE);
+            binding.rlDokumenPks.setVisibility(View.VISIBLE);
+            binding.tfStatusPks.setVisibility(View.VISIBLE);
 
+            binding.etRuangLingkupPks.setText(dataInstansi.getRuangLingkupPKS());
+            binding.etUnitBisnisPengusul.setText(dataInstansi.getUnitBisnisPengusulPKS());
+            binding.etNomorPks.setText(dataInstansi.getNoPKS());
+            binding.etStatusPks.setText(dataInstansi.getStatusPKS());
+            try{
+                if(dataInstansi.getPerpanjanganOtomatisPKS()){
+                    binding.etPerpanjangPksOtomatis.setText("Otomatis");
+                }
+                else{
+                    binding.etPerpanjangPksOtomatis.setText("Perpanjangan Manual");
+                }
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
+            }
+
+            try{
+                checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getImgPKSInduk(),binding.ivFotoPks,dataInstansi.getFilenamePksInduk());
+                idFilePks=dataInstansi.getImgPKSInduk();
+                fileNamePks=dataInstansi.getFilenamePksInduk();
+            }
+            catch (NullPointerException e){
+                e.printStackTrace();
+            }
+
+        }
         try{
             if(dataInstansi.isStatusAktifInstansi()){
                 binding.swStatusAktif.setChecked(true);
@@ -246,7 +276,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         }
 
 
-        binding.etStatusPks.setText(dataInstansi.getStatusPKS());
+
         binding.etAlamatKorespondensi.setText(dataInstansi.getAlamatKorespondensi());
         binding.etKeyPerson.setText(dataInstansi.getKeyPerson());
         binding.etTeleponKeyPerson.setText(dataInstansi.getTeleponKeyPerson());
@@ -264,14 +294,11 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         }
 
         try{
-            checkFileTypeThenSet(InputMasterInstansiActivity.this,dataInstansi.getImgPKSInduk(),binding.ivFotoPks,dataInstansi.getFilenamePksInduk());
 
             checkFileTypeThenSet(InputMasterInstansiActivity.this,dataLkpUtama.getImg(),binding.ivFotoLkp,dataLkpUtama.getFilename());
 
             idFileLkp=dataLkpUtama.getImg();
-            idFilePks=dataInstansi.getImgPKSInduk();
             fileNameLkp=dataLkpUtama.getFilename();
-            fileNamePks=dataInstansi.getFilenamePksInduk();
 
             try{
                 checkFileTypeThenSet(InputMasterInstansiActivity.this,dataDokumenLainnya.get(0).getImg(),binding.ivDokumenTambahan1,dataDokumenLainnya.get(0).getFile_Name());
@@ -1252,6 +1279,28 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         }
         else if(title.equalsIgnoreCase(binding.tfMemilikiPks.getLabelText())){
             binding.etMemilikiPks.setText(data.getDESC());
+            if(data.getDESC().equalsIgnoreCase("tidak")){
+                binding.tfRuangLingkupPks.setVisibility(View.GONE);
+                binding.tfUnitBisnisPengusul.setVisibility(View.GONE);
+                binding.tfNomorPks.setVisibility(View.GONE);
+                binding.tfTanggalAkhirPks.setVisibility(View.GONE);
+                binding.tfTanggalMulaiPks.setVisibility(View.GONE);
+                binding.tfPerpanjangPks.setVisibility(View.GONE);
+                binding.rlDokumenPks.setVisibility(View.GONE);
+                binding.tfStatusPks.setVisibility(View.GONE);
+                binding.tvTitleUploadPks.setVisibility(View.GONE);
+            }
+            else{
+                binding.tfRuangLingkupPks.setVisibility(View.VISIBLE);
+                binding.tfUnitBisnisPengusul.setVisibility(View.VISIBLE);
+                binding.tfNomorPks.setVisibility(View.VISIBLE);
+                binding.tfTanggalAkhirPks.setVisibility(View.VISIBLE);
+                binding.tfTanggalMulaiPks.setVisibility(View.VISIBLE);
+                binding.tfPerpanjangPks.setVisibility(View.VISIBLE);
+                binding.rlDokumenPks.setVisibility(View.VISIBLE);
+                binding.tfStatusPks.setVisibility(View.VISIBLE);
+                binding.tvTitleUploadPks.setVisibility(View.VISIBLE);
+            }
         }
         else if(title.equalsIgnoreCase(binding.tfRuangLingkupPks.getLabelText())){
             binding.etRuangLingkupPks.setText(data.getDESC());

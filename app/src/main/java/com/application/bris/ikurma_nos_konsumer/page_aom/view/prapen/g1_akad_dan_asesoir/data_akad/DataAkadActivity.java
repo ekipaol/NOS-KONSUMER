@@ -846,10 +846,13 @@ public class DataAkadActivity extends AppCompatActivity implements GenericListen
                     }
                 }
                 else{
-                    //validasi mmq
-                    validateField(binding.etTanggalPenilaian,binding.tfTanggalPenilaian);
-                    validateField(binding.etNamaPenilai,binding.tfNamaPenilai);
-                    validateField(binding.etKotaPenandatangananLaporan,binding.tfKotaPenandatangananLaporan);
+
+                    if(statusId.equalsIgnoreCase("g.1")){
+                        //validasi mmq
+                        validateField(binding.etTanggalPenilaian,binding.tfTanggalPenilaian);
+                        validateField(binding.etNamaPenilai,binding.tfNamaPenilai);
+                        validateField(binding.etKotaPenandatangananLaporan,binding.tfKotaPenandatangananLaporan);
+                    }
 
                     if(binding.etKepemilikanAset.getText().toString().isEmpty()){
                         validateField(binding.etKepemilikanAset,binding.tfKepemilikanAset);

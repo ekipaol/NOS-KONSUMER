@@ -116,6 +116,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         disabledEdit();
         endIconClick();
         onchangeListener();
+        defaultViewCondition();
         AppUtil.toolbarRegular(this, "Akseptasi Pendapatan");
     }
 
@@ -124,6 +125,17 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.setStatusBarColor(getResources().getColor(R.color.colorWhite));
         }
+    }
+
+    private void defaultViewCondition(){
+        binding.tfPeriodeAkhirWaktu1.setVisibility(View.GONE);
+        binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
+        binding.tfPeriodeAwalWaktu1.setVisibility(View.GONE);
+        binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
+        binding.tfTotalKredit1.setVisibility(View.GONE);
+        binding.tfTotalKredit2.setVisibility(View.GONE);
+        binding.tfTotalDebit1.setVisibility(View.GONE);
+        binding.tfTotalDebit2.setVisibility(View.GONE);
     }
 
     private void onchangeListener() {
@@ -342,7 +354,14 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
             AppUtil.logSecure("ukuranlist",String.valueOf(data1.size()));
         }
         layout.setLayoutParams(params);
-        binding.rvListPendapatan.smoothScrollToPosition(binding.rvListPendapatan.getAdapter().getItemCount() - 1);
+        try{
+            binding.rvListPendapatan.smoothScrollToPosition(binding.rvListPendapatan.getAdapter().getItemCount() - 1);
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+        }
+
+
     }
 
     private void isidropdown() {
@@ -497,8 +516,8 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                     SubAkseptasiPendapatan new1 = new SubAkseptasiPendapatan();
                     new1.setPendapatan_Tercermin(new BigDecimal("0"));
                     new1.setNilaiSetelahAkseptasi(new BigDecimal("0"));
-                    new1.setKeterangan("Pilih Treatment Pendapatan");
-                    new1.setStatus_Payroll("Pilih Nama Komponen Pendapatan");
+                    new1.setKeterangan("");
+                    new1.setStatus_Payroll("");
                     data1.add(new1);
                     resizeList();
 
@@ -564,6 +583,7 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
                             binding.etTotalPendapatanSetelahAkseptasi.setText(String.valueOf(response.body().getData().get("Totalakseptasi").getAsBigDecimal().setScale(2,RoundingMode.HALF_EVEN)));
 
                         }
+                        AppUtil.notifsuccess(ActivityAkseptasiPendapatan.this, findViewById(android.R.id.content), "Hitung Berhasil");
                     } else {
                         AppUtil.notiferror(ActivityAkseptasiPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
                     }
@@ -665,8 +685,12 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
             binding.etPilihanAkseptasiPendapatan.setText(data.getDESC());
             if (data.getID().equals("1")) {
                 binding.tambahanDokumen.setVisibility(View.VISIBLE);
+                binding.tfTotalPendapatanSetelahAkseptasi.setVisibility(View.VISIBLE);
+                binding.tfTotalPendapatanUntukAngsuran.setVisibility(View.VISIBLE);
             } else {
                 binding.tambahanDokumen.setVisibility(View.GONE);
+                binding.tfTotalPendapatanSetelahAkseptasi.setVisibility(View.GONE);
+                binding.tfTotalPendapatanUntukAngsuran.setVisibility(View.GONE);
             }
             if (mparsePendapatanTunjangan == null) {
                 mparsePendapatanTunjangan = new MparsePendapatanTunjangan();
@@ -685,10 +709,10 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
         } else if (data.getDESC().equalsIgnoreCase("Tidak")) {
             binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
             binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
-            binding.tfTotalKredit2.setVisibility(View.VISIBLE);
-            binding.tfTotalDebit2.setVisibility(View.VISIBLE);
-            binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
-            binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
+//            binding.tfTotalKredit2.setVisibility(View.VISIBLE);
+//            binding.tfTotalDebit2.setVisibility(View.VISIBLE);
+//            binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
+//            binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
             binding.norekTunjangan.setVisibility(View.VISIBLE);
             binding.etVerfikasiRekening.setText(data.getDESC());
         }
@@ -714,7 +738,6 @@ public class ActivityAkseptasiPendapatan extends AppCompatActivity implements Vi
 
         DatePickerDialog dpSK = new DatePickerDialog(ActivityAkseptasiPendapatan.this, R.style.AppTheme_TimePickerTheme, ls_tanggalLahirPasangan, calLahir.get(Calendar.YEAR),
                 calLahir.get(Calendar.MONTH), calLahir.get(Calendar.DAY_OF_MONTH));
-        dpSK.getDatePicker().setMaxDate(calLahir.getTimeInMillis());
         dpSK.show();
     }
 

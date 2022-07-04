@@ -47,13 +47,14 @@
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true"
+                app:alwaysShowHint="true"
                 tools:ignore="DuplicateIds">
                 <!--Treatment Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_pilihan_akseptasi_pendapatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih Nama Komponen Pendapatan"
+                    android:hint="Pilih Komponen Pendapatan"
                     tools:ignore="DuplicateIds" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
@@ -194,13 +195,14 @@
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true"
+                app:alwaysShowHint="true"
                 tools:ignore="DuplicateIds">
                 <!--Treatment Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_treatment_pendapatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih Treatment Pendapatan"
+                    android:hint="Pilih Treatment Pendapatan"
                     tools:ignore="DuplicateIds" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>

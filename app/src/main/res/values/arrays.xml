@@ -20,14 +20,14 @@
     </string-array>
 
     <string-array name="urutan_nama_dokumen">
-        <item>Dokumen 1</item>
-        <item>Dokumen 2</item>
-        <item>Dokumen 3</item>
-        <item>Dokumen 4</item>
-        <item>Dokumen 5</item>
-        <item>Dokumen 6</item>
-        <item>Dokumen 7</item>
-        <item>Dokumen 8</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="urutan_nama_pendapatan">

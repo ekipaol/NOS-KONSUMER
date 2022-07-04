@@ -605,6 +605,7 @@ public class KalkulatorActivity extends AppCompatActivity implements GenericList
         binding.etBiayaFlagging.setFocusable(false);
         binding.etBiayaMitraFronting.setFocusable(false);
         binding.etManfaatAsuransi.setFocusable(false);
+        binding.etStatus.setFocusable(false);
 
     }
 

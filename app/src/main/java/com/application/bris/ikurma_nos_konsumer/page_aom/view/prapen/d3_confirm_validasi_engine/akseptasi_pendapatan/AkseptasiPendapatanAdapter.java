@@ -140,7 +140,7 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!holder.etpilihanakseptasipendapatan.getText().toString().equals("Pilih Nama Komponen Pendapatan") && !s.toString().equals("")) {
+                if (!holder.etpilihanakseptasipendapatan.getText().toString().isEmpty() && !s.toString().equals("")) {
                     BigDecimal total;
                     total = new BigDecimal(String.valueOf(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(s.toString())).multiply(new BigDecimal(holder.etparam.getText().toString()))));
                     holder.etsetelahakseptasi.setText(String.valueOf(total.setScale(2, RoundingMode.HALF_EVEN)));
@@ -164,7 +164,7 @@ public class AkseptasiPendapatanAdapter extends RecyclerView.Adapter<AkseptasiPe
             public void afterTextChanged(Editable s) {
                 data.setKeterangan(s.toString());
                 callbackData(position);
-                if (!holder.etpilihanakseptasipendapatan.getText().toString().equals("Pilih Nama Komponen Pendapatan") && !holder.etinputnominal.getText().toString().equals("")) {
+                if (!holder.etpilihanakseptasipendapatan.getText().toString().isEmpty() && !holder.etinputnominal.getText().toString().equals("")) {
                     BigDecimal total;
                     total = new BigDecimal(String.valueOf(new BigDecimal(NumberTextWatcherCanNolForThousand.trimCommaOfString(holder.etinputnominal.getText().toString())).multiply(new BigDecimal(holder.etparam.getText().toString())))).setScale(2,RoundingMode.HALF_EVEN);
                     holder.etsetelahakseptasi.setText(String.valueOf(total));

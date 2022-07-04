@@ -58,16 +58,26 @@
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true"
+                app:alwaysShowHint="true"
                 tools:ignore="DuplicateIds">
                 <!--Treatment Biaya Materai-->
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_pilihan_akseptasi_pendapatan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih"
+                    android:hint="Pilih"
                     tools:ignore="DuplicateIds" />
 
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/dash_line"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layerType="software"/>
 
             <LinearLayout
                 android:id="@+id/tambahan_dokumen"
@@ -89,6 +99,14 @@
                         android:scrollbars="vertical" />
 
                 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/dash_line"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:layerType="software"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -281,6 +299,12 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Upload Dokumen Pendapatan"/>
+
             <!--apakah rekening tunjangan dan rekening gaji sama?-->
             <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
                 android:id="@+id/tf_verfikasi_rekening"
@@ -298,13 +322,14 @@
                 app:primaryColor="@color/colorPrimary"
                 app:secondaryColor="@color/colorPrimary"
                 app:useDenseSpacing="true"
+                app:alwaysShowHint="true"
                 tools:ignore="DuplicateIds">
 
                 <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                     android:id="@+id/et_verfikasi_rekening"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pilih"
+                    android:hint="Pilih"
                     tools:ignore="DuplicateIds" />
             </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
 

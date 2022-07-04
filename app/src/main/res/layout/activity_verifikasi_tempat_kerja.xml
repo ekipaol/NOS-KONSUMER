@@ -497,6 +497,9 @@
                         android:maxLength="50"/>
 
                 </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
                 <!--Title Resume SPAN-->
                 <LinearLayout
                     android:id="@+id/ll_resume_span"
@@ -632,6 +635,164 @@
                             />
 
                     </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+                </LinearLayout>
+
+                <!--Title Resume Jaminan-->
+                <LinearLayout
+                    android:id="@+id/ll_resume_jaminan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/colorWhite"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Resume Jaminan dan Dokumen"
+                        android:textSize="16sp"
+                        android:paddingLeft="10dp"
+                        android:fontFamily="@font/muli_b"
+                        android:paddingBottom="10dp"/>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nomor_sk_pengangkatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_name"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Nomor Sk Pengangkatan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nomor_sk_pengangkatan"
+                            android:inputType="textMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_tanggal_terbit_sk_pengangkatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_date"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Tanggal Terbit SK Pengangkatan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_tanggal_terbit_sk_pengangkatan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_lembaga_penerbit_sk_pengangkatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_name"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Lembaga Penerbit SK"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_lembaga_penerbit_sk_pengangkatan"
+                            android:inputType="textMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_nomor_sk_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_name"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Nomor Sk Pengangkatan"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_nomor_sk_terakhir"
+                            android:inputType="textMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_tanggal_terbit_sk_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_date"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Tanggal Terbit SK Terakhir"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_tanggal_terbit_sk_terakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+                    <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+                        android:id="@+id/tf_lembaga_penerbit_sk_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconSignifier="@drawable/ic_name"
+                        app:isResponsiveIconColor="true"
+                        app:panelBackgroundColor="@color/colorBgEdittext"
+                        app:secondaryColor="@color/colorPrimary"
+                        app:primaryColor="@color/colorPrimary"
+                        app:labelText="Lembaga Penerbit SK"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:layout_marginTop="10dp"
+                        app:useDenseSpacing="true">
+
+                        <studio.carbonylgroup.textfieldboxes.ExtendedEditText
+                            android:id="@+id/et_lembaga_penerbit_sk_terakhir"
+                            android:inputType="textMultiLine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
+
+
+
+
                 </LinearLayout>
 
 

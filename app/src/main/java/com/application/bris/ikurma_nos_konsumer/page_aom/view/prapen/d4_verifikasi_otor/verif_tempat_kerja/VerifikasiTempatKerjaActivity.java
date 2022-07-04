@@ -215,6 +215,13 @@ public class VerifikasiTempatKerjaActivity extends AppCompatActivity implements 
     }
 
     private void setDataDocuments(){
+        binding.etNomorSkPengangkatan.setText(dataVerifikasiTempatKerja.getDataDokumenJaminan().getNoSKPengangkatan());
+        binding.etTanggalTerbitSkPengangkatan.setText(AppUtil.parseTanggalGeneral(dataVerifikasiTempatKerja.getDataDokumenJaminan().getTanggalTerbitSKPengangkat(),"yyyy-MM-dd","dd-MM-yyyy"));
+        binding.etLembagaPenerbitSkPengangkatan.setText(dataVerifikasiTempatKerja.getDataDokumenJaminan().getLembagaPenerbitSKPengangk());
+
+        binding.etNomorSkTerakhir.setText(dataVerifikasiTempatKerja.getDataDokumenJaminan().getNoSKTerakhir());
+        binding.etTanggalTerbitSkTerakhir.setText(AppUtil.parseTanggalGeneral(dataVerifikasiTempatKerja.getDataDokumenJaminan().getTanggalTerbitSKTerakhir(),"yyyy-MM-dd","dd-MM-yyyy"));
+        binding.etLembagaPenerbitSkTerakhir.setText(dataVerifikasiTempatKerja.getDataDokumenJaminan().getLembagaPenerbitSKTerakhir());
 
         try {
 

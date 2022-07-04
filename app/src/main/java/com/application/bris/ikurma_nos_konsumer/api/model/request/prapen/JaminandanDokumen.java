@@ -19,10 +19,10 @@ public class JaminandanDokumen {
     @SerializedName("No_SK_Pengangkatan")
     @Expose
     private String noSKPengangkatan;
-    @SerializedName("Tanggal_Terbit_SK_Pengangkat")
+    @SerializedName("Tanggal_Terbit_SK_Pengangkatan")
     @Expose
     private String tanggalTerbitSKPengangkat;
-    @SerializedName("Lembaga_Penerbit_SK_Pengangk")
+    @SerializedName("Lembaga_Penerbit_SK_Pengangkatan")
     @Expose
     private String lembagaPenerbitSKPengangk;
     @SerializedName("No_SK_Terakhir")

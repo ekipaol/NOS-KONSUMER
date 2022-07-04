@@ -592,6 +592,7 @@
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/tv_title_upload_pks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -997,7 +998,7 @@
                         android:layout_weight="1"
                         android:layout_marginLeft="10dp"
                         style="@style/Widget.AppCompat.Button.Colored"
-                        android:text="Lihat LKP"/>
+                        android:text="Lihat/Tambah LKP"/>
 
                     <Button
                         android:id="@+id/btn_lihat_lngp"

@@ -1,5 +1,6 @@
 package com.application.bris.ikurma_nos_konsumer.model.prapen;
 
+import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.JaminandanDokumen;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.UploadImage;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -135,6 +136,17 @@ public class DataVerifikasiTempatKerja {
     @SerializedName("No_Rekening_SPAN")
     @Expose
     private String rekeningSpan;
+    @SerializedName("DataDokumenJaminan")
+    @Expose
+    private JaminandanDokumen dataDokumenJaminan;
+
+    public JaminandanDokumen getDataDokumenJaminan() {
+        return dataDokumenJaminan;
+    }
+
+    public void setDataDokumenJaminan(JaminandanDokumen dataDokumenJaminan) {
+        this.dataDokumenJaminan = dataDokumenJaminan;
+    }
 
     public UploadImage getLkp() {
         return lkp;

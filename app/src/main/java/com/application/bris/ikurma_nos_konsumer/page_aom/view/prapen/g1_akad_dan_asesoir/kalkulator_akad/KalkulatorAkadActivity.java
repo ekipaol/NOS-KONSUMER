@@ -543,6 +543,7 @@ public class KalkulatorAkadActivity extends AppCompatActivity implements Generic
         binding.etBiayaAdministrasi.setFocusable(false);
         binding.etBiayaFlagging.setFocusable(false);
         binding.etBiayaMitraFronting.setFocusable(false);
+        binding.etStatus.setFocusable(false);
 
     }
 

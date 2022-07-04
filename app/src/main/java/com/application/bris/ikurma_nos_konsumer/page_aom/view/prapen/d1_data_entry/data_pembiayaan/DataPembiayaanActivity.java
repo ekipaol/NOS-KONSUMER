@@ -101,6 +101,7 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         disableEditTexts();
         isiDropdown();
         allOnChange();
+        defaultViewCondition();
 
         if(!statusId.equalsIgnoreCase("d.1")){
             noInputMode();
@@ -152,6 +153,10 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.btnCekHasilAkad.setOnClickListener(this);
         binding.btnSimpanDataPembiayaan.setOnClickListener(this);
 
+    }
+
+    private void defaultViewCondition(){
+        binding.tfJenisAset.setVisibility(View.GONE);
     }
 
 
@@ -305,6 +310,14 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
     public void onSelect(String title, MGenericModel data) {
         if(title.equalsIgnoreCase(binding.tfMemilikiAset.getLabelText())){
             binding.etMemilikiAset.setText(data.getDESC());
+            if(data.getDESC().equalsIgnoreCase("ya")){
+                binding.tfJenisAset.setVisibility(View.VISIBLE);
+            }
+            else{
+                binding.etJenisAset.getText().clear();
+                binding.tfJenisAset.setVisibility(View.GONE);
+
+            }
         }
         if(title.equalsIgnoreCase(binding.tfJenisTipeProduk.getLabelText())){
             binding.etJenisTipeProduk.setText(data.getDESC());
@@ -348,6 +361,12 @@ public class DataPembiayaanActivity extends AppCompatActivity implements View.On
         binding.etProgram.setText(dataPembiayaan.getProgram());
         binding.etTujuanPembiayaan.setText(dataPembiayaan.getTujuanPembiayaan());
         binding.etMemilikiAset.setText(dataPembiayaan.getMemilikiAset());
+        if(dataPembiayaan.getMemilikiAset().equalsIgnoreCase("ya")){
+            binding.tfJenisAset.setVisibility(View.VISIBLE);
+        }
+        else{
+            binding.tfJenisAset.setVisibility(View.GONE);
+        }
         binding.etPriceDitawarkan.setText(String.valueOf(dataPembiayaan.getOfferingPrice()));
         binding.etAkadPembiayaan.setText(dataPembiayaan.getPilihanAkad());
         binding.tvInfo.setText(dataPembiayaan.getSyaratUmumAkad());
