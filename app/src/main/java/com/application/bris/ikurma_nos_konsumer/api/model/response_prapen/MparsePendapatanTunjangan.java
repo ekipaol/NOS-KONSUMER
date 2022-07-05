@@ -15,6 +15,8 @@ public class MparsePendapatanTunjangan {
     private Long AkseptasiPendapatan;
     @SerializedName("ManfaatPensiun")
     private BigDecimal ManfaatPensiun;
+    @SerializedName("Tercermin")
+    private String Tercermin;
 
     public BigDecimal getTotal_Pendapatan_Tercermin() {
         return Total_Pendapatan_Tercermin;
@@ -54,5 +56,13 @@ public class MparsePendapatanTunjangan {
 
     public void setManfaatPensiun(BigDecimal manfaatPensiun) {
         ManfaatPensiun = manfaatPensiun;
+    }
+
+    public String getTercermin() {
+        return Tercermin;
+    }
+
+    public void setTercermin(String tercermin) {
+        Tercermin = tercermin;
     }
 }

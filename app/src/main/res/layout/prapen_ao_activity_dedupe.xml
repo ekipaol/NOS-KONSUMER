@@ -254,6 +254,19 @@
                                     android:scrollbars="vertical" />
                             </LinearLayout>
 
+                            <TextView
+                                android:visibility="gone"
+                                android:id="@+id/tv_pengecekan_wise"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/muli_b"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Data Belum Tersedia"
+                                android:textAlignment="center"
+                                android:textSize="14sp" />
+
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -306,7 +319,23 @@
                                     android:scrollbars="vertical" />
 
                             </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tv_pengecekan_pembiayaan"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/muli_b"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Data Belum Tersedia"
+                                android:textAlignment="center"
+                                android:textSize="14sp" />
+
                         </LinearLayout>
+
+
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -359,6 +388,19 @@
                                     android:scrollbars="vertical" />
 
                             </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tv_pengecekan_pendanaan"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/muli_b"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Data Belum Tersedia"
+                                android:textAlignment="center"
+                                android:textSize="14sp" />
 
                         </LinearLayout>
 
@@ -415,6 +457,19 @@
                                     android:scrollbars="vertical" />
 
                             </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tv_pengecekan_sifo"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/muli_b"
+                                android:paddingLeft="10dp"
+                                android:paddingBottom="10dp"
+                                android:text="Data Belum Tersedia"
+                                android:textAlignment="center"
+                                android:textSize="14sp" />
 
                         </LinearLayout>
 

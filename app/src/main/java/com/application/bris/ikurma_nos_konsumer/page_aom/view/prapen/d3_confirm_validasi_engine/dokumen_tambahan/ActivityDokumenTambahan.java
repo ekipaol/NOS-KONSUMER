@@ -86,7 +86,9 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
         View view = binding.getRoot();
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
-        idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        if (getIntent().hasExtra("idAplikasi")) {
+            idAplikasi = Long.parseLong(getIntent().getStringExtra("idAplikasi"));
+        } 
         if (getIntent().hasExtra("produk")) {
             produk = getIntent().getStringExtra("produk");
         } else {
@@ -175,7 +177,7 @@ public class ActivityDokumenTambahan extends AppCompatActivity implements Generi
         binding.loadingLayout.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setUID(String.valueOf(appPreferences.getUid()));
-        req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+        req.setApplicationId(Integer.parseInt(String.valueOf(idAplikasi)));
         Call<DataPribadiLainya> call = apiClientAdapter.getApiInterface().InquiryDokDataPribadiLainnya(req);
         call.enqueue(new Callback<DataPribadiLainya>() {
             @Override

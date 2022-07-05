@@ -403,6 +403,7 @@ public class UriApi {
 
 
         //D3
+        public static final String inquiryDedupeD3 = "NOS_PRAPEN_Services/rest/D3/InqDedupeBsiBisa";
         public static final String inquiryIdebOjk = "NOS_PRAPEN_Services/rest/D3/InquiryIDebSlikOJK";
         public static final String updateIdebOjk = "NOS_PRAPEN_Services/rest/D3/UpdateIDebSlikOJK";
         public static final String downloadIdeb = "NOS_PRAPEN_Services/rest/D3/DownloadIDEB";
@@ -445,6 +446,7 @@ public class UriApi {
         public static final String InquiryTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/InquiryTotalKualitasPembVerifikator";
         public static final String UpdateTotalKualitasPemb = "NOS_PRAPEN_Services/rest/D4/UpdateTotalKualitasPemb";
         public static final String InquiryDataPendapatanD4 = "NOS_PRAPEN_Services/rest/D4/InquiryDataPendapatanD4";
+        public static final String InquiryAkseptasiPendapatanMarketingD4 = "NOS_PRAPEN_Services/rest/D4/InquiryAkseptasiPendapatanVerifikator";
 
 
         //D4.1

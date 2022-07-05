@@ -824,6 +824,9 @@ public interface ApiInterface {
     @POST(UriApi.prapen.inquiryDedupe)
     Call<ParseResponseAgunan> inquiryDedupe(@Body ReqDedupe ReqDedupe);
 
+    @POST(UriApi.prapen.inquiryDedupeD3)
+    Call<ParseResponseAgunan> inquiryDedupeD3(@Body ReqDedupe ReqDedupe);
+
     @POST(UriApi.prapen.updateDedupe)
     Call<ParseResponse> updateDedupe(@Body ReqDedupe ReqDedupe);
 
@@ -1198,6 +1201,9 @@ public interface ApiInterface {
 
     @POST(UriApi.prapen.InquiryAkseptasiPendapatanMarketing)
     Call<ParseResponse> InquiryAkseptasiPendapatanMarketing(@Body ReqInquery ReqInquery);
+
+    @POST(UriApi.prapen.InquiryAkseptasiPendapatanMarketingD4)
+    Call<ParseResponse> InquiryAkseptasiPendapatanMarketingD4(@Body ReqInquery ReqInquery);
 
     @POST(UriApi.prapen.HitungAkseptasiPendapatan)
     Call<ParseResponse> HitungAkseptasiPendapatan(@Body ReqHitungAkseptasiPendapatan ReqHitungAkseptasiPendapatan);

@@ -54,12 +54,9 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
     private ApiClientAdapter apiClientAdapter;
     private AppPreferences appPreferences;
     private PrapenAoActivityDedupeBinding binding;
-    private List<DataDedupe> dataDedupe;
     private String idAplikasi = "0";
     private boolean nikChange = false;
-    List<MGenericModel> dataDropdownFlow = new ArrayList<>();
     private String statusId = "";
-    ParseResponseAgunan responsedata;
     JsonArray data1, data2, data3, data4;
 
     @Override
@@ -146,34 +143,54 @@ public class DataDedupeActivity extends AppCompatActivity implements GenericList
                         params4.height = data4.size() * 240;
                         layout4.setLayoutParams(params4);
 
-                        //        List Data MIS
-                        binding.rvListPengecekanWise.setVisibility(View.VISIBLE);
-                        binding.rvListPengecekanWise.setHasFixedSize(true);
-                        MISAdapter = new MISAdapter(DataDedupeActivity.this, data1);
-                        binding.rvListPengecekanWise.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
-                        binding.rvListPengecekanWise.setItemAnimator(new DefaultItemAnimator());
-                        binding.rvListPengecekanWise.setAdapter(MISAdapter);
-                        //      List Pembiayaan
-                        binding.rvListPengecekanPembiayaan.setVisibility(View.VISIBLE);
-                        binding.rvListPengecekanPembiayaan.setHasFixedSize(true);
-                        PembiayaanAdapter = new PembiayaanAdapter(DataDedupeActivity.this, data2);
-                        binding.rvListPengecekanPembiayaan.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
-                        binding.rvListPengecekanPembiayaan.setItemAnimator(new DefaultItemAnimator());
-                        binding.rvListPengecekanPembiayaan.setAdapter(PembiayaanAdapter);
-                        //        List Pendanaan
-                        binding.rvListPengecekanPendanaan.setVisibility(View.VISIBLE);
-                        binding.rvListPengecekanPendanaan.setHasFixedSize(true);
-                        PendanaanAdapter = new PendanaanAdapter(DataDedupeActivity.this, data3);
-                        binding.rvListPengecekanPendanaan.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
-                        binding.rvListPengecekanPendanaan.setItemAnimator(new DefaultItemAnimator());
-                        binding.rvListPengecekanPendanaan.setAdapter(PendanaanAdapter);
-                        //        List SIFO
-                        binding.rvListPengecekanSifo.setVisibility(View.VISIBLE);
-                        binding.rvListPengecekanSifo.setHasFixedSize(true);
-                        SIFOAdapter = new SIFOAdapter(DataDedupeActivity.this, data4);
-                        binding.rvListPengecekanSifo.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
-                        binding.rvListPengecekanSifo.setItemAnimator(new DefaultItemAnimator());
-                        binding.rvListPengecekanSifo.setAdapter(SIFOAdapter);
+                        if (data1.size() == 0) {
+                            binding.refreshPengecekanWise.setVisibility(View.GONE);
+                            binding.tvPengecekanWise.setVisibility(View.VISIBLE);
+                        } else {
+                            //        List Data MIS
+                            binding.rvListPengecekanWise.setVisibility(View.VISIBLE);
+                            binding.rvListPengecekanWise.setHasFixedSize(true);
+                            MISAdapter = new MISAdapter(DataDedupeActivity.this, data1);
+                            binding.rvListPengecekanWise.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
+                            binding.rvListPengecekanWise.setItemAnimator(new DefaultItemAnimator());
+                            binding.rvListPengecekanWise.setAdapter(MISAdapter);
+                        }
+                        if (data2.size() == 0) {
+                            binding.refreshPengecekanPembiayaan.setVisibility(View.GONE);
+                            binding.tvPengecekanPembiayaan.setVisibility(View.VISIBLE);
+                        } else {
+                            //      List Pembiayaan
+                            binding.rvListPengecekanPembiayaan.setVisibility(View.VISIBLE);
+                            binding.rvListPengecekanPembiayaan.setHasFixedSize(true);
+                            PembiayaanAdapter = new PembiayaanAdapter(DataDedupeActivity.this, data2);
+                            binding.rvListPengecekanPembiayaan.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
+                            binding.rvListPengecekanPembiayaan.setItemAnimator(new DefaultItemAnimator());
+                            binding.rvListPengecekanPembiayaan.setAdapter(PembiayaanAdapter);
+                        }
+                        if (data3.size() == 0) {
+                            binding.refreshPengecekanPendanaan.setVisibility(View.GONE);
+                            binding.tvPengecekanPendanaan.setVisibility(View.VISIBLE);
+                        } else {
+                            //        List Pendanaan
+                            binding.rvListPengecekanPendanaan.setVisibility(View.VISIBLE);
+                            binding.rvListPengecekanPendanaan.setHasFixedSize(true);
+                            PendanaanAdapter = new PendanaanAdapter(DataDedupeActivity.this, data3);
+                            binding.rvListPengecekanPendanaan.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
+                            binding.rvListPengecekanPendanaan.setItemAnimator(new DefaultItemAnimator());
+                            binding.rvListPengecekanPendanaan.setAdapter(PendanaanAdapter);
+                        }
+                        if (data4.size() == 0) {
+                            binding.refreshPengecekanSifo.setVisibility(View.GONE);
+                            binding.tvPengecekanSifo.setVisibility(View.VISIBLE);
+                        } else {
+                            //        List SIFO
+                            binding.rvListPengecekanSifo.setVisibility(View.VISIBLE);
+                            binding.rvListPengecekanSifo.setHasFixedSize(true);
+                            SIFOAdapter = new SIFOAdapter(DataDedupeActivity.this, data4);
+                            binding.rvListPengecekanSifo.setLayoutManager(new LinearLayoutManager(DataDedupeActivity.this));
+                            binding.rvListPengecekanSifo.setItemAnimator(new DefaultItemAnimator());
+                            binding.rvListPengecekanSifo.setAdapter(SIFOAdapter);
+                        }
 
                     } else {
                         AppUtil.notiferror(DataDedupeActivity.this, findViewById(android.R.id.content), response.body().getMessage());
