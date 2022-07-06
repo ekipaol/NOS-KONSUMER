@@ -151,7 +151,14 @@ public class ListInstansiActivity extends AppCompatActivity {
                 binding.rvListInstansi.setVisibility(View.VISIBLE);
                 if (response.isSuccessful()) {
                     if (response.body().getStatus().equalsIgnoreCase("00")) {
-                        String listDataString = response.body().getData().toString();
+                        String listDataString;
+                        try{
+                            listDataString = response.body().getData().toString();
+                        }
+                        catch (NullPointerException e){
+                            listDataString = "[]";
+                        }
+
                         Gson gson = new Gson();
                         Type type = new TypeToken<List<DataListInstansi>>() {
                         }.getType();
