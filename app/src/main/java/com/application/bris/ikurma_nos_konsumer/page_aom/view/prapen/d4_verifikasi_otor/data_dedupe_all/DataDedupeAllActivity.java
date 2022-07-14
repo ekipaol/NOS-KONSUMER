@@ -1,9 +1,7 @@
-package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_dedupe_all;
+package com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.data_dedupe_all;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,16 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.application.bris.ikurma_nos_konsumer.R;
-import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponse;
 import com.application.bris.ikurma_nos_konsumer.api.model.ParseResponseAgunan;
 import com.application.bris.ikurma_nos_konsumer.api.model.request.prapen.ReqDedupe;
 import com.application.bris.ikurma_nos_konsumer.api.service.ApiClientAdapter;
 import com.application.bris.ikurma_nos_konsumer.database.AppPreferences;
-import com.application.bris.ikurma_nos_konsumer.database.pojo.FlagAplikasiPojo;
 import com.application.bris.ikurma_nos_konsumer.databinding.ActivityDedupeAllBinding;
-import com.application.bris.ikurma_nos_konsumer.databinding.PrapenAoActivityDedupeBinding;
 import com.application.bris.ikurma_nos_konsumer.model.prapen.DataDedupe;
-import com.application.bris.ikurma_nos_konsumer.page_aom.dialog.CustomDialog;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.ConfirmListener;
 import com.application.bris.ikurma_nos_konsumer.page_aom.listener.GenericListenerOnSelect;
 import com.application.bris.ikurma_nos_konsumer.page_aom.model.BsiBisa;
@@ -38,17 +32,16 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DataDedupeAllActivity extends AppCompatActivity implements GenericListenerOnSelect, SwipeRefreshLayout.OnRefreshListener, ConfirmListener {
 
-    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_dedupe_all.MISAdapter MISAdapter;
-    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_dedupe_all.PembiayaanAdapter PembiayaanAdapter;
-    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_dedupe_all.PendanaanAdapter PendanaanAdapter;
-    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d3_confirm_validasi_engine.data_dedupe_all.SIFOAdapter SIFOAdapter;
+    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.data_dedupe_all.MISAdapter MISAdapter;
+    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.data_dedupe_all.PembiayaanAdapter PembiayaanAdapter;
+    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.data_dedupe_all.PendanaanAdapter PendanaanAdapter;
+    private com.application.bris.ikurma_nos_konsumer.page_aom.view.prapen.d4_verifikasi_otor.data_dedupe_all.SIFOAdapter SIFOAdapter;
 
     private List<DataDedupe> data = new ArrayList<>();
     private ApiClientAdapter apiClientAdapter;
@@ -114,11 +107,11 @@ public class DataDedupeAllActivity extends AppCompatActivity implements GenericL
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqDedupe req = new ReqDedupe();
         AppPreferences appPreferences = new AppPreferences(DataDedupeAllActivity.this);
-//        req.setApplicationId(Long.parseLong(idAplikasi));
-//        req.setUID(String.valueOf(appPreferences.getUid()));
+        req.setApplicationId(Long.parseLong(idAplikasi));
+        req.setUID(String.valueOf(appPreferences.getUid()));
         //pantekan uid
-        req.setApplicationId(Long.parseLong("131"));
-        req.setUID("4976");
+//        req.setApplicationId(Long.parseLong("131"));
+//        req.setUID("4976");
         Call<ParseResponseAgunan> call = apiClientAdapter.getApiInterface().inquiryDedupeD3(req);
         call.enqueue(new Callback<ParseResponseAgunan>() {
             @Override

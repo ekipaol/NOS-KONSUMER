@@ -37,6 +37,7 @@
     <!--    D4-->
     <string name="submenu_detil_aplikasi_d4_canvassing">Hasil Canvassing</string>
     <string name="submenu_detil_aplikasi_d4_kalkulator_verin">Kalkulator Verin</string>
+    <string name="submenu_detil_aplikasi_d4_dedupe_all">Hasil Dedupe</string>
     <string name="submenu_detil_aplikasi_d4_hasil_rac">Hasil RAC</string>
     <string name="submenu_detil_aplikasi_d4_hasil_fitur">Hasil Fitur</string>
     <string name="submenu_detil_aplikasi_d4_data_tempat_kerja">Verifikasi Tempat Kerja</string>

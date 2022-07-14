@@ -43,8 +43,27 @@ public class PendanaanAdapter extends RecyclerView.Adapter<PendanaanAdapter.Menu
         if (position == 0) {
             binding.listTitik.setVisibility(View.GONE);
         }
-        holder.tvNomorRekening.setText(mdata.get("NoRekening").getAsString());
-        holder.tvProduk.setText(mdata.get("TipeProduk").getAsString());
+
+        try{
+            holder.tvNomorRekening.setText(mdata.get("NoRekening").getAsString());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+            holder.tvNomorRekening.setText("-");
+        }
+
+        try{
+            holder.tvProduk.setText(mdata.get("TipeProduk").getAsString());
+        }
+        catch (NullPointerException e){
+            e.printStackTrace();
+            holder.tvProduk.setText("-");
+        }
+
+
+
+
+
     }
 
     @Override

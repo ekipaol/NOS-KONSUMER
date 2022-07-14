@@ -119,6 +119,7 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
         initdata();
         AppUtil.toolbarRegular(this, "Data Jaminan");
 
+
     }
 
     private void initdata() {
@@ -788,7 +789,8 @@ public class DataJaminanActivity extends AppCompatActivity implements View.OnCli
             binding.tfTanggalTerbitSk3.setError(binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field), true);
             AppUtil.notiferror(DataJaminanActivity.this, findViewById(android.R.id.content), binding.tfTanggalTerbitSk3.getLabelText() + " " + getString(R.string.title_validate_field));
             return false;
-        } else {
+        }
+        else {
 //            AppUtil.disableEditTexts(binding.getRoot());
 //            binding.ivKtpNasabah.setOnClickListener(null);
 //            binding.ivAssetAkad.setOnClickListener(null);

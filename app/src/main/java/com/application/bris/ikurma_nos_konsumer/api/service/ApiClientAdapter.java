@@ -293,8 +293,8 @@ public class ApiClientAdapter {
 //                .connectTimeout(timeOut, timeUnit)
 //                .readTimeout(timeOut, timeUnit)
 //                 //hati hati ini gaktau ngaruh ke hhtps apa engga
-////                 .protocols(Arrays.asList(Protocol.HTTP_1_1))
-//                // TODO: 19/04/21 comment this, uncomment above
+//                 .protocols(Arrays.asList(Protocol.HTTP_1_1))
+//                 TODO: 19/04/21 comment this, uncomment above
 //                .hostnameVerifier(new HostnameVerifier() {
 //                    @Override
 //                    public boolean verify(String s, SSLSession sslSession) {

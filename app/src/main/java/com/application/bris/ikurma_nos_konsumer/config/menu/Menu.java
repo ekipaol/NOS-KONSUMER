@@ -70,6 +70,7 @@ public class Menu {
 
     public static void SubmenuD4(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_hasil_canvasing,context.getString(R.string.submenu_detil_aplikasi_d4_canvassing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_economysector,context.getString(R.string.submenu_detil_aplikasi_d4_dedupe_all)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d4_hasil_rac)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d4_hasil_fitur)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_tempat_kerja,context.getString(R.string.submenu_detil_aplikasi_d4_data_tempat_kerja)));
@@ -86,6 +87,7 @@ public class Menu {
 
     public static void SubmenuD5(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_hasil_canvasing,context.getString(R.string.submenu_detil_aplikasi_d5_canvassing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_economysector,context.getString(R.string.submenu_detil_aplikasi_d4_dedupe_all)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d5_hasil_rac)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d5_hasil_fitur)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_tempat_kerja,context.getString(R.string.submenu_detil_aplikasi_d5_data_tempat_kerja)));
@@ -103,6 +105,7 @@ public class Menu {
 
     public static void SubmenuD6(Context context, List<ListViewSubmenuHotprospek> menu){
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_hasil_canvasing,context.getString(R.string.submenu_detil_aplikasi_d6_canvassing)));
+        menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_economysector,context.getString(R.string.submenu_detil_aplikasi_d4_dedupe_all)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_hasil_rac)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_verif,context.getString(R.string.submenu_detil_aplikasi_d6_hasil_fitur)));
         menu.add(new ListViewSubmenuHotprospek(R.drawable.ic_tempat_kerja,context.getString(R.string.submenu_detil_aplikasi_d6_data_tempat_kerja)));
