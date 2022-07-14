@@ -78,7 +78,7 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
         if (getIntent().hasExtra("idAplikasi")) {
             idAplikasi = getIntent().getStringExtra("idAplikasi");
         }
-        idAplikasi = "131";
+//        idAplikasi = "131";
         hideall();
         backgroundStatusBar();
         initdata();
@@ -115,8 +115,8 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
         binding.loading.progressbarLoading.setVisibility(View.VISIBLE);
         ReqInquery req = new ReqInquery();
         req.setApplicationId(Integer.parseInt(idAplikasi));
-        req.setUID("4976");
-//        req.setUID(String.valueOf(appPreferences.getUid()));
+//        req.setUID("4976");
+        req.setUID(String.valueOf(appPreferences.getUid()));
         Call<ParseResponse> call = apiClientAdapter.getApiInterface().InquiryAkseptasiPendapatanMarketingD4(req);
         call.enqueue(new Callback<ParseResponse>() {
             @SuppressLint("SetTextI18n")
@@ -128,108 +128,114 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
                         Gson gson = new Gson();
                         String rpendapatan, rDetail, rimg, rgaji;
                         assert response.body().getData() != null;
-                        if (response.body().getData().get("PendapatanTunjangan") != null) {
-                            rpendapatan = response.body().getData().get("PendapatanTunjangan").getAsJsonObject().toString();
-                            Type typependapatan = new TypeToken<MparsePendapatanTunjangan>() {
-                            }.getType();
-                            mparsePendapatanTunjangan = gson.fromJson(rpendapatan, typependapatan);
-                            if (mparsePendapatanTunjangan.getAkseptasiPendapatan() == 1) {
-                                binding.tambahanDokumen.setVisibility(View.VISIBLE);
-                                binding.etPilihanAkseptasiPendapatan.setText("Pendapatan Aktif dan Pensiun");
-                            } else {
-                                binding.tambahanDokumen.setVisibility(View.GONE);
-                                binding.etPilihanAkseptasiPendapatan.setText("Hanya Pendapatan Pensiun");
-                            }
-                            binding.etTercermin.setText(mparsePendapatanTunjangan.getTercermin());
-                            binding.etPendapatanSaatPensiun.setText(String.valueOf(mparsePendapatanTunjangan.getManfaatPensiun().setScale(2, RoundingMode.HALF_EVEN)));
-                            binding.etTotalPendapatanUntukAngsuran.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Maksimal_Angsuran().setScale(2, RoundingMode.HALF_EVEN)));
-                            binding.etTotalPendapatanSetelahAkseptasi.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().setScale(2, RoundingMode.HALF_EVEN)));
-                            if (!mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().equals(new BigDecimal("0"))) {
-                                hitung = 1;
-                            }
+                        if(response.body().getStatus().equalsIgnoreCase("00")){
+                            if (response.body().getData().get("PendapatanTunjangan") != null) {
+                                rpendapatan = response.body().getData().get("PendapatanTunjangan").getAsJsonObject().toString();
+                                Type typependapatan = new TypeToken<MparsePendapatanTunjangan>() {
+                                }.getType();
+                                mparsePendapatanTunjangan = gson.fromJson(rpendapatan, typependapatan);
+                                if (mparsePendapatanTunjangan.getAkseptasiPendapatan() == 1) {
+                                    binding.tambahanDokumen.setVisibility(View.VISIBLE);
+                                    binding.etPilihanAkseptasiPendapatan.setText("Pendapatan Aktif dan Pensiun");
+                                } else {
+                                    binding.tambahanDokumen.setVisibility(View.GONE);
+                                    binding.etPilihanAkseptasiPendapatan.setText("Hanya Pendapatan Pensiun");
+                                }
+                                binding.etTercermin.setText(mparsePendapatanTunjangan.getTercermin());
+                                binding.etPendapatanSaatPensiun.setText(String.valueOf(mparsePendapatanTunjangan.getManfaatPensiun().setScale(2, RoundingMode.HALF_EVEN)));
+                                binding.etTotalPendapatanUntukAngsuran.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Maksimal_Angsuran().setScale(2, RoundingMode.HALF_EVEN)));
+                                binding.etTotalPendapatanSetelahAkseptasi.setText(String.valueOf(mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().setScale(2, RoundingMode.HALF_EVEN)));
+                                if (!mparsePendapatanTunjangan.getTotal_Pendapatan_Akseptasi().equals(new BigDecimal("0"))) {
+                                    hitung = 1;
+                                }
 
-                        }
-
-                        if (response.body().getData().get("PendapatanTunjanganDetailD4List").getAsJsonArray().size() != 0) {
-                            rDetail = response.body().getData().get("PendapatanTunjanganDetailD4List").toString();
-                            Type typeDetail = new TypeToken<List<SubAkseptasiPendapatan>>() {
-                            }.getType();
-                            data1 = gson.fromJson(rDetail, typeDetail);
-
-                            // Init List
-                            list = data1.size();
-
-                            //List Data Akseptasi Pendapatan
-                            binding.rvListPendapatan.setVisibility(View.VISIBLE);
-                            binding.rvListPendapatan.setHasFixedSize(true);
-                            verifAkseptasiPendapatanAdapter = new VerifAkseptasiPendapatanAdapter(ActivityVerifAkseptasiPendapatan.this, data1, komponen, treatment);
-                            binding.rvListPendapatan.setLayoutManager(new LinearLayoutManager(ActivityVerifAkseptasiPendapatan.this));
-                            binding.rvListPendapatan.setItemAnimator(new DefaultItemAnimator());
-                            binding.rvListPendapatan.setAdapter(verifAkseptasiPendapatanAdapter);
-                            binding.refresh.setRefreshing(false);
-                            binding.refresh.setEnabled(false);
-                            resizeList();
-                        }
-
-                        if (response.body().getData().get("PendapatanTunjangan_Img") != null) {
-                            rimg = response.body().getData().get("PendapatanTunjangan_Img").getAsJsonObject().toString();
-                            Type typeimg = new TypeToken<ReqDocument>() {
-                            }.getType();
-                            reqDocument = gson.fromJson(rimg, typeimg);
-                            try {
-                                binding.etTanggalDokumenPendapatan.setText(AppUtil.parseTanggalGeneral(reqDocument.getTanggal_Dokumen(), "yyyy-MM-dd", "MM-yyyy"));
-                                checkFileTypeThenSet(ActivityVerifAkseptasiPendapatan.this, reqDocument.getImg(), binding.ivDokumenPendapatan, reqDocument.getFileName());
-                                reqDocument.setImg(reqDocument.getImg());
-                                reqDocument.setFileName(reqDocument.getFileName());
-                            } catch (Exception e) {
-                                AppUtil.logSecure("error setdata", e.getMessage());
-                            }
-                        }
-
-                        if (response.body().getData().get("DataGajiTunjangan") != null) {
-                            rgaji = response.body().getData().get("DataGajiTunjangan").getAsJsonObject().toString();
-                            Type typegaji = new TypeToken<MparseDataGajiTunjangan>() {
-                            }.getType();
-                            mparseDataGajiTunjangan = gson.fromJson(rgaji, typegaji);
-
-                            if (mparseDataGajiTunjangan.getNomor_Rek_Bank_Gaji().equals(mparseDataGajiTunjangan.getNo_Rekening_Tunjangan())) {
-                                binding.etVerfikasiRekening.setText("Ya");
-                                binding.tfNorekTunjangan.setVisibility(View.GONE);
-                                binding.tfNamaBankTunjangan.setVisibility(View.GONE);
-                                binding.tfTotalKredit2.setVisibility(View.GONE);
-                                binding.tfTotalDebit2.setVisibility(View.GONE);
-                                binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
-                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
-                                binding.norekTunjangan.setVisibility(View.GONE);
-                            } else {
-                                binding.etVerfikasiRekening.setText("Tidak");
-                                binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
-                                binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
-                                binding.tfTotalKredit2.setVisibility(View.VISIBLE);
-                                binding.tfTotalDebit2.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
-                                binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
-                                binding.norekTunjangan.setVisibility(View.VISIBLE);
                             }
 
-                            binding.etTanggalDokumenPendapatan.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToGaji(), "yyyy-MM-dd", "MM-yyyy"));
-                            binding.etNorekGaji.setText(mparseDataGajiTunjangan.getNomor_Rek_Bank_Gaji());
-                            binding.etNamaBankGaji.setText(mparseDataGajiTunjangan.getNama_Bank_Gaji());
-                            binding.etPeriodeAwalWaktu1.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_FromGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etPeriodeAkhirWaktu1.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTotalKredit1.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_KreditGaji()));
-                            binding.etTotalDebit1.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_DebitGaji()));
+                            if (response.body().getData().get("PendapatanTunjanganDetailD4List").getAsJsonArray().size() != 0) {
+                                rDetail = response.body().getData().get("PendapatanTunjanganDetailD4List").toString();
+                                Type typeDetail = new TypeToken<List<SubAkseptasiPendapatan>>() {
+                                }.getType();
+                                data1 = gson.fromJson(rDetail, typeDetail);
 
-                            binding.etNorekTunjangan.setText(mparseDataGajiTunjangan.getNo_Rekening_Tunjangan());
-                            binding.etNamaBankTunjangan.setText(mparseDataGajiTunjangan.getNama_Bank_Tunjangan());
-                            binding.etPeriodeAwalWaktu2.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_FromTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etPeriodeAkhirWaktu2.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
-                            binding.etTotalDebit2.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_DebitTunjangan()));
-                            binding.etTotalKredit2.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_KreditTunjangan()));
+                                // Init List
+                                list = data1.size();
+
+                                //List Data Akseptasi Pendapatan
+                                binding.rvListPendapatan.setVisibility(View.VISIBLE);
+                                binding.rvListPendapatan.setHasFixedSize(true);
+                                verifAkseptasiPendapatanAdapter = new VerifAkseptasiPendapatanAdapter(ActivityVerifAkseptasiPendapatan.this, data1, komponen, treatment);
+                                binding.rvListPendapatan.setLayoutManager(new LinearLayoutManager(ActivityVerifAkseptasiPendapatan.this));
+                                binding.rvListPendapatan.setItemAnimator(new DefaultItemAnimator());
+                                binding.rvListPendapatan.setAdapter(verifAkseptasiPendapatanAdapter);
+                                binding.refresh.setRefreshing(false);
+                                binding.refresh.setEnabled(false);
+                                resizeList();
+                            }
+
+                            if (response.body().getData().get("PendapatanTunjangan_Img") != null) {
+                                rimg = response.body().getData().get("PendapatanTunjangan_Img").getAsJsonObject().toString();
+                                Type typeimg = new TypeToken<ReqDocument>() {
+                                }.getType();
+                                reqDocument = gson.fromJson(rimg, typeimg);
+                                try {
+                                    binding.etTanggalDokumenPendapatan.setText(AppUtil.parseTanggalGeneral(reqDocument.getTanggal_Dokumen(), "yyyy-MM-dd", "MM-yyyy"));
+                                    checkFileTypeThenSet(ActivityVerifAkseptasiPendapatan.this, reqDocument.getImg(), binding.ivDokumenPendapatan, reqDocument.getFileName());
+                                    reqDocument.setImg(reqDocument.getImg());
+                                    reqDocument.setFileName(reqDocument.getFileName());
+                                } catch (Exception e) {
+                                    AppUtil.logSecure("error setdata", e.getMessage());
+                                }
+                            }
+
+                            if (response.body().getData().get("DataGajiTunjangan") != null) {
+                                rgaji = response.body().getData().get("DataGajiTunjangan").getAsJsonObject().toString();
+                                Type typegaji = new TypeToken<MparseDataGajiTunjangan>() {
+                                }.getType();
+                                mparseDataGajiTunjangan = gson.fromJson(rgaji, typegaji);
+
+                                if (mparseDataGajiTunjangan.getNomor_Rek_Bank_Gaji().equals(mparseDataGajiTunjangan.getNo_Rekening_Tunjangan())) {
+                                    binding.etVerfikasiRekening.setText("Ya");
+                                    binding.tfNorekTunjangan.setVisibility(View.GONE);
+                                    binding.tfNamaBankTunjangan.setVisibility(View.GONE);
+                                    binding.tfTotalKredit2.setVisibility(View.GONE);
+                                    binding.tfTotalDebit2.setVisibility(View.GONE);
+                                    binding.tfPeriodeAwalWaktu2.setVisibility(View.GONE);
+                                    binding.tfPeriodeAkhirWaktu2.setVisibility(View.GONE);
+                                    binding.norekTunjangan.setVisibility(View.GONE);
+                                } else {
+                                    binding.etVerfikasiRekening.setText("Tidak");
+                                    binding.tfNorekTunjangan.setVisibility(View.VISIBLE);
+                                    binding.tfNamaBankTunjangan.setVisibility(View.VISIBLE);
+                                    binding.tfTotalKredit2.setVisibility(View.VISIBLE);
+                                    binding.tfTotalDebit2.setVisibility(View.VISIBLE);
+                                    binding.tfPeriodeAwalWaktu2.setVisibility(View.VISIBLE);
+                                    binding.tfPeriodeAkhirWaktu2.setVisibility(View.VISIBLE);
+                                    binding.norekTunjangan.setVisibility(View.VISIBLE);
+                                }
+
+                                binding.etTanggalDokumenPendapatan.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToGaji(), "yyyy-MM-dd", "MM-yyyy"));
+                                binding.etNorekGaji.setText(mparseDataGajiTunjangan.getNomor_Rek_Bank_Gaji());
+                                binding.etNamaBankGaji.setText(mparseDataGajiTunjangan.getNama_Bank_Gaji());
+                                binding.etPeriodeAwalWaktu1.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_FromGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                                binding.etPeriodeAkhirWaktu1.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToGaji(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                                binding.etTotalKredit1.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_KreditGaji()));
+                                binding.etTotalDebit1.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_DebitGaji()));
+
+                                binding.etNorekTunjangan.setText(mparseDataGajiTunjangan.getNo_Rekening_Tunjangan());
+                                binding.etNamaBankTunjangan.setText(mparseDataGajiTunjangan.getNama_Bank_Tunjangan());
+                                binding.etPeriodeAwalWaktu2.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_FromTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                                binding.etPeriodeAkhirWaktu2.setText(AppUtil.parseTanggalGeneral(mparseDataGajiTunjangan.getPeriode_Date_ToTunjangan(), "yyyy-MM-dd", "dd-MM-yyyy"));
+                                binding.etTotalDebit2.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_DebitTunjangan()));
+                                binding.etTotalKredit2.setText(String.valueOf(mparseDataGajiTunjangan.getTotal_KreditTunjangan()));
+                            }
                         }
+                        else{
+                            AppUtil.notiferror(ActivityVerifAkseptasiPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
+                        }
+
 
                     } else {
-                        AppUtil.notiferror(ActivityVerifAkseptasiPendapatan.this, findViewById(android.R.id.content), response.body().getMessage());
+                        AppUtil.notiferror(ActivityVerifAkseptasiPendapatan.this, findViewById(android.R.id.content), "Terjadi Kesalahan");
                     }
                 } else {
                     binding.loading.progressbarLoading.setVisibility(View.GONE);
