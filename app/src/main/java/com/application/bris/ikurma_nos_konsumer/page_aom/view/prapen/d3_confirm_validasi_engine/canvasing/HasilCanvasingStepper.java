@@ -11,6 +11,7 @@ import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.Mparse
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseHasilRAC;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseRAC;
 import com.application.bris.ikurma_nos_konsumer.api.model.response_prapen.MparseResponseTaspen;
+import com.google.gson.JsonObject;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 import com.stepstone.stepper.viewmodel.StepViewModel;
@@ -21,12 +22,13 @@ import java.util.List;
 public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
 
     private String title, aRAC,aFitur;
+    private JsonObject JsonData;
     private List<MparseResponseRAC> lRAC = new ArrayList<MparseResponseRAC>();
     private List<MparseResponseFitur> LFitur = new ArrayList<MparseResponseFitur>();
     private MparseResponseTaspen LTaspen = new MparseResponseTaspen();
     private MparseResponseHasilRAC objRAC;
 
-    public HasilCanvasingStepper(@NonNull FragmentManager fm, @NonNull Context context, List<MparseResponseRAC> listRac, String aprroveRAC, MparseResponseHasilRAC objHasilRAc, List<MparseResponseFitur> dataFitur,String hasilFitur ,MparseResponseTaspen dataTaspen) {
+    public HasilCanvasingStepper(@NonNull FragmentManager fm, @NonNull Context context, List<MparseResponseRAC> listRac, String aprroveRAC, MparseResponseHasilRAC objHasilRAc, List<MparseResponseFitur> dataFitur,String hasilFitur ,MparseResponseTaspen dataTaspen,JsonObject jsonData) {
         super(fm, context);
         aRAC = aprroveRAC;
         lRAC = listRac;
@@ -34,6 +36,7 @@ public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
         LFitur = dataFitur;
         aFitur = hasilFitur;
         LTaspen = dataTaspen;
+        JsonData = jsonData;
     }
 
     @NonNull
@@ -49,6 +52,9 @@ public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
             case 2:
                 title = "Resume Cek Taspen";
                 break;
+            case 3:
+                title = "Data IDE";
+                break;
             default:
                 title = "Default Tab";
         }
@@ -61,14 +67,13 @@ public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
     public Step createStep(int position) {
         switch (position) {
             case 0:
-                FragmentResumeRAC FragmentResumeRAC = new FragmentResumeRAC(lRAC, aRAC, objRAC);
-                return FragmentResumeRAC;
+                return new FragmentResumeRAC(lRAC, aRAC, objRAC);
             case 1:
-                FragmentResumeFitur FragmentResumeFitur = new FragmentResumeFitur(LFitur,aFitur);
-                return FragmentResumeFitur;
+                return new FragmentResumeFitur(LFitur,aFitur);
             case 2:
-                FragmentResumeCekTaspen FragmentResumeCekTaspen = new FragmentResumeCekTaspen(LTaspen);
-                return FragmentResumeCekTaspen;
+                return new FragmentResumeCekTaspen(LTaspen);
+            case 3:
+                return new FragmentResumeIDE(JsonData);
             default:
                 throw new IllegalArgumentException("Unsupported position: " + position);
         }
@@ -76,6 +81,6 @@ public class HasilCanvasingStepper extends AbstractFragmentStepAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }

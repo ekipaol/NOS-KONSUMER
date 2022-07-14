@@ -60,6 +60,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         apiClientAdapter = new ApiClientAdapter(this);
         appPreferences = new AppPreferences(this);
         statusId=getIntent().getStringExtra("statusId");
+//        statusId="d.3";
 
         initData();
 
@@ -77,8 +78,9 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
         ReqInquery req = new ReqInquery();
         req.setUID(String.valueOf(appPreferences.getUid()));
         req.setApplicationId(Integer.parseInt(getIntent().getStringExtra("idAplikasi")));
+//        req.setUID("123123");
+//        req.setApplicationId(131);
         Call<ParseResponseAgunan> call;
-         call = apiClientAdapter.getApiInterface().inquiryCanvassingD3(req);
 
         if(statusId.equalsIgnoreCase("d.3")){
             call = apiClientAdapter.getApiInterface().inquiryCanvassingD3(req);
@@ -102,8 +104,6 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                             Gson gson = new Gson();
                             String aRac = "", aFitur = "";
                             if (response.body().getData().get("ResponseTaspenPrapen") != null) {
-
-
 
                                 rTaspen = response.body().getData().get("ResponseTaspenPrapen").getAsJsonObject().toString();
                                 Type typeTaspen = new TypeToken<MparseResponseTaspen>() {
@@ -136,7 +136,7 @@ public class HasilCanvasingActivity extends AppCompatActivity implements Stepper
                             if (response.body().getData().get("StatusFitur") != null) {
                                 aFitur = response.body().getData().get("StatusFitur").getAsString();
                             }
-                            binding.stepperlayout.setAdapter(new HasilCanvasingStepper(getSupportFragmentManager(), HasilCanvasingActivity.this, dataRAC, aRac, datahasilRAC, dataFitur, aFitur, dataTaspen));
+                            binding.stepperlayout.setAdapter(new HasilCanvasingStepper(getSupportFragmentManager(), HasilCanvasingActivity.this, dataRAC, aRac, datahasilRAC, dataFitur, aFitur, dataTaspen,response.body().getData()));
                             binding.stepperlayout.setListener(HasilCanvasingActivity.this);
 
                         } else {
