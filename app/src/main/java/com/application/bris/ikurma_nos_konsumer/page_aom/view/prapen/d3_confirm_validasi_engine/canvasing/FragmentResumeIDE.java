@@ -51,6 +51,7 @@ public class FragmentResumeIDE extends Fragment implements Step, SwipeRefreshLay
             binding.etProgram.setText(dataPembiayaanCanvasing.get("Program").getAsString());
             binding.etAkad.setText(dataPembiayaanCanvasing.get("Akad").getAsString());
         }
+
         if (dataNasabahCanvasing != null) {
             binding.etNoKtp.setText(dataNasabahCanvasing.get("NoKTP").getAsString());
             binding.etNpwp.setText(dataNasabahCanvasing.get("NPWP").getAsString());
@@ -58,18 +59,18 @@ public class FragmentResumeIDE extends Fragment implements Step, SwipeRefreshLay
             binding.etNamaLengkapSesuaiKtp.setText(dataNasabahCanvasing.get("NamaLengkapSesuaiKTP").getAsString());
             binding.etJenisKelamin.setText(dataNasabahCanvasing.get("JenisKelamin").getAsString());
             binding.etTempatLahir.setText(dataNasabahCanvasing.get("TempatLahir").getAsString());
-            binding.etTanggalLahir.setText(dataNasabahCanvasing.get("TanggalLahir").getAsString());
+            binding.etTanggalLahir.setText(AppUtil.parseTanggalGeneral(dataNasabahCanvasing.get("TanggalLahir").getAsString(), "yyyy-MM-dd", "dd-MM-yyyy"));
             binding.etNamaIbuKandung.setText(dataNasabahCanvasing.get("NamaIbuKandung").getAsString());
             binding.etNomorHp.setText(dataNasabahCanvasing.get("NomorHP").getAsString());
             binding.etNomorTelpRumah.setText(dataNasabahCanvasing.get("NomorTelpRumah").getAsString());
             binding.etEmail.setText(dataNasabahCanvasing.get("Email").getAsString());
             binding.etAgama.setText(dataNasabahCanvasing.get("Agama").getAsString());
-            binding.etTanggalTerbitKtp.setText(dataNasabahCanvasing.get("TanggalTerbitKTP").getAsString());
+            binding.etTanggalTerbitKtp.setText(AppUtil.parseTanggalGeneral(dataNasabahCanvasing.get("TanggalTerbitKTP").getAsString(), "yyyy-MM-dd", "dd-MM-yyyy"));
             binding.etStatusPernikahanTerbaru.setText(dataNasabahCanvasing.get("StatusPernikahanTerbaru").getAsString());
             binding.etStatusPernikahanKtp.setText(dataNasabahCanvasing.get("StatusPernikahanKTP").getAsString());
             binding.etNoKtpPasangan.setText(dataNasabahCanvasing.get("NoKTPPasangan").getAsString());
             binding.etNamaLengkapPasangan.setText(dataNasabahCanvasing.get("NamaLengkapPasangan").getAsString());
-            binding.etTanggalLahirPasangan.setText(dataNasabahCanvasing.get("TanggalLahirPasangan").getAsString());
+            binding.etTanggalLahirPasangan.setText(AppUtil.parseTanggalGeneral(dataNasabahCanvasing.get("TanggalLahirPasangan").getAsString(), "yyyy-MM-dd", "dd-MM-yyyy"));
         }
         if (dataAlamatCanvasing != null) {
             binding.etAlamat.setText(dataAlamatCanvasing.get("Alamat").getAsString());
