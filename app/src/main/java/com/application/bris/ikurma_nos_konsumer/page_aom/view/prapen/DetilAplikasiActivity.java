@@ -712,7 +712,7 @@ public class DetilAplikasiActivity extends AppCompatActivity implements MenuClic
 
                             dialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
                             dialog.setTitleText("Berhasil");
-                            dialog.setContentText("Aplikasi Berhasil Dilanjutkan");
+                            dialog.setContentText("Aplikasi Berhasil Dilanjutkan\n\n");
                             dialog.showCancelButton(false);
                             dialog.setConfirmText("OK");
                             dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
