@@ -54,6 +54,7 @@
                         android:paddingRight="10dp"
                         android:paddingLeft="16dp"
                         android:text="Instansi Aktif"
+                        android:checked="true"
                         android:textSize="17sp"
                         android:fontFamily="@font/muli_b"
                         android:textColor="@color/colorBlackHeader"/>

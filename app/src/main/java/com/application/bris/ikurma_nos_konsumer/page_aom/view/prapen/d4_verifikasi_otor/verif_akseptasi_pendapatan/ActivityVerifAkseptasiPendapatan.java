@@ -129,8 +129,8 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
                         String rpendapatan, rDetail, rimg, rgaji;
                         assert response.body().getData() != null;
                         if(response.body().getStatus().equalsIgnoreCase("00")){
-                            if (response.body().getData().get("PendapatanTunjangan") != null) {
-                                rpendapatan = response.body().getData().get("PendapatanTunjangan").getAsJsonObject().toString();
+                            if (response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("PendapatanTunjangan") != null) {
+                                rpendapatan = response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("PendapatanTunjangan").getAsJsonObject().toString();
                                 Type typependapatan = new TypeToken<MparsePendapatanTunjangan>() {
                                 }.getType();
                                 mparsePendapatanTunjangan = gson.fromJson(rpendapatan, typependapatan);
@@ -151,25 +151,31 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
 
                             }
 
-                            if (response.body().getData().get("PendapatanTunjanganDetailD4List").getAsJsonArray().size() != 0) {
-                                rDetail = response.body().getData().get("PendapatanTunjanganDetailD4List").toString();
-                                Type typeDetail = new TypeToken<List<SubAkseptasiPendapatan>>() {
-                                }.getType();
-                                data1 = gson.fromJson(rDetail, typeDetail);
+                            try{
+                                if (response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("PendapatanTunjanganDetailD4List").getAsJsonArray().size() != 0) {
+                                    rDetail = response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("PendapatanTunjanganDetailD4List").toString();
+                                    Type typeDetail = new TypeToken<List<SubAkseptasiPendapatan>>() {
+                                    }.getType();
+                                    data1 = gson.fromJson(rDetail, typeDetail);
 
-                                // Init List
-                                list = data1.size();
+                                    // Init List
+                                    list = data1.size();
 
-                                //List Data Akseptasi Pendapatan
-                                binding.rvListPendapatan.setVisibility(View.VISIBLE);
-                                binding.rvListPendapatan.setHasFixedSize(true);
-                                verifAkseptasiPendapatanAdapter = new VerifAkseptasiPendapatanAdapter(ActivityVerifAkseptasiPendapatan.this, data1, komponen, treatment);
-                                binding.rvListPendapatan.setLayoutManager(new LinearLayoutManager(ActivityVerifAkseptasiPendapatan.this));
-                                binding.rvListPendapatan.setItemAnimator(new DefaultItemAnimator());
-                                binding.rvListPendapatan.setAdapter(verifAkseptasiPendapatanAdapter);
-                                binding.refresh.setRefreshing(false);
-                                binding.refresh.setEnabled(false);
-                                resizeList();
+                                    //List Data Akseptasi Pendapatan
+                                    binding.rvListPendapatan.setVisibility(View.VISIBLE);
+                                    binding.rvListPendapatan.setHasFixedSize(true);
+                                    verifAkseptasiPendapatanAdapter = new VerifAkseptasiPendapatanAdapter(ActivityVerifAkseptasiPendapatan.this, data1, komponen, treatment);
+                                    binding.rvListPendapatan.setLayoutManager(new LinearLayoutManager(ActivityVerifAkseptasiPendapatan.this));
+                                    binding.rvListPendapatan.setItemAnimator(new DefaultItemAnimator());
+                                    binding.rvListPendapatan.setAdapter(verifAkseptasiPendapatanAdapter);
+                                    binding.refresh.setRefreshing(false);
+                                    binding.refresh.setEnabled(false);
+                                    resizeList();
+                                }
+
+                            }
+                            catch (NullPointerException e){
+                                e.printStackTrace();
                             }
 
                             if (response.body().getData().get("PendapatanTunjangan_Img") != null) {
@@ -187,8 +193,8 @@ public class ActivityVerifAkseptasiPendapatan extends AppCompatActivity {
                                 }
                             }
 
-                            if (response.body().getData().get("DataGajiTunjangan") != null) {
-                                rgaji = response.body().getData().get("DataGajiTunjangan").getAsJsonObject().toString();
+                            if (response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("DataGajiTunjangan") != null) {
+                                rgaji = response.body().getData().get("PendapatanAkseptasiD4").getAsJsonObject().get("DataGajiTunjangan").getAsJsonObject().toString();
                                 Type typegaji = new TypeToken<MparseDataGajiTunjangan>() {
                                 }.getType();
                                 mparseDataGajiTunjangan = gson.fromJson(rgaji, typegaji);

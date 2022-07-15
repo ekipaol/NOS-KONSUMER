@@ -203,8 +203,12 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
             binding.etRegional.setText(dataInstansi.getRegional());
         }
 
+        if(dataInstansi.getiDMasterInstansi()!=null&&!dataInstansi.getiDMasterInstansi().isEmpty()){
+            binding.tfIdMasterInstansi.setVisibility(View.VISIBLE);
+            binding.etIdMasterInstansi.setText(dataInstansi.getiDMasterInstansi());
+        }
+
         binding.etCifCabang.setText(dataInstansi.getCif());
-        binding.etIdMasterInstansi.setText(dataInstansi.getiDMasterInstansi());
 
         for (int i = 0; i <dropdownInstansiInduk.size() ; i++) {
             if(dropdownInstansiInduk.get(i).getID().equalsIgnoreCase(Long.toString(dataInstansi.getInstansiInduk()))){
@@ -649,9 +653,15 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                 DialogGenericDataFromService.display(getSupportFragmentManager(),binding.tfJasaPengelolaan.getLabelText(),dropdownJasaPengelolaan,this);
                 break;
             case R.id.btn_lihat_lkp:
-               Intent intent=new Intent(InputMasterInstansiActivity.this,ListLkpKoordinasiActivity.class);
-               intent.putExtra("idInstansi",idInstansi);
-               startActivity(intent);
+                if(idInstansi>0){
+                    Intent intent=new Intent(InputMasterInstansiActivity.this,ListLkpKoordinasiActivity.class);
+                    intent.putExtra("idInstansi",idInstansi);
+                    startActivity(intent);
+                }
+                else{
+                    AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Harap Simpan Dahulu Data Instansi");
+                }
+
                 break;
             case R.id.btn_lihat_lngp:
                 if(rekeningBerubah){
@@ -659,10 +669,16 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                     AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Harap cek nomor rekening dahulu sebelum mengakses halaman LNGP");
                 }
                 else{
-                    Intent intent2=new Intent(InputMasterInstansiActivity.this,ListLngpActivity.class);
-                    intent2.putExtra("idInstansi",idInstansi);
-                    intent2.putExtra("escrow",binding.etNomorEscrow.getText().toString());
-                    startActivity(intent2);
+                    if(idInstansi>0){
+                        Intent intent2=new Intent(InputMasterInstansiActivity.this,ListLngpActivity.class);
+                        intent2.putExtra("idInstansi",idInstansi);
+                        intent2.putExtra("escrow",binding.etNomorEscrow.getText().toString());
+                        startActivity(intent2);
+                    }
+                    else{
+                        AppUtil.notiferror(InputMasterInstansiActivity.this, findViewById(android.R.id.content), "Harap Simpan Dahulu Data Instansi");
+                         }
+
                 }
                 break;
 
@@ -789,6 +805,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
         binding.tfKantorCabang.setVisibility(View.GONE);
         binding.tfAreaCabang.setVisibility(View.GONE);
         binding.tfRegional.setVisibility(View.GONE);
+        binding.tfIdMasterInstansi.setVisibility(View.GONE);
 
         //di hide dlu soalnya agak repot buat nyari time differencenya
         binding.tfJangkaWaktuPks.setVisibility(View.GONE);
@@ -1110,6 +1127,8 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
                             binding.tvHasilCekRekening.setVisibility(View.VISIBLE);
                             binding.tvHasilCekRekening.setText("Rekening Ditemukan : "+dataCIfRekening.getAccounttitle1());
                             binding.tvHasilCekRekening.setTextColor(getResources().getColor(R.color.main_green_color));
+                            binding.etCifCabang.setText(dataCIfRekening.getCustomer());
+
 
                             //posisi rekening yang bener disini
                             rekeningBerubah=false;
@@ -1268,10 +1287,7 @@ public class InputMasterInstansiActivity extends AppCompatActivity implements Vi
 
     @Override
     public void onSelect(String title, MGenericModel data) {
-        if(title.equalsIgnoreCase(binding.tfInstansiInduk.getLabelText())){
-            binding.etInstansiInduk.setText(data.getDESC());
-        }
-        else if(title.equalsIgnoreCase(binding.tfTipePembayaran.getLabelText())){
+       if(title.equalsIgnoreCase(binding.tfTipePembayaran.getLabelText())){
             binding.etTipePembayaran.setText(data.getDESC());
         }
         else if(title.equalsIgnoreCase(binding.tfJenisInstansi.getLabelText())){
